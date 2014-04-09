@@ -2,7 +2,7 @@
 #+OPTIONS: toc:1
 Work in progress. Questions/ideas? [[mailto:sacha@sachachua.com][sacha@sachachua.com]]
 
-You can find this document at [[http://sach.ac/baby-steps-org-todo]]. Github: https://github.com/sachac/baby-steps-org-todo
+You can find this document at [[http://sach.ac/baby-steps-org-todo]]. Github: https://github.com/sachac/emacs-notes
 
 (c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
 

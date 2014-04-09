@@ -1,0 +1,133 @@
+#+TITLE: Learn Emacs Lisp while customizing Emacs
+#+OPTIONS: toc:1
+Work in progress. Questions/ideas? [[mailto:sacha@sachachua.com][sacha@sachachua.com]]
+
+Github: https://github.com/sachac/emacs-notes . Patches welcome. =)
+
+While I'm drafting this, you may want to check out the following resources:  
+
+- [[https://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]: A bit abstract, but a good place to start. Read it even if you don't understand everything. Read it again. Refer to it frequently. Graduate to the [[http://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp reference manual]] when you're more comfortable (or if you need to look up details).
+- http://ergoemacs.org/emacs/elisp.html: Good collection of idioms and common uses.
+- http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/: Starts with ielm, focuses on data structures; other parts?
+- http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
+ 
+** Why learn Emacs Lisp?
+
+Emacs is amazingly customizable. If you want to tweak Emacs to support the way that you'd like to work, learning Emacs Lisp will definitely pay off. People have used Emacs Lisp to turn Emacs into a musical instrument, a TODO manager, a webserver, and all sorts of other things.
+
+You don't need to be a programmer in order to learn and use Emacs Lisp. Even though you'll technically be programming in it, just think of it as configuring Emacs. This guide will start you off with simple customizations, and then you can go from there. In this guide, you'll be changing options much like you might change them through other applications' Options dialog. It's just that in Emacs, it's easier to do most things in text.
+
+I'm going to assume that you've already installed Emacs 24 or later and that you're familiar with basic editing. If you haven't gone through the tutorial yet, you can click on the tutorial link that appears when Emacs starts up, or you can use =Ctrl-h t= (=help-with-tutorial=). All right. Let's start!
+
+** Running Emacs Lisp code
+
+The first thing you need to learn is how to run Emacs Lisp. By default, Emacs starts up with a =*scratch*= buffer that's in Emacs Lisp mode. You can use this to try out code temporarily without saving it to your config. Type or paste in the code that you want to try, then use =M-x eval-buffer= to evaluate all the code in that buffer.
+
+If you want to run some of the code (but not all the code), you can select the region and then type =M-x eval-region=. 
+
+Emacs Lisp code is made up of expressions that are enclosed in sets of parentheses. To run just one expression, put your cursor right after the last parenthesis (but not on the parenthesis itself). Type =C-x C-e= (=eval-last-sexp=). You should see the results that expression.
+
+Let's try that with some examples. Type or copy the following into your =*scratch*= buffer and use =M-x eval-buffer=. It should show "Hello world" in the echo area near the bottom of your Emacs frame.
+
+#+begin_src emacs-lisp
+(message "Hello world")
+#+end_src
+
+Try =M-x eval-region= and =C-x C-e= (=eval-last-sexp=) as well.
+
+There are a few other ways to quickly evaluate Emacs Lisp code. If you just want to quickly evaluate something, try =M-:= (=eval-expression=). =M-x ielm= opens an interactive buffer where you can type code and then press =RET= (Enter). When you're starting out, you'll probably want to be able to easily read and modify the code, so I suggest using =M-x eval-buffer=, =M-x eval-region=, or =C-x C-e= (=eval-last-sexp=) instead. If you've downloaded =emacs-lisp-tutorial.org= and are reading this in Emacs, you can evaluate code by putting your text cursor on the =#+begin_src emacs-lisp= line and typing =C-c C-c=. Make sure to re-evaluate it if you make any changes. Might be handy.
+
+Since the =*scratch*= buffer is not automatically saved to a file, you may want to put your code into a file instead. You can create any file with the =.el= extension (ex: =test.el=) and Emacs will switch to Emacs Lisp mode when you open it.
+
+** Saving your configuration
+
+When you like something and you want to make it part of your configuration, open the file =~/.emacs.d/init.el=. If you started with an older version of Emacs and have a =~/.emacs= file instead, be sure to move its contents to =~/.emacs.d/init.el= and remove the =~/.emacs= file.
+
+It's usually safe to add your new code to the bottom of the file. If your =init.el= already contains some code, make sure you add your new code after the last closing parenthesis. If you're changing things like =load-path=, you may want to put the code earlier in the file (before the library is loaded). Save your =init.el= and restart Emacs.
+
+What if you added something to your =init.el= that caused an error when you started Emacs? Don't worry. You can find out which part caused the error with =emacs --debug-init=. You can also start Emacs without your configuration file by typing =emacs -q= at the command-line. Then you can open your =init.el=, remove the problematic line, and restart to see if that fixed it.
+
+Okay, let's start writing Emacs Lisp!
+
+** Load modes to change the way that Emacs behaves
+
+Emacs has "modes" that load different pieces of functionality. You've already seen how Emacs Lisp Mode (or =emacs-lisp-mode=, which is the actual name in Emacs Lisp) changes the color of code in the =*scratch*= buffer. Other modes affect how you use Emacs. Here's an example of a mode that you may find useful. It turns on completion for =M-x=.
+
+#+begin_src emacs-lisp
+(icomplete-mode)
+#+end_src
+
+Put that in your =*scratch*= and use =M-x eval-buffer= to evaluate it. Now try =M-x= again, and start typing =eval-buffer=. As you type, Emacs will suggest possible completions. There are even more [[http://sachachua.com/blog/2014/03/emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm/][shortcuts for M-x]], but this is probably a good start for you.
+
+Here are some other modes that might be helpful:
+
+#+begin_src emacs-lisp
+(column-number-mode)
+(visual-line-mode)
+(global-hl-line-mode)
+#+end_src
+
+Try using =C-x C-e= (=eval-last-sexp=) to evaluate these lines one at a time. Put your cursor after the ending =)= on each line, then type =C-x C-e=.
+
+=icomplete-mode= and the other modes are all examples of *functions*. The first "word" after the opening parenthesis of an Emacs Lisp expression is usually a function. You can learn more about functions with =F1 f= (=describe-function=). There are tons of functions in Emacs (and even more once you start installing and loading packages). You can discover useful functions by browsing through other people's configuration, looking at the source code of other functions you're interested in, checking out [[http://emacswiki.org][EmacsWiki]], asking on mailing lists and newsgroups, or using the =M-x apropos-command= function.
+
+** Specify options when you're calling some functions
+
+Some functions need more information. For example, =prefer-coding-system= is a useful function if you work with files that have special characters or different languages. The following Emacs Lisp code sets the default to UTF-8, which is a common standard.
+
+#+begin_src emacs-lisp
+(prefer-coding-system 'utf-8)
+#+end_src
+
+Here's another example. Let's say that you want to open a file whenever you start Emacs. The function to open a file is called =find-file=, and you can give it the name of the file to open. The code below looks for a file called "todo.org" in your home directory, and creating it if it does not yet exist.
+
+#+begin_src emacs-lisp
+(find-file "~/todo.org")
+#+end_src
+
+(See [[baby-steps-org][A Baby Steps Guide to Managing Your Tasks with Org]] for more info on Org files.)
+
+** Set simple variables
+
+In addition to calling functions, you can also set values that affect what code does.
+Many functions check the value of different *variables*. For example, this tells Emacs to keep old versions.
+
+#+begin_src emacs-lisp
+(setq delete-old-versions -1)
+#+end_src
+
+=setq= means "Set this quoted variable to this value." The quoted part just means that the first argument (in this case, =delete-old-versions=) is treated as a variable name instead of being used to look up a *different* variable to set. The code is the same as the code below:
+
+#+begin_src emacs-lisp
+(set (quote delete-old-versions) -1)
+#+end_src
+
+... but the =setq= version is shorter, so everyone uses that instead.
+
+To see the documentation for a variable, use =F1 v= (=describe-variable=) and type in the variable name. The variable name is the first argument to =setq=, so you would type in =F1 f delete-old-versions=. 
+
+You can customize many variables through the =M-x customize= interface, but you'll most often see people sharing their configuration with Emacs Lisp code instead. It can be shorter to say "Add this code to your init.el" than it is to say "Use =M-x customize-variable= to change the =user-email-address= value", especially if there are lots of options to change. Not everything can be changed through the Customize interface, too. Emacs Lisp is more powerful, and it's easier to read afterwards. I tend to use =M-x customize= to explore, but I use Emacs Lisp code to set things up.
+
+Like the way there are tons of functions, there are also tons of variables, and you can discover interesting variables using the same techniques: reading other people's code, exploring, etc. 
+
+** Set more complex variables
+
+Some variables contain lists of data. Here's an example:
+
+#+begin_src emacs-lisp
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+#+end_src
+
+This is one of the things people usually want to change right away. By default, Emacs saves backup files in the current directory. These are the files ending in =~= that are cluttering up your directory lists. This code stashes them in =~/.emacs.d/backups=, where you can find them with =C-x C-f= (=find-file=) when you need to.
+
+=alist= stands for *association list*. Each entry in the list is
+enclosed in (...). The first part of the list is the key that is used
+to look it up, like the way a dictionary has words. The second part of
+the list is the value that Emacs uses, like the definitions in a dictionary.
+If you're curious, the [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Association-Lists.html][Emacs Lisp reference manual]] has more details.
+
+** Add hooks - to be written
+** Add to lists - to be written
+** Define your own keyboard bindings - to be written
+** Define your own functions - to be written
+** Prompt for information - to be written
