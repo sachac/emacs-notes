@@ -1,0 +1,250 @@
+#+TITLE: A Baby Steps Guide to Managing Your Tasks with Org
+#+OPTIONS: toc:1
+Work in progress. Questions/ideas? [[mailto:sacha@sachachua.com][sacha@sachachua.com]]
+
+You can find this document at [[http://sach.ac/baby-steps-org-todo]]. Github: https://github.com/sachac/baby-steps-org-todo
+
+(c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-08-A-path-toward-taming-your-TODO-list.png][http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-08-A-path-toward-taming-your-TODO-list-640x486.png]]
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-16-Org-TODO-basics.png][http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-16-Org-TODO-basics-640x482.png]]
+
+[[http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/][Getting started with Org]]
+
+* Some notes
+I'll assume you're using Emacs 24 or later, and you've gone through
+the Emacs Tutorial with =C-h t= (=help-with-tutorial=). Assuming
+standard Emacs configuration (no evil-mode, etc.). I'll give the
+commands as well as the keybindings just in case you've remapped
+things.
+
+* Things you don't have to worry about
+
+Don't worry about the fancy ways that other people use Org. Don't
+worry about synchronization, integration, duplication of information,
+mobile devices, or whether this will be ultimately worth it. =) You
+can start off by using Org to manage a small part of your life - maybe
+one of your projects.
+
+* Start with an outline 
+
+Start with a single file (probably =~/todo.org=). I recommend using this kind of Org structure:
+
+#+begin_src org
+    ,* Tasks
+    ,** TODO Most important thing that you have to do
+    ,** TODO Second most important thing that you have to do
+    You can also take notes underneath each heading, like this
+    ,** TODO Etc.
+#+end_src
+
+The single =*= at Tasks makes it a top-level heading, while =**= means
+that the TODOs are second-level headings under the =Tasks= heading.
+Technically, you don't need to do this yet, but it's a good habit to
+get into.
+
+Use =M-up= (=org-metaup=) and =M-down= (=org-metadown=) to move headings up or down.
+
+=M-S-return= (=org-insert-todo-heading=) inserts a new heading at the same level as the previous one, which is handy if you're creating a whole bunch of TODOs in a row. This keyboard shortcut might not work if you're using Emacs on a console.
+
+When you're starting out, you can get rid of finished tasks by using =C-k= (=org-kill-line=) to delete the line. Later, you'll see how you can keep them around for reference.
+
+* Finish tasks
+
+If you're done with a task, change =TODO= to =DONE=. If you get tired
+of doing this manually, jump ahead to the section [[#define-shortcuts][Define shortcuts
+for managing TODO states]]. 
+
+You can visually look through your tasks to see what you still need to do. Use =C-c v= (=org-show-todo-tree=) if you don't want to see any of the DONE tasks, and =S-Tab= (=org-shifttab=) to go through different levels of visibility.
+
+You can use =M-down= (=org-metadown=) to move DONE tasks downwards, or you can move them to an archive file with =C-c $= (=org-archive-subtree=). If you get tired of moving DONE tasks downwards manually, you can use =M-x org-sort-entries= on your =* Tasks= heading to sort tasks by todo order (type *o* to select that one).
+
+Remember, Org Mode is just plain text. If you don't remember how to do something but you know what the text should look like, you can typically just edit it.
+You can also use the standard Emacs navigation commands like =C-s= (=isearch-forward=) and =C-r= (=isearch-backward=) to look for stuff.
+
+* Automatically open your todo.org every time you start Emacs
+
+Make your life a little bit easier by automatically opening =~/todo.org= every time you open Emacs. Add this to the end of your Emacs configuration. To do that,
+
+1. =C-x C-f ~/.emacs.d/init.el= - use =find-file= to open your configuration file. If it does not yet exist, it is created.
+2. Go to the end of this file. (Handy shortcut: =C-end=)
+3. Add =(find-file "~/todo.org")=
+4. Save with =C-x C-s= (=save-buffer=).
+
+You can test it with =M-x eval-buffer= while looking at your =~/.emacs.d/init.el=. If it works, it should show you your =~/todo.org= file.
+
+You have just written a little Emacs Lisp. Totally not scary.
+
+* Define shortcuts for managing TODO states
+
+# <<define-shortcuts>>
+
+So far, you've just been using Org Mode as a simple outliner with some
+colors. The next step is to tell it a little more about how you want
+to manage your TODOs. Here you're going to customize your TODO
+keywords and assign keyboard shortcuts. This isn't covered until
+section 5.2.4 in the Info manual (=(org) Fast access to TODO states=),
+but it's useful and you should get the shortcuts into your muscle
+memory as soon as you can.
+
+1. Use =M-x customize-variable org-todo-keywords=
+2. Change =TODO= to =TODO(t)= and =DONE= to =DONE(d)=. The letters in
+   the parentheses are the shortcuts you can type to select that
+   state. You can change the letters if you prefer a different
+   shortcut, like setting it to =DONE(x)=. 
+3. Add other TODO states if you want. Some useful states include
+   =WAITING(w)= and =SOMEDAY(s)=. Make sure that the last state you
+   have is =DONE(d)= (or whatever keyboard shortcut you set it to),
+   and that all the keyboard shortcuts are unique. If you want to have
+   more than one DONE state, see the documentation in the manual.
+3. Use *Apply and save* to save the changes so that Emacs will keep the customizations after you restart.
+
+If you have your =~/todo.org= open, go to that buffer and reload it
+with =M-x org-mode= so that it recognizes any new keywords and
+shortcuts you've defined.
+
+Now you can use =C-c C-t= (=org-todo=) to quickly set the =TODO= state
+of any heading by typing its shortcut.
+
+* Organize your tasks into projects 
+
+Okay. Now you have lots of tasks, and you know how to mark them as
+DONE. You might even have a few additional states. At some point,
+you'll probably have a really long list of tasks, and maybe you're
+getting tired of searching through it for tasks that are related to a
+single project.
+
+Time to organize things better. This is how you want your Org file to look:
+
+#+begin_src org
+    ,* Project ABC
+    ,** TODO A task related to Project ABC
+    ,** TODO Another task related to ABC
+    ,** TODO Etc.
+    ,* Project XYZ
+    ,** TODO A task related to Project XYZ
+    ,** TODO Another task related to XYZ
+    ,** TODO Etc.
+    ,* Tasks
+    ,** TODO Miscellaneous
+    ,** TODO tasks
+    ,** TODO go here
+#+end_src
+
+As before, one star (=*=) means it's a first-level heading, and two stars (=**=) means it's a second-level heading underneath whatever first-level heading was before it. 
+
+Unless your Tasks list is short or you're feeling particularly diligent, I recommend not worrying too much about your previous tasks and instead focusing on keeping things organized going forward. Think about the projects you're currently working and create headings for them. Create tasks underneath them, remembering to use =**=.
+
+Here's where it gets interesting. Try pressing =S-tab= (=org-shifttab=) a few times to see how you can change the visibility of the outline for the entire buffer.
+This is why we got you started with putting your tasks under the =* Tasks= heading, so all of your tasks don't clutter up the neat "everything is collapsed so I can focus on my projects" view.
+
+Now go to one of your project headings and press =tab= (=org-cycle=). Do that a few times as well. 
+
+So now, when you're working on a project, you can press TAB to view the tasks underneath it. When you're not working on the project, you can use TAB to hide the details.
+
+You can even go wild and have subtasks, like this. Org can deal with as many levels as you want.
+
+
+#+begin_src org
+    ,* Project ABC
+    ,** TODO A task related to Project ABC
+    ,** TODO Another task related to ABC
+    ,*** TODO Subtask
+    ,*** TODO Another subtask
+    ,*** TODO A third subtask
+#+end_src
+
+TAB works on those headings too.
+
+Stick with this until you start getting annoyed with jumping around to
+see what tasks you need to work on today and when tasks are due.
+That's in the next section, on scheduling tasks.
+
+* Schedule your tasks and use the agenda
+
+Okay. So now you have projects and tasks, and you're jumping all over
+the place to find tasks to work on or keep track of deadlines.
+This is where scheduling and the Org agenda come in. 
+
+First, we need to add your =~/todo.org= to the list of files Org looks at when coming up with the agenda. Open your =~/todo.org= and type =C-c [= (=org-agenda-file-to-front=). This adds the current file to the list.
+
+Next, we're going to schedule some tasks. Go to a task that you want
+to do today. Press =C-c C-s= (=org-schedule=) and accept the default.
+Schedule a couple of other tasks for today.
+
+Schedule some tasks for tomorrow, too. This time, when you schedule
+it, type =+1= for the date. You can specify =+2= for the day after
+tomorrow, etc. The 28th? =28=. If you want to schedule something for
+next Saturday, you can type =sat=. Two Tuesdays from now? =2thu=. A
+month from now? =1m=. It's really flexible. 
+
+Anyway, scheduling should give you a task that looks something like this
+#+begin_src org
+    ,** TODO Fix the widget
+    ,SCHEDULED: <2014-02-28 Fri>
+#+end_src
+
+To see your scheduled tasks in your agenda, type =M-x org-agenda= and choose =a= (Agenda for the current week or day). You can use =f= (=org-agenda-later=) and =b= (=org-agenda-earlier=) to go forward or backward. You can use =t= (=org-agenda-todo=) to change the TODO state of a task. You can reschedule it by using =S-right= (=org-agenda-do-date-later=) and =M-left= (=org-agenda-do-date-earlier=) with =C-c C-s= (=org-agenda-schedule=). Press =RET= to jump to a task. 
+
+You will probably want to refer to your agenda often. If you haven't done so yet, add the following to your =~/.emacs.d/init.el=:
+
+#+begin_src emacs-lisp
+     (global-set-key (kbd "C-c a") 'org-agenda)
+#+end_src
+
+Afterwards, load your configuration into your current Emacs with =M-x eval-buffer= (while you're in the =init.el= buffer). Now you should be able to type =C-c a a= to get to your agenda.
+
+Org Agenda is really powerful. Check out the info manual for Org Mode with =C-h i= (=info=) to learn more, including how to customize the number of days initially displayed and what day your week starts on.
+* Automatically open your agenda whenever you start Emacs
+
+You can get Emacs to automatically open your agenda whenever you start it. Add the following lines to your =~/.emacs.d/init.el= file:
+
+#+begin_src emacs-lisp
+(org-agenda nil "a")
+#+end_src
+
+* Sections to be written
+** Work with deadlines
+
+coming eventually. =)
+
+** View your completed tasks 
+
+coming eventually. =)
+
+** Work with multiple files
+
+coming eventually. =)
+
+** Use tags for types of tasks
+
+coming eventually. =)
+
+** Filter your view
+
+coming eventually. =)
+
+** Track your time
+
+Coming eventually. =)
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-06-Tracking-time-with-Org-mode.png][http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-06-Tracking-time-with-Org-mode-640x480.png]]
+
+** Track your time estimates
+
+coming eventually. =)
+
+** Customize your agenda view
+
+coming eventually. =)
+
+
+** Extras
+*** Set up more than one TODO state for done tasks
+coming eventually. =)
+
+* Notes
+
+E-mail me at [[mailto:sacha@sachachua.com][sacha@sachachua.com]] with questions or suggestions!
+See [[http://sachachua.com/blog/emacs][my Emacs page]] for more resources.
