@@ -21,7 +21,7 @@ In addition to reading this guide, you may want to check out [[http://planet.ema
 
 I'm going to assume that you've already installed Emacs 24 or later and that you're familiar with basic editing. If you haven't gone through the tutorial yet, you can click on the tutorial link that appears when Emacs starts up, or you can use =Ctrl-h t= (=help-with-tutorial=). All right. Let's start!
 
-** Running Emacs Lisp code
+** How to run Emacs Lisp code
 
 The first thing you need to learn is how to run Emacs Lisp. By default, Emacs starts up with a =*scratch*= buffer that's in Emacs Lisp mode. You can use this to try out code temporarily without saving it to your config. Type or paste in the code that you want to try, then use =M-x eval-buffer= to evaluate all the code in that buffer.
 
@@ -41,7 +41,7 @@ There are a few other ways to quickly evaluate Emacs Lisp code. If you just want
 
 Since the =*scratch*= buffer is not automatically saved to a file, you may want to put your code into a file instead. You can create any file with the =.el= extension (ex: =test.el=) and Emacs will switch to Emacs Lisp mode when you open it.
 
-** Saving your configuration
+** How to save your configuration
 
 When you like something and you want to make it part of your configuration, open the file =~/.emacs.d/init.el=. If you started with an older version of Emacs and have a =~/.emacs= file instead, be sure to move its contents to =~/.emacs.d/init.el= and remove the =~/.emacs= file.
 
@@ -51,7 +51,7 @@ What if you added something to your =init.el= that caused an error when you star
 
 Okay, let's start writing Emacs Lisp!
 
-** Load modes to change the way that Emacs behaves
+** How to load modes to change the way that Emacs behaves
 
 Emacs has "modes" that load different pieces of functionality. You've already seen how Emacs Lisp Mode (or =emacs-lisp-mode=, which is the actual name in Emacs Lisp) changes the color of code in the =*scratch*= buffer. Other modes affect how you use Emacs. Here's an example of a mode that you may find useful. It turns on completion for =M-x=.
 
@@ -73,7 +73,7 @@ Try using =C-x C-e= (=eval-last-sexp=) to evaluate these lines one at a time. Pu
 
 =icomplete-mode= and the other modes are all examples of *functions*. The first "word" after the opening parenthesis of an Emacs Lisp expression is usually a function. You can learn more about functions with =F1 f= (=describe-function=). There are tons of functions in Emacs (and even more once you start installing and loading packages). You can discover useful functions by browsing through other people's configuration, looking at the source code of other functions you're interested in, checking out [[http://emacswiki.org][EmacsWiki]], asking on mailing lists and newsgroups, or using the =M-x apropos-command= function.
 
-** Specify options when you're calling some functions
+** How to specify options when you're calling functions
 
 Some functions need more information. For example, =prefer-coding-system= is a useful function if you work with files that have special characters or different languages. The following Emacs Lisp code sets the default to UTF-8, which is a common standard.
 
@@ -89,7 +89,15 @@ Here's another example. Let's say that you want to open a file whenever you star
 
 (See [[baby-steps-org][A Baby Steps Guide to Managing Your Tasks with Org]] for more info on Org files.)
 
-** Set simple variables
+Here's a third example, for when you get tired of typing "yes" or "no" to confirmation prompts:
+
+#+begin_src emacs-lisp
+(fset 'yes-or-no-p 'y-or-n-p)   
+#+end_src
+
+=fset= is a function that replaces a function (yes-or-no-p) with another function (y-or-n-p). Sounds complicated? A little. You can use the snippet right now without digging into how it works, and you'll learn more about functions over time.
+
+** How to set simple variables
 
 In addition to calling functions, you can also set values that affect what code does.
 Many functions check the value of different *variables*. For example, this tells Emacs to keep old versions.
@@ -112,7 +120,7 @@ You can customize many variables through the =M-x customize= interface, but you'
 
 Like the way there are tons of functions, there are also tons of variables, and you can discover interesting variables using the same techniques: reading other people's code, exploring, etc. 
 
-** Set more complex variables
+** How to set more complex variables
 
 Some variables contain lists of data. Here's an example:
 
@@ -128,13 +136,13 @@ to look it up, like the way a dictionary has words. The second part of
 the list is the value that Emacs uses, like the definitions in a dictionary.
 If you're curious, the [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Association-Lists.html][Emacs Lisp reference manual]] has more details.
 
-** Add hooks - to be written
-** Add to lists - to be written
-** Add package archives - to be written
-** Define your own keyboard bindings - to be written
-** Define your own functions - to be written
-** Prompt for information - to be written
-** Changing existing functions with advice - to be written
+** How to add hooks - to be written
+** How to add to lists - to be written
+** How to add package archives - to be written
+** How to set up your own keybord shortcuts - to be written
+** How to define your own functions - to be written
+** How to prompt for information - to be written
+** How to change existing functions with advice - to be written
 
 (c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
 
