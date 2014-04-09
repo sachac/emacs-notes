@@ -17,6 +17,8 @@ Emacs is amazingly customizable. If you want to tweak Emacs to support the way t
 
 You don't need to be a programmer in order to learn and use Emacs Lisp. Even though you'll technically be programming in it, just think of it as configuring Emacs. This guide will start you off with simple customizations, and then you can go from there. In this guide, you'll be changing options much like you might change them through other applications' Options dialog. It's just that in Emacs, it's easier to do most things in text.
 
+In addition to reading this guide, you may want to check out [[http://planet.emacsen.org][Planet Emacsen]] and [[http://www.emacswiki.org][Emacs Wiki]] for plenty of inspiration. Seeing what other people have done with Emacs can nudge you to explore more of the Emacs Lisp code that makes it possible.
+
 I'm going to assume that you've already installed Emacs 24 or later and that you're familiar with basic editing. If you haven't gone through the tutorial yet, you can click on the tutorial link that appears when Emacs starts up, or you can use =Ctrl-h t= (=help-with-tutorial=). All right. Let's start!
 
 ** Running Emacs Lisp code
@@ -131,6 +133,8 @@ If you're curious, the [[http://www.gnu.org/software/emacs/manual/html_node/elis
 ** Define your own keyboard bindings - to be written
 ** Define your own functions - to be written
 ** Prompt for information - to be written
+** Changing existing functions with advice - to be written
 
 
 (c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
+
