@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>A Baby Steps Guide to Managing Your Tasks with Org</title>
+<!-- 2014-04-09 Wed 13:43 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sacha Chua" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css"></link>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">A Baby Steps Guide to Managing Your Tasks with Org</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Some notes</a></li>
+<li><a href="#sec-2">Things you don't have to worry about</a></li>
+<li><a href="#sec-3">Start with an outline</a></li>
+<li><a href="#sec-4">Finish tasks</a></li>
+<li><a href="#sec-5">Automatically open your todo.org every time you start Emacs</a></li>
+<li><a href="#sec-6">Define shortcuts for managing TODO states</a></li>
+<li><a href="#sec-7">Organize your tasks into projects</a></li>
+<li><a href="#sec-8">Schedule your tasks and use the agenda</a></li>
+<li><a href="#sec-9">Automatically open your agenda whenever you start Emacs</a></li>
+<li><a href="#sec-10">Sections to be written</a></li>
+<li><a href="#sec-11">Notes</a></li>
+</ul>
+</div>
+</div>
+<p>
+Work in progress. Questions/ideas? <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>
+</p>
+
+<p>
+You can find this document at <a href="http://sach.ac/baby-steps-org-todo">http://sach.ac/baby-steps-org-todo</a>. Github: <a href="https://github.com/sachac/baby-steps-org-todo">https://github.com/sachac/baby-steps-org-todo</a>
+</p>
+
+<p>
+(c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
+</p>
+
+
+<div class="figure">
+<p><a href="http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-08-A-path-toward-taming-your-TODO-list.png"><img src="http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-08-A-path-toward-taming-your-TODO-list-640x486.png" alt="2014-02-08-A-path-toward-taming-your-TODO-list-640x486.png" /></a>
+</p>
+</div>
+
+
+<div class="figure">
+<p><a href="http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-16-Org-TODO-basics.png"><img src="http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-16-Org-TODO-basics-640x482.png" alt="2014-02-16-Org-TODO-basics-640x482.png" /></a>
+</p>
+</div>
+
+<p>
+<a href="http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/">Getting started with Org</a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Some notes</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I'll assume you're using Emacs 24 or later, and you've gone through
+the Emacs Tutorial with <code>C-h t</code> (<code>help-with-tutorial</code>). Assuming
+standard Emacs configuration (no evil-mode, etc.). I'll give the
+commands as well as the keybindings just in case you've remapped
+things.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Things you don't have to worry about</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Don't worry about the fancy ways that other people use Org. Don't
+worry about synchronization, integration, duplication of information,
+mobile devices, or whether this will be ultimately worth it. =) You
+can start off by using Org to manage a small part of your life - maybe
+one of your projects.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Start with an outline</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Start with a single file (probably <code>~/todo.org</code>). I recommend using this kind of Org structure:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-level-1">* Tasks</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Most important thing that you have to do</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Second most important thing that you have to do</span>
+You can also take notes underneath each heading, like this
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Etc.</span>
+</pre>
+</div>
+
+<p>
+The single <code>*</code> at Tasks makes it a top-level heading, while <code>**</code> means
+that the TODOs are second-level headings under the <code>Tasks</code> heading.
+Technically, you don't need to do this yet, but it's a good habit to
+get into.
+</p>
+
+<p>
+Use <code>M-up</code> (<code>org-metaup</code>) and <code>M-down</code> (<code>org-metadown</code>) to move headings up or down.
+</p>
+
+<p>
+<code>M-S-return</code> (<code>org-insert-todo-heading</code>) inserts a new heading at the same level as the previous one, which is handy if you're creating a whole bunch of TODOs in a row. This keyboard shortcut might not work if you're using Emacs on a console.
+</p>
+
+<p>
+When you're starting out, you can get rid of finished tasks by using <code>C-k</code> (<code>org-kill-line</code>) to delete the line. Later, you'll see how you can keep them around for reference.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Finish tasks</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+If you're done with a task, change <code>TODO</code> to <code>DONE</code>. If you get tired
+of doing this manually, jump ahead to the section <i>Define shortcuts
+for managing TODO states</i>. 
+</p>
+
+<p>
+You can visually look through your tasks to see what you still need to do. Use <code>C-c v</code> (<code>org-show-todo-tree</code>) if you don't want to see any of the DONE tasks, and <code>S-Tab</code> (<code>org-shifttab</code>) to go through different levels of visibility.
+</p>
+
+<p>
+You can use <code>M-down</code> (<code>org-metadown</code>) to move DONE tasks downwards, or you can move them to an archive file with <code>C-c $</code> (<code>org-archive-subtree</code>). If you get tired of moving DONE tasks downwards manually, you can use <code>M-x org-sort-entries</code> on your <code>* Tasks</code> heading to sort tasks by todo order (type <b>o</b> to select that one).
+</p>
+
+<p>
+Remember, Org Mode is just plain text. If you don't remember how to do something but you know what the text should look like, you can typically just edit it.
+You can also use the standard Emacs navigation commands like <code>C-s</code> (<code>isearch-forward</code>) and <code>C-r</code> (<code>isearch-backward</code>) to look for stuff.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Automatically open your todo.org every time you start Emacs</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Make your life a little bit easier by automatically opening <code>~/todo.org</code> every time you open Emacs. Add this to the end of your Emacs configuration. To do that,
+</p>
+
+<ol class="org-ol">
+<li><code>C-x C-f ~/.emacs.d/init.el</code> - use <code>find-file</code> to open your configuration file. If it does not yet exist, it is created.
+</li>
+<li>Go to the end of this file. (Handy shortcut: <code>C-end</code>)
+</li>
+<li>Add <code>(find-file "~/todo.org")</code>
+</li>
+<li>Save with <code>C-x C-s</code> (<code>save-buffer</code>).
+</li>
+</ol>
+
+<p>
+You can test it with <code>M-x eval-buffer</code> while looking at your <code>~/.emacs.d/init.el</code>. If it works, it should show you your <code>~/todo.org</code> file.
+</p>
+
+<p>
+You have just written a little Emacs Lisp. Totally not scary.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Define shortcuts for managing TODO states</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+So far, you've just been using Org Mode as a simple outliner with some
+colors. The next step is to tell it a little more about how you want
+to manage your TODOs. Here you're going to customize your TODO
+keywords and assign keyboard shortcuts. This isn't covered until
+section 5.2.4 in the Info manual (<code>(org) Fast access to TODO states</code>),
+but it's useful and you should get the shortcuts into your muscle
+memory as soon as you can.
+</p>
+
+<ol class="org-ol">
+<li>Use <code>M-x customize-variable org-todo-keywords</code>
+</li>
+<li>Change <code>TODO</code> to <code>TODO(t)</code> and <code>DONE</code> to <code>DONE(d)</code>. The letters in
+the parentheses are the shortcuts you can type to select that
+state. You can change the letters if you prefer a different
+shortcut, like setting it to <code>DONE(x)</code>. 
+</li>
+<li>Add other TODO states if you want. Some useful states include
+<code>WAITING(w)</code> and <code>SOMEDAY(s)</code>. Make sure that the last state you
+have is <code>DONE(d)</code> (or whatever keyboard shortcut you set it to),
+and that all the keyboard shortcuts are unique. If you want to have
+more than one DONE state, see the documentation in the manual.
+</li>
+<li>Use <b>Apply and save</b> to save the changes so that Emacs will keep the customizations after you restart.
+</li>
+</ol>
+
+<p>
+If you have your <code>~/todo.org</code> open, go to that buffer and reload it
+with <code>M-x org-mode</code> so that it recognizes any new keywords and
+shortcuts you've defined.
+</p>
+
+<p>
+Now you can use <code>C-c C-t</code> (<code>org-todo</code>) to quickly set the <code>TODO</code> state
+of any heading by typing its shortcut.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Organize your tasks into projects</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Okay. Now you have lots of tasks, and you know how to mark them as
+DONE. You might even have a few additional states. At some point,
+you'll probably have a really long list of tasks, and maybe you're
+getting tired of searching through it for tasks that are related to a
+single project.
+</p>
+
+<p>
+Time to organize things better. This is how you want your Org file to look:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-level-1">* Project ABC</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> A task related to Project ABC</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Another task related to ABC</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Etc.</span>
+<span class="org-org-level-1">* Project XYZ</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> A task related to Project XYZ</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Another task related to XYZ</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Etc.</span>
+<span class="org-org-level-1">* Tasks</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Miscellaneous</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> tasks</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> go here</span>
+</pre>
+</div>
+
+<p>
+As before, one star (<code>*</code>) means it's a first-level heading, and two stars (<code>**</code>) means it's a second-level heading underneath whatever first-level heading was before it. 
+</p>
+
+<p>
+Unless your Tasks list is short or you're feeling particularly diligent, I recommend not worrying too much about your previous tasks and instead focusing on keeping things organized going forward. Think about the projects you're currently working and create headings for them. Create tasks underneath them, remembering to use <code>**</code>.
+</p>
+
+<p>
+Here's where it gets interesting. Try pressing <code>S-tab</code> (<code>org-shifttab</code>) a few times to see how you can change the visibility of the outline for the entire buffer.
+This is why we got you started with putting your tasks under the <code>* Tasks</code> heading, so all of your tasks don't clutter up the neat "everything is collapsed so I can focus on my projects" view.
+</p>
+
+<p>
+Now go to one of your project headings and press <code>tab</code> (<code>org-cycle</code>). Do that a few times as well. 
+</p>
+
+<p>
+So now, when you're working on a project, you can press TAB to view the tasks underneath it. When you're not working on the project, you can use TAB to hide the details.
+</p>
+
+<p>
+You can even go wild and have subtasks, like this. Org can deal with as many levels as you want.
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-level-1">* Project ABC</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> A task related to Project ABC</span>
+<span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Another task related to ABC</span>
+<span class="org-org-level-3">*** </span><span class="org-org-todo">TODO</span><span class="org-org-level-3"> Subtask</span>
+<span class="org-org-level-3">*** </span><span class="org-org-todo">TODO</span><span class="org-org-level-3"> Another subtask</span>
+<span class="org-org-level-3">*** </span><span class="org-org-todo">TODO</span><span class="org-org-level-3"> A third subtask</span>
+</pre>
+</div>
+
+<p>
+TAB works on those headings too.
+</p>
+
+<p>
+Stick with this until you start getting annoyed with jumping around to
+see what tasks you need to work on today and when tasks are due.
+That's in the next section, on scheduling tasks.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Schedule your tasks and use the agenda</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Okay. So now you have projects and tasks, and you're jumping all over
+the place to find tasks to work on or keep track of deadlines.
+This is where scheduling and the Org agenda come in. 
+</p>
+
+<p>
+First, we need to add your <code>~/todo.org</code> to the list of files Org looks at when coming up with the agenda. Open your <code>~/todo.org</code> and type <code>C-c [</code> (<code>org-agenda-file-to-front</code>). This adds the current file to the list.
+</p>
+
+<p>
+Next, we're going to schedule some tasks. Go to a task that you want
+to do today. Press <code>C-c C-s</code> (<code>org-schedule</code>) and accept the default.
+Schedule a couple of other tasks for today.
+</p>
+
+<p>
+Schedule some tasks for tomorrow, too. This time, when you schedule
+it, type <code>+1</code> for the date. You can specify <code>+2</code> for the day after
+tomorrow, etc. The 28th? <code>28</code>. If you want to schedule something for
+next Saturday, you can type <code>sat</code>. Two Tuesdays from now? <code>2thu</code>. A
+month from now? <code>1m</code>. It's really flexible. 
+</p>
+
+<p>
+Anyway, scheduling should give you a task that looks something like this
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-level-2">** </span><span class="org-org-todo">TODO</span><span class="org-org-level-2"> Fix the widget</span>
+,<span class="org-org-special-keyword">SCHEDULED:</span> <span class="org-org-date">&lt;2014-02-28 Fri&gt;</span>
+</pre>
+</div>
+
+<p>
+To see your scheduled tasks in your agenda, type <code>M-x org-agenda</code> and choose <code>a</code> (Agenda for the current week or day). You can use <code>f</code> (<code>org-agenda-later</code>) and <code>b</code> (<code>org-agenda-earlier</code>) to go forward or backward. You can use <code>t</code> (<code>org-agenda-todo</code>) to change the TODO state of a task. You can reschedule it by using <code>S-right</code> (<code>org-agenda-do-date-later</code>) and <code>M-left</code> (<code>org-agenda-do-date-earlier</code>) with <code>C-c C-s</code> (<code>org-agenda-schedule</code>). Press <code>RET</code> to jump to a task. 
+</p>
+
+<p>
+You will probably want to refer to your agenda often. If you haven't done so yet, add the following to your <code>~/.emacs.d/init.el</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c a"</span>) 'org-agenda)
+</pre>
+</div>
+
+<p>
+Afterwards, load your configuration into your current Emacs with <code>M-x eval-buffer</code> (while you're in the <code>init.el</code> buffer). Now you should be able to type <code>C-c a a</code> to get to your agenda.
+</p>
+
+<p>
+Org Agenda is really powerful. Check out the info manual for Org Mode with <code>C-h i</code> (<code>info</code>) to learn more, including how to customize the number of days initially displayed and what day your week starts on.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Automatically open your agenda whenever you start Emacs</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+You can get Emacs to automatically open your agenda whenever you start it. Add the following lines to your <code>~/.emacs.d/init.el</code> file:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(org-agenda nil <span class="org-string">"a"</span>)
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Sections to be written</h2>
+<div class="outline-text-2" id="text-10">
+</div><div id="outline-container-sec-10-1" class="outline-3">
+<h3 id="sec-10-1">Work with deadlines</h3>
+<div class="outline-text-3" id="text-10-1">
+<p>
+coming eventually. =)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-2" class="outline-3">
+<h3 id="sec-10-2">View your completed tasks</h3>
+<div class="outline-text-3" id="text-10-2">
+<p>
+coming eventually. =)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-3" class="outline-3">
+<h3 id="sec-10-3">Work with multiple files</h3>
+<div class="outline-text-3" id="text-10-3">
+<p>
+coming eventually. =)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-4" class="outline-3">
+<h3 id="sec-10-4">Use tags for types of tasks</h3>
+<div class="outline-text-3" id="text-10-4">
+<p>
+coming eventually. =)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-5" class="outline-3">
+<h3 id="sec-10-5">Filter your view</h3>
+<div class="outline-text-3" id="text-10-5">
+<p>
+coming eventually. =)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-6" class="outline-3">
+<h3 id="sec-10-6">Track your time</h3>
+<div class="outline-text-3" id="text-10-6">
+<p>
+Coming eventually. =)
+</p>
+
+
+<div class="figure">
+<p><a href="http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-06-Tracking-time-with-Org-mode.png"><img src="http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-06-Tracking-time-with-Org-mode-640x480.png" alt="2014-01-06-Tracking-time-with-Org-mode-640x480.png" /></a>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-10-7" class="outline-3">
+<h3 id="sec-10-7">Track your time estimates</h3>
+<div class="outline-text-3" id="text-10-7">
+<p>
+coming eventually. =)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10-8" class="outline-3">
+<h3 id="sec-10-8">Customize your agenda view</h3>
+<div class="outline-text-3" id="text-10-8">
+<p>
+coming eventually. =)
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-10-9" class="outline-3">
+<h3 id="sec-10-9">Extras</h3>
+<div class="outline-text-3" id="text-10-9">
+</div><div id="outline-container-sec-10-9-1" class="outline-4">
+<h4 id="sec-10-9-1">Set up more than one TODO state for done tasks</h4>
+<div class="outline-text-4" id="text-10-9-1">
+<p>
+coming eventually. =)
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Notes</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+E-mail me at <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a> with questions or suggestions!
+See <a href="http://sachachua.com/blog/emacs">my Emacs page</a> for more resources.
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
