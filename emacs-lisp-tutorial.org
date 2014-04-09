@@ -131,3 +131,6 @@ If you're curious, the [[http://www.gnu.org/software/emacs/manual/html_node/elis
 ** Define your own keyboard bindings - to be written
 ** Define your own functions - to be written
 ** Prompt for information - to be written
+
+
+(c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
