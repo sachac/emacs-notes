@@ -2,6 +2,7 @@
 #+OPTIONS: toc:1
 Work in progress. Questions/ideas? [[mailto:sacha@sachachua.com][sacha@sachachua.com]]
 
+Available at http://sach.ac/baby-steps-elisp \\
 Github: https://github.com/sachac/emacs-notes . Patches welcome. =)
 
 While I'm drafting this, you may want to check out the following resources:  
