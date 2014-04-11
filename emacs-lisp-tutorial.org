@@ -136,8 +136,23 @@ enclosed in (...). The first part of the list is the key that is used
 to look it up, like the way a dictionary has words. The second part of
 the list is the value that Emacs uses, like the definitions in a dictionary.
 If you're curious, the [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Association-Lists.html][Emacs Lisp reference manual]] has more details.
+** How to load files - to be written
+
+#+begin_src emacs-lisp
+(require 'eldoc)
+#+end_src
+
+#+begin_src emacs-lisp
+(load-file "~/.emacs.secrets")
+#+end_src
+
+#+begin_src emacs-lisp
+(load-file (concat "~/.emacs.d/" (system-name) ".el"))
+#+end_src
 
 ** How to add hooks - to be written
+
+
 ** How to add to lists - to be written
 ** How to add package archives - to be written
 ** How to set up your own keybord shortcuts - to be written
