@@ -215,9 +215,9 @@ To find out which file the code is looking for, you can put your point *after* t
 
 If you've downloaded the Emacs Lisp file or package on your own, though, you'll want to add its directory to the load path. See [[How to add to lists]] for details.
 
-** How to add to lists - to be written
+** How to add to lists
 	 :LOGBOOK:
-	 CLOCK: [2014-04-18 Fri 15:38]
+	 CLOCK: [2014-04-18 Fri 15:38]--[2014-04-18 Fri 15:45] =>  0:07
 	 :END:
 	 :PROPERTIES:
 	 :Effort:   1:00
@@ -250,10 +250,9 @@ If you don't mind duplicates (or you want them), you can use =cons= instead. =co
 (setq load-path (cons "~/elisp" load-path))
 #+end_src
 
+** How to add package archives - to be written
 ** How to add hooks - to be written
 
-
-** How to add package archives - to be written
 ** How to set up your own keybord shortcuts - to be written
 ** How to define your own functions - to be written
 ** How to prompt for information - to be written
