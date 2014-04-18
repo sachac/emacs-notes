@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Learn Emacs Lisp while customizing Emacs</title>
-<!-- 2014-04-09 Wed 15:16 -->
+<!-- 2014-04-18 Fri 15:44 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -91,6 +91,7 @@
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css"></link>
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -139,6 +140,9 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<a name="top" id="top"></a>
+</div>
 <div id="content">
 <h1 class="title">Learn Emacs Lisp while customizing Emacs</h1>
 <div id="table-of-contents">
@@ -151,14 +155,16 @@ for the JavaScript code in this tag.
 <li><a href="#sec-4">How to load modes to change the way that Emacs behaves</a></li>
 <li><a href="#sec-5">How to specify options when you're calling functions</a></li>
 <li><a href="#sec-6">How to set simple variables</a></li>
-<li><a href="#sec-7">How to set more complex variables</a></li>
-<li><a href="#sec-8">How to add hooks - to be written</a></li>
-<li><a href="#sec-9">How to add to lists - to be written</a></li>
-<li><a href="#sec-10">How to add package archives - to be written</a></li>
-<li><a href="#sec-11">How to set up your own keybord shortcuts - to be written</a></li>
-<li><a href="#sec-12">How to define your own functions - to be written</a></li>
-<li><a href="#sec-13">How to prompt for information - to be written</a></li>
-<li><a href="#sec-14">How to change existing functions with advice - to be written</a></li>
+<li><a href="#sec-7">How to set buffer-local variables</a></li>
+<li><a href="#sec-8">How to set more complex variables</a></li>
+<li><a href="#sec-9">How to load libraries</a></li>
+<li><a href="#sec-10">How to add to lists - to be written</a></li>
+<li><a href="#sec-11">How to add hooks - to be written</a></li>
+<li><a href="#sec-12">How to add package archives - to be written</a></li>
+<li><a href="#sec-13">How to set up your own keybord shortcuts - to be written</a></li>
+<li><a href="#sec-14">How to define your own functions - to be written</a></li>
+<li><a href="#sec-15">How to prompt for information - to be written</a></li>
+<li><a href="#sec-16">How to change existing functions with advice - to be written</a></li>
 </ul>
 </div>
 </div>
@@ -176,6 +182,10 @@ While I'm drafting this, you may want to check out the following resources:
 </p>
 
 <ul class="org-ul">
+<li><a href="http://bzg.fr/learn-emacs-lisp-in-15-minutes.html">http://bzg.fr/learn-emacs-lisp-in-15-minutes.html</a>
+</li>
+<li><a href="http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html">http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html</a>
+</li>
 <li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html">An Introduction to Programming in Emacs Lisp</a>: A bit abstract, but a good place to start. Read it even if you don't understand everything. Read it again. Refer to it frequently. Graduate to the <a href="http://www.gnu.org/software/emacs/manual/elisp.html">Emacs Lisp reference manual</a> when you're more comfortable (or if you need to look up details).
 </li>
 <li><a href="http://ergoemacs.org/emacs/elisp.html">http://ergoemacs.org/emacs/elisp.html</a>: Good collection of idioms and common uses.
@@ -198,7 +208,7 @@ You don't need to be a programmer in order to learn and use Emacs Lisp. Even tho
 </p>
 
 <p>
-In addition to reading this guide, you may want to check out <a href="http://planet.emacsen.org/">Planet Emacsen</a> and <a href="http://www.emacswiki.org/">Emacs Wiki</a> for plenty of inspiration. Seeing what other people have done with Emacs can nudge you to explore more of the Emacs Lisp code that makes it possible.
+In addition to reading this guide, you may want to check out <a href="http://planet.emacsen.org">Planet Emacsen</a> and <a href="http://www.emacswiki.org">Emacs Wiki</a> for plenty of inspiration. Seeing what other people have done with Emacs can nudge you to explore more of the Emacs Lisp code that makes it possible.
 </p>
 
 <p>
@@ -206,6 +216,7 @@ I'm going to assume that you've already installed Emacs 24 or later and that you
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">How to run Emacs Lisp code</h2>
 <div class="outline-text-2" id="text-2">
@@ -244,6 +255,7 @@ Since the <code>*scratch*</code> buffer is not automatically saved to a file, yo
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">How to save your configuration</h2>
 <div class="outline-text-2" id="text-3">
@@ -264,6 +276,7 @@ Okay, let's start writing Emacs Lisp!
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">How to load modes to change the way that Emacs behaves</h2>
 <div class="outline-text-2" id="text-4">
@@ -298,10 +311,11 @@ Try using <code>C-x C-e</code> (<code>eval-last-sexp</code>) to evaluate these l
 </p>
 
 <p>
-<code>icomplete-mode</code> and the other modes are all examples of <b>functions</b>. The first "word" after the opening parenthesis of an Emacs Lisp expression is usually a function. You can learn more about functions with <code>F1 f</code> (<code>describe-function</code>). There are tons of functions in Emacs (and even more once you start installing and loading packages). You can discover useful functions by browsing through other people's configuration, looking at the source code of other functions you're interested in, checking out <a href="http://emacswiki.org/">EmacsWiki</a>, asking on mailing lists and newsgroups, or using the <code>M-x apropos-command</code> function.
+<code>icomplete-mode</code> and the other modes are all examples of <b>functions</b>. The first "word" after the opening parenthesis of an Emacs Lisp expression is usually a function. You can learn more about functions with <code>F1 f</code> (<code>describe-function</code>). There are tons of functions in Emacs (and even more once you start installing and loading packages). You can discover useful functions by browsing through other people's configuration, looking at the source code of other functions you're interested in, checking out <a href="http://emacswiki.org">EmacsWiki</a>, asking on mailing lists and newsgroups, or using the <code>M-x apropos-command</code> function.
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">How to specify options when you're calling functions</h2>
 <div class="outline-text-2" id="text-5">
@@ -344,6 +358,7 @@ Here's a third example, for when you get tired of typing "yes" or "no" to confir
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6">How to set simple variables</h2>
 <div class="outline-text-2" id="text-6">
@@ -369,7 +384,7 @@ Many functions check the value of different <b>variables</b>. For example, this 
 </div>
 
 <p>
-&#x2026; but the <code>setq</code> version is shorter, so everyone uses that instead.
+&#x2026; but the <code>setq</code> version is shorter, so everyone uses that instead. This is also why you should be careful to type <code>setq</code> instead of <code>set</code>, as <code>set</code> refers to a different function. If you accidentally use <code>set</code> instead, you'll usually see something like a <code>Wrong type argument: symbolp</code>, <i>value</i>
 </p>
 
 <p>
@@ -385,9 +400,29 @@ Like the way there are tons of functions, there are also tons of variables, and 
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">How to set more complex variables</h2>
+<h2 id="sec-7">How to set buffer-local variables</h2>
 <div class="outline-text-2" id="text-7">
+<p>
+Some variables are <b>buffer-local</b>. This means that the value in one buffer (or file) is separate from the values in other buffers. To find out if a variable is local to a buffer, use <code>F1 v</code> (<code>describe-variable</code>) to look at the documentation for that variable. For example, the documentation for <code>tab-width</code> has "Automatically becomes buffer-local when set".
+</p>
+
+<p>
+You can set the default value of a buffer-local variable with <code>setq-default</code>. The following code sets the tab width to 2 by default:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default tab-width 2)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">How to set more complex variables</h2>
+<div class="outline-text-2" id="text-8">
 <p>
 Some variables contain lists of data. Here's an example:
 </p>
@@ -411,32 +446,179 @@ If you're curious, the <a href="http://www.gnu.org/software/emacs/manual/html_no
 </p>
 </div>
 </div>
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">How to add hooks - to be written</h2>
-</div>
 <div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">How to add to lists - to be written</h2>
+<h2 id="sec-9">How to load libraries</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Emacs has a lot of libraries. To save memory and to simplify operation, not all of them are loaded at startup. In addition to the libraries that are built into Emacs, you can also download packages and Emacs Lisp files, save them to a directory that Emacs can find, and load them.
+</p>
+
+<p>
+Here is one way to load the code from an Emacs Lisp file.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(load-file <span class="org-string">"~/.emacs.secrets"</span>)
+</pre>
 </div>
+
+<p>
+If the file doesn't exist, you'll get an error. You can check if it exists with:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">if</span> (file-exists-p <span class="org-string">"~/.emacs.secrets"</span>)
+    (load-file <span class="org-string">"~/.emacs.secrets"</span>))
+</pre>
+</div>
+
+<p>
+If you use your Emacs configuration on multiple systems, you might want to load some configuration based on the name of the system you're on. For example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">if</span> (file-exists-p (concat <span class="org-string">"~/.emacs.d/"</span> (system-name) <span class="org-string">".el"</span>))
+    (load-file (concat <span class="org-string">"~/.emacs.d/"</span> (system-name) <span class="org-string">".el"</span>)))
+</pre>
+</div>
+
+<p>
+To find out which file the code is looking for, you can put your point <b>after</b> the closing <code>)</code> for in <code>.el")</code> (so it's on the second parentheses) and then type <code>C-x C-e</code> (<code>eval-last-sexp</code>). That will display the result of the expression in your echo area.
+</p>
+
+<p>
+<code>load-file</code> loads a specified file if you know its path. For libraries, though, it's easier to use <code>require</code>. Here's an example that loads the <code>eldoc</code> library and turns on the mode. Eldoc displays information about Emacs Lisp functions or variables in the minibuffer when you move your point.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">eldoc</span>)
+(eldoc-mode)
+</pre>
+</div>
+
+<p>
+<code>require</code> takes the name of the feature to load. Here, it's ='eldoc=. the quotation mark before it means that it should be treated as a literal symbol, not as a variable to look at for a value. If this features has already been loaded, <code>require</code> does nothing. If not, <code>require</code> searches through the list of directories in <code>load-path</code> for an Emacs Lisp file with that name and which provides that feature. 
+</p>
+
+<p>
+If you've downloaded the Emacs Lisp file or package on your own, though, you'll want to add its directory to the load path. See <i>How to add to lists</i> for details.
+</p>
+</div>
+</div>
+
 <div id="outline-container-sec-10" class="outline-2">
-<h2 id="sec-10">How to add package archives - to be written</h2>
+<h2 id="sec-10">How to add to lists - to be written</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+<code>add-to-list</code> is a straightforward way to add an item to a list. Here's an example of adding something to <code>load-path</code>, which controls where Emacs looks for packages or features to load:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"~/elisp"</span>)
+</pre>
 </div>
+
+<p>
+If you want to add to the end of the list, you can specify <code>t</code> as the optional APPEND argument, which is the third argument in the list.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"~/elisp/sample-mode"</span> t)
+</pre>
+</div>
+
+<p>
+<code>add-to-list</code> adds an item only if it doesn't already exist. The list must already be defined. If you try to add an item to a list that does not exist yet, you'll get the following error: <code>Symbol's value as variable is void:</code> <i>listname</i>. Make sure you load the feature before you add to any lists defined in that feature.
+</p>
+
+<p>
+If you want to always add something to the beginning of the list, you can delete it from the list and then add it back.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq load-path (delete <span class="org-string">"~/elisp"</span> load-path))
+(add-to-list 'load-path <span class="org-string">"~/elisp"</span>))
+</pre>
+</div>
+
+<p>
+If you don't mind duplicates (or you want them), you can use <code>cons</code> instead. <code>cons</code> constructs a <b>cons cell</b>, which is the data structure that makes up lists. For more information about cons, see the Emacs Lisp Intro section on <a href="http://www.gnu.org/software/emacs/manual/html_node/eintr/car-cdr-_0026-cons.html">car, cdr, cons: Fundamental Functions</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq load-path (cons <span class="org-string">"~/elisp"</span> load-path))
+</pre>
+</div>
+</div>
+</div>
+
 <div id="outline-container-sec-11" class="outline-2">
-<h2 id="sec-11">How to set up your own keybord shortcuts - to be written</h2>
+<h2 id="sec-11">How to add hooks - to be written</h2>
 </div>
+
+
 <div id="outline-container-sec-12" class="outline-2">
-<h2 id="sec-12">How to define your own functions - to be written</h2>
+<h2 id="sec-12">How to add package archives - to be written</h2>
 </div>
 <div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">How to prompt for information - to be written</h2>
+<h2 id="sec-13">How to set up your own keybord shortcuts - to be written</h2>
 </div>
 <div id="outline-container-sec-14" class="outline-2">
-<h2 id="sec-14">How to change existing functions with advice - to be written</h2>
-<div class="outline-text-2" id="text-14">
+<h2 id="sec-14">How to define your own functions - to be written</h2>
+</div>
+<div id="outline-container-sec-15" class="outline-2">
+<h2 id="sec-15">How to prompt for information - to be written</h2>
+</div>
+<div id="outline-container-sec-16" class="outline-2">
+<h2 id="sec-16">How to change existing functions with advice - to be written</h2>
+<div class="outline-text-2" id="text-16">
 <p>
 (c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
 </p>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.back-to-top:hover {    
+    background-color: rgba(135, 135, 135, 0.50);
+}
+</style>
+
+<a class="back-to-top" href="#top">Back to top</a>
+
+<script type="text/javascript">
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+</script>
 </div>
 </body>
 </html>

@@ -1,5 +1,7 @@
 #+TITLE: Learn Emacs Lisp while customizing Emacs
 #+OPTIONS: toc:1
+#+PROPERTY: QUANTIFIED Emacs
+
 Work in progress. Questions/ideas? [[mailto:sacha@sachachua.com][sacha@sachachua.com]]
 
 Available at http://sach.ac/baby-steps-elisp \\
@@ -7,6 +9,8 @@ Github: https://github.com/sachac/emacs-notes . Patches welcome. =)
 
 While I'm drafting this, you may want to check out the following resources:  
 
+- http://bzg.fr/learn-emacs-lisp-in-15-minutes.html
+- http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html
 - [[https://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]: A bit abstract, but a good place to start. Read it even if you don't understand everything. Read it again. Refer to it frequently. Graduate to the [[http://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp reference manual]] when you're more comfortable (or if you need to look up details).
 - http://ergoemacs.org/emacs/elisp.html: Good collection of idioms and common uses.
 - http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/: Starts with ielm, focuses on data structures; other parts?
@@ -113,13 +117,45 @@ Many functions check the value of different *variables*. For example, this tells
 (set (quote delete-old-versions) -1)
 #+end_src
 
-... but the =setq= version is shorter, so everyone uses that instead.
+... but the =setq= version is shorter, so everyone uses that instead. This is also why you should be careful to type =setq= instead of =set=, as =set= refers to a different function. If you accidentally use =set= instead, you'll usually see something like a =Wrong type argument: symbolp=, /value/
 
 To see the documentation for a variable, use =F1 v= (=describe-variable=) and type in the variable name. The variable name is the first argument to =setq=, so you would type in =F1 f delete-old-versions=. 
 
 You can customize many variables through the =M-x customize= interface, but you'll most often see people sharing their configuration with Emacs Lisp code instead. It can be shorter to say "Add this code to your init.el" than it is to say "Use =M-x customize-variable= to change the =user-email-address= value", especially if there are lots of options to change. Not everything can be changed through the Customize interface, too. Emacs Lisp is more powerful, and it's easier to read afterwards. I tend to use =M-x customize= to explore, but I use Emacs Lisp code to set things up.
 
 Like the way there are tons of functions, there are also tons of variables, and you can discover interesting variables using the same techniques: reading other people's code, exploring, etc. 
+
+** How to set buffer-local variables
+	 :LOGBOOK:
+	 CLOCK: [2014-04-18 Fri 15:10]--[2014-04-18 Fri 15:17] =>  0:07
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   1:00
+	 :END:
+
+Some variables are *buffer-local*. This means that the value in one buffer (or file) is separate from the values in other buffers. To find out if a variable is local to a buffer, use =F1 v= (=describe-variable=) to look at the documentation for that variable. For example, the documentation for =tab-width= has "Automatically becomes buffer-local when set".
+
+You can set the default value of a buffer-local variable with =setq-default=. The following code sets the tab width to 2 by default:
+
+#+begin_src emacs-lisp
+(setq-default tab-width 2)
+#+end_src
+
+#+BEGIN_COMMENT
+
+You can also change global variables so that they're local to buffers, if you want to have different values in different files. There are two ways to do this. You can se
+
+#+begin_src emacs-lisp
+(make-local-variable ' 
+#+end_src
+
+Or you can make a variable buffer local wherever it's set:
+
+#+begin_src emacs-lisp
+(make-variable-buffer-local 
+#+end_src
+
+#+END_COMMENT 
 
 ** How to set more complex variables
 
@@ -136,24 +172,87 @@ enclosed in (...). The first part of the list is the key that is used
 to look it up, like the way a dictionary has words. The second part of
 the list is the value that Emacs uses, like the definitions in a dictionary.
 If you're curious, the [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Association-Lists.html][Emacs Lisp reference manual]] has more details.
-** How to load files - to be written
+** How to load libraries
+	 :LOGBOOK:
+	 CLOCK: [2014-04-18 Fri 15:17]--[2014-04-18 Fri 15:38] =>  0:21
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   1:00
+	 :END:
 
-#+begin_src emacs-lisp
-(require 'eldoc)
-#+end_src
+Emacs has a lot of libraries. To save memory and to simplify operation, not all of them are loaded at startup. In addition to the libraries that are built into Emacs, you can also download packages and Emacs Lisp files, save them to a directory that Emacs can find, and load them.
+
+Here is one way to load the code from an Emacs Lisp file.
 
 #+begin_src emacs-lisp
 (load-file "~/.emacs.secrets")
 #+end_src
 
+If the file doesn't exist, you'll get an error. You can check if it exists with:
+
 #+begin_src emacs-lisp
-(load-file (concat "~/.emacs.d/" (system-name) ".el"))
+  (if (file-exists-p "~/.emacs.secrets")
+      (load-file "~/.emacs.secrets"))
+#+end_src
+
+If you use your Emacs configuration on multiple systems, you might want to load some configuration based on the name of the system you're on. For example:
+
+#+begin_src emacs-lisp
+  (if (file-exists-p (concat "~/.emacs.d/" (system-name) ".el"))
+      (load-file (concat "~/.emacs.d/" (system-name) ".el")))
+#+end_src
+
+To find out which file the code is looking for, you can put your point *after* the closing =)= for in =.el")= (so it's on the second parentheses) and then type =C-x C-e= (=eval-last-sexp=). That will display the result of the expression in your echo area.
+
+=load-file= loads a specified file if you know its path. For libraries, though, it's easier to use =require=. Here's an example that loads the =eldoc= library and turns on the mode. Eldoc displays information about Emacs Lisp functions or variables in the minibuffer when you move your point.
+
+#+begin_src emacs-lisp
+  (require 'eldoc)
+  (eldoc-mode)
+#+end_src
+
+=require= takes the name of the feature to load. Here, it's ='eldoc=. the quotation mark before it means that it should be treated as a literal symbol, not as a variable to look at for a value. If this features has already been loaded, =require= does nothing. If not, =require= searches through the list of directories in =load-path= for an Emacs Lisp file with that name and which provides that feature. 
+
+If you've downloaded the Emacs Lisp file or package on your own, though, you'll want to add its directory to the load path. See [[How to add to lists]] for details.
+
+** How to add to lists - to be written
+	 :LOGBOOK:
+	 CLOCK: [2014-04-18 Fri 15:38]
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   1:00
+	 :END:
+
+=add-to-list= is a straightforward way to add an item to a list. Here's an example of adding something to =load-path=, which controls where Emacs looks for packages or features to load:
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path "~/elisp")
+#+end_src
+
+If you want to add to the end of the list, you can specify =t= as the optional APPEND argument, which is the third argument in the list.
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path "~/elisp/sample-mode" t)
+#+end_src
+
+=add-to-list= adds an item only if it doesn't already exist. The list must already be defined. If you try to add an item to a list that does not exist yet, you'll get the following error: =Symbol's value as variable is void:= /listname/. Make sure you load the feature before you add to any lists defined in that feature.
+
+If you want to always add something to the beginning of the list, you can delete it from the list and then add it back.
+
+#+begin_src emacs-lisp
+(setq load-path (delete "~/elisp" load-path))
+(add-to-list 'load-path "~/elisp"))
+#+end_src
+
+If you don't mind duplicates (or you want them), you can use =cons= instead. =cons= constructs a *cons cell*, which is the data structure that makes up lists. For more information about cons, see the Emacs Lisp Intro section on [[http://www.gnu.org/software/emacs/manual/html_node/eintr/car-cdr-_0026-cons.html][car, cdr, cons: Fundamental Functions]].
+
+#+begin_src emacs-lisp
+(setq load-path (cons "~/elisp" load-path))
 #+end_src
 
 ** How to add hooks - to be written
 
 
-** How to add to lists - to be written
 ** How to add package archives - to be written
 ** How to set up your own keybord shortcuts - to be written
 ** How to define your own functions - to be written
