@@ -21,13 +21,18 @@
   - Before you add it to the 
 - How can I try things a little at a time?
   - M-: (eval-expression)
-  - *scratch* buffer or .el file
+  - C-x C-e (eval-last-sexp)
+  - =*scratch*= buffer or .el file
+    - eval-buffer
+    - eval-region
   - ielm
   - eshell
 - What are some of the common errors I might run into?
   - Missing )
   - Undefined function
   - Undefined variable or hook
+  - Unexpected symbol
+  - Obsolete code
   - Not a prefix key
 - Okay, I like this. How can I make it part of my Emacs?
   - .emacs.d/init.el
