@@ -2,7 +2,100 @@
 
 * Introduction
 
+Hi! This is a guide to help you pick up the basics of reading
+customization code for Emacs - little snippets of Emacs Lisp that you
+can add to your =~/.emacs.d/init.el= to change how Emacs works. I hope
+this will help you learn how to borrow interesting snippets from
+README files and other people's configs so that you can tweak Emacs to
+fit the way you work. This is not a detailed guide on how to
+understand Emacs internals, but by the time you find yourself digging
+through comint.el to figure out what's going on with command
+interpretation, you probably already know your way around.
 
+We'll assume that you already have Emacs installed and that you've
+gone through the built-in tutorial (*Help - Emacs Tutorial*). I'll
+also assume you have a little programming background or can deal with
+the concepts of variables and functions. Feel free to ask questions if
+you get stuck on something or if you want to clarify your
+understanding.
+
+Please e-mail questions, comments, and suggestions to
+[[mailto:sacha@sachachua.com][sacha@sachachua.com]]. I want to make this guide better, and I'd love to
+hear from you. If you would like to help improve this guide, you can
+find it on [[https://github.com/sachac/emacs-notes/blob/gh-pages/how-to-read-emacs-lisp.org][Github]] - pull requests welcome!
+
+Now, on with the guide.
+
+* The wonderful world of Emacs customization
+
+To make the most of Emacs, learn how to read and write Emacs Lisp.
+Most of Emacs is written in Emacs Lisp: the packages that add extra
+functionality, the configuration code to set different options. You
+can change large parts of how Emacs behaves even without restarting
+Emacs. 
+
+Remember: with great power comes lots of time debugging if you mess
+things up. This is a guide to help you avoid messing up, so you can
+build the confidence to learn more. It's worth it. Start with one-line
+in ten years (or three, or twenty, or next month - all up to you),
+you'll be able to tweak Emacs to do more things than other people
+might imagine a text editor can do.
+
+** "Why do I have to learn Emacs Lisp in order to get Emacs to do what I want? Shouldn't Emacs just come with reasonable defaults?"
+
+Reasonable defaults make sense for specific people. Other people might
+have completely different ideas for how they want a tool to work.
+Many people use Emacs and have (occasionally quite strong)
+opinions about how they want it to work. It's difficult to change the defaults for everyone
+[fn::https://xkcd.com/1172/], and since Emacs is so customizable, people tend to just fix things for themselves.
+
+There are some initiatives to put together common settings that people may like.
+- https://github.com/bbatsov/prelude
+- https://github.com/technomancy/emacs-starter-kit
+- https://github.com/technomancy/better-defaults
+
+You can read them to pick up ideas for customizing Emacs, or you can use them as a starting point for your own configuration.
+
+** "If I customize my Emacs, I'll have a hard time working with other people or on other computers."
+
+I find that optimizing my Emacs configuration for my happiness is
+worth the mild annoyance of not having my shortcuts handy (or worse,
+not having Emacs!) when I pair-program with other people. If you're
+pair-programming with other people, you can switch your configuration
+or use a different editor. =emacs -q= starts Emacs without your
+personal configuration. It's good to be familiar with other editors
+like Vi so that you can be productive even if that's all you have, and
+then learn how to make the most of Emacs so that you can reap the
+benefits over the decades.
+
+Many people synchronize their configuration across multiple computers
+by using version control systems like Git or file synchronization
+tools like Dropbox. You can set up Emacs to check for hostname or
+other system variables before loading system-specific configuration.
+
+You might think it's not worth customizing Emacs if you spend most of
+your time ssh-ed into other servers. With Emacs, you can use
+TRAMP[fn::http://www.gnu.org/software/tramp/] to edit files through SSH
+and sudo in your local Emacs.
+
+** "I don't have the time to fiddle around with this."
+
+Emacs Lisp code can help you save time by automating repetitive
+actions, smoothening rough edges, or enabling time-saving features
+like autocompletion. Investing some time can help you save a lot of
+time later. Learning from other Emacs users can help you figure out
+customizations that take little time for big results.
+
+One of the occupational hazards of using Emacs is that tweaking your
+Emacs configuration can be fun, almost addictive. If you catch
+yourself spending four hours fiddling with something minor, it might
+be time to put that aside and focus on getting stuff done
+first.[fn::Is it worth the time - http://xkcd.com/1205/]
+
+* Where can you find useful Emacs Lisp code examples?
+
+Emacs has thousands of packages in different repositories, many of
+which require a little extra code in order to be used to full effect.
 
 * Author's notes
 
@@ -28,13 +121,13 @@
 - How can I copy Emacs Lisp code from other people's configuration?
   - Try a little before you add things
 - How can I try things a little at a time?
-  - M-: (eval-expression)
-  - C-x C-e (eval-last-sexp)
+  - ielm
+  - C-x C-e (eval-last-sexp) - works everywhere
   - =*scratch*= buffer or .el file
     - eval-buffer
     - eval-region
-  - ielm
-  - eshell
+  - M-: (eval-expression)
+  - Sometimes you need to reopen a file in order to apply the changes
 - What are some of the common errors I might run into?
   - Evaluating at the wrong point
   - Missing )
@@ -44,7 +137,7 @@
   - Obsolete code
   - Not a prefix key
 - Okay, I like this. How can I make it part of my Emacs?
-  - .emacs.d/init.el
+  - .emacs.d/init.el (also note about ~/.emacs)
   - Add comments
 - Wait! I changed my mind!
   - delete or comment out the lines 
@@ -59,6 +152,7 @@
   - require
   - add-to-list
   - add-hook
+  - cons
   - keybindings
     - global-set-key
     - define-key
@@ -72,3 +166,6 @@
   - Learn How to Customize Emacs with Emacs Lisp
 - How can I go through code step by step?
   - edebug-defun
+
+- Thanks
+  - aidalgol, rryoumaa, shergill, taus
