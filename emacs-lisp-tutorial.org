@@ -15,6 +15,7 @@ While I'm drafting this, you may want to check out the following resources:
 - http://ergoemacs.org/emacs/elisp.html: Good collection of idioms and common uses.
 - http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/: Starts with ielm, focuses on data structures; other parts?
 - http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
+- http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html
  
 ** Why learn Emacs Lisp?
 
