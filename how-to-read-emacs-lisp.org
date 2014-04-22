@@ -1,12 +1,17 @@
 #+TITLE: How to read Emacs Lisp so that you can customize Emacs
 
+* Introduction
+
+
+
 * Author's notes
 
 - Resources
   - https://www.gnu.org/software/emacs/manual/eintr.html
   - http://sachachua.com/baby-steps-elisp
 - This document: beginner-level
-  - For people who already have a programming background (guide for complete beginners later)
+  - For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
+    - Want to customize Emacs, but not entirely sure about what they're adding 
   - Assumption: you've installed Emacs 24 and have gone through the tutorial (C-h t)
   - Scope: learning how to read short snippets of code (ex: config), not learning how to read complex code (ex: comint)
 - Where can I find short Emacs Lisp code to learn from?
@@ -30,6 +35,7 @@
   - ielm
   - eshell
 - What are some of the common errors I might run into?
+  - Evaluating at the wrong point
   - Missing )
   - Undefined function
   - Undefined variable or hook
@@ -56,6 +62,7 @@
     - global-set-key
     - define-key
   - defun
+  - let
   - eval-after-load
 - How can I try changing things a little?
 - How can I quickly navigate through code?
