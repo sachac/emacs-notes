@@ -12,6 +12,7 @@
 - This document: beginner-level
   - For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
     - Want to customize Emacs, but not entirely sure about what they're adding 
+    - Sample confusion: (add-to-list 'load-path ...) vs (add-to-list 'load-path ... t) - easily solved with C-h f add-to-list if you know how to read it
   - Assumption: you've installed Emacs 24 and have gone through the tutorial (C-h t)
   - Scope: learning how to read short snippets of code (ex: config), not learning how to read complex code (ex: comint)
 - Where can I find short Emacs Lisp code to learn from?
