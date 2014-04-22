@@ -55,6 +55,7 @@
   - keybindings
     - global-set-key
     - define-key
+  - defun
   - eval-after-load
 - How can I try changing things a little?
 - How can I quickly navigate through code?
