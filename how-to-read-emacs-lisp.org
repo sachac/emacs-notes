@@ -243,13 +243,13 @@ Understanding this will let you read code like:
 (global-hl-line-mode)  
 #+end_src
 
-This calls the =global-hl-line-mode= function, which highlights the current line. Likewise,
+This calls the =global-hl-line-mode= function, which highlights the current line. 
 
 #+begin_src emacs-lisp
 (show-paren-mode)
 #+end_src
 
-calls the =show-paren-mode= function, which shows matching parentheses when your cursor is after them.
+This calls the =show-paren-mode= function, which shows matching parentheses when your cursor is after them.
 
 #+begin_src emacs-lisp
 (blink-cursor-mode -1)
