@@ -106,11 +106,13 @@ like autocompletion. Investing some time can help you save a lot of
 time later. Learning from other Emacs users can help you figure out
 customizations that take little time for big results.
 
-One of the occupational hazards of using Emacs is that tweaking your
-Emacs configuration can be fun, almost addictive. If you catch
-yourself spending four hours fiddling with something minor, it might
-be time to put that aside and focus on getting stuff done
-first.[fn:: Is it worth the time - http://xkcd.com/1205/]
+That said, it's a good idea to take a step back and figure out if what
+you're trying to customize is really worth it. One of the occupational
+hazards of using Emacs is that tweaking your Emacs configuration can
+be fun, almost addictive. If you catch yourself spending four hours
+fiddling with something minor, it might be time to put that aside and
+focus on getting stuff done first.[fn:: Is it worth the time -
+http://xkcd.com/1205/]
 
 * "Where can I find useful Emacs Lisp code examples?"
 
@@ -492,4 +494,4 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
   - edebug-defun
 
 - Thanks
-  - aidalgol, rryoumaa, shergill, taus, tali713
+  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco
