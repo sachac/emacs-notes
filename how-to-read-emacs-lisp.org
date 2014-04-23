@@ -372,7 +372,7 @@ A cons cell looks like this:
 +----------------+----------------+
 #+end_example
 
-A list like '("-b" "-u") is made up of several cons cells.
+A list like '=("-b" "-u")= is made up of several cons cells.
 
 #+begin_example
        car              cdr                         car             cdr
@@ -383,7 +383,7 @@ A list like '("-b" "-u") is made up of several cons cells.
 +----------------+----------------+         +----------------+----------------+
 #+end_example
 
-In Emacs Lisp, ='("-b" "-u")= is equivalent to =(cons "-b" (cons "-u" nil))=, and it's not the same as =(cons "-b" "-u")=. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
+In Emacs Lisp, '=("-b" "-u")= is equivalent to =(cons "-b" (cons "-u" nil))=, and it's not the same as =(cons "-b" "-u")=. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
 
 Lists can also contain lists. For example, here's some code that saves backup files (the ones that end in =~=) to =~/.emacs.d/backups=.
 
