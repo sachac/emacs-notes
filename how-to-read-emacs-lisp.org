@@ -41,13 +41,25 @@ in ten years (or three, or twenty, or next month - all up to you),
 you'll be able to tweak Emacs to do more things than other people
 might imagine a text editor can do.
 
+This is what Emacs Lisp code looks like:
+
+#+begin_src emacs-lisp
+(message "Hello world!")
+#+end_src
+
+Or something slightly more useful:
+
+#+begin_src emacs-lisp
+(setq delete-old-versions -1)
+#+end_src
+
 ** "Why do I have to learn Emacs Lisp in order to get Emacs to do what I want? Shouldn't Emacs just come with reasonable defaults?"
 
 Reasonable defaults make sense for specific people. Other people might
 have completely different ideas for how they want a tool to work.
 Many people use Emacs and have (occasionally quite strong)
 opinions about how they want it to work. It's difficult to change the defaults for everyone
-[fn::https://xkcd.com/1172/], and since Emacs is so customizable, people tend to just fix things for themselves.
+[fn:: https://xkcd.com/1172/], and since Emacs is so customizable, people tend to just fix things for themselves.
 
 There are some initiatives to put together common settings that people may like.
 - https://github.com/bbatsov/prelude
@@ -75,7 +87,7 @@ other system variables before loading system-specific configuration.
 
 You might think it's not worth customizing Emacs if you spend most of
 your time ssh-ed into other servers. With Emacs, you can use
-TRAMP[fn::http://www.gnu.org/software/tramp/] to edit files through SSH
+TRAMP[fn:: http://www.gnu.org/software/tramp/] to edit files through SSH
 and sudo in your local Emacs.
 
 ** "I don't have the time to fiddle around with this."
@@ -90,25 +102,146 @@ One of the occupational hazards of using Emacs is that tweaking your
 Emacs configuration can be fun, almost addictive. If you catch
 yourself spending four hours fiddling with something minor, it might
 be time to put that aside and focus on getting stuff done
-first.[fn::Is it worth the time - http://xkcd.com/1205/]
+first.[fn:: Is it worth the time - http://xkcd.com/1205/]
 
-* Where can you find useful Emacs Lisp code examples?
+* "Where can I find useful Emacs Lisp code examples?"
 
-Emacs has thousands of packages in different repositories, many of
-which require a little extra code in order to be used to full effect.
+Do you already have some Emacs Lisp code that you want to understand?
+Jump ahead to the section on [[How can you understand what Emacs Lisp
+code does?]]. It's easier to learn how to read Emacs Lisp when you start
+with simple examples that will help you use Emacs more effectively.
+Here are some useful sources:
+
+** Packages
+
+Emacs has lots of packages in different repositories, many of which
+require a little extra code in order to be used to full effect. You
+can use =M-x package-list-packages= to list the packages that Emacs
+knows about by default. You can add more package repositories to
+Emacs, and I'll show you how to do that later in this guide. 
+
+Check out the README, description, documentation, or source code
+comments for interesting packages to find suggested code to add to
+your Emacs configuration.
+
+Here are some packages that might be interesting:
+- company: adds text completion
+- yasnippet: snippets and templates
+- undo-tree: visualize your undo/redo history
+
+** Webpages, blog posts, and the Emacs Wiki
+
+While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. For example, the instructions for adding the MELPA repository can be found at http://melpa.milkbox.net/#/getting-started . It has the following code:
+
+#+begin_src emacs-lisp
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+#+end_src
+
+The EmacsWiki (http://www.emacswiki.org/) has lots of snippets. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see [[Oh no!]]
+
+** Mailing lists, newsgroups, and Q&A sites.
+
+There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a mailing list[fn:: https://lists.gnu.org/mailman/listinfo/help-gnu-emacs] or as a newsgroup - check your favourite Usenet server or use Gmane[fn:: http://dir.gmane.org/gmane.emacs.help]. StackOverflow[fn:: http://stackoverflow.com/questions/tagged/emacs] and Quora[fn:: http://www.quora.com/Emacs] are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
+
+Find a snippet of Emacs Lisp code you want to understand more deeply, or look at the examples in the sections below.
+
+* "How can I try Emacs Lisp code?"
+
+It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
+
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out [[Oh no! I have an error!]] for some common errors and what to do about them. 
+
+Here are some ways you can run Emacs Lisp code:
+- =M-x ielm=
+- =*scratch*= buffer and Emacs Lisp files
+- =C-x C-e= (=eval-last-sexp=)
+- =M-:= (=eval-expression=)
+
+** M-x ielm (Inferior Emacs Lisp Mode)
+
+IELM gives you a prompt where you can type or paste in Emacs Lisp code. Start it with =M-x ielm=. Press =RET= after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press RET to evaluate it again.
+
+If you're copying or typing code, make sure your parentheses are all matched - every ( should have a ). IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
+
+#+begin_src emacs-lisp :eval no
+(message "Hello
+#+end_src
+
+but this will work:
+
+#+begin_src emacs-lisp :eval no
+(message "Hello world")
+#+end_src
+
+** The =*scratch*= buffer and Emacs Lisp =.el= files
+
+When Emacs starts, it creates a buffer called =*scratch*= with the following contents:
+
+#+begin_src emacs-lisp
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+#+end_src
+
+You can add code to the end.
+
+#+begin_src emacs-lisp
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+(message "Hello world")
+#+end_src
+
+Note: =;= is the comment character. Anything after the comment character is considered part of the comment. Make sure you add your code on a new line, not in the comment.
+
+To run code ("evaluate" it, in Emacs terms), you can use the following commands based on what you want to run:
+- =M-x eval-buffer= runs all the code in the current file or buffer.
+- =M-x eval-region= runs the selected code. You can select code by using the mouse or by typing =C-SPC= to mark the start of the region and moving to the next.
+- =C-x C-e= (=eval-last-sexp=) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
+
+In the =*scratch*= buffer, you can also press =C-j= (=eval-print-last-sexp=) after an expression in order to evaluate it and display the results in the buffer.
+
+The =*scratch*= buffer is not automatically saved. If you would like to save your code for future use, you can create a file with an =.el= ending. =el= stands for Emacs Lisp, and Emacs will open these files in Emacs Lisp mode.
+
+=C-x C-e= (=eval-last-sexp=) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
+
+** M-: (eval-expression)
+
+If you want to quickly try an expression, you can use =M-:= (=eval-expression=). To see any results it displayed, you can switch to the =*Messages*= buffer.
+
+* "How can I understand what Emacs Lisp code does?"
+
+** Emacs Lisp is made up of lists
+
+LISP stands for "List Processing".
+
+TODO
+
+* Oh no! I have an error!
+
+TODO
+
+* Want to learn more?
+
+Check out An Introduction to Programming in Emacs Lisp[fn:: https://www.gnu.org/software/emacs/manual/eintr.html], and delve into the Emacs Lisp Reference Manual[fn:: http://www.gnu.org/software/emacs/manual/elisp.html] for more details.
+
+I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sachachua.com/baby-steps-elisp], which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
 
 * Author's notes
 
-- Resources
+- [X] Resources
   - https://www.gnu.org/software/emacs/manual/eintr.html
-  - http://sachachua.com/baby-steps-elisp
-- This document: beginner-level
+- [X] This document: beginner-level
   - For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
     - Want to customize Emacs, but not entirely sure about what they're adding 
     - Sample confusion: (add-to-list 'load-path ...) vs (add-to-list 'load-path ... t) - easily solved with C-h f add-to-list if you know how to read it
   - Assumption: you've installed Emacs 24 and have gone through the tutorial (C-h t)
   - Scope: learning how to read short snippets of code (ex: config), not learning how to read complex code (ex: comint)
-- Where can I find short Emacs Lisp code to learn from?
+- [X] Where can I find short Emacs Lisp code to learn from?
   - README for packages
   - EmacsWiki
   - mailing lists
@@ -118,16 +251,16 @@ which require a little extra code in order to be used to full effect.
   - Ex: (global-hl-line-mode)
   - How can I read a statement?
     - Prefix - the "verb" goes at the beginning. This is actually like many programming languages, although Lisp does it consistently throughout. For ex
-- How can I copy Emacs Lisp code from other people's configuration?
-  - Try a little before you add things
-- How can I try things a little at a time?
-  - ielm
-  - C-x C-e (eval-last-sexp) - works everywhere
-  - =*scratch*= buffer or .el file
-    - eval-buffer
-    - eval-region
-  - M-: (eval-expression)
-  - Sometimes you need to reopen a file in order to apply the changes
+	- [X] How can I copy Emacs Lisp code from other people's configuration?
+		- Try a little before you add things
+	- [X] How can I try things a little at a time?
+		- ielm
+		- C-x C-e (eval-last-sexp) - works everywhere
+		- =*scratch*= buffer or .el file
+			- eval-buffer
+			- eval-region
+		- M-: (eval-expression)
+		- Sometimes you need to reopen a file in order to apply the changes
 - What are some of the common errors I might run into?
   - Evaluating at the wrong point
   - Missing )
@@ -159,6 +292,8 @@ which require a little extra code in order to be used to full effect.
   - defun
   - let
   - eval-after-load
+- Other notes on reading 
+  - Whitespace
 - How can I try changing things a little?
 - How can I quickly navigate through code?
 	- forward-sexp and backward-sexp
