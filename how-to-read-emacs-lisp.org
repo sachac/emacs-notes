@@ -32,7 +32,7 @@ To make the most of Emacs, learn how to read and write Emacs Lisp.
 Most of Emacs is written in Emacs Lisp: the packages that add extra
 functionality, the configuration code to set different options. You
 can change large parts of how Emacs behaves even without restarting
-Emacs. 
+Emacs.
 
 Remember: with great power comes lots of time debugging if you mess
 things up. This is a guide to help you avoid messing up, so you can
@@ -118,7 +118,7 @@ Emacs has lots of packages in different repositories, many of which
 require a little extra code in order to be used to full effect. You
 can use =M-x package-list-packages= to list the packages that Emacs
 knows about by default. You can add more package repositories to
-Emacs, and I'll show you how to do that later in this guide. 
+Emacs, and I'll show you how to do that later in this guide.
 
 Check out the README, description, documentation, or source code
 comments for interesting packages to find suggested code to add to
@@ -151,7 +151,7 @@ Find a snippet of Emacs Lisp code you want to understand more deeply, or look at
 
 It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
 
-Note: As you experiment with Emacs Lisp, you might run into errors. Check out [[Oh no! I have an error!]] for some common errors and what to do about them. 
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out [[Oh no! I have an error!]] for some common errors and what to do about them.
 
 Here are some ways you can run Emacs Lisp code:
 - =M-x ielm=
@@ -215,11 +215,86 @@ If you want to quickly try an expression, you can use =M-:= (=eval-expression=).
 
 * "How can I understand what Emacs Lisp code does?"
 
-** Emacs Lisp is made up of lists
+** Functions are at the beginning of the expression, and expressions are enclosed in parentheses
 
-LISP stands for "List Processing".
+In math, operators like + and * go between the numbers they will work on.
+In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
 
-TODO
+#+begin_example
+( ( 1 + 2 ) * 3 )  Math expression
+| |   |   | |   |
+| +-+ |   | |   |
+|   | |   | |   |
+| +-|-------+   |
+| | | |   |   +-+
+| | | |   +-+ |
+( * ( + 1 2 ) )    Emacs Lisp expression
+#+end_example	 	 	
+
+Here's how to calculate (1 + 2) * 3 in Emacs Lisp. Note that the multiplication is surrounded by parentheses, even if we usually leave out the parentheses in math. That's because in Emacs Lisp, all function calls have their own set of parentheses.
+
+#+begin_src emacs-lisp
+(* (+ 1 2) 3)
+#+end_src
+
+Understanding this will let you read code like:
+
+#+begin_src emacs-lisp
+(global-hl-line-mode)  
+#+end_src
+
+This calls the =global-hl-line-mode= function, which highlights the current line. Likewise,
+
+#+begin_src emacs-lisp
+(show-paren-mode)
+#+end_src
+
+calls the =show-paren-mode= function, which shows matching parentheses when your cursor is after them.
+
+#+begin_src emacs-lisp
+(blink-cursor-mode -1)
+#+end_src
+
+This calls the =blink-cursor-mode= function with =-1= as the argument, which turns blinking cursors off.
+
+#+begin_src emacs-lisp
+(find-file "~/todo.org")
+#+end_src
+
+This opens the =todo.org= file in your home directory, creating it if it doesn't exist yet.
+
+#+begin_src emacs-lisp
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+#+end_src
+
+*** Use =<f1> f= (=describe-function=) to learn more about functions
+
+The symbol after =(= is usually a function name, unless it's part of a
+list. You'll learn how to recognize lists later. 
+
+To find out if something is a function, what it does, what arguments
+it takes, and if it has any keyboard shortcuts, use the =<f1> f=
+(=describe-function=) command. Give it the function name. For example,
+=<f1> f add-hook= will show you the documentation for =add-hook=, and
+=<f1> f show-paren-mode= will show you the documentation for that.
+
+The documentation for =show-paren-mode= starts with "show-paren-mode
+is an interactive autoloaded Lisp function". Interactive functions can
+be called with =M-x=. Read the description of the function to learn
+more about arguments that you can pass to change its behavior. If it
+mentions a prefix argument, that means that you can change its
+behaviour by typing =C-u= before you call the function.
+
+Use =<f1> f= to learn more about the following functions:
+| =describe-function= | Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as =C-h f=. |
+| =find-file=         | You can use this to open specific files                                                                       |
+
+** When something is quoted, it's taken literally
+
+
+** =describe-function= and =describe-variable=
+
+
 
 * Oh no! I have an error!
 
@@ -237,7 +312,7 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
   - https://www.gnu.org/software/emacs/manual/eintr.html
 - [X] This document: beginner-level
   - For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
-    - Want to customize Emacs, but not entirely sure about what they're adding 
+    - Want to customize Emacs, but not entirely sure about what they're adding
     - Sample confusion: (add-to-list 'load-path ...) vs (add-to-list 'load-path ... t) - easily solved with C-h f add-to-list if you know how to read it
   - Assumption: you've installed Emacs 24 and have gone through the tutorial (C-h t)
   - Scope: learning how to read short snippets of code (ex: config), not learning how to read complex code (ex: comint)
@@ -273,7 +348,7 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
   - .emacs.d/init.el (also note about ~/.emacs)
   - Add comments
 - Wait! I changed my mind!
-  - delete or comment out the lines 
+  - delete or comment out the lines
     - ;
   - if you can't use Emacs with your current config, emacs -q
 - Oh no, my init.el broke
@@ -291,8 +366,9 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
     - define-key
   - defun
   - let
+  - regular expressions
   - eval-after-load
-- Other notes on reading 
+- Other notes on reading
   - Whitespace
 - How can I try changing things a little?
 - How can I quickly navigate through code?
