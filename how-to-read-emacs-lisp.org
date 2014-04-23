@@ -121,6 +121,19 @@ code does?]]. It's easier to learn how to read Emacs Lisp when you start
 with simple examples that will help you use Emacs more effectively.
 Here are some useful sources:
 
+** Emacs documentation
+
+Manuals and FAQs for Emacs-related tools often include code snippets. For example, the Emacs FAQ[fn::https://www.gnu.org/software/emacs/manual/efaq.html] includes an entry like this:
+
+#+begin_example
+5.47 How can I tell Emacs to fill paragraphs with a single space after each period?
+===================================================================================
+
+Add the following line to your `.emacs' file:
+
+     (setq sentence-end-double-space nil)
+#+end_example
+
 ** Packages
 
 Emacs has lots of packages in different repositories, many of which
@@ -223,7 +236,6 @@ The =*scratch*= buffer is not automatically saved. If you would like to save you
 If you want to quickly try an expression, you can use =M-:= (=eval-expression=). To see any results it displayed, you can switch to the =*Messages*= buffer.
 
 * "How can I understand what Emacs Lisp code does?"
-
 ** Functions are at the beginning of the expression, and expressions are enclosed in parentheses
 
 In math, operators like + and * go between the numbers they will work on.
@@ -231,12 +243,12 @@ In Emacs Lisp, the operator (or the "function") is at the start of the expressio
 
 #+begin_example
 ( ( 1 + 2 ) * 3 )  Math expression
-| |   |   | |   |
-| +-+ |   | |   |
-|   | |   | |   |
-| +-|-------+   |
-| | | |   |   +-+
-| | | |   +-+ |
+|     |          |   |     |     |
+| +-+ |          |   |     |     |
+|     |          |   |     |     |
+| +-  | -------+ |   |     |     |
+|     |          |   |     | +-+ |
+|     |          |   | +-+ |     |
 ( * ( + 1 2 ) )    Emacs Lisp expression
 #+end_example	 	 	
 
@@ -283,6 +295,12 @@ This turns on =eldoc-mode=, which displays the argument list for the current fun
 #+end_src
 
 This turns off beeping. Instead, when Emacs runs into an error, it will flash the title bar or screen.
+
+#+begin_src emacs-lisp
+(setq column-number-mode t)
+#+end_src
+
+This turns on the display of the column number in the modeline.
 
 #+begin_src emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
