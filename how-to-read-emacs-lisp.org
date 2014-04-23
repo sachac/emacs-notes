@@ -484,4 +484,4 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
   - edebug-defun
 
 - Thanks
-  - aidalgol, rryoumaa, shergill, taus
+  - aidalgol, rryoumaa, shergill, taus, tali713
