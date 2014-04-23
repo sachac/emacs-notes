@@ -63,7 +63,6 @@ opinions about how they want it to work. It's difficult to change the defaults f
 
 There are some initiatives to put together common settings that people may like.
 - https://github.com/bbatsov/prelude
-- https://github.com/technomancy/emacs-starter-kit
 - https://github.com/technomancy/better-defaults
 
 You can read them to pick up ideas for customizing Emacs, or you can
