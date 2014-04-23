@@ -66,7 +66,15 @@ There are some initiatives to put together common settings that people may like.
 - https://github.com/technomancy/emacs-starter-kit
 - https://github.com/technomancy/better-defaults
 
-You can read them to pick up ideas for customizing Emacs, or you can use them as a starting point for your own configuration.
+You can read them to pick up ideas for customizing Emacs, or you can
+use them as a starting point for your own configuration. Note that
+starter kits change the behaviour of Emacs from what you might expect
+based on manuals and webpages. If you've added configuration code that
+you don't understand, be sure to mention it when asking for help,
+since people might otherwise assume you're starting with the defaults.
+It may be a good idea to look at starter kits and other people's
+configuration for inspiration, but add snippets slowly instead of
+copying things wholesale.
 
 ** "If I customize my Emacs, I'll have a hard time working with other people or on other computers."
 
