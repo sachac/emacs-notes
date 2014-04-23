@@ -141,7 +141,7 @@ While searching for information related to Emacs, you'll probably come across lo
 
 The EmacsWiki (http://www.emacswiki.org/) has lots of snippets. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see [[Oh no!]]
 
-** Mailing lists, newsgroups, and Q&A sites.
+** Mailing lists, newsgroups, and Q&A sites
 
 There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a mailing list[fn:: https://lists.gnu.org/mailman/listinfo/help-gnu-emacs] or as a newsgroup - check your favourite Usenet server or use Gmane[fn:: http://dir.gmane.org/gmane.emacs.help]. StackOverflow[fn:: http://stackoverflow.com/questions/tagged/emacs] and Quora[fn:: http://www.quora.com/Emacs] are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
 
