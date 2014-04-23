@@ -264,10 +264,24 @@ This calls the =blink-cursor-mode= function with =-1= as the argument, which tur
 This opens the =todo.org= file in your home directory, creating it if it doesn't exist yet.
 
 #+begin_src emacs-lisp
+(turn-on-eldoc-mode)
+#+end_src
+
+This turns on =eldoc-mode=, which displays the argument list for the current function. You can move your point around to see documentation for other functions.
+
+#+begin_src emacs-lisp
+(setq visible-bell t)
+#+end_src
+
+This turns off beeping. Instead, when Emacs runs into an error, it will flash the title bar or screen.
+
+#+begin_src emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 #+end_src
 
-*** Use =<f1> f= (=describe-function=) to learn more about functions
+This turns on =eldoc-mode= when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section on [[When something is quoted, it's taken literally.]]
+
+*** "How can I learn more about functions?"
 
 The symbol after =(= is usually a function name, unless it's part of a
 list. You'll learn how to recognize lists later. 
@@ -289,12 +303,103 @@ Use =<f1> f= to learn more about the following functions:
 | =describe-function= | Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as =C-h f=. |
 | =find-file=         | You can use this to open specific files                                                                       |
 
+** "How can I learn more about variables?"
+
+Like the way you can use =<f1> f= (=describe-function=) to learn more about a function, you can use =<f1> v= (=describe-variable=) to learn more about a variable by name. For example, use =<f1> v= to look up =visible-bell=. 
+
+To make it easier for you to customize Emacs without writing Emacs Lisp code, many variables give you an interface for setting the variable. If you use =describe-variable= to look up the definition, you'll often see a line like "You can *customize* this variable." Click on the *customize* link in the documentation or move your point to it and press RET. You can change the value there and try it temporarily, or you can save it to your configuration. The Customize interface is good for exploring, but because the code that it generates can difficult to read or share, many people skip it and use Emacs Lisp code instead.
+
 ** When something is quoted, it's taken literally
 
+One of the examples from the section on [[Functions are at the beginning of the expression, and expressions are enclosed in parentheses][functions]] was this:
 
-** =describe-function= and =describe-variable=
+#+begin_src emacs-lisp
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+#+end_src
 
+=add-hook= is a function. '=emacs-lisp-mode-hook= and '=turn-on-eldoc-mode= are symbols. =emacs-lisp-mode-hook= is a variable that contains a list of functions to run, and =turn-on-eldoc-mode= is a function that we're adding to that list.
 
+The single quote means "treat this as the name of something." If you remove the quote from =emacs-lisp-mode-hook=, Emacs will look up the value in that variable and use that as the name of the variable to actually set, and you'll probably get an error.
+
+Here's another example:
+
+#+begin_src emacs-lisp
+(fset 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+This calls the =fset= function, which sets the function definition of =yes-or-no-p= to the function =y-or-n-p=. In short, it changes the "yes" or "no" prompts to "y" or "n", which can be convenient.
+
+Not everything is quoted. You'll often see lines like this in Emacs configuration files:
+
+#+begin_src emacs-lisp
+(setq delete-old-versions -1)
+#+end_src
+
+=setq= stands for "set quoted". This is actually the same code as =(set 'delete-old-versions -1)= or =(set (quote delete-old-versions) -1)=, but 
+=setq= is shorter, so it's more common.
+
+** Lists and lists and lists of lists
+
+You can set the value of a variable to multiple things. In Emacs configuration files, you'll often see ' used for lists. For example,
+
+#+begin_src emacs-lisp
+(setq diff-switches '("-b" "-u"))
+#+end_src
+
+sets the options for the =diff= command to a list containing two items, =-b= and =-u=. Quoting the list creates a list and quotes all the content in it as needed. You can create lists with the =list= function instead. The code above is the same as:
+
+#+begin_src emacs-lisp
+(setq diff-switches (list "-b" "-u"))
+#+end_src
+
+Some lists use the dot notation. This depends on what's expected by the function that uses the list. For example:
+
+#+begin_src emacs-lisp
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+#+end_src
+
+This calls the =add-to-list= function with two arguments. The first argument ('=package-archives=) specifies the list to add an item to, and
+the second argument ('=("melpa" . "http://melpa.milkbox.net/packages/")=) is the data to add. The dot notation =(a . b)= shows that this is a *cons cell*, which always has two parts: the *car* and the *cdr*. To understand the difference between cons cells and other lists, you need to know how lists are constructed.
+
+A cons cell looks like this:
+
+#+begin_example
+       car              cdr
++----------------+----------------+
+|                |                |
+|       a        |       b        |
+|                |                |
++----------------+----------------+
+#+end_example
+
+A list like '("-b" "-u") is made up of several cons cells.
+
+#+begin_example
+       car              cdr                         car             cdr
++----------------+----------------+         +----------------+----------------+
+|                |                |         |                |                |
+|      -b        |       ------------------>|       -u       |                |
+|                |                |         |                |                |
++----------------+----------------+         +----------------+----------------+
+#+end_example
+
+In Emacs Lisp, ='("-b" "-u")= is equivalent to =(cons "-b" (cons "-u" nil))=, and it's not the same as =(cons "-b" "-u")=. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
+
+Lists can also contain lists. For example, here's some code that saves backup files (the ones that end in =~=) to =~/.emacs.d/backups=.
+
+#+begin_src emacs-lisp
+(setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
+#+end_src
+
+This is how the second argument breaks down:
+
+#+begin_example
+( ;; a list with one item
+ ("." . "~/.emacs.d/backups") ;; a cons cell with a car of "." and a cdr of "~/.emacs.d/backups"
+)
+#+end_example
+
+Advanced: Backquotes (`) are special. They quote the expression that follows them, but they also allow you to substitute values or evaluate expressions. Backquotes are useful for more complex structures or when you're working with macros. They do basically the same thing as ' for lists, but anything preceded by a comma (,) is evaluated. They're less common, but if you do come across them, note that ` is not the same as '. See the Emacs Lisp Reference for more information.[fn:: http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html]
 
 * Oh no! I have an error!
 
