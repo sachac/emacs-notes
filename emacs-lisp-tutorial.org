@@ -274,7 +274,7 @@ If you don't mind duplicates (or you want them), you can use =cons= instead. =co
    You can also override an existing key binding this way. For
    instance, the function =list-buffers= (which brings up a list of
    all buffers that are currently open) is bound to =C-x C-b= by
-   default. If you prefer `ibuffer` for listing and operating on open
+   default. If you prefer =ibuffer= for listing and operating on open
    buffers but have already built up muscle memory for the =C-x C-b=
    binding, you can rebind it like this:
 
