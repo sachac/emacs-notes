@@ -440,8 +440,11 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
 
 * Author's notes
 
-- [X] Resources
+
+- Resources
   - https://www.gnu.org/software/emacs/manual/eintr.html
+
+* TODO Outline
 - [X] This document: beginner-level
   - For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
     - Want to customize Emacs, but not entirely sure about what they're adding
@@ -454,7 +457,7 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
   - mailing lists
   - Planet Emacsen
   - Look for someone who uses Emacs like you
-- How can I understand what Emacs Lisp code does?
+- [ ] How can I understand what Emacs Lisp code does?
   - Ex: (global-hl-line-mode)
   - How can I read a statement?
     - Prefix - the "verb" goes at the beginning. This is actually like many programming languages, although Lisp does it consistently throughout. For ex

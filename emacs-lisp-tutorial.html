@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Learn Emacs Lisp while customizing Emacs</title>
-<!-- 2014-04-22 Tue 18:15 -->
+<!-- 2014-04-25 Fri 19:02 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -88,7 +88,8 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css"
+href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css"></link>
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css"></link>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -161,10 +162,11 @@ for the JavaScript code in this tag.
 <li><a href="#sec-10">How to add to lists</a></li>
 <li><a href="#sec-11">How to add package archives - to be written</a></li>
 <li><a href="#sec-12">How to add hooks - to be written</a></li>
-<li><a href="#sec-13">How to set up your own keybord shortcuts - to be written</a></li>
+<li><a href="#sec-13">How to set up your own keyboard shortcuts</a></li>
 <li><a href="#sec-14">How to define your own functions - to be written</a></li>
 <li><a href="#sec-15">How to prompt for information - to be written</a></li>
 <li><a href="#sec-16">How to change existing functions with advice - to be written</a></li>
+<li><a href="#sec-17">Acknowledgements</a></li>
 </ul>
 </div>
 </div>
@@ -197,6 +199,10 @@ While I'm drafting this, you may want to check out the following resources:
 <li><a href="http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html">http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html</a>
 </li>
 </ul>
+
+<p>
+This work is available under either the Creative Commons Attribution License or the GNU Free Documentation License. Enjoy!
+</p>
 
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Why learn Emacs Lisp?</h2>
@@ -570,8 +576,121 @@ If you don't mind duplicates (or you want them), you can use <code>cons</code> i
 </div>
 
 <div id="outline-container-sec-13" class="outline-2">
-<h2 id="sec-13">How to set up your own keybord shortcuts - to be written</h2>
+<h2 id="sec-13">How to set up your own keyboard shortcuts</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+If you find that you regularly need to run one or more commands
+that don't have a default key binding set up for them, it's time to
+start defining your own key bindings.
+</p>
+
+<p>
+Each key binding you define belongs to a specific <a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Keymaps.html">keymap</a>.
+</p>
+
+<p>
+If you want a binding to be available globally, irrespective of the
+mode you are in, you can add it to the <code>global-map</code> like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-s r b"</span>) 'revert-buffer)
+</pre>
 </div>
+
+<p>
+Here, we are creating a global key binding (<code>M-s r b</code>) for the
+<code>revert-buffer</code> function.
+</p>
+
+<p>
+You can also override an existing key binding this way. For
+instance, the function <code>list-buffers</code> (which brings up a list of
+all buffers that are currently open) is bound to <code>C-x C-b</code> by
+default. If you prefer <code>ibuffer</code> for listing and operating on open
+buffers but have already built up muscle memory for the <code>C-x C-b</code>
+binding, you can rebind it like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x C-b"</span>) 'ibuffer)
+</pre>
+</div>
+
+<p>
+You can also set up keybindings to work only in <i>specific</i> modes.
+This is done with the help of the <code>define-key</code> function:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-key org-mode-map (kbd <span class="org-string">"C-c a"</span>) 'org-agenda)
+</pre>
+</div>
+
+<p>
+Here, we are telling Emacs to create a key binding for the
+<code>org-agenda</code> command that will only work in <code>org-mode</code> buffers.
+</p>
+
+<p>
+It is important to note that mode-specific key bindings will
+override global bindings. So unless you are explicitly trying to
+override an existing binding (as described above), before setting
+up a new binding it is always a good idea to check if the key
+sequence you are thinking of is already bound to a command. (This
+can sometimes be a great way of discovering functionality you
+hadn't been aware of!) To check whether a binding is currently in
+use <i>in any of the modes that are enabled for the current buffer</i>,
+type <code>C-h k</code> (<code>describe-key</code>) followed by the binding. If it isn't,
+you will see a message in the echo area telling you that the
+binding <code>is undefined</code>. If it <i>is</i> bound to a command, Emacs will
+bring up a <code>*Help*</code> window with documentation for the command.
+</p>
+
+<p>
+It can sometimes be desirable to <i>unset</i> specific key bindings. For
+global bindings, you can use the <code>global-unset-key</code> function:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-unset-key (kbd <span class="org-string">"M-g M-g"</span>))
+</pre>
+</div>
+
+<p>
+Mode-specific bindings can be disabled by setting them to <code>nil</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-key magit-mode-map (kbd <span class="org-string">"M-s"</span>) nil)
+</pre>
+</div>
+
+<p>
+If you define lots of custom keybindings, you may want to check out
+John Wiegley's <code>bind-key</code> package. If you install <code>bind-key</code> and
+use it to define keybindings, you can then use <code>M-x describe-personal-keybindings</code> to see which keybindings
+Here are some examples for <code>bind-key</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">bind-key</span>)
+(bind-key <span class="org-string">"C-c a"</span> 'org-agenda)
+(bind-key <span class="org-string">"C-+"</span> 'text-scale-increase)
+(bind-key <span class="org-string">"C--"</span> 'text-scale-decrease)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">You can use bind-key to modify keymaps</span>
+(bind-key <span class="org-string">"i"</span> 'org-agenda-clock-in org-agenda-mode-map)
+</pre>
+</div>
+</div>
+</div>
+
 <div id="outline-container-sec-14" class="outline-2">
 <h2 id="sec-14">How to define your own functions - to be written</h2>
 </div>
@@ -584,6 +703,19 @@ If you don't mind duplicates (or you want them), you can use <code>cons</code> i
 <p>
 (c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
 </p>
+</div>
+</div>
+<div id="outline-container-sec-17" class="outline-2">
+<h2 id="sec-17">Acknowledgements</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+Thanks to:
+</p>
+
+<ul class="org-ul">
+<li>itsjeyd for the section on keyboard shortcuts
+</li>
+</ul>
 </div>
 </div>
 </div>

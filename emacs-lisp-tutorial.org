@@ -16,6 +16,8 @@ While I'm drafting this, you may want to check out the following resources:
 - http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/: Starts with ielm, focuses on data structures; other parts?
 - http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
 - http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html
+
+This work is available under either the Creative Commons Attribution License or the GNU Free Documentation License. Enjoy!
  
 ** Why learn Emacs Lisp?
 
@@ -254,7 +256,8 @@ If you don't mind duplicates (or you want them), you can use =cons= instead. =co
 ** How to add package archives - to be written
 ** How to add hooks - to be written
 
-** How to set up your own keybord shortcuts
+** How to set up your own keyboard shortcuts
+
    If you find that you regularly need to run one or more commands
    that don't have a default key binding set up for them, it's time to
    start defining your own key bindings.
@@ -300,10 +303,10 @@ If you don't mind duplicates (or you want them), you can use =cons= instead. =co
    can sometimes be a great way of discovering functionality you
    hadn't been aware of!) To check whether a binding is currently in
    use /in any of the modes that are enabled for the current buffer/,
-   type =C-h k= followed by the binding. If it isn't, you will see a
-   message in the echo area telling you that the binding =is
-   undefined=. If it /is/ bound to a command, Emacs will bring up a
-   =*Help*= window with documentation for the command.
+   type =C-h k= (=describe-key=) followed by the binding. If it isn't,
+   you will see a message in the echo area telling you that the
+   binding =is undefined=. If it /is/ bound to a command, Emacs will
+   bring up a =*Help*= window with documentation for the command.
 
    It can sometimes be desirable to /unset/ specific key bindings. For
    global bindings, you can use the =global-unset-key= function:
@@ -318,9 +321,27 @@ If you don't mind duplicates (or you want them), you can use =cons= instead. =co
    (define-key magit-mode-map (kbd "M-s") nil)
    #+END_SRC
 
+	 If you define lots of custom keybindings, you may want to check out
+	 John Wiegley's =bind-key= package. If you install =bind-key= and
+	 use it to define keybindings, you can then use =M-x describe-personal-keybindings= to see which keybindings
+	 Here are some examples for =bind-key=:
+
+	 #+begin_src emacs-lisp
+	 (require 'bind-key)
+   (bind-key "C-c a" 'org-agenda)
+   (bind-key "C-+" 'text-scale-increase)
+   (bind-key "C--" 'text-scale-decrease)
+   ;; You can use bind-key to modify keymaps
+   (bind-key "i" 'org-agenda-clock-in org-agenda-mode-map)
+	 #+end_src
+
 ** How to define your own functions - to be written
 ** How to prompt for information - to be written
 ** How to change existing functions with advice - to be written
 
 (c) 2014 Sacha Chua - Creative Commons Attribution License (feel free to use, share, remix)
+** Acknowledgements
 
+Thanks to:
+
+- itsjeyd for the section on keyboard shortcuts
