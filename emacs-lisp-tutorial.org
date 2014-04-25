@@ -254,7 +254,70 @@ If you don't mind duplicates (or you want them), you can use =cons= instead. =co
 ** How to add package archives - to be written
 ** How to add hooks - to be written
 
-** How to set up your own keybord shortcuts - to be written
+** How to set up your own keybord shortcuts
+   If you find that you regularly need to run one or more commands
+   that don't have a default key binding set up for them, it's time to
+   start defining your own key bindings.
+
+   Each key binding you define belongs to a specific [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Keymaps.html][keymap]].
+
+   If you want a binding to be available globally, irrespective of the
+   mode you are in, you can add it to the =global-map= like this:
+
+   #+BEGIN_SRC emacs-lisp
+   (global-set-key (kbd "M-s r b") 'revert-buffer)
+   #+END_SRC
+
+   Here, we are creating a global key binding (=M-s r b=) for the
+   =revert-buffer= function.
+
+   You can also override an existing key binding this way. For
+   instance, the function =list-buffers= (which brings up a list of
+   all buffers that are currently open) is bound to =C-x C-b= by
+   default. If you prefer =ibuffer= for listing and operating on open
+   buffers but have already built up muscle memory for the =C-x C-b=
+   binding, you can rebind it like this:
+
+   #+BEGIN_SRC emacs-lisp
+   (global-set-key (kbd "C-x C-b") 'ibuffer)
+   #+END_SRC
+
+   You can also set up keybindings to work only in /specific/ modes.
+   This is done with the help of the =define-key= function:
+
+   #+BEGIN_SRC emacs-lisp
+   (define-key org-mode-map (kbd "C-c a") 'org-agenda)
+   #+END_SRC
+
+   Here, we are telling Emacs to create a key binding for the
+   =org-agenda= command that will only work in =org-mode= buffers.
+
+   It is important to note that mode-specific key bindings will
+   override global bindings. So unless you are explicitly trying to
+   override an existing binding (as described above), before setting
+   up a new binding it is always a good idea to check if the key
+   sequence you are thinking of is already bound to a command. (This
+   can sometimes be a great way of discovering functionality you
+   hadn't been aware of!) To check whether a binding is currently in
+   use /in any of the modes that are enabled for the current buffer/,
+   type =C-h k= followed by the binding. If it isn't, you will see a
+   message in the echo area telling you that the binding =is
+   undefined=. If it /is/ bound to a command, Emacs will bring up a
+   =*Help*= window with documentation for the command.
+
+   It can sometimes be desirable to /unset/ specific key bindings. For
+   global bindings, you can use the =global-unset-key= function:
+
+   #+BEGIN_SRC emacs-lisp
+   (global-unset-key (kbd "M-g M-g"))
+   #+END_SRC
+
+   Mode-specific bindings can be disabled by setting them to =nil=:
+
+   #+BEGIN_SRC emacs-lisp
+   (define-key magit-mode-map (kbd "M-s") nil)
+   #+END_SRC
+
 ** How to define your own functions - to be written
 ** How to prompt for information - to be written
 ** How to change existing functions with advice - to be written
