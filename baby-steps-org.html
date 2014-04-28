@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>A Baby Steps Guide to Managing Your Tasks with Org</title>
-<!-- 2014-04-09 Wed 13:56 -->
+<!-- 2014-04-28 Mon 11:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -88,9 +88,11 @@
     { background-color: #ffff00; color: #000000; font-weight: bold; }
   /*]]>*/-->
 </style>
-<link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css"
+href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css"></link>
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script type="text/javascript">
 /*
 @licstart  The following is the entire license notice for the
@@ -139,6 +141,9 @@ for the JavaScript code in this tag.
 </script>
 </head>
 <body>
+<div id="preamble" class="status">
+<a name="top" id="top"></a>
+</div>
 <div id="content">
 <h1 class="title">A Baby Steps Guide to Managing Your Tasks with Org</h1>
 <div id="table-of-contents">
@@ -199,6 +204,7 @@ things.
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">Things you don't have to worry about</h2>
 <div class="outline-text-2" id="text-2">
@@ -211,6 +217,7 @@ one of your projects.
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">Start with an outline</h2>
 <div class="outline-text-2" id="text-3">
@@ -248,6 +255,7 @@ When you're starting out, you can get rid of finished tasks by using <code>C-k</
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">Finish tasks</h2>
 <div class="outline-text-2" id="text-4">
@@ -271,6 +279,7 @@ You can also use the standard Emacs navigation commands like <code>C-s</code> (<
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">Automatically open your todo.org every time you start Emacs</h2>
 <div class="outline-text-2" id="text-5">
@@ -298,6 +307,7 @@ You have just written a little Emacs Lisp. Totally not scary.
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6">Define shortcuts for managing TODO states</h2>
 <div class="outline-text-2" id="text-6">
@@ -341,6 +351,7 @@ of any heading by typing its shortcut.
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-7" class="outline-2">
 <h2 id="sec-7">Organize your tasks into projects</h2>
 <div class="outline-text-2" id="text-7">
@@ -421,6 +432,7 @@ That's in the next section, on scheduling tasks.
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-8" class="outline-2">
 <h2 id="sec-8">Schedule your tasks and use the agenda</h2>
 <div class="outline-text-2" id="text-8">
@@ -481,7 +493,6 @@ Org Agenda is really powerful. Check out the info manual for Org Mode with <code
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-9" class="outline-2">
 <h2 id="sec-9">Automatically open your agenda whenever you start Emacs</h2>
 <div class="outline-text-2" id="text-9">
@@ -496,6 +507,7 @@ You can get Emacs to automatically open your agenda whenever you start it. Add t
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-10" class="outline-2">
 <h2 id="sec-10">Sections to be written</h2>
 <div class="outline-text-2" id="text-10">
@@ -507,6 +519,7 @@ coming eventually. =)
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-10-2" class="outline-3">
 <h3 id="sec-10-2">View your completed tasks</h3>
 <div class="outline-text-3" id="text-10-2">
@@ -515,6 +528,7 @@ coming eventually. =)
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-10-3" class="outline-3">
 <h3 id="sec-10-3">Work with multiple files</h3>
 <div class="outline-text-3" id="text-10-3">
@@ -523,6 +537,7 @@ coming eventually. =)
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-10-4" class="outline-3">
 <h3 id="sec-10-4">Use tags for types of tasks</h3>
 <div class="outline-text-3" id="text-10-4">
@@ -531,6 +546,7 @@ coming eventually. =)
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-10-5" class="outline-3">
 <h3 id="sec-10-5">Filter your view</h3>
 <div class="outline-text-3" id="text-10-5">
@@ -539,6 +555,7 @@ coming eventually. =)
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-10-6" class="outline-3">
 <h3 id="sec-10-6">Track your time</h3>
 <div class="outline-text-3" id="text-10-6">
@@ -553,6 +570,7 @@ Coming eventually. =)
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-10-7" class="outline-3">
 <h3 id="sec-10-7">Track your time estimates</h3>
 <div class="outline-text-3" id="text-10-7">
@@ -561,6 +579,7 @@ coming eventually. =)
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-10-8" class="outline-3">
 <h3 id="sec-10-8">Customize your agenda view</h3>
 <div class="outline-text-3" id="text-10-8">
@@ -569,6 +588,7 @@ coming eventually. =)
 </p>
 </div>
 </div>
+
 
 <div id="outline-container-sec-10-9" class="outline-3">
 <h3 id="sec-10-9">Extras</h3>
@@ -583,6 +603,7 @@ coming eventually. =)
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-11" class="outline-2">
 <h2 id="sec-11">Notes</h2>
 <div class="outline-text-2" id="text-11">
@@ -592,6 +613,42 @@ See <a href="http://sachachua.com/blog/emacs">my Emacs page</a> for more resourc
 </p>
 </div>
 </div>
+</div>
+<div id="postamble" class="status">
+
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.back-to-top:hover {    
+    background-color: rgba(135, 135, 135, 0.50);
+}
+</style>
+
+<div class="back-to-top">
+<a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a>
+</div>
+
+<script type="text/javascript">
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+</script>
 </div>
 </body>
 </html>

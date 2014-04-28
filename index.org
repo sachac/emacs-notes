@@ -1,4 +1,7 @@
 What's here:
 
-- [[file:baby-steps-org.org][A baby steps guide to managing your tasks with Org]]
-- [[file:emacs-lisp-tutorial.org][Learn Emacs Lisp while customizing Emacs]]
+   + [[file:baby-steps-org.org][A Baby Steps Guide to Managing Your Tasks with Org]]
+   + [[file:how-to-read-emacs-lisp.org][How to read Emacs Lisp so that you can customize Emacs]]
+   + [[file:emacs-lisp-tutorial.org][Learn Emacs Lisp while customizing Emacs]]
+
+Source: http://github.com/sachac/emacs-notes
