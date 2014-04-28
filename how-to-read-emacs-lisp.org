@@ -597,6 +597,16 @@ Check out An Introduction to Programming in Emacs Lisp[fn:: https://www.gnu.org/
 
 If you liked this, please let me know at [[mailto:sacha@sachachua.com][sacha@sachachua.com]]! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sachachua.com/baby-steps-elisp], which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
 
+More links:
+- http://bzg.fr/learn-emacs-lisp-in-15-minutes.html
+- http://harryrschwartz.com/2014/04/08/an-introduction-to-emacs-lisp.html
+- http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html
+- [[https://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]: A bit abstract, but a good place to start. Read it even if you don't understand everything. Read it again. Refer to it frequently. Graduate to the [[http://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp reference manual]] when you're more comfortable (or if you need to look up details).
+- http://ergoemacs.org/emacs/elisp.html: Good collection of idioms and common uses.
+- http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/: Starts with ielm, focuses on data structures; other parts?
+- http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
+- http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html
+
 * Author's notes
 
 I've posted the source for this document on Github
