@@ -7,6 +7,8 @@ If you're starting on a task, tag it with your name and change the TODO to START
 
 ** TODO Transcribe Avdi Grimm's chat   :transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
+** TODO Transcribe Carsten Dominik's chat 											 :transcript:
+Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 ** TODO Organize Emacs resources into starting/improving/enjoying
 - https://github.com/sachac/sharing/blob/gh-pages/blog.org
 
