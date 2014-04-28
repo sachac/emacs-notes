@@ -1,0 +1,66 @@
+#+TODO: TODO(t) STARTED(s) | DONE(x)
+* How to use this
+
+If you're starting on a task, tag it with your name and change the TODO to STARTED. Clocking in is nice. =)
+
+* Tasks
+
+** TODO Transcribe Avdi Grimm's chat   :transcript:
+Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
+** TODO Organize Emacs resources into starting/improving/enjoying
+- https://github.com/sachac/sharing/blob/gh-pages/blog.org
+
+* Notes
+
+- What am I looking for?
+  - Things that I can do but that other people can gain more value from if they do it
+    - Okay value (ex: transcripts)
+  - Things that benefit from other perspectives (like writing, research, reading, etc.)
+    - Medium value
+  - Things that I don't even think of doing (like snippets and indices and stuff; ideas for making this better)
+    - High value
+  - Vision
+    - My blog + more structure / resources
+    - Github for additional resources, easy to view, TODOs they can add to their agenda
+      - Plain text for the win!
+      - Also, pull request
+      - RSS?
+    - Identifying gaps to be written about
+    - Starting, improving, enjoying Emacs; visual guides / doodles
+    - One-on-one help, etc.
+    - Domain name, topic-focused view?
+      - Yes, especially if this is more structured =)
+      - Will continue to cross-post to my main blog
+			- Website? Let's push Org as far as possible
+- What kind of work do you enjoy?
+  - Emacs-related things, yay! Not as good at Lisp yet, but that's perfect, because Alex can learn
+  - build-site.el ex: blockquote
+  - Anything Emacsy, yay!
+  - ASCIIcasts?
+- What don't you like?
+  - No Windows stuff =) (So I'm not going to ask you to help me figure out why Gnuplot and Windows is like ARGH!)
+- What kind of hourly rate is fair for you?
+  - Affects what I ask you to work on =) 
+- Paypal details, invoice for time so far?
+- Coordinate through Org mode?
+	- maybe a tasks.org in emacs-notes or separate? 
+- Possible tasks
+  - Transcribe Avdi Grimm's chat - yup!
+  - Help make my site even easier to use and more fun to explore
+	- Organize resources into starting/improving/enjoying
+    - https://github.com/sachac/sharing/blob/gh-pages/blog.org
+    - emacs-notes
+      - Maybe have everything in one git repository? submodules?
+  - Brainstorm and draft posts
+		- Keeping your .emacs.d/init.el organized    
+  - Help come up with questions and guests for Emacs Chats?
+    - technomancy?
+  - Work on newbie guides?
+  - Emacs Chat - find someone with a great HTML/JS/CSS setup?
+  - Making Emacs Chats better?
+    - Structure
+      - How did you get started with Emacs?
+      - How do you learn more?
+      - Config (where? make sure to add links)
+    - Actions? With notes and resources?
+      - Ex: literate programming
