@@ -1,4 +1,5 @@
 #+TITLE: How to read Emacs Lisp so that you can customize Emacs
+#+OPTIONS: toc:t
 
 * Introduction
 

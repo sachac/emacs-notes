@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-04-28 Mon 11:51 -->
+<!-- 2014-04-28 Mon 11:52 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -146,6 +146,61 @@ for the JavaScript code in this tag.
 </div>
 <div id="content">
 <h1 class="title">How to read Emacs Lisp so that you can customize Emacs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">The wonderful world of Emacs customization</a>
+<ul>
+<li><a href="#sec-2-1">"Why do I have to learn Emacs Lisp in order to get Emacs to do what I want? Shouldn't Emacs just come with reasonable defaults?"</a></li>
+<li><a href="#sec-2-2">"If I customize my Emacs, I'll have a hard time working with other people or on other computers."</a></li>
+<li><a href="#sec-2-3">"I don't have the time to fiddle around with this."</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">"Where can I find useful Emacs Lisp code examples?"</a>
+<ul>
+<li><a href="#sec-3-1">Emacs documentation</a></li>
+<li><a href="#sec-3-2">Packages</a></li>
+<li><a href="#sec-3-3">Webpages, blog posts, and the Emacs Wiki</a></li>
+<li><a href="#sec-3-4">Mailing lists, newsgroups, and Q&amp;A sites</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">"How can I try Emacs Lisp code?"</a>
+<ul>
+<li><a href="#sec-4-1">M-x ielm (Inferior Emacs Lisp Mode)</a></li>
+<li><a href="#sec-4-2">The <code>*scratch*</code> buffer and Emacs Lisp <code>.el</code> files</a></li>
+<li><a href="#sec-4-3">M-: (eval-expression)</a></li>
+<li><a href="#sec-4-4">Once you know you like it&#x2026;</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">"How can I understand what Emacs Lisp code does?"</a>
+<ul>
+<li><a href="#sec-5-1">Functions are at the beginning of the expression, and expressions are enclosed in parentheses</a>
+<ul>
+<li><a href="#sec-5-1-1">"How can I learn more about functions?"</a></li>
+</ul>
+</li>
+<li><a href="#sec-5-2">"How can I learn more about variables?"</a></li>
+<li><a href="#sec-5-3">When something is quoted, it's taken literally</a></li>
+<li><a href="#sec-5-4">Lists and lists and lists of lists</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Loading libraries</a></li>
+<li><a href="#sec-7">"Oh no! I have an error!"</a>
+<ul>
+<li><a href="#sec-7-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</a></li>
+<li><a href="#sec-7-2">Cannot open load file: &#x2026;</a></li>
+<li><a href="#sec-7-3">Lisp error: (void-function &#x2026;)</a></li>
+<li><a href="#sec-7-4">Symbol's value as variable is void: &#x2026;</a></li>
+<li><a href="#sec-7-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">Want to learn more?</a></li>
+<li><a href="#sec-9">Author's notes</a></li>
+</ul>
+</div>
+</div>
 
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Introduction</h2>
@@ -178,6 +233,10 @@ hear from you. If you would like to help improve this guide, you can
 find it on <a href="https://github.com/sachac/emacs-notes/blob/gh-pages/how-to-read-emacs-lisp.org">Github</a> - pull requests welcome. This guide is dual-licensed
 under the Creative Commons Attribution License and the GNU Free
 Documentation License, so feel free to read, share, and build on it.
+</p>
+
+<p>
+You can find this guide on the Web at <a href="http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html">http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html</a> .
 </p>
 
 <p>
