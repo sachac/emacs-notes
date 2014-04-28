@@ -22,7 +22,11 @@ understanding.
 Please e-mail questions, comments, and suggestions to
 [[mailto:sacha@sachachua.com][sacha@sachachua.com]]. I want to make this guide better, and I'd love to
 hear from you. If you would like to help improve this guide, you can
-find it on [[https://github.com/sachac/emacs-notes/blob/gh-pages/how-to-read-emacs-lisp.org][Github]] - pull requests welcome!
+find it on [[https://github.com/sachac/emacs-notes/blob/gh-pages/how-to-read-emacs-lisp.org][Github]] - pull requests welcome. This guide is dual-licensed
+under the Creative Commons Attribution License and the GNU Free
+Documentation License, so feel free to read, share, and build on it.
+
+You can find this guide on the Web at http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html .
 
 Now, on with the guide.
 
@@ -234,6 +238,21 @@ The =*scratch*= buffer is not automatically saved. If you would like to save you
 ** M-: (eval-expression)
 
 If you want to quickly try an expression, you can use =M-:= (=eval-expression=). To see any results it displayed, you can switch to the =*Messages*= buffer.
+** Once you know you like it...
+
+... *then* add it to your =~/.emacs.d/init.el= file. You can generally
+add new code at the end. If the code has something to do with
+=add-to-list= and =load-path=, it might be good to add it to the
+beginning instead.
+
+Note: The Emacs configuration file used to be =~/.emacs=, and most
+webpages refer to that. =~/.emacs= still works - in fact, if you have
+that, it may stop Emacs from loading =~/.emacs.d/init.el=. On the
+other hand, if you use =~/.emacs.d/init.el= (and move your =~/.emacs=
+code to that file instead), then you have one less hidden file in your
+home directory (=~=). If you're adding code to your config and it's
+not getting loaded, make sure you have either =~/.emacs= or
+=~/.emacs.d/init.el=, but not both.
 
 * "How can I understand what Emacs Lisp code does?"
 ** Functions are at the beginning of the expression, and expressions are enclosed in parentheses
@@ -379,6 +398,20 @@ sets the options for the =diff= command to a list containing two items, =-b= and
 (setq diff-switches (list "-b" "-u"))
 #+end_src
 
+The code above sets the value of the variable to a list, ignoring any previous values it had. 
+
+<<load-path>>
+Most of the time, though, you want to add to a list instead of
+completely replacing it. You'll often see something like this in
+people's configuration files:
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path "~/elisp")
+#+end_src
+
+This adds the =~/elisp= directory to the beginning of the list of directories that Emacs checks when loading libraries. If the directory is already in the list, =add-to-list= does nothing.
+
+<<package-archives>>
 Some lists use the dot notation. This depends on what's expected by the function that uses the list. For example:
 
 #+begin_src emacs-lisp
@@ -386,6 +419,7 @@ Some lists use the dot notation. This depends on what's expected by the function
 #+end_src
 
 This calls the =add-to-list= function with two arguments. The first argument ('=package-archives=) specifies the list to add an item to, and
+
 the second argument ('=("melpa" . "http://melpa.milkbox.net/packages/")=) is the data to add. The dot notation =(a . b)= shows that this is a *cons cell*, which always has two parts: the *car* and the *cdr*. To understand the difference between cons cells and other lists, you need to know how lists are constructed.
 
 A cons cell looks like this:
@@ -412,6 +446,14 @@ A list like '=("-b" "-u")= is made up of several cons cells.
 
 In Emacs Lisp, '=("-b" "-u")= is equivalent to =(cons "-b" (cons "-u" nil))=, and it's not the same as =(cons "-b" "-u")=. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
 
+Because lists are made up of cons cells, you'll sometimes see people add to lists like this:
+
+#+begin_src emacs-lisp
+(setq load-path (cons "~/elisp" load-path))
+#+end_src
+
+This adds =~/elisp= to the beginning of the =load-path= list. It does this by using =cons= to create a new cons cell that has =~/elisp= at the beginning and a pointer to the rest of the values in =load-path=, and then storing that in =load-path=.
+
 Lists can also contain lists. For example, here's some code that saves backup files (the ones that end in =~=) to =~/.emacs.d/backups=.
 
 #+begin_src emacs-lisp
@@ -427,24 +469,145 @@ This is how the second argument breaks down:
 #+end_example
 
 Advanced: Backquotes (`) are special. They quote the expression that follows them, but they also allow you to substitute values or evaluate expressions. Backquotes are useful for more complex structures or when you're working with macros. They do basically the same thing as ' for lists, but anything preceded by a comma (,) is evaluated. They're less common, but if you do come across them, note that ` is not the same as '. See the Emacs Lisp Reference for more information.[fn:: http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html]
+* Loading libraries
 
-* Oh no! I have an error!
+Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. If you would like to add more functionality to your Emacs, you will need to install packages or load libraries. When you read other people's Emacs configurations, you might come across other interesting packages to try out.
 
-TODO
+Sometimes people don't indicate which packages they use, so you have to guess the package name based on the function. For example, =(global-auto-complete-mode)= turns on a completion mode called =auto-complete-mode= in all buffers. Before you can use this, you will need to install the =auto-complete= buffer. In general, you can find package names by looking at functions that include =mode= in their name, removing =global=, =turn-on=, and other prefixes as needed.
+
+Some files are not yet available as packages. If you search for the function, you'll probably find a webpage with an =.el= file. You can save those to your computer and load them with:
+
+#+begin_src emacs-lisp
+(load "/path/to/file.el")
+#+end_src
+
+Another way to load libraries is to use =require=, which loads them only if they haven't already been loaded. You'll often see code like this in people's configuration:
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path "/path/to/dir/with/el/files")
+(require 'package-name-goes-here)
+#+end_src
+
+This adds the directory to the load path (see [[load-path][Load path]] for details) and then loads the package. =require= looks for a file named after the package name provided to it, loads it, and double-checks that the library includes =(provide 'package-name-goes-here)=. It throws an error if the library is not found or if it doesn't provide that symbol. 
+
+Sometimes you'll see something like this:
+
+#+begin_src emacs-lisp
+(when (require 'package-name-goes-here nil t)
+   (do-something)
+   (do-something-else))
+#+end_src
+
+If you use =F1 f= (=describe-function=) on =require=, you'll see that
+it has one required argument (feature) and two optional arguments
+(filename, noerror). The function call above specifies
+=package-name-goes-here= as the feature name, does not specify the
+filename, and sets =noerror= to =t= so that =require= doesn't report
+an error even if the file does not exist. =require= returns non-nil
+(or true) if the library was loaded, so if the library exists, then
+the rest of the code inside the =when= expression gets called.
+
+Along those lines, you may come across code that looks like this:
+
+#+begin_src emacs-lisp
+  (eval-after-load "dash" 
+    '(dash-enable-font-lock))
+#+end_src
+
+This runs =(dash-enable-font-lock)= only after =dash= is loaded. It
+does not automatically load =dash=. You'll see this when people have
+configuration that they want to run only if something is loaded, which
+can make sense for performance reasons.
+
+* "Oh no! I have an error!"
+
+Part of learning a new language is learning how to recognize and deal
+with different errors. 
+
+If you've already added the code to your =~/.emacs.d/init.el=, you can
+start Emacs with =emacs --debug-init= to display debugging messages,
+or you can start Emacs with =emacs -q= to skip your personal
+configuration. Before reporting a bug with Emacs or with a package,
+use =emacs -q= (or =emacs -Q=, which skips site-wide configuration as
+well) to see if it works as intended without your personal
+configuration.
+
+You can narrow down the source of the problem by progressively
+commenting out more and more of the code. Make sure you comment out
+balanced sets of parentheses. To comment a region, select it and use
+=M-x comment-region=. You can use =M-x uncomment-region= to uncomment
+it. =M-x comment-dwim= (do what I mean) guesses whether you want to
+comment or uncomment something, and has the handy keyboard shortcut
+=M-;=.
+
+Here are some common error messages and how you
+can try fixing them. If you don't see the error you're struggling with
+here, please e-mail me the code and the error you're running into:
+[[mailto:sacha@sachachua.com][sacha@sachachua.com]] . Happy to help!
+
+** Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"
+
+You may have pasted in something that has a =(= but no matching =)=, which results in unbalanced parentheses. Alternatively, you may have pasted in something that has =)= but no =(=, which results in a premature end. Try reading the code carefully in order to find the mismatched pair. You can also use =C-M-f= (=forward-sexp=) and =C-M-b= (=backward-sexp=) to navigate by complete expressions until you find the specific one that causes the error.
+
+** Cannot open load file: ...
+
+The code is trying to require or load a file that Emacs can't find.
+
+- Have you installed the appropriate package? Use =M-x list-packages= to see if it has been packaged into a form that's easy to install. You may need to add other sources to your =package-archives= to see a wider range of packages.
+- Have you downloaded it manually and added it to your =load-path=? See [[load-path][Load path]] for more details.
+- If you're using =load=, does the file exist?
+
+See [[Loading libraries]] for more information.
+
+** Lisp error: (void-function ...)
+
+The code calls a function that has not been defined. 
+
+- Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use =M-x list-packages= to see the available packages. You may need to add other sources to your =package-archives= to see a wider range of packages. See: [[package-archives][Package Archives]]
+- If you downloaded the library manually, add it to your =load-path= ([[load-path][Load path]]) and =require= it ([[require][Require]]).
+- If you're copying some code that isn't packaged in a library, check if there are any =defun= (define function) expressions that you forgot to copy. Make sure to include and evaluate those.
+
+** Symbol's value as variable is void: ...
+
+The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves =add-to-list= or =add-hook=, you may need to use =require= to load the library that defines that list or hook first (see [[Loading libraries]]). 
+
+You might also get this if you're using =C-x C-e= (=eval-last-sexp=)
+to evaluate an expression that's inside =let= or other things that
+create variables. When you're starting out, make sure you use =C-x
+C-e= (=eval-last-sexp=) after the outermost set of parentheses.
+
+** I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected
+
+Make sure you call =C-x C-e= *after* the outermost =)= for the expression you want to evaluate.
+
+#+begin_example
+(ido-mode 1)
+            ^
+            |
+            +---- Your cursor should be here
+#+end_example
+
+If the code you're looking at has multiple expressions, you'll need to call =C-x C-e= after each of them.
+It might be easier to select the region and use =M-x eval-region=, or load the entire buffer with =M-x eval-buffer=. Alternatively, use =M-x ielm= to evaluate the code instead.
 
 * Want to learn more?
 
 Check out An Introduction to Programming in Emacs Lisp[fn:: https://www.gnu.org/software/emacs/manual/eintr.html], and delve into the Emacs Lisp Reference Manual[fn:: http://www.gnu.org/software/emacs/manual/elisp.html] for more details.
 
-I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sachachua.com/baby-steps-elisp], which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
+If you liked this, please let me know at [[mailto:sacha@sachachua.com][sacha@sachachua.com]]! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sachachua.com/baby-steps-elisp], which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
 
 * Author's notes
+
+I've posted the source for this document on Github
+(http://github.com/sachac/emacs-notes). This guide is dual-licensed
+under the Creative Commons Attribution License and the GNU Free
+Documentation License, so feel free to read, share, and build on it.
+Patches and pull requests welcome!
 
 
 - Resources
   - https://www.gnu.org/software/emacs/manual/eintr.html
 
-* TODO Outline
 - [X] This document: beginner-level
   - For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
     - Want to customize Emacs, but not entirely sure about what they're adding
@@ -457,7 +620,7 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
   - mailing lists
   - Planet Emacsen
   - Look for someone who uses Emacs like you
-- [ ] How can I understand what Emacs Lisp code does?
+- [X] How can I understand what Emacs Lisp code does?
   - Ex: (global-hl-line-mode)
   - How can I read a statement?
     - Prefix - the "verb" goes at the beginning. This is actually like many programming languages, although Lisp does it consistently throughout. For ex
@@ -471,7 +634,7 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
 			- eval-region
 		- M-: (eval-expression)
 		- Sometimes you need to reopen a file in order to apply the changes
-- What are some of the common errors I might run into?
+- [X] What are some of the common errors I might run into?
   - Evaluating at the wrong point
   - Missing )
   - Undefined function
@@ -479,7 +642,7 @@ I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sac
   - Unexpected symbol
   - Obsolete code
   - Not a prefix key
-- Okay, I like this. How can I make it part of my Emacs?
+- [X] Okay, I like this. How can I make it part of my Emacs?
   - .emacs.d/init.el (also note about ~/.emacs)
   - Add comments
 - Wait! I changed my mind!

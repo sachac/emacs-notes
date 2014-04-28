@@ -1,0 +1,1414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>How to read Emacs Lisp so that you can customize Emacs</title>
+<!-- 2014-04-28 Mon 11:51 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sacha Chua" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<a name="top" id="top"></a>
+</div>
+<div id="content">
+<h1 class="title">How to read Emacs Lisp so that you can customize Emacs</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Hi! This is a guide to help you pick up the basics of reading
+customization code for Emacs - little snippets of Emacs Lisp that you
+can add to your <code>~/.emacs.d/init.el</code> to change how Emacs works. I hope
+this will help you learn how to borrow interesting snippets from
+README files and other people's configs so that you can tweak Emacs to
+fit the way you work. This is not a detailed guide on how to
+understand Emacs internals, but by the time you find yourself digging
+through comint.el to figure out what's going on with command
+interpretation, you probably already know your way around.
+</p>
+
+<p>
+We'll assume that you already have Emacs installed and that you've
+gone through the built-in tutorial (<b>Help - Emacs Tutorial</b>). I'll
+also assume you have a little programming background or can deal with
+the concepts of variables and functions. Feel free to ask questions if
+you get stuck on something or if you want to clarify your
+understanding.
+</p>
+
+<p>
+Please e-mail questions, comments, and suggestions to
+<a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>. I want to make this guide better, and I'd love to
+hear from you. If you would like to help improve this guide, you can
+find it on <a href="https://github.com/sachac/emacs-notes/blob/gh-pages/how-to-read-emacs-lisp.org">Github</a> - pull requests welcome. This guide is dual-licensed
+under the Creative Commons Attribution License and the GNU Free
+Documentation License, so feel free to read, share, and build on it.
+</p>
+
+<p>
+Now, on with the guide.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">The wonderful world of Emacs customization</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To make the most of Emacs, learn how to read and write Emacs Lisp.
+Most of Emacs is written in Emacs Lisp: the packages that add extra
+functionality, the configuration code to set different options. You
+can change large parts of how Emacs behaves even without restarting
+Emacs.
+</p>
+
+<p>
+Remember: with great power comes lots of time debugging if you mess
+things up. This is a guide to help you avoid messing up, so you can
+build the confidence to learn more. It's worth it. Start with one-line
+in ten years (or three, or twenty, or next month - all up to you),
+you'll be able to tweak Emacs to do more things than other people
+might imagine a text editor can do.
+</p>
+
+<p>
+This is what Emacs Lisp code looks like:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world!"</span>)
+</pre>
+</div>
+
+<p>
+Or something slightly more useful:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq delete-old-versions -1)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">"Why do I have to learn Emacs Lisp in order to get Emacs to do what I want? Shouldn't Emacs just come with reasonable defaults?"</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Reasonable defaults make sense for specific people. Other people might
+have completely different ideas for how they want a tool to work.
+Many people use Emacs and have (occasionally quite strong)
+opinions about how they want it to work. It's difficult to change the defaults for everyone
+<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves.
+</p>
+
+<p>
+There are some initiatives to put together common settings that people may like.
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/bbatsov/prelude">https://github.com/bbatsov/prelude</a>
+</li>
+<li><a href="https://github.com/technomancy/better-defaults">https://github.com/technomancy/better-defaults</a>
+</li>
+</ul>
+
+<p>
+You can read them to pick up ideas for customizing Emacs, or you can
+use them as a starting point for your own configuration. Note that
+starter kits change the behaviour of Emacs from what you might expect
+based on manuals and webpages. If you've added configuration code that
+you don't understand, be sure to mention it when asking for help,
+since people might otherwise assume you're starting with the defaults.
+It may be a good idea to look at starter kits and other people's
+configuration for inspiration, but add snippets slowly instead of
+copying things wholesale.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">"If I customize my Emacs, I'll have a hard time working with other people or on other computers."</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+I find that optimizing my Emacs configuration for my happiness is
+worth the mild annoyance of not having my shortcuts handy (or worse,
+not having Emacs!) when I pair-program with other people. If you're
+pair-programming with other people, you can switch your configuration
+or use a different editor. <code>emacs -q</code> starts Emacs without your
+personal configuration. It's good to be familiar with other editors
+like Vi so that you can be productive even if that's all you have, and
+then learn how to make the most of Emacs so that you can reap the
+benefits over the decades.
+</p>
+
+<p>
+Many people synchronize their configuration across multiple computers
+by using version control systems like Git or file synchronization
+tools like Dropbox. You can set up Emacs to check for hostname or
+other system variables before loading system-specific configuration.
+</p>
+
+<p>
+You might think it's not worth customizing Emacs if you spend most of
+your time ssh-ed into other servers. With Emacs, you can use
+TRAMP<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> to edit files through SSH
+and sudo in your local Emacs.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">"I don't have the time to fiddle around with this."</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+Emacs Lisp code can help you save time by automating repetitive
+actions, smoothening rough edges, or enabling time-saving features
+like autocompletion. Investing some time can help you save a lot of
+time later. Learning from other Emacs users can help you figure out
+customizations that take little time for big results.
+</p>
+
+<p>
+That said, it's a good idea to take a step back and figure out if what
+you're trying to customize is really worth it. One of the occupational
+hazards of using Emacs is that tweaking your Emacs configuration can
+be fun, almost addictive. If you catch yourself spending four hours
+fiddling with something minor, it might be time to put that aside and
+focus on getting stuff done first.<sup><a id="fnr.3" class="footref" href="#fn.3">3</a></sup>
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">"Where can I find useful Emacs Lisp code examples?"</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Do you already have some Emacs Lisp code that you want to understand?
+Jump ahead to the section on <i>How can you understand what Emacs Lisp
+code does?</i>. It's easier to learn how to read Emacs Lisp when you start
+with simple examples that will help you use Emacs more effectively.
+Here are some useful sources:
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">Emacs documentation</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Manuals and FAQs for Emacs-related tools often include code snippets. For example, the Emacs FAQ<sup><a id="fnr.4" class="footref" href="#fn.4">4</a></sup> includes an entry like this:
+</p>
+
+<pre class="example">
+5.47 How can I tell Emacs to fill paragraphs with a single space after each period?
+===================================================================================
+
+Add the following line to your `.emacs' file:
+
+     (setq sentence-end-double-space nil)
+</pre>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Packages</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Emacs has lots of packages in different repositories, many of which
+require a little extra code in order to be used to full effect. You
+can use <code>M-x package-list-packages</code> to list the packages that Emacs
+knows about by default. You can add more package repositories to
+Emacs, and I'll show you how to do that later in this guide.
+</p>
+
+<p>
+Check out the README, description, documentation, or source code
+comments for interesting packages to find suggested code to add to
+your Emacs configuration.
+</p>
+
+<p>
+Here are some packages that might be interesting:
+</p>
+<ul class="org-ul">
+<li>company: adds text completion
+</li>
+<li>yasnippet: snippets and templates
+</li>
+<li>undo-tree: visualize your undo/redo history
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Webpages, blog posts, and the Emacs Wiki</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. For example, the instructions for adding the MELPA repository can be found at <a href="http://melpa.milkbox.net/#/getting-started">http://melpa.milkbox.net/#/getting-started</a> . It has the following code:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">package</span>)
+(add-to-list 'package-archives
+  '(<span class="org-string">"melpa"</span> . <span class="org-string">"http://melpa.milkbox.net/packages/"</span>) t)
+</pre>
+</div>
+
+<p>
+The EmacsWiki (<a href="http://www.emacswiki.org/">http://www.emacswiki.org/</a>) has lots of snippets. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see <i>Oh no!</i>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">Mailing lists, newsgroups, and Q&amp;A sites</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a mailing list<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup> or as a newsgroup - check your favourite Usenet server or use Gmane<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>. StackOverflow<sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup> and Quora<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup> are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
+</p>
+
+<p>
+Find a snippet of Emacs Lisp code you want to understand more deeply, or look at the examples in the sections below.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">"How can I try Emacs Lisp code?"</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
+</p>
+
+<p>
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out <i>Oh no! I have an error!</i> for some common errors and what to do about them.
+</p>
+
+<p>
+Here are some ways you can run Emacs Lisp code:
+</p>
+<ul class="org-ul">
+<li><code>M-x ielm</code>
+</li>
+<li><code>*scratch*</code> buffer and Emacs Lisp files
+</li>
+<li><code>C-x C-e</code> (<code>eval-last-sexp</code>)
+</li>
+<li><code>M-:</code> (<code>eval-expression</code>)
+</li>
+</ul>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">M-x ielm (Inferior Emacs Lisp Mode)</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+IELM gives you a prompt where you can type or paste in Emacs Lisp code. Start it with <code>M-x ielm</code>. Press <code>RET</code> after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press RET to evaluate it again.
+</p>
+
+<p>
+If you're copying or typing code, make sure your parentheses are all matched - every ( should have a ). IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello</span>
+</pre>
+</div>
+
+<p>
+but this will work:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">The <code>*scratch*</code> buffer and Emacs Lisp <code>.el</code> files</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+When Emacs starts, it creates a buffer called <code>*scratch*</code> with the following contents:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This buffer is for notes you don't want to save, and for Lisp evaluation.</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">If you want to create a file, visit that file with C-x C-f,</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">then enter the text in that file's own buffer.</span>
+</pre>
+</div>
+
+<p>
+You can add code to the end.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This buffer is for notes you don't want to save, and for Lisp evaluation.</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">If you want to create a file, visit that file with C-x C-f,</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">then enter the text in that file's own buffer.</span>
+
+(message <span class="org-string">"Hello world"</span>)
+</pre>
+</div>
+
+<p>
+Note: <code>;</code> is the comment character. Anything after the comment character is considered part of the comment. Make sure you add your code on a new line, not in the comment.
+</p>
+
+<p>
+To run code ("evaluate" it, in Emacs terms), you can use the following commands based on what you want to run:
+</p>
+<ul class="org-ul">
+<li><code>M-x eval-buffer</code> runs all the code in the current file or buffer.
+</li>
+<li><code>M-x eval-region</code> runs the selected code. You can select code by using the mouse or by typing <code>C-SPC</code> to mark the start of the region and moving to the next.
+</li>
+<li><code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
+</li>
+</ul>
+
+<p>
+In the <code>*scratch*</code> buffer, you can also press <code>C-j</code> (<code>eval-print-last-sexp</code>) after an expression in order to evaluate it and display the results in the buffer.
+</p>
+
+<p>
+The <code>*scratch*</code> buffer is not automatically saved. If you would like to save your code for future use, you can create a file with an <code>.el</code> ending. <code>el</code> stands for Emacs Lisp, and Emacs will open these files in Emacs Lisp mode.
+</p>
+
+<p>
+<code>C-x C-e</code> (<code>eval-last-sexp</code>) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">M-: (eval-expression)</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+If you want to quickly try an expression, you can use <code>M-:</code> (<code>eval-expression</code>). To see any results it displayed, you can switch to the <code>*Messages*</code> buffer.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">Once you know you like it&#x2026;</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+&#x2026; <b>then</b> add it to your <code>~/.emacs.d/init.el</code> file. You can generally
+add new code at the end. If the code has something to do with
+<code>add-to-list</code> and <code>load-path</code>, it might be good to add it to the
+beginning instead.
+</p>
+
+<p>
+Note: The Emacs configuration file used to be <code>~/.emacs</code>, and most
+webpages refer to that. <code>~/.emacs</code> still works - in fact, if you have
+that, it may stop Emacs from loading <code>~/.emacs.d/init.el</code>. On the
+other hand, if you use <code>~/.emacs.d/init.el</code> (and move your <code>~/.emacs</code>
+code to that file instead), then you have one less hidden file in your
+home directory (<code>~</code>). If you're adding code to your config and it's
+not getting loaded, make sure you have either <code>~/.emacs</code> or
+<code>~/.emacs.d/init.el</code>, but not both.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">"How can I understand what Emacs Lisp code does?"</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Functions are at the beginning of the expression, and expressions are enclosed in parentheses</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+In math, operators like + and * go between the numbers they will work on.
+In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
+</p>
+
+<pre class="example">
+( ( 1 + 2 ) * 3 )  Math expression
+|     |          |   |     |     |
+| +-+ |          |   |     |     |
+|     |          |   |     |     |
+| +-  | -------+ |   |     |     |
+|     |          |   |     | +-+ |
+|     |          |   | +-+ |     |
+( * ( + 1 2 ) )    Emacs Lisp expression
+</pre>
+
+<p>
+Here's how to calculate (1 + 2) * 3 in Emacs Lisp. Note that the multiplication is surrounded by parentheses, even if we usually leave out the parentheses in math. That's because in Emacs Lisp, all function calls have their own set of parentheses.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(* (+ 1 2) 3)
+</pre>
+</div>
+
+<p>
+Understanding this will let you read code like:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-hl-line-mode)
+</pre>
+</div>
+
+<p>
+This calls the <code>global-hl-line-mode</code> function, which highlights the current line. 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(show-paren-mode)
+</pre>
+</div>
+
+<p>
+This calls the <code>show-paren-mode</code> function, which shows matching parentheses when your cursor is after them.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(blink-cursor-mode -1)
+</pre>
+</div>
+
+<p>
+This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as the argument, which turns blinking cursors off.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(find-file <span class="org-string">"~/todo.org"</span>)
+</pre>
+</div>
+
+<p>
+This opens the <code>todo.org</code> file in your home directory, creating it if it doesn't exist yet.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(turn-on-eldoc-mode)
+</pre>
+</div>
+
+<p>
+This turns on <code>eldoc-mode</code>, which displays the argument list for the current function. You can move your point around to see documentation for other functions.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq visible-bell t)
+</pre>
+</div>
+
+<p>
+This turns off beeping. Instead, when Emacs runs into an error, it will flash the title bar or screen.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq column-number-mode t)
+</pre>
+</div>
+
+<p>
+This turns on the display of the column number in the modeline.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+</pre>
+</div>
+
+<p>
+This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section on <i>When something is quoted, it's taken literally.</i>
+</p>
+</div>
+
+<div id="outline-container-sec-5-1-1" class="outline-4">
+<h4 id="sec-5-1-1">"How can I learn more about functions?"</h4>
+<div class="outline-text-4" id="text-5-1-1">
+<p>
+The symbol after <code>(</code> is usually a function name, unless it's part of a
+list. You'll learn how to recognize lists later. 
+</p>
+
+<p>
+To find out if something is a function, what it does, what arguments
+it takes, and if it has any keyboard shortcuts, use the <code>&lt;f1&gt; f</code>
+(<code>describe-function</code>) command. Give it the function name. For example,
+<code>&lt;f1&gt; f add-hook</code> will show you the documentation for <code>add-hook</code>, and
+<code>&lt;f1&gt; f show-paren-mode</code> will show you the documentation for that.
+</p>
+
+<p>
+The documentation for <code>show-paren-mode</code> starts with "show-paren-mode
+is an interactive autoloaded Lisp function". Interactive functions can
+be called with <code>M-x</code>. Read the description of the function to learn
+more about arguments that you can pass to change its behavior. If it
+mentions a prefix argument, that means that you can change its
+behaviour by typing <code>C-u</code> before you call the function.
+</p>
+
+<p>
+Use <code>&lt;f1&gt; f</code> to learn more about the following functions:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left"><code>describe-function</code></td>
+<td class="left">Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as <code>C-h f</code>.</td>
+</tr>
+
+<tr>
+<td class="left"><code>find-file</code></td>
+<td class="left">You can use this to open specific files</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2">"How can I learn more about variables?"</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Like the way you can use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about a function, you can use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about a variable by name. For example, use <code>&lt;f1&gt; v</code> to look up <code>visible-bell</code>. 
+</p>
+
+<p>
+To make it easier for you to customize Emacs without writing Emacs Lisp code, many variables give you an interface for setting the variable. If you use <code>describe-variable</code> to look up the definition, you'll often see a line like "You can <b>customize</b> this variable." Click on the <b>customize</b> link in the documentation or move your point to it and press RET. You can change the value there and try it temporarily, or you can save it to your configuration. The Customize interface is good for exploring, but because the code that it generates can difficult to read or share, many people skip it and use Emacs Lisp code instead.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3">When something is quoted, it's taken literally</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+One of the examples from the section on <a href="#sec-5-1">functions</a> was this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+</pre>
+</div>
+
+<p>
+<code>add-hook</code> is a function. '<code>emacs-lisp-mode-hook</code> and '<code>turn-on-eldoc-mode</code> are symbols. <code>emacs-lisp-mode-hook</code> is a variable that contains a list of functions to run, and <code>turn-on-eldoc-mode</code> is a function that we're adding to that list.
+</p>
+
+<p>
+The single quote means "treat this as the name of something." If you remove the quote from <code>emacs-lisp-mode-hook</code>, Emacs will look up the value in that variable and use that as the name of the variable to actually set, and you'll probably get an error.
+</p>
+
+<p>
+Here's another example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(fset 'yes-or-no-p 'y-or-n-p)
+</pre>
+</div>
+
+<p>
+This calls the <code>fset</code> function, which sets the function definition of <code>yes-or-no-p</code> to the function <code>y-or-n-p</code>. In short, it changes the "yes" or "no" prompts to "y" or "n", which can be convenient.
+</p>
+
+<p>
+Not everything is quoted. You'll often see lines like this in Emacs configuration files:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq delete-old-versions -1)
+</pre>
+</div>
+
+<p>
+<code>setq</code> stands for "set quoted". This is actually the same code as <code>(set 'delete-old-versions -1)</code> or <code>(set (quote delete-old-versions) -1)</code>, but 
+<code>setq</code> is shorter, so it's more common.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4">Lists and lists and lists of lists</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+You can set the value of a variable to multiple things. In Emacs configuration files, you'll often see ' used for lists. For example,
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq diff-switches '(<span class="org-string">"-b"</span> <span class="org-string">"-u"</span>))
+</pre>
+</div>
+
+<p>
+sets the options for the <code>diff</code> command to a list containing two items, <code>-b</code> and <code>-u</code>. Quoting the list creates a list and quotes all the content in it as needed. You can create lists with the <code>list</code> function instead. The code above is the same as:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq diff-switches (list <span class="org-string">"-b"</span> <span class="org-string">"-u"</span>))
+</pre>
+</div>
+
+<p>
+The code above sets the value of the variable to a list, ignoring any previous values it had. 
+</p>
+
+<p>
+<a id="load-path"></a>
+Most of the time, though, you want to add to a list instead of
+completely replacing it. You'll often see something like this in
+people's configuration files:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"~/elisp"</span>)
+</pre>
+</div>
+
+<p>
+This adds the <code>~/elisp</code> directory to the beginning of the list of directories that Emacs checks when loading libraries. If the directory is already in the list, <code>add-to-list</code> does nothing.
+</p>
+
+<p>
+<a id="package-archives"></a>
+Some lists use the dot notation. This depends on what's expected by the function that uses the list. For example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'package-archives '(<span class="org-string">"melpa"</span> . <span class="org-string">"http://melpa.milkbox.net/packages/"</span>))
+</pre>
+</div>
+
+<p>
+This calls the <code>add-to-list</code> function with two arguments. The first argument ('<code>package-archives</code>) specifies the list to add an item to, and
+</p>
+
+<p>
+the second argument ('<code>("melpa" . "http://melpa.milkbox.net/packages/")</code>) is the data to add. The dot notation <code>(a . b)</code> shows that this is a <b>cons cell</b>, which always has two parts: the <b>car</b> and the <b>cdr</b>. To understand the difference between cons cells and other lists, you need to know how lists are constructed.
+</p>
+
+<p>
+A cons cell looks like this:
+</p>
+
+<pre class="example">
+       car              cdr
++----------------+----------------+
+|                |                |
+|       a        |       b        |
+|                |                |
++----------------+----------------+
+</pre>
+
+<p>
+A list like '<code>("-b" "-u")</code> is made up of several cons cells.
+</p>
+
+<pre class="example">
+       car              cdr                         car             cdr
++----------------+----------------+         +----------------+----------------+
+|                |                |         |                |                |
+|      -b        |       ------------------&gt;|       -u       |                |
+|                |                |         |                |                |
++----------------+----------------+         +----------------+----------------+
+</pre>
+
+<p>
+In Emacs Lisp, '<code>("-b" "-u")</code> is equivalent to <code>(cons "-b" (cons "-u" nil))</code>, and it's not the same as <code>(cons "-b" "-u")</code>. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
+</p>
+
+<p>
+Because lists are made up of cons cells, you'll sometimes see people add to lists like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq load-path (cons <span class="org-string">"~/elisp"</span> load-path))
+</pre>
+</div>
+
+<p>
+This adds <code>~/elisp</code> to the beginning of the <code>load-path</code> list. It does this by using <code>cons</code> to create a new cons cell that has <code>~/elisp</code> at the beginning and a pointer to the rest of the values in <code>load-path</code>, and then storing that in <code>load-path</code>.
+</p>
+
+<p>
+Lists can also contain lists. For example, here's some code that saves backup files (the ones that end in <code>~</code>) to <code>~/.emacs.d/backups</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq backup-directory-alist '((<span class="org-string">"."</span> . <span class="org-string">"~/.emacs.d/backups"</span>)))
+</pre>
+</div>
+
+<p>
+This is how the second argument breaks down:
+</p>
+
+<pre class="example">
+( ;; a list with one item
+ ("." . "~/.emacs.d/backups") ;; a cons cell with a car of "." and a cdr of "~/.emacs.d/backups"
+)
+</pre>
+
+<p>
+Advanced: Backquotes (`) are special. They quote the expression that follows them, but they also allow you to substitute values or evaluate expressions. Backquotes are useful for more complex structures or when you're working with macros. They do basically the same thing as ' for lists, but anything preceded by a comma (,) is evaluated. They're less common, but if you do come across them, note that ` is not the same as '. See the Emacs Lisp Reference for more information.<sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup>
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Loading libraries</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. If you would like to add more functionality to your Emacs, you will need to install packages or load libraries. When you read other people's Emacs configurations, you might come across other interesting packages to try out.
+</p>
+
+<p>
+Sometimes people don't indicate which packages they use, so you have to guess the package name based on the function. For example, <code>(global-auto-complete-mode)</code> turns on a completion mode called <code>auto-complete-mode</code> in all buffers. Before you can use this, you will need to install the <code>auto-complete</code> buffer. In general, you can find package names by looking at functions that include <code>mode</code> in their name, removing <code>global</code>, <code>turn-on</code>, and other prefixes as needed.
+</p>
+
+<p>
+Some files are not yet available as packages. If you search for the function, you'll probably find a webpage with an <code>.el</code> file. You can save those to your computer and load them with:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(load <span class="org-string">"/path/to/file.el"</span>)
+</pre>
+</div>
+
+<p>
+Another way to load libraries is to use <code>require</code>, which loads them only if they haven't already been loaded. You'll often see code like this in people's configuration:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"/path/to/dir/with/el/files"</span>)
+(<span class="org-keyword">require</span> '<span class="org-constant">package-name-goes-here</span>)
+</pre>
+</div>
+
+<p>
+This adds the directory to the load path (see <a href="#load-path">Load path</a> for details) and then loads the package. <code>require</code> looks for a file named after the package name provided to it, loads it, and double-checks that the library includes <code>(provide 'package-name-goes-here)</code>. It throws an error if the library is not found or if it doesn't provide that symbol. 
+</p>
+
+<p>
+Sometimes you'll see something like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (<span class="org-keyword">require</span> '<span class="org-constant">package-name-goes-here</span> nil t)
+   (do-something)
+   (do-something-else))
+</pre>
+</div>
+
+<p>
+If you use <code>F1 f</code> (<code>describe-function</code>) on <code>require</code>, you'll see that
+it has one required argument (feature) and two optional arguments
+(filename, noerror). The function call above specifies
+<code>package-name-goes-here</code> as the feature name, does not specify the
+filename, and sets <code>noerror</code> to <code>t</code> so that <code>require</code> doesn't report
+an error even if the file does not exist. <code>require</code> returns non-nil
+(or true) if the library was loaded, so if the library exists, then
+the rest of the code inside the <code>when</code> expression gets called.
+</p>
+
+<p>
+Along those lines, you may come across code that looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> <span class="org-string">"dash"</span> 
+  '(dash-enable-font-lock))
+</pre>
+</div>
+
+<p>
+This runs <code>(dash-enable-font-lock)</code> only after <code>dash</code> is loaded. It
+does not automatically load <code>dash</code>. You'll see this when people have
+configuration that they want to run only if something is loaded, which
+can make sense for performance reasons.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">"Oh no! I have an error!"</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Part of learning a new language is learning how to recognize and deal
+with different errors. 
+</p>
+
+<p>
+If you've already added the code to your <code>~/.emacs.d/init.el</code>, you can
+start Emacs with <code>emacs --debug-init</code> to display debugging messages,
+or you can start Emacs with <code>emacs -q</code> to skip your personal
+configuration. Before reporting a bug with Emacs or with a package,
+use <code>emacs -q</code> (or <code>emacs -Q</code>, which skips site-wide configuration as
+well) to see if it works as intended without your personal
+configuration.
+</p>
+
+<p>
+You can narrow down the source of the problem by progressively
+commenting out more and more of the code. Make sure you comment out
+balanced sets of parentheses. To comment a region, select it and use
+<code>M-x comment-region</code>. You can use <code>M-x uncomment-region</code> to uncomment
+it. <code>M-x comment-dwim</code> (do what I mean) guesses whether you want to
+comment or uncomment something, and has the handy keyboard shortcut
+<code>M-;</code>.
+</p>
+
+<p>
+Here are some common error messages and how you
+can try fixing them. If you don't see the error you're struggling with
+here, please e-mail me the code and the error you're running into:
+<a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a> . Happy to help!
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+You may have pasted in something that has a <code>(</code> but no matching <code>)</code>, which results in unbalanced parentheses. Alternatively, you may have pasted in something that has <code>)</code> but no <code>(</code>, which results in a premature end. Try reading the code carefully in order to find the mismatched pair. You can also use <code>C-M-f</code> (<code>forward-sexp</code>) and <code>C-M-b</code> (<code>backward-sexp</code>) to navigate by complete expressions until you find the specific one that causes the error.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-2" class="outline-3">
+<h3 id="sec-7-2">Cannot open load file: &#x2026;</h3>
+<div class="outline-text-3" id="text-7-2">
+<p>
+The code is trying to require or load a file that Emacs can't find.
+</p>
+
+<ul class="org-ul">
+<li>Have you installed the appropriate package? Use <code>M-x list-packages</code> to see if it has been packaged into a form that's easy to install. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages.
+</li>
+<li>Have you downloaded it manually and added it to your <code>load-path</code>? See <a href="#load-path">Load path</a> for more details.
+</li>
+<li>If you're using <code>load</code>, does the file exist?
+</li>
+</ul>
+
+<p>
+See <a href="#sec-6">Loading libraries</a> for more information.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-3" class="outline-3">
+<h3 id="sec-7-3">Lisp error: (void-function &#x2026;)</h3>
+<div class="outline-text-3" id="text-7-3">
+<p>
+The code calls a function that has not been defined. 
+</p>
+
+<ul class="org-ul">
+<li>Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use <code>M-x list-packages</code> to see the available packages. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages. See: <a href="#package-archives">Package Archives</a>
+</li>
+<li>If you downloaded the library manually, add it to your <code>load-path</code> (<a href="#load-path">Load path</a>) and <code>require</code> it (<i>Require</i>).
+</li>
+<li>If you're copying some code that isn't packaged in a library, check if there are any <code>defun</code> (define function) expressions that you forgot to copy. Make sure to include and evaluate those.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-7-4" class="outline-3">
+<h3 id="sec-7-4">Symbol's value as variable is void: &#x2026;</h3>
+<div class="outline-text-3" id="text-7-4">
+<p>
+The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves <code>add-to-list</code> or <code>add-hook</code>, you may need to use <code>require</code> to load the library that defines that list or hook first (see <a href="#sec-6">Loading libraries</a>). 
+</p>
+
+<p>
+You might also get this if you're using <code>C-x C-e</code> (<code>eval-last-sexp</code>)
+to evaluate an expression that's inside <code>let</code> or other things that
+create variables. When you're starting out, make sure you use <code>C-x
+C-e</code> (<code>eval-last-sexp</code>) after the outermost set of parentheses.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-7-5" class="outline-3">
+<h3 id="sec-7-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</h3>
+<div class="outline-text-3" id="text-7-5">
+<p>
+Make sure you call <code>C-x C-e</code> <b>after</b> the outermost <code>)</code> for the expression you want to evaluate.
+</p>
+
+<pre class="example">
+(ido-mode 1)
+            ^
+            |
+            +---- Your cursor should be here
+</pre>
+
+<p>
+If the code you're looking at has multiple expressions, you'll need to call <code>C-x C-e</code> after each of them.
+It might be easier to select the region and use <code>M-x eval-region</code>, or load the entire buffer with <code>M-x eval-buffer</code>. Alternatively, use <code>M-x ielm</code> to evaluate the code instead.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Want to learn more?</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Check out An Introduction to Programming in Emacs Lisp<sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup>, and delve into the Emacs Lisp Reference Manual<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup> for more details.
+</p>
+
+<p>
+If you liked this, please let me know at <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to customizing your Emacs with Emacs Lisp<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup>, which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Author's notes</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+I've posted the source for this document on Github
+(<a href="http://github.com/sachac/emacs-notes">http://github.com/sachac/emacs-notes</a>). This guide is dual-licensed
+under the Creative Commons Attribution License and the GNU Free
+Documentation License, so feel free to read, share, and build on it.
+Patches and pull requests welcome!
+</p>
+
+
+<ul class="org-ul">
+<li>Resources
+<ul class="org-ul">
+<li><a href="https://www.gnu.org/software/emacs/manual/eintr.html">https://www.gnu.org/software/emacs/manual/eintr.html</a>
+</li>
+</ul>
+</li>
+
+<li class="on"><code>[X]</code> This document: beginner-level
+<ul class="org-ul">
+<li>For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
+<ul class="org-ul">
+<li>Want to customize Emacs, but not entirely sure about what they're adding
+</li>
+<li>Sample confusion: (add-to-list 'load-path &#x2026;) vs (add-to-list 'load-path &#x2026; t) - easily solved with C-h f add-to-list if you know how to read it
+</li>
+</ul>
+</li>
+<li>Assumption: you've installed Emacs 24 and have gone through the tutorial (C-h t)
+</li>
+<li>Scope: learning how to read short snippets of code (ex: config), not learning how to read complex code (ex: comint)
+</li>
+</ul>
+</li>
+<li class="on"><code>[X]</code> Where can I find short Emacs Lisp code to learn from?
+<ul class="org-ul">
+<li>README for packages
+</li>
+<li>EmacsWiki
+</li>
+<li>mailing lists
+</li>
+<li>Planet Emacsen
+</li>
+<li>Look for someone who uses Emacs like you
+</li>
+</ul>
+</li>
+<li class="on"><code>[X]</code> How can I understand what Emacs Lisp code does?
+<ul class="org-ul">
+<li>Ex: (global-hl-line-mode)
+</li>
+<li>How can I read a statement?
+<ul class="org-ul">
+<li>Prefix - the "verb" goes at the beginning. This is actually like many programming languages, although Lisp does it consistently throughout. For ex
+</li>
+</ul>
+</li>
+<li class="on"><code>[X]</code> How can I copy Emacs Lisp code from other people's configuration?
+<ul class="org-ul">
+<li>Try a little before you add things
+</li>
+</ul>
+</li>
+<li class="on"><code>[X]</code> How can I try things a little at a time?
+<ul class="org-ul">
+<li>ielm
+</li>
+<li>C-x C-e (eval-last-sexp) - works everywhere
+</li>
+<li><code>*scratch*</code> buffer or .el file
+<ul class="org-ul">
+<li>eval-buffer
+</li>
+<li>eval-region
+</li>
+</ul>
+</li>
+<li>M-: (eval-expression)
+</li>
+<li>Sometimes you need to reopen a file in order to apply the changes
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="on"><code>[X]</code> What are some of the common errors I might run into?
+<ul class="org-ul">
+<li>Evaluating at the wrong point
+</li>
+<li>Missing )
+</li>
+<li>Undefined function
+</li>
+<li>Undefined variable or hook
+</li>
+<li>Unexpected symbol
+</li>
+<li>Obsolete code
+</li>
+<li>Not a prefix key
+</li>
+</ul>
+</li>
+<li class="on"><code>[X]</code> Okay, I like this. How can I make it part of my Emacs?
+<ul class="org-ul">
+<li>.emacs.d/init.el (also note about ~/.emacs)
+</li>
+<li>Add comments
+</li>
+</ul>
+</li>
+<li>Wait! I changed my mind!
+<ul class="org-ul">
+<li>delete or comment out the lines
+<ul class="org-ul">
+<li>;
+</li>
+</ul>
+</li>
+<li>if you can't use Emacs with your current config, emacs -q
+</li>
+</ul>
+</li>
+<li>Oh no, my init.el broke
+<ul class="org-ul">
+<li>emacs &#x2013;debug-init
+</li>
+<li>emacs -q
+</li>
+</ul>
+</li>
+<li>Common types of customizations
+<ul class="org-ul">
+<li>function calls
+</li>
+<li>setq
+</li>
+<li>require
+</li>
+<li>add-to-list
+</li>
+<li>add-hook
+</li>
+<li>cons
+</li>
+<li>keybindings
+<ul class="org-ul">
+<li>global-set-key
+</li>
+<li>define-key
+</li>
+</ul>
+</li>
+<li>defun
+</li>
+<li>let
+</li>
+<li>regular expressions
+</li>
+<li>eval-after-load
+</li>
+</ul>
+</li>
+<li>Other notes on reading
+<ul class="org-ul">
+<li>Whitespace
+</li>
+</ul>
+</li>
+<li>How can I try changing things a little?
+</li>
+<li>How can I quickly navigate through code?
+<ul class="org-ul">
+<li>forward-sexp and backward-sexp
+</li>
+</ul>
+</li>
+<li>Emacs Lisp is great! I want to learn more
+<ul class="org-ul">
+<li>Learn How to Customize Emacs with Emacs Lisp
+</li>
+</ul>
+</li>
+<li>How can I go through code step by step?
+<ul class="org-ul">
+<li>edebug-defun
+</li>
+</ul>
+</li>
+
+<li>Thanks
+<ul class="org-ul">
+<li>aidalgol, rryoumaa, shergill, taus, tali713, Fuco
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p><a href="http://www.gnu.org/software/tramp/">http://www.gnu.org/software/tramp/</a></p></div>
+
+<div class="footdef"><sup><a id="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p>Is it worth the time -
+<a href="http://xkcd.com/1205/">http://xkcd.com/1205/</a></p></div>
+
+<div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p><a href="https://www.gnu.org/software/emacs/manual/efaq.html">https://www.gnu.org/software/emacs/manual/efaq.html</a></p></div>
+
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p><a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">https://lists.gnu.org/mailman/listinfo/help-gnu-emacs</a></p></div>
+
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p><a href="http://dir.gmane.org/gmane.emacs.help">http://dir.gmane.org/gmane.emacs.help</a></p></div>
+
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p><a href="http://stackoverflow.com/questions/tagged/emacs">http://stackoverflow.com/questions/tagged/emacs</a></p></div>
+
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p><a href="http://www.quora.com/Emacs">http://www.quora.com/Emacs</a></p></div>
+
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9">9</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html">http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html</a></p></div>
+
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10">10</a></sup> <p><a href="https://www.gnu.org/software/emacs/manual/eintr.html">https://www.gnu.org/software/emacs/manual/eintr.html</a></p></div>
+
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11">11</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/elisp.html">http://www.gnu.org/software/emacs/manual/elisp.html</a></p></div>
+
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12">12</a></sup> <p><a href="http://sachachua.com/baby-steps-elisp">http://sachachua.com/baby-steps-elisp</a></p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.back-to-top:hover {    
+    background-color: rgba(135, 135, 135, 0.50);
+}
+</style>
+
+<div class="back-to-top">
+<a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a>
+</div>
+
+<script type="text/javascript">
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+</script>
+</div>
+</body>
+</html>
