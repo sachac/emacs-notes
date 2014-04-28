@@ -1,0 +1,404 @@
+#+NAME: list
+- [X] Outlines
+- [X] Capture
+
+* Map
+	:PROPERTIES:
+	:CUSTOM_ID: Map
+	:END:
+
+#+CALL: path-from-tree[:file org_mode_map.png :cmdline "-Kdot -Tpng -Gdpi=100 -Gsize=10,10"](fill-column=20) :results silent :exports none :var completed=list
+
+#+ATTR_HTML: :usemap #G :style max-width: none
+[[file:org_mode_map.png]]
+
+#+begin_src emacs-lisp :results html :exports results :var fill-column=20 :var completed=list
+      (let* ((cmdline (or (cdr (assoc :cmdline params)) "-Kdot -Tcmapx -Gdpi=100 -Gsize=10,10"))
+             (cmd (or (cdr (assoc :cmd params)) "dot"))
+             (in-file (org-babel-temp-file "dot-"))
+             (map (sacha/org-map-path-to-graphviz (sacha/org-map-path) fill-column)))
+        (with-temp-file in-file (insert map))
+        (org-babel-eval
+         (concat cmd
+                 " " (org-babel-process-file-name in-file)
+                 " " cmdline) ""))
+#+end_src
+
+#+RESULTS:
+#+BEGIN_HTML
+<map id="G" name="G">
+<area shape="rect" id="node1" href="#Dynamic_blocks" title="Dynamic blocks" alt="" coords="313,188,391,211"/>
+<area shape="rect" id="node2" href="#Babel" title="Babel" alt="" coords="529,235,564,258"/>
+<area shape="rect" id="node3" href="#Columns" title="Columns" alt="" coords="328,235,377,258"/>
+<area shape="rect" id="node4" href="#Properties" title="Properties" alt="" coords="324,281,380,304"/>
+<area shape="rect" id="node5" href="#Effort" title="Effort" alt="" coords="266,188,301,211"/>
+<area shape="rect" id="node6" href="#Report" title="Report" alt="" coords="291,142,331,165"/>
+<area shape="rect" id="node7" href="#Clock" title="Clock" alt="" coords="294,95,329,119"/>
+<area shape="rect" id="node8" href="#Multiple_files" title="Multiple files" alt="" coords="2,235,68,258"/>
+<area shape="rect" id="node9" href="#Include" title="Include" alt="" coords="14,281,57,304"/>
+<area shape="rect" id="node10" href="#Archiving" title="Archiving" alt="" coords="29,188,79,211"/>
+<area shape="rect" id="node11" href="#Refiling" title="Refiling" alt="" coords="99,142,142,165"/>
+<area shape="rect" id="node12" href="#Sorting" title="Sorting" alt="" coords="100,188,141,211"/>
+<area shape="rect" id="node13" href="#Capture" title="Capture" alt="" coords="107,95,153,119"/>
+<area shape="rect" id="node14" href="#Search" title="Search" alt="" coords="211,281,251,304"/>
+<area shape="rect" id="node15" href="#Stuck_projects" title="Stuck projects" alt="" coords="153,328,224,351"/>
+<area shape="rect" id="node16" href="#Custom_agenda" title="Custom agenda" alt="" coords="235,328,314,351"/>
+<area shape="rect" id="node17" href="#Tags" title="Tags" alt="" coords="214,235,249,258"/>
+<area shape="rect" id="node18" href="#Repeating" title="Repeating" alt="" coords="261,235,315,258"/>
+<area shape="rect" id="node19" href="#Logs" title="Logs" alt="" coords="271,281,306,304"/>
+<area shape="rect" id="node20" href="#Agendas" title="Agendas" alt="" coords="179,188,227,211"/>
+<area shape="rect" id="node21" href="#MobileOrg" title="MobileOrg" alt="" coords="80,235,136,258"/>
+<area shape="rect" id="node22" href="#Deadlines" title="Deadlines" alt="" coords="148,235,202,258"/>
+<area shape="rect" id="node23" href="#Date_offsets" title="Date offsets" alt="" coords="172,142,234,165"/>
+<area shape="rect" id="node24" href="#Scheduling" title="Scheduling" alt="" coords="174,95,232,119"/>
+<area shape="rect" id="node25" href="#TODOs" title="TODOs" alt="" coords="242,49,284,72"/>
+<area shape="rect" id="node26" href="#Config" title="Config" alt="" coords="244,95,282,119"/>
+<area shape="rect" id="node27" href="#Publishing" title="Publishing" alt="" coords="661,235,716,258"/>
+<area shape="rect" id="node28" href="#Blogging" title="Blogging" alt="" coords="665,281,712,304"/>
+<area shape="rect" id="node29" href="#File_options" title="File options" alt="" coords="658,188,719,211"/>
+<area shape="rect" id="node30" href="#Export" title="Export" alt="" coords="593,142,632,165"/>
+<area shape="rect" id="node31" href="#Blocks" title="Blocks" alt="" coords="501,188,539,211"/>
+<area shape="rect" id="node32" href="#Presentations" title="Presentations" alt="" coords="551,188,622,211"/>
+<area shape="rect" id="node33" href="#Links" title="Links" alt="" coords="764,142,799,165"/>
+<area shape="rect" id="node34" href="#Footnotes" title="Footnotes" alt="" coords="784,188,838,211"/>
+<area shape="rect" id="node35" href="#Attachments" title="Attachments" alt="" coords="849,188,916,211"/>
+<area shape="rect" id="node36" href="#Images" title="Images" alt="" coords="731,188,772,211"/>
+<area shape="rect" id="node37" href="#Tables" title="Tables" alt="" coords="891,142,930,165"/>
+<area shape="rect" id="node38" href="#Spreadsheets" title="Spreadsheets" alt="" coords="927,188,997,211"/>
+<area shape="rect" id="node39" href="#Lists" title="Lists" alt="" coords="487,142,522,165"/>
+<area shape="rect" id="node40" href="#List_manipulation" title="List manipulation" alt="" coords="403,188,489,211"/>
+<area shape="rect" id="node41" href="#Simple_markup" title="Simple markup" alt="" coords="575,95,651,119"/>
+<area shape="rect" id="node42" href="#Outline_manipulation" title="Outline manipulation" alt="" coords="428,49,532,72"/>
+<area shape="rect" id="node43" href="#Outlines" title="Outlines" alt="" coords="348,3,395,26"/>
+</map>
+#+END_HTML
+
+** Outlines
+	 :PROPERTIES:
+	 :CUSTOM_ID: Outlines
+	 :END:
+Next: [[Outline manipulation]]
+See also: [[TODOs]]
+** Outline manipulation
+	 :PROPERTIES:
+	 :CUSTOM_ID: Outline_manipulation
+	 :END:
+Next: [[Simple markup]]
+** Simple markup
+	 :PROPERTIES:
+	 :CUSTOM_ID: Simple_markup
+	 :END:
+Next: [[Links]]
+See also: [[Lists]]
+See also: [[Tables]]
+See also: [[Export]]
+** Lists
+	 :PROPERTIES:
+	 :CUSTOM_ID: Lists
+	 :END:
+Next: [[List manipulation]]
+** List manipulation
+	 :PROPERTIES:
+	 :CUSTOM_ID: List_manipulation
+	 :END:
+** Tables
+	 :PROPERTIES:
+	 :CUSTOM_ID: Tables
+	 :END:
+Next: [[Spreadsheets]]
+** Spreadsheets
+	 :PROPERTIES:
+	 :CUSTOM_ID: Spreadsheets
+	 :END:
+** Links
+	 :PROPERTIES:
+	 :CUSTOM_ID: Links
+	 :END:
+Next: [[Images]]
+See also: [[Attachments]]
+See also: [[Footnotes]]
+** Footnotes
+	 :PROPERTIES:
+	 :CUSTOM_ID: Footnotes
+	 :END:
+** Export
+	 :PROPERTIES:
+	 :CUSTOM_ID: Export
+	 :END:
+Next: [[File options]]
+See also: [[Babel]]
+See also: [[Presentations]]
+See also: [[Blocks]]
+** Blocks
+	 :PROPERTIES:
+	 :CUSTOM_ID: Blocks
+	 :END:
+** File options
+	 :PROPERTIES:
+	 :CUSTOM_ID: File_options
+	 :END:
+Next: [[Publishing]]
+** Publishing
+	 :PROPERTIES:
+	 :CUSTOM_ID: Publishing
+	 :END:
+Next: [[Blogging]]
+** Blogging
+	 :PROPERTIES:
+	 :CUSTOM_ID: Blogging
+	 :END:
+** TODOs
+	 :PROPERTIES:
+	 :CUSTOM_ID: TODOs
+	 :END:
+Next: [[Scheduling]]
+See also: [[Config]]
+See also: [[Clock]]
+See also: [[Capture]]
+** Scheduling
+	 :PROPERTIES:
+	 :CUSTOM_ID: Scheduling
+	 :END:
+Next: [[Date offsets]]
+** Date offsets
+	 :PROPERTIES:
+	 :CUSTOM_ID: Date_offsets
+	 :END:
+Next: [[Agendas]]
+** Agendas
+	 :PROPERTIES:
+	 :CUSTOM_ID: Agendas
+	 :END:
+Next: [[Deadlines]]
+See also: [[Repeating]]
+See also: [[Tags]]
+See also: [[MobileOrg]]
+** Repeating
+	 :PROPERTIES:
+	 :CUSTOM_ID: Repeating
+	 :END:
+Next: [[Logs]]
+** Logs
+	 :PROPERTIES:
+	 :CUSTOM_ID: Logs
+	 :END:
+** Tags
+	 :PROPERTIES:
+	 :CUSTOM_ID: Tags
+	 :END:
+Next: [[Search]]
+** Search
+	 :PROPERTIES:
+	 :CUSTOM_ID: Search
+	 :END:
+Next: [[Custom agenda]]
+See also: [[Stuck projects]]
+** Custom agenda
+	 :PROPERTIES:
+	 :CUSTOM_ID: Custom_agenda
+	 :END:
+** Stuck projects
+	 :PROPERTIES:
+	 :CUSTOM_ID: Stuck_projects
+	 :END:
+** Config
+	 :PROPERTIES:
+	 :CUSTOM_ID: Config
+	 :END:
+** Capture
+	 :PROPERTIES:
+	 :CUSTOM_ID: Capture
+	 :END:
+Next: [[Refiling]]
+** Refiling
+	 :PROPERTIES:
+	 :CUSTOM_ID: Refiling
+	 :END:
+Next: [[Sorting]]
+See also: [[Archiving]]
+
+** Sorting
+	 :PROPERTIES:
+	 :CUSTOM_ID: Sorting
+	 :END:
+** Archiving
+	 :PROPERTIES:
+	 :CUSTOM_ID: Archiving
+	 :END:
+Next: [[Multiple files]]
+** Multiple files
+	 :PROPERTIES:
+	 :CUSTOM_ID: Multiple_files
+	 :END:
+Next: [[Include]]
+** Include
+	 :PROPERTIES:
+	 :CUSTOM_ID: Include
+	 :END:
+** MobileOrg
+	 :PROPERTIES:
+	 :CUSTOM_ID: MobileOrg
+	 :END:
+** Clock
+	 :PROPERTIES:
+	 :CUSTOM_ID: Clock
+	 :END:
+Next: [[Report]]
+** Report
+	 :PROPERTIES:
+	 :CUSTOM_ID: Report
+	 :END:
+Next: [[Effort]]
+See also: [[Dynamic blocks]]
+** Effort
+	 :PROPERTIES:
+	 :CUSTOM_ID: Effort
+	 :END:
+Next: [[Columns]]
+** Columns
+	 :PROPERTIES:
+	 :CUSTOM_ID: Columns
+	 :END:
+Next: [[Properties]]
+** Dynamic blocks
+	 :PROPERTIES:
+	 :CUSTOM_ID: Dynamic_blocks
+	 :END:
+Next: [[Babel]]
+** Babel
+	 :PROPERTIES:
+	 :CUSTOM_ID: Babel
+	 :END:
+** Presentations
+	 :PROPERTIES:
+	 :CUSTOM_ID: Presentations
+	 :END:
+** Deadlines
+	 :PROPERTIES:
+	 :CUSTOM_ID: Deadlines
+	 :END:
+** Properties
+	 :PROPERTIES:
+	 :CUSTOM_ID: Properties
+	 :END:
+** Images
+	 :PROPERTIES:
+	 :CUSTOM_ID: Images
+	 :END:
+** Attachments
+	 :PROPERTIES:
+	 :CUSTOM_ID: Attachments
+	 :END:
+* Code
+	:PROPERTIES:
+	:CUSTOM_ID: Code
+	:END:
+
+#+name: path-from-tree
+#+BEGIN_SRC emacs-lisp :var fill-column=20 :var completed=list
+  (defun sacha/fill-string (string new-fill-column &optional replace-char)
+    "Wrap STRING to NEW-FILL-COLUMN. Change newlines to REPLACE-CHAR."
+    (with-temp-buffer
+      (insert string)
+      (let ((fill-column new-fill-column))
+        (fill-region (point-min) (point-max))
+        (if replace-char
+            (progn
+              (goto-char (point-min))
+              (while (re-search-forward "\n" nil t)
+                (replace-match replace-char t t))))
+        (buffer-string))))
+
+  (defun sacha/org-map-path ()
+    "Return an alist, based on the tree and \"so that I can\" link structure.
+  Structure: ((nodes . ((components) ...)) (edges . ((a . b) ...)))"
+    (let (nodes edges)
+      ;; Go through the entries
+      (org-map-entries
+       (lambda ()
+         (let ((heading (org-heading-components)))
+           (when (= (car heading) 2)
+             (save-excursion
+               (save-restriction
+                 ;; Ignore subtrees in the body
+                 (org-narrow-to-subtree)
+                 (save-excursion
+                   (org-set-property "CUSTOM_ID" (replace-regexp-in-string "[^A-Za-z0-9]" "_" (elt heading 4))))
+                 (end-of-line)
+                 (narrow-to-region
+                  (point-min)
+                  (if (re-search-forward
+                       (concat "[\r\n]\\(" org-outline-regexp "\\)") nil t)
+                      (match-beginning 1)
+                    (point-max)))
+                 (goto-char (point-min))
+                 (when (> (car heading) 1)
+                   (setq nodes (cons heading nodes)))
+                 (while (re-search-forward "\\(Next\\|See also\\):" nil t)
+                   (while (re-search-forward org-bracket-link-regexp (line-end-position) t)
+                     (setq edges (cons (cons (elt heading 4) (match-string-no-properties 1)) edges))))))))))
+      (list (cons 'nodes nodes) (cons 'edges edges)))) 
+
+  (defun sacha/org-map-path-to-graphviz (map fill-column)
+    "Convert MAP to a graphviz representation. Wrap titles at FILL-COLUMN."
+    (let ((completed 
+           (mapcar (lambda (x) 
+                     (if (string-match "\\[\\(.*?\\)\\] +\\(.*\\)" x) (cons (match-string 2 x) (match-string 1 x)))) completed)))
+      (concat
+       "digraph G {\n"
+       "node [shape=box,fontname=\"Open Sans\",pad=1]\n"
+       "edge [color=\"#CCCCCC\"]\n"
+       (mapconcat
+        (lambda (x)
+          (format "\"%s\" -> \"%s\"" 
+                  (sacha/fill-string (car x) fill-column "\\n")
+                  (sacha/fill-string (cdr x) fill-column "\\n")))
+        (cdr (assoc 'edges map))
+        "\n")
+       "\n"
+       (mapconcat (lambda (x)
+                    (format
+                     (if (equal (assoc-default (elt x 4) completed) "CBON")
+                         "\"%s\" [style=filled, URL=\"#%s\", tooltip=\"%s\"]"
+                       "\"%s\" [URL=\"#%s\", tooltip=\"%s\"]")
+                     (sacha/fill-string (elt x 4) fill-column "\\n")
+                     (replace-regexp-in-string "[^A-Za-z0-9]" "_" (elt x 4))
+                     (elt x 4)))
+                  (cdr (assoc 'nodes map)) "\n")
+       "}\n")))
+  (org-babel-execute:dot (sacha/org-map-path-to-graphviz (sacha/org-map-path) fill-column) params)
+#+END_SRC
+
+#+begin_html
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.back-to-top:hover {    
+    background-color: rgba(135, 135, 135, 0.50);
+}
+</style>
+
+<a class="back-to-top" href="#top">Back to top</a>
+
+<script type="text/javascript">
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+</script>    
+#+end_html
