@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-04-30 Wed 18:58 -->
+<!-- 2014-04-30 Wed 19:05 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -105,7 +105,7 @@ Documentation License, so feel free to read, share, and build on it.
 </p>
 
 <p>
-You can find this guide on the Web at <a href="http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html">http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html</a> .
+You can find this guide on the Web at <a href="http://emacslife.com/how-to-read-emacs-lisp.html">http://emacslife.com/how-to-read-emacs-lisp.html</a> .
 </p>
 
 <p>
@@ -249,8 +249,7 @@ focus on getting stuff done first.<sup><a id="fnr.3" class="footref" href="#fn.3
 <div class="outline-text-2" id="text-3">
 <p>
 Do you already have some Emacs Lisp code that you want to understand?
-Jump ahead to the section on <i>How can you understand what Emacs Lisp
-code does?</i>. It's easier to learn how to read Emacs Lisp when you start
+Jump ahead to the section on <i>"How can I understand what Emacs Lisp code does?"</i>. It's easier to learn how to read Emacs Lisp when you start
 with simple examples that will help you use Emacs more effectively.
 Here are some useful sources:
 </p>
@@ -321,7 +320,7 @@ While searching for information related to Emacs, you'll probably come across lo
 </div>
 
 <p>
-The EmacsWiki (<a href="http://www.emacswiki.org/">http://www.emacswiki.org/</a>) has lots of snippets. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see <i>Oh no!</i>
+The EmacsWiki<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup> has lots of snippets. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see <i>"Oh no! I have an error!"</i>
 </p>
 </div>
 </div>
@@ -330,7 +329,7 @@ The EmacsWiki (<a href="http://www.emacswiki.org/">http://www.emacswiki.org/</a>
 <h3 id="sec-3-4">Mailing lists, newsgroups, and Q&amp;A sites</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
-There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a mailing list<sup><a id="fnr.5" class="footref" href="#fn.5">5</a></sup> or as a newsgroup - check your favourite Usenet server or use Gmane<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup>. StackOverflow<sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup> and Quora<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup> are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
+There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a mailing list<sup><a id="fnr.6" class="footref" href="#fn.6">6</a></sup> or as a newsgroup - check your favourite Usenet server or use Gmane<sup><a id="fnr.7" class="footref" href="#fn.7">7</a></sup>. StackOverflow<sup><a id="fnr.8" class="footref" href="#fn.8">8</a></sup> and Quora<sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup> are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
 </p>
 
 <p>
@@ -348,7 +347,7 @@ It's easier to understand code if you can experiment with it. There are several 
 </p>
 
 <p>
-Note: As you experiment with Emacs Lisp, you might run into errors. Check out <i>Oh no! I have an error!</i> for some common errors and what to do about them.
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out <i>"Oh no! I have an error!"</i> for some common errors and what to do about them.
 </p>
 
 <p>
@@ -599,7 +598,7 @@ This turns on the display of the column number in the modeline.
 </div>
 
 <p>
-This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section on <i>When something is quoted, it's taken literally.</i>
+This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section on <i>When something is quoted, it's taken literally</i>.
 </p>
 </div>
 </div>
@@ -848,7 +847,7 @@ This is how the second argument breaks down:
 </pre>
 
 <p>
-Advanced: Backquotes (`) are special. They quote the expression that follows them, but they also allow you to substitute values or evaluate expressions. Backquotes are useful for more complex structures or when you're working with macros. They do basically the same thing as ' for lists, but anything preceded by a comma (,) is evaluated. They're less common, but if you do come across them, note that ` is not the same as '. See the Emacs Lisp Reference for more information.<sup><a id="fnr.9" class="footref" href="#fn.9">9</a></sup>
+Advanced: Backquotes (`) are special. They quote the expression that follows them, but they also allow you to substitute values or evaluate expressions. Backquotes are useful for more complex structures or when you're working with macros. They do basically the same thing as ' for lists, but anything preceded by a comma (,) is evaluated. They're less common, but if you do come across them, note that ` is not the same as '. See the Emacs Lisp Reference for more information.<sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup>
 </p>
 </div>
 </div>
@@ -1059,11 +1058,11 @@ It might be easier to select the region and use <code>M-x eval-region</code>, or
 <h2 id="sec-8">Want to learn more?</h2>
 <div class="outline-text-2" id="text-8">
 <p>
-Check out An Introduction to Programming in Emacs Lisp<sup><a id="fnr.10" class="footref" href="#fn.10">10</a></sup>, and delve into the Emacs Lisp Reference Manual<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup> for more details.
+Check out An Introduction to Programming in Emacs Lisp<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup>, and delve into the Emacs Lisp Reference Manual<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup> for more details.
 </p>
 
 <p>
-If you liked this, please let me know at <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to customizing your Emacs with Emacs Lisp<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup>, which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
+If you liked this, please let me know at <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to customizing your Emacs with Emacs Lisp<sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup>, which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
 </p>
 
 <p>
@@ -1321,21 +1320,23 @@ $(document).bind('scroll',function(e){
 
 <div class="footdef"><sup><a id="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p><a href="https://www.gnu.org/software/emacs/manual/efaq.html">https://www.gnu.org/software/emacs/manual/efaq.html</a></p></div>
 
-<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p><a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">https://lists.gnu.org/mailman/listinfo/help-gnu-emacs</a></p></div>
+<div class="footdef"><sup><a id="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p><a href="http://www.emacswiki.org/">http://www.emacswiki.org/</a></p></div>
 
-<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p><a href="http://dir.gmane.org/gmane.emacs.help">http://dir.gmane.org/gmane.emacs.help</a></p></div>
+<div class="footdef"><sup><a id="fn.6" class="footnum" href="#fnr.6">6</a></sup> <p><a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">https://lists.gnu.org/mailman/listinfo/help-gnu-emacs</a></p></div>
 
-<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p><a href="http://stackoverflow.com/questions/tagged/emacs">http://stackoverflow.com/questions/tagged/emacs</a></p></div>
+<div class="footdef"><sup><a id="fn.7" class="footnum" href="#fnr.7">7</a></sup> <p><a href="http://dir.gmane.org/gmane.emacs.help">http://dir.gmane.org/gmane.emacs.help</a></p></div>
 
-<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p><a href="http://www.quora.com/Emacs">http://www.quora.com/Emacs</a></p></div>
+<div class="footdef"><sup><a id="fn.8" class="footnum" href="#fnr.8">8</a></sup> <p><a href="http://stackoverflow.com/questions/tagged/emacs">http://stackoverflow.com/questions/tagged/emacs</a></p></div>
 
-<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9">9</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html">http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html</a></p></div>
+<div class="footdef"><sup><a id="fn.9" class="footnum" href="#fnr.9">9</a></sup> <p><a href="http://www.quora.com/Emacs">http://www.quora.com/Emacs</a></p></div>
 
-<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10">10</a></sup> <p><a href="https://www.gnu.org/software/emacs/manual/eintr.html">https://www.gnu.org/software/emacs/manual/eintr.html</a></p></div>
+<div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10">10</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html">http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html</a></p></div>
 
-<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11">11</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/elisp.html">http://www.gnu.org/software/emacs/manual/elisp.html</a></p></div>
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11">11</a></sup> <p><a href="https://www.gnu.org/software/emacs/manual/eintr.html">https://www.gnu.org/software/emacs/manual/eintr.html</a></p></div>
 
-<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12">12</a></sup> <p><a href="http://sachachua.com/baby-steps-elisp">http://sachachua.com/baby-steps-elisp</a></p></div>
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12">12</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/elisp.html">http://www.gnu.org/software/emacs/manual/elisp.html</a></p></div>
+
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13">13</a></sup> <p><a href="http://sachachua.com/baby-steps-elisp">http://sachachua.com/baby-steps-elisp</a></p></div>
 
 
 </div>
