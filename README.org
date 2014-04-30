@@ -11,3 +11,4 @@ My blog is at http://sachachua.com . You can find Emacs-related posts at http://
 
 E-mail me questions/comments/suggestions/patches! [[mailto:sacha@sachachua.com][sacha@sachachua.com]]
 
+Files are dual-licensed under under the Creative Commons Attribution License / GNU Free Documentation License unless otherwise indicated.

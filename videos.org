@@ -1,7 +1,7 @@
 #+TITLE: Some Emacs videos
 #+OPTIONS: toc:t
 
-Text taken from video descriptions
+Text taken from video descriptions. See respective videos for copyright information.
 
 * Introductory tutorials/demos
 ** Emacs: Introductory Tutorial (gaylerdaniel)
