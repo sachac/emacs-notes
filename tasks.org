@@ -11,9 +11,10 @@ If you're starting on a task, tag it with your name and change the TODO to START
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 ** TODO Transcribe Carsten Dominik's chat 											 :transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
-** STARTED Organize Emacs resources into starting/improving/enjoying
+** DONE Organize Emacs resources into starting/improving/enjoying
+	 CLOSED: [2014-04-30 Wed 17:14]
 	 :LOGBOOK:
-	 CLOCK: [2014-04-30 Wed 16:24]
+	 CLOCK: [2014-04-30 Wed 16:24]--[2014-04-30 Wed 17:14] =>  0:50
 	 :END:
 	 :PROPERTIES:
 	 :Effort:   2:00
