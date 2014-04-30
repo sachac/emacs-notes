@@ -34,6 +34,7 @@
 
 - [[file:blog-posts/2014-04-28-reflecting-10-episodes-emacs-chats.org][Emacs Chats]]: hour-long conversations with various people about Emacs
 - [[http://sachachua.com/blog/2013/04/emacs-conference-2013-videos/][Emacs Conference 2013 videos]]
+- [[videos][Some Emacs videos]]
 - [[http://sachachua.com/blog/2012/06/things-that-ive-used-emacs-for/][Things that I've used Emacs for]]
 
 * Org Mode
