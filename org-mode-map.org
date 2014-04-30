@@ -1,6 +1,13 @@
+#+OPTIONS: toc:nil
+
+Proof of concept for computer-generated version of Org Mode learning map from 
+http://emacslife.com/blog-posts/2014-01-13-tips-learning-org-mode-emacs.html . This allows us to use checkboxes to mark some items as done.
+
 #+NAME: list
 - [X] Outlines
-- [X] Capture
+- [X] TODOs
+
+Implemented as a checklist instead of DONE keywords in case we're pulling in the outline from a separate file (so that people can track their completion state separate from the Git copy?)
 
 * Map
 	:PROPERTIES:
@@ -77,13 +84,21 @@
 	 :PROPERTIES:
 	 :CUSTOM_ID: Outlines
 	 :END:
+Resources: [[http://orgmode.org/manual/Document-Structure.html#Document-Structure][org: Document Structure]]
+
 Next: [[Outline manipulation]]
 See also: [[TODOs]]
+
 ** Outline manipulation
 	 :PROPERTIES:
 	 :CUSTOM_ID: Outline_manipulation
 	 :END:
+
+Resources: [[http://orgmode.org/manual/Structure-editing.html#Structure-editing][org: Structure editing]]
+
 Next: [[Simple markup]]
+
+
 ** Simple markup
 	 :PROPERTIES:
 	 :CUSTOM_ID: Simple_markup
