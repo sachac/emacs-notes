@@ -1,0 +1,13 @@
+My goals for this site are to:
+- organize friendly, visual resources for people who want to start using Emacs, improve how they work, or enjoy Emacs
+- put together resources that are easy to download and contribute to,
+- and have fun!
+
+You can find a web-based version of this at http://emacslife.com
+
+Source: http://github.com/sachac/emacs-notes
+
+My blog is at http://sachachua.com . You can find Emacs-related posts at http://sachachua.com/blog/category/emacs 
+
+E-mail me questions/comments/suggestions/patches! [[mailto:sacha@sachachua.com][sacha@sachachua.com]]
+
