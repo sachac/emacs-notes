@@ -324,7 +324,7 @@ This turns on the display of the column number in the modeline.
 
 This turns on =eldoc-mode= when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section on [[When something is quoted, it's taken literally.]]
 
-*** "How can I learn more about functions?"
+** "How can I learn more about functions?"
 
 The symbol after =(= is usually a function name, unless it's part of a
 list. You'll learn how to recognize lists later. 
