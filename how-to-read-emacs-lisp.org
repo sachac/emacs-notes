@@ -263,14 +263,10 @@ In Emacs Lisp, the operator (or the "function") is at the start of the expressio
 
 #+begin_example
 ( ( 1 + 2 ) * 3 )  Math expression
-|     |          |   |     |     |
-| +-+ |          |   |     |     |
-|     |          |   |     |     |
-| +-  | -------+ |   |     |     |
-|     |          |   |     | +-+ |
-|     |          |   | +-+ |     |
 ( * ( + 1 2 ) )    Emacs Lisp expression
 #+end_example	 	 	
+
+file:images/math-to-emacs-lisp.png
 
 Here's how to calculate (1 + 2) * 3 in Emacs Lisp. Note that the multiplication is surrounded by parentheses, even if we usually leave out the parentheses in math. That's because in Emacs Lisp, all function calls have their own set of parentheses.
 
