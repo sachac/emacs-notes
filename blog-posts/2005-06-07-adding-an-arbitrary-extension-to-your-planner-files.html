@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Adding an arbitrary extension to your planner files</title>
+<!-- 2014-04-30 Wed 17:47 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Adding an arbitrary extension to your planner files</h1>
+<p>
+June 7th, 2005 -
+<a href="http://sachachua.com/blog/p/2775"><a href="http://sachachua.com/blog/p/2775">http://sachachua.com/blog/p/2775</a></a>
+</p>
+
+<p>
+Do you want all of your planner files to have a TXT extension so that
+ they'll be searched by tools such as Google Desktop or Apple Spotlight?
+</p>
+
+<p>
+Use the ‘rename' tool to add .txt extensions to all of your files, or
+ use the following code to rename all of your planner files from a
+ running Planner setup:
+</p>
+
+<pre class="example">
+(defun my-rename-planner-files ()
+  "Rename all my planner files to .txt if they don't have that extension yet."
+  (interactive)
+  (mapcar
+   (lambda (file)
+     (unless (string-match "\\.txt$" (cdr file))
+       (rename-file (cdr file) (concat (cdr file) ".txt"))
+       (message "%s" (cdr file))))
+   (planner-file-alist))
+  (with-planner
+    (emacs-wiki-refresh-file-alist)))
+</pre>
+
+<p>
+Then add this to your ~/.emacs before you load Planner:
+</p>
+
+<pre class="example">
+(setq emacs-wiki-ignored-extensions-regexp "\\.txt")
+
+(defadvice emacs-wiki-find-file (around extension activate)
+  "Open the Emacs Wiki page WIKI by name.
+If COMMAND is non-nil, it is the function used to visit the file.
+If DIRECTORY is non-nil, it is the directory in which the Wiki
+page will be created if it does not already exist."
+  (unless (interactive-p)
+    (setq wiki (cons wiki
+                     (cdr (assoc wiki (emacs-wiki-file-alist))))))
+  ;; At this point, `wiki' is (GIVEN-PAGE FOUND-FILE).
+  (if (cdr wiki)
+      (let ((buffer (funcall (or command 'find-file) (cdr wiki))))
+        (if (= (prefix-numeric-value current-prefix-arg) 16)
+            (with-current-buffer buffer
+              (set (make-variable-buffer-local 'emacs-wiki-directories)
+                   (cons (file-name-directory (cdr wiki))
+                         emacs-wiki-directories))
+              (set (make-variable-buffer-local 'emacs-wiki-file-alist)
+                   nil)))
+        buffer)
+    (let* ((dirname (or directory
+                        (emacs-wiki-maybe t)
+                        (car emacs-wiki-directories)))
+           (filename (expand-file-name (car wiki) dirname)))
+      (unless (file-exists-p dirname)
+        (make-directory dirname t))
+      (funcall (or command 'find-file) (concat filename ".txt")))))
+</pre>
+
+<p>
+ÃƒÂ¦Ã‚Â&#x2013;Ã‚Â°ÃƒÂ£Ã‚Â?Ã‚Â&#x2014;ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚ÂƒÃ‚Â‘ÃƒÂ£Ã‚Â‚Ã‚Â½ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¨Ã‚Â²Ã‚Â·ÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â?Ã‚Â¤ÃƒÂ£Ã‚Â‚Ã‚Â‚ÃƒÂ£Ã‚Â‚Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ©Ã‚Â‡Ã‚Â‘ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¦Ã‚ÂºÃ‚ÂœÃƒÂ£Ã‚Â‚Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â‚Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚Â
+ÃƒÂ£Ã‚Â€Ã‚Â‚ I am saving money in order to buy a new personal computer.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/planner">planner</a>,
+<a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/code">code</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

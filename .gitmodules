@@ -1,0 +1,3 @@
+[submodule "emacs-chats"]
+	path = emacs-chats
+	url = https://github.com/sachac/emacs-chats.git

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Adventures with Ruby</title>
+<!-- 2014-04-30 Wed 17:47 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Adventures with Ruby</h1>
+<p>
+February 4th, 2005 -
+<a href="http://sachachua.com/blog/p/2616"><a href="http://sachachua.com/blog/p/2616">http://sachachua.com/blog/p/2616</a></a>
+</p>
+
+<p>
+This is my second day of Ruby, a programming language that is rather
+ popular in Japan. I'm in love. It's now my second-favorite programming
+ language. (Emacs Lisp is, of course, the first.)
+</p>
+
+<p>
+Yesterday's script parsed schedule data and checked that monthly cost
+ and day constraints were observed. Today I wanted to visualize the
+verified schedule.
+</p>
+
+<p>
+At first I tried working with planner (formerly known as
+ MrProject and not to be confused with
+<a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a>). I
+wrote a
+<a href="http://sachachua.com/notebook/ruby/schedule-to-planner.rb">Ruby
+program</a> that converted my schedule.csv into XML, and planner loaded it
+successfully. However, I didn't think planner would let me do funky
+color coding. I thought about using etask, but ended up deciding to
+write something using libgd-ruby.
+</p>
+
+<p>
+It was surprisingly easy to write
+<a href="http://sachachua.com/notebook/ruby/schedule-to-image.rb">a Gantt-like
+visualizer</a> for the schedule
+ and even easier to manipulate it once I had written it. For example, I
+could do silly things like
+</p>
+
+<p>
+s.to\<sub>image</sub>((s.schedule.sort { |a,b| a.start &lt;=&gt; b.start }, 0, 2500,
+1800, image)
+</p>
+
+<p>
+<a href="http://sachachua.com/notebook/pics/japan/20050204-gantt1.png">Sorted
+by start date</a>
+</p>
+
+<p>
+to see the tasks sorted by start date. Being a Lisp girl, I had no
+problems writing silly things like
+</p>
+
+<p>
+s.to\<sub>image</sub>((s.schedule.collect { |x| x if x.person\<sub>id</sub> == '08-1′ } &#x2013; [
+nil ]).sort { |a,b| a.start &lt;=&gt; b.start }, 0, 2500, 1800, image)
+</p>
+
+<p>
+but then I realized that this was much cleaner:
+</p>
+
+<p>
+s.to\<sub>image</sub>((s.schedule.sort { |a,b| x = a.person\<sub>id</sub> &lt;=&gt; b.person\<sub>id</sub>;
+if x == 0 then a.start &lt;=&gt; b.start else x end }, 0, 2500, 1800, image)
+</p>
+
+<p>
+<a href="http://sachachua.com/notebook/pics/japan/20050204-gantt2.png">Sorted
+by person and then start date</a>
+</p>
+
+<p>
+Ruby is so cute!
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/ruby">ruby</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

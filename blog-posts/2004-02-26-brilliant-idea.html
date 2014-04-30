@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Brilliant idea!</title>
+<!-- 2014-04-30 Wed 17:46 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Brilliant idea!</h1>
+<p>
+February 26th, 2004 -
+<a href="http://sachachua.com/blog/p/1782"><a href="http://sachachua.com/blog/p/1782">http://sachachua.com/blog/p/1782</a></a>
+</p>
+
+<p>
+Global planner IDs should be hyperlinks in their own right. They are of
+the form
+</p>
+
+<p>
+plan://id-number or
+ plan://id-number/page,page,page,page
+</p>
+
+<p>
+But then how do we define anchors and references?
+</p>
+
+<p>
+Reference: plan:///id-number or plan:///id-number/page,page,page,page
+(note: triple-slashes)
+</p>
+
+<p>
+Or maybe <code>plan:id-number[/page,page,page]</code> for the anchor.
+Double-slashes will not be updated.
+</p>
+
+<p>
+I want IDs because I'd like to e able to update notes in case of
+ typos.
+</p>
+
+<p>
+Then this is no longer emacs-wiki-id, but really just planner-id.
+</p>
+
+<p>
+Yikes, I will so break the existing planner-id support with
+ this&#x2026; There must be a better way. At the very least, I should offer
+ a conversion function.
+</p>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/emacs-wiki/emacs-wiki-id.el">../../notebook/emacs/emacs-wiki/emacs-wiki-id.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

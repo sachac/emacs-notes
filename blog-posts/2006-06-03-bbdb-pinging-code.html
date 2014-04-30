@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>BBDB pinging code</title>
+<!-- 2014-04-30 Wed 17:47 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">BBDB pinging code</h1>
+<p>
+June 3rd, 2006 -
+<a href="http://sachachua.com/blog/p/3570"><a href="http://sachachua.com/blog/p/3570">http://sachachua.com/blog/p/3570</a></a>
+</p>
+
+<p>
+I love tweaking Emacs to fit the way I work. Here's some code to make it
+easier to keep track of pinged people.
+</p>
+
+<pre class="example">
+(defun sacha/bbdb-ping-bbdb-record (bbdb-record text &amp;optional date regrind)
+  "Adds a note for today to the current BBDB record.
+Call with a prefix to specify date."
+  (interactive (list (bbdb-current-record t)
+                     (read-string "Notes: ")
+                     (if current-prefix-arg (planner-read-date) (planner-today))
+                     t))
+  (bbdb-record-set-notes bbdb-record (concat date ": " text "\n" (bbdb-record-notes bbdb-record)))
+  (if regrind
+      (save-excursion
+        (set-buffer bbdb-buffer-name)
+        (bbdb-redisplay-one-record bbdb-record)))
+  nil)
+
+(defun sacha/bbdb-gnus-ping (text)
+  "Add a ping for authors/recipients of this message.
+Call with a prefix to specify a manual note."
+  (interactive (list (if current-prefix-arg (read-string "Notes: "))))
+  (let* ((from-me-p
+          (string-match gnus-ignored-from-addresses
+                        (message-fetch-field "From")))
+         (bbdb-get-only-first-address-p nil)
+         (bbdb-get-addresses-headers
+          (list (assoc (if from-me-p 'recipients 'authors) bbdb-get-addresses-headers)))
+         (bbdb/gnus-update-records-mode 'annotating)
+         (bbdb-message-cache nil)
+         (bbdb-user-mail-names nil)
+         (gnus-ignored-from-addresses nil)
+         records)
+    (setq records (bbdb/gnus-update-records t))
+    (if records
+        (bbdb-display-records records)
+      (bbdb-undisplay-records))
+    (while records
+      (sacha/bbdb-ping-bbdb-record
+       (car records)
+       (concat
+        (if from-me-p "-&gt; " "&lt;- ")
+        (or text (message-fetch-field "Subject")))
+       (planner-date-to-filename
+        (date-to-time (message-fetch-field "Date"))))
+      (setq records (cdr records)))
+    (setq records (bbdb/gnus-update-records t))
+    (if records
+        (bbdb-display-records records)
+      (bbdb-undisplay-records))))
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/networking">networking</a>
+</p>
+
+<p>
+<a href="../emacs/bbdb-config.el">/home/sacha/notebook/emacs/bbdb-config.el</a>
+</p>
+
+<p>
+Random Japanese sentence:
+ÃƒÂ§Ã‚ÂŒÃ‚Â«ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚Â‚Ã‚Â½ÃƒÂ£Ã‚ÂƒÃ‚Â•ÃƒÂ£Ã‚Â‚Ã‚Â¡ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¤Ã‚Â¸Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ¥Ã‚Â¯Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+A cat is lying on the sofa.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

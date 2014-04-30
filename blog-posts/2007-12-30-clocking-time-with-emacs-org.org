@@ -18,7 +18,7 @@ separate application or reenter data. You can get more detailed time
 reports, too. All you have to do is remember to clock in before you
 start a task and clock out when you finish it.
 
-**** Starting and stopping the clock
+* Starting and stopping the clock
 
 You can clock in by moving your cursor to the task headline in either
 your organizer.org file or the org agenda view, and then pressing C-c
@@ -38,7 +38,7 @@ clock in. This takes advantage of the Org configuration previously
 suggested in the Setup section. Add this to your ~/.emacs and evaluate
 it:
 
-#+BEGIN_EXAMPLE
+#+begin_src emacs-lisp
     (eval-after-load 'org
       '(progn
          (defun wicked/org-clock-in-if-starting ()
@@ -62,7 +62,7 @@ it:
         (org-clock-out)))
         (add-hook 'org-after-todo-state-change-hook
               'wicked/org-clock-out-if-waiting)))
-#+END_EXAMPLE
+#+end_src
 
 What if you forgot to clock into a task when you started? No problem.
 Simply clock in and out of it, then edit the starting timestamp for the
@@ -74,9 +74,9 @@ collapsed segment, he expanded by moving a cursor to it and pressing
 tab. Find the clock entry you want to change, and if the timestamp, and
 press C-c C-y (org-evaluate-time-range) to update the time total.
 
-**** Reporting time
+* Reporting time
 
-***** By project
+** By project
 
 To see how much time you've spent on a project or task, open your
 ~/organizer.org file and press C-c C-x C-d (org-clock-display). Total
@@ -91,19 +91,19 @@ the second-level headings for all the days.
 What if you want to limit the report to just the time you clocked last
 week?
 
-***** Reporting time for a period
+** Reporting time for a period
 
 To summarize it for a span of days, change the starting line from:
 
-#+BEGIN_EXAMPLE
+#+begin_src org
     #+BEGIN: clocktable :maxlevel 2 :emphasize nil
-#+END_EXAMPLE
+#+end_src
 
 to something like:
 
-#+BEGIN_EXAMPLE
+#+begin_src org
     #+BEGIN: clocktable :maxlevel 2 :emphasize nil :tstart "<2007-12-25 Sun>" :tend "<2007-12-31 Mon>"
-#+END_EXAMPLE
+#+end_src
 
 where tstart is the starting time/date and tend is the ending time/date.
 You can add the timestamps either manually or with C-c C-.
@@ -112,9 +112,9 @@ clock table by typing C-c C-x C-u (org-dblock-update).
 
 You can also use a definition like:
 
-#+BEGIN_EXAMPLE
+#+BEGIN_SRC org
     #+BEGIN: clocktable :maxlevel 2 :emphasize nil :block today
-#+END_EXAMPLE
+#+end_src
 
 to see today's entries. Other block keywords are ‘yesterday',
 ‘thisweek', ‘lastweek', ‘thismonth', ‘lastmonth', ‘thisyear', or
@@ -124,19 +124,19 @@ If you need more levels of headings, change the value of maxlevel. For
 example, to see a detailed clock table with up to 10 levels of headings,
 use
 
-#+BEGIN_EXAMPLE
+#+begin_src org
     #+BEGIN: clocktable :maxlevel 10 :emphasize nil :block today
-#+END_EXAMPLE
+#+end_src
 
 clocktable summarizes the reported time. What if you want the time
 broken down by day?
 
-***** Reporting time by days
+** Reporting time by days
 
 The following code creates a custom dynamic block that breaks the
 reported time by date. Add the following code to your ~/.emacs:
 
-#+BEGIN_EXAMPLE
+#+begin_src emacs-lisp
     (defun org-dblock-write:rangereport (params)
       "Display day-by-day time reports."
       (let* ((ts (plist-get params :tstart))
@@ -165,16 +165,16 @@ reported time by date. Add the following code to your ~/.emacs:
               (format-time-string (car org-time-stamp-formats)
                                   (seconds-to-time end))))
             (setq start (+ 86400 start))))))
-#+END_EXAMPLE
+#+end_src
 
 After you load that code, you'll be able to use a dynamic block of the
 form
 
-#+BEGIN_EXAMPLE
+#+begin_src org
     #+BEGIN: rangereport :maxlevel 2 :tstart "<2007-12-25 Tue>" :tend "<2007-12-30 Sun>"
     ...
     #+END:
-#+END_EXAMPLE
+#+end_src
 
 to see your time reported by date. Fill it in by moving your cursor
 within the block and typing C-c C-x C-u (org-dblock-update).
@@ -188,11 +188,3 @@ as STARTED, and clock out by marking a task as WAITING or DONE. Don't
 get discouraged if the time clock shows you do only a few hours of
 productive work each day. Use that to help you figure out how to do to
 things better!
-
-On Technorati:
-[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs605]],
-[[http://www.technorati.com/tag/org][org606]],
-[[http://www.technorati.com/tag/emacs][emacs607]]
-
-Random Emacs symbol: term-previous-matching-input-string -- Function:
-Return the string matching REGEXP ARG places along the input ring.

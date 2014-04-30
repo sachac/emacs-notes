@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Cleaned up planner-rss.el</title>
+<!-- 2014-04-30 Wed 17:45 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Cleaned up planner-rss.el</h1>
+<p>
+February 15th, 2004 -
+<a href="http://sachachua.com/blog/p/1711"><a href="http://sachachua.com/blog/p/1711">http://sachachua.com/blog/p/1711</a></a>
+</p>
+
+<p>
+planner-rss.el should now be ready for (almost) general use. You can
+ get it from
+</p>
+
+<p>
+<a href="http://sacha.free.net.ph/notebook/emacs/emacs-wiki/planner-rss.el"><a href="http://sacha.free.net.ph/notebook/emacs/emacs-wiki/planner-rss.el">http://sacha.free.net.ph/notebook/emacs/emacs-wiki/planner-rss.el</a></a>
+. To use it, add
+</p>
+
+<pre class="example">
+(require 'planner-rss)
+(add-to-list 'remember-append-to-planner-hook 'planner-rss-add-note t)
+</pre>
+
+<p>
+to your .emacs, and use M-x remember-to-planner.
+</p>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/planner-config.el">../../notebook/emacs/planner-config.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

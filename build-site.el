@@ -45,7 +45,9 @@
 				(select-safe-coding-system-accept-default-p t)
 				org-confirm-babel-evaluate
 				make-backup-files org-html-validation-link)
-		(org-html-publish-to-html plist filename pub-dir)))
+		(condition-case nil
+				(org-html-publish-to-html plist filename pub-dir)
+			(error (message "Error publishing %s" filename)))))
 
 (add-to-list 'org-publish-project-alist
       `("emacs-notes-base"

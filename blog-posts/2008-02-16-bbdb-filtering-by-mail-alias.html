@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>BBDB: Filtering by Mail Alias</title>
+<!-- 2014-04-30 Wed 17:47 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">BBDB: Filtering by Mail Alias</h1>
+<p>
+February 16th, 2008 -
+<a href="http://sachachua.com/blog/p/4765"><a href="http://sachachua.com/blog/p/4765">http://sachachua.com/blog/p/4765</a></a>
+</p>
+
+<p>
+You can use “a” (bbdb-add-or-remove-mail-alias) in BBDB buffers to add a
+mail alias to the current entry, or “* a” to add a mail alias to all
+displayed entries. I use mail aliases to tag or categorize my contacts
+(example: emacs, writing, etc.). The following functions can make it
+easy for you to filter displayed records using a combination of
+keywords:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Display records matching ALIAS and ALIAS</td>
+<td class="left">M-x sacha/bbdb-filter-displayed-records-by-alias RET alias alias</td>
+</tr>
+
+<tr>
+<td class="left">Display records matching ALIAS or ALIAS</td>
+<td class="left">C-u M-x sacha/bbdb-filter-displayed-records-by-alias RET alias alias</td>
+</tr>
+
+<tr>
+<td class="left">Omit records matching ALIAS and ALIAS</td>
+<td class="left">M-x sacha/bbdb-omit-displayed-records-by-alias RET alias alias</td>
+</tr>
+
+<tr>
+<td class="left">Omit records matching ALIAS or ALIAS</td>
+<td class="left">C-u M-x sacha/bbdb-omit-displayed-records-by-alias RET alias alias</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Here's the code:
+</p>
+
+<pre class="example">
+(defun sacha/bbdb-filter-by-alias-match-all (query-aliases record-aliases)
+  "Return non-nil if all QUERY-ALIASES are in RECORD-ALIASES."
+  (let ((result t))
+    (while query-aliases
+      (unless (member (car query-aliases) record-aliases)
+        (setq query-aliases nil
+              result nil))
+      (setq query-aliases (cdr query-aliases)))
+    result))
+
+(defun sacha/bbdb-filter-by-alias-match-any (query-aliases record-aliases)
+  "Return non-nil if any in QUERY-ALIASES can be found in RECORD-ALIASES."
+  (let (result)
+    (while query-aliases
+      (when (member (car query-aliases) record-aliases)
+        (setq query-aliases nil
+              result t))
+      (setq query-aliases (cdr query-aliases)))
+    result))
+
+;; Moved this to a convenience function so that we don't
+;; have to deal with invert and property splitting.
+(defun sacha/bbdb-filter-by-alias (bbdb-records
+                                   alias-filter-function
+                                   query
+                                   &amp;optional invert)
+  "Return only the BBDB-RECORDS that match ALIAS-FILTER-FUNCTION.
+ALIAS-FILTER-FUNCTION should accept two arguments:
+ - QUERY, a list of keywords to search for
+ - aliases, a list of keywords from the record
+If INVERT is non-nil, return only the records that do
+not match."
+  (delq nil
+        (mapcar
+         (lambda (rec)
+           (if (funcall alias-filter-function
+                        query
+                        (split-string
+                         (or (bbdb-record-getprop
+                              (if (vectorp rec)
+                                  rec
+                                (car rec))
+                              'mail-alias) "")
+                         "[ \n\t,]+"))
+               (when (null invert) rec)
+             (when invert rec)))
+         bbdb-records)))
+
+;; Splitting this into two functions because of interactive calling.
+(defun sacha/bbdb-filter-displayed-records-by-alias (query &amp;optional any)
+  "Display only records whose mail-aliases match QUERY.
+If ANY is non-nil, match if any of the keywords in QUERY are
+present.
+See also `sacha/bbdb-omit-displayed-records-by-alias'."
+  (interactive (list
+                (let ((crm-separator " "))
+                  (completing-read-multiple
+                   "Mail aliases: "
+                   (bbdb-get-mail-aliases)))
+                current-prefix-arg))
+  (when (stringp query)
+    (setq query (split-string query "[ \n\t,]+")))
+  (bbdb-display-records
+   (sacha/bbdb-filter-by-alias
+    (or bbdb-records (bbdb-records))
+    (if any
+        'sacha/bbdb-filter-by-alias-match-any
+      'sacha/bbdb-filter-by-alias-match-all)
+    query)))
+
+;; Splitting this into two functions because of interactive calling.
+(defun sacha/bbdb-omit-displayed-records-by-alias (query &amp;optional any)
+  "Display only records whose mail-aliases do not match QUERY.
+If ANY is non-nil, match if any of the keywords in QUERY are
+present.
+
+See also `sacha/bbdb-filter-displayed-records-by-alias'."
+  (interactive (list
+                (let ((crm-separator " "))
+                  (completing-read-multiple
+                   "Mail aliases: "
+                   (bbdb-get-mail-aliases))
+                  current-prefix-arg)))
+  (when (stringp query)
+    (setq query (split-string query "[ \n\t,]+")))
+  (bbdb-display-records
+   (sacha/bbdb-filter-by-alias
+    (or bbdb-records (bbdb-records))
+    (if any
+        'sacha/bbdb-filter-by-alias-match-any
+      'sacha/bbdb-filter-by-alias-match-all)
+    query
+    t)))
+</pre>
+
+<p>
+This will be part of my book,
+<a href="http://sachachua.com/wp/category/wickedcoolemacs">Wicked Cool Emacs</a>.
+Looking forward to putting it together!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

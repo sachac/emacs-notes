@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Better!</title>
+<!-- 2014-04-30 Wed 17:46 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Better!</h1>
+<p>
+February 27th, 2004 -
+<a href="http://sachachua.com/blog/p/1789"><a href="http://sachachua.com/blog/p/1789">http://sachachua.com/blog/p/1789</a></a>
+</p>
+
+<p>
+Finally got emacs-wiki highlighting just the way I want it.
+ Apparently, it bypasses the normal font-lock thing. Changes: I made
+ the example tag remove all the properties from the bounded region.
+ Here's the relevant snippet from my
+<a href="http://sachachua.com/notebook/emacs/emacs-wiki-config.el">../emacs/emacs-wiki-config.el</a>:
+</p>
+
+<pre class="example">
+(defun sacha/htmlfontify-insert-region (buffer begin end)
+  "Insert into BUFFER the htmlified text between BEGIN and END."
+  (save-excursion
+    (let* ((hfy-optimisations (cons 'skip-refontification hfy-optimisations))
+       (input-text (buffer-substring begin end))
+       (temp-file (make-temp-file "html-input"))
+       output-buffer)
+      (with-temp-buffer
+    (insert input-text)
+    (setq buffer-file-name temp-file)
+    (save-excursion (setq output-buffer (htmlfontify-buffer nil nil)))
+    (set-buffer-modified-p nil))
+      (unwind-protect
+      (let (b e yanked-output)
+        (set-buffer output-buffer)
+        (goto-char (point-min))
+        (search-forward "\n")
+        (setq b (line-beginning-position))
+        (goto-char (point-max))
+        (search-backward "
+</pre>
+
+<p>
+")
+ (forward-line -1)
+ (setq e (line-beginning-position))
+ (setq yanked-output (buffer-substring-no-properties b e))
+ (set-buffer buffer)
+ (insert yanked-output))
+ (set-buffer output-buffer)
+ (set-buffer-modified-p nil)
+ (delete-file temp-file)
+ (kill-buffer output-buffer)))))
+</p>
+
+<p>
+(defun sacha/emacs-wiki-example-tag (beg end attrs highlight-p)
+ "Mark up text as an example with optional font-locking."
+ (if highlight-p
+ (progn
+ (remove-text-properties
+ beg end '(face nil font-lock-multiline nil
+ invisible nil intangible nil display nil
+ mouse-face nil keymap nil help-echo nil))
+ (goto-char end))
+ ;; I don't know what would happen if you don't have
+ ;; htmlfontify. I guess if you are installing this you
+ ;; should have it&#x2026;
+ (let ((end-marker (set-marker (make-marker) (1+ end))))
+ (save-restriction
+ (narrow-to-region beg end)
+ (let* ((mode (cdr (assoc "mode" attrs)))
+ (start (progn (forward-line) (point)))
+ (stop (progn (goto-char end) (beginning-of-line) (point)))
+ (text (buffer-substring-no-properties start stop))
+ (buffer (current-buffer)))
+ (delete-region beg end)
+ (with-temp-buffer
+ (insert text)
+ (when (and mode (and (stringp mode) (functionp (intern mode))))
+ (funcall (intern mode))
+ (font-lock-fontify-buffer))
+ (sacha/htmlfontify-insert-region buffer (point-min) (point-max)))
+ (goto-char (point-min))
+ (insert "
+</p>
+
+<pre class="example">
+\n")
+      (goto-char (point-max))
+      (insert "
+</pre>
+
+<p>
+\n")
+ (add-text-properties (point-min) (point-max)
+ '(rear-nonsticky (read-only) read-only t))))
+ (goto-char end-marker))))
+</p>
+
+<p>
+(add-hook 'emacs-wiki-mode-hook 'emacs-wiki-highlight-buffer t)
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

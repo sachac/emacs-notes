@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Building MobileOrg for Android</title>
+<!-- 2014-04-30 Wed 17:46 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Building MobileOrg for Android</h1>
+<p>
+August 5th, 2012 -
+<a href="http://sachachua.com/blog/p/23631"><a href="http://sachachua.com/blog/p/23631">http://sachachua.com/blog/p/23631</a></a>
+</p>
+
+<p>
+If you want to use your Android device to work with your Org-mode files,
+there's <a href="https://github.com/matburt/mobileorg-android">MobileOrg</a> and
+there's <a href="https://github.com/kvj/mobileorg-android">MobileOrg NG</a>.
+MobileOrg seems to have more recent activity and more contributors, but
+NG has a more tablet-optimized layout and better support for navigating
+large files, so it would be good to apply some of the ideas from NG to
+the main MobileOrg project. Might be a useful way for me to learn more
+about mobile development.
+</p>
+
+<p>
+Here's how to build MobileOrg (the matburt version).
+</p>
+
+<ol class="org-ol">
+<li>Copy the URI to the Git repository (ex:
+<code>git://github.com/matburt/mobileorg-android.git</code>).
+</li>
+<li>In Eclipse, click on <b>File &#x2013; Import &#x2013; Projects from Git &#x2013; URI</b>.
+This may autodetect the URI. If not, paste in the URI. Click <b>Next</b>.
+</li>
+<li>You should now see a list of branches. You can leave them all
+selected. Click <b>Next.</b>
+</li>
+<li>Check the box for <b>Clone Submodules.</b> This will make sure that the
+project's dependencies are also checked out. Click <b>Next</b>.
+</li>
+<li>When you see the dialog called <b>Select a wizard to use for importing
+projects</b>, click on <b>Cancel.</b>
+</li>
+</ol>
+
+<p>
+Because the .project file hasn't been set up, you'll need to import the
+project using a different wizard. However, there's
+<a href="http://stackoverflow.com/questions/4054216/opening-existing-project-from-source-control">an
+Eclipse bug</a> that can make this a bit of a hassle, so this is what you
+should do to get the projects set up in your system.
+</p>
+
+<ol class="org-ol">
+<li>Close Eclipse.
+</li>
+<li>Move the <code>mobileorg-android</code> subdirectory from your Eclipse workspace
+directory to a different directory that is not in your workspace.
+</li>
+<li>Start Eclipse again.
+</li>
+<li>Click on <b>File &#x2013; Import &#x2013; Existing Android Code Into Workspace</b>.
+Click <b>Browse</b> and choose the <code>mobileorg-android</code> folder.
+</li>
+<li>Click on *Deselect All.*Reselect the following:
+
+<ul class="org-ul">
+<li>com.matburt.mobileorg.Gui.OutlineActivity
+</li>
+<li>library
+</li>
+<li>com.twofortyfouram.locale.MarketActivity
+</li>
+</ul>
+</li>
+
+<li>Click on <b>Finish.</b>
+</li>
+</ol>
+
+<p>
+Now you should have a bunch of projects in your system. You may need to
+adjust the libraries and build paths.
+</p>
+
+<ol class="org-ol">
+<li>Right-click on the <code>com.matburt.mobileorg.Gui.OutlineActivity</code>
+   project and choose <b>Properties</b>.
+</li>
+<li>Click on <b>Android</b> and confirm that both libraries are detected. If
+not, you may need to remove and re-add them.
+</li>
+<li>Wait for the libraries to be built. If you notice that the compiled
+JARs don't have classes, doublecheck that the <code>src</code> folder has loaded
+the sources. Right-click on the <code>src</code> folder and choose <b>Refresh</b> in
+order to get the sources recognized by Eclipse.
+</li>
+</ol>
+
+<p>
+Re-detect the Git connection by doing the following:
+</p>
+
+<ol class="org-ol">
+<li>Right-click on the <code>com.matburt.mobileorg.Gui.OutlineActivity</code>
+   project and choose <b>Team &#x2013; Share Project</b>.
+</li>
+<li>Choose <b>Git</b>.
+</li>
+<li>Check the <b>Use or create repository in parent folder of project</b>.
+</li>
+<li>Check the .git directory you're using.
+</li>
+<li>Click on <b>Finish.</b>
+</li>
+</ol>
+
+<p>
+I also had to remove some code from AndroidManifest.xml because you're
+apparently not supposed to have more than one action in an
+intent-filter:
+</p>
+
+<pre class="example">
+diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+index 01c4f1e..9fc3eb1 100644
+--- a/AndroidManifest.xml
++++ b/AndroidManifest.xml
+@@ -64,14 +64,11 @@
+             android:name=".Gui.OutlineActivity"
+             android:label="MobileOrg"
+             android:theme="@style/Theme.MobileOrgActionbar" &gt;
+             &lt;intent-filter&gt;
+                 &lt;action android:name="android.intent.action.MAIN" /&gt;
+-
+                 &lt;category android:name="android.intent.category.LAUNCHER" /&gt;
+-
+-                &lt;action android:name="com.matburt.mobileorg.Synchronizer.action.SYNC_UPDATE" /&gt;
+             &lt;/intent-filter&gt;
+         &lt;/activity&gt;
+         &lt;activity
+             android:name=".Gui.NodeViewActivity"
+             android:label="Org View"
+</pre>
+
+<p>
+<a href="http://stackoverflow.com/questions/4801371/what-does-it-mean-no-launcher-activity-found">(StackOverflow)</a>
+</p>
+
+<p>
+Hope that helps!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

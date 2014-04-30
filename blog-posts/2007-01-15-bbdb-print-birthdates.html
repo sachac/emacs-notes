@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>BBDB: Print birthdates</title>
+<!-- 2014-04-30 Wed 17:47 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">BBDB: Print birthdates</h1>
+<p>
+January 15th, 2007 -
+<a href="http://sachachua.com/blog/p/4142"><a href="http://sachachua.com/blog/p/4142">http://sachachua.com/blog/p/4142</a></a>
+</p>
+
+<p>
+This snippet goes through all the records in my Big Brother Database,
+ prints out birthdate and a link to the record, and then sorts the
+ results.
+</p>
+
+<pre class="example">
+(defun sacha/bbdb-insert-birthdates ()
+  "Insert a list of birthdates, sorted by month.
+For best effect, dates should be of the form yyyy.mm.dd."
+  (insert
+   (with-temp-buffer
+     (mapcar
+      (lambda (rec)
+        (when (bbdb-record-getprop rec 'birthdate)
+          (insert
+           (if (string-match "..\\...$" (bbdb-record-getprop rec 'birthdate))
+               (match-string 0 (bbdb-record-getprop rec 'birthdate))
+             (bbdb-record-getprop rec 'birthdate))
+           " | "
+           (planner-make-link
+            (concat "bbdb://"
+                    (planner-replace-regexp-in-string
+                     " " "." (bbdb-record-name rec)))
+            (bbdb-record-name rec))
+           "\n")))
+      (bbdb-records))
+     (sort-lines nil (point-min) (point-max))
+     (buffer-string)))
+  nil)
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/crm">crm</a>
+</p>
+
+<p>
+Random Emacs symbol: find-tag-noselect &#x2013; Command: Find tag (in current
+tags table) whose name contains TAGNAME.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

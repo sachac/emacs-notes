@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Bugfix: Time estimation</title>
+<!-- 2014-04-30 Wed 17:46 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Bugfix: Time estimation</h1>
+<p>
+December 26th, 2007 -
+<a href="http://sachachua.com/blog/p/4539"><a href="http://sachachua.com/blog/p/4539">http://sachachua.com/blog/p/4539</a></a>
+</p>
+
+<p>
+This is a slightly better version of sacha/org-calculate-free-time
+ that can understand prioritized tasks. Also, if you're working after
+ midnight, it takes into account the need to sleep. That is, it doesn't
+ treat \<sub>now\</sub>_ as the starting point for the free-time calculation
+unless
+ it's after the start time, so if you're up at 12:30 writing Emacs Lisp
+ code, Emacs doesn't assume you've got 450 extra minutes of work time.
+</p>
+
+<p>
+This is what the result looks like:
+</p>
+
+<pre class="example">
+Day-agenda:
+Wednesday 26 December 2007
+   8:00......  --------------------
+  10:00......  --------------------
+  12:00......  --------------------
+ Scheduled:  12:00-21:00  TODO Christmas festivities with W-'s family
+  14:00......  --------------------
+  16:00......  --------------------
+  18:00......  --------------------
+  20:00......  --------------------
+  22:00......  --------------------
+ Scheduled:               TODO [#A] 120 Write Planner and Org comparison for tasks
+ Scheduled:               TODO 30 Start on my letter for 2007
+ Scheduled:               TODO 60 Respond to e-mail
+ Scheduled:               TODO 30 Donate when my charity budget hits $1000
+ Scheduled:               WAITING 30 Send money to Ateneo CS dept
+ In 919 d.:               101 things in 1001 days
+90.0% load: 270 minutes to be scheduled, 300 minutes free, 30 minutes ga
+</pre>
+
+<p>
+And here's the code:
+</p>
+
+<pre class="example">
+(defun sacha/org-agenda-load (match)
+  "Can be included in `org-agenda-custom-commands'."
+  (let ((inhibit-read-only t)
+        (time (sacha/org-calculate-free-time
+               ;; today
+               (calendar-gregorian-from-absolute org-starting-day)
+               ;; now if today AND after starting time, else start of day
+               (if (= org-starting-day
+                      (time-to-days (current-time)))
+                   (max
+                    (let* ((now (decode-time))
+                           (cur-hour (nth 2 now))
+                           (cur-min (nth 1 now)))
+                      (+ (* cur-hour 60) cur-min))
+                    (let ((start (car (elt org-agenda-time-grid 2))))
+                      (+ (* (/ start 100) 60) (% start 100))))
+                 (let ((start (car (elt org-agenda-time-grid 2))))
+                   (+ (* (/ start 100) 60) (% start 100))))
+                 ;; until the last time in my time grid
+               (let ((last (car (last (elt org-agenda-time-grid 2)))))
+                 (+ (* (/ last 100) 60) (% last 100))))))
+    (goto-char (point-max))
+    (insert (format
+             "%.1f%% load: %d minutes to be scheduled, %d minutes free, %d minutes gap"
+             (/ (car time) (* .01 (cdr time)))
+             (car time)
+             (cdr time)
+             (- (cdr time) (car time))))))
+
+(defun sacha/org-calculate-free-time (date start-time end-of-day)
+  "Return a cons cell of the form (TASK-TIME . FREE-TIME) for DATE, given START-TIME and END-OF-DAY.
+DATE is a list of the form (MONTH DAY YEAR).
+START-TIME and END-OF-DAY are the number of minutes past midnight."
+  (save-window-excursion
+  (let ((files org-agenda-files)
+        (total-unscheduled 0)
+        (total-gap 0)
+        file
+        rtn
+        rtnall
+        entry
+        (last-timestamp start-time)
+        scheduled-entries)
+    (while (setq file (car files))
+      (catch 'nextfile
+        (org-check-agenda-file file)
+        (setq rtn (org-agenda-get-day-entries file date :scheduled :timestamp))
+        (setq rtnall (append rtnall rtn)))
+      (setq files (cdr files)))
+    ;; For each item on the list
+    (while (setq entry (car rtnall))
+      (let ((time (get-text-property 1 'time entry)))
+        (cond
+         ((and time (string-match "\\([^-]+\\)-\\([^-]+\\)" time))
+          (setq scheduled-entries (cons (cons
+                                         (save-match-data (appt-convert-time (match-string 1 time)))
+                                         (save-match-data (appt-convert-time (match-string 2 time))))
+                                        scheduled-entries)))
+         ((and time
+               (string-match "\\([^-]+\\)\\.+" time)
+               (string-match "^[A-Z]+ \\(\\[#[A-Z]\\] \\)?\\([0-9]+\\)" (get-text-property 1 'txt entry)))
+          (setq scheduled-entries
+                (let ((start (and (string-match "\\([^-]+\\)\\.+" time)
+                                 (appt-convert-time (match-string 2 time)))))
+                  (cons (cons start
+                              (and (string-match "^[A-Z]+ \\(\\[#[A-Z]\\] \\)?\\([0-9]+\\)" (get-text-property 1 'txt entry))
+                                   (+ start (string-to-number (match-string 2 (get-text-property 1 'txt entry))))))
+                        scheduled-entries))))
+         ((string-match "^[A-Z]+ \\(\\[#[A-Z]\\] \\)?\\([0-9]+\\)" (get-text-property 1 'txt entry))
+          (setq total-unscheduled (+ (string-to-number
+                                      (match-string 2 (get-text-property 1 'txt entry)))
+                                     total-unscheduled)))))
+      (setq rtnall (cdr rtnall)))
+    ;; Sort the scheduled entries by time
+    (setq scheduled-entries (sort scheduled-entries (lambda (a b) (&lt; (car a) (car b)))))
+
+    (while scheduled-entries
+      (let ((start (car (car scheduled-entries)))
+            (end (cdr (car scheduled-entries))))
+      (cond
+       ;; are we in the middle of this timeslot?
+       ((and (&gt;= last-timestamp start)
+             (&lt;= last-timestamp end))
+        ;; move timestamp later, no change to time
+        (setq last-timestamp end))
+       ;; are we completely before this timeslot?
+       ((&lt; last-timestamp start)
+        ;; add gap to total, skip to the end
+        (setq total-gap (+ (- start last-timestamp) total-gap))
+        (setq last-timestamp end)))
+      (setq scheduled-entries (cdr scheduled-entries))))
+    (if (&lt; last-timestamp end-of-day)
+        (setq total-gap (+ (- end-of-day last-timestamp) total-gap)))
+    (cons total-unscheduled total-gap))))
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/org">org</a>
+</p>
+
+<p>
+Random Emacs symbol: gnus-summary-display-while-building - Variable: If
+non-nil, show and update the summary buffer as it's being built.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

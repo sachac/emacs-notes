@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>BBDB tags</title>
+<!-- 2014-04-30 Wed 17:47 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">BBDB tags</h1>
+<p>
+May 6th, 2005 -
+<a href="http://sachachua.com/blog/p/2749"><a href="http://sachachua.com/blog/p/2749">http://sachachua.com/blog/p/2749</a></a>
+</p>
+
+<p>
+Right, that tags thing looks like a good idea. It should be easy to
+ hack into BBDB. I'll need to actually tag people, and then write an
+ Emacs Lisp script that scans through all of the records, gathers them
+ into categories, and then creates the list.
+</p>
+
+<p>
+HEY. This might actually work. Here's a quick test of tags:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">ateneo</td>
+<td class="left">Charles Yeung,<a href="http://lengthofwords.blogspot.com">Sean Uy</a>,<a href="http://optics.blogspot.com/">Ryan Kristoffer Tan</a>,<a href="http://www.ebloggy.com/blog.php?username=fannysy">Stephanie Sy</a>,<a href="http://www.bitdesigns.net/blog.php">Bit Santos</a>,<a href="http://www.thespoke.net/MyBlog/punzie/MyBlog.aspx">Jerome Punzalan</a></td>
+</tr>
+
+<tr>
+<td class="left">pisay</td>
+<td class="left"><a href="http://www.thespoke.net/MyBlog/punzie/MyBlog.aspx">Jerome Punzalan</a>,<a href="http://www.livejournal.com/~eclair/">clair ching</a>,<a href="http://www.engg.upd.edu.ph/~mario/">mario carreon</a></td>
+</tr>
+
+<tr>
+<td class="left">linux</td>
+<td class="left"><a href="http://trouble.free.net.ph">Eric Pareja</a>,<a href="http://www.pikko-software.com/roller/page/jaredflo">Jared Odulio</a>,<a href="http://blog.apc.edu.ph">Chris G. Haravata</a>,<a href="http://lone_geek.tripod.com/geekblog">levi guerrero</a>,Zak B. Elep,<a href="http://www.livejournal.com/~eclair/">clair ching</a>,<a href="http://3w-agility.blogspot.com">Dean Michael Berris</a>,<a href="http://www.unpluggable.com/blog/bloz/">Jan Alonzo</a></td>
+</tr>
+
+<tr>
+<td class="left">blog</td>
+<td class="left">Charles Yeung,<a href="http://lengthofwords.blogspot.com">Sean Uy</a>,<a href="http://optics.blogspot.com/">Ryan Kristoffer Tan</a>,<a href="http://www.ebloggy.com/blog.php?username=fannysy">Stephanie Sy</a>,<a href="http://aadis.de/blog">Aaditya Sood</a>,<a href="http://www.bitdesigns.net/blog.php">Bit Santos</a>,Raven,<a href="http://www.thespoke.net/MyBlog/punzie/MyBlog.aspx">Jerome Punzalan</a>,<a href="http://richip.dhs.org/~richip/blog/day.php">Richard Plana</a>,<a href="http://blogs.salon.com/0000002/">Phillip Pearson</a>,<a href="http://trouble.free.net.ph">Eric Pareja</a>,<a href="http://www.pikko-software.com/roller/page/jaredflo">Jared Odulio</a>,<a href="http://programmingprogamer.blogspot.com/">Celsus Kintanar</a>,<a href="http://www.livejournal.com/~cyberlizard/">Jan Michael Ibanez</a>,<a href="http://mah.everybody.org/weblog/">Mark A. Hershberger</a>,<a href="http://blog.apc.edu.ph">Chris G. Haravata</a>,<a href="http://lone_geek.tripod.com/geekblog">levi guerrero</a>,<a href="http://www.chasys.net/index.php?blogid=1">Cha Gascon</a>,Sim Gamboa, III,<a href="http://mistervader.blogspot.com">Marcelle Fabie</a>,Zak B. Elep,<a href="http://www.dme.org/blog">David Edmondson</a>,<a href="http://elfstone.blogspot.com">edelgado</a>,<a href="http://villageidiotsavant.blogspot.com">Dominique Cimafranca</a>,<a href="http://www.livejournal.com/~eclair/">clair ching</a>,<a href="http://subluminal.livejournal.com/">Sean Champ</a>,<a href="http://3w-agility.blogspot.com">Dean Michael Berris</a>,<a href="http://blog.dynatica.com/">Jason Banico</a>,<a href="http://genehack.net/diary">John S. J. Anderson</a>,<a href="http://www.unpluggable.com/blog/bloz/">Jan Alonzo</a></td>
+</tr>
+
+<tr>
+<td class="left">debian</td>
+<td class="left">Federico Sevilla III,Paul Lussier,Angus Lees,Frederik Fouvry,Zak B. Elep,<a href="http://math.utexas.edu/~jcorneli/">Joe Corneli</a>,<a href="http://www.livejournal.com/~eclair/">clair ching</a>,<a href="http://subluminal.livejournal.com/">Sean Champ</a>,Miles Bader,<a href="http://www.unpluggable.com/blog/bloz/">Jan Alonzo</a>,Jesse Alama</td>
+</tr>
+
+<tr>
+<td class="left">emacs</td>
+<td class="left">Manoj Srivastava,Paul Lussier,Lukhas,Angus Lees,<a href="http://www.delysid.org/cgi-bin/moin.cgi/MarioLang">Mario Lang</a>,<a href="http://www.livejournal.com/~cyberlizard/">Jan Michael Ibanez</a>,<a href="http://mah.everybody.org/weblog/">Mark A. Hershberger</a>,Frederik Fouvry,<a href="http://www.livejournal.com/~eclair/">clair ching</a>,Miles Bader,Ethan Aubin,<a href="http://genehack.net/diary">John S. J. Anderson</a>,Jesse Alama</td>
+</tr>
+
+<tr>
+<td class="left">planner</td>
+<td class="left">Paul Lussier,<a href="http://mah.everybody.org/weblog/">Mark A. Hershberger</a>,Frederik Fouvry,Zak B. Elep,<a href="http://math.utexas.edu/~jcorneli/">Joe Corneli</a>,<a href="http://www.livejournal.com/~eclair/">clair ching</a>,Ethan Aubin,<a href="http://genehack.net/diary">John S. J. Anderson</a>,Jesse Alama</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Use C-o to add a “tags” field to your BBDB records. This should be a
+space-delimited list of tags (case-sensitive for now).
+ Call M-x sacha/planner-bbdb-insert-tags-alist to produce a list like
+the one above.
+</p>
+
+<pre class="example">
+(defun sacha/bbdb-get-tags (record)
+  "Return the tags for RECORD as a list."
+  (let ((tags (bbdb-record-getprop record 'tags)))
+    (when tags (split-string tags))))
+
+(defun sacha/bbdb-test-tags (query tags)
+  "Return non-nil if QUERY is a subset of TAGS."
+  (let ((result t))
+    (while (and result query)
+      (unless (member (car query) tags)
+        (setq result nil))
+      (setq query (cdr query)))
+    result))
+
+(defun sacha/bbdb-search-tags-internal (records tags)
+  "Return a list of RECORDS matching TAGS."
+  (when (stringp tags) (setq tags (split-string tags)))
+  (let (result)
+    (while records
+      (when (sacha/bbdb-test-tags tags
+                                  (sacha/bbdb-get-tags (car records)))
+        (setq result (cons (car records) result)))
+      (setq records (cdr records)))
+    result))
+
+(defun sacha/bbdb-search-tags (tags)
+  "Display all the records that match TAGS."
+  (interactive "MTags: ")
+  (bbdb-display-records (sacha/bbdb-search-tags-internal (bbdb-records) tags)))
+
+(defun sacha/planner-bbdb-link (record)
+  "Return a link to RECORD."
+  (or (bbdb-record-getprop record 'plan)
+      ;; From a BBDB entry with a plan page; use that. Yay!
+      (concat "[[bbdb://"
+              (emacs-wiki-replace-regexp-in-string
+               " " "."
+               (bbdb-record-name record))
+              "][" (bbdb-record-name record)
+              "]]")))
+
+(defun sacha/bbdb-get-tags-index ()
+  "Return a list of tags and records."
+  (let ((tags-alist '())
+        (records (bbdb-records))
+        tags
+        entry
+        list
+        link)
+    (while records
+      (setq tags (sacha/bbdb-get-tags (car records)))
+      (while tags
+        (setq entry (assoc (car tags) tags-alist))
+        (setq list (cdr entry))
+        (add-to-list 'list (car records))
+        (if entry
+            (setcdr entry list)
+          (add-to-list 'tags-alist (cons (car tags) list)))
+        (setq tags (cdr tags)))
+      (setq records (cdr records)))
+    tags-alist))
+
+(defun sacha/planner-bbdb-insert-tags-alist (&amp;optional tag-alist)
+  "Insert TAG-ALIST into the current buffer."
+  (interactive)
+  (unless tag-alist (setq tag-alist (sacha/bbdb-get-tags-index)))
+  (insert (mapconcat
+           (lambda (item)
+             (concat (car item) " | "
+                     (mapconcat
+                      'sacha/planner-bbdb-link
+                      (cdr item)
+                      ",")))
+           tag-alist
+           "\n")))
+</pre>
+
+<p>
+To think that only took me an hour of leisurely coding (including
+tagging my contact information)&#x2026;
+</p>
+
+<p>
+ÃƒÂ¦Ã‚Â˜Ã‚Â¨ÃƒÂ¥Ã‚Â¹Ã‚Â´ÃƒÂ¥Ã‚ÂºÃ‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â?Ã‚Â‹ÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¥Ã‚ÂˆÃ‚Â©ÃƒÂ§Ã‚Â›Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ¤Ã‚Â»Ã‚ÂŠÃƒÂ¥Ã‚Â¹Ã‚Â´ÃƒÂ¥Ã‚ÂºÃ‚Â¦ÃƒÂ¥Ã‚ÂˆÃ‚Â†ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â‚Ã‚ÂŠÃƒÂ£Ã‚Â‚Ã‚Â‚ÃƒÂ¯Ã‚Â¼Ã‚Â‘ÃƒÂ¯Ã‚Â¼Ã‚Â?ÃƒÂ¯Ã‚Â¼Ã‚Â&#x2026;ÃƒÂ¨Ã‚Â¿Ã‚Â‘ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ¥Ã‚Â¤Ã‚ÂšÃƒÂ£Ã‚Â?Ã‚Â‹ÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â€Ã‚Â‚
+Profit on computers for the previous year was nearly ten percent higher
+than the current year.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/productivity">productivity</a>,
+<a href="http://www.technorati.com/tag/organizer">organizer</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

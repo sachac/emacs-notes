@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>A day in a life with Org</title>
+<!-- 2014-04-30 Wed 17:47 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">A day in a life with Org</h1>
+<p>
+December 22nd, 2007 -
+<a href="http://sachachua.com/blog/p/4527"><a href="http://sachachua.com/blog/p/4527">http://sachachua.com/blog/p/4527</a></a>
+</p>
+
+<p>
+I spend most of my day working on or near a computer: writing,
+ replying to e-mail, making phone calls, and so on. I use Lotus Notes
+ for my calendar because people need to be able to check my
+ availability for meetings. I use Emacs to keep track of what I need to
+ do, because it makes planning my day so much easier.
+</p>
+
+<p>
+The first thing I do each morning is quickly go through my e-mail
+ looking for action items. Instead of leaving them in my mail inbox, I
+ create tasks for each of the items in my Org to-do list. I add notes
+ so that I don't have to find the e-mails again. I also add other tasks
+ that come to mind. I add time estimates whenever I can.
+</p>
+
+<p>
+This step is also a good time to review my personal objectives and
+ proactively set myself some tasks so that I can move towards them. For
+ example, if I want to learn more about career growth, I can't wait for
+ e-mail from someone else telling me what to do. I have to think of
+ something to do, and build time into my day in order to do it. I put
+ all those tasks into my task inbox, which is just a header at the
+ bottom of my task list, like this:
+</p>
+
+<p>
+(remove the leading space)
+</p>
+
+<pre class="example">
+* Inbox
+** TODO ....
+** TODO ....
+</pre>
+
+<p>
+Now that I've captured all these tasks, I review my day. What are my
+ appointments? What items are due today? I double-check this against
+ my official calendar to make sure I haven't missed any
+ appointments. After I make sure that the important tasks and
+ appointments are there, I start filling in gaps, scheduling some of my
+ important-but-not-urgent tasks onto today.
+</p>
+
+<p>
+After I've decided what to do that day, I review the rest of the
+ week. Does my workload look reasonable? Are there upcoming deadlines?
+ I try to make sure that all of my inbox items have scheduled dates. I
+ also review my list of waiting tasks to see if I need to follow up
+ with anyone.
+</p>
+
+<p>
+After I've gotten the tasks all down and scheduled, it's easy to
+ organize them under the appropriate headings. Billable tasks are filed
+ under the projects they belong to, and unbilled tasks are categorized
+ by how I need to report them and how I organize them into personal
+ projects. Organizing tasks into categories AFTER I schedule them means
+ less jumping around looking for unscheduled tasks.
+</p>
+
+<p>
+This process (e-mail scan and daily and weekly overview) takes me
+ around 15 minutes, and helps keep me sane.
+</p>
+
+<p>
+I try to keep my mornings free for creative brainstorming and heavy
+ lifting. Once I've reviewed my plans for the day and the week, I pick
+ a task and work on it for an hour or so. When I mark the task as
+ STARTED (“t” or “C-u t” from the Org agenda view), the clock
+ automatically starts ticking. When I mark the task as WAITING or DONE,
+ the clock automatically stops. Org timeclocking makes it easier for me
+ to report my hours at the end of each week. I can also compare the
+ actual times against my estimates, helping me improve my accuracy.
+</p>
+
+<p>
+This process is my morning ritual: putting tasks into my Org agenda,
+ organizing them, reviewing and planning from my calendar, and then
+ getting started by working on something useful \<sub>before\</sub>_ I spend time
+ catching up with the blogosphere or responding to my mail. It's
+ complemented by my afternoon ritual of reviewing my completed tasks
+ with the Org agenda logbook and possibly blogging about some lessons
+ learned.
+</p>
+
+<p>
+Here's how you can use Org to do the same, assuming that you've set it
+ up already.
+</p>
+
+<p>
+Morning ritual:
+</p>
+
+<p>
+<b>Read your e-mail and create tasks.</b> Open your Org file. If it's not yet
+in your Org agenda list, add it with C-c [ (org-agenda-file-to-front).
+</p>
+
+<p>
+You can jump to the end of the file using M-&gt; (end-of-buffer) and
+ add tasks just by typing "** TODO " and the task name. If you read
+ e-mail in Emacs (and there are plenty of good reasons to do so!), you
+ can set up Remember Mode to make it easy to create hyperlinked tasks
+ from mail and other sources. Use C-c C-d (org-deadline) to note
+ deadlines for the current task, and use C-c C-s (org-schedule) to note
+ when a task needs to be done on a certain date.
+</p>
+
+<p>
+<b>Review your projects and create tasks.</b> Tag projects like this:
+</p>
+
+<pre class="example">
+** Learn about career options within the company     :PROJECT:
+</pre>
+
+<p>
+Then you can use a custom agenda view to see your agenda for today, your
+projects, and other useful information.
+ Here's something you can add to your ~/.emacs:
+</p>
+
+<pre class="example">
+(global-set-key (kbd "C-c a") 'org-agenda)
+(setq org-agenda-custom-commands
+      '(("a" "My custom agenda"
+     ((org-agenda-list nil nil 1)
+      (tags "PROJECT-WAITING")
+      (tags-todo "WAITING")
+      (tags-todo "-MAYBE")))))
+</pre>
+
+<p>
+You can then use C-c a a (org-agenda, custom command) to get an overview
+of your day/week, your
+ current projects, your WAITING tasks, and your active tasks.
+</p>
+
+<p>
+<b>Review your day.</b> Use C-c a a (org-agenda, custom command) to see
+ your appointments for the day, and open your Org file in another
+ buffer. Use C-c C-s (org-schedule) in your Org file to schedule some
+ of your inbox tasks for the day and some of your tasks for other days
+ in the week. You can use Shift-right and Shift-left to reschedule
+ tasks from the agenda view. Use "w" in the agenda to switch to a
+ weekly view, and "d" to switch to a daily view.
+</p>
+
+<p>
+If you want to see how your time estimates fit into your workday with
+ a load estimate like this:
+</p>
+
+<pre class="example">
+15.8% load: 90 minutes to be scheduled, 570 minutes free, 480 minutes gap
+</pre>
+
+<p>
+add estimated number of minutes to your tasks like this:
+</p>
+
+<pre class="example">
+** TODO 60 Browse through a book
+** TODO 15 Scan my RSS feeds
+</pre>
+
+<p>
+and use the following code in your ~/.emacs:
+</p>
+
+<pre class="example">
+(defun sacha/org-show-load ()
+  "Show my unscheduled time and free time for the day."
+  (interactive)
+  (let ((time (sacha/org-calculate-free-time
+               ;; today
+               (calendar-gregorian-from-absolute (time-to-days (current-time)))
+               ;; now
+               (let* ((now (decode-time))
+                      (cur-hour (nth 2 now))
+                      (cur-min (nth 1 now)))
+                 (+ (* cur-hour 60) cur-min))
+               ;; until the last time in my time grid
+               (let ((last (car (last (elt org-agenda-time-grid 2)))))
+                 (+ (* (/ last 100) 60) (% last 100))))))
+    (message "%.1f%% load: %d minutes to be scheduled, %d minutes free, %d minutes gap\n"
+            (/ (car time) (* .01 (cdr time)))
+            (car time)
+            (cdr time)
+            (- (cdr time) (car time)))))
+
+(defun sacha/org-agenda-load (match)
+  "Can be included in `org-agenda-custom-commands'."
+  (let ((inhibit-read-only t)
+        (time (sacha/org-calculate-free-time
+               ;; today
+               (calendar-gregorian-from-absolute org-starting-day)
+               ;; now if today, else start of day
+               (if (= org-starting-day
+                      (time-to-days (current-time)))
+                   (let* ((now (decode-time))
+                          (cur-hour (nth 2 now))
+                          (cur-min (nth 1 now)))
+                     (+ (* cur-hour 60) cur-min))
+                 (let ((start (car (elt org-agenda-time-grid 2))))
+                   (+ (* (/ start 100) 60) (% start 100))))
+                 ;; until the last time in my time grid
+               (let ((last (car (last (elt org-agenda-time-grid 2)))))
+                 (+ (* (/ last 100) 60) (% last 100))))))
+    (goto-char (point-max))
+    (insert (format
+             "%.1f%% load: %d minutes to be scheduled, %d minutes free, %d minutes gap\n"
+             (/ (car time) (* .01 (cdr time)))
+             (car time)
+             (cdr time)
+             (- (cdr time) (car time))))))
+
+(defun sacha/org-calculate-free-time (date start-time end-of-day)
+  "Return a cons cell of the form (TASK-TIME . FREE-TIME) for DATE, given START-TIME and END-OF-DAY.
+DATE is a list of the form (MONTH DAY YEAR).
+START-TIME and END-OF-DAY are the number of minutes past midnight."
+  (save-window-excursion
+  (let ((files org-agenda-files)
+        (total-unscheduled 0)
+        (total-gap 0)
+        file
+        rtn
+        rtnall
+        entry
+        (last-timestamp start-time)
+        scheduled-entries)
+    (while (setq file (car files))
+      (catch 'nextfile
+        (org-check-agenda-file file)
+        (setq rtn (org-agenda-get-day-entries file date :scheduled :timestamp))
+        (setq rtnall (append rtnall rtn)))
+      (setq files (cdr files)))
+    ;; For each item on the list
+    (while (setq entry (car rtnall))
+      (let ((time (get-text-property 1 'time entry)))
+        (cond
+         ((and time (string-match "\\([^-]+\\)-\\([^-]+\\)” time))
+          (setq scheduled-entries (cons (cons
+                                         (save-match-data (appt-convert-time (match-string 1 time)))
+                                         (save-match-data (appt-convert-time (match-string 2 time))))
+                                        scheduled-entries)))
+         ((and time
+               (string-match “\\([^-]+\\)\\.+” time)
+               (string-match “^[A-Z]+ \\(\\[#[A-Z]\\]\\)? \\([0-9]+\\)” (get-text-property 1 ‘txt entry)))
+          (setq scheduled-entries
+                (let ((start (and (string-match “\\([^-]+\\)\\.+” time)
+                                 (appt-convert-time (match-string 1 time)))))
+                  (cons (cons start
+                              (and (string-match “^[A-Z]+ \\(\\[#[A-Z]\\]\\)? \\([0-9]+\\) ” (get-text-property 1 ‘txt entry))
+                                   (+ start (string-to-number (match-string 2 (get-text-property 1 ‘txt entry))))))
+                        scheduled-entries))))
+         ((string-match “^[A-Z]+ \\([0-9]+\\)” (get-text-property 1 ‘txt entry))
+          (setq total-unscheduled (+ (string-to-number
+                                      (match-string 1 (get-text-property 1 ‘txt entry)))
+                                     total-unscheduled)))))
+      (setq rtnall (cdr rtnall)))
+    ;; Sort the scheduled entries by time
+    (setq scheduled-entries (sort scheduled-entries (lambda (a b) (&lt; (car a) (car b)))))
+
+    (while scheduled-entries
+      (let ((start (car (car scheduled-entries)))
+            (end (cdr (car scheduled-entries))))
+      (cond
+       ;; are we in the middle of this timeslot?
+       ((and (&gt;= last-timestamp start)
+             (&lt; = last-timestamp end))
+        ;; move timestamp later, no change to time
+        (setq last-timestamp end))
+       ;; are we completely before this timeslot?
+       ((&lt; last-timestamp start)
+        ;; add gap to total, skip to the end
+        (setq total-gap (+ (- start last-timestamp) total-gap))
+        (setq last-timestamp end)))
+      (setq scheduled-entries (cdr scheduled-entries))))
+    (if (&lt; last-timestamp end-of-day)
+        (setq total-gap (+ (- end-of-day last-timestamp) total-gap)))
+    (cons total-unscheduled total-gap))))
+</pre>
+
+<p>
+Then you can add it to your custom agenda by using this in your
+~/.emacs:
+</p>
+
+<pre class="example">
+;; Change your existing org-agenda-custom-commands
+(setq org-agenda-custom-commands
+      '(("a" "My custom agenda"
+     ((org-agenda-list nil nil 1)
+          (sacha/org-agenda-load)    ; ADD THIS LINE
+      (tags "PROJECT-WAITING")
+      (tags-todo "WAITING")
+      (tags-todo "-MAYBE")))))
+</pre>
+
+<p>
+<b>Organize your inbox.</b> Now that you've scheduled your tasks, move them
+ under the appropriate headings. You can use TAB to collapse a task
+ into a single line, then C-k (kill-line) to cut it and C-y to paste it
+ elsewhere. I like using C-r (isearch-backward) to search for the right
+ place in the file.
+</p>
+
+<p>
+<b>Get to work!</b> You may find it useful to have four states for a task:
+TODO, STARTED, WAITING, and DONE.
+ It's also handy to type in a note when you mark a task as done. To set
+that up, just add the following to the beginning of your Org file:
+</p>
+
+<pre class="example">
+#+STARTUP: lognotedone
+#+SEQ_TODO: TODO STARTED WAITING DONE
+</pre>
+
+<p>
+Then you can use "t" (org-todo) from the Org agenda view or C-c C-t
+ (org-todo) from the Org file to mark a TODO task as STARTED, or to
+ move from one state to the other. To move to a specific state (DONE
+ from STARTED, for example), either edit it directly or use C-u before
+ the org-todo command.
+</p>
+
+<p>
+Use the following code to automatically clock in when you start a
+ task, start a task when you clock in, and clock out of a task when you
+ mark it as waiting.
+</p>
+
+<pre class="example">
+(defun sacha/org-clock-in-if-starting ()
+  "Clock in when the task is marked STARTED."
+  (when (and (string= state "STARTED")
+             (not (string= last-state state)))
+    (org-clock-in)))
+(add-hook 'org-after-todo-state-change-hook
+      'sacha/org-clock-in-if-starting)
+(defadvice org-clock-in (after sacha activate)
+  "Set this task's status to 'STARTED'."
+  (org-todo "STARTED"))
+
+(defun sacha/org-clock-out-if-waiting ()
+  "Clock in when the task is marked STARTED."
+  (when (and (string= state "WAITING")
+             (not (string= last-state state)))
+    (org-clock-out)))
+(add-hook 'org-after-todo-state-change-hook
+      'sacha/org-clock-out-if-waiting)
+</pre>
+
+<p>
+<b>Review your accomplishments at the end of the day.</b> You can use the
+ Org agenda logbook to see all your completed tasks. From an Org agenda
+ view such as the custom one you set up for C-c a a, type "l"
+ (lowercase L). You can then see your completed TODOs.
+</p>
+
+<p>
+To review your time usage, you can use C-c C-x C-d (org-clock-display)
+ from an Org buffer to see time totals according to the tree, or you
+ can add a table to your custom agenda view. Add the following to your
+ ~/.emacs:
+</p>
+
+<pre class="example">
+(defun sacha/org-agenda-clock (match)
+  ;; Find out when today is
+  (let* ((inhibit-read-only t))
+    (goto-char (point-max))
+    (org-dblock-write:clocktable
+     `(:scope agenda
+       :maxlevel 4
+       :tstart ,(format-time-string "%Y-%m-%d" (calendar-time-from-absolute (1+ org-starting-day) 0))
+       :tend ,(format-time-string "%Y-%m-%d" (calendar-time-from-absolute (+ org-starting-day 2) 0))))))
+</pre>
+
+<p>
+and then add sacha/org-agenda-clock to your custom agenda in
+ org-agenda-custom-commands in your ~/.emacs file, like this:
+</p>
+
+<pre class="example">
+;; Change your existing org-agenda-custom-commands
+(setq org-agenda-custom-commands
+      '(("a" "My custom agenda"
+     ((org-agenda-list nil nil 1)
+          (sacha/org-agenda-load)
+          (sacha/org-agenda-clock)    ; Add this line
+      (tags "PROJECT-WAITING")
+      (tags-todo "WAITING")
+      (tags-todo "-MAYBE")))))
+</pre>
+
+<p>
+You can then use C-c a a (org-agenda, custom command) to see a table
+summarizing your clocked-in time for that day.
+</p>
+
+<p>
+END RESULT: You can add tasks, quickly get an overview of your day and
+ week, reschedule tasks until you've got a realistic load, keep track
+ of your progress, and review your accomplishments.
+</p>
+
+<p>
+Org keeps me sane. =) The code above only looks like a lot of
+customization, but it's well worth it.
+</p>
+
+<p>
+Next, I'm going to figure out how to calculate my velocity, or estimated
+time divided by actual time taken&#x2026; =)
+</p>
+
+<p>
+(Thanks to <a href="http://www.petebevin.com/">Pete Bevin</a> for catching a
+typo! =) )
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/wickedcoolemacs">wickedcoolemacs</a>,
+<a href="http://www.technorati.com/tag/org">org</a>,
+<a href="http://www.technorati.com/tag/tasks">tasks</a>,
+<a href="http://www.technorati.com/tag/book">book</a>
+</p>
+
+<p>
+Random Emacs symbol: floor - Function: Return the largest integer no
+greater than ARG.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>
