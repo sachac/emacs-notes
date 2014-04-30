@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Crazy idea for Emacs: Random Emacs taglines</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Crazy idea for Emacs: Random Emacs taglines</h1>
+<p>
+October 2nd, 2006 -
+<a href="http://sachachua.com/blog/p/3905"><a href="http://sachachua.com/blog/p/3905">http://sachachua.com/blog/p/3905</a></a>
+</p>
+
+<p>
+Would anyone happen to know of a way to select a random symbol with a
+ description?
+</p>
+
+<p>
+Actually. Hmm.
+</p>
+
+<pre class="example">
+(progn
+  (apropos ".")
+  (write-file "~/.taglines.random-emacs-symbols")
+  (delete-matching-lines "Plist")
+  (delete-matching-lines "not documented")
+  (replace-regexp "\n  " " - " nil)
+  (delete-non-matching-lines " - "))
+</pre>
+
+<p>
+Et voila! Random Emacs taglines together with the code:
+</p>
+
+<pre class="example">
+(defun sacha/random-tagline (&amp;optional file)
+  "Return a random tagline and put it in the kill ring."
+  (interactive)
+  (with-current-buffer (find-file-noselect (or file "~/.taglines"))
+    (goto-char (random (point-max)))
+    (let ((string
+           (buffer-substring (line-beginning-position)
+                             (line-end-position))))
+      (kill-new string)
+      string)))
+
+(defadvice remember (after sacha-tagline activate)
+  "Add random tagline."
+  (save-excursion
+  (goto-char (point-max))
+  (insert "\n\nRandom Emacs symbol: "
+          (sacha/random-tagline "~/.taglines.random-emacs-symbols")
+          "\n\n")))))
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>,
+<a href="http://www.technorati.com/tag/elisp">elisp</a>
+</p>
+
+<p>
+Random Emacs symbol: eshell-remove-entries &#x2013; Function: From PATH,
+remove all of the given FILES, perhaps interactively.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

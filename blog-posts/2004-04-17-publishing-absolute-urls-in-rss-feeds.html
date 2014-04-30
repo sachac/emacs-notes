@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Publishing absolute URLs in RSS feeds</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Publishing absolute URLs in RSS feeds</h1>
+<p>
+April 17th, 2004 -
+<a href="http://sachachua.com/blog/p/1981"><a href="http://sachachua.com/blog/p/1981">http://sachachua.com/blog/p/1981</a></a>
+</p>
+
+<ul class="org-ul">
+<li></li>
+</ul>
+<p>
+<a href="http://sachachua.com/notebook/emacs/emacs-wiki-config.el">../../notebook/emacs/emacs-wiki-config.el</a>
+</p>
+<ul class="org-ul">
+<li></li>
+</ul>
+<p>
+<a href="http://sachachua.com/notebook/emacs/planner-config.el">../../notebook/emacs/planner-config.el</a>
+</p>
+
+<pre class="example">
+(defvar sacha/emacs-wiki-use-absolute-url-flag nil
+  "Non-nil means publish absolute URLs.")
+
+(defadvice planner-rss-add-note (around sacha/absolute-urls activate)
+  "Publish absolute URLs."
+  (let ((sacha/emacs-wiki-use-absolute-url-flag t))
+    ad-do-it))
+
+(require 'w3m)
+(defadvice emacs-wiki-markup-link (around sacha activate)
+  "Resolve the matched wiki-link into its ultimate  form.
+Images used the  tag."
+  ;; avoid marking up urls that appear to be inside existing HTML
+  (when (and (not (eq (char-after (point)) ?\"))
+             (not (eq (char-after (point)) ?\&gt;)))
+    (let* (string
+           (wiki-link (match-string 0))
+           (url (emacs-wiki-link-url wiki-link))
+           (name (emacs-wiki-escape-html-string
+                  (emacs-wiki-wiki-visible-name wiki-link))))
+      (when url
+        (unless (emacs-wiki-wiki-url-p url)
+          (setq url
+                (file-relative-name
+                 url
+                 (if (string-match "public_html" url)
+                     "../../public_html/notebook/plans"
+                   "../../notebook/plans")))
+          (when sacha/emacs-wiki-use-absolute-url-flag
+            (setq url
+                  (w3m-expand-url
+                   url
+                   "http://sacha.free.net.ph/notebook/wiki")))))
+      (setq string
+            (if (null url)
+                (if (and emacs-wiki-serving-p
+                         (emacs-wiki-editable-p
+                          (emacs-wiki-wiki-base wiki-link)))
+                    (format
+                     "%s"
+                     (emacs-wiki-wiki-base wiki-link) name)
+                  (format "%s"
+                          emacs-wiki-maintainer name))
+              (if (save-match-data
+                    (string-match emacs-wiki-image-regexp url))
+                  (if (string-equal url name)
+                      (format "" url)
+                    (format "" url name))
+                (if (save-match-data
+                      (string-match emacs-wiki-image-regexp name))
+                    (format "" url name)
+                  (format "%s" url name)))))
+      (add-text-properties 0 (1- (length string))
+                           '(rear-nonsticky (read-only) read-only
+                                            t) string)
+      (setq ad-return-value string))))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

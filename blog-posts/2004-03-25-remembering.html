@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Remembering</title>
+<!-- 2014-04-30 Wed 17:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Remembering</h1>
+<p>
+March 25th, 2004 -
+<a href="http://sachachua.com/blog/p/1924"><a href="http://sachachua.com/blog/p/1924">http://sachachua.com/blog/p/1924</a></a>
+</p>
+
+<p>
+A friend and I were thinking of papers to submit to the Loyola Schools
+ Review. I joked, “What could I write about
+<a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a>?” It's
+an
+ organizer that I happen to really like, but which I don't think I can
+ get other teachers to adopt (Emacs'll scare the heck out of them!).
+</p>
+
+<p>
+I thought about why I liked
+<a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a>. Planner
+as a TODO manager
+ isn't particularly special. Although I can assign tasks to categories
+ and so see a breakdown of what projects are taking up my time,
+ Evolution and Microsoft Outlook provide more powerful task support. In
+ other task managers, you can e-mail tasks, assign multiple categories
+ and fill in all sorts of metadata. You can even synchronize your tasks
+ with devices like a phone or PDA. So why use Planner?
+</p>
+
+<p>
+I realized that integration into my way of life and automatic context
+ clues are what really make planner tasks worth it for me. I don't have
+ to switch to another application to create a task. I can just hit a
+ keyboard shortcut. Planner uses a minibuffer to get the task
+ description. My windows are not rearranged in any way, and I can look
+ at the data that's relevant to a task. Not only that, tasks
+ automatically pick up context clues, like whom I'm talking to on IRC
+ or the file I'm editing at the moment. This cuts down on the explicit
+ context I need to include and makes it easier for me to bring up the
+ task again.
+</p>
+
+<p>
+As a scheduler,
+<a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a> is also
+not particularly distinguished.
+ Sure, it can display my ~/diary, but for that matter so can M-x diary.
+ Evolution and Outlook can give me a more graphical view of my time,
+ sync with my PDA, and coordinate my schedule with other people. Those
+ applications support detailed schedule entries with powerful cyclic
+ options. On the other hand,
+<a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a> gives me
+a personal, plain
+ text view and (at least the way I use it) requires me to edit a
+ separate file to add new appointments. However, it does have one
+ advantage &#x2013; my schedule is always loaded. I used to use Outlook on
+ Windows, but having my schedule in a separate application meant that I
+ actually looked at it very rarely, as I had turned off reminders
+ because they got annoying.
+</p>
+
+<p>
+<a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a>‘s notes,
+however, are what really convinced me. I can hit
+ a keyboard shortcut from anywhere and type my notes into a buffer
+ which automatically keeps context information. After typing the note,
+ I can then categorize it. I think that the critical thing here is that
+ interruptions&#x2014;fleeting thoughts&#x2014;don't break my flow. I can just pop
+ up a remember buffer, stow that thought away somewhere, and go back to
+ it whenever I want. In contrast, creating a note in Outlook means
+ switching out of my application, making a couple of keystrokes, typing
+ the note in, and then switching back. The context switches make it
+ hard to keep track of where I am and what I'm supposed to remember.
+ Not only that, I need to enter context by hand. Even though I can
+ color my notes and reorganize them in Outlook, I find the context
+ switch too expensive. I used to keep notes in other knowledge
+ management tools as well. Some applications allowed me to
+ drag-and-drop links into the current note, and that was cool. But
+ that required a manual action, and those applications didn't feel
+ integrated into my way of working.
+</p>
+
+<p>
+I guess that's why I like
+<a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a>. Unlike
+other organizers which
+ don't know anything about the applications I use,
+<a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a> tries
+ its best to integrate into the way I work, and it's easy to extend.
+ Fortunately I do almost all my work in Emacs, so I can think of my
+ organizer as integrated into my e-mail client, Internet Relay Chat
+ client, web browser, file editor and even games. It automatically
+ picks up context clues from these applications and allows me to easily
+ jump back to relevant files. It doesn't distract me. It allows me to
+ key in data and then it gets out of my way.
+</p>
+
+<p>
+The processing that happens in the background (publish to RSS and PHP
+ for me) is a bonus, and publishing my task list and notes online has
+ greatly helped me. It gives other people a way to see what I'm working
+ on and what I've planned for the future. Occasionally people write in
+ with additional resources and helpful tips.
+</p>
+
+<p>
+This made me wonder how to integrate it with more applications and
+ make it available to more people. Yes, even the vi users and the
+ non-Linux/Un*x geeks. Here are some of the thoughts that went through
+ my head.
+</p>
+
+<ul class="org-ul">
+<li>What if everyone could have the equivalent of M-x remember even if
+</li>
+</ul>
+
+<blockquote>
+<p>
+they're not using Emacs?
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if we could capture context from any application?
+</li>
+
+<li>What if remembered thoughts could have multiple categories and
+</li>
+</ul>
+
+<blockquote>
+<p>
+could be reorganized later?
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if we could use statistical methods to suggest categories for
+</li>
+</ul>
+
+<blockquote>
+<p>
+text and find related items?
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if whenever you interacted with the system, related notes would
+</li>
+</ul>
+
+<blockquote>
+<p>
+show up? When you open a file, browse a page or look at a contact, a
+ sidebar could allow you to quickly jump to related topics.
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if you could visualize your remembered thoughts to see how
+</li>
+</ul>
+
+<blockquote>
+<p>
+they cluster around certain topics?
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if you could perform powerful search operations on
+</li>
+</ul>
+
+<blockquote>
+<p>
+remembered thoughts?
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if it could pick up even more context clues, tying together
+</li>
+</ul>
+
+<blockquote>
+<p>
+different applications? For example, if you do your e-mail in Eudora
+ but keep your main contact information in Outlook, wouldn't it be
+ nice if remembering from an e-mail also linked in the business card
+ from Outlook?
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if we could select some of these remembered thoughts and
+</li>
+</ul>
+
+<blockquote>
+<p>
+publish them in different formats, automatically or manually?
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if we could share our stream of remembered thoughts with other
+</li>
+</ul>
+
+<blockquote>
+<p>
+people?
+</p>
+</blockquote>
+
+<ul class="org-ul">
+<li>What if computers could generate remembered thoughts as well, and
+</li>
+</ul>
+
+<blockquote>
+<p>
+we could select which ones we'd like to include in our streams?
+</p>
+</blockquote>
+
+<p>
+The more I think about it, the more I feel that this is worth studying
+ further. If we develop this idea, other people can benefit from it -
+ not just those who incidentally use it in the course of using
+ <a href="http://sachachua.com/notebook/wiki/PlannerMode">PlannerMode</a>! John
+Wiegley was onto something good here, and it'd be a
+ shame to keep it only within a niche community. I'd like to make it
+ easy for my mom to use this. =)
+</p>
+
+<p>
+For my MS degree, I want to develop a framework for remembering
+ thoughts from different applications. This means separating the
+ front-end, the back-end, and the context gathering functions. Right
+ now, everything is within Emacs. I'd like to split it up so that
+ people using windowing environments like GNOME or KDE can get a nice
+ dialog box if they want and people using other editors on the console
+ can use their favorite editor to add notes. I'd like to split the
+ backend up so that people can remember to SQL databases, plain text
+ files, mail&#x2014;anything and everything. I'd like to split the context
+ gathering up so that application developers can easily hook into the
+ system.
+</p>
+
+<p>
+For my PhD, I want to look into managing all of this information.
+ How do I find relevant documents now that I'll be capturing
+ vastly more information? How can I make browsing my personal data
+ store easier? How does it change my work style? Can I think of
+ interacting with my computer&#x2014;working on e-mail, writing documents,
+ etc.&#x2014;as interacting with a stream of remembered thoughts? Can it be
+ my primary interface? If we shared our remembered thoughts with other
+ people, how would that affect the way we work?
+</p>
+
+<p>
+Related projects and concepts:
+</p>
+
+<ul class="org-ul">
+<li>Yale's Lifestreams project (concept of interaction with
+</li>
+</ul>
+
+<blockquote>
+<p>
+time-ordered data in streams)
+</p>
+<ul class="org-ul">
+<li>MIT's Remembrance Agent (implicit queries for relevant files)
+</li>
+<li>MIT's Haystack
+</li>
+<li>Zoe
+</li>
+<li>Personal information managers
+</li>
+<li>Knowledge managers
+</li>
+<li>Information retrieval
+</li>
+<li>Intertwingularity
+</li>
+<li>Web logging
+</li>
+</ul>
+</blockquote>
+
+<p>
+<a href="http://sachachua.com/notebook/plans/2004.03.25">../../notebook/plans/2004.03.25</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

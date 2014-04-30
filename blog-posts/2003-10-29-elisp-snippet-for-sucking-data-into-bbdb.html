@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Elisp snippet for sucking data into BBDB</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Elisp snippet for sucking data into BBDB</h1>
+<p>
+October 29th, 2003 -
+<a href="http://sachachua.com/blog/p/1285"><a href="http://sachachua.com/blog/p/1285">http://sachachua.com/blog/p/1285</a></a>
+</p>
+
+<pre class="example">
+(defun sacha/suck-data-into-bbdb (notes)
+  "Create BBDB data given NOTES.
+The region should contain data of the form:
+name | company | e-mail"
+  (interactive "MEnter notes string: ")
+  (while (re-search-forward "^\\(.*?\\)\s*|\s*\\(.*?\\)\s*|\s*\\(.*?\\)\s*$" nil t)
+    (let* ((name (match-string 1))
+           (company (match-string 2))
+           (net (match-string 3))
+           (record (bbdb-search-simple nil net)))
+      (if record
+          (bbdb-record-set-notes record (concat (bbdb-record-notes record) "\n" notes))
+        (bbdb-create-internal name company net nil nil notes)))))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

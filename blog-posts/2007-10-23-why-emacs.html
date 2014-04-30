@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Why Emacs</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Why Emacs</h1>
+<p>
+October 23rd, 2007 -
+<a href="http://sachachua.com/blog/p/4417"><a href="http://sachachua.com/blog/p/4417">http://sachachua.com/blog/p/4417</a></a>
+</p>
+
+<p>
+Now that I've joined the wonderful world of the office workplace, I
+ find myself missing my Emacs-based life.
+</p>
+
+<p>
+I miss using Emacs to manage my day. There's something about being
+ able to open a text file and type in a line to create an appointment.
+ It's clean and it's simple.
+</p>
+
+<p>
+Hmm. Maybe I'll bcc myself on event invitations and I'll just parse
+ that into my calendar. Maybe I'll install Emacs on my work computer
+ and figure out how other people are doing their synchronization.
+ (Maybe I'll write an Emacs interface for Activities! Well, that
+ would be the day&#x2026; ;) )
+</p>
+
+<p>
+Why do I like managing my schedule in a <b>text editor</b>, when there are
+ perfectly good groupware clients out there?
+</p>
+
+<p>
+First, I really love the keyboard-friendly interface of Emacs. Don't
+ get me wrong: C-x C-c is hard to type even on my keyboard, and
+ keyboard combinations involving Ctrl <b>and</b> Meta at the same time are
+ Not Fun. But it's easy to define new keyboard shortcuts, and the
+ commands themselves don't require any mouse movements. There are no
+ complicated fields I need to TAB through. Everything can be done
+ practically without looking. This is good for me.
+</p>
+
+<p>
+Second, I like the customizability of it. If I invested some time
+ figuring out how to extend Lotus Notes 8 and I put up with the
+ edit/compile/run cycle, I might be able to get the kind of custom task
+ sorting and schedule highlighting that I have in my Emacs. Here's what
+ tweaking looks like under Emacs:
+</p>
+
+<ol class="org-ol">
+<li>Get an idea. “Wouldn't it be cool if&#x2026;”
+</li>
+<li>Use C-h a (apropos) or C-h k (describe-key) or C-h f
+(describe-function) to get to some function that does something
+similar to what I want to do.
+</li>
+<li>If the change is easily encapsulated, write some function advice in a
+scratch buffer. If the change requires more complicated hacking, copy
+the function into a scratch buffer and start playing with it.
+</li>
+<li>Evaluate the new function. Try it out. If it doesn't do what I want,
+use edebug to find out why. Build up from small changes. Lather,
+rinse, repeat.
+</li>
+</ol>
+
+<p>
+Fun stuff.
+</p>
+
+<p>
+Random Emacs symbol: muse-colors &#x2013; Group: Options controlling the
+ behavior of Emacs Muse highlighting.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

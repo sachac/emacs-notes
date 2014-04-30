@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>More Emacs goodness: Refresh your memory when you e-mail using notes</title>
+<!-- 2014-04-30 Wed 17:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">More Emacs goodness: Refresh your memory when you e-mail using notes</h1>
+<p>
+from BBDB
+</p>
+
+<p>
+September 2nd, 2006 -
+<a href="http://sachachua.com/blog/p/3824"><a href="http://sachachua.com/blog/p/3824">http://sachachua.com/blog/p/3824</a></a>
+</p>
+
+<p>
+Inspired by an e-mail-based customer relationship management system
+briefly described by <a href="http://blog.digitalketchup.net/">Daniel Charles</a>
+of <a href="http://www.digitalketchup.net">digital ketchup</a> at Shoeless Joe's
+last Friday, I decided to hack together a system that would allow me to
+see the notes from my contact database (aptly named the Big Brother
+Database, or BBDB) when I write e-mail using the Gnus mail client in
+Emacs.
+</p>
+
+<p>
+The first thing I needed to build, of course, was something that
+ removed my notes from outgoing messages. People really don't need to
+ see the kinds of notes I keep on them. ;) Well, they're fairly
+ innocuous notes: how we met and what they're interested in, usually,
+ although sometimes I'll have notes on people's food preferences or
+ shoe sizes. I've recently started keeping track of the subjects of
+ e-mail I send them, too.
+</p>
+
+<pre class="example">
+(defun sacha/gnus-remove-notes ()
+  "Remove everything from --- NOTES --- to the signature."
+  (goto-char (point-min))
+  (when (re-search-forward "^--- NOTES ---" nil t)
+    (let ((start (match-beginning 0))
+          (end (and (re-search-forward "^--- END NOTES ---") (match-end 0))))
+      (delete-region start end))))
+(add-hook 'message-send-hook 'sacha/gnus-remove-notes)
+</pre>
+
+<p>
+Then it was easy to write another function that composed individual
+ messages to all the people currently displayed in the BBDB buffer,
+ adding notes to each message.
+</p>
+
+<pre class="example">
+(defun sacha/gnus-send-message-to-all (subject)
+  "Compose message to everyone, with notes."
+  (interactive "MSubject: ")
+  (let ((records bbdb-records))
+    (while records
+      (when (bbdb-record-net (caar records))
+        (bbdb-send-mail (caar records) subject)
+        (when (bbdb-record-notes (caar records))
+          (save-excursion
+            (insert "\n--- NOTES ---\n"
+                    (bbdb-record-notes (caar records))
+                    "\n--- END NOTES ---\n"))))
+      (setq records (cdr records)))))
+</pre>
+
+<p>
+I use BBDB to display only the people I want to e-mail, then I call
+ M-x sacha/gnus-send-message-to-all and specify a message subject. This
+ creates a gazillion message buffers which I can then edit. If I feel
+ particularly paranoid, I can remove the notes section myself with C-c
+ C-z (message-kill-to-signature), but sacha/gnus-remove-notes does it
+ as long as it's in message-send-hook.
+</p>
+
+<p>
+This code works particularly well with these other customizations:
+</p>
+
+<ul class="org-ul">
+<li><a href="http://sachachua.com/notebook/wiki/2006.07.20.php#anchor-1">Emacs
+BBDB magic: Greeting people with nicknames</a>
+</li>
+<li><a href="http://sachachua.com/notebook/wiki/2006.09.01.php#anchor-2">Emacs:
+Keep track of messages sent</a>
+</li>
+<li><a href="http://sachachua.com/notebook/wiki/2006.06.03.php#anchor-5">BBDB
+pinging code</a> &#x2013; for adding datestamped notes to people's entries;
+can be rewritten without the use of Planner
+</li>
+</ul>
+
+<p>
+It supersedes
+<a href="http://sachachua.com/notebook/wiki/2006.09.01.php#anchor-4">More Emacs
+fun: Composing mail to everyone with notes</a>.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/gnus">gnus</a>,
+<a href="http://www.technorati.com/tag/crm">crm</a>,
+<a href="http://www.technorati.com/tag/networking">networking</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+
+<p>
+<a href="../emacs/dotgnus.el">../emacs/dotgnus.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Updating the timelog</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Updating the timelog</h1>
+<p>
+December 16th, 2004 -
+<a href="http://sachachua.com/blog/p/2498"><a href="http://sachachua.com/blog/p/2498">http://sachachua.com/blog/p/2498</a></a>
+</p>
+
+<p>
+I often update my task descriptions. We haven't found a neat way to do
+ this in-buffer, so I use planner-edit-task-description. However, if I
+ update the task description or replan a task, my timelog data gets out
+ of date. This code snippet updates all matching tasks in the timelog,
+ and can serve as an example for code that updates things after a task
+ is edited.
+</p>
+
+<pre class="example">
+(defadvice planner-replan-task (around sacha/planner-timeclock activate)
+  "Update the timelog as well. Warning! Do not have duplicate tasks!"
+  (let ((info (planner-current-task-info)))
+    ad-do-it
+    (with-current-buffer (find-file-noselect timeclock-file)
+      (goto-char (point-min))
+      (while (re-search-forward
+              (concat
+               "^. [^ ]+ [^ ]+ "
+               "\\("
+               (regexp-quote (planner-task-plan info))
+               "\\)"
+               ": "
+               (regexp-quote (planner-task-description info))
+               "$")
+              nil t)
+        (replace-match (ad-get-arg 0) t t nil 1))
+      (save-buffer)
+      (kill-buffer (current-buffer)))))
+
+(defadvice planner-edit-task-description (around sacha/planner-timeclock activate)
+  "Update the timelog as well. Warning! Do not have duplicate tasks!"
+  (let ((info (planner-current-task-info)))
+    ad-do-it
+    (with-current-buffer (find-file-noselect timeclock-file)
+      (goto-char (point-min))
+      (while (re-search-forward
+              (concat
+               "^. [^ ]+ [^ ]+ "
+               (regexp-quote (planner-task-plan info))
+               ": "
+               "\\("
+               (regexp-quote (planner-task-description info))
+               "\\)"
+               "$")
+              nil t)
+        (replace-match (ad-get-arg 0) t t nil 1))
+      (setq planner-timeclock-current-task (ad-get-arg 0))
+      (save-buffer)
+      (kill-buffer (current-buffer)))))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Chat: Sacha Chua (with Bastien Guerry)</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Chat: Sacha Chua (with Bastien Guerry)</h1>
+<p>
+July 3rd, 2013 -
+<a href="http://sachachua.com/blog/p/25073"><a href="http://sachachua.com/blog/p/25073">http://sachachua.com/blog/p/25073</a></a>
+</p>
+
+<p>
+/UPDATE 2013/07/08: Now with very long transcript! (Read the
+<a href="http://sachachua.com/blog/2013/07/emacs-chat-sacha-chua-with-bastien-guerry">full
+blog post</a> to find it.)/
+</p>
+
+<p>
+After I
+<a href="http://sachachua.com/blog/2013/05/emacs-chat-bastien-guerry/">chatted
+with Bastien Guerry about Emacs</a>, he asked me if he could interview me
+for the same series. =) So here it is!
+</p>
+
+<p>
+<a href="http://www.youtube.com/watch?v=_Ro7VpzQNO4"><a href="http://www.youtube.com/watch?v=\_Ro7VpzQNO4">http://www.youtube.com/watch?v=\_Ro7VpzQNO4</a></a>
+</p>
+
+<p>
+Just want the audio?
+<a href="http://archive.org/details/EmacsChatSachaChuawithBastienGuerry"><a href="http://archive.org/details/EmacsChatSachaChuawithBastienGuerry">http://archive.org/details/EmacsChatSachaChuawithBastienGuerry</a></a>
+</p>
+
+<p>
+Find the rest of the Emacs chats at
+<a href="http://sachachua.com/emacs-chat"><a href="http://sachachua.com/emacs-chat">http://sachachua.com/emacs-chat</a></a>
+</p>
+
+<p>
+<b>TRANSCRIPTION*</b>: Emacs Chat Sacha Chua with Bastien Guerry*
+</p>
+
+<p>
+<b>DURATION*</b>: 00:44:27*
+</p>
+
+<p>
+**
+</p>
+
+<p>
+*Sacha:*This is an Emacs chat. I'm Sacha Chua being interviewed by
+Bastien Guerry. Thanks again Bastien, for doing that chat with me last
+time. People really liked it and they were surprised to find that you
+weren't actually a computer science geek, you're humanities. Wow.
+[Laughter]
+</p>
+
+<p>
+<b>Bastien:</b> Not sure there is something as a computer science geek. Maybe
+it's overrated, somehow. So let's begin the discussion. How did you meet
+Emacs first?
+</p>
+
+<p>
+<b>Sacha:</b> Well I was in high school and I was trying to read as many
+interesting books from the computer section of the library as I could &#x2013;
+small library, maybe four shelves or something like that &#x2013; and one of
+the books there was <i>UNIX Power Tools</i>. <i>UNIX Power Tools</i> has a chapter
+on Emacs that includes&#x2013;was that mentions of Doctor and other weird
+things. One chapter in Emacs and you've got to put in things like Yow
+and Zippy or whatever. So I thought it was very, very strange and
+interesting. So I tried out Emacs and I actually flipped between Emacs
+and Vi for a while, but once I started learning Emacs Lisp and playing
+around with configuring it&#x2013;that's how I fell in love with Emacs.
+</p>
+
+<p>
+<b>Bastien:</b> And did you have friends learning Emacs with you or were you
+alone?
+</p>
+
+<p>
+<b>Sacha:</b> Not really. Mostly the other people who were interested in
+computers were using Vi or they were using something like Notepad++ or
+whatever it was back then. Then in university, a lot of people used
+Eclipse, because we started off with Java development &#x2026; So Emacs has
+always been one of those things that it's hard to find people face to
+face to talk about Emacs with. Most people just look at you like, “What?
+How old is that?” [Laughter]
+</p>
+
+<p>
+<b>Bastien:</b> So there's this bit of dandyism kind of&#x2026; I've found that
+many people using Emacs are kind of proud of using something different
+and I myself was not with all the developers so I was not proud of using
+something different. This was just something like that. Do you feel it
+was something that made you go deeper into Emacs and Emacs Lisp?
+</p>
+
+<p>
+<b>Sacha:</b> Well&#x2026;
+</p>
+
+<p>
+<b>Bastien:</b> You have some exotic tool.
+</p>
+
+<p>
+<b>Sacha:</b> Early on&#x2013;I think it was in 2002 or 2001&#x2013;I'd gotten to know &#x2013;
+actually 2001 or so &#x2013; I'd gotten to know the open source community,
+especially in Emacs with Planner Mode and things like that, so the early
+experience for me&#x2014;sure, I didn't see a lot of people in real life who
+used Emacs, but I was in touch with this community which was amazing and
+they used Emacs (of course, because this was an Emacs user community)&#x2026;
+So I felt, within that, “Actually, this is pretty normal.” And so it
+never was really a, “oh, I'm going to use something just to be different
+from other people.” It's more of like, “Hey, look at all this cool stuff
+that so many other people have built, have added to,” and I really like
+the community part of it.
+</p>
+
+<p>
+<b>Bastien:</b> And do you still have &#x2013; because it looks like you are
+testing many different softwares, very open minded about what you can
+use and what you can try &#x2013; do you still spend a lot of time testing
+softwares at all, editors especially, or are you stuck?
+</p>
+
+<p>
+<b>Sacha:</b> Editors, not so much. It's really difficult to compete with the
+things that I've already got set up. Occasionally &#x2013;for example, I've
+been trying out Scrivener as a way to organize blog posts, because
+people really like this ability to have all these index cards with stuff
+on them and you can link them together and compile stuff. But then as I
+use it, I think, “Oh, wouldn't it be nice if I could just hack Emacs
+into this thing instead,” and then I go off and I write Emacs Lisp code,
+and then I'm back in Emacs. So even when I experiment with new things,
+it's often with an eye to stealing ideas and then putting them into my
+Emacs configuration.
+</p>
+
+<p>
+<b>Bastien:</b> So I will come back to this question about this writing,
+especially because you are really into drawings, too, right? So I'm
+curious about how a visual person can be happy within the text editor.
+But my first question would be about Planner. So when did it start and
+what was the relationship between the Planner and the blogging activity
+that you have?
+</p>
+
+<p>
+<b>Sacha:</b> [Laughter] Now there's a funny story there. Okay. So I came
+across Planner in my search of interesting things that are Emacs-related
+and I started using it to keep track of my tasks and my notes. I was a
+university student back then so I had a lot of notes from class, from
+projects, from things that I was learning about. Because Planner had
+export capabilities, I figured, okay, why not? Let's export my plans, my
+personal text files and make those static HTML pages on the internet and
+so I put that up there as one of those things. It was my first website.
+Actually, no, it was my second website. My first website was something
+on Geocities, so it didn't really count. Anyway, so I have this Planner
+site. Back then I was starting to read about RSS and this idea of like a
+weblog. I had become the maintainer of Planner after I emailed John
+Wiegley and said, “Hey, this is super awesome. If you ever need any help
+tracking down bugs, I volunteer to do the first pass and then turn it
+over to you for fixing things.” And then he was like, “That's all right.
+You are now the maintainer.” So then I was the maintainer of Planner and
+I was looking for interesting things to add to it. Since RSS was coming
+out, I figured, let's take the remember feature in Planner and change it
+so that you could not only upload it as a webpage but you could also
+publish it as a RSS feed. So very technical people could then subscribe
+to this website, but hey, it was there.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. So I hope somehow&#x2026; Because I hack together an
+exporter for Org Mode about RSS feed, so somehow maybe I'm going to
+start blogging once this is ready for production mode. Then you had this
+activity &#x2013; was it a general blog or was it especially about Emacs, and
+then the diversity came later on?
+</p>
+
+<p>
+<b>Sacha:</b> In the beginning, it was just really a raw brain dump of my
+notes from class, from life, from the time that we rescued a kitten from
+our bathroom walls &#x2013; anything that I wanted to capture in Planner. It
+was just actually a side effect that I was using it to also test Planner
+RSS and publishing. So my blog was really just my personal planner. It
+had my to-do list, it had all these other notes in it and then as I&#x2026;
+One of those years I shifted to using WordPress because I got really
+annoyed with having to hack in commenting support and all these other
+little things in Planner. So I shifted to WordPress and I just wrote
+some code that went and extracted all of my posts from Planner and put
+them into WordPress. So that's how my blog evolved out of it. It's
+always been&#x2026; Because it's always been this collection of text files
+and notes for whatever I wanted to remember, that's what it ended up
+being.
+</p>
+
+<p>
+<b>Bastien:</b> Okay. So now, what are the main tools that you're using for
+Emacs and what are the ones that you want and still don't have?
+</p>
+
+<p>
+<b>Sacha:</b> Org is the main thing that I spend a lot of time in, because it
+runs my life, so I've got it set up for my agenda and many of my notes.
+I use Evernote for a lot of the web clippings and other things I want to
+capture, but in Emacs, Org still helps me see what my week is going to
+look like and remember different things. So there's Org, I do a lot of
+Rails development. So I've been playing around with Ruby Mode, but also
+Rinari and a couple of tools for quickly jumping from files to another,
+and of course, magit &#x2013; however you pronounce that. I use Emacs Lisp a
+lot so I just open up a scratch buffer. I haven't quite gotten the hang
+of either Smart Parens or Paredit, so that's still in my to-do list.
+</p>
+
+<p>
+**I guess in terms of what else I would like in Emacs, I'd like to get
+the hang of Org attachments so that I can manage more of my images
+within it and I'd like&#x2026; I probably should look into getting the hang
+of Paredit or Smart Parens or all these little tools to make Emacs
+development better. [Laughter]
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. I don't use Paredit yet. I know I should train myself,
+but there's a small learning curve and then it's very efficient and
+powerful, but I don't know. My first impression, my feeling was that
+it's a bit rigid. I don't like anything rigid when I need to start
+writing and so my question &#x2013; I remember Carson talked about the fun,
+about writing Emacs Lisp, somehow I&#x2026; It's even relaxing. Do you feel
+like that?
+</p>
+
+<p>
+<b>Sacha:</b> Yes. Oh absolutely. It's very tempting to just keep on hacking
+away at something, because it is really interesting to say, “All right.
+Hey, I've got this idea. How do I get closer to it? How do I play around
+with it?” For example, when you're researching functions to use for this
+or you're looking at other people's code to see if you can build on
+their ideas, because there's so much code out there, you can get really
+distracted looking at all the cool things that are possible.
+</p>
+
+<p>
+**I find it to be pretty relaxing. I'm comfortable with Edebug and
+stepping through the code and all of that. I find it relaxing because
+it's a way of getting what I want done. And then because my Emacs
+configuration file is public and I also occasionally write blog posts
+related to the Emacs functionality that I'm customizing, I get lots of
+value out of it, too, because I get blog posts and I get more
+conversations and ideas.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. And somehow I feel like the Emacs is a nice tool for
+doing small, cheap prototyping. Are you using it for that? If you have
+something in Ruby that you know is big, do you start prototyping with
+Emacs with small functions or even for web development with bigger
+constraints?
+</p>
+
+<p>
+<b>Sacha:</b> For personal use, definitely. I have a lot of these scripts
+that start off as Emacs Lisp functions, because I like being able to use
+buffers and regular expressions, search forward, and all these other
+little things. Sometimes I never end up turning them into a shell script
+or something else. I'll use keyboard macros or write small Emacs
+functions just to do something. Sometimes if I've got a good idea and it
+works out, then I'll go and write it up as an actual script that other
+people can use.
+</p>
+
+<p>
+<b>Bastien:</b> All right. Cool. And so now the big question &#x2013; can you show
+us your Emacs screen? I mean, it's going to be a big revelation.
+</p>
+
+<p>
+<b>Sacha:</b> It's not that scary. Hang on a second. Let me switch to sharing
+my screen here and then I can conf&#x2013;ooh, funny effect there&#x2014;can you
+see my screen?
+</p>
+
+<p>
+<b>Bastien:</b> Yeah.
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. So it's basically an Org agenda. “Talk to Bastien Guerry
+about Emacs” is in progress. I think it'll take an hour. And that's
+basically life. As you can see, my Org habits say that I've actually not
+been very good at taking my vitamins or telling Org that I've taken my
+vitamins. I did that the other time, so that's okay, too. But that's
+basically my life. I also use Emacs on quite a few&#x2026; in another
+environment as well. I've got a local virtual machine for my Rails
+development and that one's got a different Emacs configuration just for
+my Rails work. Since my base system is Windows, there are a lot of all
+these little conveniences that I got used to in Linux and that aren't
+really available because Cygwin isn't quite there or whatever else and
+that's why I have&#x2026; sure, my main Org setup, but I also have
+development environments and virtual machines.
+</p>
+
+<p>
+<b>Bastien:</b> All right. I think many people will feel quite relieved to
+see your habits, because when I started using habits, I was so bad
+because I stopped because it was painful to see all those red colors.
+Maybe we should just switch red and green. [Laughter] It'd be better.
+</p>
+
+<p>
+<b>Sacha:</b> I use Org, because I use the variable scheduling a fair bit, so
+for example&#x2026; go to [inaudible] weekly. There are a couple things like
+strength workouts that I wanted to do every two or three days so I
+really like the fact that Org will keep track of that for you. So Org
+Habits comes along as a nice bonus, but I don't really obsess about the
+red so much.
+</p>
+
+<p>
+<b>Bastien:</b> So the word “library” makes me wonder &#x2013; you seem to be
+reading a lot, so reading blog posts, books, or whatever &#x2013; do you feel
+like Emacs is changing the way you read&#x2013;and of course, it's changing
+the way you take notes, but do you read the web on Emacs? Do you read
+the blog posts on NNTP or Gwene or something like that?
+</p>
+
+<p>
+<b>Sacha:</b> I used to. I used to read a lot of NNTP and also NNTPRSS and
+Gmane of course will give you an interface for that. Mostly, because
+I've come to really like the way that Evernote clips things and searches
+through stuff, I use that instead for most of my notetaking, but I do
+use Org a lot for taking notes on books because I like its outline form.
+I like being able to quickly search through things and organize things
+and say I want to schedule this book for review three months from now.
+So that's very nice, in terms of using Org to support my reading and my
+learning.
+</p>
+
+<p>
+In addition, I also keep &#x2013; if I can remember where it is. I also keep
+these&#x2013;every so often I make this list of things that I would like to
+learn. Again, Org is excellent for that, because I can outline things, I
+can turn&#x2026; I can use the list's indentation to break things down
+further and so on.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. And my feeling&#x2026; I'm taking a lot of notes about books
+as well with the hope of turning this into a blog entry at some point or
+just some web page. I'm doing these from time to time. What I discovered
+was that it lowers the barriers that you can have before publishing. If
+I use something else, I feel like publishing is a big step, and when I
+use Org, it's just a small step so it's easier to publish stuff I write.
+Even if I know it's not well-written, I have less barriers about this.
+Do you feel like this?
+</p>
+
+<p>
+<b>Sacha:</b> I deal with that by not being too worried about posting things.
+So my barriers for publishing are pretty low, but I do post a lot from
+Emacs as well. Org2blog is super helpful for that. For example, when I
+came back from the Emacs trip in &#x2013; sorry &#x2013; Emacs conference in London,
+I basically just started writing this &#x2013; let me turn off truncate-lines
+again &#x2013; I started writing this long blog post about what worked well,
+what didn't work well. It made sense to keep it in Emacs, because it was
+there and had all my links and whatever. But then to publish it, all I
+had to do was org2blog/wp-post-sub-tree and it's off to WordPress.
+</p>
+
+<p>
+<b>Bastien:</b> All right. Cool. And about the visual stuff &#x2013; because you're
+doing nice drawing and you fiddled&#x2014;when you mentioned Evernote and the
+way you can clip IDs and so on. Do you miss that in Emacs, which is very
+linear and which is very textual? Or is it something that you've&#x2026;?
+</p>
+
+<p>
+<b>Sacha:</b> Well, you can actually inline images in Emacs, and I did
+install the library so I could actually &#x2013; hang on a second, let me
+break out one of these sketchnotes&#x2026; I think I can actually pull out
+some of these&#x2026; There's my “How to learn Emacs”. So you can open images
+in Emacs, they're just not very good. I wish Emacs would let me keep
+track of more of that stuff, and in particular, I really like Evernote's
+ability to search within images. I don't think that's going to make it
+into Emacs anytime soon, but if it does, that would be fantastic.
+</p>
+
+<p>
+**In the meantime, I find that the combination of using Evernote from my
+multimedia notetaking and then using Org for all those quick capture or
+outline more structured talks or blog posts works really well for me. It
+means I have two places to look for things&#x2013; several places actually,
+because lots of places inside Emacs as well&#x2013;but it works.
+</p>
+
+<p>
+<b>Bastien:</b> Okay. And so I don't know if you read the Emacs blog mailing
+list, but Lars from Gnus fame started a new browser for Emacs. It's
+called &#x2013; I don't know how to pronounce it &#x2013; but it's spelled eww.
+</p>
+
+<p>
+<b>Sacha:</b> Oh yes. I've heard about that.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah? Thanks to this new way to browse web pages on Emacs, I
+guess there is a lot of work about rendering images and changing the
+size on the fly, which you can already do, right? In Org Mode, you can
+decide about the size of the pictures, in-line pictures, by giving some
+attributes to the images or globally to the file, but I guess that there
+is room for lots of improvement there, and I hope this new browser will
+boost this development about images being able to &#x2013; I don't know &#x2013;
+even have floating pictures on the top right of the screen or&#x2026; I don't
+know.
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. Well, because actually a lot of my work and a lot of the
+things I focus on is still in text, there's so much to learn and do in
+terms of getting Emacs to be even better for that. And then in terms of
+the images, well, I'm looking forward to playing around with maybe using
+Emacs to help organize a visual vocabulary. I'm using Evernote for most
+of it at the moment, but it would be fascinating to see if I can use
+Dired perhaps to start putting that together.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. So the missing tool that would be something about this,
+but searching through pictures and stuff like that.
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. I think that might look more like a command line tool
+that someone else is going to write, that does handwriting recognition
+(which is tough!), but hey, you know, if I could dream, that would be an
+interesting utility to have. In the meantime, however, I like the fact
+that text works pretty well. I'm starting to get the hang of using
+org-jump to &#x2013; or whatever is C-c C-j is &#x2013; ah, org-goto is the command
+to go around my increasingly enormous Org file. There's just so much
+that I have yet to learn about Org and Emacs and all these things.
+</p>
+
+<p>
+<b>Bastien:</b> So about this Emacs conference, can you tell us a bit more
+where it started, what was it, what did you learn, and what's next for
+this real life meetings?
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. That was interesting and surprisingly quickly arranged &#x2013;
+let me dig up my&#x2026; So the Emacs conference was held in March in London
+and it was really&#x2026; This one guy said, “Okay. We've been talking about
+having an Emacs conference for a while, let's go ahead and do it.” He
+found a venue&#x2014;Aleksander Simic, he found a venue. He got people to
+volunteer as speakers, everyone flew in or drove over if they were close
+by, and it was a completely free conference. So super thanks to the
+venue for making it possible. It was a lot of fun, because&#x2013;80 to 100
+Emacs geeks in one room! I'd never been in something like that. It was
+incredible just seeing everyone for the first time. I'd never seen John
+Wiegley &#x2013; well, I'd talked to him on Skype, but I'd never seen him
+before despite all the years of correspondence. And so it was good to
+have everyone in one room. At the meeting, people were like, “All right.
+Maybe we should have a London Emacs users group meeting,” and I think
+someone went and organized one in &#x2013; where is that as well? There's
+another one started up somewhere in the U.S. People are really looking
+to connect. I would love to see more of these real life meetings, but
+also because I don't travel so much, I'd like to see more virtual
+meet-ups as well.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. Yeah. You're doing a great job at boosting this. I
+mean, it's fantastic. The concrete outcome is more meet-ups between
+Emacs user groups and local groups and if there are any code produced
+out of the conference, or out of this group&#x2026; or maybe it's too hard to
+track?
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. No one's quite&#x2026; I haven't heard of any hackathons yet,
+but that would be super cool. I love helping people with their Emacs
+stuff, so I'm always willing to hang out and help people with their
+configs or with Emacs Lisp. The main thing that came out of the
+conference is all these videos and I drew my notes for them as well. But
+really it was all about, “Hey, look at the cool things that people are
+working on. I had no idea Emacs could do that and hey, let's&#x2026; This is
+a nice community. People are wonderful.”
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. What I like is it's a very diverse community with all
+these crazy people having passions for something else, too. I remember
+there was a discussion about playing piano versus playing accordion,
+remember? And the comparison between playing accordion is better because
+it's more like touch typing than piano where it's heavy typing and stuff
+like that. So it was funny to have this various passions and discussion
+about that. It's more easy to speak about this kind of activities when
+you're meeting for lunch in an Emacs informal conference than online
+where it's bit off-topic on the mailing list. So the next step, if I
+understand well, is to have some kind of Emacs hackathon on a virtual
+meet-up online somewhere. Would that work?
+</p>
+
+<p>
+<b>Sacha:</b> I'd like that. I'd like that very much. In fact, I would be up
+for having regular Emacs webinars or whatever where we can just do a
+show and tell session, “Hey, look at this cool thing that I'm doing.” So
+Emacsrocks is fantastic and I'm delighted to see even more screencast
+series coming up, but there are all these people with fascinating things
+in their configuration or ideas who might not have a screen cast or
+might not have a blog or might not feel comfortable doing that, but
+they'll happily talk to a couple of people about what they're doing with
+Emacs. So that's one of the things that I'd love to help make happen.
+</p>
+
+<p>
+**You mentioned the incredible diversity of Emacs users&#x2026; that's
+something that I really, really love as well. You might think, oh Emacs,
+right? It's like the stereotype of computer science, geeky, programming
+and system development&#x2026; But because people are coming into it for Org
+or for statistics or for all these other modules that people have built
+into Emacs, you really get such a wide range of people. I can see the&#x2026;
+Yeah. Go ahead.
+</p>
+
+<p>
+<b>Bastien:</b> I guess it's also because the Emacs has such a long history
+so it helps gather in people from various backgrounds, from university
+or for people learning by themselves and so on and so on. So&#x2026;
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. I really like that. I remember when I was in Japan and I
+was trying to learn the characters&#x2013;the kanji&#x2014;I had a flashcard
+program. Actually, I used the flashcard.el from the Emacs wiki, because
+that's where you used to get everything back then. I modified the
+flashcard program to show me cute pictures of kittens or tell me a joke
+every time I got things right, which is what you can do when you've got
+this flashcard program that's very programmable because it's built into
+your editor. One of my friends and co-trainees was like, “Hey, what's
+that? How are you doing that?” And although he had never used Emacs
+before, I set him up with a flashcard setup just so he could give it a
+try. So it's all these little bits of functionality that can help draw
+people in.
+</p>
+
+<p>
+<b>Bastien:</b> Okay. So that's cool. I have another question. It's a bit
+personal and it's about me &#x2013; my own therapy about not being the
+maintainer anymore. So you stepped down as the maintainer of Planner and
+Muse, right? Or are you still the maintainer?
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. No. I handed them over to &#x2013; I think it was Michael Olson
+and Michael handed it over to someone else, I think. It's actually
+great, because it's fantastic to see what directions other people will
+take stuff. Then also when I was watching Org's meteoric rise to fame, I
+was like, “Oh hey, Planner does this really interesting thing for
+example with reading dates&#x2013;the relative ‘Oh that's plus two days from
+now or it's plus three Fridays from today.'” So I was like, “Here. This
+is a really cool idea. You should totally take it.” It's great seeing
+other people come up with ideas for something you've maintained before,
+and it's also great being able to help with other projects that are
+related.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. But how did you feel? How did you &#x2013; because I feel
+bad. I mean, I miss the calling. I miss the&#x2026; And so I feel useless. I
+had something to do&#x2026;.
+</p>
+
+<p>
+<b>Sacha:</b> Nothing stops you from continuing to look at the list and
+writing patches and exploring code and all of that stuff. I did find
+that now that I'm no longer on the hook for anything, I don't write as
+much Emacs Lisp for other people. I tend to write Emacs Lisp for my
+config and then if other people find those things to be good ideas, they
+are certainly welcome to merge them into the code. Sometimes I'll still
+hang out on the Emacs Lisp channel, or check out the mailing lists or
+StackOverflow or whatever, just to see what kinds of Emacs questions
+people have, and if it's something I'm curious about as well, then I get
+to write code for it.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. That's cool. I do have some bugs to fix on Org, so it's
+not as if I have nothing to do, but I was surprised to have this kind of
+let down feeling as if I was retiring. But and also this feeling that&#x2026;
+There was this new to-do mode on Emacs, I just discovered. It was there
+for years and there is this to-do model and Stephen Bagman, the
+maintainer just wrote the new version and I can find the link back again
+and he just wrote the new version, so I was like, “hey I want to try
+something new.”
+</p>
+
+<p>
+<b>Sacha:</b> Oh yes, yes.
+</p>
+
+<p>
+<b>Bastien:</b> So I was really just right&#x2026; feeling away from Org Mode. So
+this is it. Exactly. You have it on the screen. I don't know if it's on
+the video, too, but&#x2026;
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. That would be there, right? I had to go find it and see
+what it does, and especilaly what it does differently, right? So that's
+what I'm going to take a look at. There's always stuff that's coming
+out.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. And coming out from the past, because this one was
+there even before Org was, so the new ideas and so it's great.
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. One of the things I love about Emacs is that all these
+bits of configuration and all these packages give you a window into the
+way that somebody else works, right? So they manage their to-do's this
+way. When you read the code or you look at the examples or you look at
+the mailing list messages, you get a sense of all these other different
+ways to work, and then you get ideas. The way that I've organized my
+life has changed so much. When I started using Planner, it was, “Okay.
+This is great.” I started doing a lot more of the Stephen Covey
+quadrants sort of thing because that was baked into it. Then when I
+shifted to using Org, it was like, “Okay. I'll use tags and contexts
+more. I'll use the weekly agenda or whatever, because it's so much
+easier to make that now.” And so the tools that I used shaped the way
+that I work, and when I look at the ways that other people work, I pick
+up even more ideas, more things to experiment with.
+</p>
+
+<p>
+<b>Bastien:</b> And this&#x2026; I think it captures the paradox of Emacs quite
+well. From the outside, from people who don't know Emacs, it looks so
+rigid, and from within Emacs and the flexibility you have with coding
+and text and writing at the same time and exchanging with other people,
+it opens new possibilities. It's the opposite of rigidity, as you say.
+You experiment with new ways of working and so on&#x2026; I guess we like
+fiddling, we love fiddling, and fiddling comes with experimenting
+something new and discovering what's inside the machine and so on.
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. I guess the way that I've seen Emacs&#x2026; it's really like
+a conversation, this huge conversation that I'm having with all these
+developers and all these contributors &#x2013; both the ones that are working
+on it now and the ones that have contributed and posted stuff in the
+past &#x2013; and it's&#x2026; we're all trying to figure out interesting ways of
+working and changing the tool, changing &#x2013; it's a platform, really &#x2013; to
+fit that. So it doesn't feel at all fixed. In fact, it feels like it's
+changing so quickly that it's hard to catch up sometimes and I look at
+list-packages and I'm like, “Okay&#x2026;” I tried reading&#x2013;I've actually
+read through the entire list a couple of times. Every time I do so I
+come across all these new things and even when I was trying to write
+that book on Emacs, which unfortunately got procrastinated, because of
+this very thing I'm about to tell you&#x2013;because I was writing about stuff
+that people could work on and improve, as soon as I posted my draft and
+people were like, “Oh, that's a great idea. We should make that part of
+the main package,” that meant my draft blog post was then obsolete, but
+it meant that everything was better. And to have something with such an
+established history also have that kind of flexibility and vitality&#x2026;
+it's incredible.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. Yeah. Especially&#x2026; And so my last question before
+talking about this book you may want to talk about. It's just a small
+story about Walter Bender&#x2014;do you know, he's the one behind Sugar?
+</p>
+
+<p>
+<b>Sacha:</b> No. What's that?
+</p>
+
+<p>
+<b>Bastien:</b> Sugar. It's the name of the platform running on the One
+Laptop per Child project.
+</p>
+
+<p>
+<b>Sacha:</b> Oh yes.
+</p>
+
+<p>
+<b>Bastien:</b> And Walter Bender is the guy leading the developers community
+all over the world. He told once that his first idea for this
+constructivist environment for kids was Emacs. So I was a bit shocked,
+because you don't think about putting Emacs in the hands of six or seven
+year old child, but the idea &#x2013; I think it's really what you're talking
+about. The idea was that in Emacs you have &#x2013; for example, the
+documentation's very close to you, the writing is close to you and the
+distance between writing and developing is small. So this is the very
+spirit of the conversation between you and the machine and you and your
+friends around&#x2026; I think that was the core idea behind having a
+constructivist environment that drives you to the code and to all the
+people around you to build something together. So just wanted to mention
+that, because I think it's interesting. So this book &#x2013; what's the story
+behind the book?
+</p>
+
+<p>
+<b>Sacha:</b> Well, because I&#x2026; So back in 2000-and-something, because I was
+learning so much and blogging so much about Emacs, it was like, “Oh,
+there's probably a book in here.” And so I sent in a proposal to No
+Starch Press and they were like, “Oh, that sounds really cool. We should
+have a book called Wicked Cool Emacs.” They have a lot of other books in
+the series, so there's still stuff to model it on. I started with the
+chapters that I wanted to write the most about, because I really wanted
+people to try out Emacs for personal information management.
+</p>
+
+<p>
+**So I wrote about managing your tasks, and I think I wrote about
+reading your mail or something of the sort, too. But when I drafted the
+three chapters that I really liked the most, I realized, hey as soon as
+I posted these scripts that people can put in their configuration,
+because they were often good ideas, Org would then take those ideas, put
+them in, so you wouldn't have to do all that configuration. You just set
+a flag or whatever else and it would do all of that for you. I was like,
+“Hm. This book is going to be very short,” because everything I add
+something, then the code keeps getting shorter and shorter, because
+everything gets replaced by just a setq whatever whatever whatever.
+Which is nice, but well&#x2026; If the alternative had been to not share it
+and to wait until it was a printed book&#x2026; and to have it be obsolete
+two days after it was published&#x2026; right? It was better that the ideas
+got out there.
+</p>
+
+<p>
+Anyway, the end result was I wrote what I wanted to write, which was
+basically how to use Emacs to run your life and then it was like, okay I
+don't think this is going to work out. So since then, I've basically
+just been posting Emacs blog posts whenever I hack around something
+interesting in my configuration or whenever I need to answer somebody
+else's question. But because I'm experimenting with semi-retirement and
+people seem to like this drawing, writing, blogging thing a fair bit,
+I'm very curious about the idea of putting together these resources to
+help people learn more about Emacs. Whether it's working with the stuff
+that's already out there or configuring things or making their own
+modules and packages&#x2026; there's so much to learn and if I can help put
+together things like that one page guide to learning Emacs or make
+something like that for Org and other popular modules or say, “All
+right, if you want to learn Emacs Lisp, it's intimidating, but here's a
+map for things that you can learn so that you can gradually learn it.”
+Right? Because Emacs and Emacs Lisp are so overwhelmingly large. There
+are so many possibilities. But if you learn a little bit at a time, that
+helps. However if you're new to it, then you don't know which little
+parts at a time can be most useful, so I'd love to help put those
+resources and guides together.
+</p>
+
+<p>
+<b>Bastien:</b> Also I've got now two ideas that&#x2026; The first one is the map
+of events from this new communities out of Emacs conferences all over
+the world, and maybe we can have more online hackathons about Emacs
+Lisp. I would love to help about that. And the other is this nice map
+about how do you learn Emacs, because there is a lot of topics &#x2013; how
+you can go from one topic to another topic, from just small
+customization about this module to learning macros and so on, so on.
+</p>
+
+<p>
+<b>Sacha:</b> Right. Right. It's the&#x2026; People often need to see why this
+matters. What are they going to get out of it. For example, if you're
+reading about keyword macros, if you're reading through the Emacs info
+manual &#x2013; which is a great read and I recommend doing this for everyone,
+but it can be a bit of a reference, so hard to get through
+sometimes&#x2013;anyway, so you're reading through this manual and you come
+across keyword macros and so then like, okay let's play around with
+this&#x2026; what if people could discover this because they can see it in
+action&#x2026; This is where those screencasts come in. Or they can get the
+story of where this saves people time, why this matters, and how you get
+started with it. First, you start off doing keyword macros. You start
+the keyword macro, you type in whatever, you close the macro, you
+execute. Then you graduate to using registers, right? You graduate to
+using the arithmetic operations, so you're incrementing your registers.
+Then you're doing all these cool things. So there's a path that doesn't
+scare people.
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. I like this idea, because we're always talking just by
+reflex about Emacs' learning curve, but it's not a mountain to climb,
+it's just various paths that you can explore and that's what we like.
+And the last idea &#x2013; I think it's fantastic &#x2013; like you're not making
+your book out of dead trees, but you are making this big conversation
+about Emacs alive and that's even better, I feel like. It's better than
+a book and I'm really glad you started all this, and I hope you'll have
+many followers doing this. Even small conversations like we do with
+friends and starting to have many conferences or hackathons and maybe
+some mentoring from people who are more seasoned Emacs developers or
+users to have younglings under their wings. That's a nice idea for the
+future and I think it might be a nice conclusion for this chat. I'm
+really glad we&#x2026; How was it like fifty minutes?
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. Forty-five minutes, because&#x2013;sorry about the mix up about
+the time, but yes.
+</p>
+
+<p>
+<b>Bastien:</b> Okay. Okay.
+</p>
+
+<p>
+<b>Sacha:</b> Time flies. But I really like talking to other Emacs geeks
+about all these cool things we can do with the community, so I'm up for
+more conversations like this if people want. It's been such a fantastic
+experience. I find it hard to believe that I've been playing around with
+Emacs for the past ten years and I still feel so new and so excited
+about all of it.
+</p>
+
+<p>
+<b>Bastien:</b> So maybe one last word about&#x2026; Do you speak other functional
+languages other than Emacs Lisp?
+</p>
+
+<p>
+<b>Sacha:</b> Well I've played around with some of them, but Emacs Lisp is
+actually the main thing that I use. However, what it has done is Lisp
+has totally warped my brain, because now when I'm writing things like
+Ruby code, because Ruby has maps and all of that as well, I think in
+lists. The code that I write has changed because of the code that I'm
+reading, the code that I'm working with Emacs. So when I'm stuck using a
+language like Java, for example, like&#x2026; Why can't I just do this thing?
+</p>
+
+<p>
+<b>Bastien:</b> Yeah. So it helps learning Lisp and Emacs Lisp even for other
+languages?
+</p>
+
+<p>
+<b>Sacha:</b> Oh yeah. And also because I use Emacs a lot when I'm &#x2013; for
+example, when I'm analyzing data. Sometimes I'll just yank something
+into a scratch buffer and then do my keyboard macro search and replace
+and all that stuff, maybe write a function that cleans things up if I'm
+doing this regularly. Then I'll take that and I'll use that as an input
+for something else. It's such a useful general tool and it's awesome.
+</p>
+
+<p>
+<b>Bastien:</b> All right. Great. So I think we can stop here. We have many
+ideas, and so you gave me energy to work on some of them.
+</p>
+
+<p>
+<b>Sacha:</b> Yay!
+</p>
+
+<p>
+<b>Bastien:</b> And that's really nice. I think the mailing for the Emacs
+conf is always on, because I started with the mailing list. It's always
+available so we can discuss for those activities. My schedule is
+completely full until December, but I've discussed with some French
+people, so hello French developers, we are putting together something
+about an Emacs small conference in Paris at some point, and maybe there
+is Richard Stallman traveling a lot in France, so maybe we can catch
+Richard and have him explain what is the history or maybe the prehistory
+of Emacs and stories that nobody's heard so far. I don't know. That
+would be cool, too.
+</p>
+
+<p>
+<b>Sacha:</b> Yeah. And virtual meet-ups. Again, I'm up for figuring out what
+those look like, how those work, just more ways to connect.
+</p>
+
+<p>
+<b>Bastien:</b> I'm up for it. Paris is completely rainy for the last two
+years, so virtual meet-ups are perfect, sunny and bright. It's good.
+</p>
+
+<p>
+<b>Sacha:</b> All right. Thank you so much, Bastien.
+</p>
+
+<p>
+<b>Bastien:</b> Thank you, Sacha. Hope to see all the comments from people,
+more questions and more ideas about how to move things forward.
+</p>
+
+<p>
+<b>Sacha:</b> For sure. All right! Talk to you soon!
+</p>
+
+<p>
+<b>Bastien:</b> Bye bye.
+</p>
+
+<p>
+<b>//</b>
+</p>
+
+<p>
+[[<img src="https://archive.org/download/EmacsChatSachaChuawithBastienGuerry/Emacs%20Chat%20-%20Sacha%20Chua%20(with%20Bastien%20Guerry).mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png" alt="play_audio.png" />]]]]
+</p>
+
+<p>
+Podcast:
+<a href="https://archive.org/download/EmacsChatSachaChuawithBastienGuerry/Emacs%20Chat%20-%20Sacha%20Chua%20(with%20Bastien%20Guerry).mp3">Play
+in new window</a> |
+<a href="https://archive.org/download/EmacsChatSachaChuawithBastienGuerry/Emacs%20Chat%20-%20Sacha%20Chua%20(with%20Bastien%20Guerry).mp3">Download</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

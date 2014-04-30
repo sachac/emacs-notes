@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Making GNU Emacs play well on Microsoft Windows 7</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Making GNU Emacs play well on Microsoft Windows 7</h1>
+<p>
+June 25th, 2012 -
+<a href="http://sachachua.com/blog/p/23513"><a href="http://sachachua.com/blog/p/23513">http://sachachua.com/blog/p/23513</a></a>
+</p>
+
+<p>
+Emacs 24 has been released, hooray! Here's how you can download and
+install it on Windows 7. Bonus tip: pin it to your taskbar so that you
+can open Emacs easily.
+</p>
+
+<p>
+<b>Step 1.</b> Get the Emacs zip file from
+<a href="http://ftp.gnu.org/pub/gnu/emacs/windows/"><a href="http://ftp.gnu.org/pub/gnu/emacs/windows/">http://ftp.gnu.org/pub/gnu/emacs/windows/</a></a>
+. You're looking for something like emacs-24.1-bin-i386.zip, or whatever
+the latest version is. Download and extract the files. I like extracting
+it to C:\ and renaming the new emacs-24.1 directory to c:\emacs so that
+I can get to it easily. I'll assume you're renaming it too, but if you
+prefer to keep your Emacs installation elsewhere, just translate the
+rest of these instructions.
+</p>
+
+<p>
+<b>Step 2.</b> Add Emacs to your path. This way, you can start Emacs or
+emacsclient from anywhere. To change your system path, click on the
+Windows logo, right-click on <b>Computer</b>, and choose <b>Properties</b>. Click
+on <b>Advanced system settings</b>, then click on <b>Environment Variables</b>.
+</p>
+
+<p>
+If you see a <b>Path</b> variable under <b>User variables</b>, click on it, then
+click on Edit. Add <code>c:\emacs\bin</code> to the beginning of this path,
+separating it from the next item with a semicolon. Click <b>OK.</b>
+</p>
+
+<p>
+On the other hand, if you don't see a <b>Path</b> variable under <b>User
+variables</b>, click on New and add it. The variable name should be <code>Path</code>
+and the value should be <code>c:\emacs\bin</code>. Click <b>OK</b>.
+</p>
+
+<p>
+<b>Step 3.</b> While you're here, you might as well set your <b>Home</b> variable.
+This is what Emacs will use whenever you refer to ~, or the home
+directory. To set that, look under <b>User variables</b> and click on <b>New</b>.
+Create a variable called <code>HOME</code>, and set the value to whichever
+directory you would like to use as your home directory. For example,
+I'll set mine to c:\sacha. Again, click on <b>OK</b>, then click <b>OK</b> a few
+more times until you're done with the System Properties dialog box.
+</p>
+
+<p>
+<b>Step 4.</b> All right, let's start up Emacs! Click on the Windows icon,
+and type <code>runemacs</code> at the Run prompt. You should see <b>runemacs</b> in the
+list. If you don't, you may need to log out and log in so that your new
+path settings are applied. Once you've sorted that out, start
+<code>runemacs</code>. You should see Emacs open, yay!
+</p>
+
+<p>
+<b>Step 5.</b> Want to be able to start up and switch to Emacs quickly? To
+pin Emacs to your task bar, right-click on the Emacs icon in the task
+bar. Right-click on the small Emacs icon that appears, and click on
+<b>Properties</b>. Change the target to <code>c:\emacs\bin\runemacs.exe</code>, and
+change the start directory to whichever directory you prefer. You can
+also choose to start it maximized &#x2013; handy. Once you've set that up,
+click <b>OK.</b> I like dragging the Emacs icon so that it's the very first
+item in my task bar. That way, pressing the Windows key and the number 1
+at the same time lets me switch to Emacs and away from Emacs easily.
+</p>
+
+<p>
+That's it. Check out
+<a href="http://planet.emacsen.org"><a href="http://planet.emacsen.org">http://planet.emacsen.org</a></a> for lots of
+other Emacs bloggers. Happy editing!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

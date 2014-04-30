@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>The history of Calc</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">The history of Calc</h1>
+<p>
+November 6th, 2006 -
+<a href="http://sachachua.com/blog/p/4005"><a href="http://sachachua.com/blog/p/4005">http://sachachua.com/blog/p/4005</a></a>
+</p>
+
+<p>
+I'm taking some time off from cramming my KMD2004 project to write a
+ review of Emacs 22 prerelease for Don Marti. It's a great excuse to
+ look at all the cool new features I'd been taking for granted in my
+ Emacs CVS.
+</p>
+
+<p>
+I love the stories people tell through their code and their
+ documentation! For example, take Calc mode. You'd expect it to be a
+ simple desk calculator, right? No, it can do “arithmetic on rational
+ numbers, complex numbers (rectangular and polar), error forms with
+ standard deviations, open and closed intervals, vectors and matrices,
+ dates and times, infinities, sets, quantities with units, and
+ algebraic formulas.” It has tons of other features, too.
+</p>
+
+<p>
+How did a calculator get so big, the way all Emacs features seem to
+ grow and grow and grow? Check out the History and Acknowledgements
+ section of the info manual for Calc. Here's the story from David
+ Gillespie in the manual:
+</p>
+
+<blockquote>
+<p>
+Calc was originally started as a two-week project to occupy a lull in
+ the author's schedule. Basically, a friend asked if I remembered the
+ value of `2\<sup>32′</sup>. I didn't offhand, but I said, “that's easy, just
+call
+ up an `xcalc'.” `Xcalc' duly reported that the answer to our question
+ was `4.294967e+09′&#x2014;with no way to see the full ten digits even
+though
+ we knew they were there in the program's memory! I was so annoyed, I
+ vowed to write a calculator of my own, once and for all.
+</p>
+
+<p>
+I chose Emacs Lisp, a) because I had always been curious about it
+ and b) because, being only a text editor extension language after
+all,
+ Emacs Lisp would surely reach its limits long before the project got
+ too far out of hand.
+</p>
+
+<p>
+To make a long story short, Emacs Lisp turned out to be a
+ distressingly solid implementation of Lisp, and the humble task of
+ calculating turned out to be more open-ended than one might have
+ expected.
+</p>
+
+<p>
+Emacs Lisp doesn't have built-in floating point math, so it had to be
+ simulated in software. In fact, Emacs integers will only comfortably
+ fit six decimal digits or so&#x2014;not enough for a decent calculator. So
+I
+ had to write my own high-precision integer code as well, and once I
+had
+ this I figured that arbitrary-size integers were just as easy as
+large
+ integers. Arbitrary floating-point precision was the logical next
+step.
+ Also, since the large integer arithmetic was there anyway it seemed
+only
+ fair to give the user direct access to it, which in turn made it
+ practical to support fractions as well as floats. All these features
+ inspired me to look around for other data types that might be worth
+ having.
+</p>
+
+<p>
+Around this time, my friend Rick Koshi showed me his nifty new HP-28
+ calculator. It allowed the user to manipulate formulas as well as
+ numerical quantities, and it could also operate on matrices. I
+decided
+ that these would be good for Calc to have, too. And once things had
+ gone this far, I figured I might as well take a look at serious
+algebra
+ systems for further ideas. Since these systems did far more than I
+ could ever hope to implement, I decided to focus on rewrite rules and
+ other programming features so that users could implement what they
+ needed for themselves.
+</p>
+
+<p>
+Rick complained that matrices were hard to read, so I put in code to
+ format them in a 2D style. Once these routines were in place, Big
+mode
+ was obligatory. Gee, what other language modes would be useful?
+</p>
+
+<p>
+Scott Hemphill and Allen Knutson, two friends with a strong
+ mathematical bent, contributed ideas and algorithms for a number of
+ Calc features including modulo forms, primality testing, and
+ float-to-fraction conversion.
+</p>
+
+<p>
+Units were added at the eager insistence of Mass Sivilotti. Later,
+ Ulrich Mueller at CERN and Przemek Klosowski at NIST provided
+invaluable
+ expert assistance with the units table. As far as I can remember, the
+ idea of using algebraic formulas and variables to represent units
+dates
+ back to an ancient article in Byte magazine about muMath, an early
+ algebra system for microcomputers.
+</p>
+
+<p>
+Many people have contributed to Calc by reporting bugs and suggesting
+ features, large and small. A few deserve special mention: Tim Peters,
+ who helped develop the ideas that led to the selection commands,
+rewrite
+ rules, and many other algebra features; Francois Pinard, who
+ contributed an early prototype of the Calc Summary appendix as well
+as
+ providing valuable suggestions in many other areas of Calc; Carl
+Witty,
+ whose eagle eyes discovered many typographical and factual errors in
+ the Calc manual; Tim Kay, who drove the development of Embedded mode;
+ Ove Ewerlid, who made many suggestions relating to the algebra
+commands
+ and contributed some code for polynomial operations; Randal Schwartz,
+ who suggested the `calc-eval' function; Robert J. Chassell, who
+ suggested the Calc Tutorial and exercises; and Juha Sarlin, who first
+ worked out how to split Calc into quickly-loading parts. Bob Weiner
+ helped immensely with the Lucid Emacs port.
+</p>
+
+<p>
+Among the books used in the development of Calc were Knuth's \<sub>Art</sub> of
+ Computer Programming\_ (especially volume II, \<sub>Seminumerical</sub>
+ Algorithms\_); \<sub>Numerical</sub> Recipes\_ by Press, Flannery, Teukolsky,
+and
+ Vetterling; Bevington's \<sub>Data</sub> Reduction and Error Analysis for the
+ Physical Sciences\_; \<sub>Concrete</sub> Mathematics\_ by Graham, Knuth, and
+ Patashnik; Steele's \<sub>Common</sub> Lisp, the Language\_; the \<sub>CRC</sub> Standard
+Math
+ Tables\_ (William H. Beyer, ed.); and Abramowitz and Stegun's
+venerable
+ \<sub>Handbook</sub> of Mathematical Functions\_. Also, of course, Calc could
+not
+ have been written without the excellent \<sub>GNU</sub> Emacs Lisp Reference
+ Manual\_, by Bil Lewis and Dan LaLiberte.
+</p>
+
+<p>
+Final thanks go to Richard Stallman, without whose fine
+ implementations of the Emacs editor, language, and environment, Calc
+ would have been finished in two weeks.
+</p>
+</blockquote>
+
+<p>
+I've had a lot of these two week projects. I wasn't supposed to get
+ hooked on Planner. It was just supposed to be one of the components of
+ my fourth-year undergrad project. It turned into a way of life and my
+ main open source project for almost three years.
+</p>
+
+<p>
+Most people look at Emacs and they see an editor with way, way, way
+ too many features. How many people need to do in-line matrix
+ calculations, anyway? I might never use it (then again, who knows?),
+ but I think it's terrific that someone just sat down one day and put
+ it in. When I look at Emacs, I see more than a text editor. I see a
+ community of hackers and a tradition of tinkerers. It's awesome. =)
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+
+<p>
+History and Acknowledgements
+</p>
+
+<p>
+Random Emacs symbol: enable-kinsoku &#x2013; Variable: *Non-nil means enable
+“kinsoku” processing on filling paragraphs.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

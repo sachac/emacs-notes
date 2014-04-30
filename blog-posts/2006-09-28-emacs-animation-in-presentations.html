@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Animation in presentations</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Animation in presentations</h1>
+<p>
+September 28th, 2006 -
+<a href="http://sachachua.com/blog/p/3881"><a href="http://sachachua.com/blog/p/3881">http://sachachua.com/blog/p/3881</a></a>
+</p>
+
+<p>
+&#x2026; and because this is just so endearingly old-school and crazily
+ Emacs, here's what's going to be my title “slide” for DemoCamp10.
+</p>
+
+<pre class="example">
+(progn
+  (set-face-attribute 'default nil :height 700)
+  (delete-other-windows)
+  (sit-for 1)
+  (animate-sequence (list "Livin' la Vida Emacs" "DemoCamp10" "Sacha Chua") 1))
+</pre>
+
+<p>
+I may end up writing a presentation mode if there isn't one yet. I've
+ seen one before, but I don't know if it accepts arbitrary Lisp
+ expressions. Maybe I can mess around with eev, too..
+</p>
+
+<p>
+Comment from pll:
+</p>
+
+<blockquote>
+<p>
+OMG!!!!!!!!!!!!!! That's just SOOOOOO cool, and hysterical. I've got
+ to steal\<sup>H\</sup><sup>H\</sup><sup>H\</sup><sup>H\</sup><sup>Hborrow</sup> this hack. I've been toying with the
+idea
+ for a while of doing a “Life with Emacs” talk for my LUG. What a
+ perfect opening :)
+</p>
+</blockquote>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/democamp">democamp</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

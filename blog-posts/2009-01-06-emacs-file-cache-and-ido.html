@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs, file-cache, and ido</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs, file-cache, and ido</h1>
+<p>
+January 6th, 2009 -
+<a href="http://sachachua.com/blog/p/5572"><a href="http://sachachua.com/blog/p/5572">http://sachachua.com/blog/p/5572</a></a>
+</p>
+
+<pre class="example">
+(require 'filecache)
+(require 'ido)
+(defun file-cache-ido-find-file (file)
+  "Using ido, interactively open file from file cache'.
+First select a file, matched using ido-switch-buffer against the contents
+in `file-cache-alist'. If the file exist in more than one
+directory, select directory. Lastly the file is opened."
+  (interactive (list (file-cache-ido-read "File: "
+                                          (mapcar
+                                           (lambda (x)
+                                             (car x))
+                                           file-cache-alist))))
+  (let* ((record (assoc file file-cache-alist)))
+    (find-file
+     (expand-file-name
+      file
+      (if (= (length record) 2)
+          (car (cdr record))
+        (file-cache-ido-read
+         (format "Find %s in dir: " file) (cdr record)))))))
+
+(defun file-cache-ido-read (prompt choices)
+  (let ((ido-make-buffer-list-hook
+     (lambda ()
+       (setq ido-temp-list choices))))
+    (ido-read-buffer prompt)))
+(add-to-list 'file-cache-filter-regexps "docs/html")
+(add-to-list 'file-cache-filter-regexps "\\.svn-base$")
+(add-to-list 'file-cache-filter-regexps "\\.dump$")
+(defmacro sacha/file-cache-setup-tree (prefix shortcut directories)
+  "Set up the file-cache tree for PREFIX using the keyboard SHORTCUT.
+DIRECTORIES should be a list of directory names."
+  `(let ((file-cache-alist nil)
+     (directories ,directories))
+     (file-cache-clear-cache)
+     (while directories
+       (file-cache-add-directory-using-find (car directories))
+       (setq directories (cdr directories)))
+     (setq ,(intern (concat "sacha/file-cache-" prefix "-alist")) file-cache-alist)
+     (defun ,(intern (concat "sacha/file-cache-ido-find-" prefix)) ()
+       (interactive)
+       (let ((file-cache-alist ,(intern (concat "sacha/file-cache-" prefix "-alist"))))
+     (call-interactively 'file-cache-ido-find-file)))
+     (global-set-key (kbd ,shortcut)
+             (quote ,(intern (concat "sacha/file-cache-ido-find-" prefix))))))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

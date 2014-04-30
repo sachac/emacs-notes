@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Wicked Cool Emacs: BBDB: Import CSV and vCard Files</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Wicked Cool Emacs: BBDB: Import CSV and vCard Files</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Project XXX: Import a CSV File into BBDB</a></li>
+<li><a href="#sec-2">Project xxx: Import a vCard File into BBDB</a></li>
+</ul>
+</div>
+</div>
+<p>
+April 12th, 2008 -
+<a href="http://sachachua.com/blog/p/4834"><a href="http://sachachua.com/blog/p/4834">http://sachachua.com/blog/p/4834</a></a>
+</p>
+
+<p>
+If you have many contacts in another address book program, you can
+import them into BBDB. Two popular formats are comma-separated value
+files (CSV) and vCard files (VCF).
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Project XXX: Import a CSV File into BBDB</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+To import a CSV file into BBDB, you will need csv.el from
+<a href="http://ulf.epplejasper.de/downloads/csv.el">http://ulf.epplejasper.de/downloads/csv.el</a> and lookout.el from
+<a href="http://ulf.epplejasper.de/downloads/lookout.el">http://ulf.epplejasper.de/downloads/lookout.el</a> . Save both files to your
+~/elisp directory. Make sure that your ~/elisp directory is in your
+load-path by adding the following line to your ~/.emacs:
+</p>
+
+<pre class="example">
+(add-to-list 'load-path "~/elisp")
+</pre>
+
+<p>
+Export your contacts as an Outlook-style CSV file, then open the file in
+Emacs. After loading the following code, call M-x
+wicked/bbdb-import-csv-buffer to merge the CSV data into your address
+book. Emacs will try to update existing records based on the e-mail
+address or name provided, creating new records if necessary. After Emacs
+updates the records, the relevant records are displayed in the <b>BBDB</b>
+buffer. Here is the code to make that work:
+</p>
+
+<p>
+ch6-bbdb-import-csv-buffer.el:
+</p>
+
+<pre class="example">
+(require 'lookout)
+(defconst wicked/lookout-bbdb-mapping-table-outlook
+  '(("name" "Name")
+    ("net" "E-mail Address")
+    ("notes" "Notes")
+    ("phones" "Mobile Phone"
+     "Home Phone"
+     "Home Phone 2"
+     "Home Fax"
+     "Business Phone"
+     "Business Phone 2"
+     "Business Fax"
+     "Other Phone"
+     "Other Fax")
+    ("addr1" "Home Address")
+    ("addr2" "Business Address")
+    ("addr3" "Other Address")
+    ("lastname" "Last Name")
+    ("firstname" "First Name")
+    ("job" "Job Title")
+    ("company" "Company")
+    ("otherfields" ""))
+  "Field mappings for Outlook-type CSVs exported from Outlook, Gmail, LinkedIn, etc.")
+
+(defun wicked/bbdb-import-csv-line (line)
+  "Import LINE as a CSV, trying to merge it with existing records."
+  (let* (record
+     (name  (lookout-bbdb-get-value "name" line))
+     (lastname (lookout-bbdb-get-value "lastname" line))
+     (firstname (lookout-bbdb-get-value "firstname" line))
+     (company   (lookout-bbdb-get-value "company" line))
+         (job       (lookout-bbdb-get-value "job" line))
+     (net       (lookout-bbdb-get-value "net" line))
+     (addr1     (lookout-bbdb-get-value "addr1" line))
+     (addr2     (lookout-bbdb-get-value "addr2" line))
+     (addr3     (lookout-bbdb-get-value "addr3" line))
+     (phones    (lookout-bbdb-get-value "phones" line t)) ;; !
+     (notes     (lookout-bbdb-get-value "notes" line ))
+         (j (concat job ", " company))
+     (otherfields (lookout-bbdb-get-value "otherfields" line t))
+     (addrs nil)
+         name-search
+     (message ""))
+    (if (string= company "") (setq company nil))
+    (if (string= notes "") (setq notes nil))
+    (if (string= name "") (setq name nil))
+    (setq name-search (concat "^" (or name (concat firstname " " lastname))))
+    (setq record (or (bbdb-search (bbdb-records) nil nil net)
+             (bbdb-search (bbdb-records) name-search)))
+    (if record
+    (progn
+      ;; Matching records found, update first matching record
+      (setq record (car record))
+      (let ((nets (bbdb-record-net record)))
+        (unless (member net nets)
+          ;; New e-mail address noticed, add to front of list
+          (add-to-list 'nets net)
+          (bbdb-record-set-net record nets)
+          (message "%s: New e-mail address noticed: %s"
+               (or name (concat firstname " " lastname)) net)))
+      ;; Check if job title and company have changed
+      (when (or job company)
+        (cond
+         ((string= (or (bbdb-record-company record) "") "")
+          (bbdb-record-set-company record j))
+         ((string= (bbdb-record-company record) j)
+          nil)
+         (t
+          (bbdb-record-set-notes
+           record
+           (concat "Noticed change from job title of "
+               (bbdb-record-company record)
+               "\n"
+               (bbdb-record-notes record)))
+          (message "%s: Noticed change from job title of %s to %s"
+               (or name (concat firstname " " lastname))
+               (bbdb-record-company record) j)
+          (bbdb-record-set-company record j)))))
+      ;; No record found, create record
+      (if (and addr1 (&gt; (length addr1) 0))
+      (add-to-list 'addrs
+               (vector "Address 1" (list addr1) "" "" "" "")))
+      (if (and addr2 (&gt; (length addr2) 0))
+      (add-to-list 'addrs
+               (vector "Address 2" (list addr2) "" "" "" "")))
+      (if (and addr3 (&gt; (length addr3) 0))
+      (add-to-list 'addrs
+               (vector "Address 3" (list addr3) "" "" "" "")))
+      (setq record (list
+            (wicked/lookout-bbdb-create-entry
+             (or name (concat firstname " " lastname))
+             (concat job ", " company)
+             net
+             addrs
+             phones
+             notes
+             otherfields))))
+    record))
+
+(defun wicked/lookout-bbdb-create-entry (name company net addrs phones notes
+                          &amp;amp;optional otherfields)
+  (when (or t (y-or-n-p (format "Add %s to bbdb? " name)))
+    ;;(message "Adding record to bbdb: %s" name)
+    (let ((record (bbdb-create-internal name company net addrs phones notes)))
+      (unless record (error "Error creating bbdb record"))
+      (mapcar (lambda (i)
+        (let ((field (make-symbol (aref i 0)))
+              (value (aref i 1)))
+          (when (and value (not (string= "" value)))
+            (bbdb-insert-new-field record field value))))
+          otherfields)
+      record)))
+
+(defun wicked/bbdb-import-csv-buffer ()
+  "Import this buffer."
+  (interactive)
+  (let ((lookout-bbdb-mapping-table
+     wicked/lookout-bbdb-mapping-table-outlook))
+    (bbdb-display-records
+     (mapcar
+      'wicked/bbdb-import-csv-line
+      (csv-parse-buffer t)))))
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Project xxx: Import a vCard File into BBDB</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To import a vCard file (VCF) into BBDB, you will need vcard.el from
+<a href="http://www.splode.com/~friedman/software/emacs-lisp/src/vcard.el">http://www.splode.com/~friedman/software/emacs-lisp/src/vcard.el</a> and
+bbdb-vcard-import.el from
+<a href="http://www-pu.informatik.uni-tuebingen.de/users/crestani/downloads/bbdb-vcard-import.el">http://www-pu.informatik.uni-tuebingen.de/users/crestani/downloads/bbdb-vcard-import.el</a>
+. By default, these files allow you to import names and e-mail addresses
+from vCard files exported from various address book programs. Save
+vcard.el and bbdb-vcard-import.el to your ~/elisp directory and add the
+following lines to your ~/.emacs:
+</p>
+
+<pre class="example">
+(add-to-list 'load-path "~/elisp")
+(require 'bbdb-vcard-import)
+</pre>
+
+<p>
+Back up your ~/.bbdb file before calling M-x bbdb-vcard-import to import
+a file or M-x bbdb-vcard-import-buffer to import the current buffer.
+WARNING: If your vCard file includes fields with multiline values, you
+may get silent errors. Verify your import by browsing through the
+displayed entries. If some of them have been misread, revert to your
+backup ~/.bbdb by closing Emacs and copying your backup over the ~/.bbdb
+file. To fix the multi-line error, include the following lines in your
+~/.emacs:
+</p>
+
+<pre class="example">
+(defun wicked/vcard-parse-region (beg end &amp;amp;optional filter)
+  "Parse the raw vcard data in region, and return an alist representing data.
+This function is just like `vcard-parse-string' except that it operates on
+a region of the current buffer rather than taking a string as an argument.
+
+Note: this function modifies the buffer!"
+  (or filter
+      (setq filter 'vcard-standard-filter))
+  (let ((case-fold-search t)
+        (vcard-data nil)
+        (pos (make-marker))
+        (newpos (make-marker))
+        properties value)
+    (save-restriction
+      (narrow-to-region beg end)
+      (save-match-data
+        ;; Unfold folded lines and delete naked carriage returns
+        (goto-char (point-min))
+        (while (re-search-forward "\r$\\|\n[ \t]" nil t)
+          (goto-char (match-beginning 0))
+          (delete-char 1))
+        (goto-char (point-min))
+        (re-search-forward "^begin:[ \t]*vcard[ \t]*\n")
+        (set-marker pos (point))
+        (while (and (not (looking-at "^end[ \t]*:[ \t]*vcard[ \t]*$"))
+                    (re-search-forward ":[ \t]*" nil t))
+          (set-marker newpos (match-end 0))
+          (setq properties
+                (vcard-parse-region-properties pos (match-beginning 0)))
+          (set-marker pos (marker-position newpos))
+          (re-search-forward "\n[-A-Z0-9;=]+:")   ;; change to deal with multiline
+          (set-marker newpos (1+ (match-beginning 0))) ;; change to deal with multiline
+          (setq value
+                (vcard-parse-region-value properties pos (match-beginning 0)))
+          (set-marker pos (marker-position newpos))
+          (goto-char pos)
+          (funcall filter properties value)
+          (setq vcard-data (cons (cons properties value) vcard-data)))))
+    (nreverse vcard-data)))
+;; Replace vcard.el's definition
+(fset 'vcard-parse-region 'wicked/vcard-parse-region)
+</pre>
+
+<p>
+Because address book programs don't use standard labels for addresses
+and phone numbers, bbdb-vcard-import.el ignores those fields. For
+example, Gmail uses the generic field “Label” for address information
+and does not use separate fields for city, state, zip code, and country.
+While bbdb-snarf.el makes an attempt to extract addresses from plain
+text, it seems to be less trouble to export to the Outlook CSV format
+instead, or even to type the address in yourself. If you want to import
+addresses, see Project XXX: Import a CSV File into BBDB.
+</p>
+
+<p>
+Here's a partial workaround to enable you to import phone numbers. I
+tested this code with vCard files from Gmail and LinkedIn. To try it
+out, add the following modifications to your ~/.emacs:
+</p>
+
+<pre class="example">
+(defun wicked/bbdb-vcard-merge (record)
+  "Merge data from vcard interactively into bbdb."
+  (let* ((name (bbdb-vcard-values record "fn"))
+     (company (bbdb-vcard-values record "org"))
+     (net (bbdb-vcard-get-emails record))
+     (addrs (bbdb-vcard-get-addresses record))
+     (phones (bbdb-vcard-get-phones record))
+     (categories (bbdb-vcard-values record "categories"))
+     (notes (and (not (string= "" categories))
+             (list (cons 'categories categories))))
+     ;; TODO: addrs are not yet imported.  To do this right,
+     ;; figure out a way to map the several labels to
+     ;; `bbdb-default-label-list'.  Note, some phone number
+     ;; conversion may break the format of numbers.
+     (bbdb-north-american-phone-numbers-p nil)
+     (new-record (bbdb-vcard-merge-interactively name
+                             company
+                             net
+                             nil ;; Skip addresses
+                             phones ;; Include phones
+                             notes)))
+    (setq bbdb-vcard-merged-records (append bbdb-vcard-merged-records 
+                        (list new-record)))))
+;; Replace bbdb-vcard-import.el's definition
+(fset 'bbdb-vcard-merge 'wicked/bbdb-vcard-merge)
+</pre>
+
+<p>
+Evaluate this code or restart Emacs, then call M-x bbdb-import-vcard
+again, which should merge phone numbers into your BBDB records.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

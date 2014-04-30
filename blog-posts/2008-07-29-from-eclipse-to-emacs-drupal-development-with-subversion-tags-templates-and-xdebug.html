@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>From Eclipse to Emacs: Drupal development with Subversion, tags,</title>
+<!-- 2014-04-30 Wed 17:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">From Eclipse to Emacs: Drupal development with Subversion, tags,</h1>
+<p>
+templates, and xdebug
+</p>
+
+<p>
+July 29th, 2008 -
+<a href="http://sachachua.com/blog/p/5007"><a href="http://sachachua.com/blog/p/5007">http://sachachua.com/blog/p/5007</a></a>
+</p>
+
+<p>
+Yesterday, I started working on my Drupal project in Emacs. I can't
+believe I hadn't moved to Emacs earlier. =)
+</p>
+
+<p>
+I really like being able to diff a file with C-x v = (vc-diff) and check
+in a file with C-x v v (vc-next-action). I also like the way that
+svn-status (from psvn.el) lets me examine a directory tree, mark a set
+of files, and commit them&#x2013;all without using the mouse. I probably
+should've set up keyboard shortcuts for these in Eclipse, but Eclipse
+made it too easy to just use the mouse. Emacs encourages you to use the
+keyboard, and it's easy to customize any keyboard shortcut.
+</p>
+
+<p>
+php-mode's C-c . (php-show-arglist) works beautifully with the TAGS file
+that I'd set up using Exuberant Ctags, so I don't need to do anything
+special in order to get function definitions. Definition functions for
+PHP functions would be nice. In the meantime, there's C-c C-f
+(php-search-documentation).
+</p>
+
+<p>
+The yasnippet template engine came in handy when I was writing test
+cases. I updated
+<a href="http://sachachua.com/notebook/elisp/snippets/php-mode/drupal-mode/dmodule">my
+module template</a> to include the simpletest hook, added a
+<a href="http://sachachua.com/notebook/elisp/snippets/php-mode/drupal-mode/test">test
+case template</a>, and added a template for the
+<a href="http://sachachua.com/notebook/elisp/snippets/php-mode/drupal-mode/_simpletest">simpletest
+hook</a> as well. Yay dynamic templates!
+</p>
+
+<p>
+And I just got Xdebug working with
+<a href="http://www.emacswiki.org/cgi-bin/wiki/PhpMode">PhpMode and Geben</a>&#x2026;
+Sweet!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

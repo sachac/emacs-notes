@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs tweaks: Export Org checkboxes using UTF-8 symbols</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs tweaks: Export Org checkboxes using UTF-8 symbols</h1>
+<p>
+March 27th, 2014 -
+<a href="http://sachachua.com/blog/p/27119"><a href="http://sachachua.com/blog/p/27119">http://sachachua.com/blog/p/27119</a></a>
+</p>
+
+<p>
+UPDATE 2014-03-28: Newer versions of org have the
+<code>org-html-checkbox-type</code> variable, which you can set to <code>unicode</code>. Use
+M-x customize-variable org-html-checkbox-type to see if you have it.
+</p>
+
+<p>
+This snippet turns <code>- [X]</code> into ☑ and <code>- [ ]</code> into ☐.
+</p>
+
+<pre class="example">
+(defun sacha/org-html-checkbox (checkbox)
+  "Format CHECKBOX into HTML."
+  (case checkbox (on "&lt;span class=\"check\"&gt;&amp;#x2611;&lt;/span&gt;") ; checkbox (checked)
+        (off "&lt;span class=\"checkbox\"&gt;&amp;#x2610;&lt;/span&gt;")
+        (trans "&lt;code&gt;[-]&lt;/code&gt;")
+        (t "")))
+(defadvice org-html-checkbox (around sacha activate)
+  (setq ad-return-value (sacha/org-html-checkbox (ad-get-arg 0))))
+</pre>
+
+<p>
+To find this code, I searched <code>ox-html.el</code> for <code>[</code>. Eventually I found
+<code>org-html-checkbox</code>, which is directly called by
+<code>org-html-format-list-item</code> instead of being a function variable that
+you can change. So that meant I needed to override the behaviour of
+<code>org-html-checkbox</code> through <code>defadvice</code>. You can see above how I wrap
+advice around <code>org-html-checkbox</code> and replace the return value with my
+own function. For more about advice, read the Emacs Lisp Intro manual.
+</p>
+
+<p>
+To find the hex codes for the UTF-8 characters, I searched Google for
+<a href="https://www.google.ca/search?q=utf8+checkbox+check">UTF-8 checkbox</a>
+and found
+<a href="http://www.fileformat.info/info/unicode/char/2611/index.htm">BALLOT
+BOX WITH CHECK</a>. I used the hex code so that I didn't have to worry
+about encoding issues. I tested it by updating one of my weekly reviews.
+Tada!
+</p>
+
+<p>
+Inspired by Grant from
+<a href="http://www.wisdomandwonder.com/article/8284/creation-and-conservation-of-computer-files-c3f/comment-page-1#comment-1086101">Wisdom
+and Wonder</a>.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

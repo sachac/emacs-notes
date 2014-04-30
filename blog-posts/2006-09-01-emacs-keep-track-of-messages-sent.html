@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Keep track of messages sent</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Keep track of messages sent</h1>
+<p>
+September 1st, 2006 -
+<a href="http://sachachua.com/blog/p/3819"><a href="http://sachachua.com/blog/p/3819">http://sachachua.com/blog/p/3819</a></a>
+</p>
+
+<p>
+Because a Big Brother Database of my contacts isn't complete if I
+ don't keep track of what e-mail I sent them and when I sent it, this
+ bit of Emacs Lisp code adds Gnus subjects to the BBDB records of the
+ people to whom I sent e-mail.
+</p>
+
+<pre class="example">
+(defun sacha/gnus-add-subject-to-bbdb-record ()
+  "Add datestamped subject note for each person this message has been sent to."
+  (let* ((subject (concat (planner-today)
+                          ": E-mail: " (message-fetch-field "Subject") "\n"))
+         (bbdb-get-addresses-headers
+          (list (assoc 'recipients bbdb-get-addresses-headers)))
+         records)
+    (setq records
+          (bbdb-update-records
+           (bbdb-get-addresses nil gnus-ignored-from-addresses 'gnus-fetch-field)
+           nil nil))
+    (mapc (lambda (rec)
+            (bbdb-record-set-notes rec
+                                   (concat subject
+                                           (bbdb-record-notes rec))))
+            records)))
+(add-hook 'message-send-hook 'sacha/gnus-add-subject-to-bbdb-record)
+</pre>
+
+<p>
+It should be really easy to set up Gnus to expand some kind of
+ !followup macro into a TODO item in my planner and an “I hope to hear
+ from you by &#x2026;.”. Ridiculously easy with Emacs Lisp and an insanely
+ customizable editor, but I might not have enough battery life. I've
+ got 28 minutes, and then I'm off PC for a while.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/lisp">lisp</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>,
+<a href="http://www.technorati.com/tag/hack">hack</a>
+</p>
+
+<p>
+<a href="file://c:/mnt/media/sacha/notebook/emacs/dotgnus.el">/mnt/media/sacha/notebook/emacs/dotgnus.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

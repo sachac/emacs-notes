@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Where I am in terms of Emacs</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Where I am in terms of Emacs</h1>
+<p>
+May 29th, 2012 -
+<a href="http://sachachua.com/blog/p/23348"><a href="http://sachachua.com/blog/p/23348">http://sachachua.com/blog/p/23348</a></a>
+</p>
+
+<p>
+Now that I have more control over the tools I use, I use Emacs for more
+of my planning. I'm back to using Org Mode to manage my task list
+(hooray!), and it has grown by leaps and bounds. I'm looking forward to
+getting even deeper into it.
+</p>
+
+<p>
+<b>Here's where I am in terms of Emacs</b>
+</p>
+
+<p>
+I'm still on Microsoft Windows 7 because I like some of the drawing
+programs that I can't get to run on Linux, so my Emacs experience is
+less than ideal but still okay. It's one of the first applications I
+start after a reboot, and I keep Emacs open almost all the time. I've
+pinned Emacs to my task bar (right-click on the icon and pin it) and
+moved it to the first slot, so Win+1 gets me back to Emacs.
+</p>
+
+<p>
+When I'm at my client site, I use the laptop they provided to do work,
+and I use a wiki page to manage and publish my task list. I use Emacs
+during the early morning, the evening, weekends, and personal days.
+</p>
+
+<p>
+I use <code>org-capture</code> to quickly capture tasks and notes. Here are some of
+the templates I use:
+</p>
+
+<pre class="example">
+(setq org-capture-templates
+      '(("t" "Tasks" entry
+         (file+headline "~/personal/organizer.org" "Tasks")
+         "* TODO %?
+SCHEDULED: %^t")
+        ("q" "Quick task" entry
+         (file+headline "~/personal/organizer.org" "Tasks")
+         "* TODO %^{Task}
+SCHEDULED: %^t"
+         :immediate-finish t)
+        ;; other entries go here
+        ("r" "Notes" entry
+         (file+datetree "~/personal/organizer.org" "Inbox")
+         "* %?\n\n%i\n"
+         :clock-in :clock-resume)))
+</pre>
+
+<p>
+The Org agenda helps me check what I need to do. I have it set up to
+display the time grid so that I get a relative sense of where things
+are. I use a 2-day view so that tomorrow is in my peripheral vision.
+</p>
+
+<p>
+<b>Here are some things I want to explore:</b>
+</p>
+
+<ul class="org-ul">
+<li>Improve the integration of Org and my self-tracking system at
+<a href="http://quantifiedawesome.com">quantifiedawesome.com</a>
+</li>
+<li>Use Org for blog posts with images (I don't quite trust it yet,
+although I've used it before)
+</li>
+<li>Take notes in Org Contacts instead of stuffing notes into BBDB
+</li>
+<li>Read the <a href="http://news.gmane.org/gmane.emacs.orgmode">Org Mode
+mailing list</a> and <a href="http://planet.emacsen.org">Planet Emacsen</a> more
+often to get inspiration, maybe contribute patches
+</li>
+<li>Get MobileOrg working for me smoothly on my Android &#x2013; need to get
+the hang of the workflow
+</li>
+<li>Use Org's literate programming support to annotate my Emacs
+configuration
+</li>
+</ul>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

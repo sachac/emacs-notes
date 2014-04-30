@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>sacha/try-expand-emacs-wiki-name</title>
+<!-- 2014-04-30 Wed 16:58 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">sacha/try-expand-emacs-wiki-name</h1>
+<p>
+April 22nd, 2004 -
+<a href="http://sachachua.com/blog/p/1989"><a href="http://sachachua.com/blog/p/1989">http://sachachua.com/blog/p/1989</a></a>
+</p>
+
+<pre class="example">
+(defun sacha/try-expand-emacs-wiki-name (old)
+  "Expand a wiki name."
+  (unless old
+    (he-init-string (he-dabbrev-beg) (point))
+    (setq he-expand-list
+          (if (derived-mode-p 'emacs-wiki-mode)
+              (delq nil
+                    (mapcar
+                     (lambda (item)
+                       (when (string-match
+                              (concat "^" (regexp-quote he-search-string))
+                              (car item))
+                         (planner-make-link (car item))))
+                     (emacs-wiki-file-alist))))))
+  (while (and he-expand-list
+              (or (not (car he-expand-list))
+                  (he-string-member (car he-expand-list) he-tried-table t)))
+    (setq he-expand-list (cdr he-expand-list)))
+  (if (null he-expand-list)
+      (progn
+        (if old (he-reset-string))
+        nil)
+    (progn
+      (he-substitute-string (car he-expand-list) t)
+      (setq he-expand-list (cdr he-expand-list))
+      t)))
+</pre>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/hippie-config.el">../../notebook/emacs/hippie-config.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

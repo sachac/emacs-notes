@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Playing around with planner-search-notes</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Playing around with planner-search-notes</h1>
+<p>
+October 30th, 2003 -
+<a href="http://sachachua.com/blog/p/1289"><a href="http://sachachua.com/blog/p/1289">http://sachachua.com/blog/p/1289</a></a>
+</p>
+
+<pre class="example">
+(defun planner-search-notes (regexp)
+  "Return a buffer with all the notes returned by the query for REGEXP."
+  (interactive "MRegexp: ")
+  (with-emacs-wiki-project planner-project
+    (let ((results (planner-search-notes-internal regexp)))
+      (if results
+          (progn
+            (set-buffer
+             (get-buffer-create (generate-new-buffer-name
+                                 (concat "Planner Search: " regexp))))
+            (setq emacs-wiki-current-project planner-project)
+            (mapcar (lambda (item)
+                      (insert (car item) "\t"
+                              (cadr item) "\n"))
+                    results)
+            (planner-mode)
+            (goto-char point-min)
+            (display-buffer (current-buffer)))
+        (message "No results found.")))))
+
+(defun planner-search-notes-internal (regexp)
+  "Return an alist of all notes in daily plan pages containing REGEXP.
+The alist is of the form ((REFERENCE . TEXT) (REFERENCE . TEXT))."
+  (let ((pages (sort (copy-sequence (emacs-wiki-file-alist))
+                     (lambda (a b)
+                       (string&lt; (car a) (car b)))))
+        page start anchor text results)
+    (while pages
+      (setq page (caar pages))
+      (when (string-match planner-date-regexp page)
+        (with-temp-buffer
+          (insert-file-contents-literally (cdar pages))
+          (setq start nil)
+          ;; Find the first note
+          (when (re-search-forward "\\.\\(#[0-9]+\\)\s+\\(.*\\)" nil t)
+            (setq start (match-beginning 2))
+            (setq anchor (match-string 1))
+            (setq title (match-string 2)))
+          (while (re-search-forward "\\.\\(#[0-9]+\\)\s+\\(.*\\)" nil t)
+            ;; The text between start and (1- (match-beginning 0))
+            ;; is the note body.
+            (setq text (buffer-substring start (1- (match-beginning 0))))
+            (save-match-data
+              (when (string-match regexp text)
+                (add-to-list 'results (list (concat page anchor)
+                                            title))))
+            (setq start (match-beginning 2))
+            (setq anchor (match-string 1))
+            (setq title (match-string 2)))
+          (when start
+            (setq text (buffer-substring start (point-max)))
+            (when (string-match regexp text)
+              (add-to-list 'results (list (concat page anchor)
+                                          title))))))
+      (setq pages (cdr pages)))
+    results))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

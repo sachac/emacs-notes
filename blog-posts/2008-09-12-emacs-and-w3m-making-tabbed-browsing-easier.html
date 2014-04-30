@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs and w3m: Making tabbed browsing easier</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs and w3m: Making tabbed browsing easier</h1>
+<p>
+September 12th, 2008 -
+<a href="http://sachachua.com/blog/p/5137"><a href="http://sachachua.com/blog/p/5137">http://sachachua.com/blog/p/5137</a></a>
+</p>
+
+<p>
+If you browse with a lot of open tabs, like I do, w3m will be much
+easier to use once you remap <code>w3m-next-buffer</code> and <code>w3m-previous-buffer</code>
+onto single-key shortcuts, allowing you to press a key to quickly flip
+between tabs.
+</p>
+
+<p>
+By default, <code>w3m-previous-buffer</code> is mapped to C-c C-p and
+<code>w3m-next-buffer</code> is mapped to C-c C-n. On a QWERTY keyboard, you may
+want to remap <code>w3m-previous-buffer</code> to q and <code>w3m-next-buffer</code> to w.
+You'll probably also want to remap <code>w3m-close-window</code> (which had been
+bound to q), and x is a good keybinding for that. To make all these
+changes, add the following to your <i>~</i>.emacs/:
+</p>
+
+<pre class="example">
+(eval-after-load 'w3m
+  '(progn
+     (define-key w3m-mode-map "q" 'w3m-previous-buffer)
+     (define-key w3m-mode-map "w" 'w3m-next-buffer)
+     (define-key w3m-mode-map "x" 'w3m-close-window)))
+</pre>
+
+<p>
+If you use a Dvorak keyboard layout, you can bind . to
+<code>w3m-previous-buffer</code> and , to <code>w3m-next-buffer</code> instead. Just add the
+following code to your <i>~</i>.emacs/:
+</p>
+
+<pre class="example">
+(eval-after-load 'w3m
+  '(progn
+     (define-key w3m-mode-map "." 'w3m-previous-buffer)
+     (define-key w3m-mode-map "," 'w3m-next-buffer)))
+</pre>
+
+<p>
+(This is part of the draft for my
+<a href="http://sachachua.com/wp/category/wickedcoolemacs">book on Emacs</a>, to
+be published by No Starch Press if I'm not too late.)
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

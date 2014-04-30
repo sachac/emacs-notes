@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs and w3m: Quick searches</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs and w3m: Quick searches</h1>
+<p>
+August 18th, 2008 -
+<a href="http://sachachua.com/blog/p/5072"><a href="http://sachachua.com/blog/p/5072">http://sachachua.com/blog/p/5072</a></a>
+</p>
+
+<p>
+A number of browsers allow you to define quick searches so that you can
+type keywords into your address bar in order to search predetermined
+sites. With a little bit of code, you can do this in Emacs, too. In this
+project, you'll learn how to set up your own keywords to work with w3m
+and browse-url, so you can use your keywords for browsing both inside
+and outside Emacs.
+</p>
+
+<p>
+First, set up keywords by adding the following lines to your ~/.emacs.
+We'll use an associative list of regular expressions and substitutions,
+like this:
+</p>
+
+<pre class="example">
+(setq wicked/quick-search-alist
+      '(("^g?:? +\\(.*\\)" . ;; Google Web 
+         "http://www.google.com/search?q=\\1")
+
+        ("^g!:? +\\(.*\\)" . ;; Google Lucky
+         "http://www.google.com/search?btnI=I%27m+Feeling+Lucky&amp;q=\\1")
+
+    ("^dict:? +\\(.*\\)" . ;; Dictionary
+     "http://dictionary.reference.com/search?q=\\1")))
+</pre>
+
+<p>
+This will turn "g keyword1 keyword2" into a Google search for keyword1
+and keyword2.
+</p>
+
+<p>
+Next, define advice for the functions that open URLs. Before-type advice
+allows you to modify arguments before the function is run, and we'll use
+that to change the URLs. To modify the URL behavior of w3m, add the
+following to your ~/.emacs:
+</p>
+
+<pre class="example">
+(require 'cl-seq)
+(defadvice w3m-goto-url (before wicked activate)
+  "Use the quick searches defined in `wicked/quick-search-alist'."
+  (let* ((my-url (replace-regexp-in-string 
+          "^ *\\| *$" "" 
+          (replace-regexp-in-string "[ \t\n]+" " " (ad-get-arg 0))))
+     (match (assoc-if
+         (lambda (a) (string-match a my-url))
+         wicked/quick-search-alist)))
+    (if match
+    (ad-set-arg 0 (replace-regexp-in-string
+               (car match) (cdr match) my-url)))))
+</pre>
+
+<p>
+This sets up your quick searches for use within w3m. To set up quick
+searches for use with browse-url and external browsers, add the
+following to your ~/.emacs:
+</p>
+
+<pre class="example">
+(defadvice browse-url (before wicked activate)
+  "Use the quick searches defined in `wicked/quick-search-alist'."
+  (let* ((my-url (replace-regexp-in-string 
+          "^ *\\| *$" "" 
+          (replace-regexp-in-string "[ \t\n]+" " " (ad-get-arg 0))))
+     (match (assoc-if
+         (lambda (a) (string-match a my-url))
+         wicked/quick-search-alist)))
+    (if match
+    (ad-set-arg 0 (replace-regexp-in-string
+               (car match) (cdr match) my-url)))))
+</pre>
+
+<p>
+To try out your searches, use M-x browse-url RET g emacs RET to do a
+Google search for all things Emacs, and use M-x w3m-goto-url (usually
+bound to g) inside w3m to use the quick searches.
+</p>
+
+<p>
+You can define more quick searches like this:
+</p>
+
+<pre class="example">
+(add-to-list 'wicked/quick-search-alist
+          '("^ew:? *?\\(.*\\)" . ;; Emacs Wiki Search
+            "http://www.emacswiki.org/cgi-bin/wiki?search=\\1"))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

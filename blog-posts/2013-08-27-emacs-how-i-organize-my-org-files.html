@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: How I organize my Org files</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: How I organize my Org files</h1>
+<p>
+August 27th, 2013 -
+<a href="http://sachachua.com/blog/p/25635"><a href="http://sachachua.com/blog/p/25635">http://sachachua.com/blog/p/25635</a></a>
+</p>
+
+<p>
+<i>Michael Jones wanted to know how I organized my Org Mode files. Here's
+how I do things!</i>
+</p>
+
+<p>
+<a href="http://orgmode.org">Org Mode for Emacs</a> is an outliner that lets you
+add a little structure to plain text files. Not only can you use it to
+move around, hide, and show sections of your outline, but you can also:
+</p>
+
+<ul class="org-ul">
+<li>schedule tasks and mark them as complete,
+</li>
+<li>add hyperlinks and formatting,
+</li>
+<li>estimate effort and track time,
+</li>
+<li>export to HTML and other formats,
+</li>
+<li>and even include code that you can run in-line.
+</li>
+</ul>
+
+<p>
+I started with a single Org Mode file (appropriately called
+organizer.org), but I've gradually fleshed this out into a number of
+files. My goals for organizing my files this way are to be able to:
+</p>
+
+
+<div class="figure">
+<p><a href="uploads/2013/08/image1.png"><img src="uploads/2013/08/image_thumb1.png" alt="image_thumb1.png" /></a>
+</p>
+</div>
+
+<ul class="org-ul">
+<li>Publish some files while keeping other files private,
+</li>
+<li>Add or remove groups of tasks from my agenda, or focus my
+agenda/search on the current file,
+</li>
+<li>Simplify processing my weekly review (categorizing
+accomplishments/tasks),
+</li>
+<li>Get a quick overview of important things, and
+</li>
+<li>Have file-specific options, like columns.
+</li>
+</ul>
+
+<p>
+I often use <a href="http://sachachua.com/blog/dotemacs#agenda_commands">Org
+agenda custom commands</a> to jump around. For example, one agenda command
+lists projects, and pressing RET on an agenda line will take me to that
+project. I also use <code>org-capture</code> to take a note from anywhere, and I
+use <code>org-goto</code> to navigate my files. For jumping to a specific file, I
+use <code>ido-find-file</code>.
+</p>
+
+<p>
+I use several Org Mode files. The six files below have a little more
+than 1.3MB of text in total &#x2013; tiny! &#x2013; but they help me tremendously. I
+also have lots of other Org files like my
+<a href="http://sachachua.com/blog/dotemacs">Emacs configuration</a> and
+<a href="http://dl.dropboxusercontent.com/u/3968124/blog.html">my blog index</a>
+(I often use Org for publishing), but these are my main files.
+</p>
+
+<p>
+<b>Personal tasks and notes: organizer.org</b>
+</p>
+
+<p>
+This is the catch-all for any tasks or notes that don't belong to the
+files below. Here's the rough structure:
+</p>
+
+<ul class="org-ul">
+<li><b>Quick notes:</b> Tidbits that might not make it into their own blog
+posts, but which can be included in weekly reviews
+</li>
+<li><b>Reference:</b> Hours, license keys, etc.
+</li>
+<li><b>Open loops:</b> Anything I need to check on every so often
+</li>
+<li><b>Projects:</b> High-level things I'm focusing on
+</li>
+<li><b>Financial goals:</b> Things to save up for
+</li>
+<li><b>Someday/maybe:</b> Projects to do someday
+</li>
+<li><b>Weekly review:</b> Divided by year
+</li>
+<li><b>Monthly review:</b> More summaries
+</li>
+<li><b>Plans:</b> Personal plans
+</li>
+<li><b>2011, 2012, 2013&#x2026;</b>: I use org-capture to quickly jot down notes.
+The datetree option automatically files them by day, which makes
+older ones easier to archive.
+</li>
+<li><b>Tasks:</b> A bucket for miscellaneous tasks
+</li>
+</ul>
+
+<p>
+<b>Anything to do with business: business.org</b>
+</p>
+
+<p>
+I organize these by the types of tasks I focus on and the notes I want
+to keep.
+</p>
+
+<ul class="org-ul">
+<li>Earn
+
+<ul class="org-ul">
+<li>Clients
+</li>
+<li>Leads
+</li>
+</ul>
+</li>
+
+<li>Build
+
+<ul class="org-ul">
+<li>Projects
+</li>
+<li>Research
+</li>
+<li>Business ideas
+</li>
+<li>Blog
+</li>
+<li>Delegation
+</li>
+<li>Planning
+</li>
+<li>Business hygiene (accounting, etc.)
+</li>
+<li>Learning
+</li>
+</ul>
+</li>
+
+<li>Connect
+
+<ul class="org-ul">
+<li>Meetups
+</li>
+<li>Hangouts
+</li>
+<li>Other
+</li>
+</ul>
+</li>
+
+<li>Reference
+</li>
+<li>Tasks
+</li>
+</ul>
+
+<p>
+<b>Relationships: people.org</b>
+</p>
+
+<p>
+I organize these by relationships so that I can remember who's out
+there.
+</p>
+
+<ul class="org-ul">
+<li>Family
+</li>
+<li>Extended family
+</li>
+<li>Canada friends
+</li>
+<li>Hacklab
+</li>
+<li>Barkada
+</li>
+<li>Letters
+</li>
+<li>Meetups
+</li>
+<li>Bloggers
+</li>
+<li>Family friends
+</li>
+<li>Other tasks
+</li>
+</ul>
+
+<p>
+<b>Regular tasks: routines.org</b>
+</p>
+
+<p>
+I organize these by frequency and omit the tasks from my weekly review.
+This also contains my “In case of&#x2026;” scenarios and my backup
+documentation.
+</p>
+
+<ul class="org-ul">
+<li>Every day
+</li>
+<li>Once a week
+</li>
+<li>Once a month
+</li>
+<li>Once a quarter
+</li>
+<li>Once a year
+</li>
+<li>When&#x2026;
+</li>
+</ul>
+
+<p>
+<b>Outline for future blog posts:</b>
+<a href="http://sach.ac/outline">sharing/index.org</a>
+</p>
+
+<p>
+I organize this by topic. See
+<a href="http://sach.ac/outline"><a href="http://sach.ac/outline">http://sach.ac/outline</a></a> for the published
+version
+</p>
+
+<p>
+<b>Decision review: decisions.org</b>
+</p>
+
+<p>
+I organize these by status. I also use org-choose markers (ex: CHOSEN,
+MAYBE) inside the categories, but the headings make it easier to review.
+</p>
+
+<ul class="org-ul">
+<li>Pending
+</li>
+<li>Current
+</li>
+<li>For review
+</li>
+<li>Someday / maybe
+</li>
+<li>Archive
+</li>
+</ul>
+
+<p>
+<b>Personal finance: ledger.org</b>
+</p>
+
+<p>
+I use <a href="http://www.ledger-cli.org/">John Wiegley's command-line Ledger
+program</a> to manage my finances. My financial data is in separate
+ledger-mode files, and I use an Org file with org-babel to make it
+easier for me to answer some questions about my finances. For example:
+</p>
+
+<ul class="org-ul">
+<li>Given my average monthly expenses and the amount of money I've set
+aside, how long can I sustain my early-retirement experiment?
+</li>
+<li>Am I ahead or behind in terms of household contributions?
+</li>
+<li>What did I spend on last month?
+</li>
+<li>Are my virtual envelopes balanced?
+</li>
+</ul>
+
+<p>
+<b>How do you organize your Org files or outlines?</b>
+</p>
+
+<p>
+Everyone's got different ways of organizing outlines, and people also
+also change over time. How do you organize yours?
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

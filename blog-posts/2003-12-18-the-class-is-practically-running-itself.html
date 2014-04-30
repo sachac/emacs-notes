@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>The class is practically running itself</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">The class is practically running itself</h1>
+<p>
+December 18th, 2003 -
+<a href="http://sachachua.com/blog/p/1525"><a href="http://sachachua.com/blog/p/1525">http://sachachua.com/blog/p/1525</a></a>
+</p>
+
+<p>
+It's amazing. The class is practically running itself. The time I put
+ into making those exercises was definitely worth it. They're off
+ solving them or making up their own exercises. With documentation,
+ time to explore the system, and the freedom to make mistakes and ask
+ questions, the trainees learn almost entirely on their own.
+</p>
+
+<p>
+When they do have questions, they tend to ask each other first before
+ asking me. I handle the questions they can't figure out from the text
+ and clarify things that are fuzzy.
+</p>
+
+<p>
+It's really amazing. I hope they'll leave the training confident that
+ they can learn whatever else they need to &#x2013; considering they learned
+ Perl nearly on their own! Because I'm more into getting lots of people
+ do Perl, I'm not worried about long-term profitability. After all,
+ what training center would do well if they kept encouraging students
+ to learn independently?
+</p>
+
+<p>
+That said, it was a lot of work preparing the exercises, and I can't
+ count the number of times quick thinking and familiarity with UNIX
+ made things easier. For example,
+</p>
+
+<pre class="example">
+wget -r -nc --no-parent --proxy-user=secret --proxy-pass=secret http://www.perldoc.com/perl5.6/pod/perl.html
+</pre>
+
+<p>
+and judicious use of ncftp's mput command (skipping the
+ already-uploaded files) allowed me to easily make Perl's documentation
+ available even though the server didn't have anything but perl(1).
+ Better than manpages, actually, as these were hyperlinked! =)
+</p>
+
+<pre class="example">
+tar zcvf day2.tar.gz /usr/local/training/home/
+</pre>
+
+<p>
+will allow me to pack up all their work so that I can use my Emacs
+ keyboard macro to send it to their listed e-mail addresses. (I should
+ get around to making that a defun&#x2026;)
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

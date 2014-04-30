@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Tagging in Org &#x2013; plus bonus code for timeclocks and tags!</title>
+<!-- 2014-04-30 Wed 17:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Tagging in Org &#x2013; plus bonus code for timeclocks and tags!</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Adding tags</a></li>
+<li><a href="#sec-2">Viewing tagged items</a>
+<ul>
+<li><a href="#sec-2-1">Agenda view</a></li>
+<li><a href="#sec-2-2">In your agenda file</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Other cool things you can do with tags</a></li>
+</ul>
+</div>
+</div>
+<p>
+January 4th, 2008 -
+<a href="http://sachachua.com/blog/p/4653"><a href="http://sachachua.com/blog/p/4653">http://sachachua.com/blog/p/4653</a></a>
+</p>
+
+<p>
+The section on projects introduced tags as a way to differentiate
+ active and inactive projects. In this section, you'll learn more about
+ tags and how you can use them to filter your task list.
+</p>
+
+<p>
+What's a tag, anyway? In Org, tags are keywords at the end of
+ headlines. Each tag can contain letters, numbers, and the symbols ‘\<sub>'</sub>
+ and ‘@'. Tags begin and end with colons, and a single colon separates
+ multiple tags. For example, you could have headlines like this:
+</p>
+
+<pre class="example">
+* Personal                                     :PERSONAL:
+** TODO Buy milk                               :@ERRANDS:
+** TODO Call Mom                               :@PHONE:
+** TODO Send letters                           :@ERRANDS:
+* Work                                         :WORK:
+** TODO Call John about report                 :@PHONE:JOHN:
+** TODO Prepare for presentation on Monday
+** TODO Call Mary about the presentation       :@PHONE:URGENT:MARY:
+</pre>
+
+<p>
+One way to use tags is to filter your task list by priority. For
+ example, you may want to focus on your urgent tasks first without
+ getting distracted by other items on your task list. Another way to
+ use tags is to keep track of the context of your tasks as suggested in
+ GTD. By doing similar tasks together, you might be able to work more
+ efficiently. For example, if you're on the phone at the office, it may
+ be a good idea to do all of your work-related phone calls. If you're
+ going to go to the post office, you might want to drop by the
+ supermarket on your way back. You can use tags to categorize your
+ headlines any way you want.
+</p>
+
+<p>
+Tags can take advantage of the outline structure. For example,
+ although the tasks “Buy milk”, “Call Mom”, and “Send letters” have one
+ tag each, they also inherit the “PERSONAL” tag from the parent
+ headline. A tag search for “PERSONAL” would display all three
+ tasks. To customize this behavior, look at the documentation for the
+ variables org-use-tag-inheritance and org-tags-match-list-sublevels.
+</p>
+
+<p>
+Tags can help you organize and filter your task list. In this section,
+ you'll learn how to add tags to your headlines, view tagged items in
+ your Org file and in your agenda, and define custom agenda
+ views. You'll also learn about custom tag searches and other
+ interesting things you can do once you've tagged your headlines.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Adding tags</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+You can edit your ~/organizer.org file and add tags manually by typing
+ in :tagname: at the end of the headline. You can also add tags by
+ typing C-c C-c (org-ctrl-c-ctrl-c) when the point is on a
+ headline. Use M-TAB (complete-symbol) to complete a tag based on all
+ the tags used in the current file. If Alt-TAB is not processed by
+ Emacs, you can use ESC-TAB instead.
+</p>
+
+<p>
+Separate multiple tags with a single colon, like this:
+ (:@PHONE:URGENT:). The beginning and ending colons are optional when
+ using C-c C-c (org-ctrl-c-ctrl-c), because the function will
+ automatically add them.
+</p>
+
+<p>
+If you add certain tags frequently, you can set up single-key
+ shortcuts. For example, if you frequently tag tasks as “URGENT”, you
+ may want to define a shortcut (at least until your life gets under
+ control). You can assign shortcuts globally by adding this code to
+ your ~/.emacs and evaluating it:
+</p>
+
+<pre class="example">
+(setq org-tag-alist '(("URGENT" . ?u)
+                      ("@PHONE" . ?p)
+                      ("@ERRANDS" . ?e)))
+</pre>
+
+<p>
+You can also set this on a per-file basis by adding the following line
+ to the beginning of your file:
+</p>
+
+<pre class="example">
+#+TAGS: URGENT(u) @PHONE(p) @ERRANDS(e)
+</pre>
+
+<p>
+You can then use these C-c C-c (org-ctrl-c-ctrl-c) to enter these
+ single-key shortcuts, ending it with RET. If you are assigning a
+ single tag, type C-c C-c C-c (org-ctrl-c-ctrl-c, next change exits) to
+ make it even faster by skipping the RET.
+</p>
+
+<p>
+If you use single-key shortcuts, you'll need another way to enter tags
+ that start with the shortcut key. You can type them in manually, or
+ you can use C-c C-c (org-ctrl-c-ctrl-c) and type TAB to enter in any
+tag.
+</p>
+
+<p>
+To remove a tag, you could use C-c C-c (org-ctrl-c-ctrl-c) again, or
+ delete it manually. To remove all tags, use C-c C-c
+ (org-ctrl-c-ctrl-c) and press SPC.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Viewing tagged items</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Whether you want to view tagged headlines by themselves or in the
+ context of your other headlines, tasks, and notes, Org has some nifty
+ tagging features for you.
+</p>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Agenda view</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+To view tagged headlines by themselves, use C-c a m (org-agenda,
+ org-tags-view) and specify the search tag. For example, you can view
+ your urgent tasks by specifying “URGENT”. Note that this command
+ displays the top headlines matching that tag, whether they're tasks or
+ not. For example, if you searched for “WORK”, you would just get the
+ “* Work” headline. To view tagged tasks, use C-c a M (org-agenda,
+ org-tags-view with a prefix argument). This shows only the tasks that
+ have that tag.
+</p>
+
+<p>
+To search for a combination of tags, you can combine tags like this:
+</p>
+
+<pre class="example">
+WORK&amp;@PHONE           only your work phone calls
+PERSONAL-@ERRANDS     personal tasks, but without errands
+JOHN|MARY             Anything tagged with "JOHN" or "MARY"
+                      For example, if you're going to have a meeting with both of them
+</pre>
+
+<p>
+If you check certain lists often, you might want to create a custom
+ agenda command for them. In the section on Projects, you configured
+ custom agenda commands for active and inactive projects by adding the
+ following code in your ~/.emacs:
+</p>
+
+<pre class="example">
+(setq org-agenda-custom-commands
+      '(("p" tags "PROJECT-MAYBE-DONE" nil)
+        ("m" tags "PROJECT&amp;MAYBE" nil)
+        ("a" "My agenda"
+         ((org-agenda-list)
+          (tags "PROJECT-MAYBE-DONE")))
+        ;; ... put your other custom commands here
+       ))
+</pre>
+
+<p>
+You can use the same idea to create quick custom views for your other
+ tagged tasks. For example, to create custom views for your urgent work
+ tasks and your phone calls, modify the org-agenda-custom-commands
+ setting in your ~/.emacs to be like this:
+</p>
+
+<pre class="example">
+(setq org-agenda-custom-commands
+      '(("u" todo "WORK&amp;URGENT" nil)               ;; (1)
+        ("c" todo "WORK&amp;@PHONE" nil)               ;; (2)
+        ("h" todo "PERSONAL-@ERRANDS" nil)         ;; (3)
+        ("p" tags "PROJECT-MAYBE-DONE" nil)        ;; (4)
+        ("m" tags "PROJECT&amp;MAYBE" nil)
+        ("a" "My agenda"
+         ((org-agenda-list)
+          (tags-todo "URGENT")                     ;; (5)
+          (tags "PROJECT-MAYBE-DONE")))            ;; (6)
+        ;; ... put your other custom commands here
+       ))
+</pre>
+
+<ul class="org-ul">
+<li>(1) “u” is for “urgent”, “todo” specifies that TODO headlines are to
+be shown, “WORK&amp;URGENT” is the query string, and the last item means
+that there aren't any options
+</li>
+<li>(2) “c” is for “call”
+</li>
+<li>(3) “h” is for “home”
+</li>
+<li>(4) The second item here is “tags” instead of “todo”, which means
+that the highest-level matching headlines should be shown whether or
+not they're tasks.
+</li>
+<li>(5) This is how to add a tag search for tasks into a custom agenda
+command.
+</li>
+<li>(6) This is how to add a tag search for headlines into a custom
+agenda command.
+</li>
+</ul>
+
+<p>
+Sometimes you'll want to see more context instead of just a list of
+ headlines. You can jump from your Org agenda to the corresponding
+ headline by pressing RET (org-agenda-switch-to) on the entry. You can
+ also quickly browse through the headlines in another window by
+ pressing f (org-agenda-follow-mode) while in the Org agenda view, then
+ moving your point to the different lines. These commands work with the
+ summary in the Org agenda view.
+</p>
+
+<p>
+If you want to show only matching headlines in your ~/organizer.org
+ file, you can use Org's sparse tree search commands.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">In your agenda file</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+A sparse tree shows only the matching headlines in the context of the
+ headlines above them. This is useful when you want to see your tasks
+ within your outline structure. All other headlines are collapsed so
+ that they're easy to skip. To do a sparse tree search, type C-c \
+ (org-tags-sparse-tree). You can then expand and collapse subtrees with
+ the TAB (org-cycle) command. To limit the search to only task
+ headlines, type C-u C-c \ (org-tags-sparse-tree with a prefix).
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Other cool things you can do with tags</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+And if you ever want to know how much time you spent on urgent tasks,
+ you can call the following function from your organizer.org file with:
+</p>
+
+<pre class="example">
+M-x wicked/org-calculate-tag-time RET URGENT RET
+</pre>
+
+<p>
+to see something like this:
+</p>
+
+<pre class="example">
+Time: 98:44 (98 hours and 44 minutes)
+</pre>
+
+<p>
+You can call it with a prefix in order to be prompted for a start time
+ (inclusive) and end time (exclusive).
+</p>
+
+<p>
+Here's the code to add to your ~/.emacs:
+</p>
+
+<pre class="example">
+(defun wicked/org-calculate-tag-time (matcher &amp;optional ts te)
+  "Return the total minutes clocked in headlines matching MATCHER.
+MATCHER is a string or a Lisp form to be evaluated, testing if a
+given set of tags qualifies a headline for inclusion. TS and TE
+are time start (inclusive) and time end (exclusive). Call with a
+prefix to be prompted for TS and TE.
+
+For example, to see how much time you spent on tasks tagged as
+URGENT, call M-x wicked/org-calculate-tag-time RET URGENT RET. To
+see how much time you spent on tasks tagged as URGENT today, call
+C-u M-x wicked/org-calculate-tag-time RET URGENT RET . RET +1 RET."
+  (interactive (list
+        (read-string "Tag query: ")
+        (if current-prefix-arg (org-read-date))
+        (if current-prefix-arg (org-read-date))))
+  ;; Convert strings to proper arguments
+  (if (stringp matcher) (setq matcher (cdr (org-make-tags-matcher matcher))))
+  (if (stringp ts)
+      (setq ts (time-to-seconds (apply 'encode-time (org-parse-time-string ts)))))
+  (if (stringp te)
+      (setq te (time-to-seconds (apply 'encode-time (org-parse-time-string te)))))
+  (let* ((re (concat "[\n\r]" outline-regexp " *\\(\\&lt;\\("
+             (mapconcat 'regexp-quote org-todo-keywords-1 "\\|")
+             (org-re
+              "\\&gt;\\)\\)? *\\(.*?\\)\\(:[[:alnum:]_@:]+:\\)?[ \t]*$")))
+     (case-fold-search nil)
+         lspos
+     tags tags-list tags-alist (llast 0) rtn level category i txt p
+     marker entry priority (total 0))
+    (save-excursion
+      (org-clock-sum ts te)
+      (goto-char (point-min))
+      (while (re-search-forward re nil t)
+    (catch :skip
+      (setq tags (if (match-end 4) (match-string 4)))
+      (goto-char (setq lspos (1+ (match-beginning 0))))
+      (setq level (org-reduced-level (funcall outline-level))
+        category (org-get-category))
+      (setq i llast llast level)
+      ;; remove tag lists from same and sublevels
+      (while (&gt;= i level)
+        (when (setq entry (assoc i tags-alist))
+          (setq tags-alist (delete entry tags-alist)))
+        (setq i (1- i)))
+      ;; add the nex tags
+      (when tags
+        (setq tags (mapcar 'downcase (org-split-string tags ":"))
+          tags-alist
+          (cons (cons level tags) tags-alist)))
+      ;; compile tags for current headline
+      (setq tags-list
+        (if org-use-tag-inheritance
+            (apply 'append (mapcar 'cdr tags-alist))
+          tags))
+      (when (and (eval matcher)
+             (or (not org-agenda-skip-archived-trees)
+             (not (member org-archive-tag tags-list))))
+        ;; Get the time for the headline at point
+        (goto-char (line-beginning-position))
+        (setq total (+ total (or (get-text-property (1+ (point)) :org-clock-minutes) 0)))
+        ;; if we are to skip sublevels, jump to end of subtree
+        (org-end-of-subtree t)))))
+    (if (interactive-p)
+    (let* ((h (/ total 60))
+           (m (- total (* 60 h))))
+      (message "Time: %d:%02d (%d hours and %d minutes)" h m h m)))
+    total))
+</pre>
+
+<p>
+Now you can slice and dice your timeclock records any way you want,
+thanks to tags!
+</p>
+
+<p>
+Random Emacs symbol: cc-imenu-java-generic-expression &#x2013; Variable: Imenu
+generic expression for Java mode. See `imenu-generic-expression'.
+</p>
+
+<p>
+On Technorati:
+<a href="http://www.technorati.com/tag/wickedcoolemacs">wickedcoolemacs</a>,
+<a href="http://www.technorati.com/tag/org">org</a>,
+<a href="http://www.technorati.com/tag/emacs">emacs</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Scheduling tasks in the diary</title>
+<!-- 2014-04-30 Wed 17:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Scheduling tasks in the diary</h1>
+<p>
+April 16th, 2004 -
+<a href="http://sachachua.com/blog/p/1974"><a href="http://sachachua.com/blog/p/1974">http://sachachua.com/blog/p/1974</a></a>
+</p>
+
+<pre class="example">
+(defun sacha/planner-diary-schedule-task (time)
+  "Add a diary entry for the current task at TIME."
+  (interactive "MTime: ")
+  (save-window-excursion
+    (save-excursion
+      (save-restriction
+        (let ((info (planner-current-task-info)))
+          (sacha/planner-diary-add-entry
+           (planner-task-date info)
+           (concat time " | " (planner-task-description info) "")))))))
+
+(defun sacha/planner-diary-add-entry (date text &amp;optional annotation)
+  "Prompt for a diary entry to add to `diary-file'."
+  (interactive
+   (list
+    (if (or current-prefix-arg
+            (not (string-match planner-date-regexp (planner-page-name))))
+        (planner-read-date)
+      (planner-page-name))
+    (read-string
+     "Diary entry: ")))
+  (save-excursion
+    (save-window-excursion
+      (make-diary-entry
+       (concat
+        (let ((cal-date (planner-filename-to-calendar-date date)))
+          (calendar-date-string cal-date t t))
+        " " text
+        (or annotation
+            (let ((annotation (run-hook-with-args-until-success
+                               'planner-annotation-functions)))
+              (if annotation
+                  (concat " " annotation)
+                "")))))
+      (planner-goto date)
+      (planner-diary-insert-diary-maybe))))
+</pre>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/planner-config.el">../../notebook/emacs/planner-config.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

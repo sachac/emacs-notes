@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Planning reflection</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Planning reflection</h1>
+<p>
+September 8th, 2005 -
+<a href="http://sachachua.com/blog/p/2966"><a href="http://sachachua.com/blog/p/2966">http://sachachua.com/blog/p/2966</a></a>
+</p>
+
+<p>
+I haven't posted a planning reflection in a while. I thought I'd think
+ out loud again after rereading Covey's \<sub>First</sub> Things First\_ and the
+ Merrills' \<sub>Life</sub> Matters.\_ This isn't \<sub>the\</sub>_ way to use Planner. In
+ fact, I like thinking out loud about my planning style because I love
+ getting suggestions and advice from others. (This community is
+ amazing!)
+</p>
+
+<p>
+Today I experimented with dividing my tasks according to roles. It's a
+ little like planner-trunk.el, but I added the labels manually. This
+ lets me make sure I'm doing something useful in the roles I wanted to
+ concentrate on. I would like to eventually move to doing weekly
+ role-based planning, but I haven't quite figured out a nice way to do
+ a week plan.
+</p>
+
+<p>
+Here are my thoughts on my planning method so far:
+</p>
+
+<p>
+Roles
+</p>
+
+<p>
+Bunching my tasks according to roles makes it easier for me to
+ concentrate and prioritize. You can use planner-trunk to do that
+ too, or just rearrange your tasks and add blank lines between them.
+ Blank lines don't automatically get carried forward, though.
+</p>
+
+<p>
+Weekly planning
+</p>
+
+<p>
+The main reason I have a paper planner (8.5″ x 11″: weekly calendar +
+ todo list + notes) is have that week-at-a-glance view. I like iCal's
+ interface for planning tasks on a weekly basis, but I'm not entirely
+ sure how to map that onto Emacs, and I like my daily notes and my
+ day-view task list.
+</p>
+
+<p>
+So now I'm trying to figure out how to do exactly what was discussed
+ on the mailing list a week or two ago: good week planning. I don't
+ think I've ever come across an Emacs PIM that made me go aha, yes,
+ that's the way to do it, although howm's searching comes close and
+ org's outlining can sort of do the trick. Well, so can Planner with
+ new plan pages, I suppose.
+</p>
+
+<p>
+As I was trying to figure out how to do weekly planning, I realized I
+ didn't know a nice, easy Emacs function for finding the current week
+ number. Would anyone happen to have that handy? Alternatively, I could
+ use something like Week.2005.09.05 to signify the week starting on
+ 2005.09.05 (depending on calendar-week-start-day).
+</p>
+
+<p>
+Maybe I could vertically divide the screen between a week view, with
+ tasks indicating my priorities, and a day view that shows the actual
+ goods. Then I can use planner-multi to schedule tasks from the week
+ view, and page forward and backward on the day view to check my load.
+</p>
+
+<p>
+With planner-cyclic and planner-deadline in place, that would actually
+ be better than my paper planner. =)
+</p>
+
+<p>
+I keep wondering whether we should do what everyone else does and
+ store a task once and only once. I don't know how to hack that so that
+ it will let me manipulate the tasks as plain text, though. I like
+ adding blank lines in the middle of things, or changing the sorting
+ order, or doing other weird stuff. So I guess duplicated text works
+ better for me.
+</p>
+
+<p>
+Undated tasks
+</p>
+
+<p>
+Undated tasks tend to get forgotten, but the
+ sacha/planner-schedule-next-task code I had in my config was a bit
+ annoying. When I caught myself unscheduling a task even before
+ properly reading it, I turned that off in my config.
+</p>
+
+<p>
+I think it's because I need to rearrange the tasks in my plan pages so
+ that the important ones come out first. I've already tweaked
+ sacha/planner-schedule-next-task to add a new task only when I've
+ finished all scheduled tasks on that page for that particular project,
+ but it seems that after I finish a sublist of tasks, I feel like
+ changing contexts.
+</p>
+
+<p>
+Maybe I can make a next-actions function that goes through a list of
+ projects and tells me what the next action is. When I have
+ unexpectedly free time, I can hit a shortcut to call that function,
+ and it will list the most important task (and perhaps the least
+ important as well? ;) ) in various pages.
+</p>
+
+<p>
+Hey, that would be a low-cost thing to implement. We already have the
+ pieces for that&#x2026;
+</p>
+
+<p>
+Publishing
+</p>
+
+<p>
+One of the side-benefits of publishing your task list is that
+ occasionally people will go and do the tasks for you. For example, one
+ of my TODOs was to write the speaker at a recent convention. I liked
+ his talk and I wanted to learn more about personal coaching. Because
+ I've been busy these past few days (my mom's visiting, school's
+ starting, etc.), I kept putting it off&#x2026;
+</p>
+
+<p>
+&#x2026; until I got a note from him saying he searched for his name, found
+ my TODO, and decided to write to me. \<sup>\</sup><sub>\</sub>^ Yay!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

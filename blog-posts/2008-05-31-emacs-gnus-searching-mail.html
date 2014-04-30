@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Gnus: Searching Mail</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Gnus: Searching Mail</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1.6.7.1 Setting up IMAP and NNIR</a></li>
+<li><a href="#sec-2">1.6.7.2 Setting up POP3 and NNIR</a></li>
+<li><a href="#sec-3">1.6.7.3 Searching your mail with NNIR</a></li>
+</ul>
+</div>
+</div>
+<p>
+May 31st, 2008 -
+<a href="http://sachachua.com/blog/p/4902"><a href="http://sachachua.com/blog/p/4902">http://sachachua.com/blog/p/4902</a></a>
+</p>
+
+<p>
+There are several ways to find messages in Emacs. From the summary
+ buffer, you can use / o (gnus-summary-insert-old-articles) to display
+ all or some old messages. You can then scan through the headers in the
+ summary buffer by using C-s (isearch-forward), or you can limit the
+ displayed messages with these commands:
+</p>
+
+<p>
+Messages from a given author
+</p>
+
+<p>
+/ a
+</p>
+
+<p>
+gnus-summary-limit-to-author
+</p>
+
+<p>
+Messages whose subjects matching a given regular expression
+</p>
+
+<p>
+/ /
+</p>
+
+<p>
+gnus-summary-limit-to-subject
+</p>
+
+<p>
+Messages that match a given extra header
+</p>
+
+<p>
+/ x
+</p>
+
+<p>
+gnus-summary-limit-to-extra-headers
+</p>
+
+<p>
+Messages at least N days old
+</p>
+
+<p>
+/ t
+</p>
+
+<p>
+gnus-summary-limit-to-age
+</p>
+
+<p>
+Limits work on the messages that are currently displayed, so you can
+ apply multiple limits. If you make a mistake, use / w
+ (gnus-summary-pop-limit) to remove the previous limit. You can repeat
+ / w (gnus-summary-pop-limit) until satisfied. To remove all the
+ limits, type C-u / w (gnus-summary-popl-limit).
+</p>
+
+<p>
+If you specify a prefix, the limit's meaning is reversed. For
+ example, C-u / a (gnus-summary-limit-to-author) will remove the
+ messages from the matching author or authors.
+</p>
+
+<p>
+You can use Gnus to search the currently-displayed messages by using
+ M-s (gnus-summary-search-article-forward) and M-r
+ (gnus-summary-search-article-backward).
+</p>
+
+<p>
+If you want to search a lot of mail, you'll find NNIR handy. NNIR is a
+ front-end to mail search engines which can index your mail and return
+ search results quickly. If you want to use NNIR with a local or remote
+ IMAP server, you will need to use nnir.el and imap.el. If you download
+ your mail using fetchmail or connect to a POP3 server and use an nnml
+ backend, you can use NNIR with a search engine such as swish-e to
+ search your ~/Mail directory efficiently.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">1.6.7.1 Setting up IMAP and NNIR</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+If you use IMAP, then your mail is stored on the mail server and
+ you'll need to use the IMAP search interface to search through
+ it. Download nnir.el from
+</p>
+
+<p>
+<a href="http://www.emacswiki.org/cgi-bin/wiki/download/nnir.el"><a href="http://www.emacswiki.org/cgi-bin/wiki/download/nnir.el">http://www.emacswiki.org/cgi-bin/wiki/download/nnir.el</a></a>
+and save it to
+ your ~/elisp directory. You will also need an imap.el that is newer
+ than the one that comes with Emacs 22. Download imap.el from
+</p>
+
+<p>
+<a href="http://www.emacswiki.org/cgi-bin/wiki/download/imap.el"><a href="http://www.emacswiki.org/cgi-bin/wiki/download/imap.el">http://www.emacswiki.org/cgi-bin/wiki/download/imap.el</a></a>
+and save it to
+ your ~/elisp directory as well. Because Gnus comes with an older
+ version of imap.el, you will need to make sure that the new version of
+ imap.el is loaded. Add the following to your ~/.gnus:
+</p>
+
+<pre class="example">
+(add-to-list 'load-path "~/elisp")
+(load-file "~/elisp/imap.el")
+(require 'nnir)
+</pre>
+
+<p>
+Restart your Emacs. You can check if the correct version of imap.el
+ has been loaded by typing M-x locate-library and specifying
+ imap.el. If Emacs reports “~/elisp/imap.el”, then Gnus is configured
+ to use the updated imap.el.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">1.6.7.2 Setting up POP3 and NNIR</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+If you use the configuration for POP3 that is suggested in this
+ chapter, then your mail is stored in the nnml backend, which uses one
+ file per message. To search this using NNIR, to install nnir.el and an
+ external search mail engine. The Namazu search engine runs on Linux,
+ UNIX, and Microsoft Windows, so that's what we'll talk about here. To
+ find and configure other mail search engines supported by NNIR, check
+ out the comments in nnir.el.
+</p>
+
+<p>
+First, you'll need to download and install Namazu. If Namazu is
+ available as a package for your distribution, install it that way, as
+ it depends on a number of other programs. An installer for Microsoft
+ Windows can be found at
+<a href="http://www.namazu.org/windows/"><a href="http://www.namazu.org/windows/">http://www.namazu.org/windows/</a></a> . If
+you need
+ to build Namazu from source, you can get the source code and
+instructions
+ from <a href="http://www.namazu.org"><a href="http://www.namazu.org">http://www.namazu.org</a></a> .
+</p>
+
+<p>
+After you've installed Namazu, create a directory for Namazu's index
+ files, such as ~/.namazu-mail. Then index your mail by typing this at
+ the command-line:
+</p>
+
+<pre class="example">
+mknmz --mailnews -O ~/.namazu-mail ~/Mail
+</pre>
+
+<p>
+and add the following to your ~/.gnus:
+</p>
+
+<pre class="example">
+(add-to-list 'load-path "~/elisp")
+(require 'nnir)
+(setq nnir-search-engine 'namazu)
+(setq nnir-namazu-index-directory (expand-file-name "~/.namazu-mail"))
+(setq nnir-namazu-remove-prefix (expand-file-name "~/Mail"))
+(setq nnir-mail-backend gnus-select-method)
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">1.6.7.3 Searching your mail with NNIR</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+From the group buffer displayed by M-x gnus, you can type G G
+ (gnus-group-make-nnir-group) to search your mail for a keyword.
+</p>
+
+<p>
+If you're using the Namazu search engine, then you can use more
+ sophisticated search queries such as:
+</p>
+
+<p>
+Linux Emacs
+</p>
+
+<p>
+messages that contain both “Linux” and “Emacs”
+</p>
+
+<p>
+Linux or Emacs
+</p>
+
+<p>
+messages that contain either “Linux” or “Emacs”
+</p>
+
+<p>
+Emacs not Linux
+</p>
+
+<p>
+messages that contain “Emacs” but not “Linux”
+</p>
+
+<p>
+Emacs and (Linux or Windows)
+</p>
+
+<p>
+messages that contain “Emacs” and either “Linux” or “Windows”
+</p>
+
+<p>
+“apple pie”
+</p>
+
+<p>
+messages that contain the phrase “apple pie”
+</p>
+
+<p>
+{apple pie}
+</p>
+
+<p>
+messages that contain the phrase “apple pie”
+</p>
+
+<p>
++from:example@example.com
+</p>
+
+<p>
+messages with example@example.com in the From: header
+</p>
+
+<p>
++subject:”apple pie”
+</p>
+
+<p>
+messages with the phrase “apple pie” in the Subject: header
+</p>
+
+<p>
++subject:apple +subject:pie
+</p>
+
+<p>
+messages whose Subject: headers contain both “apple” and “pie”
+</p>
+
+<p>
+If
+ matching messages are found, then you will see a temporary group with
+ the results. Although you can't delete messages from this view,
+ reading and replying to these messages is the same as reading and
+ replying to regular messages.
+</p>
+
+<p>
+To see a message in its original context, type G T
+ (gnus-summary-nnir-goto-thread) from the summary buffer. This opens
+ the message's original group. If Gnus asks you how many articles to
+ load, press RET to accept the default of all the articles.
+</p>
+
+<hr  />
+
+<p>
+This is a draft for the
+<a href="http://sachachua.com/wp/category/wickedcoolemacs">Wicked Cool Emacs</a>
+book I'm working on. =) Hope it helps!
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

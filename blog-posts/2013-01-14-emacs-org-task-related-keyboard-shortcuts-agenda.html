@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Org: Task-related keyboard shortcuts for the agenda</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Org: Task-related keyboard shortcuts for the agenda</h1>
+<p>
+January 14th, 2013 -
+<a href="http://sachachua.com/blog/p/24335"><a href="http://sachachua.com/blog/p/24335">http://sachachua.com/blog/p/24335</a></a>
+</p>
+
+<p>
+I really love the way you can tweak Emacs' keyboard shortcuts and
+functionality to fit the way you want to work. Here are three keyboard
+shortcuts I've added to my Org agenda to make it even easier to work
+with tasks.
+</p>
+
+<p>
+<code>x</code>: Mark the current task as done. Same as typing <code>t x</code>, but somehow it
+feels like it has more oomph as a single-character shortcut.
+</p>
+
+<p>
+<code>X</code>: Mark the current task as done and create a new task at the same
+level, taking advantage of the task template I'd previously created in
+<code>org-capture-templates</code>.
+</p>
+
+<p>
+<code>N</code>: Create a new note or task at the current position.
+</p>
+
+<p>
+<b>Make it easy to mark a task as done</b>
+</p>
+
+<pre class="example">
+(defun sacha/org-agenda-done (&amp;optional arg)
+  "Mark current TODO as done.
+This changes the line at point, all other lines in the agenda referring to
+the same tree node, and the headline of the tree node in the Org-mode file."
+  (interactive "P")
+  (org-agenda-todo "DONE"))
+;; Override the key definition for org-exit
+(define-key org-agenda-mode-map "x" 'sacha/org-agenda-done)
+</pre>
+
+<p>
+<b>Make it easy to mark a task as done and create a follow-up task</b>
+</p>
+
+<pre class="example">
+  (defun sacha/org-agenda-mark-done-and-add-followup ()
+    "Mark the current TODO as done and add another task after it.
+Creates it at the same level as the previous task, so it's better to use
+this with to-do items than with projects or headings."
+    (interactive)
+    (org-agenda-todo "DONE")
+    (org-agenda-switch-to)
+    (org-capture 0 "t"))
+;; Override the key definition
+(define-key org-agenda-mode-map "X" 'sacha/org-agenda-mark-done-and-add-followup)
+</pre>
+
+<p>
+<b>Capture something based on the agenda position</b>
+</p>
+
+<pre class="example">
+(defun sacha/org-agenda-new ()
+  "Create a new note or task at the current agenda item.
+Creates it at the same level as the previous task, so it's better to use
+this with to-do items than with projects or headings."
+  (interactive)
+  (org-agenda-switch-to)
+  (org-capture 0))
+;; New key assignment
+(define-key org-agenda-mode-map "N" 'sacha/org-agenda-new)
+</pre>
+
+<p>
+<a href="http://dl.dropbox.com/u/3968124/sacha-emacs.html">Check out my Emacs
+configuration</a> for other ideas.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>How to present using Org-mode in Emacs</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">How to present using Org-mode in Emacs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Presenting outside Emacs</a></li>
+<li><a href="#sec-2">Presenting within Emacs</a></li>
+</ul>
+</div>
+</div>
+<p>
+April 15th, 2013 -
+<a href="http://sachachua.com/blog/p/24686"><a href="http://sachachua.com/blog/p/24686">http://sachachua.com/blog/p/24686</a></a>
+</p>
+
+<p>
+You can do pretty much everything in Emacs, so why not give
+presentations too? <a href="http://orgmode.org">Org-mode</a> is an extensible
+outliner and Swiss Army knife for the Emacs text editor. Because it's a
+great way to organize information, people have written a number of
+packages for presenting information from Org.
+</p>
+
+<p>
+Here are some options for preparing and giving presentations using
+Org-mode, along with some guidance on what to use when. It may be a good
+idea to browse through the examples and create a small test presentation
+using the systems that catch your eye. If you choose your system before
+drafting your presentation, that can save you a lot of time, since the
+approaches differ in terms of the code you'll need to add to your Org
+file.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Presenting outside Emacs</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Do you need to distribute your presentation to non-Emacs users, or do
+you want to minimize the risk of getting your Emacs configuration
+confused? You can export your presentation to a number of formats.
+</p>
+
+<p>
+<b>Export to Beamer (LaTeX) and generate a PDF</b>: Use this if you need to
+distribute your presentation as a PDF. You will need to install LaTeX,
+which could be a bit heavy-weight. Beamer is a slide package for LaTeX,
+and Org can export an outline to LaTeX code. Check out
+<a href="http://orgmode.org/worg/exporters/beamer/tutorial.html">Writing Beamer
+presentations in Org-mode</a> for sample screenshots and a tutorial.
+</p>
+
+<p>
+<b>Export to HTML and use S5</b>: Light-weight browser-based slideshows are
+becoming more popular. They can be distributed as ZIPs or .tar.gz, or
+uploaded to web servers. See the section in the Org tutorials for
+<a href="http://orgmode.org/worg/org-tutorials/non-beamer-presentations.html#sec-3">Non-Beamer
+Presentations: S5</a>. Here are some
+<a href="http://eschulte.github.io/org-S5/">sample presentations</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Presenting within Emacs</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Presenting within Emacs allows you to edit your presentation, execute
+code, or do all sorts of other interesting things. And it doesn't have
+to be plain text &#x2013; Org allows you to include inline images. (Microsoft
+Windows users may need to install additional libraries &#x2013;
+<a href="http://stackoverflow.com/questions/2650041/emacs-under-windows-and-png-files">see
+StackOverflow for tips</a>.)
+</p>
+
+<p>
+There are several ways to present from Org-mode. They tend to differ on:
+</p>
+
+<ul class="org-ul">
+<li>the markup you need to add to your slides
+</li>
+<li>the keyboard shortcuts to help you navigate between slides
+</li>
+</ul>
+
+<p>
+so you can choose the one you feel the most comfortable with.
+</p>
+
+<p>
+<a href="https://github.com/rlister/org-present">Org-present</a> is simple and
+defines very few keyboard shortcuts: left for previous slide, right for
+next slide, C-c C-= or C-c C&#x2013; to adjust text size, and C-q to quit.
+This makes it easy to edit your presentation as you go along. You'll
+need to edit your ~/.emacs file to include some code. See the
+documentation in org-present.el for details.
+</p>
+
+<p>
+<a href="https://github.com/eschulte/epresent">EPresent</a> is a bit more
+complex. It supports converting LaTeX into images, so you can embed
+pretty equations. The epresent keybindings include “n” for next and “p”
+for previous, so don't use this if you're planning to edit your
+presentation on the fly.
+</p>
+
+<p>
+<a href="https://github.com/nicferrier/org-presie">Org-presie</a> takes a
+different approach by showing the outline instead of focusing on just
+one slide. When you press SPC, the previous headline's content is
+hidden, and the next one's content is expanded. It's good for always
+giving people a sense of where they are in your presentation.
+</p>
+
+<p>
+And then sometimes you may want to write your own. For my presentation
+at Emacs Conference 2013, I wanted to be able to:
+</p>
+
+<ul class="org-ul">
+<li>allow me to indicate various headings as slides so that I can
+organize an outline of slides (why should they all have to be
+top-level?),
+</li>
+<li>for each slide
+
+<ul class="org-ul">
+<li>automatically execute pre-written Emacs Lisp code (for animations
+and demonstrations!), OR
+</li>
+<li>display images that fit the full height or width of the window, OR
+</li>
+<li>display text if I don't specify code or images
+</li>
+</ul>
+</li>
+
+<li>and have globally-set keyboard shortcuts so that I can go forward,
+backward, or re-do a slide no matter where I am in Emacs (and with
+AutoHotkey, even when I'm in a non-Emacs window)
+</li>
+</ul>
+
+<p>
+You can find my code at
+<a href="https://gist.github.com/sachac/5278905"><a href="https://gist.github.com/sachac/5278905">https://gist.github.com/sachac/5278905</a></a>
+</p>
+
+<p>
+Emacs and Org-mode are wonderfully customizable, so you can probably
+build something that works just the way you want to work. Enjoy!
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

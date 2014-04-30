@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>How to build MobileOrgNG for Android</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">How to build MobileOrgNG for Android</h1>
+<p>
+August 6th, 2012 -
+<a href="http://sachachua.com/blog/p/23633"><a href="http://sachachua.com/blog/p/23633">http://sachachua.com/blog/p/23633</a></a>
+</p>
+
+<p>
+<a href="https://play.google.com/store/apps/details?id=com.matburt.mobileorg.ng&hl=en">MobileOrgNG</a>
+is kvj's fork of matburt's
+<a href="https://play.google.com/store/apps/details?id=com.matburt.mobileorg&feature=search_result#?t=W251bGwsMSwxLDEsImNvbS5tYXRidXJ0Lm1vYmlsZW9yZyJd">MobileOrg
+for Android</a>. It has a better layout for large devices and a useful
+outline view, but doesn't have some of the other features in the main
+branch. Here's how you can build it in Eclipse.
+</p>
+
+<p>
+In order to be able to get all the libraries you'll need, install the
+<a href="http://www.eclipse.org/subversive/">Subversive SVN</a> plugin for
+Eclipse.
+</p>
+
+<ol class="org-ol">
+<li>In Eclipse, click <b>Help &#x2013; Install New Software</b>.
+</li>
+<li>Click on the dropdown for <b>Work with</b> and choose the update site for
+your Eclipse version (ex: Juno).
+</li>
+<li>When the packages load, type in <b>Subversive</b> to filter the list.
+</li>
+<li>Choose <b>Subversive SVN Team Provider</b>. You can choose other plugins
+as well.
+</li>
+<li>Click <b>Next</b> and proceed through the installation process.
+</li>
+</ol>
+
+<p>
+Now you can check out the MobileOrgNG source code and other modules.
+MobileOrgNG is set up as an Eclipse project, so importing it is easier
+than importing the original MobileOrg. Here's how to get MobileOrgNG:
+</p>
+
+<ol class="org-ol">
+<li>Copy the Git repository URI (ex:
+git://github.com/kvj/mobileorg-android.git)
+</li>
+<li>In Eclipse, click <b>File &#x2013; Import &#x2013; Git &#x2013; Projects from Git</b>.
+</li>
+<li>Choose <b>URI</b>.
+</li>
+<li>The URI may automatically be detected from the clipboard. If it
+isn't, paste it in.
+</li>
+<li>Click <b>Next</b>.
+</li>
+<li>Click <b>Next</b> again.
+</li>
+<li>Click <b>Next</b>.
+</li>
+<li>You should now be at the dialog called <b>Select a wizard to use for
+importing projects</b>. Choose <b>Import existing projects</b> and click
+<b>Next</b>.
+</li>
+<li>It should have detected the mobile-org project. Click <b>Finish</b>.
+</li>
+</ol>
+
+<p>
+In addition to MobileOrgNG, you will also need the <code>android-actionbar</code>
+and <code>android-file-dialog</code> libraries. Here's how to get
+<code>android-actionbar</code>:
+</p>
+
+<ol class="org-ol">
+<li>Go to
+<a href="https://github.com/kvj/android-actionbar"><a href="https://github.com/kvj/android-actionbar">https://github.com/kvj/android-actionbar</a></a>
+and copy the Git repository URL (ex:
+git://github.com/kvj/android-actionbar.git).
+</li>
+<li>In Eclipse, click <b>File &#x2013; Import &#x2013; Git &#x2013; Projects from Git</b>.
+</li>
+<li>Choose <b>URI</b>.
+</li>
+<li>The URI may automatically be detected from the clipboard. If it
+isn't, paste it in.
+</li>
+<li>Click <b>Next</b>.
+</li>
+<li>Click <b>Next</b> again.
+</li>
+<li>In the <b>Local destination</b> dialog, change <b>Initial branch</b> to
+<b>honeycomb-support</b>. Click <b>Next</b>.
+</li>
+<li>You should now be at the dialog called <b>Select a wizard to use for
+importing projects</b>. Click <b>Cancel</b>.
+</li>
+<li>Click <b>File &#x2013; Import &#x2013; Android &#x2013; Existing Android Code Into
+Workspace</b>.
+</li>
+<li>Click <b>Browse</b> and choose the <code>android-actionbar</code> directory in your
+workspace. You can deselect the actionbar example if you wish.
+</li>
+<li>Click <b>Finish</b>.
+</li>
+</ol>
+
+<p>
+Here's how to get <code>android-file-dialog</code>.
+</p>
+
+<ol class="org-ol">
+<li>Go to
+<a href="http://code.google.com/p/android-file-dialog/source/checkout"><a href="http://code.google.com/p/android-file-dialog/source/checkout">http://code.google.com/p/android-file-dialog/source/checkout</a></a>
+and copy the SVN URI (ex:
+<a href="http://android-file-dialog.googlecode.com/svn/trunk/"><a href="http://android-file-dialog.googlecode.com/svn/trunk/">http://android-file-dialog.googlecode.com/svn/trunk/</a></a>).
+</li>
+<li>In Eclipse, click on <b>File &#x2013; Import &#x2013; SVN &#x2013; Project from SVN</b>.
+</li>
+<li>Paste in the URI.
+</li>
+<li>Click <b>Next</b>.
+</li>
+<li>Eclipse should prompt you to normalize the URL. Click <b>Yes</b>.
+</li>
+<li>Click <b>Browse</b>. Choose <b>trunk</b> and click <b>OK</b>.
+</li>
+<li>Click <b>Finish</b>.
+</li>
+<li>Choose <b>Find projects in the children of the selected resource</b>.
+Click <b>Finish</b>.
+</li>
+<li>Make sure that <b>Check out as a projects into workspace</b> is selected.
+Click <b>Finish</b>.
+</li>
+</ol>
+
+<p>
+Confirm that the libraries are detected.
+</p>
+
+<ol class="org-ol">
+<li>Right-click on the <code>mobileorg-android</code> project and choose
+<b>Properties</b>.
+</li>
+<li>Click <b>Android</b> and confirm that both libraries are detected. If not,
+you may need to remove and re-add them.
+</li>
+</ol>
+
+<p>
+The Dropbox API key isn't part of the source code, so you'll need to
+apply for your own at
+<a href="https://www.dropbox.com/developers/start"><a href="https://www.dropbox.com/developers/start">https://www.dropbox.com/developers/start</a></a>
+. After you get the API key, add it to your project:
+</p>
+
+<ol class="org-ol">
+<li>Create a new Android XML Values file. I called mine <code>secrets.xml</code>.
+</li>
+<li>Right-click on the file and choose <b>Team &#x2013; Ignore</b>.
+</li>
+<li>Add a string with the key <code>dropbox_consumer_key</code> and the value from
+the Dropbox webpage.
+</li>
+<li>Add another string with the key <code>dropbox_consumer_secret</code> and the
+value from the Dropbox webpage.
+</li>
+</ol>
+
+<p>
+MobileOrgNG should now compile without errors.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

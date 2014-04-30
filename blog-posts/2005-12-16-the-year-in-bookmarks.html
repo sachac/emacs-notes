@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>The Year in Bookmarks</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">The Year in Bookmarks</h1>
+<p>
+December 16th, 2005 -
+<a href="http://sachachua.com/blog/p/3205"><a href="http://sachachua.com/blog/p/3205">http://sachachua.com/blog/p/3205</a></a>
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Top 10 tags for 2005</td>
+<td class="left"><a href="http://del.icio.us/sachac/productivity">productivity</a>(104) <a href="http://del.icio.us/sachac/web2.0">web2.0</a>(88) <a href="http://del.icio.us/sachac/digitalpinay">digitalpinay</a>(88) <a href="http://del.icio.us/sachac/social">social</a>(84) <a href="http://del.icio.us/sachac/useful">useful</a>(83) <a href="http://del.icio.us/sachac/business">business</a>(80) <a href="http://del.icio.us/sachac/blogs">blogs</a>(70) <a href="http://del.icio.us/sachac/research">research</a>(69) <a href="http://del.icio.us/sachac/lifehacks">lifehacks</a>(68) <a href="http://del.icio.us/sachac/blogging">blogging</a>(60)</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Check out <a href="http://sacha.free.net.ph/notebook/wiki/2005.12.16.php">my
+year in bookmarks</a> for more detail. =) If you want me to analyze yours,
+just save
+<a href="http://del.icio.us/api/posts/all"><a href="http://del.icio.us/api/posts/all">http://del.icio.us/api/posts/all</a></a>
+to all.xml and run this Ruby script. You can also e-mail me
+(<a href="mailto:sacha@plannerlove.com">sacha@plannerlove.com</a>) your all.xml
+if you don't want to go through the hassle yourself.
+</p>
+
+<p>
+Much fun!
+</p>
+
+<pre class="example">
+#!/usr/bin/ruby
+
+require 'rexml/document'
+require 'date'
+
+include REXML
+
+YEAR = 2005
+USER = "sachac"
+doc = Document::new(File::new('all.xml'))
+
+month_hash = {}
+month_total = {}
+tag_total = {}
+doc.elements[1].elements.each {
+  |x|
+  date = DateTime::parse(x.attributes['time'])
+  if (date.year == YEAR)
+    x.attributes['tag'].split(' ').each {
+      |tag|
+      month_hash[date.month] ||= {}
+      month_hash[date.month][tag] ||= 0
+      month_hash[date.month][tag] += 1
+      tag_total[tag] ||= 0
+      tag_total[tag] += 1
+    }
+    month_total[date.month] ||= 0
+    month_total[date.month] += 1
+  end
+}
+
+s = "Top 10 tags for " + YEAR.to_s + " |"
+tag_total.sort_by { |tag,total| -total }.slice(0, 10).each { |tag,total|
+  s += ' " + tag + "(" + total.to_s + ")"
+}
+puts s
+
+month_hash.sort.each { |month,tags|
+  s = Date::MONTHNAMES[month] + "(" + month_total[month].to_s + " bookmarks) |"
+  tags.sort_by { |tag,total| -total }.each {
+    |tag,total|
+    s += ' " + tag + "(" + total.to_s + ")"
+  }
+  puts s
+}
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/ruby">ruby</a>,
+<a href="http://www.technorati.com/tag/code">code</a>,
+<a href="http://www.technorati.com/tag/del.icio.us">del.icio.us</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

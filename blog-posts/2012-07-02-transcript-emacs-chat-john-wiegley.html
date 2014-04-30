@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Transcript: Emacs chat with John Wiegley</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Transcript: Emacs chat with John Wiegley</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">A day in the life of John Wiegley</a></li>
+<li><a href="#sec-2">On wishlists and Emacs Lisp</a></li>
+<li><a href="#sec-3">The Emacs community</a></li>
+<li><a href="#sec-4">Learning Emacs</a></li>
+<li><a href="#sec-5">Making money with Emacs</a></li>
+<li><a href="#sec-6">New users and Emacs happiness</a></li>
+<li><a href="#sec-7">Back to earning</a></li>
+<li><a href="#sec-8">The developer community</a></li>
+<li><a href="#sec-9">More tips for new people</a></li>
+<li><a href="#sec-10">Emacs blogs and reading with Gnus + Gwene</a></li>
+<li><a href="#sec-11">Dealing with data overload</a></li>
+<li><a href="#sec-12">Maintaining your information</a></li>
+<li><a href="#sec-13">Wrapping up</a></li>
+</ul>
+</div>
+</div>
+<p>
+July 2nd, 2012 -
+<a href="http://sachachua.com/blog/p/23536"><a href="http://sachachua.com/blog/p/23536">http://sachachua.com/blog/p/23536</a></a>
+</p>
+
+<p>
+This post is long, so if you're reading this on the main page, go to
+<a href="http://sachachua.com/blog/2012/07/transcript-emacs-chat-john-wiegley/"><a href="http://sachachua.com/blog/2012/07/transcript-emacs-chat-john-wiegley/">http://sachachua.com/blog/2012/07/transcript-emacs-chat-john-wiegley/</a></a>
+to view the full transcript!
+</p>
+
+<p>
+Here's the video.
+</p>
+
+<p>
+<a href="http://vimeo.com/44778543">John Wiegley &#x2013; June 26, 2012</a> from
+<a href="http://vimeo.com/user1851927">Sacha Chua</a> on
+<a href="http://vimeo.com">Vimeo</a>.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">A day in the life of John Wiegley</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Sacha: One of the things I've always been curious about is all the
+different things that you use Emacs for. You've been one of our role
+models for ages now, and clearly you do a lot of Emacs Lisp programming
+with it, but what's a day in the life of John Wiegley like?
+</p>
+
+<p>
+J: I spend the most of my time in Org and Gnus. All of my task
+management&#x2026; I think I've processed over 5,000 tasks in Org mode now,
+since I started using it. I'm a very very heavy Org mode user. I'm
+always in Gnus, always checking my e-mail through that. I use ERC. I
+actually run a second Emacs. For my Mac, I built another Emacs under
+another name, and I use that Emacs just for running ERC. I use that in
+conjunction with bitlbee so that I'm always on IM, always on IRC, and
+also that's my Twitter client as well. So that's always running on the
+side as well. I spend a lot of time then in Eshell, all the programming
+modes&#x2026; Most of my day work is in C and C++ when I'm not hacking elisp.
+</p>
+
+<p>
+S: Why do you keep your ERC in a separate Emacs? To minimize
+distraction, or&#x2026;
+</p>
+
+<p>
+J: When I'm hacking on Emacs, I end up needing to restart it quite
+often. Many many times a day, sometimes. That's because I never know
+which definitions&#x2026; Sometimes you change a definition from a function
+to a macro or vice versa, and you don't know which other definitions you
+have to reevaluate in order for them to inline the new definition.
+Rather than have to figure that out all the time, I just restart Emacs.
+</p>
+
+<p>
+S: Hence your trick of making sure that everything's compiled and that
+you're requiring all the files you need so that it loads up cleanly.
+</p>
+
+<p>
+J: I just recently fixed a problem in my .emacs and I discovered that
+compiling it was not giving me any speed benefit. I thought compilation
+was what was making my .emacs run so fast, and it wasn't. It was that I
+was loading&#x2014;when I was running a non-byte-compiled Emacs,I was loading
+things that I didn't need to load. When I fixed that problem, which is
+now fixed in my .emacs repository, Emacs loads in just over a second,
+but without doing any byte-compilation in my Emacs.
+</p>
+
+<p>
+S: I must definitely be doing something long, because my Emacs takes a
+while to load.
+</p>
+
+<p>
+J: How long?
+</p>
+
+<p>
+S: I don't know. I tried using the profiling thing, and because I use
+the Emacs Starter Kit, it didn't get very deep. It feels like ten
+seconds or so. It takes a while. I can't be bouncing it up and down like
+you do.
+</p>
+
+<p>
+S: So you do a lot of Emacs Lisp programming, naturally. You're on ERC,
+and you're doing C and C++ development. Are there other really weird
+things you do that people wouldn't expect Emacs to handle?
+</p>
+
+<p>
+J: Let me think&#x2026; I use it to play chess online.
+</p>
+
+<p>
+S: Yeah, there are so many games in there! I play Nethack in there,
+so&#x2026; pot, kettle, black, here.
+</p>
+
+<p>
+J: I use it to look at databases. I use it&#x2026; Let's see&#x2026; I of course
+use TRAMP to edit not only files remotely, but also local files through
+sudo so that I can edit them. Weird things I do in Emacs&#x2026; A mode I
+forgot to mention is that I use git for all the version control that I
+do, and so magit is a mode that I just basically live in. For any
+project that I'm working on, the magit buffer becomes the home buffer
+for that project, and I'm constantly looking at that buffer to see what
+work I've done, what work should be committed now.
+</p>
+
+<p>
+S: I haven't made that a big part of my workflow yet, but I've heard
+such good things about it.
+</p>
+
+<p>
+J: It's a very nice mode. I use it in conjunction with the built-in vc
+mode of Emacs. If I'm editing a file and I really quickly want to know
+what I've done to this file, I'll do C-x v = to get the diff of the
+current file. If I want an overview of what have I been doing and what I
+have been touching, I'll go to the magit buffer and look at the stats.
+</p>
+
+<p>
+S: I guess you version-control your Org files too. How many Org files do
+you typically work with, and how do you manage that?
+</p>
+
+<p>
+J: I have eight. All of my active tasks exist in a single Org file. The
+other seven Org files are all archives. I have an archive file for every
+project, even though the live project lives in the main TODO file. That
+way, when I do an Org search, it's only at that time that it loads in
+all of the Org files to do the search. I need Org to be as quick as it
+can, since I'm basically modifying tasks and adding tasks to it as the
+days go on.
+</p>
+
+<p>
+S: That could be it. I've got a humongous Org file and org-refile takes
+a while trying to parse it.
+</p>
+
+<p>
+J: Yes, it does, it does. I use Dropbox to synchronize my Org-mode files
+to my iPhone because I use org-mobile. Another interesting tool I have
+found is that there's an app for the iPhone called dropVox, which lets
+you take a voice note and it puts it into Dropbox. I have an Org-mode
+hook so that whenever I open my Org-mode buffer, if there's an audio
+file in my Dropvox box, it will pop up Dired and show it to me, meaning
+“You should listen to this and add it as a note to your Org mode now.”
+</p>
+
+<p>
+S: That's awesome. That's like If This Then That on steroids.
+</p>
+
+<p>
+J: All during the day, new tasks are coming in. They're either coming in
+by ideas, by e-mail, by webpages&#x2026; I have a keybinding I use in Emacs.
+Since I don't use M-m for anything else, M-m is my make-a-note
+keybinding. So, wherever I'm at, if I hit M-m, it will make an
+org-capture and it will link it to whatever I was on when I did the
+capture, and it will link it to whatever I was on when I did the
+capture. If I was on an e-mail, it links it to the e-mail. Well, there's
+a tool for the Mac called Quick Keys, and Quick Keys lets you rebind
+things globally on your system. I've made it so that M-n works anywhere
+on the system and tries to be as intelligent as it can. If I'm looking
+at Chrome and I hit M-n, it will take me to Emacs, pop up the
+org-capture buffer, and then put a link over to the webpage that I was
+looking at.
+</p>
+
+<p>
+S: Is that using org-protocol or just QuickKeys?
+</p>
+
+<p>
+J: It's not using org-protocol. It's just using QuickKeys. The only
+thing QuickKeys is really doing is it's switching over, and then I use
+AppleScript from Emacs to talk to Chrome and get the information. I
+actually use AppleScript quite a lot for many different things. Using
+AppleScript from Emacs is something I do often.
+</p>
+
+<p>
+S: What are some of the other AppleScripty things you do with Emacs?
+</p>
+
+<p>
+J: I don't like to keep Dropbox running all the time because it takes
+lots of background CPU. At the end of a few days, when I look at my
+process list and I look at total time in the kernel spent by all the
+process, Dropbox is usually #2 behind the kernel itself. That's a little
+egregious to me when I'm only using it once in a while. I have
+Applescript so that in Org Mode, when I say go get my mobile tasks, it
+starts up Dropbox, waits half a minute, and then stops Dropbox. So it's
+just running enough time to do this synchronization. And of course, I
+use that async module that I told you about last week to do that work.
+</p>
+
+<p>
+S: It sounds like you've got it quite integrated into the other things
+you use on your Mac. That's fantastic.
+</p>
+
+<p>
+J: Emacs is the center of my entire environment.
+</p>
+
+<p>
+S: Being able to glue all these bits together and make things work&#x2026;
+That's incredible.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">On wishlists and Emacs Lisp</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+S: What are some of things you wish you could glue together? What's the
+John Wiegley to-code-some-point-in-the-future list?
+</p>
+
+<p>
+J: I'd like it if Emacs had a foreign function interface so that I could
+talk directly to databases and other things. There's a fork of XEmacs
+that can communicate directly with PostgreSQL, and something like that
+would be nice because there are some systems that I work with where it
+would just be faster and more efficient if Emacs could talk to those
+systems directly instead of me having to communicate with them over a
+process. Embedding a Python interpreter, or embedding a Ruby
+interpreter&#x2026;
+</p>
+
+<p>
+S: Vim is extensible in a couple of different languages now, isn't it?
+</p>
+
+<p>
+J: I do prefer Emacs Lisp. I have to tell you that probably of all the
+languages I've used, definitely, Emacs Lisp has been the most fun. I
+won't call it the best language out there because it does have its
+downsides and it's a little bit slow. I can't use it for most general
+tasks. But it's fun, because you see results immediately, the debugger's
+easy to use, the documentation is great and completely available at the
+tip of your fingers. It may be true that I have written more new code in
+Emacs Lisp than in any other language by this time.
+</p>
+
+<p>
+S: I wouldn't be surprised.
+</p>
+
+<p>
+J: I've worked on much bigger projects in C and C++, but those didn't
+always involve spitting out reams and reams of new code. Whereas as the
+day goes by, I'm writing new Emacs Lisp functions usually left and right
+to get particular jobs done.
+</p>
+
+<p>
+S: I'm always running into your name. Oh, Planner! Oh, remember! Oh,
+eshell!
+</p>
+
+<p>
+J: Too bad not all of those projects succeeded as well as I'd hoped.
+</p>
+
+<p>
+S: Going back to talking about org-capture and picking up an annotation
+really quickly&#x2026; I remember when we were playing around with that.
+Finding ways to hook parts of Emacs into all the different parts of
+Emacs&#x2026; It's great to see so many people playing around with these
+ideas.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">The Emacs community</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+J: It's a great community. It's a good culture around Emacs.
+</p>
+
+<p>
+S: How did we end up with something as cool as this? Emacs is pretty
+unique among the software packages or open source tools I've seen. Vim
+users are pretty happy and they share a lot of tips, and on the other
+end of the spectrum there's Eclipse, and there's a ton of development
+work around Eclipse, but Emacs&#x2026; it's old, but lots of stuff is going
+on. Why?
+</p>
+
+<p>
+J: My opinion on that would be is that the real success was the Lisp
+machine. The Lisp machine was an entire machine that was what Emacs is
+to editing. You sit down at your operating system and it doesn't matter
+what you're using &#x2013; your editor, your shell, your document viewer,
+whatever &#x2013; they're all written in Lisp. You can modify them as you go.
+The documentation for anything is available as you're looking at it. You
+can pop the system into a debugger at any time. Lisp machines may not
+have succeeded, but Emacs Lisp&#x2026; Emacs took that environment and that
+idea, and brought it down to the domain of a single application, the
+editor. It gives us all the cool things about the Lisp machine: the fact
+that the debugger's available all the time and the documentation is
+completely cross-linked with everything. I think that's probably what
+we're experiencing, and that's why it's so much fun.
+</p>
+
+<p>
+S: &#x2026; And the fact that you can get in, you can tweak just that little
+thing just a little bit, and eventually end up with this massive Emacs
+configuration because you've been tweaking it to fit you.
+</p>
+
+<p>
+J: I have to say that the original designers and Dr. Stallman &#x2013; they
+had a very good idea when they put in a lot of hooks throughout Emacs.
+There are other extensible systems out there in the world that are not
+as extensible because they lack sufficient degree of hookage inside,
+places where you can latch on a piece of code to execute when something
+happens. Emacs has got those everywhere. That plus its advising system
+lets you basically change the behaviour of anything or augment the
+behaviour of anything.
+</p>
+
+<p>
+S: I have to confess it's one of the things I like the way that Ruby on
+Rails will let you open up classes, redefine functions, and then
+continue on with your work. The extensibility built into the very
+language is very very helpful. It also can be very intimidating.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Learning Emacs</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+S: We've talked about this before. You're maybe one of a few Emacs users
+over there. I'll on occasion run into someone who's curious about Emacs
+but hasn't taken the plunge. How do we get more people interested in
+this stuff?
+</p>
+
+<p>
+J: Well, getting them interested is not that hard. It's getting them to
+climb the learning curve that's difficult. My wife's a physician, and
+she sees what I do with Org-mode. She's been tempted to learn Emacs just
+to use Org-mode.
+</p>
+
+<p>
+S: I hear a lot of stories like that.
+</p>
+
+<p>
+J: But the learning curve is so enormous that she just doesn't have the
+time to learn it.
+</p>
+
+<p>
+S: At some point you were very much into Vi, and then you said, okay,
+we're going to learn things the Emacs way. You just sat down and you did
+it. Is that something we expect people to sit down and do at some point?
+Have you come across any things that make it easier for people?
+</p>
+
+<p>
+J: Not necessarily that make it easier for people, unfortunately. I
+think it's a philosophy thing. I use Emacs. I'm in Emacs and I use Emacs
+probably 70% of my every working day. It pays dividends to master it.
+Every efficiency gain I get in Emacs, I get to make use of right away,
+and it pays off as the days go by. There are people who type for their
+living who don't know how to touch-type. That, to me, is the exact same
+scenario. How can you make your living as an engineer, typing day in,
+day out, and yet lose the productivity that you would gain by learning
+to touch-type. Even learning to touch-type &#x2013; yeah, it will take you a
+few weeks. You either use a piece of software or go to class, whatever.
+So there is a hump that you have to get over, and you may not have the
+time to get over that hump right now, but it's an investment, and that
+investment will pay off.
+</p>
+
+<p>
+S: Get to know your tools and get to know them really well, because
+you're using them all the time. In terms of Emacs, Emacs being very very
+big and Emacs being something that moves very quickly, what are some of
+the things that you want to dig into and learn more about?
+</p>
+
+<p>
+J: I would like to learn the C side of Emacs more. I've never known the
+C side of Emacs. I've just recently been looking at the bytecode
+interpreter and trying to learn how it does what it does to see if there
+are ways to get better performance into Emacs. That, for me, is the
+undiscovered country. That's where I want to go next.
+</p>
+
+<p>
+S: It does sound like a lot of deep magic. That's the very core of it.
+</p>
+
+<p>
+J: It's not as crazy as it seems. It's pretty well done on the inside.
+Emacs without all of its Lisp modes and packages on top of it, if you
+boil it down to just its essence&#x2026; the kernel is not really that huge.
+It's a very small, very tidy, simple thing. Of course, there are places
+where it has some rough edges that can be smoothed, but it's not what
+people think of as Emacs. They think of this kitchen sink application
+that does absolutely everything. That's a lot of Lisp stuff that goes
+around the little kernel, whereas the kernel is very tight and small. I
+want to know more about that because anything done in the kernel affects
+everything else.
+</p>
+
+<p>
+S: If you ever get around to doing annotated source code, I'd definitely
+read that.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Making money with Emacs</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+S: I hear you're kinda on the hook for eshell documentation or whatever
+else people would like you to write.
+</p>
+
+<p>
+J: That's true. There's a reason why the eshell documentation was never
+written. This would be a whole different discussion. I have some
+misgivings about what kind of world the GPL would create if it was
+everywhere. I do a lot of my programming as a hobbyist, but I have to
+make money programming as well.
+</p>
+
+<p>
+The way to make money through software is usually to sell it. Otherwise,
+if you make money only through services, that never takes off. If you
+make a piece of software and you license it, it can take off. It can
+start making money for you and you don't have to work to earn every day.
+Then you can use that time that you now have to make more software.
+</p>
+
+<p>
+If the only income that you ever made was based on services, then you
+basically have to be working all day long, and when would you ever get
+your hobby coding done? When you only have six to eight hours a day to
+do any coding at all (because there are things that we have to do), you
+want to have a setup where you can do as much creative coding as
+possible.
+</p>
+
+<p>
+Since the GPL's view of the world is that you get paid through the
+services and you get paid through the documentation, when I released
+eshell, my thought was, “Okay, I've written the code, the code is in the
+GPL, so it's freely distributable and I can't charge anyone for it, but
+if they want services around eshell, then they can pay me for that.” I
+have always told the community that if someone wants to step up and pay
+for it, I'll write the eshell documentation. But that's never happened.
+So if the community doesn't value the eshell documentation enough to pay
+me to do it, then why would I spend the time that I could be spending
+coding to write it?
+</p>
+
+<p>
+S: Do you know what kind of bounty system we have or something like that
+for lots of people to say, “I want to pitch in so and so much to e-shell
+documentation?” Do we have that?
+</p>
+
+<p>
+J: Yeah, or a Kickstarter project, for example.
+</p>
+
+<p>
+S: That would be cool.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">New users and Emacs happiness</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+S: You've been an awesomely prolific Emacs Lisp programmer, so it would
+be interesting&#x2026;
+</p>
+
+<p>
+J: Well, it's just that I've been doing it for so long. It's been
+eighteen years now since the first package that I wrote and submitted to
+Emacs. I know! You were just a kid back then when I was writing
+align.el.
+</p>
+
+<p>
+S: I was ten! I've used align.el.
+</p>
+
+<p>
+J: Yup. It was made when you were ten.
+</p>
+
+<p>
+S: Are you seeing a lot of other young people get interested in this
+stuff?
+</p>
+
+<p>
+J: Sure! It's basically if you're not going to be using an IDE like
+Visual Studio or Eclipse or something, Emacs is still one of the two
+great editors out there. It's either going to be you go with Emacs or
+you go with Vim. It still pulls in new people all the time.
+</p>
+
+<p>
+S: There's just so much. Once people start customizing it, they get
+sucked in. As you said earlier, there's a lot of interest in Emacs from
+the nontechnical side of the world. Writing, scientific papers&#x2026;
+</p>
+
+<p>
+J: We're getting a lot of new users just because of Org mode.
+</p>
+
+<p>
+S: How many years ago was that? Now, it's just grown into this massive
+thing where people are writing their research papers and they're doing
+their data analyses in org-babel, and having something come out&#x2026;
+Literate programming writ large.
+</p>
+
+<p>
+J: I started using it in 2007 and I think it was a couple of years old
+by then already. I tried to drop Org-mode a couple of times. I was
+thinking, there are sexier-looking apps for the Mac. There are apps that
+have better and tighter integration for the iPhone. On two different
+occasions, I left, converted all of my tasks over to a different
+program, used that program for a few months, came back to Org&#x2026; and I
+always felt happy to be back in Org. I don't know what it is about it.
+It looks right. It feels right. It's got the right balance between how
+finely you can enter and manipulate the information, and how coarsely
+you can look at it at a glance. Other applications that I used&#x2026; I
+don't know.
+</p>
+
+<p>
+There was just something about them, but I wasn't getting the tasks
+done. I would put all the tasks into the application and I'd be excited
+about it for a few weeks, and then after a couple of months, I just
+wouldn't look at it any more. I would know that the tasks were in it,
+but I would never do anything about them. The way I use Org Mode, I use
+it like a day planner, so that every task I intend to do is scheduled
+for a particular day. I'm rescheduling tasks and moving them to new days
+every single day for years now, and it just never has felt like a
+burden. So there's something that Org does right.
+</p>
+
+<p>
+S: There's the hack that you told me about the other time where you
+change your window size, so you watch it shrink as you finish your
+tasks.
+</p>
+
+<p>
+J: I fit it to the window.
+</p>
+
+<p>
+S: Little motivational hacks that you can do because you can play around
+with the tool itself. I remember when I was trying to learn through
+flashcards using flashcard.el, I rigged it up so that it would tell me a
+joke using fortune.el and everything I got something right. It was
+either that or show me a cute cat picture from the files I'd saved off
+icanhascheezburger. The fact that you can hack it to do all sorts of
+crazy things&#x2026; that's incredible.
+</p>
+
+<p>
+J: I just started playing around with its ability to view PDF files. You
+can use C-x C-f to open a PDF file and you'll see it in your Emacs. It
+renders them page by page as PNG files, and then uses the Imagemagick
+extension built into Emacs 24 to show you those pages. Which is useful
+to me because I'm often looking at a language specification as I'm
+writing code, and it's nice to have it in another buffer the way that I
+would have Emacs documentation. I can look at the C++ standard now and
+have it just be in another buffer.
+</p>
+
+<p>
+S: How did you come across this new capability, because I didn't know
+about this?
+</p>
+
+<p>
+J: I think I ran into it accidentally. I think I was in Dired mode and I
+hit return on a PDF instead of hitting ! to open it, and all of a
+sudden, there it was, and I was, like, “Wow, I didn't know Emacs could
+do that&#x2026;”
+</p>
+
+<p>
+S: Basically, for people who want to learn things&#x2026; Just do random
+things in Emacs!
+</p>
+
+<p>
+J: Although if you're going to do random things in Emacs, take notes.
+Otherwise, you'll never know how to get back to what you found.
+</p>
+
+<p>
+S: That's what the lossage buffer is for, isn't it?
+</p>
+
+<p>
+J: The lossage buffer can be a bit hard to read, though.
+</p>
+
+<p>
+S: Execute-extended-command?
+</p>
+
+<p>
+J: I did find on Emacswiki a mode called Command Log. It keeps in a very
+readable form every command you use.
+</p>
+
+<p>
+S: I definitely have to pick up this habit of yours of just reading
+Emacswiki.
+</p>
+
+<p>
+J: That's how I started learning. You asked about how people get over
+the learning hump. I'll tell you what I did. Back in 1994, when I
+started really wanting to know Emacs, what I did was I printed out the
+Emacs manual, which at the time was I think seven or eight hundred
+pages. It was just single-sided paper. I probably killed a small tree
+doing it. But I brought that stack of papers over to my desk and I put
+it to the side. At the time, my machine was slow enough that I was often
+waiting for builds to finish. What I would do is while whatever was
+building on my machine, I would pick up the top page of the Emacs
+manual, I'd read it, and then I would throw it away. I just did that
+over several weeks' time. I ended up reading the Emacs manual in all of
+this dead time that I had, waiting for compilations to finish. I made
+that a yearly habit for the first four years, just to constantly refresh
+my knowledge of what's in there, because it's such a massively huge
+environment. It helped.
+</p>
+
+<p>
+S: My story is that I've used Emacspeak to synthesize the Emacs manual
+so that I can listen to it while walking around. I was reading my mail
+off Gnus at the time. You could use Emacspeak to read your mail and all
+of that stuff. You find all these ways to cram information into your
+brain. I would be up for more podcasts. I see people are coming out with
+books as well. There's the Org mode book. That might be another way for
+you to do it, right? You write your documentation and you say, here's a
+book that you can buy. But then it's very speculative work, I suppose.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Back to earning</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+S: Speaking of other things that integrate into Emacs&#x2026; Thank you for
+writing Ledger, by the way, because I still run all my finances with it.
+I have no idea where I'm going to find an accountant who understands
+Ledger&#x2026;
+</p>
+
+<p>
+J: Our biggest problem right now.
+</p>
+
+<p>
+S: Either we put together a Kickstarter so that you end up writing a
+manual and accountants all over the world will be like, “This is
+awesome!”. Or I just learn how to use Quickbooks.
+</p>
+
+<p>
+J: Ledger does have a manual. That was one I wrote the manual for. It's
+also not GPLed.
+</p>
+
+<p>
+S: There you go. There are ways to work around that&#x2026; So your ideal is
+figure out how people can pay you for documentation because all the code
+is GPLed anyway. Are there other models that seem to be working for
+other people, other ways to make the awesome hackers that work on this
+stuff happy so that people can keep working on this cool stuff?
+</p>
+
+<p>
+J: Not with Emacs hacking. I've been paid one time now to do a course on
+Emacs because my company does training, and Emacs training is one of
+things that we do offer.
+</p>
+
+<p>
+S: You should definitely explore that remote training aspect.
+</p>
+
+<p>
+J: We're looking into that. I believe that is the only time in my life
+that I have earned money just because of Emacs. So it hasn't paid for
+itself monetarily, but it's paid for itself in other ways.
+</p>
+
+<p>
+S: In terms of efficiency, being able to do all these things and fly
+through that. Anyway, that might be an interesting challenge for us
+also, figuring out how we can get more Emacs geeks to be rich and
+famous.
+</p>
+
+<p>
+J: That'll be the day.
+</p>
+
+<p>
+S: Imagine if we had an Emacs app marketplace?
+</p>
+
+<p>
+J: Yeah, seriously&#x2026; Wow. Just propose that idea on the mailing list
+and see what a flamewar that would begin.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">The developer community</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+S: But it is very nice to be able to play around with all these
+packages, and there are thousands&#x2026; A lot of them will go and look for
+ways to integrate with each other, like the way BBDB integrates with
+Gnus.
+</p>
+
+<p>
+J: That's another one that I use. And there's always new stuff coming
+out, and authors are very good about interacting with each other. The
+author of helm just recently incorporated using my async module that I
+wrote. He did that just in a matter of a few days. Since helm is
+something I rely upon on all the time, I'm very happy to see that.
+</p>
+
+<p>
+S: That's actually one of the challenges I came across when it came to
+writing documentation or writing a book about Emacs, especially the
+modules that people are working on. The packages, right? You share an
+idea, and the maintainers would be, like, “That's an excellent idea!”
+and they would fold it in. So I kept running out of book topics! That's
+a good thing about the community. It moves so fast.
+</p>
+
+<p>
+J: If people are looking to know Emacs better, they should also stop by
+the IRC channel. I'm there every day, and a lot of people there can give
+good help if you have questions.
+</p>
+
+<p>
+S: Yeah. It only looks off-topic from time to time, but if people show
+up with Emacs questions&#x2026;
+</p>
+
+<p>
+J: It also depends on the time of day, too.
+</p>
+
+<p>
+S: Do evenings tend to work for you? When do people usually hang out
+there?
+</p>
+
+<p>
+J: I'm a night coder, so that's when I'm there, but people are there all
+around the clock.
+</p>
+
+<p>
+S: I tend to drop by in the evenings too, when I remember to do that.
+ERC makes it so easy because it's just there.
+</p>
+
+<p>
+J: Yeah, I haven't seen you there that often. You should come by more.
+</p>
+
+<p>
+S: I know.
+</p>
+
+<p>
+J: I always see you at the very end of my night, what would be dawn for
+most people. That's when you usually come in.
+</p>
+
+<p>
+S: That's funny. I've got to work on my timing. One of the things I want
+to do is figure out if we can have a regular Google Hangout or whatever,
+right&#x2026; It's easy to do screen-sharing through that and you can have
+multiple people, so, if we just get people together and say, “What have
+you learned about Emacs lately?” then it's slightly more visual than
+IRC.
+</p>
+
+<p>
+J: There's also Twitter. A lot of people use that to talk about new
+stuff they've found in Emacs.
+</p>
+
+<p>
+S: Yeah, I've seen a couple of people tweeting really short Emacs tips,
+and it's great to see that kind of stuff going on. I remember people
+used to have Emacs tips in their e-mail signatures as well. All these
+little ways to increase randomness. Emacs is so huge that if you just
+find little ways to say, “Oh, hey, there's this new feature” or “There's
+this interesting command over here,” who knows what it'll spark?
+</p>
+
+<p>
+J: There's too much good stuff.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">More tips for new people</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+S: So you recommend that if people are new, they should check out the
+IRC channel, EmacsWiki&#x2026;
+</p>
+
+<p>
+J: Go through the Emacs tutorial first. Then stop by the channel, read
+the Emacs manual, pick something you want to accomplish with Emacs and
+focus your learning around making that happen, rather than taking on the
+task of trying to swallow the whole thing right up front.
+</p>
+
+<p>
+S: People will easily divide into&#x2026; You want to do programming, check
+out the EmacsWiki pages on the respective languages. If you want to do
+text editing or the subspecies of research paper editing or whatever
+else, then there are pages for that too.
+</p>
+
+<p>
+J: There's always more stuff out there than you're aware of. I've been
+trying to make myself aware of everything that's out there, and I keep
+running into new stuff on a daily basis. Just yesterday I found
+swank-js, which lets you interact with the Javascript interpreter inside
+your browser as a REPL. You can connect to Firefox and be manipulating
+the webpage through an Emacs REPL using Javascript. Isn't that crazy? If
+I were doing web development, I could see that that would just be
+invaluable.
+</p>
+
+<p>
+S: I will go have to check that out. You've also mentioned a couple of
+other Emacs blogs, like Mastering Emacs&#x2026; Is that one syndicated on
+Planet Emacsen yet?
+</p>
+
+<p>
+J: I don't know. I'm not sure if I have&#x2026; I aggregate all of my feeds
+in Gnus into a virtual group, so I'm never aware of the actual source of
+any feed, I just get presented with one group that has all the current
+happenings in Emacs.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Emacs blogs and reading with Gnus + Gwene</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+S: Someday we should totally get your OPML and cross-reference it with
+everything that's syndicated there.
+</p>
+
+<p>
+J: That's true. That wouldn't be a bad project, maintain an OPML file of
+all the Emacs feeds out there on the Net, because I would love to keep
+my list updated. I went through and did a search through Gwene to see
+all the feeds that it had syndicated, which is of course not all the
+feeds that are out there. I did that two years ago, so there have been
+new feeds since.
+</p>
+
+<p>
+S: I'll take that away as a TODO and see if Planet Emacsen will have all
+these things&#x2026; Who was that in charge of it? Edward, Edward O'Connor.
+</p>
+
+<p>
+J: Yeah, that's right. So any time you find a new feed, add it to Gwene.
+That way, anyone who goes to the Gwene server with Gnus can just do a
+search for all groups matching to Emacs and subscribe to them all.
+</p>
+
+<p>
+S: With Gwene, when you reply, does it get posted as a comment too?
+</p>
+
+<p>
+J: I've never replied to anything on a Gwene server, so I have no idea
+what it does.
+</p>
+
+<p>
+S: Yeah, it would be tricky to make it that smart. It would be cool, but
+it would be tricky.
+</p>
+
+<p>
+J: There are so many blogging platforms and some require authorization
+and some have CAPTCHAs&#x2026; It would be tough. I really thank Lars for
+setting that server up, because it allows me to digest a lot of news
+about Emacs in a very short period of time each day.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-11" class="outline-2">
+<h2 id="sec-11">Dealing with data overload</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+S: What are some of your other
+massive-amounts-of-information-how-do-I-deal-with-this tips?
+</p>
+
+<p>
+J: You mean just coping with data overload?
+</p>
+
+<p>
+S: Whether it's programming, news, mail&#x2026; How do you filter?
+</p>
+
+<p>
+J: I use virtual groups a lot to aggregate so that I'm not overwhelmed
+by a huge number of groups that have lots of unread messages. I'd rather
+have fewer groups with more messages in them. Then I use Gnus' very
+handy adaptive scoring with Gwene. In my .emacs repository, there's a
+file called my-gnus-score. I've codified everything related to my
+scoring configuration in that file, so if you want to use the system
+that I use, that's the file to get. Adaptive scoring basically allows me
+to go into a group and then if I see a thread there that's not
+interesting to me and I don't read it, I will never see that thread
+again. All of my groups only ever show me threads I'm currently reading,
+or new threads. I don't have to wait through stuff I'm not interested in
+any more. It's not that it just downscores it, it doesn't appear at all.
+That's a good way for me to cope with the thousands of articles per day
+that get downloaded to my machine, because I'm only reading maybe forty
+of them at best. That's one good way to cope with the data over load.
+</p>
+
+<p>
+S: I've never found anything that had the kind of scoring that Gnus has.
+I want it with everything. I want it with Gmail, I want it with all that
+stuff&#x2026; C'mon, get with the times!
+</p>
+
+<p>
+J: Even though I receive my e-mail at Gmail, I suck it down to my
+machine with fetchmail and I put it into a local dovecot server so that
+Gnus will hold sway over it. The other thing that's valuable in coping
+with data overload is just structure.
+</p>
+
+<p>
+Structure is really the key to everything. And when structure gets too
+big, then you just need metastructure. As long as you have some way to
+get to the thing that you need to know when you need to know it, but
+your top-level view &#x2013; the thing that you're thinking about in your mind
+&#x2013; is always small, then it doesn't matter how much information you
+have.
+</p>
+
+<p>
+I stopped deleting things that I downloaded a few years ago. I started
+having enough disk space that I just keep everything. You never know
+when you're going to want it again. You never know when that version you
+had isn't going to be on the Internet any more, etc. I have a giant file
+server that I built that just accumulates lots of information. There's a
+directory in my home directory called archives, and archives now has
+about 400GB of files in it across millions of files. There are files
+within files. It's just an enormous amount of information.
+</p>
+
+<p>
+But the way that I manage that data overload is just by structure. I
+developed a taxonomy to put things into places by category and by topic.
+Whenever I have a file or whenever I'm looking for a file, I can know
+within seconds what the path name leading to that file or group of files
+is going to be, because I adhere to the taxonomy rigidly. I have an
+inbox where new stuff comes in, and then I sort the stuff out from the
+inbox using Dired into the parts of the taxonomy that it needs to go in.
+</p>
+
+<p>
+The key there is that even though I have all this data &#x2013; which is way
+more data than Spotlight or systems like that are ever going to help me
+search through &#x2013; by having the right structure, the data is easy to
+find.
+</p>
+
+<p>
+I use Org mode as a sort of meta-structure so that if there are parts of
+that structure that I often refer to, I'll put a link to them in Org
+mode. In Org mode, I'll have a hot list, and the hot list are the things
+I care most about right now. The hot list will just branch to other
+lists or to other areas on the machine or other parts of the Web. You
+want to keep the hot list down to a reasonable small amount, so like ten
+to twenty items. That should branch out into everything else. Everything
+should ultimately go down to the leaves of everything that you have. If
+you have anything unowned by your hierarchy, it will get lost or it will
+just become forgotten. I believe that hierarchy is the solution to any
+problem in terms of data overload.
+</p>
+
+<p>
+S: I was just thinking about how I can organize my ever-growing Org
+files and I've been trying to create categorical indexes, going through
+all these things, creating links to my blog (external information and
+all of that)&#x2026; but it's fascinating to see how people have been
+organizing, especially since you've been using it for a while, and you
+have tons of information in it. Lists of lists.
+</p>
+
+<p>
+J: And also information I keep needing to refer to, even years later.
+I'll remember&#x2026; I knew at one point how to disable the Spotlight index,
+for example, but I can't remember the command. That command is no longer
+in my Zsh history file. How am I going to know that information? If I
+search for it, I might find it, but there are some things you just can't
+search Google for because it's too abstract. I'll write it down in my
+Org mode file and even though it's in the archive file, it's still
+searchable, it's still indexable. I can ask my whole system, what do you
+know about Spotlight? I'll get a list back of all the things I ever
+thought were valuable to know about Spotlight, and in that list will be
+indexing, disabling, etc.
+</p>
+
+<p>
+S: That is an excellent use of Org mode. I remember you showed me a
+glimpse of your Emacs org file where you were listing all these things
+you were learning about Emacs, and that file looked really long.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-12" class="outline-2">
+<h2 id="sec-12">Maintaining your information</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+J: It does require some investment, though. Maintaining structure like
+this requires always weeding and pruning, combing and going through the
+data. My wife and I have a word for it. She's Persian, and the Persian
+word for putting things in order is monazem(?). She'll ask me&#x2014;I'l l be
+at my computer, playing around with it&#x2014;and she'll say, “Are you
+monazeming?” All that I'm doing is just moving stuff around, I'm
+renaming things, I'm building index links&#x2026; That might not be a fun
+task for everyone. Maybe part of me always wanted to be a librarian when
+I grew up. I actually get a lot of pleasure out of that. I find it
+relaxing. I find that imposing order on the chaos of my machine gives me
+a greater feeling of order in my own life, and that makes me better able
+to handle the new information that's going to come in the next day.
+</p>
+
+<p>
+S: It also helps you remember what's in your file, so you know what you
+can search for.
+</p>
+
+<p>
+J: That's very important. Our memory, it's not ever going to be good
+enough to just keep our eyes on the thousand things we might have in our
+configuration or the million things we might have in our machines these
+days. That doesn't even include all the things we've seen on the
+Internet, thought were cool, but haven't noted down anywhere. We just
+remember that it's there, but we're losing those all the time and we're
+not aware that we're losing them.
+</p>
+
+<p>
+S: At least until you plug your browser history into an Org thingy that
+automatically captures all of that stuff. People used to have browser
+plugins that did that&#x2026;
+</p>
+
+<p>
+J: That's a neat idea, actually. Hmm&#x2026;. I like that idea. I used to not
+have any cap on my history in the browser, but ultimately it makes the
+browser too slow. But it would be nice to queue it out to a log file or
+a database where it just gives the link, a title, and a synopsis of the
+contents. That would be kinda nice. You're giving me ideas, Sacha.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-13" class="outline-2">
+<h2 id="sec-13">Wrapping up</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+S: So, we'll see it next week, then? Okay. Lots of tips on all these
+different things you can do with Emacs, where to get started, how to
+organize a huge archive of information (lists of lists and breaking
+things down)&#x2026; Any parting words before I line up other people to bring
+on to this “Let's Talk about Emacs” thing?
+</p>
+
+<p>
+J: Just that Emacs is fun. All of this technical stuff, all of these
+features&#x2026; the reason I use it is because it's fun.
+</p>
+
+<p>
+S: It is. It's a lot of fun. It's even more fun because&#x2026; Well, I get
+to bump into people like you, and the Emacs community is so awesome!
+</p>
+
+<p>
+J: I got to know you through it as well! That's been a great thing.
+</p>
+
+<p>
+S: When you made me the maintainer of Planner, I was, like, “Oh my gosh,
+I've never maintained anything before.” I was a university student, and
+it was an excellent experience.
+</p>
+
+<p>
+J: I always appreciated the little cards that you sent me from time to
+time through the years, mentioning your uses of Planner&#x2026;
+</p>
+
+<p>
+S: I should send cards to Carsten too. Bastien is the new maintainer,
+isn't he? Emacs appreciation cards.
+</p>
+
+<p>
+J: That's right. I think that's a great thing you did. Thanks, Sacha!
+</p>
+
+<p>
+S: Thank you so much. Nice talking to you, and I'll catch you again
+sometime.
+</p>
+
+<p>
+J: Have a good night!
+</p>
+
+<p>
+(Transcription took me 2:35 for 0:44 of audio.)
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

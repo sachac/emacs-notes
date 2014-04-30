@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Display subject on the first line, dynamically</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Display subject on the first line, dynamically</h1>
+<p>
+March 8th, 2004 -
+<a href="http://sachachua.com/blog/p/1859"><a href="http://sachachua.com/blog/p/1859">http://sachachua.com/blog/p/1859</a></a>
+</p>
+
+<pre class="example">
+;;; gnus-summary-update-subject.el --- Display subject on the first line, dynamically
+
+;;; Time-stamp: &lt;2004-03-07 18:02:03 bojohan&gt;
+;; 
+
+;; Modified by Sacha to work with subjects anywhere in the summary line.
+
+;;; Code:
+
+(defvar gnus-summary-update-subject-overlay nil)
+(defvar gnus-summary-update-subject-hide-overlay nil)
+(setq gnus-summary-same-subject (propertize " " 'gnus-summary-same-subject t))
+
+(defvar gnus-summary-update-subject-thread-marker "&gt;")
+
+(defun gnus-summary-update-subject (&amp;optional window start)
+  (when gnus-summary-update-subject-overlay
+    (save-excursion
+      (goto-char (or start (window-start)))
+      (when (re-search-forward gnus-summary-update-subject-thread-marker (line-end-position) t)
+        (if (not (text-property-any (line-beginning-position)
+                                    (line-end-position)
+                                    'gnus-summary-same-subject t))
+            (progn
+              (delete-overlay gnus-summary-update-subject-overlay)
+              (delete-overlay gnus-summary-update-subject-hide-overlay))
+          (let ((subject (gnus-summary-subject-string
+                          (gnus-summary-article-number))))
+            (move-overlay gnus-summary-update-subject-hide-overlay
+                          (+ (point) 2) (+ (point) 2 (length subject)))
+            (move-overlay gnus-summary-update-subject-overlay
+                          (point) (1+ (point)))
+          ;;(overlay-put gnus-summary-subject-overlay 'window (selected-window))
+            (overlay-put gnus-summary-update-subject-hide-overlay
+                         'invisible t)
+            (overlay-put gnus-summary-update-subject-hide-overlay
+                         'intangible t)
+            (overlay-put gnus-summary-update-subject-overlay
+                         'after-string subject)))))))
+
+
+(defun gnus-summary-update-subject-setup ()
+  (add-hook 'window-scroll-functions 'gnus-summary-update-subject nil t)
+  (set (make-local-variable 'gnus-summary-update-subject-overlay)
+       (make-overlay 0 0))
+  (set (make-local-variable 'gnus-summary-update-subject-hide-overlay)
+       (make-overlay 0 0)))
+(add-hook 'gnus-summary-prepared-hook 'gnus-summary-update-subject-setup)
+
+(defadvice gnus-summary-position-point (after summary-update-subject activate)
+  (gnus-summary-update-subject))
+
+(provide 'gnus-summary-update-subject)
+
+;;; gnus-summary-update-subject.el ends here
+</pre>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/gnus-summary-update-subject.el">../../notebook/emacs/gnus-summary-update-subject.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

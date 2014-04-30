@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Keyboard shortcuts for navigating code</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Keyboard shortcuts for navigating code</h1>
+<p>
+July 27th, 2008 -
+<a href="http://sachachua.com/blog/p/4994"><a href="http://sachachua.com/blog/p/4994">http://sachachua.com/blog/p/4994</a></a>
+</p>
+
+<p>
+UPDATE 2014-01-21: Add regexp-quote around current-word.
+</p>
+
+<p>
+One of the lines on my list of things I can do in order to make progress
+on my book is to move my Drupal development environment from Eclipse to
+Emacs, as immersion would no doubt give me plenty of things to tweak and
+describe. When you use something every day, you notice the rough edges.
+With Emacs, you can sand those edges down. I already use Emacs every
+day, but I had been doing most of my development work in Eclipse because
+Eclipse packaged a number of useful features I wanted. If I can move my
+environment to Emacs, though, I'll be able to customize it a lot more
+freely.
+</p>
+
+<p>
+Take something as simple as navigation, for example. In Eclipse, I can
+hit Ctrl+K to search for the next instance of the current word, which is
+a handy way to look for function calls or definitions in the same file.
+How would you do that in Emacs? The built-in search functions allow me
+to take text from the buffer, but I wanted something even faster. Here
+are some of the ways you can tweak navigation, too.
+</p>
+
+<p>
+If you haven't tried it yet, you'll probably like interactive search
+(C-s) because you can modify the search and see the results as you type.
+All you need to do to make it better than Eclipse's Ctrl+K is to add a
+function to grab the current word, even if the point in the middle of
+the word. Add the following code to your ~/.emacs:
+</p>
+
+<pre class="example">
+(defun sacha/isearch-yank-current-word ()
+  "Pull current word from buffer into search string."
+  (interactive)
+  (save-excursion
+    (skip-syntax-backward "w_")
+    (isearch-yank-internal
+     (lambda ()
+       (skip-syntax-forward "w_")
+       (point)))))
+(define-key isearch-mode-map (kbd "C-x") 'sacha/isearch-yank-current-word)
+</pre>
+
+<p>
+Type C-s (isearch-forward) to start interactively searching forward, and
+type C-x to get the current word. Use C-s and C-r to search forward and
+backward. You can modify your search, too.
+</p>
+
+<p>
+Want to make it even faster? Use these functions to bind similar
+searches to shortcut keys:
+</p>
+
+<pre class="example">
+(defun sacha/search-word-backward ()
+  "Find the previous occurrence of the current word."
+  (interactive)
+  (let ((cur (point)))
+    (skip-syntax-backward "w_")
+    (goto-char
+     (if (re-search-backward (concat "\\_&lt;" (regexp-quote (current-word)) "\\_&gt;") nil t)
+     (match-beginning 0)
+       cur))))
+
+(defun sacha/search-word-forward ()
+  "Find the next occurrance of the current word."
+  (interactive)
+  (let ((cur (point)))
+    (skip-syntax-forward "w_")
+    (goto-char
+     (if (re-search-forward (concat "\\_&lt;" (regexp-quote (current-word)) "\\_&gt;") nil t)
+     (match-beginning 0)
+       cur))))
+(global-set-key '[M-up] 'sacha/search-word-backward)
+(global-set-key '[M-down] 'sacha/search-word-forward)
+</pre>
+
+<p>
+Feel free to change the keybindings or otherwise improve the code. =)
+Good luck and have fun!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Tweaking day-specific planner pages</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Tweaking day-specific planner pages</h1>
+<p>
+October 27th, 2007 -
+<a href="http://sachachua.com/blog/p/4422"><a href="http://sachachua.com/blog/p/4422">http://sachachua.com/blog/p/4422</a></a>
+</p>
+
+<p>
+If you set planner-day-page-template to a function. Planner invokes
+ the function when creating a new day page. This means that you can do
+ all sorts of stuff. For example, to include the day name in your day
+ template, add the following code to your ~/.emacs:
+</p>
+
+<pre class="example">
+(setq planner-day-page-template (lambda ()
+  "Day page template for Sacha."
+  (let ((date (planner-filename-to-calendar-date (planner-page-name))))
+    (insert (calendar-day-name date) "\n* Tasks\n\n\n* Schedule\n\n\n* Notes\n"))))
+</pre>
+
+<p>
+Let's say that you wanted to have day-specific messages:
+</p>
+
+<pre class="example">
+(setq planner-day-page-template (lambda ()
+  "Day page template for Sacha."
+  (let* ((date (planner-filename-to-calendar-date (planner-page-name)))
+         (day (calendar-day-of-week date)))
+    (insert (cond
+             ;; Day of week starts from 0
+             ((= day 0) "Woohoo! Sunday!")
+             ((= day 1) "Oh no, it's Monday")
+             ((= day 5) "T.G.I.F.!")
+             ((= day 6) "I love Saturdays.")
+             ;; The rest of the days
+             (t "Is it Friday yet?"))
+            "\n\n* Tasks\n\n\n* Schedule\n\n\n* Notes\n\n"))))
+</pre>
+
+<p>
+&#x2026; although you might want to have a more upbeat way to think of
+weekdays. ;)
+</p>
+
+<p>
+You could do lots of things to your day page template. You could
+ include one line describing your career goals into your planner every
+ weekday and one about your personal goals every weekend. You could use
+ fortune to include a random work-related joke or quotation during the
+ weekday and a fun-related one during the weekend. You can even include
+ text based on the current month or day or year, if you wanted.
+</p>
+
+<p>
+It pays to learn Emacs Lisp. Crazy Emacs geeks like me
+ build all sorts of entry points for customization, so you're really
+ just limited by your imagination. =)
+</p>
+
+<p>
+Random Emacs symbol: w3m-toggle-inline-images-internal &#x2013; Command:
+ Toggle displaying of inline images on current buffer.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

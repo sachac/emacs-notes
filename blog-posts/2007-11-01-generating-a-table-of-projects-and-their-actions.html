@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Generating a table of projects and their actions</title>
+<!-- 2014-04-30 Wed 17:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Generating a table of projects and their actions</h1>
+<p>
+November 1st, 2007 -
+<a href="http://sachachua.com/blog/p/4429"><a href="http://sachachua.com/blog/p/4429">http://sachachua.com/blog/p/4429</a></a>
+</p>
+
+<p>
+Here's how I generated my list of
+<a href="http://sachachua.com/101goals.html">101 short-term goals</a>.
+</p>
+
+<p>
+First, I brainstormed the list of goals in an org-mode file. Each goal
+ is represented by a level-2 outline heading. Current projects are
+ tagged :PROJECT:. The goals are grouped under level-1 outline
+ headings, like this:
+</p>
+
+<pre class="example">
+* Reading, Writing, and Sharing
+** 30. Write and publish a 350-page book about Emacs :PROJECT:
+</pre>
+
+<p>
+Then I went through all of the goals and added next actions to each of
+them.
+</p>
+
+<pre class="example">
+* Reading, Writing, and Sharing
+** 30. Write and publish a 350-page book about Emacs :PROJECT:
+*** TODO 30min Write another blog post about Emacs.
+</pre>
+
+<p>
+This made it easy to keep track of my finished tasks. Whenever I
+ finished a next action, I'd mark a task as DONE and create another
+ task in the same project. (Hey, I can automate that bit&#x2026;)
+</p>
+
+<p>
+To generate the list of next actions for projects without including
+ the finished tasks, I used C-c C-v (org-show-todo-tree). I found that
+ command by typing M-x org-show- and letting icomplete-mode show me the
+ possible functions.
+</p>
+
+<p>
+Then I exported the visible tree to a temporary buffer with C-c C-e v
+ SPC (org-export, visible, keep buffer). I used re-builder to test a
+ regular expression that combined the project headline with the task
+ headline. I then copied the regular expression into a short Lisp
+ program that replaced all the matching lines with the table row. I
+ then exported this with C-c C-e H (org-export, HTML to buffer) and
+ edited the page a little before saving it to a file.
+</p>
+
+<p>
+This ability to quickly parse and massage the data into the form I
+ want is one of the things that I love about Emacs. =)
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/org">org</a>
+</p>
+
+<p>
+Random Emacs symbol: debugger-setup-buffer &#x2013; Function: Initialize the
+`*Backtrace*' buffer for entry to the debugger.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

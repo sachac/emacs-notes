@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Gnus: Organize Your Mail</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Gnus: Organize Your Mail</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Automatically filing mail</a></li>
+<li><a href="#sec-2">Where are my groups?</a></li>
+<li><a href="#sec-3">Fancy mail splitting</a></li>
+</ul>
+</div>
+</div>
+<p>
+May 31st, 2008 -
+<a href="http://sachachua.com/blog/p/4905"><a href="http://sachachua.com/blog/p/4905">http://sachachua.com/blog/p/4905</a></a>
+</p>
+
+<p>
+People handle large volumes of mail in different ways. Keeping
+ everything in one mailbox can quickly become unmanageable because
+ messages you need to read get lost among messages you don't need to
+ read.
+</p>
+
+<p>
+You can move mail manually by selecting them in the summary buffer and
+ typing B m (gnus-summary-move-article). Then type the name of the
+ group to which you would like to move the message. The group will be
+ created if it doesn't exist.
+</p>
+
+<p>
+To move multiple messages, mark them with #
+ (gnus-summary-mark-as-processable) and then type B m
+ (gnus-summary-move-article). To unmark a message, type M-#
+ (gnus-summary-unmark-as-processable). To unmark all messages, type M P
+ U (gnus-summary-unmark-all-processable).
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Automatically filing mail</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Moving messages by hand is tedious and time-consuming. One way to deal
+ with this is to set up rules that automatically file mail into
+ different groups (or folders, as they're called in other mail
+ clients). Gnus calls this “splitting” mail, and you can split mail on
+ IMAP servers as well as mail downloaded from POP3 servers to your
+ computer.
+</p>
+
+<p>
+For example, if you're using Gnus to read mail from an IMAP server,
+ you can split your messages by adding this to your ~/.gnus:
+</p>
+
+<pre class="example">
+(setq nnimap-split-inbox "INBOX") ;; (1)
+(setq nnimap-split-predicate "UNDELETED") ;; (2)
+(setq nnimap-split-rule
+      '(
+        ("INBOX.emacs" "^Subject:.*emacs")
+        ("INBOX.work" "^To:.*you@work.example.com")    
+        ("INBOX.personal" "^To:.*you@personal.example.com")    
+        ("INBOX.errors" "^From:.*\\(mailer.daemon\\|postmaster\\)")   
+       ))
+</pre>
+
+<p>
+If you use a different inbox, change the value of
+ nnimap-split-inbox(1). Any messages in the inbox will be split
+ according to nnimap-split-rule(2), which is a list where each element
+ is a list containing the group's name and a regular expression
+ matching the header of messages that should be filed in the group. In
+ this example, Gnus will move mail with subjects containing the word
+ “emacs” to INBOX.emacs, mail directed to you@work.example.com to the
+ INBOX.work group, mail directed to you@personal.example.com to the
+ INBOX.personal group, and mail error messages to INBOX.errors. All
+ other messages will be stored in INBOX.
+</p>
+
+<p>
+If you're downloading your mail from a POP3 server and storing it in
+ nnml, add this to your ~/.gnus instead:
+</p>
+
+<pre class="example">
+(setq nnmail-split-methods
+     '(
+       ("mail.emacs" "^Subject:.*emacs")
+       ("mail.work" "^To:.*you@work.example.com")    
+       ("mail.personal" "^To:.*you@personal.example.com")    
+       ("mail.errors" "^From:.*\\(mailer.daemon\\|postmaster\\)")   
+      ))
+</pre>
+
+<p>
+All other messages will be stored in mail.misc.
+</p>
+
+<p>
+Start M-x gnus again, and your mail will be split into the different
+ groups.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Where are my groups?</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+If you don't see your new groups in the group buffer displayed by M-x
+ gnus, type A A (gnus-group-list-active) to see all the groups. Go to
+ the group that you would like to add to the group buffer, then type u
+ (gnus-group-unsubscribe-current-group) to toggle its subscription. In
+ this example, INBOX.automated is not subscribed to, but INBOX is.
+</p>
+
+<pre class="example">
+U    13: INBOX.automated 
+     76: INBOX
+</pre>
+
+<p>
+When you type M-x gnus again, you'll see your subscribed groups if
+ they have unread messages.
+</p>
+
+<p>
+nnimap-split-rule and nnmail-split-methods allow you to filter
+ interesting or uninteresting mail into different groups based on their
+ headers. Gnus comes with an even more powerful mail splitting engine.
+ In fact, Gnus comes with “fancy mail splitting.”
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Fancy mail splitting</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+With fancy mail splitting and some configuration, you can split mail
+ based on a combination of criteria. You can even manually file a
+ message and have Gnus automatically file incoming replies in the same
+ group.
+</p>
+
+<p>
+To configure an IMAP connection to use fancy mail splitting, add the
+ following to your ~/.gnus:
+</p>
+
+<pre class="example">
+(setq nnimap-split-inbox "INBOX")
+(setq nnimap-split-predicate "UNDELETED")
+(setq nnmail-split-fancy ;; (1)
+      '(|                                ;; (2)
+        (: gnus-registry-split-fancy-with-parent) ;; (3)
+        ;; splitting rules go here       ;; (4)
+        "INBOX"                          ;; (5)
+       ))
+(setq nnimap-split-rule 'nnmail-split-fancy)
+(setq nnmail-split-methods 'nnimap-split-fancy) ;; (6)
+(gnus-registry-initialize) ;; (7)
+</pre>
+
+<p>
+This configures IMAP to use the nnmail-split-fancy function to
+ determine the group for messages. Note that we're setting the
+ nnmail-split-fancy variable here. If you want to process your IMAP
+ mail separately from your other mail, you can set the
+ nnimap-split-fancy variable instead. If so, also set nnimap-split-rule
+ to ‘nnimap-split-fancy. Using nnmail-split-fancy here makes the other
+ examples easier to understand, though.
+</p>
+
+<p>
+The nnmail-split-fancy variable controls the splitting behavior(1). The
+ “|” symbol means that that the first matching rule is used(2). For
+ example, if the message being processed is a reply to a message that
+ Gnus knows about, then the gnus-registry-split-fancy-with-parent
+ function will return the name of the group, and nnmail-split-fancy
+ will file the message there(3). You can add other splitting rules as
+ well(4). If messages don't match any of these rules, the last rule
+ specifies that the messages will be filed in INBOX(5). Set
+ nnmail-split-methods to nnimap-split-fancy as well in order to work
+ around some assumptions in other parts of the code(6). After that,
+ initialize the Gnus registry(7), which is responsible for tracking
+ moved and deleted messages. This allows you to automatically split
+ replies into the same folders as the original messages.
+</p>
+
+<p>
+To configure fancy mail splitting with an nnml backend (suggested
+ configuration for POP3), add the following to your ~/.gnus instead:
+</p>
+
+<pre class="example">
+(gnus-registry-initialize)
+(setq nnmail-split-fancy                 
+      '(|                                
+        (: gnus-registry-split-fancy-with-parent)
+        ;; splitting rules go here       
+        "mail.misc"                          ;; (1)
+       ))
+(setq nnmail-split-methods 'nnmail-split-fancy)
+</pre>
+
+<p>
+This code is similar to the IMAP example, except that the default
+ mailbox name for nnml is mail.misc(1).
+</p>
+
+<p>
+Here's how the previous rules in nnmail-split-methods would be
+ translated to nnmail-split-fancy rules for an IMAP configuration:
+</p>
+
+<pre class="example">
+(setq nnmail-split-fancy
+     '(|
+       (: gnus-registry-split-fancy-with-parent)
+        ;; splitting rules go here       
+       (from mail "INBOX.errors")   ;; (1)
+       (any "you@work.example.com" "INBOX.work")   ;; (2)
+       (any "you@personal.example.com" "INBOX.personal") ;; 
+       ("subject" "emacs" "INBOX.emacs") ;; (3)
+       "INBOX"    ;; or "mail.misc" for nnml/POP3
+      ))
+</pre>
+
+<p>
+The <code>from</code> keyword matches against the “From”, “Sender”, and
+ “Resent-From” fields, while the mail keyword matches common mail
+ system addresses(1). The corresponding <code>to</code> keyword matches against
+ the “To”, “Cc”, “Apparently-To”, “Resent-To” and “Resent-Cc” headers,
+ while <code>any</code> matches the fields checked by the <code>from</code> and <code>to</code>
+ keywords(2). You can also compare against the subject
+ and other headers(3).
+</p>
+
+<p>
+You can use logic in splitting rules, too. For example, if you like
+ reading the jokes on joke-mailing-list@example.com, but you don't like
+ the ones sent by vi-guy@example.com (he not only has a bad sense of
+ humor, but also likes picking on Emacs!), you can use a rule like
+ this in your nnmail-split-fancy:
+</p>
+
+<pre class="example">
+;; ... other splitting rules go here...
+(any "joke-mailing-list@example.com"   ;; (1)
+     (| (from "vi-guy@example.com" "INBOX.junk") ;; (2)
+        "INBOX.jokes")) ;; (3)
+;; ... other splitting rules go here
+</pre>
+
+<p>
+The first rule matches all messages with
+ “joke-mailing-list@example.com” in from- or to-related headers.
+ Matching messages are processed with another split rule, which moves
+ messages from vi-guy@example.com to a separate group(2) and files the
+ other messages in INBOX.jokes(3). To learn more about creating complex
+ rules, read the Gnus Info manual for “Fancy Mail Splitting”.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

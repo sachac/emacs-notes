@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>nethack code to check if a character has something in the inventory</title>
+<!-- 2014-04-30 Wed 16:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">nethack code to check if a character has something in the inventory</h1>
+<p>
+February 19th, 2004 -
+<a href="http://sachachua.com/blog/p/1725"><a href="http://sachachua.com/blog/p/1725">http://sachachua.com/blog/p/1725</a></a>
+</p>
+
+<pre class="example">
+(defvar nethack-temp-log nil "String containing captured messages.")
+
+(defun nethack-has-item-p (regexp)
+  "Return non-nil if the character has an item matching REGEXP in the inventory."
+  (let ((nh-filter-hook (append (list 'nethack-store-log) nh-filter-hook))
+        (nethack-temp-log nil))
+    (nh-send-and-wait "inv 1")
+    (nh-send nil)
+    (string-match regexp nethack-temp-log)))
+
+(defun nethack-store-log (string)
+  (setq nethack-temp-log (concat nethack-temp-log string "\n")))
+
+(defvar nh-filter-hook nil "Hook that is called with the received line.")
+
+(defadvice nh-filter (around sacha activate)
+  "Insert contents of STRING into the buffer associated with PROC.
+Evaluate the buffer contents if we are looking at a prompt and then
+delete the contents, perhaps logging the text."
+  ;; insert output into process buffer
+  (with-current-buffer (process-buffer proc)
+    (goto-char (point-max))
+    (insert string)
+    (forward-line 0)
+    (if (looking-at nh-prompt-regexp)
+    (let ((prompt (match-string 1)))
+          (nh-log (buffer-substring (point-min) (point)))
+          (unless (run-hook-with-args-until-success 'nh-filter-hook (buffer-substring (point-min) (point)))
+        (eval-region (point-min) (point)))
+      (cond ((or (equal prompt "command")
+             (equal prompt "menu"))
+         (nh-print-status)
+         (sit-for 0)
+         (setq nh-at-prompt t)))))))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

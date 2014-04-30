@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Telling external processes about terminal capabilities, and</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Telling external processes about terminal capabilities, and</h1>
+<p>
+watching over other people's shoulders
+</p>
+
+<p>
+January 18th, 2012 -
+<a href="http://sachachua.com/blog/p/23114"><a href="http://sachachua.com/blog/p/23114">http://sachachua.com/blog/p/23114</a></a>
+</p>
+
+<p>
+Justin Giancola
+(<a href="https://twitter.com/#!/elucid/status/159767393428705280">@elucid</a>)
+wanted to use
+<a href="https://github.com/nschum/full-ack/blob/master/full-ack.el">full-ack.el</a>
+to search through his project files using the Ack tool, but Ack refused
+to run because it didn't think his terminal had enough capabilities. A
+simple fix was to set the TERM variable with
+</p>
+
+<pre class="example">
+(setenv "TERM" "xterm")
+</pre>
+
+<p>
+which told Ack that Emacs was fine with its output.
+</p>
+
+<p>
+(Speaking of Ack integration &#x2013; This being the Emacs world, there's more
+than one way to do things. You might also want to check out
+<a href="http://technosorcery.net/blog/2011/04/02/a-better-emacs-front-end-to-ack/">ack-and-a-half.el</a>,
+which is midway between ack.el and full-ack.el.)
+</p>
+
+<p>
+It was interesting hanging out with someone else who used Emacs, and
+being able to share tips. I don't run into many other Emacs geeks, but I
+sporadically hang out in the #emacs channel or browse Planet Emacsen to
+be inspired. It's funny how many of the meetups I go to end up involving
+Emacs conversations. It's like I have a big M-x banner hovering over my
+head. =) It's awesome, actually!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

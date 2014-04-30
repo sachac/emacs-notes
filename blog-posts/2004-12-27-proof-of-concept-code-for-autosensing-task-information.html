@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Proof-of-concept code for autosensing task information</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Proof-of-concept code for autosensing task information</h1>
+<p>
+December 27th, 2004 -
+<a href="http://sachachua.com/blog/p/2518"><a href="http://sachachua.com/blog/p/2518">http://sachachua.com/blog/p/2518</a></a>
+</p>
+
+<pre class="example">
+(defun sacha/planner-create-task-from-buffer ()
+  (interactive)
+  (let ((annotation (run-hook-with-args-until-success 'planner-annotation-functions))
+        (default-text "")
+        task-text
+        plan
+        date
+        (case-fold-search t))
+    (setq planner-default-page
+          (if (and (planner-derived-mode-p 'planner-mode)
+                   (planner-page-name)
+                   (not (string-match planner-date-regexp
+                                      (planner-page-name))))
+              (planner-page-name)
+            planner-default-page))
+    ;; INTERESTING CODE STARTS HERE
+    (save-excursion
+      (goto-char (point-min))
+      (when (and (re-search-forward "^+++" nil t)
+                 (re-search-forward "^@@" nil t))
+        (setq default-text "Merge patch for ")))
+    (setq task-text (read-string "Describe task: "
+                                 default-text))
+    (when (or (string-match "planner" annotation)
+              (string-match "planner" task-text))
+      (setq planner-default-page "PlannerModeMaintenance"))
+    ;; END INTERESTING CODE
+    (setq date (cond
+                ;; Universal prefix means pick up from current page
+                ((and current-prefix-arg
+                      (derived-mode-p 'planner-mode)
+                      (string-match planner-date-regexp (planner-page-name)))
+                 (planner-page-name))
+                ;; Date selected in calendar
+                ((condition-case nil (calendar-cursor-to-date) (error nil))
+                 (planner-date-to-filename (calendar-cursor-to-date)))
+                ;; Prompt for date
+                (t (let ((planner-expand-name-favor-future-p
+                          (or planner-expand-name-favor-future-p
+                              planner-task-dates-favor-future-p)))
+                     (planner-read-date)))))
+    (setq plan
+          (if (and current-prefix-arg (planner-derived-mode-p 'planner-mode)
+                   (not (string-match planner-date-regexp (planner-page-name))))
+              ;; Universal prefix means pick up from current page
+              (planner-page-name)
+            (planner-read-non-date-page
+             (planner-file-alist))))
+    (planner-create-task-from-buffer task-text date plan)))
+</pre>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/planner-config.el">../emacs/planner-config.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

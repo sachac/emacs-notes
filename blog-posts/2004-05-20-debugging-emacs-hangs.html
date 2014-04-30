@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Debugging Emacs hangs</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Debugging Emacs hangs</h1>
+<p>
+May 20th, 2004 -
+<a href="http://sachachua.com/blog/p/2066"><a href="http://sachachua.com/blog/p/2066">http://sachachua.com/blog/p/2066</a></a>
+</p>
+
+<blockquote>
+<p>
+Run emacs in gdb, preferably from the src directory where you compiled
+emacs:
+</p>
+
+<pre class="example">
+$ cd ~/emacs-build/src
+$ gdb ./emacs
+</pre>
+
+<p>
+[There's a special .gdbinit file in that directory that defines handy
+emacs
+ debugging commands.]
+</p>
+
+<p>
+When it hangs, hit C-z or something to exit to the debugger (you can't
+use
+ C-c like usual when debugging emacs, because emacs' standard .gdbinit
+file
+ changes gdb's SIGINT handling to make C-g work properly on ttys).
+</p>
+
+<p>
+Then look at a C backtrace (“backtrace”) and lisp backtrace
+(“xbacktrace”)
+ to see what's up.
+</p>
+
+<p>
+For more fun, do the above from another emacs session using emacs'
+`M-x gdb'
+ command.
+</p>
+</blockquote>
+
+<p>
+E-Mail from Miles Bader
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

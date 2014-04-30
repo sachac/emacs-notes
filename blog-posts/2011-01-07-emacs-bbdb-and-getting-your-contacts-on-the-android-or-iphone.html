@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs, BBDB, and getting your contacts on the Android or iPhone</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs, BBDB, and getting your contacts on the Android or iPhone</h1>
+<p>
+January 7th, 2011 -
+<a href="http://sachachua.com/blog/p/22034"><a href="http://sachachua.com/blog/p/22034">http://sachachua.com/blog/p/22034</a></a>
+</p>
+
+<p>
+Want your Emacs BBDB contacts on your Android or iPhone?
+</p>
+
+<p>
+The easiest way I've found is to export your contacts to CSV, then
+import them into something like Google Contacts. You can export your
+BBDB contacts using <code>bbdb-to-outlook.el</code>, which is available in the BBDB
+package in the <code>bits/</code> directory.
+<a href="http://bbdb.cvs.sourceforge.net/viewvc/bbdb/bbdb/bits/bbdb-to-outlook.el">Download
+bbdb-to-outlook.el from Sourceforge</a> if you can't find it in your BBDB
+directory. To use:
+</p>
+
+<ol class="org-ol">
+<li>Load bbdb-to-outlook.el and use <code>M-x eval-buffer</code> to load the code.
+</li>
+<li>Use <code>M-x bbdb</code> to open your BBDB records, and search for <code>.</code> to show
+all the records. Alternatively, search for a subset of your records.
+</li>
+<li>Type <code>O</code> to run <code>bbdb-to-outlook</code> and choose the file.
+</li>
+</ol>
+
+<p>
+Tada! Step one done. Review the file and delete anything you don't want
+to include.
+</p>
+
+<p>
+To import the contacts into Google Contacts, go to Google Mail and click
+on Contacts. Click on <code>Import</code> and choose your file. After some time and
+some fiddling, you can get that synchronized onto your Android or
+iPhone.
+</p>
+
+<p>
+I haven't thought about syncing, but I'm trying to keep my BBDB as The
+Master File for Contacts anyway, as it's so much more flexible than any
+other contact database I've tried. (Although gist.com is pretty cool and
+I do like the Android's merging of photos, contact info, and updates&#x2026;)
+</p>
+
+<p>
+There was some work on
+<a href="http://www.emacswiki.org/emacs/BbdbExportImportSync">synchronizing
+BBDB with the Palm</a>, so that might be a possibility.
+</p>
+
+<p>
+Enjoy!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

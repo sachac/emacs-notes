@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs, artbollocks-mode.el, and writing more clearly</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs, artbollocks-mode.el, and writing more clearly</h1>
+<p>
+December 16th, 2011 -
+<a href="http://sachachua.com/blog/p/23072"><a href="http://sachachua.com/blog/p/23072">http://sachachua.com/blog/p/23072</a></a>
+</p>
+
+<p>
+Analyzing the text of my blog showed me that I use some phrases way too
+much. Fortunately, Emacs can shame me into writing better, thanks to Art
+Bollocks Mode. (Update 2012-06-16: I've forked it and cleaned up the
+naming conventions:
+<a href="https://github.com/sachac/artbollocks-mode"><a href="https://github.com/sachac/artbollocks-mode">https://github.com/sachac/artbollocks-mode</a></a>)
+</p>
+
+<p>
+Art Bollocks Mode monitors your writing and highlights words or patterns
+you may want to reconsider. It can detect repeated words which sometimes
+slip past proof-reading. It has a list of common passive verbs, making
+it easier for you to rewrite the sentences to use the active voice. It
+detects weasel words like “many” and “surprisingly”. It even comes with
+jargon catchers for art critics (“postmodern”, “ironic”, and so forth)
+&#x2013; hence artbollocks-mode.el.
+</p>
+
+<p>
+Whenever you use a phrase that matches its patterns, Emacs highlights
+it, turning it an ugly orange-on-white and underlining it for emphasis.
+You can still go ahead and write it, but at least the words jump out.
+Like this: it's really pretty obvious&#x2026;
+</p>
+
+
+<div class="figure">
+<p><a href="uploads/2011/12/image3.png"><img src="uploads/2011/12/image_thumb3.png" alt="image_thumb3.png" /></a>
+</p>
+</div>
+
+<p>
+I want to use it to write clearer notes and blog posts, so here's how
+I've tweaked my configuration. Many of the items below are words and
+phrases I want to use less. Others are part of work jargon that I'm
+trying my best to keep out of my regular use.
+</p>
+
+<pre class="example">
+(require 'artbollocks-mode)
+;; Avoid these phrases
+(setq weasel-words-regex
+      (concat "\\b" (regexp-opt
+                     '("one of the"
+                       "should"
+                       "just"
+                       "sort of"
+                       "a lot"
+                       "probably"
+                       "maybe"
+                       "perhaps"
+                       "I think"
+                       "really"
+                       "pretty"
+                       "maybe"
+                       "nice"
+                       "action"
+                       "utilize"
+                       "leverage") t) "\\b"))
+;; Fix a bug in the regular expression to catch repeated words
+(setq lexical-illusions-regex "\\b\\(\\w+\\)\\W+\\(\\1\\)\\b")
+;; Don't show the art critic words, or at least until I figure
+;; out my own jargon
+(setq artbollocks nil)
+;; Make sure keywords are case-insensitive
+(defadvice search-for-keyword (around sacha activate)
+  "Match in a case-insensitive way."
+  (let ((case-fold-search t))
+    ad-do-it))
+</pre>
+
+<p>
+(Isn't <code>regexp-opt</code> so cool?)
+</p>
+
+<p>
+artbollocks-mode.el also includes some basic readability statistics like
+the
+<a href="http://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_test#Flesch_Reading_Ease">Flesch
+reading ease</a> and
+<a href="http://en.wikipedia.org/wiki/Flesch%E2%80%93Kincaid_readability_test#Flesch.E2.80.93Kincaid_Grade_Level">Flesch-Kincaid
+grade level</a>. When I analyzed my blog contents without source code
+blocks (all the Emacs Lisp code snippets were throwing off my numbers!),
+it turned out that my blog hovers around 65 in terms of Flesch reading
+ease, or around the same as Reader's Digest (as reported by Wikipedia).
+The Flesch-Kincaid grade level for my posts in 2011 was around 8.4.
+</p>
+
+<p>
+I'd use artbollocks-mode.el's tools for calculating word count and
+readability, except that Emacs ends up including source code blocks
+because Art Bollocks doesn't know about Org Mode. I might be able to
+work around that by defining more advice or creating my own functions
+that extract the relevant text into a temporary buffer before
+determining the text statistics. I can leave that for another day,
+though.
+</p>
+
+<p>
+I'll experiment with making it part of org-capture-mode for now. If I
+find that getting editing feedback distracts me too much from writing,
+I'll remove it from the hook and toggle it when I'm ready. Here's the
+code to turn it on automatically for <code>org-capture</code>:
+</p>
+
+<pre class="example">
+(add-hook 'org-capture-mode-hook 'artbollocks-mode)
+</pre>
+
+<p>
+Thanks to
+<a href="https://twitter.com/#!/dotemax/status/147465007989403648">dotemax</a>
+for tweeting about writegood and artbollocks-mode.el. Onward and upward!
+</p>
+
+<ul class="org-ul">
+<li><a href="https://gitorious.org/robmyers/scripts/blobs/master/artbollocks-mode.el">Art
+Bollocks Mode</a>
+</li>
+<li><a href="http://asap.foocorp.net/cgi-bin/movabletype/mt-search.cgi?blog_id=13&tag=emacs&limit=20">Rob
+Myers' Emacs-related blog posts</a>
+</li>
+</ul>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

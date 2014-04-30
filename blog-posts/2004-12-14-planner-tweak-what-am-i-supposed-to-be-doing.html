@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>planner tweak: What am I supposed to be doing?</title>
+<!-- 2014-04-30 Wed 16:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">planner tweak: What am I supposed to be doing?</h1>
+<p>
+December 14th, 2004 -
+<a href="http://sachachua.com/blog/p/2493"><a href="http://sachachua.com/blog/p/2493">http://sachachua.com/blog/p/2493</a></a>
+</p>
+
+<p>
+This snippet helps me keep track of what I'm supposed to be doing.
+ I've bound it to F9 F9. Calling it with C-u brings me to the planner
+ page so that I can complete the current task or look at the context.
+ F9 F9 from that page will restore my window configuration.
+</p>
+
+<pre class="example">
+(defvar sacha/window-register "w"
+  "Register for jumping back and forth between planner and wherever I am.")
+(defvar sacha/planner-current-task nil
+  "Current task info.")
+(defadvice planner-task-in-progress (after sacha activate)
+  "Keep track of the task info."
+  (setq sacha/planner-current-task (planner-current-task-info)))
+
+(defun sacha/planner-what-am-i-doing (&amp;optional prefix)
+  "Make it easy to keep track of what I'm supposed to be working on.
+If PREFIX is non-nil, jump to the current task, else display it
+in a message. If called from the plan page, jump back to whatever
+I was looking at."
+  (interactive "P")
+  (if planner-timeclock-current-task
+      (if (string= (planner-task-page sacha/planner-current-task)
+                   (planner-page-name))
+          (jump-to-register sacha/window-register)
+        (if (null prefix)
+            (message planner-timeclock-current-task)
+          (frame-configuration-to-register sacha/window-register)
+          (planner-find-file (planner-task-page sacha/planner-current-task))
+          (planner-find-task sacha/planner-current-task)))
+    (if prefix
+        (planner-goto-today)
+      (message "No current task. HEY!"))))
+</pre>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/planner-config.el">../emacs/planner-config.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

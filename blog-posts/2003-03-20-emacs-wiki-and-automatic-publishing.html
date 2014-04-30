@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>emacs-wiki and automatic publishing</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">emacs-wiki and automatic publishing</h1>
+<p>
+March 20th, 2003 -
+<a href="http://sachachua.com/blog/p/546"><a href="http://sachachua.com/blog/p/546">http://sachachua.com/blog/p/546</a></a>
+</p>
+
+<p>
+I use this nifty LISP snippet to automatically publish my pages whenever
+I save.
+</p>
+
+<p>
+= (add-hook 'emacs-wiki-mode-hook (lambda () (add-hook 'after-save-hook (lambda () (unless emacs-wiki-publishing-p (emacs-wiki-publish-this-page))) nil t)))=
+ This used to be a fairly big hassle back when emacs-wiki tried to do
+multiline parsing for =,
+ but now it's acceptably fast.
+ Next up: I wonder if
+<a href="http://lufs.sourceforge.net"><a href="http://lufs.sourceforge.net">http://lufs.sourceforge.net</a></a> can help me
+publish to
+<a href="http://richip.dhs.org/~sachac/"><a href="http://richip.dhs.org/~sachac/">http://richip.dhs.org/~sachac/</a></a>
+automatically&#x2026;
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Maintaining a manual topical index for my blog using Emacs</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Maintaining a manual topical index for my blog using Emacs</h1>
+<p>
+May 9th, 2012 -
+<a href="http://sachachua.com/blog/p/23343"><a href="http://sachachua.com/blog/p/23343">http://sachachua.com/blog/p/23343</a></a>
+</p>
+
+<p>
+I've been blogging for almost ten years. I started with notes from my
+university classes and snippets of open source code, and became
+comfortable enough to share decisions I'm puzzling through and things
+I'm learning about life. There's a lot of stuff in my archive, and I
+want to be able to review things again.
+</p>
+
+<p>
+Categories would probably make this easier, but I use categories
+liberally and sometimes inconsistently. I use them like tags, quick
+keywords that I add so that people might explore a category and bump
+into other posts. I probably should split it out so that I assign posts
+to one category and leave everything else as tags. Someday.
+</p>
+
+<p>
+In the meantime, it's easy enough to maintain a manual
+<a href="https://dl.dropbox.com/u/3968124/blog.html">topical index</a> of my blog
+posts, and it's a good opportunity to review what I've been writing as
+well.
+</p>
+
+<p>
+I use Emacs <a href="http://orgmode.org/">Org Mode</a> to manage a large text
+file divided into headings. Every month, I copy a list of titles into my
+topical index. I hacked Org-friendly output into my WordPress theme &#x2013;
+you can see <i>April's blog posts</i> as
+an example
+(<i>sachachua.com/blog/2012/04/?org=1</i>).
+I manually organize the list items under different headings, splitting
+off new headings when I can see a pattern. Working with two windows
+viewing the same buffer makes it easy to move information around, and
+<code>org-refile</code> is handy too. I use a checklist structure so that Org can
+automatically update the number of posts under each heading
+(<code>C-u M-x org-update-statistics-cookies</code>). When I'm happy with the
+structure, I use <code>org-publish-current-file</code> to publish it using the
+settings I've configured. The files are in my public Dropbox folder, so
+they're automatically published to the Web. It takes me about 10 minutes
+to add a month of posts to my index and publish the page.
+</p>
+
+<p>
+I like seeing how much I've written about different topics, and it
+encourages me to write and organize more posts. Maybe the index might be
+handy for other people too!
+</p>
+
+<ul class="org-ul">
+<li><a href="http://dl.dropbox.com/u/3968124/blog.org">Org source for my blog
+index</a>
+</li>
+<li><a href="http://dl.dropbox.com/u/3968124/blog.html">Topical index as a
+webpage</a>
+</li>
+</ul>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>More Emacs coolness: List of contacts</title>
+<!-- 2014-04-30 Wed 17:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">More Emacs coolness: List of contacts</h1>
+<p>
+September 1st, 2006 -
+<a href="http://sachachua.com/blog/p/3818"><a href="http://sachachua.com/blog/p/3818">http://sachachua.com/blog/p/3818</a></a>
+</p>
+
+<p>
+This bit of Emacs Lisp code produces a Planner-ready list of the
+contacts displayed in the BBDB window.
+</p>
+
+<pre class="example">
+(defun sacha/planner-bbdb-annotation-from-bbdb (&amp;optional record)
+  "If called from a bbdb buffer, return an annotation.
+Suitable for use in `planner-annotation-functions'."
+  (when (or record (eq major-mode 'bbdb-mode))
+    (setq record (if record (car record) (bbdb-current-record)))
+    (or (bbdb-record-getprop record 'plan)
+        ;; From a BBDB entry with a plan page; use that. Yay!
+        (planner-make-link
+         (concat "bbdb://"
+                 (planner-replace-regexp-in-string
+                    " " "." (bbdb-record-name record)))
+         (bbdb-record-name record)))))
+(defalias 'planner-bbdb-annotation-from-bbdb 'sacha/planner-bbdb-annotation-from-bbdb)
+
+(defun sacha/yank-planner-bbdb-list ()
+  "Copy the list of people displayed in the buffer."
+  (interactive)
+  (kill-new
+   (mapconcat 'sacha/planner-bbdb-annotation-from-bbdb
+              bbdb-records
+              ", "))
+        (sacha/planner-bbdb-annotation-from-bbdb rec))
+</pre>
+
+<p>
+It allows me to say, for example, that I met 23 people yesterday:
+ Bruce, <a href="http://blog.digitalketchup.net/">Daniel Charles</a>, Shane
+D'Costa, Emily, <a href="http://www.mistergadgets.ca">Greg A. Fitz</a>, Clara
+Fong, <a href="http://www.radiantcore.com">Jay Goldman</a>, Harvey, Kai Fai Ho,
+Iris, KC, Charles McCulloch, <a href="http://www.scimatic.com">Jamie McQuay</a>,
+Joshua Meles, Naomi, <a href="http://www.nonlinear.ca">Helen Overland</a>,
+<a href="http://www.aiim.com">Wayne Penney</a>,
+<a href="http://www.simonrowland.com">Simon Rowland</a>, San, Colin Smillie,
+Solomon, Le Quan Truong, Perry Wong
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/hack">hack</a>,
+<a href="http://www.technorati.com/tag/planner">planner</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

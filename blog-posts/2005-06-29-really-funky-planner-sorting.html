@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Really funky Planner sorting</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Really funky Planner sorting</h1>
+<p>
+June 29th, 2005 -
+<a href="http://sachachua.com/blog/p/2797"><a href="http://sachachua.com/blog/p/2797">http://sachachua.com/blog/p/2797</a></a>
+</p>
+
+<p>
+The following code sorts completed tasks in reverse-chronological
+ order and incomplete tasks in chronological order. This makes it
+ easier to see the next action (top of list) and the last action (first
+ completed task).
+</p>
+
+<pre class="example">
+(defun sacha/planner-sort-tasks-by-date ()
+  "Sort tasks by date, status and priority."
+  (skip-chars-forward "#ABC")
+  (let ((ch (char-before))
+        status)
+    (skip-chars-forward "0123456789 ")
+    (setq status (char-after))
+    (goto-char (line-end-position))
+    (skip-chars-backward "]) ")
+    (format "%1c%1c%10s"
+            (cond
+             ((= status ?o) ?1)
+             ((= status ?X) ?3)
+             ((= status ?C) ?4)
+             (t ?2))
+            ch
+            (let ((date (or (planner-task-date (planner-current-task-info))
+                            planner-sort-undated-tasks-equivalent)))
+              (if (or (= status ?X)
+                      (= status ?C))
+                  (sacha/planner-invert-date date)
+                date)))))
+
+(defun sacha/planner-invert-date (date)
+  "Reverse the date in the sorting order."
+  (mapconcat (lambda (ch)
+               (if (string= ch ".")
+                   ch
+                 (number-to-string
+                  (- 9 (string-to-number ch)))))
+             (split-string date "" t) ""))
+</pre>
+
+<p>
+<a href="../emacs/planner-config.el">pos://../emacs/planner-config.el#35188</a>
+</p>
+
+<p>
+ÃƒÂ£Ã‚Â?Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ£Ã‚ÂƒÃ‚Â‘ÃƒÂ£Ã‚Â‚Ã‚Â½ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ£Ã‚Â‚Ã‚Â·ÃƒÂ£Ã‚Â‚Ã‚Â¹ÃƒÂ£Ã‚ÂƒÃ‚Â†ÃƒÂ£Ã‚ÂƒÃ‚Â
+ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¥Ã‚Â¤Ã‚Â‰ÃƒÂ£Ã‚Â?Ã‚ÂˆÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â?Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚Â¨ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ¤Ã‚Â½Ã‚Â•ÃƒÂ£Ã‚Â‚Ã‚Â‚ÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â€Ã‚Â‚
+Because the personal computer here cannot change the system, anything
+cannot be done.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/planner">planner</a>,
+<a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/code">code</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

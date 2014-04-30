@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Setting up appointment reminders in Org</title>
+<!-- 2014-04-30 Wed 17:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Setting up appointment reminders in Org</h1>
+<p>
+November 7th, 2007 -
+<a href="http://sachachua.com/blog/p/4435"><a href="http://sachachua.com/blog/p/4435">http://sachachua.com/blog/p/4435</a></a>
+</p>
+
+<p>
+Although the agenda view is very handy, it is generally not a good
+ idea to check the agenda view every three seconds to see if you have
+ upcoming appointments. You can set up Org to use the Emacs appointment
+ reminder system, which can pop up a reminder buffer before your
+ appointment or display a reminder in the modeline.
+</p>
+
+<p>
+org-agenda-to-appt scans all your agenda files for appointments for
+today.
+ The code for org-agenda-to-appt can be found in org.el. It's marked
+ experimental, so future versions may not include it. If you do not
+ have org-agenda-to-appt, add the following to your ~/.emacs:
+</p>
+
+<pre class="example">
+;; Make appt aware of appointments from the agenda
+(defun org-agenda-to-appt ()
+  "Activate appointments found in `org-agenda-files'."
+  (interactive)
+  (require 'org)
+  (let* ((today (org-date-to-gregorian
+         (time-to-days (current-time))))
+     (files org-agenda-files) entries file)
+    (while (setq file (pop files))
+      (setq entries (append entries (org-agenda-get-day-entries
+                     file today :timestamp))))
+    (setq entries (delq nil entries))
+    (mapc (lambda(x)
+        (let* ((event (org-trim (get-text-property 1 'txt x)))
+           (time-of-day (get-text-property 1 'time-of-day x)) tod)
+          (when time-of-day
+        (setq tod (number-to-string time-of-day)
+              tod (when (string-match
+                  "\\([0-9]\\{1,2\\}\\)\\([0-9]\\{2\\}\\)" tod)
+                 (concat (match-string 1 tod) ":"
+                     (match-string 2 tod))))
+        (if tod (appt-add tod event))))) entries)))
+</pre>
+
+<p>
+Load today's appointments every time you start Emacs by adding the
+ following to your ~/.emacs:
+</p>
+
+<pre class="example">
+(org-agenda-to-appt)
+</pre>
+
+<p>
+or call it interactively with M-x org-agenda-to-appt.
+</p>
+
+<p>
+If you delete an appointment from your Org agenda file, the
+ corresponding alert is not deleted. To delete the appointment, use M-x
+ appt-delete and select it from the list.
+</p>
+
+<p>
+A better way to keep your appointment list clean would be to remove
+ all the appointment entries before calling org-agenda-to-appt. Add the
+ following to your ~/.emacs to do so:
+</p>
+
+<pre class="example">
+(defadvice org-agenda-to-appt (before wickedcool activate)
+  "Clear the appt-time-msg-list."
+  (setq appt-time-msg-list nil))
+</pre>
+
+<p>
+To learn more about configuring the Emacs appointment reminder system,
+ check out the Emacs manual.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>
+</p>
+
+<p>
+Random Emacs symbol: ibuffer-mode &#x2013; Function: A major mode for viewing
+a list of buffers.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

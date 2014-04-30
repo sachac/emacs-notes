@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Use function keys for custom keyboard shortcuts</title>
+<!-- 2014-04-30 Wed 17:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Use function keys for custom keyboard shortcuts</h1>
+<p>
+March 27th, 2013 -
+<a href="http://sachachua.com/blog/p/24535"><a href="http://sachachua.com/blog/p/24535">http://sachachua.com/blog/p/24535</a></a>
+</p>
+
+<p>
+Quick tip since it was an aha! moment for some people on the #emacs IRC
+channel.
+</p>
+
+<p>
+You can define keyboard shortcuts that are sequences of keys. This is
+how Emacs can have keyboard shortcuts like <code>C-c C-c</code>. The function keys
+are great for this, because (a) they often don't have assigned functions
+(or have ones that you don't mind losing), and (b) you don't have to
+press two or more keys to start your shortcut sequence, like you would
+do with C-c.
+</p>
+
+<p>
+I like using F8 or F9 because I'm right-handed and my keyboard groups
+function keys together. On my keyboard, there's a slight gap separating
+F5-F8 and F9-F12, which means it's easy to distinguish F8 from F9 by
+feel if I happen to land on the edge.
+</p>
+
+<p>
+Define those keyboard shortcuts as sequences so that you can add more
+shortcuts easily without having to rejig your muscle memory.
+</p>
+
+<pre class="example">
+(global-set-key (kbd "&lt;f9&gt; &lt;f9&gt;") 'org-agenda-list)
+(global-set-key (kbd "&lt;f9&gt; &lt;f8&gt;") (lambda () (interactive) (org-capture nil "r")))
+</pre>
+
+<p>
+If you want to rebind something that was previously bound to a
+non-prefix map, you can unbind it first:
+</p>
+
+<pre class="example">
+(global-unset-key (kbd "&lt;f9&gt;"))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Basics: Call commands by name with M-x (with tips for better</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Basics: Call commands by name with M-x (with tips for better</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Helm mode</a></li>
+<li><a href="#sec-2">Ido, ido-hacks, smex, ido-vertical-mode, and flx-ido</a></li>
+<li><a href="#sec-3">Other tips</a></li>
+</ul>
+</div>
+</div>
+<p>
+completion using ido or helm)
+</p>
+
+<p>
+March 31st, 2014 -
+<a href="http://sachachua.com/blog/p/27062"><a href="http://sachachua.com/blog/p/27062">http://sachachua.com/blog/p/27062</a></a>
+</p>
+
+<p>
+This entry is part 2 of 3 in the series
+<a href="http://sachachua.com/blog/series/emacs-basics-2/">Emacs Basics</a>
+</p>
+
+<p>
+Emacs has way too many keyboard shortcuts to memorize. Fortunately, you
+can call commands by name by typing M-x and the name of the command. M-
+stands for the Meta key. If your keyboard does not have a Meta key (and
+most don't, these days), use Alt or Option. For example, on a PC
+keyboard, you can type Alt-x. Alternatively, you can replace Meta with
+ESC. M-x then becomes ESC x.
+</p>
+
+<p>
+If you know the name of the command to execute, you can type it after
+M-x, and then press RET (the Return key, which is the same as the Enter
+key). For example, M-x find-file opens a file. M-x save-buffer saves the
+current file. You can use TAB to complete words. Use &lt;up&gt; and &lt;down&gt; to
+go through your command history.
+</p>
+
+<p>
+What if you don't know the name of the command to execute? You can use
+M-x apropos-command to search for the command using keywords. If you
+know the keyboard shortcut or you can find the command on a menu, you
+can also use M-x describe-key and then do the keyboard shortcut or
+select it from the menu.
+</p>
+
+<p>
+If a command you execute has a keyboard shortcut, it will flash briefly
+at the bottom of your screen. For example:
+</p>
+
+<pre class="example">
+You can run the command `find-file' with C-x C-f
+</pre>
+
+<p>
+Using TAB for completion can be a little slow. Here are two ways to make
+that and a whole lot of other things faster: <b>ido</b> and <b>helm</b>. To
+explore these approaches, you will need to add the MELPA package
+repository to your configuration. To set that up, add the following to
+the beginning of your <code>~/.emacs.d/init.el</code> file.
+</p>
+
+<pre class="example">
+(package-initialize)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+</pre>
+
+<p>
+Then use M-x eval-buffer to load the changes into your current Emacs,
+and use M-x package-refresh-contents to reload the list of packages.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Helm mode</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This is what completion with Helm looks like:
+</p>
+
+<p>
+<img src="uploads/2014/03/wpid-2014-03-17-13_06_54-c__sacha_personal_organizer.org_.png" alt="wpid-2014-03-17-13_06_54-c__sacha_personal_organizer.org_.png" />
+Figure 2: Helm
+</p>
+
+<p>
+Use M-x package-install to install the <code>helm</code> package. Then you can try
+it out with M-x helm-mode . After you start Helm mode, try M-x again.
+You can type in multiple words to search for a command, and you can use
+&lt;up&gt; and &lt;down&gt; to go through completions. Use M-p and M-n to go through
+your command history.
+</p>
+
+<p>
+If you like it, here's some code that you can add to your
+<code>~/.emacs.d/init.el</code> file to load it automatically next time, and to
+tweak it for more convenience.
+</p>
+
+<pre class="example">
+(require 'helm-config) 
+(helm-mode 1)
+</pre>
+
+<p>
+Use M-x eval-buffer to load your changes.
+</p>
+
+<p>
+If you change your mind and want to disable <code>helm-mode</code>, you can toggle
+it off with M-x helm-mode .
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Ido, ido-hacks, smex, ido-vertical-mode, and flx-ido</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Ido is like Helm, but it takes a different approach. Here's what this
+combination will get you:
+</p>
+
+<p>
+<img src="uploads/2014/03/wpid-2014-03-17-12_40_40-MELPA.png" alt="wpid-2014-03-17-12_40_40-MELPA.png" />
+Figure 1: ido, smex, ido-vertical-mode, and flx-ido
+</p>
+
+<p>
+If you want to give this a try, remove or comment out <code>(helm-mode 1)</code>
+from your <code>~/.emacs.d/init.el</code> (if you added it), and disable helm-mode
+if you still have it active from the previous section.
+</p>
+
+<p>
+To set Ido up, use M-x package-install to install <code>ido</code>, <code>smex</code>,
+<code>ido-vertical-mode</code>, <code>ido-hacks</code>, and <code>flx-ido</code>.
+</p>
+
+<p>
+After the packages are installed, add the following code to your
+<code>~/.emacs.d/init.el</code> .
+</p>
+
+<pre class="example">
+(ido-mode 1)
+(require 'ido-hacks nil t)
+(if (commandp 'ido-vertical-mode) 
+    (progn
+      (ido-vertical-mode 1)
+      (setq ido-vertical-define-keys 'C-n-C-p-up-down-left-right)))
+(if (commandp 'smex)
+    (global-set-key (kbd "M-x") 'smex))
+(if (commandp 'flx-ido-mode)
+    (flx-ido-mode 1))
+</pre>
+
+<p>
+Use M-x eval-buffer to load your changes, then try M-x again. You should
+now have much better completion. You'll be able to call commands by
+typing in part of their names. Use &lt;up&gt; and &lt;down&gt; to go through the
+completion options, and use &lt;left&gt; and &lt;right&gt; to go through your
+history.
+</p>
+
+<p>
+Try it for a week. If you like it, keep it. If you don't like it, try
+the Helm approach.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Other tips</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+When you learn keyboard shortcuts, try to remember the names of the
+commands as well. You can do that with C-h k (<code>describe-key</code>). For
+example, M-x calls the command <code>execute-extended-command</code>. That way,
+even if you forget the keyboard shortcut, you can call the command by
+name.
+</p>
+
+<p>
+If you forget the name of the command and you don't know the keyboard
+shortcut for it, you can look for it in the menus or in the help file.
+You can open the help file with C-h i (<code>info</code>). You can also use M-x
+apropos-command to search through the commands that you can call with
+M-x.
+</p>
+
+<p>
+Make your own cheat sheet with frequently-used keyboard shortcuts and
+commands to help you learn more about Emacs. Good luck!
+</p>
+
+
+<div class="figure">
+<p><a href="uploads/2014/03/emacs-basics-meta-x.png"><img src="uploads/2014/03/emacs-basics-meta-x-640x448.png" alt="emacs-basics-meta-x-640x448.png" /></a>
+</p>
+</div>
+
+<p>
+Emacs Basics: M-x
+</p>
+
+<p>
+<a href="http://archive.org/download/EmacsBasicsCallingCommandsByNameWithMX/Emacs-Basics-Calling-commands-by-name-with-M-x.mp3">You
+can download the MP3 from archive.org.</a>
+</p>
+
+<p>
+Series
+Navigation<a href="http://sachachua.com/blog/2014/03/emacs-basics-using-mouse/">«
+Emacs Basics: Using the
+mouse</a><a href="http://sachachua.com/blog/2014/04/emacs-basics-customizing-emacs/">Emacs
+Basics: Customizing Emacs »</a>
+</p>
+
+<p>
+[[<img src="http://archive.org/download/EmacsBasicsCallingCommandsByNameWithMX/Emacs-Basics-Calling-commands-by-name-with-M-x.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png" alt="play_audio.png" />]]]]
+</p>
+
+<p>
+Podcast:
+<a href="http://archive.org/download/EmacsBasicsCallingCommandsByNameWithMX/Emacs-Basics-Calling-commands-by-name-with-M-x.mp3">Play
+in new window</a> |
+<a href="http://archive.org/download/EmacsBasicsCallingCommandsByNameWithMX/Emacs-Basics-Calling-commands-by-name-with-M-x.mp3">Download</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

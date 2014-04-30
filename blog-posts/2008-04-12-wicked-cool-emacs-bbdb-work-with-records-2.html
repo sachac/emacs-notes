@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Wicked Cool Emacs: BBDB: Work with Records</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Wicked Cool Emacs: BBDB: Work with Records</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Creating Records</a></li>
+<li><a href="#sec-2">Searching Records</a></li>
+<li><a href="#sec-3">Updating Records</a></li>
+<li><a href="#sec-4">Deleting Records</a></li>
+</ul>
+</div>
+</div>
+<p>
+April 12th, 2008 -
+<a href="http://sachachua.com/blog/p/4833"><a href="http://sachachua.com/blog/p/4833">http://sachachua.com/blog/p/4833</a></a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Creating Records</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Creating a record in BBDB is not like creating a record in graphical
+address book programs. You will be prompted for each field through the
+minibuffer, one field at a time. Don't worry about making mistakes while
+entering data, as you can always edit the records afterwards.
+</p>
+
+<p>
+To create a record, use the command M-x bbdb-create. Here are the
+prompts you'll encounter:
+</p>
+
+<p>
+Prompt
+</p>
+
+<p>
+Notes
+</p>
+
+<p>
+Example
+</p>
+
+<p>
+Name
+</p>
+
+<p>
+Full name
+</p>
+
+<p>
+John Doe
+</p>
+
+<p>
+Company
+</p>
+
+<p>
+Company or organization
+</p>
+
+<p>
+ACME
+</p>
+
+<p>
+Network Address
+</p>
+
+<p>
+E-mail address (comma-separated list)
+</p>
+
+<p>
+john@example.com
+</p>
+
+<p>
+Address Description
+</p>
+
+<p>
+Short identifier for address (Home, Office, etc.) &#x2013; tab completion
+available. Leave blank if you have no address information, or if you are
+done.
+</p>
+
+<p>
+Home
+</p>
+
+<p>
+Street, line 1
+</p>
+
+<p>
+Street address, line 1 (not including city, state, postal code or
+country)
+</p>
+
+<p>
+1 Acme Road
+</p>
+
+<p>
+Street, line &#x2026;
+</p>
+
+<p>
+Street address, more lines &#x2013; press RET to indicate the end of the
+street address
+</p>
+
+<p>
+City
+</p>
+
+<p>
+Acme City
+</p>
+
+<p>
+State
+</p>
+
+<p>
+Abbreviations are okay. Consistency helps.
+</p>
+
+<p>
+AC
+</p>
+
+<p>
+Country
+</p>
+
+<p>
+Acme Country
+</p>
+
+<p>
+Phone Location
+</p>
+
+<p>
+Short identifier for phone number (Home, Office, etc.) &#x2013; tab completion
+available. Leave blank if you have no phone information, or if you are
+done.
+</p>
+
+<p>
+Home
+</p>
+
+<p>
+Phone
+</p>
+
+<p>
+Phone number. I tend to specify the full number, using spaces to break
+it into readable chunks.
+</p>
+
+<p>
++1 111 111 1111 x1111
+</p>
+
+<p>
+Additional Comments
+</p>
+
+<p>
+Notes about the person, such as interests, how you met, and so on
+</p>
+
+<p>
+Likes rockets
+</p>
+
+<p>
+Press RET to skip any fields for which you don't have information. To
+ cancel the entry process, type C-g (keyboard-quit).
+</p>
+
+<p>
+After you create the record, Emacs will display the record in another
+ window. You can then switch to the record and edit it. See Project XXX:
+Edit a BBDB record.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Searching Records</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To search for a specific record, type M-x bbdb, or press b
+ (bbdb) while in the <b>BBDB</b> buffer. This prompts for a regular
+ expression and searches the name, company, network address, and notes
+ fields of all the records for a match against the regular expression
+ supplied. M-x bbdb-name, M-x bbdb-company, M-x bbdb-net, M-x
+ bbdb-notes, and M-x bbdb-phones search the corresponding fields only.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Updating Records</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+After creating or searching for a record, you can switch to the <b>BBDB</b>
+ window to edit it. Press C-o (bbdb-insert-field) to insert
+ custom fields. You can use tab completion on existing field names, and
+ you can also define your own fields by typing any field name. For
+ example, you may want to store people's job titles in a field called
+ “job”.
+</p>
+
+<p>
+To edit the value of a field, move your cursor to the field and press
+ e (bbdb-edit-current-field) to change the value. To delete
+ a field, move your cursor to the field and press C-k
+ (bbdb-delete-current-field-or-record).
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Deleting Records</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+To delete an entire record, move the text cursor to the name and press
+C-k (bbdb-delete-current-field-or-record). You will be prompted for
+confirmation. Be careful! If you mistakenly delete a record, there's no
+easy way to get it back. Fortunately, BBDB stores its data in a plain
+text file (~/.bbdb). Back up that file regularly and you'll be able to
+recover from mistakes. You can also set up automatic file backups in
+Emacs (see Project XXX: Make Automatic Backups).
+</p>
+
+<p>
+Now you know how to work with individual records. How can you import
+your address book information from other programs?
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

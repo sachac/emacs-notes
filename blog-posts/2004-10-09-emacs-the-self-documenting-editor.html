@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs, the self-documenting editor</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs, the self-documenting editor</h1>
+<p>
+October 9th, 2004 -
+<a href="http://sachachua.com/blog/p/2262"><a href="http://sachachua.com/blog/p/2262">http://sachachua.com/blog/p/2262</a></a>
+</p>
+
+<p>
+In response to cmarguel's blog entry:
+</p>
+
+<p>
+Miguel Arguelles wondered what was so self-documenting about Emacs.
+ Paolo showed him the source code, but Miguel pointed out people have
+ to type those comments in anyway. So what makes Emacs a
+ self-documenting editor and my favorite tool?
+</p>
+
+<p>
+Emacs is called a self-documenting editor because the source code to
+ \<sub>any\</sub>_ function can be found with a few keystrokes. Curious about how
+ M-x find-file works? Use C-h f to look up the definition, follow the
+ link in the help buffer, and get as much detail as you want. You can
+ even use the Emacs debugger (edebug) to explore the behavior of
+ functions. Emacs exposes its internals to an extent no other editor
+ has even attempted.
+</p>
+
+<p>
+Code? Why are we looking at code? Shouldn't we be looking at neat
+ comments explaining how everything works? The paradigm shift here is
+ that \<sub>code\</sub>_ is often the best documentation for itself. Comments
+ should explain usage and the background reasons for coding, but the
+ code itself should be clear and easy to understand. Programming
+ languages like C and Java tend to encourage short, almost cryptic
+ identifiers. Lisp may initially seem daunting because of the
+ parentheses, but the long identifier names and the simple structure
+ make it easy to read even if you don't have a background in functional
+ programming.
+</p>
+
+<p>
+Not only can you look functions up, but you can also \<sub>change\</sub>_ them
+ while Emacs is running. Don't like the way save-buffer works? You can
+ redefine it with a little Emacs Lisp programming. Want to do some pre-
+ or post-processing? There's support for that too. Emacs is a rapid
+ development environment for itself. That's why there are so many
+ modules available for it. Emacs is an editor you can customize to your
+ heart's content.
+</p>
+
+<p>
+Documentation is just a few keystrokes away. All the commonly-used
+ functions and variables have clear instructions for usage. Emacs
+ coding style suggests having a documentation string explaining the
+ arguments and usage for each function, and there are tools for
+ checking compliance. Emacs also has a lot of contributed documentation
+ on <a href="http://www.emacswiki.org"><a href="http://www.emacswiki.org">http://www.emacswiki.org</a></a> and other
+Emacs-related sites.
+</p>
+
+<p>
+Emacs doesn't hide anything from you. That's why Emacs is called a
+ self-documenting editor. Even after trying out other editors like
+ Eclipse and vim, I still go back to Emacs. I've tasted power, and I'm
+ hooked.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

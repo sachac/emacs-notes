@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Yet another snippet mode for Emacs</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Yet another snippet mode for Emacs</h1>
+<p>
+July 26th, 2008 -
+<a href="http://sachachua.com/blog/p/4988"><a href="http://sachachua.com/blog/p/4988">http://sachachua.com/blog/p/4988</a></a>
+</p>
+
+<p>
+While reading gnu.emacs.help, I came across
+<a href="http://code.google.com/p/yasnippet/">yasnippet</a> (yet another snippet
+extension for Emacs). It provides interactive templates for text or code
+entry. It's similar to
+<a href="http://www.emacswiki.org/cgi-bin/wiki/SkeletonMode">SkeletonMode</a>,
+but with TextMate-type syntax, simpler prompting for information, and
+more focus on expanding mode-sensitive text in the buffer.
+</p>
+
+<p>
+Here's what I did to get started with it on my system:
+</p>
+
+<ol class="org-ol">
+<li>Download
+<a href="http://yasnippet.googlecode.com/files/yasnippet-0.5.5.tar.bz2"><a href="http://yasnippet.googlecode.com/files/yasnippet-0.5.5.tar.bz2">http://yasnippet.googlecode.com/files/yasnippet-0.5.5.tar.bz2</a></a>
+and unpack it as ~/elisp/snippets.
+</li>
+<li>Download
+<a href="http://yasnippet.googlecode.com/files/yasnippet-bundle-0.5.5.el.tgz"><a href="http://yasnippet.googlecode.com/files/yasnippet-bundle-0.5.5.el.tgz">http://yasnippet.googlecode.com/files/yasnippet-bundle-0.5.5.el.tgz</a></a>
+and unpack it as ~/elisp/yasnippet-bundle.el .
+</li>
+<li>Symlink lisp-interaction-mode to emacs-lisp-mode with the command
+
+<pre class="example">
+ln -s ~/elisp/snippets/emacs-lisp-mode ~/elisp/snippets/lisp-interaction-mode
+</pre>
+</li>
+
+<li>Add the following lines to <i>~</i>.emacs/
+
+<pre class="example">
+(require 'yasnippet-bundle)
+(yas/initialize)
+(yas/load-directory "~/elisp/snippets")
+;; I don't like using partial words for completion
+(setq yas/key-syntaxes '("w_" "w_." "^ "))
+</pre>
+</li>
+</ol>
+
+<p>
+So far, so good. <i>M-x yas/minor-mode</i> lets me use TAB as the completion
+key, and I can use TAB and S-TAB to navigate between the fields of a
+snippet as well. I think it's a decent snippets mode if you don't need
+the complexity of skeleton.el.
+</p>
+
+<p>
+After some experimentation, I see how this might make me even happier
+working on Drupal. I've put together this
+<a href="http://sachachua.com/notebook/elisp/snippets/php-mode/drupal-mode/dmodule">first
+try at a template for Drupal modules</a>. Drupal code has a lot of
+repetitive typing and/or search-and-replacing because all the hook
+functions need to start with the module name. With yasnippet, I can type
+in the module name once, and all the other functions will be updated. I
+often find myself looking up the argument lists for the hook functions,
+too, and the template includes the hooks I tend to use. I think this
+snippet will save me a lot of start-up time.
+</p>
+
+<p>
+You know what would be even cooler? If I could create snippets that
+dynamically calculate values using Emacs Lisp. Then I could create, for
+example, a hook\<sub>user</sub> abbreviation that automatically picked up the
+module name from the filename or from the other functions. Wouldn't that
+be cool?
+</p>
+
+<p>
+UPDATE: Putting Emacs Lisp in templates is awesome. With this function
+in my ~/.emacs:
+</p>
+
+<pre class="example">
+(defun sacha/drupal-module-name ()
+  "Return the Drupal module name for .module and .install files."
+  (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))
+</pre>
+
+<p>
+I can make templates like this one for
+<a href="http://sachachua.com/notebook/elisp/snippets/php-mode/drupal-mode/_user">hook\<sub>user</sub></a>.
+Sweet!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

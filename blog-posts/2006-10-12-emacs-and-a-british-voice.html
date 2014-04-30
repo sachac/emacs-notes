@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs and a British voice</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs and a British voice</h1>
+<p>
+October 12th, 2006 -
+<a href="http://sachachua.com/blog/p/3936"><a href="http://sachachua.com/blog/p/3936">http://sachachua.com/blog/p/3936</a></a>
+</p>
+
+<p>
+There's something about deep, deep cultural programming. Anything
+ spoken with a British accent just sounds infinitely cool. Everyone
+ uses the default voice for Asterisk and all of that &#x2013; an American
+ male.
+</p>
+
+<p>
+You want to install festvox-rablpc16k or festvox-rablpc8k in addition
+ to all the usual things you need for emacspeak. You'll also need
+ espeakf from CVS.
+</p>
+
+<pre class="example">
+cvs -d:pserver:anonymous@espeakf.cvs.sourceforge.net:/cvsroot/espeakf login
+cvs -z3 -d:pserver:anonymous@espeakf.cvs.sourceforge.net:/cvsroot/espeakf co -P espeakf
+cd espeakf
+sudo make install
+</pre>
+
+<p>
+One of these lines is responsible for setting up espeakf. I just can't
+ be bothered with figuring out which. ;) Probably the dtk-program line.
+</p>
+
+<pre class="example">
+(setq dtk-program "/usr/share/emacs/site-lisp/emacspeak/servers/espeakf.pl")
+(setenv "DTK_TCL" dtk-program)
+(setenv "DTK_PROGRAM" dtk-program)
+</pre>
+
+<p>
+Then add this to your /etc/festival.scm:
+</p>
+
+<pre class="example">
+(set! voice_default 'voice_rab_diphone)
+</pre>
+
+<p>
+Yummy British accent goodness.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/emacspeak">emacspeak</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+
+<p>
+Random Emacs symbol: mail-extr-disable-voodoo &#x2013; Variable: *If it is a
+regexp, names matching it will never be modified.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

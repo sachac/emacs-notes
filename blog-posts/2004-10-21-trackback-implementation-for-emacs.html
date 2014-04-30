@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Trackback implementation for Emacs</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Trackback implementation for Emacs</h1>
+<p>
+October 21st, 2004 -
+<a href="http://sachachua.com/blog/p/2311"><a href="http://sachachua.com/blog/p/2311">http://sachachua.com/blog/p/2311</a></a>
+</p>
+
+<p>
+From
+<a href="http://elisp.info/archive/80614224"><a href="http://elisp.info/archive/80614224">http://elisp.info/archive/80614224</a></a>,
+posted by Mark A. Hershberger:
+</p>
+
+<blockquote>
+<p>
+This will be put into nnrss.el or weblogger.el, but, for now, here
+ is an implementation of trackback.
+</p>
+</blockquote>
+
+<pre class="example">
+(defun tb-find-tb-url (url &amp;optional local)
+  "Find the track-back URL for a resource."
+  (with-temp-buffer
+    (let* (xmlform htmlform)
+      ;; bit o' work necessary for w3 pre-cvs and post-cvs
+      (if local
+      (let ((coding-system-for-read 'binary))
+        (insert-file-contents url))
+    (mm-url-insert url)))
+    (when (re-search-forward "" nil t)
+      (let ((rdf-end (match-end 0)))
+        (goto-char rdf-start)
+        (re-search-forward "trackback:ping=\"\\([^\"]+\\)" rdf-end)
+        (match-string-no-properties 1)))))))
+
+(defun tb-get-trackback (url)
+  "Get who's tb-ed an entry."
+  (let ((tb-url (tb-find-tb-url url)))
+    (when (not tb-url)
+      (error "No trackback URL found at %s" url))
+    (w3-fetch (concat tb-url "?__mode=rss"))))
+
+(defun tb-send-trackback (url data &amp;optional no-seek)
+  "Send a trackback."
+  (let ((tb-url (tb-find-tb-url url)))
+    (when (and (not no-seek)
+           (not tb-url))
+      (error "No trackback URL found at %s" url))
+    (let* ((enctype "multipart/form-data")
+       (query (w3-encode-multipart/form-data data))
+       (url-request-method "POST")
+       (url-request-data (cdr query))
+       (url-request-extra-headers
+        (cons (cons "Content-type" (concat enctype "; boundary=\""
+                           (substring (car query) 2 nil)
+                           "\""))
+          url-request-extra-headers)))
+      (w3-fetch (or tb-url url)))))
+
+(defun w3-encode-multipart/form-data (items)
+  ;; Create a multipart form submission.
+  ;; Returns a cons of two strings.  Car is the separator used.
+  ;; cdr is the body of the MIME message."
+  (let ((separator (format-time-string
+            "--separator-%Y%j%H%M%S-for-www-form-data")))
+    (cons separator
+      (concat
+       (mapconcat
+        (function
+         (lambda (item)
+           (w3-form-encode-make-mime-part
+        (car item) (cdr item) separator)))
+        items "\r\n")
+       "\r\n" separator "--\r\n"))))
+
+Example Code:
+
+(tb-send-trackback
+ "http://www.movabletype.org/mt/trackback/3"
+ '(("title"     . "Emacs Trackback Implementation")
+   ("excerpt" . "An implementation of trackback for emacs webloggers.")
+   ("url"       . "http://elisp.info/archive/80614224")
+   ("blog_name" . "elisp.info")) t)
+</pre>
+
+<p>
+Now all we need is a way to receive trackback pings&#x2026;
+</p>
+
+<p>
+<a href="http://elisp.info/archive/80614224"><a href="http://elisp.info/archive/80614224">http://elisp.info/archive/80614224</a></a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Japanese flashcards</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Japanese flashcards</h1>
+<p>
+January 11th, 2005 -
+<a href="http://sachachua.com/blog/p/2555"><a href="http://sachachua.com/blog/p/2555">http://sachachua.com/blog/p/2555</a></a>
+</p>
+
+<p>
+This extracts all kanji in the buffer and converts them to the format
+ expected by
+<a href="http://sachachua.com/notebook/emacs/flashcard.el">flashcard.el</a>.
+</p>
+
+<pre class="example">
+(defun sacha/kanji/get-ordered-kanji-list ()
+  "Return a list of characters in the buffer."
+  (goto-char (point-min))
+  (let (kanji-list)
+    (while (not (eobp))
+      (let ((c (char-after (point))))
+        (when (&gt;= c ?Ã¤ÂºÂœ) (add-to-list 'kanji-list c)))
+      (forward-char 1))
+    kanji-list))
+
+(defun sacha/kanji/to-flashcard-j2e (&amp;optional list)
+  "Return a Japanese-English flashcard set.
+If LIST is non-nil, use that instead of the current buffer."
+  (interactive (list (sacha/kanji/get-ordered-kanji-list)))
+  (unless list (setq list (sacha/kanji/get-ordered-kanji-list)))
+  (let ((result
+         (with-current-buffer (find-file-noselect "/usr/share/edict/kanjidic")
+           (mapconcat
+            (lambda (kanji)
+              (goto-char (point-min))
+              (when (re-search-forward (format "^%c.*?{\\(.*\\)}" kanji) nil t)
+                (format "%c : %s\n"
+                        kanji
+                        (replace-regexp-in-string "}\\s-+{" "," (match-string 1)))))
+            list
+            ""))))
+    (if (interactive-p) (kill-new result) result)))
+
+(defun sacha/flashcard-method-leitner-check-answer (card answer)
+  "Check answer for correctness. Allow multiple correct answers and provide feedback."
+  (if (member answer (split-string (flashcard-card-answer card) ","))
+      (progn
+        (flashcard-insert "Correct! Answer is:\n"
+                          (propertize (flashcard-card-answer card)
+                                      'face 'flashcard-answer-face
+                                      'rear-nonsticky t)
+                          "\n"
+                          "\n")
+        t)
+    (flashcard-insert "The correct answer is:\n"
+                      (propertize (flashcard-card-answer card)
+                                  'face 'flashcard-answer-face
+                                  'rear-nonsticky t)
+                      "\n"
+                      "\n")
+    (y-or-n-p "Was your answer correct? ")))
+
+(setq flashcard-method-check-answer-function 'sacha/flashcard-method-leitner-check-answer)
+(add-to-list 'auto-mode-alist '("\\.deck\\'" . flashcard-mode))
+(add-hook 'flashcard-mode-hook 'flashcard-add-scroll-to-bottom)
+(add-hook 'flashcard-positive-feedback-functions 'flashcard-feedback-highlight-answer)
+(add-hook 'flashcard-positive-feedback-functions 'flashcard-feedback-congratulate)
+(add-hook 'flashcard-positive-feedback-functions 'flashcard-method-leitner-positive-feedback)
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/japanese">japanese</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

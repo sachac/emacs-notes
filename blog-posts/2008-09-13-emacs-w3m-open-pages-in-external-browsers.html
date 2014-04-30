@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs w3m: Open pages in external browsers</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs w3m: Open pages in external browsers</h1>
+<p>
+September 13th, 2008 -
+<a href="http://sachachua.com/blog/p/5138"><a href="http://sachachua.com/blog/p/5138">http://sachachua.com/blog/p/5138</a></a>
+</p>
+
+<p>
+Sometimes w3m is not enough. To make it easier to open the current page
+in a browser such as Mozilla Firefox, add the following to your
+<i>~</i>.emacs/:
+</p>
+
+<pre class="example">
+(defun wicked/w3m-open-current-page-in-firefox ()
+  "Open the current URL in Mozilla Firefox."
+  (interactive)
+  (browse-url-firefox w3m-current-url)) ;; (1)
+
+(defun wicked/w3m-open-link-or-image-in-firefox ()
+  "Open the current link or image in Firefox."
+  (interactive)
+  (browse-url-firefox (or (w3m-anchor) ;; (2)
+                          (w3m-image)))) ;; (3)
+</pre>
+
+<p>
+This defines a function that uses the current URL being browsed(1) and
+another function that takes the URL of the link at point(2). If no link
+is found, it takes the URL of the image at point(3).
+</p>
+
+<p>
+You can use other browse-url functions instead of <code>browse-url-firefox</code>.
+For example, replacing <code>browse-url-firefox</code> with <code>browse-url-kde</code> will
+open the page, link, or image in Konqueror, KDE's web browser.
+</p>
+
+<p>
+I like binding f to the function that opens the current URL in Mozilla
+Firefox and F to the function that opens the current link or image in
+Mozilla Firefox. To do the same, add the following to your <i>~</i>.emacs/:
+</p>
+
+<pre class="example">
+(eval-after-load 'w3m
+  (progn 
+    (define-key w3m-mode-map "f" 'wicked/w3m-open-current-page-in-firefox)
+    (define-key w3m-mode-map "F" 'wicked/w3m-open-link-or-image-in-firefox)))
+</pre>
+
+<p>
+&#x2014;
+ This is part of the
+<a href="http://sachachua.com/wp/category/wickedcoolemacs">book that I'm
+writing about Emacs</a>, which will be published by No Starch Press if I
+manage to get it together in time.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

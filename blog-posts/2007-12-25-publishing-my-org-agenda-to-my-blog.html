@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Publishing my Org agenda to my blog</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Publishing my Org agenda to my blog</h1>
+<p>
+December 25th, 2007 -
+<a href="http://sachachua.com/blog/p/4536"><a href="http://sachachua.com/blog/p/4536">http://sachachua.com/blog/p/4536</a></a>
+</p>
+
+<p>
+<a href="http://sachachua.com/wp/2007/11/25/feedwordpress-and-planner-blog-awesome/">Some
+people like reading my task list</a>.
+</p>
+
+<p>
+No, I don't know why, either. =)
+</p>
+
+<p>
+But it's up again, just in case you want to see it. This one is based
+ on Org-mode for Emacs, so it's not the same task list that used to
+ show up on my <a href="http://sachachua.com/notebook/wiki/today.php">Planner
+wiki</a>.
+</p>
+
+<p>
+Expect this to change a lot as I figure out how I want it to fit in.
+ The downside of using WordPress as my front-end is that it looks like
+ it's going to be difficult to get the kind of day view I have with my
+ <a href="http://sachachua.com/notebook/wiki/today.php">Planner</a> version. How
+ do I get it to display future pages?
+</p>
+
+<p>
+I may end up writing yet another layer on top of this&#x2026; =(
+</p>
+
+<p>
+Anyway, here's my highly idiosyncratic config, just in case you want
+ to get started hacking this onto your system:
+</p>
+
+<pre class="example">
+(defvar sacha/org-publish-agenda-directory "~/notebook/org/" "*Directory to save the published agenda to.")
+(org-defkey org-agenda-mode-map  "p" 'sacha/org-publish-agenda)
+(defun sacha/org-publish-agenda ()
+  "Copy the agenda buffer to a file in `sacha/org-publish-agenda-directory'."
+  (interactive)
+  ;; Take the entire contents of the agenda and dump it into a text file labeled with the date.
+  (let ((agenda (with-current-buffer org-agenda-buffer-name
+                  (unless org-agenda-show-log (org-agenda-log-mode))
+                  (buffer-string)))
+        (filename (format-time-string "%Y-%m-%d.txt" (if org-starting-day (calendar-time-from-absolute (1+ org-starting-day) 0)
+                                                       (current-time)))))
+    (with-temp-buffer
+      (insert agenda)
+      (write-file (expand-file-name filename
+                                    sacha/org-publish-agenda-directory)))))
+
+(defun sacha/org-publish-agenda-today (interactive)
+  "Publish today's agenda. Suitable for ~/.emacs, we hope."
+  (let ((entry (assoc "a" org-agenda-custom-commands)))
+    (if entry
+        (org-run-agenda-series (nth 1 entry) (cddr entry))
+      (call-interactively 'org-agenda-list))
+  (sacha/org-publish-agenda)))
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/org">org</a>,
+<a href="http://www.technorati.com/tag/wordpress">wordpress</a>
+</p>
+
+<p>
+Random Emacs symbol: hack-local-variables &#x2013; Function: Parse and put
+into effect this buffer's local variables spec.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

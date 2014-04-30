@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs, Org, and BBDB: Hyperlinking names to blogs</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs, Org, and BBDB: Hyperlinking names to blogs</h1>
+<p>
+December 18th, 2008 -
+<a href="http://sachachua.com/blog/p/5461"><a href="http://sachachua.com/blog/p/5461">http://sachachua.com/blog/p/5461</a></a>
+</p>
+
+<p>
+Back when I used Planner for Emacs, I coded some shortcuts to make it
+easier to write about the people I met and the conversations I had. I
+used the hippie-expand module to complete names from my Big Brother
+Database addressbook, and I wrote a function that converted those names
+into links to people's blogs or websites whenever I published my blog
+posts as HTML.
+</p>
+
+<p>
+I switched to WordPress for my blog because I got tired of trying to
+figure out a way to enable comments without getting mired in
+spam-fighting. That meant I could explore other Emacs personal
+information managers like Org, which I turned into my main task manager.
+I often used the WordPress interface to write blog posts. I sometimes
+used Windows Live Writer to write posts about books (there's a good book
+review plugin that makes this easy). I also sometimes used Emacs and Org
+to draft blog posts using Org's friendlier markup, exporting snippets to
+HTML that I then pasted into my blog posts.
+</p>
+
+<p>
+Reading the posts on <a href="http://planet.emacsen.org">Planet Emacsen</a>
+reminded me that my customized configuration was pretty darn sweet. That
+and the conversation notes I've been blogging lately encouraged me to
+dust off my configuration files and get them to work under Org. So
+here's the code:
+</p>
+
+<pre class="example">
+(defun sacha/org-bbdb-get (path)
+  "Return BBDB record for PATH."
+  (car (bbdb-search (bbdb-records) path path path)))
+
+(defun sacha/org-bbdb-export (path desc format)
+  "Create the export version of a BBDB link specified by PATH or DESC.
+If exporting to HTML, it will be linked to the person's blog,
+www, or web address. If exporting to LaTeX FORMAT the link will be
+italicised. In all other cases, it is left unchanged."
+    (cond
+     ((eq format 'html)
+      (let* ((record
+            (sacha/org-bbdb-get path))
+           url)
+      (setq url (and record
+                     (or (bbdb-record-getprop record 'blog)
+                         (bbdb-record-getprop record 'www)
+                         (bbdb-record-getprop record 'web))))
+      (if url
+          (format "&lt;a href=\"%s\"&gt;%s&lt;/a&gt;"
+                  url (or desc path))
+        (format "&lt;em&gt;%s&lt;/em&gt;"
+                (or desc path)))))
+     ((eq format 'latex) (format "\\textit{%s}" (or desc path)))
+     (t (or desc path))))
+
+(defadvice org-bbdb-export (around sacha activate)
+  "Override org-bbdb-export."
+  (setq ad-return-value (sacha/org-bbdb-export path desc format)))
+
+;;;_+ Hippie expansion for BBDB; map M-/ to hippie-expand for most fun
+(add-to-list 'hippie-expand-try-functions-list 'sacha/try-expand-bbdb-annotation)
+(defun sacha/try-expand-bbdb-annotation (old)
+  "Expand from BBDB. If OLD is non-nil, cycle through other possibilities."
+  (unless old
+    ;; First time, so search through BBDB records for the name
+    (he-init-string (he-dabbrev-beg) (point))
+    (when (&gt; (length he-search-string) 0)
+      (setq he-expand-list nil)
+      (mapcar
+       (lambda (item)
+       (let ((name (bbdb-record-name item)))
+         (when name
+           (setq he-expand-list
+                 (cons (org-make-link-string
+                      (org-make-link "bbdb:" name)
+                      name)
+                       he-expand-list)))))
+       (bbdb-search (bbdb-records)
+                    he-search-string
+                    he-search-string
+                    he-search-string
+                    nil nil))))
+  (while (and he-expand-list
+              (or (not (car he-expand-list))
+                  (he-string-member (car he-expand-list) he-tried-table t)))
+    (setq he-expand-list (cdr he-expand-list)))
+  (if (null he-expand-list)
+      (progn
+        (if old (he-reset-string))
+        nil)
+    (progn
+      (he-substitute-string (car he-expand-list) t)
+      (setq he-expand-list (cdr he-expand-list))
+      t)))
+</pre>
+
+<p>
+If you've got Org and BBDB, drop this into your ~/.emacs and fiddle with
+it. =)
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

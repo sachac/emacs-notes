@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Rediscovering Emacs features, or what to do after you get carried</title>
+<!-- 2014-04-30 Wed 17:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Rediscovering Emacs features, or what to do after you get carried</h1>
+<p>
+away installing packages
+</p>
+
+<p>
+February 28th, 2013 -
+<a href="http://sachachua.com/blog/p/24527"><a href="http://sachachua.com/blog/p/24527">http://sachachua.com/blog/p/24527</a></a>
+</p>
+
+<p>
+A kid in a candy store &#x2013; that's me with M-x list-packages,
+<a href="http://emacswiki.org"><b>EmacsWiki pages</b></a>,
+<a href="http://planet.emacsen.org"><b>Planet Emacsen</b></a>, and other sources of
+Emacs goodness. Because Emacs has so much functionality and people keep
+adding stuff to it, it's easy to forget about the cool goodies in
+configuration files and the Emacs codeverse. It's important to practise
+and review, though, because there are all sorts of great keyboard
+shortcuts and commands that could make Emacs even better if I could just
+drill them into my brain.
+</p>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Spaced_repetition">Spaced repetition</a> is
+a great technique for prioritizing and learning things. Emacs Org has an
+<b><a href="http://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a>*module**that
+implements flashcards for Org headings that are tagged with *:drill:</b>.
+I've been using this to prepare for the Canadian citizenship exam, and
+that's been working out well. So I started creating an emacs-drill.org
+file with headings for the things I'm interested in learning, such as
+multiple-cursor-mode and ace-jump-mode&#x2026;
+</p>
+
+<p>
+&#x2026; And then I remembered, hey,
+<a href="http://dl.dropbox.com/u/3968124/sacha-emacs.html">my Emacs
+configuration is one big Org file</a> (thanks to the joys of literate
+programming) so why don't I just stick the :drill: tag onto the relevant
+snippets and run M-x org-drill there?
+</p>
+
+<p>
+This might actually work out. =)
+</p>
+
+<p>
+I was thinking of doing some kind of idle-timer hook, but I actually
+don't mind manually triggering it. Besides, I'm experimenting with John
+Wiegley's
+<a href="http://lists.gnu.org/archive/html/emacs-orgmode/2010-03/msg00367.html">org-agenda
+display</a> paired with winner-mode to save my window configuration.
+</p>
+
+<p>
+Come to think of it, it might be good to add a random Emacs keybinding
+to the org-agenda display. I've installed keywiz, so I can reuse some of
+the code from that:
+</p>
+
+<pre class="example">
+(use-package keywiz)
+(defun sacha/load-keybindings ()
+  "Since we don't want to have to pass through a keywiz game each time..."
+  (setq keywiz-cached-commands nil)
+  (do-all-symbols (sym)
+    (when (and (commandp sym)
+               (not (memq sym '(self-insert-command
+                                digit-argument undefined))))
+      (let ((keys (apply 'nconc (mapcar
+                                 (lambda (key)
+                                   (when (keywiz-key-press-event-p key)
+                                     (list key)))
+                                 (where-is-internal sym)))))
+        ;;  Politically incorrect, but clearer version of the above:
+        ;;    (let ((keys (delete-if-not 'keywiz-key-press-event-p
+        ;;                               (where-is-internal sym))))
+        (and keys
+             (push (list sym keys) keywiz-cached-commands)))))))
+  (sacha/load-keybindings)
+  ;; Might be good to use this in org-agenda...
+  (defun sacha/random-keybinding ()
+    "Describe a random keybinding."
+    (let* ((command (keywiz-random keywiz-cached-commands))
+         (doc (and command (documentation (car command)))))
+      (if command
+          (concat (symbol-name (car command)) " "
+                  "(" (mapconcat 'key-description (cadr command) ", ") ")"
+                  (if doc
+                      (concat ": " (substring doc 0 (string-match "\n" doc)))
+                    ""))
+"")))
+</pre>
+
+<p>
+&#x2026; and a minor adjustment to org-agenda-custom-commands&#x2026;
+</p>
+
+<p>
+(defun sacha/org-agenda-with-tip (arg) (org-agenda-list arg) (let
+((inhibit-read-only t)) (insert (sacha/random-keybinding) “\n”))) (setq
+org-agenda-custom-commands `((“a” “Agenda” sacha/org-agenda-with-tip)
+(“T” todo-tree “TODO”)
+ ;; more here; see my config file
+ )))
+</p>
+
+<p>
+&#x2026; and now I see a random Emacs keybinding every time I review my to-do
+list.
+</p>
+
+
+<div class="figure">
+<p><a href="uploads/2013/02/agenda-tip1.png"><img src="uploads/2013/02/agenda-tip_thumb.png" alt="agenda-tip_thumb.png" /></a>
+</p>
+</div>
+
+<p>
+*If you find yourself forgetting to revisit the nifty Emacs snippets
+you've added to your configuration, add reminders for yourself.*Make
+yourself some flashcards with org-drill.el or flashcard.el and give that
+a try, or integrate reminders into your workflow. Have fun!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

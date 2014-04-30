@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs BBDB: Prioritize exact matches</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs BBDB: Prioritize exact matches</h1>
+<p>
+September 29th, 2006 -
+<a href="http://sachachua.com/blog/p/3890"><a href="http://sachachua.com/blog/p/3890">http://sachachua.com/blog/p/3890</a></a>
+</p>
+
+<p>
+I often include people's names in my notes on other people, such as
+ when I'm tracking who introduced me to whom. The following code
+ modifies BBDB's behavior to put exact matches for name, company, or
+ network address above matches for notes.
+</p>
+
+<pre class="example">
+(defun sacha/bbdb (string elidep)
+  "Display all entries in the BBDB matching the regexp STRING
+in either the name(s), company, network address, or notes.
+Prioritize non-note matches."
+  (interactive
+   (list (bbdb-search-prompt "Search records %m regexp: ")
+         current-prefix-arg))
+  (let* ((bbdb-display-layout (bbdb-grovel-elide-arg elidep))
+         (notes (cons '* string))
+         (records-top
+          (bbdb-search (bbdb-records) string string string nil
+                       nil))
+         (records
+          (bbdb-search (bbdb-records) string string string notes
+                       nil))
+         temp)
+    (setq temp records-top)
+    (while temp
+      (setq records (delete (car temp) records))
+      (setq temp (cdr temp)))
+    (if (or records-top records)
+        (bbdb-display-records (append
+                               records-top
+                               records))
+      ;; we could use error here, but it's not really an error.
+      (message "No records matching '%s'" string))))
+
+(defalias 'bbdb 'sacha/bbdb)
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/crm">crm</a>,
+<a href="http://www.technorati.com/tag/elisp">elisp</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

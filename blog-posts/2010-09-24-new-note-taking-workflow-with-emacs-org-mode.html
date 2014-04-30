@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>New note-taking workflow with Emacs Org-mode</title>
+<!-- 2014-04-30 Wed 17:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">New note-taking workflow with Emacs Org-mode</h1>
+<p>
+September 24th, 2010 -
+<a href="http://sachachua.com/blog/p/15329"><a href="http://sachachua.com/blog/p/15329">http://sachachua.com/blog/p/15329</a></a>
+</p>
+
+<p>
+The new workflow looks like it works better for me. Or rather, it's an
+old workflow with new tools. Now, instead of using Windows Live Writer
+or ScribeFire to post my notes directly to my blog, I'm back to using
+M-x remember and Emacs, keeping a superset of my notes in text files and
+publishing selected parts of it.
+</p>
+
+<ul class="org-ul">
+<li>The new workflow
+
+<ul class="org-ul">
+<li>M-x remember saves quick notes into a large text file
+(~/personal/organizer.org), possibly with tags, with diagrams
+inserted later.
+</li>
+<li>I regularly review and file items into the appropriate sections of
+~/personal/outline.org.
+</li>
+<li>I post selected items to my blog using C-u M-x
+org2blog-post-subtree, scheduling them by adding a timestamp or
+using the C-c C-s (org-schedule) command.
+</li>
+</ul>
+<p>
+I sometimes use Microsoft OneNote on my new tablet to take notes
+during meetings, but it's easy enough to convert my handwriting to
+text and paste it into my Org-mode file. I still have to think of a
+better way to refer to images while keeping my file manageable, but a
+filename is probably okay.
+</p>
+</li>
+
+<li>A worked example
+
+<p>
+This is being composed in a M-x remember window. (Well, remember is
+bound to C-c r on my system, so it's easy to invoke).
+</p>
+
+<p>
+After I finish braindumping, I'll use C-c C-c to save it somewhere.
+</p>
+
+<p>
+I may schedule the post immediately (C-c s (org-schedule) and then
+C-u M-x org2blog-post-subtree), or tag it for later review. (:toblog:
+&#x2013; ready to go, but not scheduled? :rough: &#x2013; needs more thinking?)
+</p>
+
+<p>
+When I review the items, I'll copy this into the Geek &#x2013; Emacs
+section of my outline.org.
+</p>
+
+<p>
+It feels nice having my notes in plain text, and being able to
+organize it in more than just chronological order&#x2026;
+</p>
+</li>
+
+<li>The history
+
+<p>
+From 2001 to about 2006, I kept an Emacs Planner wiki with all of my
+notes in it. Emacs Remember let me write notes that were
+automatically hyperlinked to whatever I was looking at, and I added
+code to Planner that made it easy for me to file the notes both
+chronologically and topically. Planner rocked. I loved being able to
+easily hyperlink between topics, and the wiki structure kept pages a
+mostly manageable size. (My
+<a href="http://sachachua.com/notebook/wiki/PlannerMode.php">public Planner
+files</a> are still on the Net, but I need to regenerate the index or
+enable directory lists so that they're usable.)
+</p>
+
+<p>
+When I moved to WordPress as a blogging platform in order to make it
+easier for people to leave comments, I hacked around with RSS to
+import my posts from Planner into WordPress (ex:
+<a href="http://sachachua.com/blog/2002/"><a href="http://sachachua.com/blog/2002/">http://sachachua.com/blog/2002/</a></a>).
+Moving to WordPress meant a change in my workflow. I now had two
+places to store my notes: Planner and my blog.
+</p>
+
+<p>
+I tried Emacs Org because I liked the way it organized information.
+In Planner, we'd been struggling with elegant ways to manage tasks
+and notes that needed to be accessed in multiple contexts. The
+approach we had taken in Planner was to make copies of the
+information, but Org had a cleaner way to do it using different
+views. It was intriguing.
+</p>
+
+<p>
+When I started working at IBM, however, my information workflow
+diverged. I shifted to using a web-based to-do list and Lotus Notes,
+posting on an internal blog and an external one, and managing
+multiple sources and repositories of information.
+</p>
+
+<p>
+I wanted to go back to keeping my notes in plain text, encrypted if
+necessary, and to have a place where I could keep notes that might
+not be publishable. I still had to manage multiple computers, but
+synchronizing systems like Dropbox or SpiderOak got rid of some of
+the hassles I'd encountered with git. When I found out about org2blog
+thanks to a test link from punchagan, I
+<a href="http://sachachua.com/blog/2010/07/using-org2blog-to-publish-org-mode-subtrees/">modified
+the code to work with subtrees instead of new buffers</a>, and that
+solved the blog publishing part of it.
+</p>
+</li>
+</ul>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

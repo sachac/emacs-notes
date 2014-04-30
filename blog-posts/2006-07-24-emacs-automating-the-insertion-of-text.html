@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Automating the insertion of text</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Automating the insertion of text</h1>
+<p>
+July 24th, 2006 -
+<a href="http://sachachua.com/blog/p/3692"><a href="http://sachachua.com/blog/p/3692">http://sachachua.com/blog/p/3692</a></a>
+</p>
+
+<p>
+As the VP Education of <a href="http://www.toastit.org">Toast I.T.
+Toastmasters</a> in downtown Toronto, I'm responsible for assigning people
+roles in upcoming meetings and confirming these roles by e-mail. We
+currently do our scheduling in a spreadsheet. Copying and pasting the
+roles for the spreadsheet results in the following text:
+</p>
+
+<pre class="example">
+Ari Caylakyan
+Anthony D'Costa
+Chris Charabaruk
+Michael Chan
+Chris Charabaruk
+Chris Charabaruk
+Khalid Ghaffar
+Natasha Guigova
+
+
+
+Ari Caylakyan - C&amp;L 5
+Anthony D'Costa
+Jackie Achonu
+Sacha Chua
+</pre>
+
+<p>
+Adding role descriptions to this was a bit of a pain, so I wrote a
+ short Emacs Lisp function that inserted descriptions if and only if
+ there was a corresponding person assigned to that role.
+</p>
+
+<pre class="example">
+(defun sacha/toast-add-roles ()
+  "Add role descriptions."
+  (interactive)
+  (mapcar (lambda (item)
+            (goto-char (line-beginning-position))
+            (unless (looking-at "^[ \t]*$")
+              (insert item ": "))
+            (forward-line 1))
+          '("President" "Toastmaster" "Sgt at Arms" "Timekeeper" "Ah-counter"
+            "Grammarian" "Table-topics Master" "General Evaluator" ""
+            "Educational Speaker" "Guest Speaker"
+            "Speaker #1" "Evaluator #1"
+            "Speaker #2" "Evaluator #2"
+            "Speaker #3" "Evaluator #3")))
+</pre>
+
+<p>
+Next step: Personalized e-mail that highlights upcoming roles, just as
+ I wrote Emacs Lisp functions to make it easier to send students
+ personalized feedback on their programs.
+</p>
+
+<p>
+That's one of the coolest things about Emacs &#x2013; it's so easy to automate
+tasks.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

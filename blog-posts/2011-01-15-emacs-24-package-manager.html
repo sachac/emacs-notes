@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs 24 and the package manager</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs 24 and the package manager</h1>
+<p>
+January 15th, 2011 -
+<a href="http://sachachua.com/blog/p/22045"><a href="http://sachachua.com/blog/p/22045">http://sachachua.com/blog/p/22045</a></a>
+</p>
+
+<p>
+Update: Added (require ‘package) &#x2013; thanks, Ryan!
+</p>
+
+<p>
+By default, the Emacs 24 package manager (<code>M-x package-list-packages</code>)
+points to a small repository of Emacs packages. Want more?
+<a href="http://technomancy.us/144">Phil Hagelberg</a> added support for multiple
+repositories to package.el. There's the original ELPA at
+<a href="http://tromey.com/elpa"><a href="http://tromey.com/elpa">http://tromey.com/elpa</a></a>, and there's a
+community package source called Marmalade that anyone can upload
+packages to. Add this to your <code>~/.emacs</code> and evaluate it:
+</p>
+
+<pre class="example">
+(require 'package)
+;; Add the original Emacs Lisp Package Archive
+(add-to-list 'package-archives
+             '("elpa" . "http://tromey.com/elpa/"))
+;; Add the user-contributed repository
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/"))
+</pre>
+
+<p>
+You should then be able to call <code>M-x package-list-packages</code> to browse
+and install Emacs packages.
+</p>
+
+<p>
+If you don't have
+<a href="http://sachachua.com/blog/2010/12/whats-new-in-emacs-24/">Emacs 24</a>
+yet (and you might want to wait for the official release if you use
+things like BBDB), Phil suggests downloading
+<a href="http://bit.ly/pkg-el">package.el</a> from the Emacs development tree.
+This version includes support for multiple repositories.
+</p>
+
+<p>
+For even more Emacs goodness outside the package system, check out
+<a href="https://github.com/emacsmirror">the Emacs mirror</a>, which lists more
+than 2,900 packages available through Git.
+</p>
+
+<p>
+Thanks to:
+</p>
+
+<ul class="org-ul">
+<li><a href="http://technomancy.us/144">Phil Hagelberg for the post about ELPA</a>
+</li>
+<li><a href="http://blog.emacsmirror.org/announcing-the-emacsmirror">Jonas
+Bernoulli for the post about emacsmirror</a>
+</li>
+</ul>
+
+<p>
+2011-01-15 Sat 10:31
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

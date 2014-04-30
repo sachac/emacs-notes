@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Public key needed for XEmacs packages</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Public key needed for XEmacs packages</h1>
+<p>
+February 27th, 2004 -
+<a href="http://sachachua.com/blog/p/1786"><a href="http://sachachua.com/blog/p/1786">http://sachachua.com/blog/p/1786</a></a>
+</p>
+
+<p>
+I was getting “Couldn't check signature” errors on XEmacs. I
+ uncommented the mailto keyserver in my ~/.gnupg/gpg.conf and now things
+work.
+ The public key needed is here:
+</p>
+
+<pre class="example">
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: PGP Key Server 0.9.5
+
+mQGiBD5bymERBADX0PmDpRvw9a7D1M7gE/KA6ofrYFuy1+r9SzJ9vpdYC8B8B1ip
+QDaTNA3F2euz5BkNal2m3MF7TLXItoojd0QEoIMZjpka17qtXpE5WPhdTa+sgN10
+1o/uffHIkRCnjudY/lMtPrDtAVnNZsD7Yxs4zltw7ZCiwnJYkY7wuW6XEwCg97NY
+N1N3bw8n214at/a6J4tAQt0D/1TEDSlpEoKuS2YJW+seZB7IoDiTeG/6IQwN5N34
+XFrRbT00ttWsQSKUlnhkec0HXJr06GAsSP8+ZxI5ULRmHWB6FDvhE5bllmQyQ1VZ
+1GaPhIcQcNTC7dpM6SVpG2JjTZ0IHxLGPUby20maFBwAmFSGHoa8rS/fAA0XOW/r
+wWrwBACG5igwGBSt6U/yGdvrXM0B9Kg6oYj8KZNI2WNV/CpH+7R+rAuasvEGtFJ+
++2YwHr5rnhvLnCCJbsbkhvG0fjdZNnr1OVljgnR99sjmY9B2rzHwOXcDyM4exRxB
+p5neVEF7nGbCh0oVcxUNr50qY+kmBfGdI3+tI9YUbbmjgk2QerRBTm9yYmVydCBL
+b2NoIChYRW1hY3MgcGFja2FnZS1yZWxlYXNlIG1hbmFnZXIpIDx2aXRlbm9AeGVt
+YWNzLm9yZz6IXwQTEQIAHwUCPlvKYQUJA8JnAAQLBwMCAxUCAwMWAgECHgECF4AA
+CgkQgu3ywdHdhM3qmACgqWqMvO9wBKi5vGVp/uGKrIVoQqoAninfPKIii17/LeWC
+D5I3CeD48ct5uQENBD5bymUQBACnFB0BchSQEQeQvEdXs45hxKlW39YqmnTmFClP
+P2XJM/f9kWOL4e01/B+2tP/o8yrkS3C7OR1p8llIHUGnZTGW0sKn3/OLdw1c0eFY
+8dCVHnoRnvqn67ffQ4Lqk56Tm96OtK78sJpy9Vj+UhwUdtdDNyNQiWREtsJDE2Qd
+MpK++wADBQP+P1Pz1vJQUMj7OqdojcLCRO3hosx5En21hC3ZL3h0Mnh54yuJxlNl
+Q1zRoiufzG1HSgBZLUsnXxDZSiWSNKnf4gWidrbnq0dQlci4knxB5FfmY3hDYkvR
+KA6+TQs+8vASXnRWArLXAthpl+kv5iMCFBhIF7aNY12/PGIhtu4At7CITAQYEQIA
+DAUCPlvKZQUJA8JnAAAKCRCC7fLB0d2EzYrGAKDdVoyugIlwLzHl4hzxLKzBkWR1
+7wCgp9uaH8pfFUr70S2bALwPDdy/fXs=
+=1HP3
+-----END PGP PUBLIC KEY BLOCK-----
+</pre>
+
+<p>
+The mailto server returned the key to me as an attachment. I pressed
+ pipe on the MIME part and passed it to gpg &#x2014;import.
+</p>
+
+<p>
+E-Mail from Server Administrator
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

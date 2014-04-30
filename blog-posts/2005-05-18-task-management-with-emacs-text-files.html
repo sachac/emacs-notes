@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Task management with Emacs: Text files</title>
+<!-- 2014-04-30 Wed 17:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Task management with Emacs: Text files</h1>
+<p>
+May 18th, 2005 -
+<a href="http://sachachua.com/blog/p/2762"><a href="http://sachachua.com/blog/p/2762">http://sachachua.com/blog/p/2762</a></a>
+</p>
+
+<p>
+With the wealth of code available for Emacs and the ease of
+ customization it provides, you're certain to find a task management
+ tool that fits the way you think. Over the next few days, I'll provide
+ a quick run-through of the methods I've tried out.
+</p>
+
+<p>
+The simplest way to get started with Emacs for task management is to
+ keep your TODOs in a plain text file, like ~/TODO. You can keep this
+ text file in any format you want. To make it easier for you to see
+ what you need to do, you can keep active TODOs near the top and
+ completed tasks near the bottom.
+</p>
+
+<p>
+If you load your TODO file every time you start up Emacs, then you'll
+ be sure to check it every day. Put the following line in your ~/.emacs
+ to have it automatically loaded when you start:
+</p>
+
+<pre class="example">
+(find-file "~/TODO")
+</pre>
+
+<p>
+You'll also want to make it easy to open during an Emacs session. If
+ your TODO file is just a keyboard shortcut away, you'll find it easier
+ to keep all of your reminders in the file. Here's a snippet that shows
+ the TODO file in the current window.
+</p>
+
+<pre class="example">
+(defun my/todo ()
+ "Bring up the TODO file."
+ (interactive)
+ (find-file "~/TODO")
+ (goto-char (point-min)))
+
+;; Now bind it to a convenient shortcut key
+(global-set-key (kbd " ") 'my/todo)
+</pre>
+
+<p>
+Now you can hit F5 F5 to show your TODO. If you want your TODO file to
+ show up in another window, remove that and use this snippet instead:
+</p>
+
+<pre class="example">
+(defun my/todo ()
+ "Bring up the TODO file."
+ (interactive)
+ (find-file-other-window "~/TODO")
+ (goto-char (point-min)))
+
+;; Now bind it to a convenient shortcut key
+(global-set-key (kbd " ") 'my/todo)
+</pre>
+
+<p>
+If you want to be able to add stuff to your TODO without getting
+ distracted from your work, add this to your ~/.emacs:
+</p>
+
+<pre class="example">
+(defun my/add-todo (task)
+ "Add a line to the TODO file."
+ (interactive "MTask: ")
+ (with-current-buffer (find-file-noselect "~/TODO")
+   (goto-char (point-min))
+   (insert task "\n")
+   (save-buffer)))
+(global-set-key (kbd " t") 'my/add-todo)
+</pre>
+
+<p>
+See? Emacs is fun and easy to configure. You can store your tasks in a
+ plain text file and then add keyboard shortcuts to make your tasks
+ easier to manage.
+</p>
+
+<p>
+There are many sophisticated task management packages for Emacs. I'll
+ write about one of them tomorrow. In the meantime, if you want to find
+ out what task manager I \<sub>really\</sub>_ like using, you can check out
+ <a href="http://www.emacswiki.org/cgi-bin/wiki/PlannerMode">PlannerMode</a>! =)
+</p>
+
+<p>
+ÃƒÂ¤Ã‚Â½Ã‚Â•ÃƒÂ§Ã‚Â¤Ã‚Â¾ÃƒÂ¨Ã‚Â£Ã‚Â½ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ£Ã‚Â?Ã‚ÂŠÃƒÂ¤Ã‚Â½Ã‚Â¿ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â™ÃƒÂ£Ã‚Â?Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+What make of computer do you use?
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pim">pim</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

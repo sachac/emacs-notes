@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: BBDB: Modifying the record creation process</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: BBDB: Modifying the record creation process</h1>
+<p>
+July 20th, 2008 -
+<a href="http://sachachua.com/blog/p/4968"><a href="http://sachachua.com/blog/p/4968">http://sachachua.com/blog/p/4968</a></a>
+</p>
+
+<p>
+You might want to add fields to the record creation process in M-x
+bbdb-create. In addition to asking for name, company, e-mail address,
+addresses, phone numbers, and notes, you may want to make sure you
+remember to put in birthdates or other information. If you want to
+prompt for custom fields after the regular BBDB creation form, modify
+this simple example to suit your needs:
+</p>
+
+<pre class="example">
+(defadvice bbdb-read-new-record (after wicked activate)
+  "Prompt for the birthdate as well."
+  (bbdb-record-putprop ad-return-value 'birthdate
+               (bbdb-read-string "Birthdate (YYYY.MM.DD): ")))
+</pre>
+
+<p>
+Thanks to Kaleb Yilma for the question!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

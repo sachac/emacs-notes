@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Org-mode and habits</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Org-mode and habits</h1>
+<p>
+May 15th, 2012 -
+<a href="http://sachachua.com/blog/p/23381"><a href="http://sachachua.com/blog/p/23381">http://sachachua.com/blog/p/23381</a></a>
+</p>
+
+<p>
+<a href="http://orgmode.org">Org Mode</a> is a personal information manager for
+the Emacs text editor. People have contributed a ton of useful features
+to it over the years, and the development shows no sign of slowing down.
+One of the features I've been playing around with is the ability to
+track habits.
+</p>
+
+<p>
+Org habits are recurring tasks. For example, everyday, I want to:
+</p>
+
+<ul class="org-ul">
+<li>take my vitamins
+</li>
+<li>capture a quick note about the day, and
+</li>
+<li>plan the next day
+</li>
+</ul>
+
+<p>
+Every week, I want to:
+</p>
+
+<ul class="org-ul">
+<li>talk to my mom
+</li>
+<li>check the org-mode mailing list
+</li>
+<li>write a weekly review and plan the next week
+</li>
+<li>clear and reorganize my belt bag
+</li>
+<li>clear my inbox
+</li>
+<li>write a bunch of blog posts
+</li>
+<li>back up my computer
+</li>
+</ul>
+
+<p>
+Once a month, I want to:
+</p>
+
+<ul class="org-ul">
+<li>update the topical index for my blog
+</li>
+<li>review and uninstall programs
+</li>
+<li>balance my books and update my budget
+</li>
+<li>review the past month and plan the next
+</li>
+<li>check the library for new books
+</li>
+</ul>
+
+<p>
+Org habits let me manage my task list without cluttering future days
+with tasks. The Org agenda view displays habits that are due today,
+indicating consistency with colour. In particular, it shows overdue days
+in red, so you can get the Seinfeld-esque pleasure/commitment-device of
+<a href="http://lifehacker.com/281626/jerry-seinfelds-productivity-secret">not
+breaking the chain</a>.
+</p>
+
+<p>
+Here's a view from Sunday:
+</p>
+
+<pre class="example">
+2 days-agenda (W19-W20):
+Sunday     13 May 2012
+               8:00...... ----------------
+              10:00...... ----------------
+              12:00...... ----------------
+              14:00...... ----------------
+              15:57...... now - - - - - - - - - - - - - - - - - - - - - - - - -
+              16:00...... ----------------
+              18:00...... ----------------
+  organizer:  22:00...... TODO Capture a one-sentence note                                           !       
+  organizer:  22:00...... TODO Plan the next day                                    ** ***** ** *****!       
+  organizer:  Scheduled:  TODO Make a list of recipes I want to learn
+  organizer:  Scheduled:  TODO Write a bunch of blog posts             :writing:
+  organizer:  Scheduled:  TODO Set up WordPress as my backup system
+Monday     14 May 2012 W20
+  organizer:  Scheduled:  TODO Build Emacs interface so that I can have Org automatically switch my tasks
+</pre>
+
+<p>
+To use Org habits, customize <code>org-modules</code> and enable the habit module.
+To set something as a habit, use <code>C-c C-x p</code> (<code>org-set-property</code>) to set
+the <code>STYLE</code> property to <code>habit</code>. For more information, you should
+definitely check out the Org manual's section on habits.
+</p>
+
+<p>
+Yay Emacs and the people who contribute to it!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

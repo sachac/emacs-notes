@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>zomg, Evernote and Emacs</title>
+<!-- 2014-04-30 Wed 16:58 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">zomg, Evernote and Emacs</h1>
+<p>
+August 1st, 2012 -
+<a href="http://sachachua.com/blog/p/23622"><a href="http://sachachua.com/blog/p/23622">http://sachachua.com/blog/p/23622</a></a>
+</p>
+
+<p>
+Update 2013-10-19: Check out
+<a href="https://github.com/pymander/evernote-mode"><a href="https://github.com/pymander/evernote-mode">https://github.com/pymander/evernote-mode</a></a>
+for a possibly better way to do things. =)
+</p>
+
+<p>
+This is totally raw and needs a lot of hacking, but look, I can dump
+subtrees from my Org notes into Evernote using
+<a href="http://code.google.com/p/emacs-evernote-mode/">Emacs Evernote Mode</a>.
+The desktop app handles these perfectly, although the Android app does
+funny things to the whitespace if you edit the note. Still, great as a
+reference!
+</p>
+
+<p>
+Mwahahahaha!
+</p>
+
+<pre class="example">
+(defun sacha/org-get-subtree-region ()
+  "Return the start and end of the current subtree."
+  (save-excursion
+    (let (beg end folded (beg0 (point)))
+      (if (org-called-interactively-p 'any)
+          (org-back-to-heading nil) ; take what looks like a subtree
+        (org-back-to-heading t)) ; take what is really there
+      (org-back-over-empty-lines)
+      (setq beg (point))
+      (skip-chars-forward " \t\r\n")
+      (save-match-data
+        (save-excursion (outline-end-of-heading)
+                        (setq folded (outline-invisible-p)))
+        (condition-case nil
+            (org-forward-same-level (1- n) t)
+          (error nil))
+        (org-end-of-subtree t t))
+      (org-back-over-empty-lines)
+      (setq end (point))
+      (list beg end))))
+
+(defun sacha/org-post-subtree-to-evernote (&amp;optional notebook)
+  "Post the current subtree to Evernote."
+  (interactive)
+  (let ((title (nth 4 (org-heading-components)))
+        (body (apply 'buffer-substring-no-properties (sacha/org-get-subtree-region))))
+    (with-temp-buffer
+      (insert body)
+      (enh-command-with-auth
+       (let (note-attr)
+         (setq note-attr
+               (enh-command-create-note (current-buffer)
+                                        title
+                                        notebook
+                                        nil "TEXT"))
+         (enh-update-note-and-new-tag-attrs note-attr))))))
+</pre>
+
+<p>
+In other news, I now have book notes from 156 books in my Evernote
+notebook. Mwahahaha! Time to add more.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

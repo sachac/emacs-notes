@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>The Great Merge</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">The Great Merge</h1>
+<p>
+September 17th, 2005 -
+<a href="http://sachachua.com/blog/p/2987"><a href="http://sachachua.com/blog/p/2987">http://sachachua.com/blog/p/2987</a></a>
+</p>
+
+<p>
+Thanks to <a href="http://www.lifl.fr/~hodique/">Yann Hodique</a>‘s totally
+awesome
+ backend structure in
+<a href="mailto:hodique@lifl.fr">hodique@lifl.fr</a>&#x2014;test/planner&#x2014;merge&#x2014;1.0,
+the distinction between planner/emacs-wiki and planner/muse is on the
+way to disappearing. Yann's Elisp-fu is far beyond mine, and it shows in
+the elegance and cleanliness of the backend code.
+</p>
+
+<p>
+It's much, much better than my kludgy attempts when I wrote the first
+ port of Planner to Muse. I kept running into problems thinking of an
+ elegant way to combine both backends. I just wanted to get Planner out
+ the door, so I tagged a new branch and replaced all the emacs-wiki
+ code with muse equivalents.
+</p>
+
+<p>
+That spurred a lot of development on the planner-muse front, and we
+ blessed Michael Olson's tree as the canonical planner-muse branch.
+ Keeping up with patches became a real headache, though, because of all
+ the translation between branches.
+</p>
+
+<p>
+I've tagged a new tree off Yann Hodique's branch and made emacs-wiki
+ work again. I've also brought it up to the latest dev (I think!), and
+ I'll be using it for the next few weeks. A number of modules still
+ require emacs-wiki, and with the Planner community's help, we hope to
+ open them up to Muse people as well!
+</p>
+
+<p>
+You can grab the merged tree with
+</p>
+
+<pre class="example">
+tla register-archive http://sacha.free.net.ph/notebook/arch
+tla get sacha@free.net.ph--main/planner--merge--1.0 planner
+</pre>
+
+<p>
+Back up your plans and customize planner-backend. Have fun!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

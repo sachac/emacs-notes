@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>How to use Emacs Org as a Basic Day Planner</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">How to use Emacs Org as a Basic Day Planner</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Collecting your tasks</a></li>
+<li><a href="#sec-2">Scheduling tasks</a></li>
+<li><a href="#sec-3">Viewing your daily or weekly agenda</a></li>
+<li><a href="#sec-4">Marking tasks as done</a></li>
+<li><a href="#sec-5">Rescheduling Tasks</a></li>
+<li><a href="#sec-6">Reviewing your accomplishments</a></li>
+</ul>
+</div>
+</div>
+<p>
+December 29th, 2007 -
+<a href="http://sachachua.com/blog/p/4548"><a href="http://sachachua.com/blog/p/4548">http://sachachua.com/blog/p/4548</a></a>
+</p>
+
+<p>
+So you want to use Org as day planner. I'll show you the bare minimum
+that you need in order to use Org to manage your tasks day by day. I
+assume that you've set up Org and Remember according to the basic
+configuration suggested in “Setup.” If you haven't done that yet, please
+review the section on “Setup”, then return here.
+</p>
+
+<p>
+Here's what you'll learn how to do:
+</p>
+
+<ol class="org-ol">
+<li>Collect your tasks
+</li>
+<li>Schedule the tasks for specific days
+</li>
+<li>View your daily or weekly agenda
+</li>
+<li>Mark tasks as done
+</li>
+<li>Reschedule a task
+</li>
+<li>Review your accomplishments
+</li>
+</ol>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Collecting your tasks</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+If you're adding many tasks, you may find it easier to edit your
+Organizer file. Open ~/organizer.org in Emacs and go to the end of the
+file. Add headlines like this:
+</p>
+
+<pre class="example">
+* Inbox
+** TODO your task description here
+** TODO another task...
+</pre>
+
+<p>
+Instead of typing ** TODO again and again, you can use C-M-RET to create
+another TODO heading at the same level as the previous one. Think of all
+the things you need to do over the next few days and add them to your
+Org agenda file.
+</p>
+
+<p>
+More tasks will come up as you work on things. Instead of switching to
+your Org agenda file each time you need to add a task, you can use C-c r
+t (remember, Tasks template) to remember the task quickly. Try it now by
+typing C-c r t. Type in the task description and press C-c C-c
+(org-ctrl-c-ctrl-c) to add the task to the end of the ~/organizer.org
+file.
+</p>
+
+<p>
+Now you have plenty of tasks on your list, but no idea when you need to
+do that. Here's where scheduling and deadlines come in.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Scheduling tasks</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+To schedule a task, move your cursor to the TODO headline and press C-c
+C-s (org-schedule). Org will prompt you for a date. It understands full,
+partial, and relative dates. For example, if today is December 29, 2007,
+then It understands any of the following:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="right">Input</td>
+<td class="right">Result</td>
+<td class="left">Explanation</td>
+</tr>
+
+<tr>
+<td class="right">(blank)</td>
+<td class="right">2007-12-30</td>
+<td class="left">Today</td>
+</tr>
+
+<tr>
+<td class="right">10:30</td>
+<td class="right">2007-12-30 10:30</td>
+<td class="left">Time today</td>
+</tr>
+
+<tr>
+<td class="right">3:30pm</td>
+<td class="right">2007-12-30 15:30</td>
+<td class="left">Time today</td>
+</tr>
+
+<tr>
+<td class="right">31</td>
+<td class="right">2007-12-31</td>
+<td class="left">Day in the current month</td>
+</tr>
+
+<tr>
+<td class="right">12-31</td>
+<td class="right">2007-12-31</td>
+<td class="left">Month and day in the current year</td>
+</tr>
+
+<tr>
+<td class="right">2008-01-01</td>
+<td class="right">2008-01-01</td>
+<td class="left">Date</td>
+</tr>
+
+<tr>
+<td class="right">2008-01-01 12:30am</td>
+<td class="right">2008-01-01 00:30</td>
+<td class="left">Date and time (also works with partial dates)</td>
+</tr>
+
+<tr>
+<td class="right">+2</td>
+<td class="right">2008-12-31</td>
+<td class="left">Two days from now</td>
+</tr>
+
+<tr>
+<td class="right">-3</td>
+<td class="right">2007-12-26</td>
+<td class="left">Three days ago</td>
+</tr>
+
+<tr>
+<td class="right">Fri</td>
+<td class="right">2008-01-04</td>
+<td class="left">The nearest Friday (on or after today)</td>
+</tr>
+
+<tr>
+<td class="right">+2w</td>
+<td class="right">2008-01-12</td>
+<td class="left">Two weeks from today</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+To set a deadline for a task, type C-c C-d (org-deadline). It accepts
+the same kinds of date that org-schedule does.
+</p>
+
+<p>
+Try this out by scheduling all of your tasks over the next few days,
+adding deadlines where necessary.
+</p>
+
+<p>
+Now that you've added date information to your tasks, you probably want
+to see those tasks organized by date instead of in the random way you
+entered them. Agenda views are going to become your new best friend.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Viewing your daily or weekly agenda</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Type C-c a a (org-agenda, org-agenda-list) to view your agenda. By
+default, Org shows a weekly view of your scheduled tasks and
+appointments. This is your Org agenda view.
+</p>
+
+<p>
+Here are some useful navigational keys:
+</p>
+
+<ul class="org-ul">
+<li>Switch to a daily view with d (org-agenda-day-view)
+</li>
+<li>Switch to a weekly view with w (org-agenda-week-view)
+</li>
+<li>View earlier or later days/weeks with your left and right arrow keys
+(org-agenda-earlier, org-agenda-later)
+</li>
+<li>Jump to a specific day with j (org-agenda-goto-date)
+</li>
+</ul>
+
+<p>
+Get into the habit of typing C-c a a to check your task list. It may
+also help to add
+</p>
+
+<p>
+(org-agenda-list)
+</p>
+
+<p>
+to the bottom of your ~/.emacs. This opens your Org agenda view when you
+start up Emacs. Start your Emacs day with your Org agenda, check it
+every time you finish a task, and review it before you end the day. This
+will help you make sure that nothing falls through the cracks.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Marking tasks as done</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The easiest way to mark a task as done is to go to its line in your Org
+agenda view. Type C-c a a (org-agenda, org-agenda-list) to view your
+tasks for today, move your cursor to the task, and type t
+(org-agenda-todo) to cycle the task status until it's marked DONE. You
+can also type C-u t (org-agenda-todo with a prefix argument) to jump to
+a specific task status. For example, you could type C-u t DONE to mark a
+task as done.
+</p>
+
+<p>
+You can also mark tasks done from your ~/organizer.org file. Open the
+file and move your cursor to the item. Type C-c C-t (org-todo) to change
+the task status. Again, you can type C-u C-c C-t (org-todo) to jump to a
+specific task status.
+</p>
+
+<p>
+I find it helpful to mark tasks as STARTED when I start working on them,
+WAITING if I need something else in order to continue working on the
+task, and DONE when I'm finished with it. That way, I can quickly see
+which task I was supposed to be working on before I got distracted by
+something bright and shiny, and I can also see what I'm waiting for. Get
+into the habit of doing that, and you'll find it easier to get back on
+track after distractions.
+</p>
+
+<p>
+Unfortunately, Org does not come with a M-x org-zap-distractions
+command. There will be days when you can't do everything on your task
+list.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Rescheduling Tasks</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+You don't have to reschedule your tasks. Org will remind you of
+unfinished, scheduled tasks every single day. It will even helpfully
+tell you how many days you've procrastinated on that task. If you use
+C-c a a (org-agenda, org-agenda-list) when you have unfinished tasks on
+previous days, you'll see task reminders like this:
+</p>
+
+<pre class="example">
+Saturday  29 December 2007
+  organizer: Scheduled:  TODO Respond to mail
+  organizer: Sched. 6x:  TODO Write notes from mentoring conversation
+  organizer: Sched. 2x:  WAITING Report time
+</pre>
+
+<p>
+You could let your unfinished tasks snowball on you in a big mass of
+procrastination. If you let your task list grow to an intimidating size,
+though, you may start stressing out about the things you aren't doing.
+Let me show you how to procrastinate&#x2014;I mean, reschedule your tasks
+effectively&#x2014;so that you can work with a more manageable task list.
+</p>
+
+<p>
+If tasks are starting to accumulate, it's a good sign that you need to
+review those tasks. Do you really need to do them? If not, delete them
+by moving to the line in your Org agenda view and pressing C-k
+(org-agenda-kill). You can also edit your ~/organizer.org file and
+delete them, but org-agenda-kill is more convenient.
+</p>
+
+<p>
+If you really need to do the tasks, but there's no point in seeing it in
+today's task list because you can't do it today anyway, use C-c C-s
+(org-agenda-schedule) to reschedule the task. If you're only moving it a
+couple of days ahead, use S-right (org-agenda-later) to move it forward,
+and S-left (org-agenda-earlier) if you overshoot.
+</p>
+
+<p>
+Some tasks show up again and again on your task list, and you know you
+need to do them, but you don't know where to getting started. “TODO
+Write a book” is not a good task, because it's just too big to do in one
+sitting and it doesn't tell you what to do right now. Big tasks are
+often projects in disguise. Break it down into smaller tasks, and
+schedule those instead. If you're in the Org agenda view, press RET
+(org-agenda-switch-to) to jump to the task in your ~/organizer.org file.
+Break it down into smaller tasks by adding sub-headings and more TODOs,
+like this:
+</p>
+
+<pre class="example">
+** Write a book
+*** TODO Make an outline of what to write
+*** TODO Read sample query letters
+*** TODO Write a query letter
+</pre>
+
+<p>
+&#x2026; and so on.
+</p>
+
+<p>
+Then you can use C-c C-s (org-schedule) to schedule those tasks.
+</p>
+
+<p>
+Use these commands to keep your task list manageable. That way, you get
+the warm and fuzzy feeling of accomplishment when you finish what's on
+your list and you look at everything you've done today.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Reviewing your accomplishments</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+If you've been good about keeping your tasks in your ~/organizer.org
+file, working with your Org agenda view, and marking tasks as DONE when
+you finish them, you'll find it easy (and satisfying!) to review your
+accomplishments. Just open your daily or weekly Org agenda view with C-c
+a a (org-agenda, org-agenda-list). Type l (org-agenda-log-mode) to show
+completed tasks. Pat yourself on the back, then plan yourself another
+wonderful day tomorrow!
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/wickedcoolemacs">wickedcoolemacs</a>,
+<a href="http://www.technorati.com/tag/org">org</a>
+</p>
+
+<p>
+Random Emacs symbol: set-fill-column &#x2013; Command: Set `fill-column' to
+specified argument.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs and PHP tutorial: php-mode</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs and PHP tutorial: php-mode</h1>
+<p>
+July 30th, 2008 -
+<a href="http://sachachua.com/blog/p/5014"><a href="http://sachachua.com/blog/p/5014">http://sachachua.com/blog/p/5014</a></a>
+</p>
+
+<p>
+php-mode is responsible for syntax highlighting, indentation, and other
+major PHP-specific modifications to your editing environment. There are
+a number of PHP modes available for Emacs. In this project, you'll learn
+how to set up the php-mode available from
+<a href="http://sourceforge.net/projects/php-mode/"><a href="http://sourceforge.net/projects/php-mode/">http://sourceforge.net/projects/php-mode/</a></a>
+. At the time of this writing, the current version is 1.4.0 and the
+maintainer is Aaron Hawley.
+</p>
+
+<p>
+Download the latest php-mode.el from
+<a href="http://php-mode.sourceforge.net/"><a href="http://php-mode.sourceforge.net/">http://php-mode.sourceforge.net/</a></a>
+and save it to a directory in your load-path. I like to organize my
+Emacs Lisp files in a directory called ~/elisp. To add PHP support to
+your Emacs, add the following lines to your ~/.emacs:
+</p>
+
+<pre class="example">
+(add-to-list 'load-path "~/elisp")
+(require 'php-mode)
+</pre>
+
+<p>
+This configures Emacs to automatically recognize files ending in “.php”,
+“.phps”, “.php3″, “.php4″, “.phtml”, and “.inc” as PHP files. To
+associate more extensions with PHP files, add lines like this example to
+your ~/.emacs:
+</p>
+
+<pre class="example">
+(add-to-list 'auto-mode-alist '("\\.module$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.install$" . php-mode))
+(add-to-list 'auto-mode-alist '("\\.engine$" . php-mode))
+</pre>
+
+<p>
+This associates php-mode with the extensions used by Drupal, a PHP
+framework. When you open a file with the specified extension, it should
+be highlighted according to PHP syntax.
+</p>
+
+<p>
+Here are some useful commands:
+</p>
+
+<p>
+TAB
+</p>
+
+<p>
+c-indent-command
+</p>
+
+<p>
+Indent the current line
+</p>
+
+<p>
+M-;
+</p>
+
+<p>
+comment-dwim
+</p>
+
+<p>
+Add a line comment, comments or uncomments the currently-selected
+region, or does other smart comment-related actions
+</p>
+
+<p>
+C-c C-f
+</p>
+
+<p>
+php-search-documentation
+</p>
+
+<p>
+Search the online PHP manual for the current word
+</p>
+
+<p>
+C-c RET
+</p>
+
+<p>
+php-browse-manual
+</p>
+
+<p>
+View the online PHP manual
+</p>
+
+<p>
+C-c .
+</p>
+
+<p>
+c-set-style
+</p>
+
+<p>
+Change coding style
+</p>
+
+<p>
+C-M-a, C-M-e
+</p>
+
+<p>
+c-beginning-of-defun, c-end-of-defun
+</p>
+
+<p>
+Go to the beginning or end of the current function
+</p>
+
+<p>
+C-M-h
+</p>
+
+<p>
+c-mark-function
+</p>
+
+<p>
+Select the current function
+</p>
+
+<p>
+M-a, M-e
+</p>
+
+<p>
+c-beginning-of-statement, c-end-of-statement
+</p>
+
+<p>
+Go to the beginning or end of the current statement
+</p>
+
+<p>
+Here are some variables you may wish to customize:
+</p>
+
+<p>
+indent-tabs-mode
+</p>
+
+<p>
+Set this to nil if you want to insert spaces instead of tabs
+</p>
+
+<p>
+case-fold-search
+</p>
+
+<p>
+Set this to t if you want case-insensitive search.
+</p>
+
+<p>
+c-basic-offset
+</p>
+
+<p>
+Set your tab size or number of spaces used as a basis for indentation
+</p>
+
+<p>
+You can either customize these variables globally with M-x customize or
+set them for php-mode. Here's an example that sets up a buffer with the
+coding style recommended for Drupal:
+</p>
+
+<pre class="example">
+(defun wicked/php-mode-init ()
+  "Set some buffer-local variables."
+  (setq case-fold-search t) 
+  (setq indent-tabs-mode nil)
+  (setq fill-column 78)
+  (setq c-basic-offset 2)
+  (c-set-offset 'arglist-cont 0)
+  (c-set-offset 'arglist-intro '+)
+  (c-set-offset 'case-label 2)
+  (c-set-offset 'arglist-close 0))
+(add-hook 'php-mode-hook 'wicked/php-mode-init)
+</pre>
+
+<p>
+You can further customize the indentation by moving the point to where
+the indentation needs improvement and typing C-c C-o (c-set-offset).
+</p>
+
+<p>
+To try automatic indentation, press C-j (newline-and-indent). If you
+like that behavior, you can make it the default in php-mode by adding
+the following line in ~/.emacs:
+</p>
+
+<p>
+(define-key php-mode-map (kbd “RET”) ‘newline-and-indent)
+</p>
+
+<p>
+You may also be interested in M-x show-paren-mode, which shows the
+matching parenthesis, bracket or brace for the character at point. You
+can enable it automatically by adding the following line to your
+~/.emacs:
+</p>
+
+<pre class="example">
+(setq show-paren-mode t)
+</pre>
+
+<p>
+It's a good idea to separate PHP and HTML code. This is not only better
+coding practice, but it also makes developing in Emacs much easier.
+php-mode focuses on PHP-specific behavior and does not have special
+support for HTML. Emacs has a number of packages that allow you to work
+with multiple modes like php-mode and html-helper-mode in a single
+buffer, but they don't always work, and indentation can be confusing. If
+you must work with large segments of both PHP and HTML in the same file,
+check out MultipleModes
+(<a href="http://www.emacswiki.org/cgi-bin/wiki/MultipleModes"><a href="http://www.emacswiki.org/cgi-bin/wiki/MultipleModes">http://www.emacswiki.org/cgi-bin/wiki/MultipleModes</a></a>)
+for tips.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

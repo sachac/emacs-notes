@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>How I use Emacs Org Mode for my weekly reviews</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">How I use Emacs Org Mode for my weekly reviews</h1>
+<p>
+June 26th, 2013 -
+<a href="http://sachachua.com/blog/p/25043"><a href="http://sachachua.com/blog/p/25043">http://sachachua.com/blog/p/25043</a></a>
+</p>
+
+<p>
+*Summary: I use a
+custom*<a href="http://sachachua.com/dotemacs#weekly-review"><b>Emacs Lisp
+function</b></a>*to extract my upcoming tasks and logged tasks from my Org
+agenda, and I combine that with data from QuantifiedAwesome.com using a
+JSON interface.*
+</p>
+
+<p>
+I use <a href="http://orgmode.org">Emacs Org Mode</a> to keep track of my tasks
+because of its flexibility. It's difficult to imagine doing the kinds of
+things I do with a different task management system. For example, I've
+written some code that extracts data from my Org Mode task list and my
+QuantifiedAwesome.com time log to give me the basis of a weekly review.
+Here's what my workflow is like.
+</p>
+
+<p>
+Throughout the week, I add tasks to Org Mode to represent things that I
+plan to do. I also create tasks for things I've done that I want to
+remember, as I find that I forget things even within a week. I track my
+time through <a href="http://quantifiedawesome.com">QuantifiedAwesome.com</a>, a
+website I built myself for tracking things that I'm curious about.
+</p>
+
+<p>
+On Saturday, I use <a href="http://sachachua.com/dotemacs#weekly-review"><b>M-x
+sacha/org-prepare-weekly-review</b></a>, which:
+</p>
+
+<ul class="org-ul">
+<li>runs org-agenda for the upcoming week and extracts all my non-routine
+tasks
+</li>
+<li>runs org-agenda in log mode and extracts all finished tasks from the
+previous week
+</li>
+<li>gets the time summary from Quantified Awesome's JSON interface
+</li>
+</ul>
+
+<p>
+Here's what the raw output looks like:
+</p>
+
+
+<div class="figure">
+<p><a href="uploads/2013/06/image5.png"><img src="uploads/2013/06/image_thumb6.png" alt="image_thumb6.png" /></a>
+</p>
+</div>
+
+<p>
+I like including a list of blog posts so that people can click on them
+if they missed something during the week. Besides, my blog posts often
+help me remember what I did that week. I customized my WordPress theme
+to give me an org-friendly list if I add ?org=1 to the date URL. For
+example, here's the list for this month:
+<a href="http://sachachua.com/blog/2013/06/?org=1">sachachua.com/blog/2013/06/?org=1</a>
+. I copy and paste the relevant part of the list (or lists, for weeks
+near the beginning or end of a month) into the <b>Blog posts section</b>. I
+could probably automate this, but I haven't bothered.
+</p>
+
+<p>
+Then I organize the past and future tasks by topic. Topics are useful
+because I can see which areas I've been focusing on and which ones I've
+neglected. I do this organization manually, although I could probably
+figure out how to use tags to jumpstart the process.
+<code>(setq org-cycle-include-plain-lists 'integrate)</code> means that I can use
+TAB to hide or show parts of the list. I use M-&lt;down&gt; and M-&lt;right&gt; for
+most of the tasks, and I also cut and paste lines as needed. Because my
+code sorts tasks alphabetically, I'm starting to name tasks with the
+context at the beginning to make them easier to organize.
+</p>
+
+<p>
+If I remember other accomplishments, I add them to this list. If I think
+of other things I want to do, I add them to the list and I create tasks
+for them. (I should probably write a function that does that&#x2026;)
+</p>
+
+<p>
+The categories and time totals are part of the weekly review template
+inserted by <code>sacha/org-prepare-weekly-review</code>. I use my smartphone or
+laptop to track time whenever I switch activities, occasionally
+backdating or editing records if I happen to be away or distracted. If
+I'm at my computer, I sometimes estimate and track time at the task
+level using Org Mode's clocking feature. Since I'm not consistent with
+task-based time-tracking, I use that mainly for investigating how much
+time it takes me to do specific things, and I don't automatically
+include that in my reports.
+</p>
+
+<p>
+When I'm done, I use
+<a href="https://github.com/punchagan/org2blog"><code>org2blog/wp-post-subtree</code></a> to
+publish the draft to my blog. I preview it in WordPress to make sure
+everything looks all right, and then publish it.
+</p>
+
+<p>
+It's wonderful being able to tweak your task manager to fit the way you
+work. Yay Emacs, Org Mode, WordPress, and making your own tools!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

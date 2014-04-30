@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>New planner tweak: sort tasks by time</title>
+<!-- 2014-04-30 Wed 17:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">New planner tweak: sort tasks by time</h1>
+<p>
+September 9th, 2005 -
+<a href="http://sachachua.com/blog/p/2969"><a href="http://sachachua.com/blog/p/2969">http://sachachua.com/blog/p/2969</a></a>
+</p>
+
+<p>
+I've taken to tagging my tasks with times, and here's some code to
+ automatically sort tasks by time, status, and priority. I use it on
+ day pages. My plan pages are sorted differently. =)
+</p>
+
+<p>
+I could go on and on about how powerful customizable task sorting
+ functions are. Kudos to Jody Klymak and John Sullivan for suggesting
+ this last December! It's one of the things I love about
+<a href="http://sachachua.com/notebook/wiki/planner">planner</a>. =)
+</p>
+
+<pre class="example">
+(defun sacha/planner-sort-tasks-basic ()
+  "Sort tasks by time (@1030, etc), status (_P&gt;XC) and priority (ABC)."
+  (let* ((info (planner-current-task-info))
+         (status (aref (planner-task-status info) 0)))
+    (concat
+     ;; time
+     (or (and (string-match "@[0-9][0-9][0-9][0-9]" (planner-task-description info))
+              (match-string 0 (planner-task-description info)))
+         "@9999")
+     ;; status
+     (cond
+      ((eq status ?o) "1")
+      ((eq status ?P) "2")
+      ((eq status ?&gt;) "3")
+      ((eq status ?X) "4")
+      ((eq status ?C) "5")
+      (t "9"))
+     (planner-task-priority info))))
+</pre>
+
+<p>
+See my
+<a href="http://sachachua.com/notebook/emacs/planner-config.el">planner-config.el</a>
+for my
+ complete task sorting code and lots of other config stuff. =)
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Show only people whom I haven't pinged since&#x2026;</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Show only people whom I haven't pinged since&#x2026;</h1>
+<p>
+September 28th, 2006 -
+<a href="http://sachachua.com/blog/p/3883"><a href="http://sachachua.com/blog/p/3883">http://sachachua.com/blog/p/3883</a></a>
+</p>
+
+<p>
+One of the things I want in a contact management system is a quick way
+ to find out who I haven't pinged in a while. The following code
+ filters currently-displayed contacts to show who I might want to get
+ back in touch with. Call it from a <b>BBDB</b> window and specify the date
+ (could be 2006.01.01 for annual, -7 for the last seven days, etc.).
+ This works incredibly well with the following hacks:
+</p>
+
+<ul class="org-ul">
+<li><a href="http://sachachua.com/notebook/wiki/2006.09.01.php#anchor-2">Emacs:
+Keep track of messages sent</a>
+</li>
+<li><a href="http://sachachua.com/notebook/wiki/2006.06.03.php#anchor-5">BBDB
+pinging code</a>
+</li>
+</ul>
+
+<p>
+I should write a small book about how to build a contact management
+ system with Emacs. ;) It's insanely powerful, you know.
+</p>
+
+<pre class="example">
+(require 'planner)
+(require 'bbdb)
+(defun sacha/bbdb-show-only-no-contact-since (date)
+  "Show only people who haven't been pinged since DATE or at all."
+  (interactive (list (planner-read-date)))
+  (let ((records bbdb-records)
+        new-records
+        last-match
+        omit
+        notes)
+    (while records
+      ;; Find the latest date mentioned in the entry
+      (setq notes (or (bbdb-record-notes (caar records)) ""))
+      (setq last-match nil omit nil)
+      (while (string-match
+              "[0-9][0-9][0-9][0-9]\\.[0-9][0-9]\\.[0-9][0-9]"
+              notes
+              (or last-match 0))
+        (unless (string&gt; date (match-string 0 notes))
+          (setq omit t)
+          (setq last-match (length notes)))
+        (setq last-match (match-end 0)))
+      (unless (and last-match omit)
+        (add-to-list 'new-records (caar records) t))
+      (setq records (cdr records)))
+    (bbdb-display-records new-records)))
+</pre>
+
+<p>
+One of the other things I'd like to smooth over is keeping track of
+ who owes whom e-mail&#x2026; &lt;laugh&gt;
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>,
+<a href="http://www.technorati.com/tag/planner">planner</a>,
+<a href="http://www.technorati.com/tag/networking">networking</a>,
+<a href="http://www.technorati.com/tag/hack">hack</a>,
+<a href="http://www.technorati.com/tag/elisp">elisp</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

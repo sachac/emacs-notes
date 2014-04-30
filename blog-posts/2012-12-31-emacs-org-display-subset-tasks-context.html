@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Org: Display a subset of tasks by context</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Org: Display a subset of tasks by context</h1>
+<p>
+December 31st, 2012 -
+<a href="http://sachachua.com/blog/p/24310"><a href="http://sachachua.com/blog/p/24310">http://sachachua.com/blog/p/24310</a></a>
+</p>
+
+<p>
+I wanted to get a quick preview of my top three tasks by context. Since
+<code>org-tags-view</code> didn't seem to have a built-in way to limit the
+ number of displayed items, I used <code>defadvice</code> to add my own. Here's the
+<a href="http://dl.dropbox.com/u/3968124/sacha-emacs.html#subset">relevant code
+from my Emacs configuration</a>:
+</p>
+
+<pre class="example">
+(defvar sacha/org-agenda-limit-items nil "Number of items to show in agenda to-do views; nil if unlimited.")
+(defadvice org-agenda-finalize-entries (around sacha activate)
+  (if sacha/org-agenda-limit-items
+      (progn
+        (setq list (mapcar 'org-agenda-highlight-todo list))
+        (if nosort
+          (setq ad-return-value
+            (subseq list 0 sacha/org-agenda-limit-items))
+          (when org-agenda-before-sorting-filter-function
+            (setq list (delq nil (mapcar org-agenda-before-sorting-filter-function list))))
+          (setq ad-return-value
+                (mapconcat 'identity
+                           (subseq
+                            (sort list 'org-entries-lessp)
+                            0
+                            sacha/org-agenda-limit-items)
+                           "\n"))))
+    ad-do-it))
+</pre>
+
+<p>
+and the snippet from my
+<a href="http://dl.dropbox.com/u/3968124/sacha-emacs.html#agenda_commands">org-agenda-custom-commands</a>:
+</p>
+
+<pre class="example">
+(setq org-agenda-custom-commands
+  '(
+    ;; ... other commands go here
+    ("0" "Block agenda"
+         ((tags-todo "+@phone")
+          (tags-todo "+@work")
+          (tags-todo "+@drawing")
+          (tags-todo "+@coding")
+          (tags-todo "+@writing")
+          (tags-todo "+@computer")
+          (tags-todo "+@home"))
+         ((org-agenda-sorting-strategy '(priority-up effort-down))
+          (sacha/org-agenda-limit-items 3)))
+        (")" "Block agenda"
+         ((tags-todo "+@phone")
+          (tags-todo "+@work")
+          (tags-todo "+@drawing")
+          (tags-todo "+@coding")
+          (tags-todo "+@writing")
+          (tags-todo "+@computer")
+          (tags-todo "+@home"))
+         ((org-agenda-sorting-strategy '(priority-down effort-down))
+          (sacha/org-agenda-limit-items nil)))
+        ("9" "Unscheduled by context"
+         ((tags-todo "+@phone")
+          (tags-todo "+@work")
+          (tags-todo "+@drawing")
+          (tags-todo "+@coding")
+          (tags-todo "+@writing")
+          (tags-todo "+@computer")
+          (tags-todo "+@home"))
+         ((org-agenda-skip-function
+           (lambda nil
+             (org-agenda-skip-entry-if (quote scheduled) (quote deadline)
+                                       (quote regexp) "\n]+&gt;")))
+          (org-agenda-sorting-strategy '(priority-down effort-down))
+          (sacha/org-agenda-limit-items 3)))
+    ;; ... more after this
+))
+</pre>
+
+<p>
+This way, I can see all of my common contexts on one screen, and I can
+decide what I want to work on first.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

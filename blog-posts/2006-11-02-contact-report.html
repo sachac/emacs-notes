@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Contact report</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Contact report</h1>
+<p>
+November 2nd, 2006 -
+<a href="http://sachachua.com/blog/p/3996"><a href="http://sachachua.com/blog/p/3996">http://sachachua.com/blog/p/3996</a></a>
+</p>
+
+<p>
+I started tracking e-mail sent on 2006.09.01 with a
+ <a href="http://sachachua.com/notebook/wiki/2006.09.01#2">nifty piece of Emacs
+Lisp code</a> I wrote just for the
+ purpose. Now I have two months of interesting data which include not
+ only e-mail but also the occasional in-person contact or phone call
+ that I remember to note. It's not complete &#x2013; e-mail's the only thing
+ that gets automatically tracked &#x2013; but it does give me interesting
+ information. Here's the contact report for your amusement:
+</p>
+
+<p>
+<a href="http://sachachua.com/notebook/wiki/2006.10#contact">Contact report</a>
+</p>
+
+<p>
+It's sorted by overall frequency and then by regular frequency.
+ Warning! Parentheses follow.
+</p>
+
+<pre class="example">
+(defun sacha/count-matches (regexp string)
+  (let ((count 0)
+        (start 0))
+    (while (string-match regexp string start)
+      (setq start (match-end 0)
+            count (1+ count)))
+    count))
+
+(defun sacha/bbdb-contact-report-as-alist (&amp;rest regexps)
+  "Creates a list of (name count-regexp1 count-regexp2 count-regexp3)..."
+  (setq regexps (reverse regexps))
+  (delq nil
+        (mapcar
+         (lambda (rec)
+           (when (bbdb-record-name (car rec))
+             (let ((reg regexps)
+                   (notes (bbdb-record-notes (car rec)))
+                   list)
+               (while reg
+                 (setq list (cons (sacha/count-matches (car reg) notes)
+                                  list))
+                 (setq reg (cdr reg)))
+               (cons (sacha/planner-bbdb-annotation-from-bbdb rec)
+                     list))))
+         bbdb-records)))
+
+(defun sacha/bbdb-alist-sort-by-total (alist)
+  "Sort ALIST by total contact."
+  (sort alist 'sacha/bbdb-contact-sort-predicate))
+
+(defun sacha/bbdb-contact-sort-predicate (a b)
+  (and a b
+       (let ((count-a (apply '+ (cdr a)))
+             (count-b (apply '+ (cdr b))))
+         (or
+          (&gt; count-a count-b)
+          (and (= count-a count-b)
+               ;; If equal, look at the subtotal of the rest
+               (sacha/bbdb-contact-sort-predicate (cdr a) (cdr b)))))))
+
+(defun sacha/bbdb-kill-contact-barchart (alist)
+  "Kill a barchart with the contact report for ALIST."
+  (kill-new
+   (mapconcat
+    (lambda (entry)
+      (concat
+       (car entry)
+       " | "
+       (mapconcat (lambda (count)
+                    (if (= count 0)
+                        " "
+                      (make-string count ?-)))
+                  (cdr entry)
+                  " | ")))
+    alist
+    "\n")))
+
+;; Usage: (sacha/bbdb-kill-contact-barchart
+;;         (sacha/bbdb-alist-sort-by-total
+;;          (sacha/bbdb-contact-report-as-alist "2006.09" "2006.10")))
+;; Then yank (paste) this into another buffer
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/gnus">gnus</a>,
+<a href="http://www.technorati.com/tag/planner">planner</a>
+</p>
+
+<p>
+Random Emacs symbol: standard-display-cyrillic-translit &#x2013; Command:
+Display a cyrillic buffer using a transliteration.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

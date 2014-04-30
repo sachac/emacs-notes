@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Org mode and publishing a weekly review</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Org mode and publishing a weekly review</h1>
+<p>
+September 11th, 2010 -
+<a href="http://sachachua.com/blog/p/8375"><a href="http://sachachua.com/blog/p/8375">http://sachachua.com/blog/p/8375</a></a>
+</p>
+
+<p>
+2010-09-11 Sat 08:00
+</p>
+
+<p>
+I like using Emacs <a href="http://www.orgmode.org">Org-mode</a> to organize my
+notes. One of the things it makes it easy to do is to keep a weekly
+review. I used to switch between using Windows Live Writer and using
+Emacs Org to draft the post, but with org2blog, I've been using Org more
+and more. Here's how I use it.
+</p>
+
+<p>
+At the beginning of my ~/personal/organizer.org, I have a headline for *
+Weekly review. Underneath it is a template that makes it easy for me to
+review my current projects and make sure that I've got next actions for
+each of them. Below that is a reverse-chronological list of weekly
+reviews, with the most recent weekly review first. This allows me to
+easily review my weekly priorities and copy that into a new entry.
+Here's what the first part of my Org file looks like (minus the spaces
+at the beginning of the line)
+</p>
+
+<pre class="example">
+* Weekly review
+** Template
+*** Plans for next week
+**** Work
+- [ ] *Support Classroom to Client:*
+- [ ] *Build Connections Toolkit:*
+- [ ] *Organize Idea Labs:*
+- [ ] *Build career:*
+**** Relationships
+- [ ] *Plan Wedding:*
+**** Life
+- [ ] *Sew dress:*
+- [ ] *Improve productivity:*
+** Week ending September 12, 2010
+*** From last week's plans
+**** Work
+- [X] *Classroom to Client:* Create community and structure online resoruces
+- [X] *Connections Toolkit:* Build Activities reporter
+- [X] *Classroom to Client:* Format Idea Lab reference presentation
+- [X] *Idea Labs:* Assist with planning, process RSVPs
+- [X] *Career:* Set up Ruby on Rails
+- Helped Darrel Rader with blog feed
+- Helped Sunaina with Notes e-mail conversion
+- Finalized Idea Lab reference
+- Had great conversation with Boz, Rooney, Kieran, etc. about culture and sharing
+- Followed up on expertise location, sent draft report
+- Collected interesting Lotus Connections practices into a presentation
+- Put together match-up slide for IBM acquisitions
+**** Relationships
+- [X] *Wedding:* Plan NYC trip
+**** Life
+- [ ] *Sew dress:* Transfer dots and mark stitching lines
+- [X] *Chair:* Paint and assemble chair
+- [X] *Productivity:* Tweak GTD process - use Org for my weekly review/project template
+- [X] *Productivity:* Organize files
+- Added weekly lifestream archive
+**** Plans for next week
+***** Work
+- [ ] *Support Classroom to Client:* Collect lessons learned and create new material
+- [ ] *Build Connections Toolkit:* Make GUI
+- [ ] *Organize Idea Labs:* Update invitation template
+- [ ] *Build career:* Go through Ruby on Rails tutorials
+- [ ] *Build career:* Prototype Drupal site and learn about new practices along the way
+- [ ] *Build career:* Mentor people
+***** Relationships
+- [ ] *Plan wedding:* Plan BBQ reception
+- [ ] *Plan wedding:* Make checklist and timeline for cleaning up, etc.
+***** Life
+- [ ] *Sew dress:* Machine-baste pieces together
+- [ ] *Improve productivity:* File inbox items from my Org file
+</pre>
+
+<p>
+Most of the time, I leave the template section collapsed, and the “Plans
+from last week” expanded. Throughout the week, I cross items off and add
+quick notes about other accomplishments. When I reach the next week, I
+create a new entry, move the “Plans for next week” subtree and rename it
+“From last week's plans”. When I do my weekly review (or throughout the
+week, as I notice new items), I create a “Plans for next week” section
+and fill it in. The editing can easily be automated, but I'll tinker
+with it a bit first before writing code.
+</p>
+
+<p>
+This approach means duplicate information in my task list. It would be
+interesting to use TODO items instead of list items for tracking my
+weekly priorities, with possible integration with my web-based task list
+through org-toodledo. However, I'd need to write code to make the TODO
+items publish as neatly as this list gets published using org2blog, and
+I don't feel like going into that yet.
+</p>
+
+<p>
+Anyway, that's how I'm currently doing it. =)
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

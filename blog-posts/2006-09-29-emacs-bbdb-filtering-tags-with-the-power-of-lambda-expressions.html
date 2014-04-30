@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs BBDB: Filtering tags with the power of lambda expressions</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs BBDB: Filtering tags with the power of lambda expressions</h1>
+<p>
+September 29th, 2006 -
+<a href="http://sachachua.com/blog/p/3896"><a href="http://sachachua.com/blog/p/3896">http://sachachua.com/blog/p/3896</a></a>
+</p>
+
+<p>
+What do you do when you're into both Emacs geeks and social
+ networking? Well, you build a really really weird contact management
+ tool, that's what!
+</p>
+
+<p>
+One of the things I often need to do is filter my contacts for a
+ particular set of interests. I would have no idea how to do this in
+ Microsoft Outlook and other proprietary contact management systems.
+ Because Emacs is infinitely programmable, though, I can just hack it
+ in.
+</p>
+
+<p>
+You'd expect the intersection of the set “emacs geek” and the set
+ “social networker” to be a null set or a singleton (me!). As it turns
+ out, there's at least one other geek in this space &#x2013; hooray!
+</p>
+
+<p>
+Paul Lussier's been bouncing all sorts of
+ crazy ideas off me, which explains all the weird
+ porridge-and-toe-nails posts of Emacs Lisp code on my blog lately.
+ He's responsible for my puttting together yesterday's LinkedIn
+ importer. Today, he wrote:
+</p>
+
+<blockquote>
+<p>
+Then found your sacha/bbdb-search-tags stuff which
+ totally, completely rocks. I just wish I had the first inkling as to
+ how it worked :) Now, the question I have is: How can I use
+ sacha/bbdb-search-tags to search for entries which are tagged with
+one
+ label, but NOT with another? For example, I want to search on: (and
+ (taq eq “planner”) (not (tag eq “muse”)))
+</p>
+</blockquote>
+
+<p>
+I'd completely forgotten about sacha/bbdb-search-tags! Anyway, I'd
+ been meaning to write a fancy alias management thing for a while now,
+ and this code does a reasonable job for me. I can now filter my
+ displayed records by arbitrary Lisp expressions, bringing me closer to
+ insane contact relationship management. I mean, c'mon&#x2026;
+</p>
+
+<pre class="example">
+;; M-x sacha/bbdb-filter-by-alias-function RET
+;;     (lambda (aliases) (and (member "planner" aliases)
+;;                       (not (member "muse" aliases))))) RET
+</pre>
+
+<p>
+If I do this often enough, I might make up an easier syntax, but
+ lisp expressions work fine for me.
+</p>
+
+<p>
+MWAHAHAHAHA!
+</p>
+
+<p>
+Here's the code:
+</p>
+
+<pre class="example">
+;;;_+ Mail aliases
+
+;; Code for working with aliases
+
+;; You can use "a" (bbdb-add-or-remove-mail-alias) in BBDB buffers to add
+;; a mail alias to the current entry, or "* a" to add a mail alias to
+;; all displayed entries.
+
+;; Goal: Be able to specify ALIAS and ALIAS
+;; M-x sacha/bbdb-filter-displayed-records-by-alias RET alias alias
+;; Goal: Be able to specify ALIAS or ALIAS
+;; C-u M-x sacha/bbdb-filter-displayed-records-by-alias RET alias alias
+;; Goal: Be able to specify not ...
+;; M-x sacha/bbdb-omit-displayed-records-by-alias RET alias alias
+;; C-u M-x sacha/bbdb-omit-displayed-records-by-alias RET alias alias
+
+(defun sacha/bbdb-filter-by-alias-match-all (query-aliases record-aliases)
+  "Return non-nil if all QUERY-ALIASES are in RECORD-ALIASES."
+  (let ((result t))
+    (while query-aliases
+      (unless (member (car query-aliases) record-aliases)
+        (setq query-aliases nil
+              result nil))
+      (setq query-aliases (cdr query-aliases)))
+    result))
+
+(defun sacha/bbdb-filter-by-alias-match-any (query-aliases record-aliases)
+  "Return non-nil if any in QUERY-ALIASES can be found in RECORD-ALIASES."
+  (let (result)
+    (while query-aliases
+      (when (member (car query-aliases) record-aliases)
+        (setq query-aliases nil
+              result t))
+      (setq query-aliases (cdr query-aliases)))
+    result))
+
+;; Moved this to a convenience function so that we don't
+;; have to deal with invert and property splitting.
+(defun sacha/bbdb-filter-by-alias (bbdb-records
+                                   alias-filter-function
+                                   query
+                                   &amp;optional invert)
+  "Return only the BBDB-RECORDS that match ALIAS-FILTER-FUNCTION.
+ALIAS-FILTER-FUNCTION should accept two arguments:
+ - QUERY, a list of keywords to search for
+ - aliases, a list of keywords from the record
+If INVERT is non-nil, return only the records that do
+not match."
+  (delq nil
+        (mapcar
+         (lambda (rec)
+           (if (funcall alias-filter-function
+                        query
+                        (split-string
+                         (or (bbdb-record-getprop
+                              (if (vectorp rec)
+                                  rec
+                                (car rec))
+                              propsym) "")
+                         "[ \n\t,]+"))
+               (when (null invert) rec)
+             (when invert rec)))
+         bbdb-records)))
+
+;; Splitting this into two functions because of interactive calling.
+(defun sacha/bbdb-filter-displayed-records-by-alias (query &amp;optional any)
+  "Display only records whose mail-aliases match QUERY.
+If ANY is non-nil, match if any of the keywords in QUERY are
+present.
+See also `sacha/bbdb-omit-displayed-records-by-alias'."
+  (interactive (list
+                (let ((crm-separator " "))
+                  (completing-read-multiple
+                   "Mail aliases: "
+                   (bbdb-get-mail-aliases)))
+                current-prefix-arg))
+  (when (stringp query)
+    (setq query (split-string query "[ \n\t,]+")))
+  (bbdb-display-records
+   (sacha/bbdb-filter-by-alias-by-function
+    (or bbdb-records (bbdb-records))
+    (if any
+        'sacha/bbdb-filter-by-alias-match-any
+      'sacha/bbdb-filter-by-alias-match-all)
+    query)))
+
+;; Splitting this into two functions because of interactive calling.
+(defun sacha/bbdb-omit-displayed-records-by-alias (query &amp;optional any)
+  "Display only records whose mail-aliases do not match QUERY.
+If ANY is non-nil, match if any of the keywords in QUERY are
+present.
+
+See also `sacha/bbdb-filter-displayed-records-by-alias'."
+  (interactive (list
+                (let ((crm-separator " "))
+                  (completing-read-multiple
+                   "Mail aliases: "
+                   (bbdb-get-mail-aliases))
+                  current-prefix-arg)))
+  (when (stringp query)
+    (setq query (split-string query "[ \n\t,]+")))
+  (bbdb-display-records
+   (sacha/bbdb-filter-by-alias-by-function
+    (or bbdb-records (bbdb-records))
+    (if any
+        'sacha/bbdb-filter-by-alias-match-any
+      'sacha/bbdb-filter-by-alias-match-all)
+    query
+    t)))
+
+;;;_+ Advanced mail alias queries
+
+;; Goal: Use complicated lambda expressions to filter displayed records
+;; M-x sacha/bbdb-filter-by-alias-function RET
+;;     (lambda (aliases) (and (member "planner" aliases)
+;;                       (not (member "muse" aliases))))) RET
+;; Thanks to Paul Lussier for the suggestion!
+
+(defun sacha/bbdb-filter-by-alias-function (bbdb-records
+                                            alias-filter-function)
+  "Return only the BBDB-RECORDS that match ALIAS-FILTER-FUNCTION.
+ALIAS-FILTER-FUNCTION should accept one argument:
+ - aliases, a list of keywords from the record."
+  (interactive (list (or bbdb-records (bbdb-records))
+                     (read t)))
+  (let (records)
+    (setq records
+          (delq nil
+                (mapcar
+                 (lambda (rec)
+                   (when (funcall alias-filter-function
+                                  (split-string
+                                   (or (bbdb-record-getprop
+                                        (if (vectorp rec)
+                                            rec
+                                          (car rec))
+                                        propsym) "")
+                                   "[ \n\t,]+"))
+                     rec))
+                 bbdb-records)))
+    (if (interactive-p) (bbdb-display-records records))
+    records))
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/networking">networking</a>,
+<a href="http://www.technorati.com/tag/crm">crm</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Problem with footnote.el and auctex</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Problem with footnote.el and auctex</h1>
+<p>
+March 21st, 2004 -
+<a href="http://sachachua.com/blog/p/1909"><a href="http://sachachua.com/blog/p/1909">http://sachachua.com/blog/p/1909</a></a>
+</p>
+
+<p>
+From Rainer Volz:
+</p>
+
+<blockquote>
+<p>
+In case anybody has the same problem, I (probably) found the source
+and a
+ workaround.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+The error “Symbol's function definition is void: TeX-add-style-hook”
+is caused
+ by the footnote-mode, which in turn is loaded by muse-mode, as a
+default minor
+ mode in “Muse/Muse Mode/Muse Mode Hook”.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+Turning footnote-mode off lets me enter muse-mode (and planner-mode)
+without
+ the error. Since I rarely use footnotes I can live without
+footnote-mode.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+If you can't: several messages found on the net seem to indicate that
+the real
+ source of the problem is a path/duplicate file problem between the
+normal
+ texinfo.el and a texinfo.el supplied by Auctex. footnote-mode tries
+to load
+ the normal texinfo.el but gets the Auctex version, which then tries
+to run the
+ function “TeX-add-style-hook”. A solution could be to change the
+load-path for
+ Emacs libraries or to deinstall Auctex.
+</p>
+</blockquote>
+
+<blockquote>
+<p>
+Hope that helps,
+ Raine
+</p>
+</blockquote>
+
+<p>
+E-Mail from Rainer Volz
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

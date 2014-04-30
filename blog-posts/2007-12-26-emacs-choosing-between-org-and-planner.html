@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Choosing between Org and Planner</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Choosing between Org and Planner</h1>
+<p>
+December 26th, 2007 -
+<a href="http://sachachua.com/blog/p/4540"><a href="http://sachachua.com/blog/p/4540">http://sachachua.com/blog/p/4540</a></a>
+</p>
+
+<p>
+<a href="http://www.cubiclemuses.com/">jaaronfarr</a>
+<a href="http://sachachua.com/wp/2007/12/23/one-day-with-planner/#comment-177">asked
+me</a> why I switched from Planner to Org. Both of them are popular
+personal information managers for Emacs, and both of them have
+practically all the features I need. They both do a good job at helping
+people
+ manage tasks, schedule, and notes. If you have a few
+ months to explore this, I suggest that you try both for at least a
+ month each. On the other hand, if you want quick results, some time
+ thinking about how you plan can save you more time later.
+</p>
+
+<p>
+I tried out Org because I was working on a chapter about schedule
+ management and it wasn't fair to just rely on the manual or the
+ mailing list. In the beginning, I
+ <a href="http://sachachua.com/wp/2007/10/10/planner-and-org/">felt
+frustrated</a> by the lack of things I'd gotten used to in Planner:
+ the freedom to edit anything on my day page, little conveniences like
++2tue to mean two Tuesdays from now (which Carsten has just added),
+publishing my blog&#x2026;
+</p>
+
+<p>
+After two months of using Org almost every day, I'm starting to
+ understand it. I've come to appreciate the ease of working with an
+ outline. I love the way it clocks time. I find the daily and weekly
+ views really helpful. I've hacked stuff for it: time/load estimation,
+ time reporting, next action summaries, agenda publishing&#x2026; I'm fairly
+deeply
+</p>
+
+<p>
+As a geek, I have to confess&#x2014;I like Planner more. Planner is more fun
+ to code. Maybe it's because I've spent years with it, and I know my
+ way around the source.
+</p>
+
+<p>
+Maybe it's because we split Planner up into lots of little pieces that
+ can be reused and advised. Maybe the modularity of Planner is because
+ chunks of the code were written on a computer with a teensy screen,
+ which forced me to write functions that fit 80×48 characters. (See,
+ that limitation was there for a reason!) There are plenty of entry
+ points. From time to time, I still find myself copying an entire
+ function in order to change something in the middle, but usually I can
+ just get away with wrapping something around something else. With Org,
+ I find myself doing a lot of copy-and-paste programming. I'd fix this
+ by breaking the functions down into smaller bits, but I don't have the
+ brainspace right now. Maybe after the book.
+</p>
+
+<p>
+Org is better for my brain, though. It gives me a better overview of
+ both the ground-level tasks (what am I going to do right now, today,
+ this week) as well as the 50,000-foot view (what are my big projects)?
+ Planner's good at the ground-level tasks, but the overview's always
+ been a little awkward because it has to visit a number of files to get
+ a big picture. Org handles that easily.
+</p>
+
+<p>
+And the one-place-for-data thing of Org is pretty cool, too. Org
+ dynamically generates reports, which could take a bit longer if you
+ have a large Org file. Planner copies data wherever it makes sense, so
+ you'd have a copy of the task on your day page and a copy of the task
+ on your plan page. Plan pages can get out of sync unless you're either
+ religious about using planner-edit-task-description and other
+ functions to edit your tasks, or you use planner-id and you're lucky.
+ Timeclock entries get out of sync, too. You can trust Org more than
+ Planner in terms of consistency.
+</p>
+
+<p>
+So now I'm kinda in the middle of these two modules. I use Org for all
+ my work tasks, and I'm moving towards using it for all of my personal
+ tasks as well. But I still keep my blog entries in Planner, even
+ though they get mirrored into a WordPress blog on my web server.
+</p>
+
+<p>
+<b>What would I recommend?</b>
+</p>
+
+<p>
+It depends on the way you think. If you're the kind of person who was
+ never happy with day planners because you needed more space to doodle,
+ write notes, move things around, add other things, try out Planner. If
+ you like outlines and organizing your tasks into projects, try out
+ Org.
+</p>
+
+<p>
+Note that just because you work that way now doesn't mean you'll work
+ that way in the future. Don't worry. Emacs will adapt. You can switch
+ between Planner and Org fairly easily. Just give yourself a week or so
+ to adjust (or a month if you've customized your old tool extensively
+ and miss lots of things about it). Use the tool every day, and you'll
+ be fine.
+</p>
+
+<p>
+Have you tried out both? Or have you tried out one of them and are
+curious about the other? I'd love to learn from your experience or
+answer your questions.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/org">org</a>,
+<a href="http://www.technorati.com/tag/planner">planner</a>,
+<a href="http://www.technorati.com/tag/wickedcoolemacs">wickedcoolemacs</a>
+</p>
+
+<p>
+Random Emacs symbol: malayalam-composition-function &#x2013; Function: Compose
+Malayalam characters in REGION, or STRING if specified.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Caps lock as M-x</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Caps lock as M-x</h1>
+<p>
+August 4th, 2008 -
+<a href="http://sachachua.com/blog/p/5034"><a href="http://sachachua.com/blog/p/5034">http://sachachua.com/blog/p/5034</a></a>
+</p>
+
+<p>
+Inspired by Lennart Borgman's recent post on help.gnu.emacs about
+<a href="http://groups.google.com/group/gnu.emacs.help/msg/5196ae31694b6052">binding
+Caps Lock to M-x on Microsoft Windows</a>, I set my system up with the
+Linux equivalent.
+</p>
+
+<p>
+To make Caps Lock a shortcut for M-x, add the following lines to your
+~/.emacs:
+</p>
+
+<pre class="example">
+(if (eq window-system 'x)
+    (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = F13'"))
+(global-set-key [f13] 'execute-extended-command)
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

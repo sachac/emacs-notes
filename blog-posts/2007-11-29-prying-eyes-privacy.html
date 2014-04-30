@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Prying eyes privacy</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Prying eyes privacy</h1>
+<p>
+November 29th, 2007 -
+<a href="http://sachachua.com/blog/p/4478"><a href="http://sachachua.com/blog/p/4478">http://sachachua.com/blog/p/4478</a></a>
+</p>
+
+<p>
+<a href="http://tedroden.com/emacs/prying_eyes_privacy.ejr">Ted Roden uses
+ROT13 to protect his secrets from prying eyes</a>, which
+ comes in pretty handy when you're keeping gift lists on a shared
+ computer.
+</p>
+
+<p>
+My boyfriend would probably be stumped by that for all of two seconds.
+ See, my significant other is a geek, and can spot ROT13 a mile away. I
+ wouldn't be surprised if he could decode them in his head, as we used
+ to do cryptograms over meals. Morse is also easy to recognize and
+ break. If he were really determined to find out my secrets, that
+ wouldn't help at all.
+</p>
+
+<p>
+Nothing but strong encryption will do. Fortunately, Emacs makes this
+ very easy. I keep sensitive account information in a text file called
+ “numbers.gpg”. Following the instructions on
+</p>
+
+<p>
+<a href="http://www.emacswiki.org/cgi-bin/wiki/AutoEncryption"><a href="http://www.emacswiki.org/cgi-bin/wiki/AutoEncryption">http://www.emacswiki.org/cgi-bin/wiki/AutoEncryption</a></a>
+, I've set up
+ automatic GnuPG encryption for files ending in .gpg. When I open the
+ file, I'm prompted for my passphrase. When I save the file, the data
+ is encrypted again.
+</p>
+
+<p>
+If I want to encrypt just bits of a file, like the way I sometimes do
+ encrypted sections in blog entries, I select the region and use M-x
+ pgg-encrypt-region. This replaces the text with something like this:
+</p>
+
+<pre class="example">
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1.4.6 (GNU/Linux)
+
+hQEOAzQ6c9jHW5SMEAP/dJi8sc9wEqfODOxULzCJYtEY0CKqCIJmlP6jMUFcXmzk
+o/C2HSEl0wQ39r6+D85EH4AhMrFCDLuW70S+etcbeJKF03PKrb5PjdShQdO3v4vu
+0YokWEIZWdF4a/5bI+lcNz+YMv14ScsFjSLPRwz+OPXOX+rTQH/wxvYC5dLwUS8D
+/2/ermrKuis0RCTpYy7LXIARNB5Sji8gMqVuidmRh9UFwyukRIJZPcgZt9nXGlZe
+3HXvuWTh8Y36gsCa1iY/tN23yJel94d22hIzWdnqsWo31IsuLqquQ59mdgZjTu5a
+Wpvd8AFEy69J2WKdFEInYc2tjf/KtYFYb4mXDnv/exFC0kkByzM4+TBzCUGuC5Dj
+I0lwZnGOMTPvkW88Uru6gxfFEasQnMQeoDABOkMA+8PrX6ALSZJeNZG60Lallhu8
+Vmh+u9aBWcYO7DKP
+=++8d
+-----END PGP MESSAGE-----
+</pre>
+
+<p>
+Granted, my secret key is on the hard disk, but I use a strong
+ password for that one.
+</p>
+
+<p>
+All of this is overkill for holiday shopping lists, of course, as my
+ boyfriend would never think of snooping in my files anyway. But hey,
+ it's always a good idea to keep some parts of your life hush-hush. If
+ I were \<sub>really\</sub>_ paranoid, I'd think about something like OrdoEmacs in
+ Cryptonomicon. (Of \<sub>course\</sub>_ it had to be OrdoEmacs. OrdoVi would just
+ be an abomination. ;) )
+</p>
+
+<p>
+Ah, Emacs. You try doing \<sub>that\</sub>_ in Microsoft Word! ;)
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>
+</p>
+
+<p>
+Random Emacs symbol: eshell-deferrable-commands &#x2013; Variable: *A list of
+functions which might return an ansychronous process.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

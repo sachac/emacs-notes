@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Helping someone get started with Emacs and Org Mode through Org2Blog</title>
+<!-- 2014-04-30 Wed 17:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Helping someone get started with Emacs and Org Mode through Org2Blog</h1>
+<p>
+and LaTeX; troubleshooting steps
+</p>
+
+<p>
+August 30th, 2013 -
+<a href="http://sachachua.com/blog/p/25703"><a href="http://sachachua.com/blog/p/25703">http://sachachua.com/blog/p/25703</a></a>
+</p>
+
+<p>
+/Update 2013-08-30: By the way, here's the link to
+<a href="http://christopherolah.wordpress.com/2013/08/16/order-statistics-4/">Christopher
+Olah's first post using org2blog</a>. Neato!/
+</p>
+
+<p>
+[[<img src="http://commons.wikipedia.org/wiki/File:LaTeX_logo.svg][[[http://upload.wikimedia.org/wikipedia/commons/thumb/9/92/LaTeX_logo.svg/300px-LaTeX_logo.svg.png" alt="300px-LaTeX_logo.svg.png" />]]]]
+</p>
+
+<p>
+The LaTeX logo, typeset with LaTeX (Photo credit: Wikipedia)
+</p>
+
+<p>
+<a href="https://github.com/punchagan/org2blog">Org2Blog</a> is an awesome
+geek-friendly way of writing posts and publishing them to a
+WordPress-based blog. When <a href="http://christopherolah.com">Christopher
+Olah</a> told me that he'd gotten convinced to try Org Mode thanks to the
+enthusiastic recommendations from
+<a href="http://michaelnielsen.org/blog/michael-a-nielsen/">Michael Nielsen</a>
+and me, we figured that getting him sorted out with taking notes in Org
+and publishing them through Org2Blog to his WordPress.com-hosted blog
+would be an excellent way to start &#x2013; especially with inline images and
+LaTeX.
+</p>
+
+<p>
+Chris has promised to write a blog post about what he's learned, but
+he'll probably find these notes useful. Here's what we ran into when
+getting org2blog working on Ubuntu.
+</p>
+
+<p>
+<b>Need to install the files and set up the load paths</b>
+</p>
+
+<p>
+We downloaded the following and added them to an <code>~/.elisp</code> directory
+</p>
+
+<ul class="org-ul">
+<li><a href="https://github.com/punchagan/org2blog"><a href="https://github.com/punchagan/org2blog">https://github.com/punchagan/org2blog</a></a>
+</li>
+<li><a href="https://github.com/punchagan/metaweblog.el"><a href="https://github.com/punchagan/metaweblog.el">https://github.com/punchagan/metaweblog.el</a></a>
+</li>
+<li><a href="https://launchpad.net/xml-rpc-el"><a href="https://launchpad.net/xml-rpc-el">https://launchpad.net/xml-rpc-el</a></a>
+</li>
+</ul>
+
+<p>
+We also set up his <code>~/.init.d/emacs.el</code> to load the libraries, set the
+blog list, and load <code>ido-mode</code> and <code>icomplete-mode</code>.
+</p>
+
+<p>
+<b>Emacs / Org too old</b>
+</p>
+
+<p>
+Metaweblog and Org2blog didn't work well with Emacs 23 and Org 6. We
+upgraded to Emacs 24 with <code>apt-get install emacs24</code> in order to get Org
+</p>
+<ol class="org-ol">
+<li></li>
+</ol>
+
+<p>
+<b>Can't find library org</b>
+</p>
+
+<p>
+It turns out that you also need to <code>apt-get install emacs24-el</code> in order
+to include those libraries.
+</p>
+
+<p>
+<b>Org still too old for org2blog</b>
+</p>
+
+<p>
+We were having some problems with the version detection of org2blog, so
+we replaced the org2blog he downloaded with the version I forked at
+<a href="https://github.com/sachac/org2blog"><a href="https://github.com/sachac/org2blog">https://github.com/sachac/org2blog</a></a>
+, which I've been using with Org 7.
+</p>
+
+<p>
+Then we tested it with <code>org2blog/wp-post-subtree</code>, and that worked.
+Inline images with <code>org-toggle-inline-images</code> worked too, yay!
+</p>
+
+<p>
+Next step: viewing LaTeX fragments, since Chris does a lot of math.
+</p>
+
+<p>
+<b>dvipng required</b>
+</p>
+
+<p>
+<code>org-preview-latex-fragment</code> wanted dvipng to be installed, so we
+<code>apt-get install dvipng</code>.
+</p>
+
+<p>
+<b>LaTeX fragment preview showed blank images</b>
+</p>
+
+<p>
+We looked at the <code>*Messages*</code> buffer and found that the <code>.tex</code> files in
+<code>/tmp</code> could not be rendered by <code>dvipng</code> because <code>marvosym.sty</code> could
+not be found. We fixed that with
+<code>apt-get install texlive-fonts-recommended.</code>
+</p>
+
+<p>
+(Doing this on my own, I found that I also needed
+<code>apt-get install texlive-latex-extra</code> .)
+</p>
+
+<p>
+&#x2026; and then we could see <b>and publish</b> LaTeX fragments, which was
+awesome. =D
+</p>
+
+<p>
+<b>WordPress.com double-interpreted LaTeX fragments</b>
+</p>
+
+<p>
+Chris was having problems with LaTeX fragments when
+<code>org-export-with-LaTeX-fragments</code> was set to dvipng. It turns out that
+WordPress.com also interprets LaTeX, so it was getting confused by the
+alt tags. To solve this, use M-x customize
+org-export-with-LaTeX-fragmentsand choose <code>Leave math verbatim</code>. Then
+the LaTeX fragments are passed to WordPress, which renders them as PNGs.
+</p>
+
+<p>
+Hope that helps!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

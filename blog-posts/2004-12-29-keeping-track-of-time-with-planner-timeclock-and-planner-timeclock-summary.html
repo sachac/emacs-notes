@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Keeping track of time with planner-timeclock and</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Keeping track of time with planner-timeclock and</h1>
+<p>
+planner-timeclock-summary
+</p>
+
+<p>
+December 29th, 2004 -
+<a href="http://sachachua.com/blog/p/2522"><a href="http://sachachua.com/blog/p/2522">http://sachachua.com/blog/p/2522</a></a>
+</p>
+
+<p>
+Today I discovered the immense usefulness of keeping track of time. I
+ had converted the TODO my teammate sent me into entries in my
+ <a href="http://sachachua.com/notebook/wiki/JapanProject">JapanProject</a> plan
+page, and before starting my work I came up with
+ rough estimates of the time it would take me to do the tasks. I also
+ marked which tasks I felt were best suited for my coworker so that he
+ could get started without worrying about conflicts. I like working on
+ little tasks first, so I estimated the time it would take me to
+ complete each task and sorted by my estimates using the ‘sort' command
+ and some cutting and pasting.
+</p>
+
+<p>
+Then the fun began. I wanted to see if I could match my estimates.
+ Before I started working on a task, I used C-c TAB to mark it ‘in
+ progress' and start the clock. When I finished it, I used C-c C-x
+ (planner-task-done) to mark it completed and automatically clock out.
+ This is not yet done for cancelled tasks, so I clocked out of those
+ manually with C-c C-o (timeclock-out). I also clocked out whenever I
+ caught myself being distracted so that the totals wouldn't include the
+ time I spent chatting on #emacs or checking out del.icio.us links. ;)
+ At the end of the day, I used
+ ‘planner-timeclock-summary-show-range-filter' to show me the time
+ elapsed for all of the tasks I'd worked on over the past two days.
+ Here's the report for that project, edited to reflect how it looks on
+ my screen and annotated with comments:
+</p>
+
+<p>
+Timeclock summary report for 2004.12.28 &#x2013; 2004.12.29
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Project</td>
+<td class="left">Time</td>
+<td class="left">Ratio</td>
+<td class="left">Task</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<a href="http://sachachua.com/notebook/wiki/JapanProject">JapanProject</a>|
+0:23:17| 3.6%| Translate javadoc comment for Messages.java
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:33:48</td>
+<td class="right">5.3%</td>
+<td class="left">Translate javadoc comment for LoginAction.java</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">1:54:07</td>
+<td class="right">17.8%</td>
+<td class="left">Study Struts in Japanese</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:46:08</td>
+<td class="right">7.2%</td>
+<td class="left">Add javadoc tags for input, output and forwards</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">1:03:48</td>
+<td class="right">9.9%</td>
+<td class="left">Help review code</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:04:14</td>
+<td class="right">0.7%</td>
+<td class="left">Import todo list</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:00:37</td>
+<td class="right">0.1%</td>
+<td class="left">2min Fix Menu Action's unnecessary code (delegated)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:01:01</td>
+<td class="right">0.2%</td>
+<td class="left">2min Remove unnecessary list in UserRemoveSetupAction (cancelled)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:02:10</td>
+<td class="right">0.3%</td>
+<td class="left">2min Remove hard-coded database path from MenuAction</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:02:46</td>
+<td class="right">0.4%</td>
+<td class="left">30min Create a superclass for our action classes that handles initialization of database and handling of privileges &#x2013; remove all privilege handling in logic classes. &#x2026;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:07:32</td>
+<td class="right">1.2%</td>
+<td class="left">5min Add a method that returns the validity of a user in MUserPeer.</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:08:28</td>
+<td class="right">1.3%</td>
+<td class="left">5min Fix indentation</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:03:52</td>
+<td class="right">0.6%</td>
+<td class="left">10min Fix UserPeer so that it doesn't get null pointer exceptions</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:04:34</td>
+<td class="right">0.7%</td>
+<td class="left">5min Add current password field in user\<sub>modify</sub> page (cancelled)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:21:56</td>
+<td class="right">3.4%</td>
+<td class="left">15min Make a super class for our service classes that will receive the database connection. (cancelled)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:06:05</td>
+<td class="right">0.9%</td>
+<td class="left">10min Remove hard-coded constants from the Logic classes</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:10:55</td>
+<td class="right">1.7%</td>
+<td class="left">10min Move logic from UserBean.checkPassword to UserListLogic</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:01:20</td>
+<td class="right">0.2%</td>
+<td class="left">20min Guard against null pointer exceptions in peer classes</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:04:57</td>
+<td class="right">0.8%</td>
+<td class="left">10min Instead of displaying uneditable data with bean:write, just disable the html:text element</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:25:03</td>
+<td class="right">3.9%</td>
+<td class="left">10min Deploy 10:00 version</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:04:46</td>
+<td class="right">0.7%</td>
+<td class="left">5min Separate the configuration file of database and system into another uninternationalized property file.</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">2:09:48</td>
+<td class="right">20.2%</td>
+<td class="left">1h Decide on a naming convention for localized messages and update files</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:00:07</td>
+<td class="right">0.0%</td>
+<td class="left">20min Explain what is happening in UserModifyAction's nested ifs (pending)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">1:50:23</td>
+<td class="right">17.2%</td>
+<td class="left">2h Write Javadoc comments in English and Japanese to explain bean structure</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:04:19</td>
+<td class="right">0.7%</td>
+<td class="left">2h Write Javadoc comments in English and Japanese to explain peer operations (pending)</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="right">0:05:40</td>
+<td class="right">0.9%</td>
+<td class="left">20min Make a factory class for the database (pending)</td>
+</tr>
+
+<tr>
+<td class="left">Total:</td>
+<td class="right">10:41:41</td>
+<td class="right">100.0%</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Day began: 13:03:58, Day ended: 20:51:46
+ Time elapsed: 31:47:48, Time clocked: 10:41:41
+ Time clocked ratio: 33.6%
+</p>
+
+<p>
+The time record isn't perfect. I cancelled some tasks after thinking
+ about them a little and did some tasks simultaneously. Sometimes I
+ didn't notice that I was getting distracted, too. Still, having all of
+ that time information neatly summarized made me realize a number of
+ things.
+</p>
+
+<p>
+First, I goof off much less when I have a nice, broken-down task list
+ in front of me. There's just something about knowing there's a five-
+ or ten-minute hack you can get out of the way. I found myself looking
+ forward to getting to the next task just to see if I could make my
+ estimate. That said, seeing a five-minute task stretch and stretch due
+ to unforeseen problems did make me a little nervous. I should probably
+ just make generous estimates so that I don't end up with bugs because
+ of haste.
+</p>
+
+<p>
+Second, I don't goof off as much as I thought I did, although there's
+ still room for improvement. Yesterday's workday was 9:00 &#x2013; 12:00, 1:00
+</p>
+<ul class="org-ul">
+<li>5:30&#x2014;7.5 hours. Today was the last day of work, so cleaning and
+</li>
+</ul>
+<p>
+celebration interrupted my hacking at around 3:00&#x2014;5 hours of work.
+According to my task list, 10:41/12:30 was productive work. Hmm. 1:49
+hours unclocked time when I was thinking or goofing off.
+planner-timeclock-summary-show for today reveals that I actually
+clocked 5:30 today, which means the goofing off happened yesterday.
+That makes sense; I remember a pretty long unclocked segment
+recuperating from Japanese overload. (This was before we came up with
+the task list.)
+</p>
+
+<p>
+Third, keeping track of time is way, way cool even if you don't bill
+ anyone for your time.
+</p>
+
+<p>
+Like the idea? It's easy to try out. If you use the development
+ version of planner, just add
+</p>
+
+<pre class="example">
+(require 'planner-timeclock)
+(require 'planner-timeclock-summary)
+</pre>
+
+<p>
+to your ~/.emacs. If you want to try it out now, eval those statements
+ in your Emacs session. After that, simply use C-c TAB to ‘clock in' a
+ task before you start working on it, and use C-c C-x
+ (planner-task-done) to mark it completed. To see a summary of how you
+ spent your day, check out the different functions in
+ planner-timeclock-summary.
+</p>
+
+<p>
+If you use the stable version of Planner, you
+ can grab
+<a href="http://sacha.free.net.ph/notebook/emacs/dev/planner/planner-timeclock.el">planner-timeclock.el</a>
+ and
+<a href="http://sacha.free.net.ph/notebook/emacs/dev/planner/planner-timeclock-summary.el">planner-timeclock-summary.el</a>
+from
+</p>
+
+<p>
+<a href="http://sacha.free.net.ph/notebook/emacs/dev/planner/"><a href="http://sacha.free.net.ph/notebook/emacs/dev/planner/">http://sacha.free.net.ph/notebook/emacs/dev/planner/</a></a>
+, try out the
+ dev version, or cherry-pick the relevant arch patches. If it works for
+ you too, please e-mail me so that we can merge it into stable! =) (I
+ tend to trust myself very little, seeing how I manage to screw up dev
+ from time to time.)
+</p>
+
+<p>
+Happy hacking!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

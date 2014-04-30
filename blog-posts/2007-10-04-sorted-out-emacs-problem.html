@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sorted out Emacs problem</title>
+<!-- 2014-04-30 Wed 17:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sorted out Emacs problem</h1>
+<p>
+October 4th, 2007 -
+<a href="http://sachachua.com/blog/p/4383"><a href="http://sachachua.com/blog/p/4383">http://sachachua.com/blog/p/4383</a></a>
+</p>
+
+<p>
+I compiled Emacs from CVS yesterday, badly breaking it in X11. It would
+die horribly in a segmentation fault whenever I started it in graphical
+mode, even if I specified -q &#x2014;no-site-file to make it skip all the
+configuration files. It worked just fine in console mode (-nw), but I
+happen to like being able to see images and different fonts in my Emacs,
+so that was a no go.
+</p>
+
+<p>
+For a moment, I was worried that Emacs had finally outgrown my
+computer's memory capacity. A little searching and some help on #emacs
+suggested that the problem might lie with fontconfig. I had removed a
+number of font packages in order to free up enough space for a system
+upgrade. Maybe that was the reason why Emacs was crashing on me! I
+tested it with this command:
+</p>
+
+<pre class="example">
+emacs -q --no-site-file -fn '-misc-fixed-*-*-*-*-*-*-*-*-*-*-*-*'
+</pre>
+
+<p>
+and Emacs loaded. Whee! I added the following to my ~/.Xdefaults to
+ make this happen automatically whenever I start Emacs.
+</p>
+
+<pre class="example">
+Emacs*font: -misc-fixed-*-*-*-*-*-*-*-*-*-*-*-*
+</pre>
+
+<p>
+Life is back to normal.
+</p>
+
+<p>
+Random Emacs symbol: planner-low-priority-task-face &#x2013; Face: Face for
+low-priority tasks.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Planner tasks from notes</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Planner tasks from notes</h1>
+<p>
+March 10th, 2004 -
+<a href="http://sachachua.com/blog/p/1867"><a href="http://sachachua.com/blog/p/1867">http://sachachua.com/blog/p/1867</a></a>
+</p>
+
+<p>
+Planner tasks from notes should update the notes page that they link
+ to while maintaining the special links. This means that
+ planner-jump-to-linked-task needs to be smarter.
+</p>
+
+<p>
+Let us look at case 1: Link to plan page note
+</p>
+
+<p>
+The plan page has a date link, no anchor. The date page has a plan
+ link with an anchor. Example:
+</p>
+
+<pre class="example">
+#A1  _ Foo (2004.03.11)
+</pre>
+
+<pre class="example">
+#A1  _ Foo ([[SomePage#1][SomePage]])
+</pre>
+
+<p>
+Problem! The plan page does not contain enough information to
+ reconstruct the link if necessary. I can't think of a neat way to fix
+ this yet. Can anyone?
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

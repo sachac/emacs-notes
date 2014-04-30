@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Hideshow</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Hideshow</h1>
+<p>
+October 11th, 2006 -
+<a href="http://sachachua.com/blog/p/3931"><a href="http://sachachua.com/blog/p/3931">http://sachachua.com/blog/p/3931</a></a>
+</p>
+
+<p>
+One of the things I love about vising irc.freenode.net #emacs is that
+helping people with their questions lets me discover all sorts of cool
+things about Emacs. Today's nugget? hideshow.el, which allows you to
+automatically hide / show code. (Equivalent of vim folding).
+</p>
+
+<p>
+I've added the following code to my config:
+</p>
+
+<pre class="example">
+(load-library "hideshow")
+(add-hook 'emacs-lisp-mode-hook
+          (lambda () (hs-minor-mode 1)
+            (hs-hide-all)
+            (set (make-variable-buffer-local 'my-hs-hide) t)))
+(defvar my-hs-hide t "Current state of hideshow for toggling all.")
+;;;###autoload
+(defun my-toggle-hideshow-all ()
+  "Toggle hideshow all."
+  (interactive)
+  (set (make-variable-buffer-local 'my-hs-hide) (not my-hs-hide))
+  (if my-hs-hide
+      (hs-hide-all)
+    (hs-show-all)))
+(global-set-key (kbd "C-c @ @") 'my-toggle-hideshow-all)
+(global-set-key (kbd "C-c @ h") 'hs-hide-block)
+(global-set-key (kbd "C-c @ s") 'hs-show-block)
+(global-set-key (kbd "C-c @ SPC") 'hs-show-block)
+</pre>
+
+<p>
+Sweet.
+</p>
+
+<p>
+&#x2026; and then I find that I already have a
+ <a href="http://sachachua.com/notebook/emacs/hideshow-config.el">hideshow
+config</a>, of course, and that
+ I added it on 2003.11.21&#x2026; &lt;bonk&gt;!
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+
+<p>
+Random Emacs symbol: timezone-parse-date &#x2013; Function: Parse DATE and
+return a vector [YEAR MONTH DAY TIME TIMEZONE].
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

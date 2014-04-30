@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>sacha/list-web-stats</title>
+<!-- 2014-04-30 Wed 16:58 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">sacha/list-web-stats</h1>
+<p>
+April 7th, 2004 -
+<a href="http://sachachua.com/blog/p/1953"><a href="http://sachachua.com/blog/p/1953">http://sachachua.com/blog/p/1953</a></a>
+</p>
+
+<p>
+Foo bar baz qux ba
+</p>
+
+<pre class="example">
+(defun sacha/list-web-stats (prefix)
+  (interactive (list current-prefix-arg))
+  (goto-char (point-min))
+  (let ((results) referrer page)
+    (while (re-search-forward "GET \\([^ ]+\\) [^\"]+\"[^\"]+\"\\([^\"]+\\)" nil t)
+      (setq page (match-string 1))
+      (setq referrer (match-string 2))
+      (when (string-match "\\(google\\.[^/]+\\)/search.+?q=\\([^&amp;]+\\)"
+                          referrer)
+        (setq referrer (concat (match-string 1 referrer) "://" (match-string 2 referrer))))
+      (add-to-list
+       'results
+       (if prefix
+           (concat page " " referrer)
+         (concat referrer " " page))))
+    (setq results (sort results 'string&lt;))
+    (with-current-buffer (get-buffer-create "*Web stats*")
+      (erase-buffer)
+      (while results
+        (insert (car results) "\n")
+        (setq results (cdr results)))
+      (pop-to-buffer (current-buffer)))))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

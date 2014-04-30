@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Drupal, Emacs, and templates: Module update functions</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Drupal, Emacs, and templates: Module update functions</h1>
+<p>
+August 6th, 2008 -
+<a href="http://sachachua.com/blog/p/5044"><a href="http://sachachua.com/blog/p/5044">http://sachachua.com/blog/p/5044</a></a>
+</p>
+
+<p>
+Drupal's coding conventions make it easier to hook into system behavior,
+but they also result in a lot of repetitive typing. For example, you can
+run code when upgrading a module by putting the code in a function named
+<i>modulename</i>\<sub>update\</sub>_/N/() in your module's install file. I found
+myself scrolling up and copy-pasting stuff too many times, so I decided
+to automate it instead.
+</p>
+
+<p>
+I've been using
+<a href="http://sachachua.com/wp/2008/07/26/yet-another-snippet-mode-for-emacs/">yasnippet</a>
+for my Emacs templates. All I needed to do to automate that little
+update bit was to write some code that figured out what the next update
+number should be. Here's the snippet file I've just added
+(~/elisp/snippets/php-mode/drupal-mode/\<sub>update</sub>):
+</p>
+
+<pre class="example">
+function `(sacha/drupal-module-name)`_update_`(sacha/drupal-module-update-number)`() {
+  $ret = array();
+  $0
+  $ret[] = array(
+    'success' =&gt; true,
+    'query' =&gt; '$1',
+  );
+  return $ret;
+}
+</pre>
+
+<p>
+The relevant functions from my ~/.emacs:
+</p>
+
+<pre class="example">
+(defun sacha/drupal-module-update-number ()
+  "Return the number of the next module update function.
+This is one more than the highest number used so far.
+This function should be called in a module's .install file."
+  (save-excursion
+    (save-restriction
+      (widen)
+      (goto-char (point-min))
+      (let ((module-name (sacha/drupal-module-name))
+        (max 0))
+    (while (re-search-forward
+        (concat "function[ \t\n]+" module-name "_update_\\([0-9]+\\)") nil t)
+      (setq max (max (string-to-number (match-string 1)) max)))
+    (number-to-string (1+ max))))))
+
+(defun sacha/drupal-module-name ()
+  "Return the Drupal module name for .module and .install files."
+  (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))
+</pre>
+
+<p>
+I can't think of how I'd do that in Eclipse. =) Don't get me wrong&#x2013;I
+still like Eclipse&#x2013;but I heart being able to hack my editor on the fly.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

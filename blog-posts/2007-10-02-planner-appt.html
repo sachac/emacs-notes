@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>planner-appt</title>
+<!-- 2014-04-30 Wed 16:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">planner-appt</h1>
+<p>
+October 2nd, 2007 -
+<a href="http://sachachua.com/blog/p/4379"><a href="http://sachachua.com/blog/p/4379">http://sachachua.com/blog/p/4379</a></a>
+</p>
+
+<p>
+Now that I've taken a closer look at it, I can see that planner-appt's
+ much cooler than the little hacks I'd been using to keep track of my
+ schedule. I'm still not sure if I need a separate schedule section,
+ because I've gotten used to managing my appointments in my task list.
+ It's nice to know that the option is there, though, and I like how
+ color-coding makes it easy to see which appointments are past and
+ which ones are coming up.
+</p>
+
+<p>
+Here's my config for planner-appt.el:
+</p>
+
+<pre class="example">
+;;;_+ Appointments
+(require 'planner-appt)
+(planner-appt-use-tasks-and-schedule)
+(planner-appt-insinuate)
+(setq planner-appt-update-appts-on-save-flag t)
+(setq planner-appt-sort-schedule-on-update-flag t)
+(setq planner-appt-schedule-cyclic-behavior 'future)
+(setq planner-appt-task-use-appointments-section-flag t)
+</pre>
+
+<p>
+I wonder how I can go about exporting my appointments&#x2026; &lt;muse&gt;
+</p>
+
+<p>
+Random Emacs symbol: x-uses-old-gtk-dialog &#x2013; Function: Return t if the
+old Gtk+ file selection dialog is used.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

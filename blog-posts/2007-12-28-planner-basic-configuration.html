@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Planner, basic configuration</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Planner, basic configuration</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Set up</a></li>
+<li><a href="#sec-2">Planner and day pages</a></li>
+<li><a href="#sec-3">Creating tasks</a></li>
+<li><a href="#sec-4">Marking tasks as done, pending, or cancelled</a></li>
+<li><a href="#sec-5">Rescheduling tasks</a></li>
+<li><a href="#sec-6">Review</a></li>
+</ul>
+</div>
+</div>
+<p>
+December 28th, 2007 -
+<a href="http://sachachua.com/blog/p/4544"><a href="http://sachachua.com/blog/p/4544">http://sachachua.com/blog/p/4544</a></a>
+</p>
+
+<p>
+If you're the kind of person who likes scribbling free-form tasks and
+ notes in your day planner, then Planner might be a good fit for you.
+ In this blog post, I'll show you how to use Planner to organize the
+ things you need to do by the day you need to do them, check the things
+ you need to do, mark tasks complete, and review what you've finished.
+ I assume that you've already got GNU Emacs 22 installed and that
+ you're comfortable with using Emacs as a text editor, although it
+ might not yet be your way of life. (Just you wait! Planner was the
+ thing that pushed me over the edge. ;) )
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Set up</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Here's the bare minimum you need in order to use Planner to manage
+ your tasks day by day. You'll need Planner, which is a separate
+ package that you can get from
+<a href="http://www.gna.org/projects/planner-el"><a href="http://www.gna.org/projects/planner-el">http://www.gna.org/projects/planner-el</a></a>
+ . As of this writing, Planner is at version 3.41. You'll also need
+ Muse, the markup engine that Planner is based on. You can get Muse
+ from
+<a href="https://gna.org/projects/muse-el"><a href="https://gna.org/projects/muse-el">https://gna.org/projects/muse-el</a></a> .
+As of this writing, Muse is at
+ version 3.11.
+</p>
+
+<p>
+Download the latest versions of Planner and Muse, and unpack them. If
+ you don't know where to unpack them, I suggest creating an ~/elisp
+ directory and extracting the archives to that directory. You should
+ end up with two new directories: ~/elisp/planner-3.41 and
+ ~/elisp/muse-3.11.
+</p>
+
+<p>
+Here's how to configure Planner:
+</p>
+
+<ol class="org-ol">
+<li>Create a directory such as ~/Plans . This is where your Planner pages
+</li>
+</ol>
+<p>
+will be.
+</p>
+
+<ol class="org-ol">
+<li>Add the following to your .emacs:
+</li>
+</ol>
+
+<pre class="example">
+;; Load paths - change as necessary
+(add-to-list 'load-path "~/elisp/planner-3.41")
+(add-to-list 'load-path "~/elisp/muse-3.11/lisp")  ;; (1)
+
+;; Basic configuration
+(require 'muse-project)
+(require 'planner-autoloads)
+(setq planner-project "WikiPlanner")
+
+;; Adjust this if you already have other Muse projects
+(setq muse-project-alist
+      '(("WikiPlanner"
+     ("~/Plans"                          ;; (2)
+      :default "TaskPool"                ;; (3)
+          :major-mode planner-mode
+          :visit-link planner-visit-link)))
+
+;; Some handy keyboard shortcuts
+(global-set-key (kbd "C-c d") 'planner-goto)                            ;; (4)
+(global-set-key (kbd "C-c t") 'planner-create-task-from-buffer)
+(global-set-key (kbd "&lt;f9&gt; d") 'planner-goto)                     ;; (5)
+(global-set-key (kbd "&lt;f9&gt; t") 'planner-create-task-from-buffer)
+(global-set-key (kbd "&lt;f9&gt; &lt;f9&gt;") 'planner-goto-today)      ;; (6)
+(global-set-key (kbd "&lt;f9&gt; &lt;f8&gt;") 'planner-goto-yesterday)  ;; (7)
+(global-set-key (kbd "&lt;f9&gt; &lt;f10&gt;") 'planner-goto-tomorrow)
+
+(plan)  ;; (8)
+</pre>
+
+<ul class="org-ul">
+<li>(1) The lisp/ subdirectory is added to the load-path, not the base
+directory.
+</li>
+<li>(2) Change this if you put your planner projects somewhere else.
+</li>
+<li>(3) Muse will open the default page if you open a project.
+</li>
+<li>(4) You'll use these two commands often, so it helps to keep them
+close by. You can remember them as C-c d(ate), which jumps to a
+Planner date, and C-c t(ask), which creates a Planner task.
+</li>
+<li>(5) I like dedicating one of my function keys to different Planner
+shortcuts. “F9 d(ate)” jumps to a Planner date and F9 t(ask) creates
+a task.
+</li>
+<li>(6) You'll check today's page frequently, so make it an easy-to-hit
+shortcut. I like F9 F9 because I can just tap the key twice to see my
+tasks and schedule.
+</li>
+<li>(7) This pair of keyboard shortcuts make it easy to navigate through
+pages.
+</li>
+<li>(8) If this line is one of the last few in your ~/.emacs, then your
+Planner page for the day will display every time you start Emacs.
+It's a good way to remember that it exists. ;)
+</li>
+</ul>
+
+<p>
+Evaluate the code with M-x eval-buffer, or restart Emacs. Then you're
+ ready to plan!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Planner and day pages</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The first thing you need to learn is how to get to day pages
+ quickly. Planner needs to be at least as fast as opening a paper-based
+ day planner and finding the right page. Here are the two keybindings
+ from the previous section on setting up Planner:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">F9 d(ate) or C-c d</td>
+<td class="left">planner-goto</td>
+<td class="left">Jumps to any day's page</td>
+</tr>
+
+<tr>
+<td class="left">F9 F9</td>
+<td class="left">planner-goto-today</td>
+<td class="left">Shows today's page</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+F9 d (planner-goto) is smart. You can click on a date in the calendar
+ that pops up, or navigate to a date and press RET. Typing in the date
+ is much faster. The date format is yyyy.mm.dd, and it understands
+ partial dates (mm.dd, or just dd).
+</p>
+
+<p>
+For example, if the date today is December 28, 2007, here's what
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="right" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="right">Example</td>
+<td class="right">Result</td>
+<td class="left">Explanation</td>
+</tr>
+
+<tr>
+<td class="right">.</td>
+<td class="right">2007.12.28</td>
+<td class="left">Today</td>
+</tr>
+
+<tr>
+<td class="right">30</td>
+<td class="right">2007.12.30</td>
+<td class="left">Which day in the current month</td>
+</tr>
+
+<tr>
+<td class="right">1.30</td>
+<td class="right">2007.01.30</td>
+<td class="left">Which day and month in the current year</td>
+</tr>
+
+<tr>
+<td class="right">2008.01.30</td>
+<td class="right">2008.01.30</td>
+<td class="left">The full date</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+planner-goto also understands relative dates, and this is where things
+ get more interesting. If you are looking at a day page, dates are
+ calculated based on the day you're currently looking at, or today if
+ you're not looking at a day page. This allows you to use “+2fri” to
+ jump to successive paydays or use -1 to see the day before the one
+ you're reading. Here are some examples that will show you what you can
+do:
+</p>
+
+<ol class="org-ol">
+<li>Jump to the day page for December 28, 2007 with F9 d or C-c d,
+specifying 2007.12.28 for the date.
+</li>
+<li>Use F9 d +5 to jump five days ahead. You should now see the page for
+2008.01.02.
+</li>
+<li>Use F9 d -3 to jump three days back. (2007.12.30)
+</li>
+<li>Use F9 d +tue to jump to the next Tuesday. (2008.01.01)
+</li>
+<li>Use F9 d -2fri to jump to two Fridays ago. (2007.12.21)
+</li>
+<li>Use F9 d +2wed2007.12.01 to jump to the second Wednesday after Dec 1,
+<ol class="org-ol">
+<li>(2007.12.12). +2wed01 would have worked, too.
+</li>
+</ol>
+</li>
+</ol>
+
+<p>
+(If you ever find yourself using a date shortcut like the one in (6),
+ please e-mail me, as I put that code in just for fun. =) )
+</p>
+
+<p>
+Practice jumping around to different dates using F9 d or C-c d, the
+ two shortcuts we set up earlier. If one of those shortcuts feels more
+ natural to you, go ahead and use it. (Or bind it to something else, if
+ you want.) While you're opening different day pages, write a few
+ reminders to yourself.
+</p>
+
+<p>
+The basic configuration I suggested also has some handy shortcuts for
+ going to the previous and next days. Press F9 F8
+ (planner-goto-yesterday) to go to the day before the one that's
+ currently displayed, and F9 F10 (planner-goto-tomorrow) to go to the
+ day after the one that's displayed. You'll find this handy when doing
+ your weekly planning. The standard shortcuts are C-c C-j C-y and C-c
+ C-j C-t. You may find those easier to type, but they were like a game
+ of Twister on my tiny keyboard. (This is also the reason why I've
+ remapped most of my keybindings. I simply can't do the
+ Escape-Meta-Alt-Control-Shift thing.)
+</p>
+
+<p>
+So now you know how to open different day pages. You can stop here and
+ already have a decent, minimalist day planner, using it like a
+ collection of text files that just happen to have useful navigational
+ commands. However, with a little more structure and some handy
+ shortcuts, you can be even more effective at managing your tasks.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Creating tasks</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Two of the keyboard shortcuts in the sample configuration are C-c t
+ and F9 t, both bound to planner-create-task-from-buffer. This is an
+ incredibly useful function, and it gets even better as you set up more
+ parts of Planner. The key idea behind planner-create-task-from-buffer
+ is that you should be able to quickly jot down a task and GET BACK TO
+ WORK RIGHT AWAY. No need to fiddle around with other files or dig your
+ planner out of your backpack. No switching to another application (at
+ least, if you do most of your work within Emacs). And if you set it
+ up, you even get hyperlinks back to whatever you were looking at,
+ saving you time in searching for the file you wanted to work on or the
+ e-mail you wanted to answer.
+</p>
+
+<p>
+Try it for yourself. Use C-c t, F9 t, or M-x
+ planner-create-task-from-buffer to create a task. Type in the task
+ description. For now, accept the default date and plan page. The task
+ will be created on today's page. The task will also be copied to the
+ <a href="http://sachachua.com/notebook/wiki/TaskPool">TaskPool</a> page. To view
+today's page, type F9 F9. You can use TAB
+ (muse-next-reference) to move the cursor to the next hyperlink, and
+ RET to visit the link.
+</p>
+
+<p>
+planner-create-task-from-buffer understands all the date shortcuts
+ that planner-goto does, so you can easily schedule a task for this
+ Saturday (+sat) or three days from now (+3). If you create a task
+ that's scheduled for some other day, you can either open the day page
+ with F9 d (planner-goto), or review it on the
+<a href="http://sachachua.com/notebook/wiki/TaskPool">TaskPool</a>.
+</p>
+
+<p>
+Okay. You've got day pages. You've got tasks. You probably want to
+ find out how to mark tasks as done before your growing TODO list turns
+ into a monster and eats you.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Marking tasks as done, pending, or cancelled</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+When you finish a task, go to the day page or the plan page it's on
+ and use C-c C-x (planner-task-done) to mark it as finished. Think of
+ it as marking completed tasks with a big X. In addition to the
+ satisfaction of seeing completed tasks grayed and crossed out, you'll
+ also see the completed tasks drop to the bottom of your task list when
+ you save the file. This makes it easy to see what else you need to
+ do. Just pick the next item off your list and keep working.
+</p>
+
+<p>
+Not quite done? You can mark it as pending with C-c C-p
+ (planner-task-pending). You can think of it as Pending or Postponed or
+ Procrastinated.
+</p>
+
+<p>
+Realized that you didn't need to do it after all? Either delete the
+ task with M-x planner-delete-task, or mark it as cancelled with C-c
+ M-C-x (planner-task-cancelled). Think of C-c M-C-x as similar to C-c
+ C-x (planner-task-done), but even better&#x2014;you've gotten away without
+ doing something. C-c M-C-x doesn't work on all terminals, so if your
+ computer gets confused and marks the task as done, call M-x
+ planner-task-cancelled instead.
+</p>
+
+<p>
+NOTE: If your task is on both a day page and a plan page, make sure
+ you use these Planner commands and M-x planner-edit-task-description
+ in order to change the task status or description, and M-x
+ planner-delete-task to delete the task. These commands update the
+ linked page as well. If not, your tasks could get out of sync.
+</p>
+
+<p>
+Even with your newfound powers of Planner task management, you'll
+ probably still be left with unfinished business at the end of the day.
+ Unfortunately, Planner does not have a M-x planner-dilate-time command,
+ so you'll just have to reschedule the tasks for another day.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Rescheduling tasks</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+If you wrote your tasks into your calendar using a paper-based
+ planner, you'd have to copy unfinished tasks to the next day one by
+ one. This is a powerful incentive to trim your task list and keep it
+ short. Planner can automatically copy unfinished tasks from the
+ previous days onto today's page, saving you a lot of scribbling. Do
+ not let this tempt you into procrastination.
+</p>
+
+<p>
+If you go back to the basic configuration, you'll notice that it ends
+ with one command:
+</p>
+
+<pre class="example">
+(plan)
+</pre>
+
+<p>
+This reviews the past few days of pages for unfinished tasks, carrying
+ them over to today's page. By default, the past 3 days are checked,
+ which should be enough to get you through a blissful no-computer
+ weekend. If you're in the habit of going for long spans of time
+ without opening Emacs (like 4 days! <b>gasp</b>), you may want to change
+ the line in your ~/.emacs to something like
+</p>
+
+<pre class="example">
+(plan 5)        ;; Check the last 5 days
+</pre>
+
+<p>
+or even
+</p>
+
+<pre class="example">
+(plan t)        ;; Check all days. Can be slow!
+</pre>
+
+<p>
+You can also call this interactively with something like C-u 5 M-x
+ plan, which checks the last 5 days.
+</p>
+
+<p>
+plan carries unfinished tasks from previous days to today. What if you
+ want to trim today's task list to a manageable size by proactively and
+ intentionally procrastinating things that you don't need to do today?
+ That's where planner-copy-or-move-task comes in.
+</p>
+
+<p>
+To reschedule a task, move your cursor to the task on the day or plan
+ page. Type C-c C-c (planner-copy-or-move-task) and specify the
+ date. Again, planner-copy-or-move-task understands all the Planner
+ date shortcuts. If you reschedule a task from a day page, remember
+ that relative dates will be calculated based on the day page. For
+ example, if you're on 2008.08.12 and you want to reschedule a task, +1
+ means 2008.08.13. If you reschedule a task from a plan page, dates are
+ relative to today.
+</p>
+
+<p>
+If you want to reschedule many tasks, you might find it more
+ convenient to use M-x planner-copy-or-move-region. Move to the
+ beginning of the first task you want to move, press C-SPC to mark the
+ beginning of the region, move to the end of the last task you want to
+ move, and call M-x planner-copy-or-move-region.
+</p>
+
+<p>
+Ruthlessly reschedule until your task list for today looks
+ manageable. A large task list can be overwhelming. It feels better to
+ complete everything on your task list and then add some more, than to
+ end each day with many unfinished tasks.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Review</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You've got your day pages. You've added and scheduled tasks. You've
+ checked them off. At the end of the week, you're wondering where all
+ the time went. Just hit F9 F9 (planner-goto-today) to jump to today's
+ page, and then use F9 F8 (planner-goto-yesterday) and F9 F10
+ (planner-goto-tomorrow) to navigate around. (See, those keybindings
+ were there for a reason!)
+</p>
+
+<p>
+But wait, there's more! I'll cover projects, timeclocking, and other
+ Planner goodies in an intermediate article on using Planner, so stay
+ tuned.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/planner">planner</a>,
+<a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/wickedcoolemacs">wickedcoolemacs</a>
+</p>
+
+<p>
+Random Emacs symbol: gnus-various &#x2013; Group: Other Gnus options.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

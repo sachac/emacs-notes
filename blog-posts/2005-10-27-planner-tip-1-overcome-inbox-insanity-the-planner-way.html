@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Planner tip #1: Overcome inbox insanity the Planner way</title>
+<!-- 2014-04-30 Wed 17:03 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Planner tip #1: Overcome inbox insanity the Planner way</h1>
+<p>
+October 27th, 2005 -
+<a href="http://sachachua.com/blog/p/3105"><a href="http://sachachua.com/blog/p/3105">http://sachachua.com/blog/p/3105</a></a>
+</p>
+
+<p>
+(641 words)
+</p>
+
+<p>
+Overloaded with e-mail? Overcome inbox insanity by using
+<a href="http://www.plannerlove.com">Planner</a> to
+ keep track of what you need to do. If you use Emacs as your mail
+ client, then Planner's automatic hyperlinking can help you capture and
+ organize your tasks.
+</p>
+
+<p>
+Capture
+</p>
+
+<p>
+Create planner tasks whenever e-mail requires you to act. That way,
+ you don't have to hunt through your inbox every time you need to
+ figure out what to work on. If your response to an e-mail will take
+ less than two minutes and you know you won't get distracted, go ahead
+ and act on it immediately; you don't need to capture it. If you want
+ to track your action for completeness, create a task for it. Planner
+ makes it so easy to capture and organize tasks that even two-minute
+ tasks are still worth recording.
+</p>
+
+<p>
+Tasks are automatically linked to the e-mail message being viewed,
+ making it easy to return to the original message for more details. You
+ can schedule tasks immediately or leave them on today's page. If you
+ want tasks to be undated by default, set planner-expand-name-default
+ to nil.
+</p>
+
+<p>
+Create planner tasks whenever you need to follow up a task you've
+ delegated to someone else. Assign it to a different plan page. If you
+ prefer to use a single plan page, make task sorting easier by adding a
+ keyword to the description (ex: #A \_ +waiting for year-end sales
+ report : E-Mail from Jim). This makes it easy to review all the things
+ you're waiting for.
+</p>
+
+<p>
+Write clear and concise task descriptions. “Prepare year-end sales
+ report” is a better task description than “Work on this”. Planner will
+ automatically add the e-mail author's name as a hyperlink, like “:
+ E-Mail from Kathy”.
+</p>
+
+<p>
+Organize
+</p>
+
+<p>
+Using Planner to keep track of your e-mail related tasks also makes it
+ easier for you to organize and plan your day. E-mail doesn't let you
+ specify when you want to work on something, but Planner lets you
+ schedule your tasks onto specific days. It can also carry over
+ unfinished tasks, so you know that nothing will slip through the
+ cracks.
+</p>
+
+<p>
+After you've read all your e-mail and responded to everything you
+ could quickly process, you can choose when to work on other tasks that
+ take more time. Review your list of e-mail-related tasks and start
+ organizing them.
+</p>
+
+<p>
+You can schedule a task onto a particular day by using
+ planner-copy-or-move-task (C-c C-c) while point is on the task. You
+ can specify actual dates (yyyy.mm.dd, mm.dd, or just dd), or you can
+ use Planner's relative dates features to schedule things for next
+ Friday (+fri), two days from now (+2), or even the 3rd Tuesday after
+ March 1 (+3tue3.1). Use planner-copy-or-move-region to schedule
+ multiple tasks.
+</p>
+
+<p>
+You can schedule tasks for particular times as well. Simply add time
+ (ex: @1000-1300) to your task description using
+ planner-edit-task-description (bind this to a shortcut key if you use
+ it often). Modules like planner-appt.el can extract the time
+ information and display your schedule, and you can change your
+ planner-sort-tasks-key-function to sort tasks by time first and then
+ by priority.
+</p>
+
+<p>
+And there you have it&#x2014;an organized way to make sense of your inbox by
+ making it easy to see just what you need to do.
+</p>
+
+<p>
+Set up
+</p>
+
+<ol class="org-ol">
+<li>Set up mail for Emacs, if you haven't done that already. If you're
+</li>
+</ol>
+
+<blockquote>
+<p>
+new to Emacs, I recommend checking out
+<a href="http://www.emacswiki.org"><a href="http://www.emacswiki.org">http://www.emacswiki.org</a></a> and
+ <a href="http://my.gnus.org"><a href="http://my.gnus.org">http://my.gnus.org</a></a> .
+</p>
+</blockquote>
+
+<ol class="org-ol">
+<li>Bind planner-create-task-from-buffer to a keyboard shortcut you can
+</li>
+</ol>
+
+<blockquote>
+<p>
+use from anywhere. For example, add the following line to your ~/emacs
+ in order to use C-c t as your create-task shortcut:
+</p>
+</blockquote>
+
+<pre class="example">
+(global-set-key "\C-ct" 'planner-create-task-from-buffer)
+</pre>
+
+<ol class="org-ol">
+<li>Load the Planner module corresponding to your preferred mail client:
+</li>
+</ol>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Gnus</td>
+<td class="left">planner-gnus.el</td>
+</tr>
+
+<tr>
+<td class="left">MH-E</td>
+<td class="left">planner-mhe.el</td>
+</tr>
+
+<tr>
+<td class="left">Rmail</td>
+<td class="left">planner-rmail.el</td>
+</tr>
+
+<tr>
+<td class="left">Unix mail</td>
+<td class="left">planner-unix-mail.el</td>
+</tr>
+
+<tr>
+<td class="left">VM</td>
+<td class="left">planner-vm.el</td>
+</tr>
+
+<tr>
+<td class="left">Wanderlust</td>
+<td class="left">planner-wl.el</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+For example, add
+</p>
+
+<pre class="example">
+(require 'planner-gnus)
+</pre>
+
+<p>
+to your ~/.emacs
+</p>
+
+<p>
+Now you can deal with inbox insanity the Planner way!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

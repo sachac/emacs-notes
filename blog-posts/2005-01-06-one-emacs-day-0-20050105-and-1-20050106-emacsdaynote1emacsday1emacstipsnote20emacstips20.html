@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>One #emacs day &#x2013; 0. 2005.01.05 and 1. 2005.01.06</title>
+<!-- 2014-04-30 Wed 17:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">One #emacs day &#x2013; 0. 2005.01.05 and 1. 2005.01.06</h1>
+<p>
+January 6th, 2005 -
+<a href="http://sachachua.com/blog/p/2551"><a href="http://sachachua.com/blog/p/2551">http://sachachua.com/blog/p/2551</a></a>
+</p>
+
+<p>
+(<i>EmacsDay:1</i>”<i>EmacsTips:20</i>)
+</p>
+
+<p>
+(Technically, one and a half, because this is the first entry)
+</p>
+
+<p>
+Here are interesting tidbits from <a href="//irc.freenode.net/#emacs">//irc.freenode.net/#emacs</a>
+</p>
+
+<p>
+Code
+</p>
+
+<ul class="org-ul">
+<li><code>M-x column-number-mode</code> makes Emacs show column numbers.
+<ul class="org-ul">
+<li><code>emms-locate</code> is a useful way to play selected media files.
+</li>
+<li>Powerful buffer switching: With either iswitchb or ido, C-x b C-s.
+</li>
+</ul>
+</li>
+</ul>
+<p>
+ido seems to be better than iswitchb for multitty Emacs, and comes with
+CVS GNU Emacs. iswitchb is in GNU Emacs and the edit-utils package for
+XEmacs. If you want to stick with iswitchb fulltime, add
+<code>(iswitchb-default-keybindings) to your init.el. - ess (emacs spreadsheet): ==set-variable set-goal-column nil</code>
+for neater navigation
+</p>
+<ul class="org-ul">
+<li>emms: <code>(define-key dired-mode-map [.] 'emms-play-dired)</code> after dired
+</li>
+</ul>
+<p>
+is already loaded
+</p>
+<ul class="org-ul">
+<li>Editing XML: Many people recommend nxml (GNU Emacs only). xsl-mode is
+</li>
+</ul>
+<p>
+also useful even for other XML files. xsl-mode indentation is better
+than xml-mode, too. xsl-mode is in the xslide package, and in the cygwin
+sumo package.
+</p>
+<ul class="org-ul">
+<li>If you want Python files recognized, install python-mode and
+</li>
+</ul>
+<p>
+<code>(add-to-list 'auto-mode-alist (cons "\\.py\\'" 'python-mode))</code>
+</p>
+<ul class="org-ul">
+<li>Gnus: You can use B DEL to delete drafts.
+</li>
+<li>Recursion in lambdas!
+</li>
+</ul>
+<p>
+<code>(funcall #1=(lambda (n) (if (</code> n 0) 1 (* n (funcall #1# (1- n))))) 5)=
+</p>
+<ul class="org-ul">
+<li>result: 120. Not recommended.
+<ul class="org-ul">
+<li>Use M-x goto-line to go to the nth line.
+</li>
+<li>To copy the font setting and color-theme of the old frame when you
+</li>
+</ul>
+</li>
+</ul>
+<p>
+create a new frame:
+<code>(defadvice make-frame (around frob-frame-parameters activate) (let ((default-frame-alist (frame-parameters))) ad-do-it))</code>
+</p>
+<ul class="org-ul">
+<li>How to get rid of all the \<sup>Ms</sup> at the end of lines:
+</li>
+</ul>
+<p>
+<code>M-% C-q C-m RET C-q RET RET</code> . (Better solution:
+<code>M-x revert-buffer-with-coding-system</code>, dos.)
+</p>
+<ul class="org-ul">
+<li><code>desktop</code> can make Emacs jump to the previous position in a file when
+</li>
+</ul>
+<p>
+you reopen the file
+</p>
+<ul class="org-ul">
+<li>Setting auto-fill in file comments:
+</li>
+</ul>
+<p>
+<code>-*- mode: major; mode: auto-fill -*-</code>, where major is the major mode
+you want
+</p>
+
+<p>
+Issues
+</p>
+
+<ul class="org-ul">
+<li>ess toolbar variables (customization) need to be set before ess is
+</li>
+</ul>
+<p>
+loaded, but ess is loaded in site-start. How do you set it, then?
+</p>
+
+<p>
+Misc
+</p>
+
+<ul class="org-ul">
+<li>ljupdate darcs repository:
+</li>
+</ul>
+<p>
+<a href="http://edward.oconnor.cx/code/ljupdate/"><a href="http://edward.oconnor.cx/code/ljupdate/">http://edward.oconnor.cx/code/ljupdate/</a></a>
+</p>
+<ul class="org-ul">
+<li>ERC seems to be the most popular IRC client.
+</li>
+<li>Have you checked out the Emacs LiveJournal community?
+</li>
+</ul>
+<p>
+<a href="http://www.livejournal.com/community/emacs/"><a href="http://www.livejournal.com/community/emacs/">http://www.livejournal.com/community/emacs/</a></a>
+</p>
+<ul class="org-ul">
+<li>Don't worry about losing local changes when you modify the source
+</li>
+</ul>
+<p>
+code of CVS Emacs. CVS does patches.
+</p>
+<ul class="org-ul">
+<li>Emacs under screen: C-\ might be a good Screen escape key.
+</li>
+<li>People use normal synchronization tools like rsync, unison, and CVS
+</li>
+</ul>
+<p>
+to sync their planner.el pages between computers.
+</p>
+<ul class="org-ul">
+<li>Hook variables named -hook tend to not take arguments, while hook
+</li>
+</ul>
+<p>
+variables named -functions might be called with arguments.
+</p>
+<ul class="org-ul">
+<li>Debian: /etc/emacs/site-start.d and
+</li>
+</ul>
+<p>
+/usr/share/emacs/site-lisp/debian-startup.el are responsible for lines
+like “Loading 00debian-vars (source)&#x2026;”, while
+/usr/lib/emacsen-common/emacs-package-install is called when the deb is
+being set up.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

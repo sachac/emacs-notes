@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: BBDB rapid serial visualization</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: BBDB rapid serial visualization</h1>
+<p>
+September 28th, 2006 -
+<a href="http://sachachua.com/blog/p/3882"><a href="http://sachachua.com/blog/p/3882">http://sachachua.com/blog/p/3882</a></a>
+</p>
+
+<p>
+And because it's good to quickly flash through records once in a while
+ to refresh my memory&#x2026;
+</p>
+
+<pre class="example">
+(defvar sacha/bbdb-rapid-serial-visualization-delay
+ 1
+ "*Number of seconds to wait between records.
+Set to 0 to wait for input.")
+
+(defun sacha/bbdb-rapid-serial-visualization ()
+  "Breeze through everyone's name and notes."
+  (interactive)
+  (window-configuration-to-register ?a)
+  ;; Copy the currently visible records
+  (let ((records bbdb-records)
+        (default-size (face-attribute 'default :height))
+        (new-size 400)
+        (continue t))
+    (set-face-attribute 'default nil :height new-size)
+    (pop-to-buffer (get-buffer-create "BBDB-Serial"))
+    (delete-other-windows)
+    (while (and records continue)
+      (insert (bbdb-record-name (caar records))
+              "\n\n"
+              (or (car (bbdb-record-net (caar records))) "No e-mail")
+              "\n\n"
+              (or (bbdb-record-notes (caar records)) "")
+              (make-string 50 ?\n))
+      (goto-char (point-min))
+      (sit-for sacha/bbdb-rapid-serial-visualization-delay)
+      (setq records (cdr records)))
+    (set-face-attribute 'default nil :height default-size)
+    (when continue
+      (jump-to-register ?a))))
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/crm">crm</a>,
+<a href="http://www.technorati.com/tag/elisp">elisp</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

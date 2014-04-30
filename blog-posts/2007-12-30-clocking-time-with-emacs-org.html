@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Clocking Time with Emacs Org</title>
+<!-- 2014-04-30 Wed 16:43 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sacha Chua" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Clocking Time with Emacs Org</h1>
+<p>
+December 30th, 2007 -
+<a href="http://sachachua.com/blog/p/4553"><a href="http://sachachua.com/blog/p/4553">http://sachachua.com/blog/p/4553</a></a>
+</p>
+
+<p>
+2Many professionals bill clients for their time. Even if you don't,
+keeping track of the time you actually spend on tasks can help you
+improve your time estimates and check if you're spending enough time on
+the things that are important to you. For example, keeping track of the
+time you spend on tasks might show you that you spend two and a half
+hours each day just responding to e-mail. If you can identify problem
+areas like that, then you can look for more effective ways to perform
+the tasks that take up a lot of your time.
+</p>
+
+<p>
+I love Org's timeclocking support, and I think you will too. Because
+it's integrated with your task list, you don't have to switch to
+separate application or reenter data. You can get more detailed time
+reports, too. All you have to do is remember to clock in before you
+start a task and clock out when you finish it.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Starting and stopping the clock</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+You can clock in by moving your cursor to the task headline in either
+your organizer.org file or the org agenda view, and then pressing C-c
+C-x C-i (org-agenda-clock-in or org-clock-in, depending on context).
+This adds the time stamp to the task. If you are already clocked into
+another task in that organizer file, you'll be clocked out of it to
+prevent you from accidentally double-billing.
+</p>
+
+<p>
+To clock out of a task, type C-c C-x C-o from the task headline. Marking
+a task as done will also automatically stop the clock, if that was the
+task with the active clock.
+</p>
+
+<p>
+Here's some code to make this even easier. The following code clocks in
+whenever you market task is started, and clocks out when you market a
+task as WAITING. It also automatically market task is started if you
+clock in. This takes advantage of the Org configuration previously
+suggested in the Setup section. Add this to your ~/.emacs and evaluate
+it:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> 'org
+  '(<span class="org-keyword">progn</span>
+     (<span class="org-keyword">defun</span> <span class="org-function-name">wicked/org-clock-in-if-starting</span> ()
+       <span class="org-doc">"Clock in when the task is marked STARTED."</span>
+       (<span class="org-keyword">when</span> (and (string= state <span class="org-string">"STARTED"</span>)
+          (not (string= last-state state)))
+     (org-clock-in)))
+     (add-hook 'org-after-todo-state-change-hook
+           'wicked/org-clock-in-if-starting)
+     (<span class="org-keyword">defadvice</span> <span class="org-function-name">org-clock-in</span> (after wicked activate)
+      <span class="org-doc">"Set this task's status to 'STARTED'."</span>
+      (org-todo <span class="org-string">"STARTED"</span>))
+    (<span class="org-keyword">defun</span> <span class="org-function-name">wicked/org-clock-out-if-waiting</span> ()
+      <span class="org-doc">"Clock out when the task is marked WAITING."</span>
+      (<span class="org-keyword">when</span> (and (string= state <span class="org-string">"WAITING"</span>)
+                 (equal (marker-buffer org-clock-marker) (current-buffer))
+                 (&lt; (point) org-clock-marker)
+             (&gt; (<span class="org-keyword">save-excursion</span> (outline-next-heading) (point))
+            org-clock-marker)
+         (not (string= last-state state)))
+    (org-clock-out)))
+    (add-hook 'org-after-todo-state-change-hook
+          'wicked/org-clock-out-if-waiting)))
+</pre>
+</div>
+
+<p>
+What if you forgot to clock into a task when you started? No problem.
+Simply clock in and out of it, then edit the starting timestamp for the
+task in your ~/organizer.org file. To find a starting timestamp, move
+your cursor to the task headline. If the task has been collapsed to a
+single line, press TAB to expand it. Look for a line that starts with
+</p>
+<p>
+collapsed segment, he expanded by moving a cursor to it and pressing
+tab. Find the clock entry you want to change, and if the timestamp, and
+press C-c C-y (org-evaluate-time-range) to update the time total.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Reporting time</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">By project</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+To see how much time you've spent on a project or task, open your
+~/organizer.org file and press C-c C-x C-d (org-clock-display). Total
+times will be added to each headline, summarizing the times for each
+subtree.
+</p>
+
+<p>
+You can also use one of Org's dynamic blocks. Open your ~/organizer.org
+file, move your cursor to where you want the report inserted, and type
+C-c C-x C-r (org-clock-report). By default, the reports will include all
+the second-level headings for all the days.
+</p>
+
+<p>
+What if you want to limit the report to just the time you clocked last
+week?
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Reporting time for a period</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+To summarize it for a span of days, change the starting line from:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+BEGIN: clocktable :maxlevel 2 :emphasize nil</span>
+</pre>
+</div>
+
+<p>
+to something like:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+BEGIN: clocktable :maxlevel 2 :emphasize nil :tstart "&lt;2007-12-25 Sun&gt;" :tend "&lt;2007-12-31 Mon&gt;"</span>
+</pre>
+</div>
+
+<p>
+where tstart is the starting time/date and tend is the ending time/date.
+You can add the timestamps either manually or with C-c C-.
+(org-time-stamp). After you change the block definition, update the
+clock table by typing C-c C-x C-u (org-dblock-update).
+</p>
+
+<p>
+You can also use a definition like:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+BEGIN: clocktable :maxlevel 2 :emphasize nil :block today</span>
+</pre>
+</div>
+
+<p>
+to see today's entries. Other block keywords are ‘yesterday',
+‘thisweek', ‘lastweek', ‘thismonth', ‘lastmonth', ‘thisyear', or
+‘lastyear'.
+</p>
+
+<p>
+If you need more levels of headings, change the value of maxlevel. For
+example, to see a detailed clock table with up to 10 levels of headings,
+use
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span class="org-org-meta-line">#+BEGIN: clocktable :maxlevel 10 :emphasize nil :block today</span>
+</pre>
+</div>
+
+<p>
+clocktable summarizes the reported time. What if you want the time
+broken down by day?
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Reporting time by days</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+The following code creates a custom dynamic block that breaks the
+reported time by date. Add the following code to your ~/.emacs:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">org-dblock-write:rangereport</span> (params)
+  <span class="org-doc">"Display day-by-day time reports."</span>
+  (<span class="org-keyword">let*</span> ((ts (plist-get params <span class="org-builtin">:tstart</span>))
+         (te (plist-get params <span class="org-builtin">:tend</span>))
+         (start (time-to-seconds
+                 (apply 'encode-time (org-parse-time-string ts))))
+         (end (time-to-seconds
+               (apply 'encode-time (org-parse-time-string te))))
+         day-numbers)
+    (setq params (plist-put params <span class="org-builtin">:tstart</span> nil))
+    (setq params (plist-put params <span class="org-builtin">:end</span> nil))
+    (<span class="org-keyword">while</span> (&lt;= start end)
+      (<span class="org-keyword">save-excursion</span>
+        (insert <span class="org-string">"\n\n"</span>
+                (format-time-string (car org-time-stamp-formats)
+                                    (seconds-to-time start))
+                <span class="org-string">"----------------\n"</span>)
+        (org-dblock-write:clocktable
+         (plist-put
+          (plist-put
+           params
+           <span class="org-builtin">:tstart</span>
+           (format-time-string (car org-time-stamp-formats)
+                               (seconds-to-time start)))
+          <span class="org-builtin">:tend</span>
+          (format-time-string (car org-time-stamp-formats)
+                              (seconds-to-time end))))
+        (setq start (+ 86400 start))))))
+</pre>
+</div>
+
+<p>
+After you load that code, you'll be able to use a dynamic block of the
+form
+</p>
+
+<pre class="example">
+#+BEGIN: rangereport :maxlevel 2 :tstart "&lt;2007-12-25 Tue&gt;" :tend "&lt;2007-12-30 Sun&gt;"
+...
+#+END:
+</pre>
+
+<p>
+to see your time reported by date. Fill it in by moving your cursor
+within the block and typing C-c C-x C-u (org-dblock-update).
+</p>
+
+<p>
+Org makes it easy to capture timeclock information by integrating the
+timeclock into your task list so that you don't even have to think about
+it, and it can report this time by project or by date. You can use this
+information to bill clients, improve your time estimates, or reflect on
+the way you do things. All you have to do is clock in by marking a task
+as STARTED, and clock out by marking a task as WAITING or DONE. Don't
+get discouraged if the time clock shows you do only a few hours of
+productive work each day. Use that to help you figure out how to do to
+things better!
+</p>
+
+<p>
+On Technorati:
+<a href="http://www.technorati.com/tag/wickedcoolemacs">wickedcoolemacs605</a>,
+<a href="http://www.technorati.com/tag/org">org606</a>,
+<a href="http://www.technorati.com/tag/emacs">emacs607</a>
+</p>
+
+<p>
+Random Emacs symbol: term-previous-matching-input-string &#x2013; Function:
+Return the string matching REGEXP ARG places along the input ring.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

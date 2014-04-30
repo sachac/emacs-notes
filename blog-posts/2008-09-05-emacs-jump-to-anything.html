@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Jump to anything</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Jump to anything</h1>
+<p>
+September 5th, 2008 -
+<a href="http://sachachua.com/blog/p/5117"><a href="http://sachachua.com/blog/p/5117">http://sachachua.com/blog/p/5117</a></a>
+</p>
+
+<p>
+I just came across the
+<a href="http://www.emacswiki.org/cgi-bin/wiki/Anything">Anything</a> extension
+for Emacs. After you load anything.el, you can type M-x anything RET and
+a substring of, well, anything. Looks like a handy shortcut. It's like
+Quicksilver, but for Emacs. Grab
+<a href="http://www.emacswiki.org/cgi-bin/wiki/download/anything-config.el">anything-config.el</a>
+for a bunch of useful functions.
+</p>
+
+<p>
+Here's my current configuration:
+</p>
+
+<pre class="example">
+(require 'anything)
+(require 'anything-config)
+(setq anything-sources
+      (list anything-c-source-buffers
+            anything-c-source-file-name-history
+            anything-c-source-info-pages
+            anything-c-source-man-pages
+        anything-c-source-file-cache
+            anything-c-source-emacs-commands))
+(global-set-key (kbd "M-X") 'anything)
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

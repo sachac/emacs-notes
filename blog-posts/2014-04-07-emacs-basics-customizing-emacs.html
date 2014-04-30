@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs Basics: Customizing Emacs</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs Basics: Customizing Emacs</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Customize</a></li>
+<li><a href="#sec-2">~/.emacs.d/init.el</a></li>
+</ul>
+</div>
+</div>
+<p>
+April 7th, 2014 -
+<a href="http://sachachua.com/blog/p/27098"><a href="http://sachachua.com/blog/p/27098">http://sachachua.com/blog/p/27098</a></a>
+</p>
+
+<p>
+This entry is part 3 of 3 in the series <a href="http://sachachua.com/blog/series/emacs-basics-2/">Emacs Basics</a>
+</p>
+
+<p>
+Hello, I'm Sacha Chua, and this is an Emacs Basics video on customizing
+Emacs. Emacs is incredibly flexible. You can tweak it to do much more
+than you might expect from a text editor. This week, we're going to
+focus on learning how to tweak Emacs with M-x customize and by editing
+<code>~/.emacs.d/init.el</code>.
+</p>
+
+<iframe width="640" height="480" src="//www.youtube-nocookie.com/embed/tEhW5YxwzJ8" frameborder="0" allowfullscreen></iframe>
+
+<p>
+<a href="http://archive.org/download/20140324EmacsBasicsCustomizingEmacs/2014-03-24-Emacs-Basics-Customizing-Emacs.mp3">You can download the MP3 from Archive.org</a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Customize</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+You can change tons of options through the built-in customization
+interface. Explore the options by typing M-x customize. Remember, that's
+Alt-x if you're using a PC keyboard and Option-x if you're on a Mac. So
+for me, that's Alt-x customize &lt;Enter&gt;. In the future, I'll just refer
+to this as the Meta key, so remember which key is equivalent to Meta on
+your keyboard.
+(<a href="http://sachachua.com/blog/2014/03/emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm/">Review &#x2013; Emacs Basics: Call commands by name with M-x</a>)
+</p>
+
+<p>
+After you run <code>M-x customize</code>, you'll see different groups of options.
+Click on the links to explore a group.
+</p>
+
+<p>
+For example, people often want to change the backup directory setting.
+This is the setting that controls where the backup files (the files
+ending in <code>~</code>) are created. You've probably noticed that they clutter
+your current directory by default. To change this setting, select the
+<b>Files &gt; Backup</b> group. Look for the entry that says <b>Backup Directory
+Alist.</b> Click on the arrow, or move your point to the arrow and press
+&lt;Enter&gt;. Click on <b>INS</b>, or move your point to <b>INS</b> and press &lt;Enter&gt;.
+Fill it in as follows:
+</p>
+
+<ul class="org-ul">
+<li>Regexp matching filename: .
+</li>
+<li>Backup directory name: ~/.emacs.d/backups
+</li>
+</ul>
+
+<p>
+Click on <b>State</b> and choose <b>Save for future sessions</b>. This will save
+your changes to <code>~/.emacs.d/init.el</code>. When you're done, type q to close
+the screen.
+</p>
+
+<p>
+You can also jump straight to customizing a specific variable. For
+example, if you want to change the way Emacs handles case-sensitive
+search, you can use M-x customize-variable to set the case-fold-search
+variable. By default, case fold search is on, which means that searching
+for a lower-case “hello” will match an upper-case “HELLO” as well. If
+you would like to change this so that lowercase only matches lowercase
+and uppercase matches only uppercase, you can toggle this variable. I
+like leaving case fold search on because it's more convenient for me. If
+you make lots of changes, you can use the <b>Apply and Save</b> button to
+save all the changes on your current screen.
+</p>
+
+<p>
+Not sure what to customize? You can learn about options by browsing
+through M-x customize or reading the manual (<b>Help &gt; Read the Emacs
+Manual</b> or M-x info-emacs-manual). You can also search for keywords
+using M-x customize-apropos.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">~/.emacs.d/init.el</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The Customize interface lets you change lots of options, but not
+everything can be changed through Customize. That's where your Emacs
+configuration file comes in. This used to be a file called <code>~/.emacs</code> in
+your home directory, and you'll still come across lots of pages that
+refer to a <code>.emacs</code> file (or “dot emacs”). The new standard is to put
+configuration code in your <code>~/.emacs.d/init.el</code> file, which you can
+create if it does not yet exist.
+</p>
+
+<p>
+What goes into your <code>~/.emacs.d/init.el</code> file? If you open it now,
+you'll probably find the settings you saved using <code>M-x customize</code>. You
+can also call functions, set variables, and even override the way Emacs
+works. As you learn more about Emacs, you'll probably find Emacs Lisp
+snippets on web pages and in manuals. For example, the Org manual
+includes the following lines:
+</p>
+
+<pre class="example">
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cb" 'org-iswitchb)
+</pre>
+
+<p>
+This code sets C-c l (that's Control-c l) to run <code>org-store-link</code>, C-c c
+to run <code>org-capture</code>, C-c a to run <code>org-agenda</code>, and C-c b to run
+<code>org-iswitchb</code>. You can add those to the end of your
+<code>~/.emacs.d/init.el</code> file. They'll be loaded the next time you start
+Emacs. If you want to reload your <code>~/.emacs.d/init.el</code> without
+restarting, use M-x eval-buffer.
+</p>
+
+<p>
+Emacs Lisp may look strange. Don't worry, you can get the hang of it
+even if you don't think of yourself as a programmer. You can start by
+copying interesting snippets from other people's configuration files.
+Start with small chunks instead of large ones, so you can test if things
+work the way you want them to. If you need help,
+<a href="http://stackoverflow.com/tags/emacs/info">StackOverflow</a> and other
+Q&amp;A resources may be useful.
+</p>
+
+<p>
+As you experiment with configuring Emacs, you may run into mistakes or
+errors. You can find out whether it's a problem with Emacs or with your
+configuration by loading Emacs with emacs -Q, which skips your
+configuration. If Emacs works fine with your configuration, check your
+<code>~/.emacs.d/init.el</code> to see which code messed things up. You can comment
+out regions by selecting them and using M-x comment-region. That way,
+they won't be evaluated when you start Emacs. You can uncomment them
+with M-x uncomment-region.
+</p>
+
+<p>
+Emacs gets even awesomer when you tailor it to the way you want to work.
+Enjoy customizing it!
+</p>
+
+<p>
+<a href="http://sachachua.com/blog/2014/03/emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm/">« Emacs Basics: Call commands by name with M-x (with tips for better
+completion using ido or helm)</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

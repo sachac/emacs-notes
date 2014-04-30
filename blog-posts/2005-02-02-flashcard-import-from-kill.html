@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>flashcard-import-from-kill</title>
+<!-- 2014-04-30 Wed 16:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">flashcard-import-from-kill</h1>
+<p>
+February 2nd, 2005 -
+<a href="http://sachachua.com/blog/p/2607"><a href="http://sachachua.com/blog/p/2607">http://sachachua.com/blog/p/2607</a></a>
+</p>
+
+<p>
+The following code snippet makes it easier for me to import segments
+ from my dictionary files. It uses
+<a href="http://sachachua.com/notebook/emacs/flashcard.el">../emacs/flashcard.el</a>.
+</p>
+
+<pre class="example">
+(defun flashcard-import-from-kill (deck)
+  "Import cards for DECK from the clipboard, which should be colon-separated.
+
+Question : Answer"
+  (interactive (list flashcard-deck))
+  (unless (eq major-mode 'flashcard-mode)
+    (error "You're not in a deckfile."))
+  (with-temp-buffer
+    (yank)
+    (goto-char (point-min))
+    (while (re-search-forward "^ *\\(.*\\) +: +\\(.*\\)$" nil t)
+      (flashcard-add-card deck
+                          (flashcard-make-card (match-string 1)
+                                               (match-string 2)))))
+  (when (and (interactive-p)
+             (not flashcard-card))
+    (flashcard-ask)))
+</pre>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/flashcard-config.el">../emacs/flashcard-config.el</a>
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

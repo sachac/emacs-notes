@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>sacha/planner-create-note-from-task</title>
+<!-- 2014-04-30 Wed 16:58 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">sacha/planner-create-note-from-task</h1>
+<p>
+November 19th, 2004 -
+<a href="http://sachachua.com/blog/p/2413"><a href="http://sachachua.com/blog/p/2413">http://sachachua.com/blog/p/2413</a></a>
+</p>
+
+<pre class="example">
+;; Improvements:
+;; - Link back to the task?
+;; - Make it possible to have your note on another page?
+(defun sacha/planner-create-note-from-task ()
+  "Create a note based on the current task."
+  (interactive)
+  (let* ((task-info (planner-current-task-info))
+         note-num)
+    (when task-info
+      (setq note-num (planner-create-note (planner-page-name)))
+      (save-excursion
+        (save-window-excursion
+          (when (planner-find-task task-info)
+            (planner-edit-task-description
+             (concat (planner-task-description task-info) " "
+                     (planner-make-link
+                      (concat (planner-page-name) "#"
+                              (number-to-string note-num))
+                      "..."))))))
+      (insert (planner-task-description task-info) "\n\n"))))
+
+;; I use F9 p to go to today's page, anyway.
+(define-key planner-mode-map (kbd "C-c C-n") 'sacha/planner-create-note-from-task)
+</pre>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/planner-config.el">../emacs/planner-config.el</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Keeping track of the age of messages</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Keeping track of the age of messages</h1>
+<p>
+October 27th, 2006 -
+<a href="http://sachachua.com/blog/p/3981"><a href="http://sachachua.com/blog/p/3981">http://sachachua.com/blog/p/3981</a></a>
+</p>
+
+<p>
+I can get pretty bad at responding to e-mail. This is an experiment to
+ see whether the negative reinforcement of seeing just how old a
+ message is will help me be more responsive. Either that, or I can
+ strive for a Mean Time Between Responses of whatever&#x2026; ;)
+</p>
+
+<p>
+Hmm, maybe I should combine this with my blog and start distinguishing
+ between E-mail to and Reply to&#x2026;
+</p>
+
+<pre class="example">
+(defadvice gnus-post-news (around sacha/gnus-track-message-age activate)
+  "Insert a header showing how old a message is, to shame me into replying faster."
+  ;; Before you post the news, figure out how old it is
+  (let (days)
+    (when article-buffer
+      (setq days
+            (- (time-to-days (current-time))
+               (time-to-days
+                (gnus-date-get-time
+                 (mail-header-date
+                  (gnus-summary-article-header
+                   (gnus-summary-article-number))))))))
+    ad-do-it
+    (when days
+      (goto-char (point-min))
+      (when (re-search-forward "--text follows this line--" nil t)
+        (forward-line 1)
+        (insert "In reply to a message sent by "
+                (mail-header-from message-reply-headers)
+                " "
+                (cond
+                 ((= days 0) "today")
+                 ((= days 1) "yesterday")
+                 (t (format "%d days ago" days)))
+                ": \n\n")))))
+(setq message-citation-line-function nil)
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>,
+<a href="http://www.technorati.com/tag/gnus">gnus</a>
+</p>
+
+<p>
+Random Emacs symbol: tramp-perl-directory-files-and-attributes &#x2013;
+Variable: Perl script implementing `directory-files-attributes' as Lisp
+`read'able
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

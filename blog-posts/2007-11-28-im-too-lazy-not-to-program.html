@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>I'm too lazy not to program</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">I'm too lazy not to program</h1>
+<p>
+November 28th, 2007 -
+<a href="http://sachachua.com/blog/p/4465"><a href="http://sachachua.com/blog/p/4465">http://sachachua.com/blog/p/4465</a></a>
+</p>
+
+<p>
+Yesterday, I imported five years of blog posts into WordPress through
+ RSS. This would have been \<sub>painful\</sub>_ if I wasn't comfortable with
+ programming. With 4587 posts in 2596 files, I wouldn't have even
+ thought about copying them over manually. Instead, I would have just
+ started with a clean slate. I didn't think anyone's really going to
+ want to go back and see everything I've written on my blog. ;) Who was
+ going to notice?
+</p>
+
+<p>
+But five years of blog posts&#x2014;reflections, ideas, notes, interesting
+ links&#x2014;might still be worth something, so I decided to give it a shot.
+ Initially, I wrote a function which visited files, searched for notes,
+ and added the note to one big RSS feed. However, this slowed down too
+ much when I hit megabytes, so I changed it to dump each note to a
+ file in a directory.
+</p>
+
+<pre class="example">
+;(sacha/planner-dump-rss "~/public_html/blog-dump/" nil nil)
+(defun sacha/planner-dump-rss (directory from to)
+  (let ((pages (planner-get-day-pages from to))
+        (planner-rss-feed-limits nil)
+        (planner-rss-initial-contents "")
+        buffer)
+    (while pages
+      (condition-case err2
+          (progn
+            (planner-find-file (caar pages))
+            (setq buffer (current-buffer))
+            (unwind-protect
+                (progn
+                  (goto-char (point-min))
+                  (while (re-search-forward "^\\.#\\([0-9]+\\)" nil t)
+                    (save-excursion
+                      (condition-case err
+                          (progn
+                            (let ((inhibit-read-only t)
+                                  (file (concat directory
+                                                (caar pages) "-"
+                                                (match-string 1))))
+                              (planner-rss-add-note file)
+                              (find-file file)
+                              (save-buffer 0)
+                              (kill-buffer (current-buffer))))
+                        (error
+                         (message "Problems processing note on %s: %s"
+                                  (caar pages)
+                                  (error-message-string err)))))))
+              (kill-buffer buffer)))
+        (error (message "Problems processing %s: %s"
+                        (caar pages)
+                        (error-message-string err2))))
+      (setq pages (cdr pages)))))
+</pre>
+
+<p>
+I then concatenated all of these files using
+</p>
+
+<pre class="example">
+cat header 200* footer &gt; dump.rdf
+</pre>
+
+<p>
+This file was still much too big, so I manually split it by year,
+ copying and pasting text into different files. I used
+ <a href="http://www.feedvalidator.org"><a href="http://www.feedvalidator.org">http://www.feedvalidator.org</a></a> to check
+for errors. After Feedvalidator
+ verified that the files were all valid RSS, I tried to import them
+ into Feedwordpress. Nope, still too big. I needed to trim them to
+ around 400k, so I used the following code on the server:
+</p>
+
+<pre class="example">
+(defun sacha/split-dump ()
+ (interactive)
+ (goto-char (min 400000 (point-max)))
+ (let ((counter 0)
+ (base-name (file-name-sans-extension buffer-file-name)))
+ (while (not (eobp))
+ (re-search-backward "&lt;item&gt;") 
+ (kill-region (match-beginning 0) (point-max))
+ (insert "&lt;/channel&gt;&lt;/rss&gt;")
+ (save-buffer 0)
+ (find-file (format "%s%d.rdf" base-name counter))
+ (erase-buffer)
+ (goto-char (point-min))
+ (insert "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;
+&lt;rss version=\"2.0\"&gt;
+  &lt;channel&gt;
+    &lt;title&gt;M-x plan :: sachachua's blog&lt;/title&gt;
+    &lt;link&gt;http://sachachua.com/notebook/wiki/today.php&lt;/link&gt;
+    &lt;description&gt;Sacha Chua's blog about Emacs, personal information management, open source, and random stuff&lt;/description&gt;")
+      (yank)
+      (setq counter (1+ counter))
+      (goto-char (min 400000 (point-max))))))
+</pre>
+
+<p>
+This program looks complicated, but it really isn't. In fact, I could
+ have probably done something just as powerful with keyboard macros,
+ not writing a single line of code. But the code was easy to write, and
+ I figured that I'd keep it around just in case I needed to do
+ something like this again.
+</p>
+
+<p>
+After a little bit of manual tweaking, I got all the entries into
+ <a href="http://sachachua.com/wp/"><a href="http://sachachua.com/wp/">http://sachachua.com/wp/</a></a> .
+</p>
+
+<p>
+The ability to write short programs quickly and interactively has not
+ only saved me so much time, but it's also made it possible for me to
+ even \<sub>think\</sub>_ of doing some things. =) I could probably have written
+ the same snippets in Perl or Ruby, but being able to combine manual
+ editing and automated operations in the text editor made it just so
+ much faster. I really like being able to scan back and forth in
+ buffers easily in Emacs, instead of thinking in terms of
+ file streams as in other programming languages.
+</p>
+
+<p>
+If you work with lots of text, I definitely recommend learning Emacs
+ Lisp, or whatever language your editor can be programmed in. I started
+ by reading other people's source code and the Emacs Lisp Intro and
+ Emacs Lisp info files. I reread them countless times, picking up a
+ little more each time I went through. Now Emacs Lisp is one of the
+ first things I turn to whenever I want to save time doing something
+ complex and repetitive on the computer, such as adding everyone's
+ pictures to a wiki page. (That's a story for next time!)
+</p>
+
+<p>
+Emacs is awesome stuff. More than 20 years old, it's the most advanced
+ program I've ever used. What makes it special? It's \<sub>definitely\</sub>_
+ optimized for the power user, and it provides so many reasons to
+ become one.
+</p>
+
+<p>
+Random Emacs symbol: gnus-summary-goto-last-article &#x2013; Command: Go to
+the previously read article.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

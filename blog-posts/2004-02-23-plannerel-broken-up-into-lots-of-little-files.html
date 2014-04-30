@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>planner.el broken up into lots of little files</title>
+<!-- 2014-04-30 Wed 16:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">planner.el broken up into lots of little files</h1>
+<p>
+February 23rd, 2004 -
+<a href="http://sachachua.com/blog/p/1751"><a href="http://sachachua.com/blog/p/1751">http://sachachua.com/blog/p/1751</a></a>
+</p>
+
+<p>
+It should compile cleanly under Emacs 21.3 (CVS). I'm still trying to
+ figure out how to install the fsf-compat package under XEmacs so that
+ I can get it to compile cleanly there.
+</p>
+
+<p>
+WARNING! Many user-visible changes. In particular, you will now need
+ to require a bunch of other things in order to get the old behavior. I
+ should figure out how to set up the appropriate autoloads. In the
+ meantime, add some variant of the following to your .emacs:
+</p>
+
+<pre class="example">
+(require 'remember)
+(require 'planner)
+(require 'remember-planner)
+(require 'planner-experimental)
+(require 'planner-bbdb)
+;; (require 'planner-diary)
+(require 'planner-gnus)
+(require 'planner-id)
+;; (require 'planner-notes)
+(require 'planner-rss)
+;; (require 'planner-schedule)
+;; (require 'planner-timeclock)
+(require 'planner-w3m)
+</pre>
+
+<p>
+This will no doubt break a number of things. Please complain loudly.
+ If you want the old version, you can get a tar.gz from
+</p>
+
+<p>
+<a href="http://sacha.free.net.ph/notebook/emacs/planner/planner-current.tar.gz"><a href="http://sacha.free.net.ph/notebook/emacs/planner/planner-current.tar.gz">http://sacha.free.net.ph/notebook/emacs/planner/planner-current.tar.gz</a></a>
+ .
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

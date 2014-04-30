@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>sacha/fix-tla-log {{04.04.21,EmacsHacks}} 11:17</title>
+<!-- 2014-04-30 Wed 16:58 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">sacha/fix-tla-log {{04.04.21,EmacsHacks}} 11:17</h1>
+<p>
+April 20th, 2004 -
+<a href="http://sachachua.com/blog/p/1986"><a href="http://sachachua.com/blog/p/1986">http://sachachua.com/blog/p/1986</a></a>
+</p>
+
+<pre class="example">
+(defun sacha/fix-tla-log ()
+  "Correct a wrong commit.
+Run this inside the arch subdirectory for the patch in your
+repository, not your project tree."
+  ;; Copy the log file
+   (let*
+       ((directory (car (file-expand-wildcards "*.patches")))
+        modes
+        (log-file
+         (car
+          (file-expand-wildcards
+           (concat (file-name-as-directory directory)
+                   "new-files-archive/{arch}/*/*/*/sacha@free.net.ph--main/patch-log/patch-*"))))
+        (tar-file
+         (car (file-expand-wildcards "*.tar.gz")))
+        log-md5 tar-md5)
+     (when directory
+       (if (file-newer-than-file-p "log" log-file)
+           (progn
+             (delete-file log-file)
+             (copy-file "log" log-file))
+         (delete-file "log")
+         (copy-file log-file "log"))
+       ;; Recreate the tar.gz
+       (delete-file tar-file)
+       (call-process "tar" nil nil nil "zcvf" tar-file directory)
+       ;; Calculate checksums
+       (with-temp-buffer
+         (call-process "md5sum" nil t nil "log" tar-file)
+         (goto-char (point-min))
+         (re-search-forward "^\\([^ ]+\\)\\s-+log" nil t)
+         (setq log-md5 (match-string 1))
+         (re-search-forward "^\\([^ ]+\\)" nil t)
+         (setq tar-md5 (match-string 1)))
+       (with-temp-buffer
+         (setq modes (file-modes "checksum"))
+         (insert-file-contents "checksum")
+         (goto-char (point-min))
+         (re-search-forward "^Signature-for")
+         (delete-region (point-min) (match-beginning 0))
+         (re-search-forward "^md5\\s-+log\\s-+\\([^ ]+\\)$")
+         (replace-match log-md5 t t nil 1)
+         (re-search-forward "^md5\\s-+.+?\\.tar\\.gz\\s-+\\([^ ]+\\)$")
+         (replace-match tar-md5 t t nil 1)
+         (when (re-search-forward "BEGIN PGP SIGNATURE" nil t)
+           (delete-region (line-beginning-position) (point-max)))
+         (let ((pgg-output-buffer (current-buffer)))
+           (pgg-sign t))
+         (delete-file "checksum")
+         ;; Sign the checksum
+         (write-file "checksum")
+         (set-file-modes "checksum" modes)))))
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

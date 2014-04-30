@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>More Emacs evangelization: flashcard</title>
+<!-- 2014-04-30 Wed 17:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">More Emacs evangelization: flashcard</h1>
+<p>
+January 14th, 2005 -
+<a href="http://sachachua.com/blog/p/2566"><a href="http://sachachua.com/blog/p/2566">http://sachachua.com/blog/p/2566</a></a>
+</p>
+
+<p>
+Aris and I are both struggling with far too much kanji. I used a
+ combination of <b>kdrill</b> to gain familiarity with kanji and
+</p>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/flashcard.el">../emacs/flashcard.el</a>
+to drill the meaning into my brain, as
+ flashcard.el requires me to get a question right 5 times in a row
+ before considering it solved. Aris searched the Internet for flashcard
+ programs on Windows and played around with things like Kanji Gold and
+ King Kanji, but couldn't figure out how to import our wordlist into
+ them. Kanji Gold looked promising as it also used EDICT, but I
+ couldn't figure out the magic number at the end of the dictionary
+ entry. With over 200 words in our word list, there was no way we were
+ going to enter those things one by one!
+</p>
+
+<p>
+I told him to download Emacs and grab Jorgen Schaefer's flashcard.el
+ from my <a href="http://sachachua.com/notebook/emacs">../emacs</a> directory. I
+then grabbed the dictionary file that
+ Kanji Gold couldn't recognized, replaced [ with : to get flashcard to
+ recognize it without problems, then set up a deck for him. I tweaked
+ the default faces a bit&#x2014;they're horrible on light-colored displays. I
+ copied the suggested feedback config and explained the pigeonhole
+ method to him. I tweaked the checking function so that it checked for
+ substrings and treated empty input as a definitely incorrect answer.
+ He wanted the answers displayed all the time, so I coded that in as
+ well.
+</p>
+
+<p>
+The initial word list was too big, so I copied 9 words and put them
+ into a file, then imported them into a deck. Later, when he finishes
+ this deck, I'll show him how to create another colon file and import
+it.
+ I'll also ask him if he wants to tweak the number of compartments.
+</p>
+
+<p>
+He's asked me if I can get YM working in the text editor as well. I'm
+ currently tunneled through Richi's host, but I think I can open a
+ local tunnel for him as well, if he feels like using ERC. ‘course,
+ normal YM just might work, and chances are there's a YM-specific
+ client somewhere in Emacs.
+</p>
+
+<p>
+I've made no efforts to hide Emacs' complexity. I lean over and drop
+ into Lisp code in front of him because I want him to have a working
+ environment up and running as soon as possible. Who knows? Maybe he'll
+ use Emacs even after the internship. =)
+</p>
+
+<p>
+He looks like he's having fun, and certainly appreciates the fact that
+ I can hack the editor to fit how he wants to do things. He wants to
+ match the readings, too, which means I'll need to figure out how leim
+ works under Windows. I'll do that on Monday.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/opensource">opensource</a>,
+<a href="http://www.technorati.com/tag/japanese">japanese</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

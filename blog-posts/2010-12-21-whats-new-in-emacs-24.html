@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>What's coming up in Emacs 24</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">What's coming up in Emacs 24</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Emacs packages</a></li>
+<li><a href="#sec-2">Emacs themes and user-interface changes</a></li>
+<li><a href="#sec-3">Bidirectional support</a></li>
+<li><a href="#sec-4">Clipboards</a></li>
+<li><a href="#sec-5">Version control</a></li>
+<li><a href="#sec-6">Miscellaneous</a></li>
+</ul>
+</div>
+</div>
+<p>
+December 21st, 2010 -
+<a href="http://sachachua.com/blog/p/22004"><a href="http://sachachua.com/blog/p/22004">http://sachachua.com/blog/p/22004</a></a>
+</p>
+
+<p>
+*UPDATE: Emacs 24 has not yet been released. Developers can get it from
+the <a href="http://savannah.gnu.org/projects/emacs/#">version control system</a>
+(git/master, for example). Alpha/nightly builds are available for
+<a href="http://alpha.gnu.org/gnu/emacs/windows/">Windows</a> and
+<a href="http://emacsformacosx.com/builds">Mac OSX</a>. This is still a
+bleeding-edge version. Expect much breakage, even from popular packages
+like BBDB.*
+</p>
+
+<p>
+See <code>C-h n</code> (<code>view-emacs-news</code>) for all the details. Some highlights:
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Emacs packages</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<code>M-x list-packages</code> to browse and install packages, which are enabled by
+default. If you've installed a number of packages but you don't want
+them to all load at startup, customize <code>package-load-list</code>. Not that
+many packages yet, but I'm sure people will add more.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Emacs themes and user-interface changes</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<code>M-x customize-themes</code> lets you choose color themes or create your own.
+There have also been a number of user-interface cleanups (scrollbars on
+the right, smoother antialiasing, that sort of stuff), but nothing
+radical.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Bidirectional support</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Big one for international support.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Clipboards</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<code>x-select-enabled-clipboard</code> is now true by default, which means Emacs
+newbies in Linux won't get confused by an inability to copy and paste
+between applications.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Version control</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+With the increasing popularity of distributed version control systems
+such as bzr, we now have a way to pull updates using <code>M-x vc-update</code>
+(also known as <code>M-x vc-pull</code>). There's also a <code>M-x vc-merge</code> command.
+Looking forward to git support for both of these.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Miscellaneous</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+There is a <code>create-animated-image</code> function. Interesting.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

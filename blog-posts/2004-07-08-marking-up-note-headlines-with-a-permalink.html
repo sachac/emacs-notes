@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Marking up note headlines with a permalink</title>
+<!-- 2014-04-30 Wed 17:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Marking up note headlines with a permalink</h1>
+<p>
+July 8th, 2004 -
+<a href="http://sachachua.com/blog/p/2174"><a href="http://sachachua.com/blog/p/2174">http://sachachua.com/blog/p/2174</a></a>
+</p>
+
+<pre class="example">
+(defun sacha/planner-markup-note ()
+  "Replace note with marked-up span."
+  (let ((id (concat
+             emacs-wiki-bare-digits-anchor-prefix
+             (match-string 1)))
+        (val (match-string 1)))
+    (replace-match
+     (save-match-data
+       (format "#%s\n** %s " id
+               (planner-make-link
+                (concat (emacs-wiki-page-name)
+                        "#" val)
+                (concat val ".")))))))
+
+(defalias 'planner-markup-note 'sacha/planner-markup-note)
+</pre>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

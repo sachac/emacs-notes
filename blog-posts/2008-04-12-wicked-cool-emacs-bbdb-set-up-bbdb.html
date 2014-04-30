@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Wicked Cool Emacs: BBDB: Set up BBDB</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Wicked Cool Emacs: BBDB: Set up BBDB</h1>
+<p>
+April 12th, 2008 -
+<a href="http://sachachua.com/blog/p/4831"><a href="http://sachachua.com/blog/p/4831">http://sachachua.com/blog/p/4831</a></a>
+</p>
+
+<p>
+The main address book and contact management module for Emacs is the
+Insidious Big Brother Database (BBDB), which can be integrated into
+several mail clients and other modules within Emacs. If you use BBDB to
+keep track of contact information, you'll be able to look up phone
+numbers or add notes to people's records from your Emacs-based mail.
+Even if you don't do e-mail within Emacs, you'll find that BBDB's
+customizability makes it surprisingly powerful.
+</p>
+
+<p>
+In this project, you will learn how to set up BBDB as a basic address
+book. The BBDB homepage is at <i><a href="http://bbdb.sourceforge.net/">http://bbdb.sourceforge.net/</a></i>. The
+development version fixes a number of bugs, so I recommend you try it
+instead of the stable version. However, if you are on Microsoft Windows
+or you do not have development tools handy, you might find the stable
+version easier to install. As of this writing, the stable version (2.35)
+can be downloaded from <a href="http://bbdb.sourceforge.net/bbdb-2.35.tar.gz">http://bbdb.sourceforge.net/bbdb-2.35.tar.gz</a> .
+Download and unpack it to ~/elisp/bbdb-2.35, and save the pre-built
+bbdb-autoloads.el from <a href="http://bbdb.sourceforge.net/bbdb-autoloads.el">http://bbdb.sourceforge.net/bbdb-autoloads.el</a>
+into ~/elisp/bbdb-2.35/lisp .
+</p>
+
+<p>
+To check out the development version, change to your <i>~/elisp</i> directory
+and type in the following lines at the command prompt:
+</p>
+
+<pre class="example">
+cvs -d :pserver:anonymous@bbdb.cvs.sourceforge.net:/cvsroot/bbdb login
+cvs -d :pserver:anonymous@bbdb.cvs.sourceforge.net:/cvsroot/bbdb checkout bbdb
+</pre>
+
+<p>
+You should now have a directory called <i>~/elisp/bbdb</i>. Change to that
+directory and run the following commands:
+</p>
+
+<pre class="example">
+autoconf
+./configure
+make autoloads
+make all
+</pre>
+
+<p>
+After installing either the stable or development version of BBDB,
+include it in your load-path by adding the appropriate line to your
+<i>~</i>.emacs/:
+</p>
+
+<pre class="example">
+(add-to-list 'load-path "~/elisp/bbdb-2.35/lisp")    ;; (1)
+(add-to-list 'load-path "~/elisp/bbdb/lisp")         ;; (2)
+
+(require 'bbdb) ;; (3)
+(bbdb-initialize 'gnus 'message)   ;; (4)
+(setq bbdb-north-american-phone-numbers-p nil)   ;; (5)
+</pre>
+
+<p>
+Use either /~/elisp/bbdb-2.35/lisp/(1) or /~/elisp/bbdb/lisp/(2)
+depending on the location of the installed BBDB Lisp files. Then load
+BBDB(3) and configure it for the Gnus mail client and the Message mode
+used to compose mail(4). It's also a good idea to configure BBDB to
+accept any kind of phone number(5), not just North American numbers with
+a particular syntax.
+</p>
+
+<p>
+After you evaluate this code or restart Emacs, BBDB should be part of
+your system. Next step: enter your address book!
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

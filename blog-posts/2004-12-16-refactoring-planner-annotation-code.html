@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Refactoring Planner annotation code</title>
+<!-- 2014-04-30 Wed 17:02 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Refactoring Planner annotation code</h1>
+<p>
+December 16th, 2004 -
+<a href="http://sachachua.com/blog/p/2500"><a href="http://sachachua.com/blog/p/2500">http://sachachua.com/blog/p/2500</a></a>
+</p>
+
+<p>
+Many planner files just contain code for creating hyperlinks from the
+ current buffer. This does not have anything to do with the idea of
+ planning, but simply makes planning information available from more
+ buffers.
+</p>
+
+<p>
+If we separate this functionality from planner.el, we can make it
+ easier for people to play around with context-sensitive hyperlinking
+ without having to deal with planner's complexity.
+</p>
+
+<p>
+To make it easy for other people to play around with this, the
+ composition function needs to be flexible. Annotations should be
+ returned as (uri text) pairs, and a -composition-function can put the
+ two together in the appropriate format, escaping as necessary.
+ Highlighting will be provided in a separate file that defines a minor
+ mode that can be placed anywhere.
+</p>
+
+<p>
+Other people's code for creating annotations, then, would just involve
+ calling -get-uri, or -as-kill, or -to-string. We can use the hook
+ mechanism to get the appropriate annotations for the current buffer.
+ -core.el will provide a method for resolving links, and it should be
+ something that can be used as browse-url-browser-function.
+</p>
+
+<p>
+planner code also specifies how to mark up links. If we're moving the
+ annotation code into a layer that doesn't know about publishing, what
+ will happen to the code? In that case, we will define URL
+ transformation functions in either emacs-wiki or planner. Yes, that
+ would work&#x2026;
+</p>
+
+<p>
+I need to think of a good name for it. uri.el? Yeah, that sounds okay.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

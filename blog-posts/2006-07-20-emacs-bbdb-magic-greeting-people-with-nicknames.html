@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs BBDB magic: Greeting people with nicknames</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs BBDB magic: Greeting people with nicknames</h1>
+<p>
+July 20th, 2006 -
+<a href="http://sachachua.com/blog/p/3681"><a href="http://sachachua.com/blog/p/3681">http://sachachua.com/blog/p/3681</a></a>
+</p>
+
+<p>
+I use Gnus to read my mail within the Emacs text editor. One of the
+ advantages of using a mail client that's infinitely programmable is
+ that you can add all sorts of little tweaks to it. Gnus can be
+ integrated with Emacs' Big Brother Database (BBDB), a semi-structured
+ text database in which I store all sorts of weird notes. This little
+ hack takes the nick field of the database and automatically inserts a
+ greeting. If someone signs himself as Mikong, I should call him that
+ instead of Joseph Michael. Similarly, I sign my messages as Sacha, not
+ Sandra Jean. This little tidbit makes it easier to remember to call
+ people by their nicknames.
+</p>
+
+<pre class="example">
+(defun sacha/gnus-add-nick-to-message ()
+  "Inserts \"Hello, NICK!\" in messages based on the recipient's nick field."
+  (interactive)
+  (save-excursion
+    (let ((bbdb-get-addresses-headers (list (assoc 'recipients bbdb-get-addresses-headers)))
+          nicks)
+      (setq nicks
+            (delq nil
+                  (mapcar (lambda (rec) (bbdb-record-getprop rec 'nick))
+                          (bbdb-update-records
+                           (bbdb-get-addresses nil gnus-ignored-from-addresses 'gnus-fetch-field)
+                           nil
+                           nil))))
+      (goto-char (point-min))
+      (when (and nicks
+                 (re-search-forward "--text follows this line--" nil t))
+        (forward-line 1)
+        (insert "Hello, "
+                (mapconcat 'identity nicks ", ")
+                "!\n\n")))))
+
+(defadvice gnus-post-news (after sacha activate)
+  (sacha/gnus-add-nick-to-message))
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/gnus">gnus</a>,
+<a href="http://www.technorati.com/tag/code">code</a>,
+<a href="http://www.technorati.com/tag/elisp">elisp</a>
+</p>
+
+<p>
+Random Japanese sentence:
+ÃƒÂ¨Ã‚Â™Ã‚ÂŽÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¥Ã‚Â¤Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ§Ã‚ÂŒÃ‚Â«ÃƒÂ£Ã‚Â?Ã‚Â¨ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ¥Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚Â˜ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ§Ã‚ÂŒÃ‚Â«ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¥Ã‚Â°Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â•ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ¨Ã‚Â™Ã‚ÂŽÃƒÂ£Ã‚Â?Ã‚Â¨ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â‚Ã‚Â‚ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â€Ã‚Â‚
+You may as well call a cat a small tiger as call a tiger a big cat.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

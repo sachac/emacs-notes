@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Geek: How to use offlineimap and the dovecot mail server to read your</title>
+<!-- 2014-04-30 Wed 17:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Geek: How to use offlineimap and the dovecot mail server to read your</h1>
+<p>
+Gmail in Emacs efficiently
+</p>
+
+<p>
+May 8th, 2008 -
+<a href="http://sachachua.com/blog/p/4858"><a href="http://sachachua.com/blog/p/4858">http://sachachua.com/blog/p/4858</a></a>
+</p>
+
+<p>
+2014-04-09: This post is from 2008. =) I think I used
+dovecot+offlineimap because Gnus and maildir weren't getting along
+properly and directly connecting with IMAP to Gmail's server was slow,
+but things have probably changed a fair bit since then. I eventually
+moved to using the Gmail web interface for most things, but I still miss
+my Gnus setup!
+</p>
+
+<blockquote>
+
+<div class="figure">
+<p>
+</p>
+</div>
+
+<ol class="org-ol">
+<li>Make sure you've set up Postfix or some other mail server that can
+send mail. I'm not going to cover that because my configuration for
+outgoing mail doesn't use Gmail.
+</li>
+<li>Install dovecot (IMAP server) and offlineimap (IMAP
+synchronization). You can probably find binaries for your
+distribution.
+</li>
+<li>Edit /etc/dovecot.conf and set the following:
+
+<pre class="example">
+default_mail_env = maildir:%h/Maildir
+</pre>
+</li>
+
+<li>Put the following in ~/.offlineimaprc, changing
+your\<sub>local\</sub><sub>username</sub>, your\<sub>username</sub>, and your\<sub>gmail\</sub><sub>password</sub>:
+
+<pre class="example">
+[general]
+accounts = Gmail 
+maxsyncaccounts = 1
+
+[Account Gmail]
+localrepository = Local
+remoterepository = Remote
+
+[Repository Local]
+type = IMAP 
+remotehost = localhost
+port = 143
+remoteuser = your_local_username
+
+[Repository Remote]
+type = IMAP
+remotehost = imap.gmail.com
+remoteuser = your_username@gmail.com
+remotepass = your_gmail_password
+ssl = yes
+maxconnections = 1
+realdelete = no
+folderfilter = lambda foldername: foldername in ['INBOX']
+</pre>
+
+<p>
+If you feel comfortable specifying your password for your local
+account in your ~/.offlineimaprc, you can do so by adding a
+remotepass line under the remoteuser line in the [Repository Local]
+section.
+</p>
+</li>
+
+<li>chmod go-rwx ~/.offlineimaprc for a little bit of safety.
+</li>
+<li>Type <b>offlineimap</b> to start synchronizing.
+</li>
+<li>While that's synchronizing, use something like this as your
+~/.gnus:
+
+<pre class="example">
+(setq gnus-select-method
+      '(nnimap "Mail"
+           (nnimap-address "localhost")
+           (nnimap-stream network)
+           (nnimap-authenticator login)))
+
+(setq user-mail-address "youremail@example.com")
+(setq gnus-ignored-from-addresses "youruser")
+</pre>
+</li>
+
+<li>Start Emacs. Start Gnus with M-x gnus. If you don't see the INBOX
+group, press \^ (gnus-group-enter-server-mode), open nnimap:Mail,
+move your cursor to the INBOX, and either press RET to go into the
+group or press u (gnus-browse-unsubscribe-current-group) to toggle
+the subscription status until you're subscribed to the group. Then
+it should show up on the group screen (M-x gnus).
+</li>
+</ol>
+</blockquote>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Thinking about my TODO keywords</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Thinking about my TODO keywords</h1>
+<p>
+April 30th, 2014 -
+<a href="http://sachachua.com/blog/p/27184"><a href="http://sachachua.com/blog/p/27184">http://sachachua.com/blog/p/27184</a></a>
+</p>
+
+<p>
+It's been twelve years since David Allen published Getting Things Done,
+with its geek-friendly flowcharts and processes for handling tasks in an
+interrupt-driven life. The way I manage my tasks is heavily influenced
+by GTD. I think in terms of next actions, waiting, and someday, and I
+have weekly reviews. I modified the TODO states a little to reflect what
+I need. It's time to think about those states again to see what I can
+tweak and what reports I could use.
+</p>
+
+<p>
+I use Org Mode in Emacs to manage my tasks and my notes. I can customize
+it to give me different kinds of reports, such as showing me all of my
+unscheduled tasks, or all tasks with a specific category, or even
+projects that are “stuck” (no next actions defined). Thinking about my
+processes will help me figure out what reports I want and how I want to
+use them.
+</p>
+
+<p>
+Here are different types of tasks and how I track them:
+</p>
+
+<ul class="org-ul">
+<li>Things I can work on right now (next actions): <code>TODO</code>
+</li>
+<li>Things that I can work on after a different task is finished:
+currently <code>WAITING</code>, but probably better to implement with org-depend
+</li>
+<li>Things I will revisit at a certain date, but I don't need to think
+about them until then: <code>TODO</code>, scheduled (I used to use <code>POSTPONED</code>)
+</li>
+<li>Things that would be nice to do someday, but maybe are incompletely
+specified or understood: <code>SOMEDAY</code>
+</li>
+<li>Things I have decided not to work on: <code>CANCELLED</code>
+</li>
+<li>Things I have asked someone else to do: <code>DELEGATED</code>
+</li>
+<li>Things I can ask someone else to do: <code>TODELEGATE</code>
+</li>
+<li>Things I am waiting for (usually not based on date) and that I need
+to follow up on: <code>WAITING</code>
+</li>
+<li>Things I can write about: <code>TOBLOG</code>. These are pretty optional, so I
+don't want them in my TODO list&#x2026;
+</li>
+<li>If something is a duplicate of something else &#x2013; remove TODO keyword
+and add link?
+</li>
+</ul>
+
+<p>
+I use the following code for an agenda view of unscheduled tasks:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org">(defun sacha/org-agenda-skip-scheduled ()
+  (org-agenda-skip-entry-if 'scheduled 'deadline 'regexp "\n]+&gt;"))
+
+(add-to-list 'org-agenda-custom-commands
+   '("u" "Unscheduled tasks" alltodo ""
+     ((org-agenda-skip-function 'sacha/org-agenda-skip-scheduled)
+     (org-agenda-overriding-header "Unscheduled TODO entries: "))))
+</pre>
+</div>
+
+<p>
+So the to-do process looks like this:
+</p>
+
+<ul class="org-ul">
+<li>Every week, review my <a href="http://sachachua.com/evil-plans">evil plans</a>
+and projects. Check my agenda without the routine tasks to see what
+new things I'm working on. Schedule a few tasks to encourage me to
+make regular progress.
+</li>
+<li>Every day, go through my Org agenda (<code>C-c a a</code>) and do all the tasks
+that are scheduled.
+</li>
+<li>When I'm done or if I feel like working on something else:
+<ul class="org-ul">
+<li>What do I feel like doing? If there's a specific activity that I
+feel like:
+
+<ul class="org-ul">
+<li>Go to the relevant project/section of my TODO list, or check
+the TODOs by context (drawing, writing, etc.)
+</li>
+<li>Clock in on that task.
+</li>
+</ul>
+</li>
+<li>If there's a specific task I feel like working on:
+
+<ul class="org-ul">
+<li>Find the task, maybe with <code>C-u C-c C-w</code> (<code>org-refile</code>) and work
+on it.
+</li>
+</ul>
+</li>
+<li>If there's a new idea I want to work on:
+
+<ul class="org-ul">
+<li>Use <code>org-capture</code> to create the task, file it in the
+appropriate project, and then clock in.
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>If I have an idea for a task, use <code>org-capture</code> to create the task
+and file it in the appropriate project.
+</li>
+</ul>
+
+<p>
+How do I want to improve this?
+</p>
+
+<ul class="org-ul">
+<li><b>Maybe get more used to working with contexts?</b> I have all these Org
+Agenda commands and I hardly ever use them. I tend to work with
+projects instead. Actually, working with projects makes sense too,
+because that minimizes the real context shift.
+</li>
+<li><b>Get better at reviewing existing tasks.</b> I started tracking the
+number of tasks in each state (DONE, TODO, etc.), which nudged me to
+review the tasks and cross old tasks off. If I streamline my process
+for capturing tasks, filing them, and reviewing them by
+project/context/effort, then I can get better at choosing good tasks
+to work on from my existing TODO list.
+</li>
+<li><b>Estimate effort for more tasks, and use that more often</b> I have some
+reports that can filter or sort by estimated effort. I don't use
+effort that much, though. Does it makes sense to get into the habit
+of choosing tasks by estimated time as an alternative approach? I
+usually have fairly large, flexible blocks of time&#x2026;
+</li>
+<li><b>Tag things by level of energy required?</b>
+<a href="http://sachachua.com/blog/2013/11/high-energy-and-low-energy-activities/">I want to take advantage of high-energy times.</a> So, when I feel alert
+and creative, I want to focus on coding and writing. I can save
+things like paperwork for low-energy times. I can tag some tasks as
+<p>
+:lowenergy: and then filter my reports.
+</p>
+</li>
+</ul>
+
+<p>
+Hmm&#x2026;
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

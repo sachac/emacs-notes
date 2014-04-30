@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Recording ledger entries with org-capture-templates</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Recording ledger entries with org-capture-templates</h1>
+<p>
+November 23rd, 2010 -
+<a href="http://sachachua.com/blog/p/21878"><a href="http://sachachua.com/blog/p/21878">http://sachachua.com/blog/p/21878</a></a>
+</p>
+
+<p>
+I use <a href="https://github.com/jwiegley/ledger/wiki">John Wiegley's ledger
+program</a> to keep track of my personal finances. It's quick, it's light,
+and it lets me slice-and-dice my data however I want. I enjoy opening my
+ledger file and adding transactions to it. (Particularly if it involves
+income!) Yes, I'm that kind of weird.
+</p>
+
+<p>
+I wanted to make it even easier to add entries. Instead of using C-x C-f
+to find the file, using ESC &gt; to go to the end of the buffer, and typing
+in the transactions, I decided to add some of my common transactions to
+<code>org-capture-templates</code>. Here's the relevant snippet:
+</p>
+
+<pre class="example">
+(setq org-capture-templates
+      (append '(("l" "Ledger entries")
+                ("lm" "MBNA" plain
+                 (file "~/personal/ledger")
+                 "%(org-read-date) %^{Payee}
+  Liabilities:MBNA  
+  Expenses:%^{Account}  %^{Amount}
+")
+                ("lc" "Cash" plain
+                (file "~/personal/ledger")
+            "%(org-read-date) * %^{Payee}
+  Expenses:Cash 
+  Expenses:%^{Account}  %^{Amount}
+"))
+       org-capture-templates))
+</pre>
+
+<p>
+I've bound <code>org-capture</code> to <code>C-c r</code> using
+<code>(global-set-key (kbd "C-c r") 'org-capture)</code>, so now I can use
+<code>C-c r l m</code> to create an entry for my MBNA Mastercard. This keyboard
+shortcut might not seem short to you, but if you think about it as C-c
+remember ledger Mastercard, it makes perfect sense. =) (Besides,
+org-capture prompts me just in case I forget.)
+</p>
+
+<p>
+Hooray for <code>org-capture!</code>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

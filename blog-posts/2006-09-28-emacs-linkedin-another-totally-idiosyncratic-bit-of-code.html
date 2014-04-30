@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs + LinkedIn: Another totally idiosyncratic bit of code</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs + LinkedIn: Another totally idiosyncratic bit of code</h1>
+<p>
+September 28th, 2006 -
+<a href="http://sachachua.com/blog/p/3884"><a href="http://sachachua.com/blog/p/3884">http://sachachua.com/blog/p/3884</a></a>
+</p>
+
+<p>
+The following code should not be run until you've backed up your Big
+ Brother Database and sacrificed a chicken. It goes through the list of
+ people in your exported LinkedIn CSV, creates BBDB records if
+ necessary, adds a linkedin mail alias, and notices new e-mail
+ addresses and job titles. Call sacha/linkedin-import from the CSV.
+ Needs <a href="http://de.geocities.com/ulf_jasper/lisp/csv.el.txt">csv.el</a>
+ and
+ <a href="http://de.geocities.com/ulf_jasper/lisp/lookout.el.txt">lookout.el</a>,
+ which you should load before running this code.
+</p>
+
+<p>
+If anyone else ever finds this useful, I'll be quite surprised.
+</p>
+
+<pre class="example">
+(require 'csv)
+(require 'lookout)
+
+(setq lookout-bbdb-mapping-table
+      '(("lastname" "Last Name")
+        ("firstname" "First Name")
+        ("company" "Company")
+        ("job" "Job Title")
+        ("net" "E-mail Address")))
+
+(defun sacha/lookout-bbdb-check-linkedin (line)
+  (let* ((lastname  (lookout-bbdb-get-value "lastname" line))
+     (firstname (lookout-bbdb-get-value "firstname" line))
+     (company   (lookout-bbdb-get-value "company" line))
+         (job       (lookout-bbdb-get-value "job" line))
+     (net       (lookout-bbdb-get-value "net" line))
+     (addr1     (lookout-bbdb-get-value "addr1" line))
+     (addr2     (lookout-bbdb-get-value "addr2" line))
+     (addr3     (lookout-bbdb-get-value "addr3" line))
+     (phones    (lookout-bbdb-get-value "phones" line t)) ;; !
+     (notes     (lookout-bbdb-get-value "notes" line ))
+         (j (concat job ", " company))
+     (otherfields (lookout-bbdb-get-value "otherfields" line t))
+     (addrs nil)
+         (n (concat "^" firstname " " lastname))
+     (record (or (bbdb-search (bbdb-records) n)
+                     (bbdb-search (bbdb-records) nil nil net)))
+     (message ""))
+    (unless record
+      (if (string= company "") (setq company nil))
+      (if (string= notes "") (setq notes nil))
+      (if (and addr1 (&gt; (length addr1) 0))
+      (add-to-list 'addrs (vector "Address 1" (list addr1) "" "" "" "")))
+      (if (and addr2 (&gt; (length addr2) 0))
+      (add-to-list 'addrs (vector "Address 2" (list addr2) "" "" "" "")))
+      (if (and addr3 (&gt; (length addr3) 0))
+      (add-to-list 'addrs (vector "Address 3" (list addr3) "" "" "" "")))
+      (setq record (list
+                    (lookout-bbdb-create-entry (concat firstname " " lastname)
+                                               (concat job ", " company)
+                                               net
+                                               addrs
+                                               phones
+                                               notes
+                                               otherfields))))
+    ;; Check if net has changed
+    (when record
+      (setq record (car record))
+      (let ((nets (bbdb-record-net record)))
+        (unless (member net nets)
+          ;; New e-mail address noticed, add to front of list
+          (add-to-list 'nets net)
+          (bbdb-record-set-net record nets)
+          (message "%s %s: New e-mail address noticed: %s" firstname lastname net)))
+      ;; Check if job title and company have changed
+      (when (or job company)
+        (cond
+         ((string= (or (bbdb-record-company record) "") "")
+          (bbdb-record-set-company record j))
+         ((string= (bbdb-record-company record) j)
+          nil)
+         (t
+          (bbdb-record-set-notes
+           record
+           (concat "Noticed change from job title of "
+                   (bbdb-record-company record)
+           "\n"
+           (bbdb-record-notes record)))
+          (message "%s %s: Noticed change from job title of %s to %s"
+                   firstname lastname (bbdb-record-company record) j)
+          (bbdb-record-set-company record j))))
+      (let* ((propsym bbdb-define-all-aliases-field)
+             (oldaliases (bbdb-record-getprop record propsym)))
+        (if oldaliases (setq oldaliases
+                             (if (stringp oldaliases)
+                                 (bbdb-split oldaliases ",")
+                               oldaliases)))
+        (add-to-list 'oldaliases "linkedin")
+        (setq oldaliases (bbdb-join oldaliases ", "))
+        (bbdb-record-putprop record propsym oldaliases)))))
+
+(defun lookout-bbdb-create-entry (name company net addrs phones notes
+                       &amp;optional otherfields)
+  (when (or t (y-or-n-p (format "Add %s to bbdb? " name)))
+    ;;(message "Adding record to bbdb: %s" name)
+    (let ((record (bbdb-create-internal name company net addrs phones notes)))
+      (unless record (error "Error creating bbdb record"))
+      (mapcar (lambda (i)
+        (let ((field (make-symbol (aref i 0)))
+              (value (aref i 1)))
+          (when (and value (not (string= "" value)))
+            (bbdb-insert-new-field record field value))))
+          otherfields)
+      record)))
+
+(defun lookout-bbdb-get-value (key entry &amp;optional as-vector-list)
+  "Returns the value for a key from a lispified csv line, using the mapping
+table."
+  (let* ((table (if (listp lookout-bbdb-mapping-table)
+            lookout-bbdb-mapping-table
+          (symbol-value lookout-bbdb-mapping-table)))
+     (mapped-keys (cdr (assoc key table)))
+     (result nil)
+     (separator ""))
+
+
+
+
+    (unless as-vector-list
+      (setq result ""))
+    (when mapped-keys
+      (if (stringp mapped-keys)
+          (setq mapped-keys (list mapped-keys)))
+      (mapcar (lambda (i)
+                ;;(message "%s...%s" i (cdr (assoc i entry)))
+                (let ((value (cdr (assoc i entry))))
+                  (unless (string= "" value)
+                    (if as-vector-list
+                        (add-to-list 'result (vector i value))
+                      (setq result (concat result separator value)))
+                    (setq separator " "))))
+              mapped-keys))
+    ;;(message "%s" result)
+    result))
+
+(defun sacha/linkedin-import ()
+  (interactive)
+  (mapcar
+   'sacha/lookout-bbdb-check-linkedin
+   (csv-parse-buffer)))
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/hacks">hacks</a>,
+<a href="http://www.technorati.com/tag/networking">networking</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

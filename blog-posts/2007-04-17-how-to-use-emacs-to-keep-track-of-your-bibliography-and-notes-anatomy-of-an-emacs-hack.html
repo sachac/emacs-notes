@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>How to use Emacs to keep track of your bibliography and notes:</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">How to use Emacs to keep track of your bibliography and notes:</h1>
+<p>
+anatomy of an Emacs hack
+</p>
+
+<p>
+April 17th, 2007 -
+<a href="http://sachachua.com/blog/p/4611"><a href="http://sachachua.com/blog/p/4611">http://sachachua.com/blog/p/4611</a></a>
+</p>
+
+<p>
+Keep your records in <b>BibTeX</b>, which is a text-based tool for
+ keeping track of bibliographies. BibTeX really shines when you use it
+ with TeX or LaTeX because you can cite papers by typing something like
+ “\cite{chua07}”. It will automatically publish your bibliography in
+ any of the popular formats, sorting it however you want and including
+ only the papers you actually referenced. Major paper libraries like
+ the ACM Digital Library can export bibliographic records as BiBTeX.
+ You can also use bibtex-mode to help you create records. Assign short,
+ memorable keys to the BibTeX records. I usually use the first author's
+ last name together with the year of publication, with a few more
+ characters if I need to disambiguate.
+</p>
+
+<p>
+You can keep your notes about papers in whatever format you want. Just
+ add a line like “\cite{chua07a}” to make it easier to paste the
+ citation. I put my notes into a fortune file (chunks delimited by % on
+ a line by itself) because whenever I get writer's block, I like
+ retrieving random notes using the fortune command. I usually highlight
+ selections from the PDFs, paste them into my Emacs buffer, and add the
+ \cite&#x2026; note. I keep exact quotations so that I can paraphrase them
+ any way I want when I write the document. Sometimes I'll add comments,
+ which I visually distinguish from the quote so that I don't get
+ confused. You can also add keywords to your notes and use <b>M-x
+ occur</b> or <b>grep</b> to find matching quotes.
+</p>
+
+<p>
+When it's time to work on your paper, keep your citation notes close
+ to the statements as you paraphrase them for your paper. The best way
+ to take advantage of the data you have is to use LaTeX, a powerful
+ typesetting system for scientific papers and books. It's well worth
+ learning and it's the standard in many scientific circles. Even if you
+ use OpenOffice.org or some other word processor, though, you can still
+ take advantage of your notes: just make sure you copy the citations
+ into your bibliography.
+</p>
+
+<p>
+-&#x2014;
+</p>
+
+<p>
+So that's the basic way to do it. Of course, I've been accumulating
+ various Emacs hacks for managing my bibliography, and they're all in
+</p>
+
+<p>
+<a href="http://sachachua.com/notebook/emacs/research-config.el">../emacs/research-config.el</a>.
+</p>
+
+<p>
+The first thing I noticed was that I was typing \cite{someid} all the
+ time. Hmm. There must be a way I could just take that information from
+ my BibTeX file&#x2026; So I wrote a function that allowed me to mark a
+ BibTeX record as the current paper I was reading.
+</p>
+
+<pre class="example">
+(defvar sacha/research/quote-default ""
+  "Stores the BibTeX key for the paper I'm currently reading.")
+(defadvice bibtex-clean-entry (after sacha activate)
+  "Set default key based on the current record."
+  (setq sacha/research/quote-default (bibtex-key-in-head))
+  (set-register ?a (format "\n\\cite{%s}\n%%" sacha/research/quote-default))
+  (set-register ?b sacha/research/quote-default))
+</pre>
+
+<p>
+Okay. That meant I could just insert the register with C-x r i a. This
+ wasn't really that much of an improvement, so I thought about making a
+ function that pasted the text, added the citation, and added the %
+ that separates entries in fortune files.
+</p>
+
+<pre class="example">
+(defvar sacha/research/quote-file "/home/sacha/notebook/research/quotes"
+  "File with my research notes.")
+(defun sacha/research/quote ()
+  "Paste the quote into `sacha/research/quote-file'."
+  (interactive)
+  (with-current-buffer (find-file-noselect sacha/research/quote-file)
+     (goto-char (point-max))
+     (yank)
+     (unless (bolp) (insert "\n"))
+     (insert "\\cite{" sacha/research/quote-default "}\n%\n")))
+</pre>
+
+<p>
+I have lots of other functions to keep track of read entries (moving
+ the papers into a separate folder!), count papers read and remaining
+ (good for morale when you see the numbers decreasing, and for a while
+ I was publishing the numbers on my blog!) and even quickly browse and
+ tag quotes. =) You can check out
+<a href="http://sachachua.com/notebook/emacs/research-config.el">../emacs/research-config.el</a>
+for
+ more inspiration.
+</p>
+
+<p>
+And yes, this is what I do when I want to procrastinate working on my
+ thesis&#x2026;
+</p>
+
+<p>
+Random Emacs symbol: memory-signal-data &#x2013; Variable: Precomputed
+`signal' argument for memory-full error.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

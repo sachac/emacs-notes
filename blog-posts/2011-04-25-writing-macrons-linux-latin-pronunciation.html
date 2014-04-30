@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Writing macrons in Linux for Latin pronunciation</title>
+<!-- 2014-04-30 Wed 17:00 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Writing macrons in Linux for Latin pronunciation</h1>
+<p>
+April 25th, 2011 -
+<a href="http://sachachua.com/blog/p/22212"><a href="http://sachachua.com/blog/p/22212">http://sachachua.com/blog/p/22212</a></a>
+</p>
+
+<p>
+Frustrated with the inability to search the scanned images of the 1822
+Latin textbook we're using (Albert Harkness'
+<a href="http://www.archive.org/details/aneasymethodfor00harkgoog">An Easy
+Method for Beginners in Latin</a> &#x2013; get the PDF, the full-text version is
+badly OCRed), W- has taken it upon himself to recreate the public-domain
+textbook as a fully searchable TiddlyWiki (sans illustrations). This
+meant that he needed to type in a great number of macrons in the words,
+and <i>that</i> meant finding a better way than copying and pasting from
+KDE's character map.
+</p>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Macron">Macrons</a> turn up in many
+languages. In Japanese, you use them to indicate that vowels are
+doubled. 大阪（おおさか）can be romanized as Oosaka or Ōsaka. In Latin,
+beginner textbooks often use macrons (macra) to indicate pronunciation.
+(Why do we care about pronunciation for a dead language used mostly in
+church hymns? W- and I actually want to be able to use this
+conversationally, at least with each other. After all, if you don't use
+it, you lose it.)
+</p>
+
+<p>
+I suggested Emacs. In Emacs, it's just a matter of using
+<code>M-x set-input-method</code> to choose <code>latin-alt-postfix</code>. With that input
+method, you can add macrons to letters by typing &#x2013; after them. For
+example, typing “a -” will result in ā. Not only that, dynamic
+abbreviations (<code>M-/</code>) make it easier to retype words you've already
+written before.
+</p>
+
+<p>
+W- wouldn't hear of using Emacs, being almost as firmly wedded to <code>vi</code>
+as he is to me. ;)
+</p>
+
+<p>
+Instead, we spent some time figuring out how to set up KDE and gvim to
+make it easier for him to type in macrons. HTML character sequences were
+out of the question, of course. W- used KDE's settings to map his unused
+Windows key and menu key to compose keys. That made it easier to produce
+ē, ī, ō, and ū using the key sequence “Compose + hyphen + vowel”.
+However, “Compose + hyphen + a” produced ã, not ā. This was probably a
+bug based on some issue reports we found on the Net, but the suggested
+fix didn't work (im-switch -c to change to default-xim). I found a page
+describing an <code>.XCompose</code> fix, customizing the key sequences. He copied
+the relevant key sequences from en-US's locale settings for Compose in
+<code>/usr/share/X11</code>, restarted X, and it worked.
+</p>
+
+<p>
+Now he's off and typing!
+</p>
+
+<p>
+2011-04-24 Sun 23:21
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

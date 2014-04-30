@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>My Big Brother Database and social networking sites</title>
+<!-- 2014-04-30 Wed 17:04 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">My Big Brother Database and social networking sites</h1>
+<p>
+August 30th, 2006 -
+<a href="http://sachachua.com/blog/p/3803"><a href="http://sachachua.com/blog/p/3803">http://sachachua.com/blog/p/3803</a></a>
+</p>
+
+<p>
+Yes, I keep a database on people. ;) I use an Emacs module aptly
+ called the Big Brother Database (BBDB), which is just a keystroke away
+ from my mail (Gnus) and my blog (Planner). I keep all sorts of notes
+ in it, like when I met someone or what their food preferences are.
+</p>
+
+<p>
+The following bit of Emacs Lisp code extracts all the names and e-mail
+ addresses from my BBDB. I have 1852 distinct e-mail addresses,
+ although a number of them are not for people.
+</p>
+
+<pre class="example">
+(mapc
+ (lambda (rec)
+   (if (bbdb-record-net rec)
+       (let ((name (bbdb-record-name rec)))
+         (mapc
+          (lambda (addr)
+            (insert name "\t" addr "\n"))
+          (bbdb-record-net rec)))))
+ (bbdb-records))
+</pre>
+
+<p>
+I uploaded the list to <a href="http://www.linkedin.com">LinkedIn</a> and
+ <a href="http://www.openbc.com">OpenBC</a>, my two favorite business networking
+ sites. I found that a lot of my contacts had joined the services since
+ I last checked. It was great being able to refer to my notes and make
+ those connections. For example, one record said that I'd met someone
+ in 2004 at a Tokyo Linux Users Group meeting &#x2013; something I'd probably
+ not have remembered on my own&#x2026;
+</p>
+
+<p>
+Some of the records didn't have much annotation aside from the note
+ “personal mail”, which means I probably should set up mail indexing
+ and search again. Hmm.
+</p>
+
+<p>
+It's nice to have these notes at my fingertips.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/networking">networking</a>,
+<a href="http://www.technorati.com/tag/emacs">emacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Living life online</title>
+<!-- 2014-04-30 Wed 17:05 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Living life online</h1>
+<p>
+August 9th, 2006 -
+<a href="http://sachachua.com/blog/p/3741"><a href="http://sachachua.com/blog/p/3741">http://sachachua.com/blog/p/3741</a></a>
+</p>
+
+<p>
+People often find the public nature of my blog remarkable. They boggle
+ at the idea that I put my task list online and that I share my
+ reflections on my quarter-life crisis.
+</p>
+
+<p>
+I share a lot, but this blog doesn't have <b>everything.</b> There are a
+ lot of things I don't write about because I haven't figured them out
+ yet or because I don't feel like writing about them. I also have quite
+ a number of stories that I just haven't gotten around to writing!
+</p>
+
+<p>
+But yes, my life is mostly public. Why, when I know that Google and
+ Archive.org will mean that these things will be around for pretty much
+ forever? ;)
+</p>
+
+<p>
+In particular, people find my task list unusual.
+<a href="http://www.doubleblind.ca/2006/08/01/richard-gets-it/">Sacha Peter</a>
+said:
+</p>
+
+<blockquote>
+<p>
+&#x2026; she has taken the step to pretty much put her task lists online
+for the whole world to see.
+</p>
+</blockquote>
+
+<p>
+He wonders whether it might be interesting to look back over several
+ years of data. Hmm&#x2026; Come to think of it, I've been using Planner for
+ four and a half years now. Whoa.
+</p>
+
+<p>
+I use my task list as both a tool for proactive planning, reactive
+ management, and retrospective reflection. I mainly use it to plan
+ ahead, get stuff out of my head, and keep track of what I accomplished
+ for the day. I <b>could</b> use Planner to keep track of tasks that I
+ didn't finish or didn't get around to, and I might change to doing
+ that one of these days.
+</p>
+
+<p>
+I guess the strange thing is that I do this kind of planning out in
+ public. This has helped me countless times. A public task list lets
+ people figure out if I remembered that I have a meeting with them.
+ Sometimes people will remind me of things if they see me
+ procrastinate. And every so often, people offer tips and suggestions
+ that help me do my work more effectively.
+</p>
+
+<p>
+It's easy to have private tasks. Here's the basic Emacs Lisp code I'd
+ need for that:
+</p>
+
+<pre class="example">
+(defun sacha/planner-skip-private ()
+  "Remove all lines matching {{ private }} (no spaces)."
+  (goto-char (point-min))
+  (delete-matching-lines "{{private}\}")) ; escaped here just so that you can see it
+</pre>
+
+<p>
+I don't think I'll use it often, though. It's kinda nice keeping
+ people up to date on what I'm working on even if I don't have the time
+ to write long blog entries&#x2026;
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/planning">planning</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

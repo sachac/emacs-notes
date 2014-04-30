@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Excited about my DemoCamp presentation!</title>
+<!-- 2014-04-30 Wed 17:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Excited about my DemoCamp presentation!</h1>
+<p>
+October 23rd, 2006 -
+<a href="http://sachachua.com/blog/p/3962"><a href="http://sachachua.com/blog/p/3962">http://sachachua.com/blog/p/3962</a></a>
+</p>
+
+<p>
+I've written a totally small-time presentation thingy that cues me
+thanks to Emacspeak. ;) Here's the setup code:
+</p>
+
+<pre class="example">
+(progn ;; Setup
+  (defvar democamp/presentation-file "~/democamp.el")
+  (defvar democamp/cue-buffer "*DemoCamp*")
+  (defun democamp/next ()
+    (interactive)
+    (let (start sexp)
+      (with-current-buffer (find-file-noselect democamp/presentation-file)
+        (setq start (point))
+        (forward-sexp)
+        (setq sexp (buffer-substring-no-properties start (point))))
+      (eval (read sexp))))
+
+  (defun democamp/previous ()
+    (interactive)
+    (let (start sexp)
+      (with-current-buffer (find-file-noselect democamp/presentation-file)
+        (setq start (point))
+        (backward-sexp)
+        (setq sexp (buffer-substring-no-properties (point) start)))
+      (eval (read sexp))))
+
+  (defun democamp/repeat ()
+    (interactive)
+    (let (start sexp)
+      (with-current-buffer (find-file-noselect democamp/presentation-file)
+        (setq start (point))
+        (backward-sexp)
+        (setq sexp (buffer-substring (point) start))
+        (forward-sexp))
+      (eval (read sexp))))
+
+  (defun democamp/say (text)
+    (with-current-buffer (get-buffer-create democamp/cue-buffer)
+      (erase-buffer)
+      (insert text)
+      (goto-char (point-min))
+      (call-interactively 'emacspeak-speak-buffer)))
+  (global-set-key (kbd "") 'democamp/next)
+  (global-set-key (kbd "S-") 'democamp/previous)
+  (global-set-key (kbd "C-") 'democamp/repeat)
+)
+</pre>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>,
+<a href="http://www.technorati.com/tag/democamp">democamp</a>
+</p>
+
+<p>
+Random Emacs symbol: gnus-multiple-choice &#x2013; Function: Ask user a
+multiple choice question.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

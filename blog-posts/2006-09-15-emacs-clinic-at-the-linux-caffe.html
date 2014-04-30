@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs clinic at the Linux Caffe</title>
+<!-- 2014-04-30 Wed 17:08 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs clinic at the Linux Caffe</h1>
+<p>
+September 15th, 2006 -
+<a href="http://sachachua.com/blog/p/3858"><a href="http://sachachua.com/blog/p/3858">http://sachachua.com/blog/p/3858</a></a>
+</p>
+
+<p>
+Quinn Fung needed some help with Muse and RDF so that she could easily
+generate RSS feeds from Emacs, so we declared today to be Emacs Clinic
+day at the <a href="http://www.linuxcaffe.ca">Linux Caffe</a>.
+</p>
+
+<p>
+We started by getting publishing to work. We then figured out how to get
+RDF to publish, and that was pretty okay too.
+</p>
+
+<p>
+Quinn needed multiple authors, and muse-journal didn't support it yet,
+ so we hacked it in. I told her to pick a syntax, and I added code to
+ make it happen. It took us a while to track things down, but it turned
+ out to be a reasonably easy addition. (I need to refactor that code
+ sometime&#x2026; that's a really long function!)
+</p>
+
+<p>
+Along the way, we found a bug in muse-journal. Muse-journal summarizes
+entries by taking the first two sentences, but dies when the post
+doesn't contain at least two periods. I spent a fair bit of time tracing
+through the different changes we made before realizing that it wasn't my
+bug. I probably would've found it earlier, but debug-on-error wasn't
+getting honored. Odd. Anyway, here's the patch, which I'll submit to GNA
+when I get back into the swing of things:
+</p>
+
+<pre class="example">
+--- orig/lisp/muse-journal.el
++++ mod/lisp/muse-journal.el
+@@ -570,7 +570,9 @@
+           (let ((beg (point)))
+             (if (muse-style-element :summarize)
+                 (progn
+-                  (forward-sentence 2)
++                  (condition-case err
++                      (forward-sentence 2)
++                    (error (goto-char (point-min))))
+                   (setq desc (concat (buffer-substring beg (point)) "...")))
+               (save-restriction
+                 (muse-publish-markup-buffer "rss-entry" "html")
+</pre>
+
+<p>
+Now Quinn's jumping feet-first into Lisp development by doing the Atom
+ implementation. muse-atom does single-entry Atom files, but she can
+ model it on muse-journal's RSS implementation.
+</p>
+
+<p>
+I also helped Ian set up a very very basic Planner. It reminded me
+ that I <b>really</b> need to package planner-bundle again, and either
+ retire or update plannerlove. In fact, I need to set up scripts so
+ that it's ridiculously easy to keep up to date&#x2026;
+</p>
+
+<p>
+I miss hacking on Emacs! This is fun. I'll reconfigure my kernel and
+ get VPN working. Then I'll set up my Emacs development environment
+ again&#x2026;
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/pimpmyemacs">pimpmyemacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

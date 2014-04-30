@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: sorting contacts by timestamp</title>
+<!-- 2014-04-30 Wed 17:06 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: sorting contacts by timestamp</h1>
+<p>
+September 7th, 2007 -
+<a href="http://sachachua.com/blog/p/4345"><a href="http://sachachua.com/blog/p/4345">http://sachachua.com/blog/p/4345</a></a>
+</p>
+
+<p>
+Last September, I started automatically tracking my e-mails. Every
+ time I sent a message to someone already in my addressbook, his or her
+ contact record would be updated with the date and subject of the
+ message. I also made it easy to note that I met someone in person or
+ that I talked to them on the phone, although this wasn't automatic.
+</p>
+
+<p>
+So now I have almost a year of contact information in my address book.
+ I was curious&#x2014;whom haven't I talked to in a year?
+</p>
+
+<p>
+Here are some numbers:
+</p>
+
+<p>
+I've contacted 396 people in my addressbook since January 1, 2007.
+</p>
+
+<p>
+In the past 365 days (2006.09.07 &#x2013; 2007.09.07), I've contacted 670
+ people in my address book.
+</p>
+
+<p>
+93 people have a contact timestamp (maybe the day I met them), but I
+ haven't contacted them in the past 365 days. This breaks down to 37
+ people I haven't contacted since 2006, 32 people I haven't contacted
+ since 2005, and 24 from 2004 or earlier.
+</p>
+
+<p>
+1230 records do not have any contact timestamp. Some of these are
+ bots, some of these are duplicate records I still haven't gotten
+ around to merging, others are contacts from before I started tracking
+ and I haven't e-mailed or talked to them since.
+</p>
+
+<p>
+I figured this out by writing a bit of Emacs Lisp to print a
+ hyperlinked list of contacts with the date of last contact. This was
+ then very easy to sort using M-x sort-lines and M-x reverse-region.
+</p>
+
+<p>
+For example, here are the people I've e-mailed in the last seven days:
+</p>
+
+<p>
+2007.09.07 Wayne Young
+ 2007.09.07 Tania Samsonova
+ 2007.09.07 Papa
+ 2007.09.07 Mike Bailey
+ 2007.09.07 <a href="http://daysstories.blogspot.com">Mama</a>
+ 2007.09.07 Leigh Honeywell
+ 2007.09.07 Lawrence J. Rooney
+ 2007.09.07 <a href="http://kathychua.kom.ph">Kathy Chua</a>
+ 2007.09.07 Don Marti
+ 2007.09.07 <a href="http://3w-agility.blogspot.com">Dean Michael Berris</a>
+ 2007.09.07 Ching Valdezco
+ 2007.09.07 <a href="http://www.nostarch.com">Bill Pollock</a>
+ 2007.09.06 <a href="http://www.livejournal.com/users/ninjapeps/">Peppy
+Salita</a>
+ 2007.09.06 Mallory Chua
+ 2007.09.06 <a href="http://mysite.verizon.net/johnsu01/">John Sullivan</a>
+ 2007.09.06 <a href="http://www.livejournal.com/~eclair/">Clair Ching</a>
+ 2007.09.06 Allan Tan
+ 2007.09.05 Mark Chignell
+ 2007.09.04 <a href="http://www.gabrielmansour.com">Gabriel Mansour</a>
+ 2007.09.03 Thomas Knoll
+ 2007.09.03 <a href="http://uc.org/simon">Simon Ditner</a>
+ 2007.09.03 <a href="http://richip.dhs.org/~richip/blog/day.php">Richard
+Plana</a>
+ 2007.09.03 Neil Ernst
+ 2007.09.03 Mike C. Fletcher
+ 2007.09.03 Michal Jacovi
+ 2007.09.03 Michael J. Muller
+ 2007.09.03 Eugene Jarder
+ 2007.08.31 <a href="http://www.simonrowland.com">Simon Rowland</a>
+ 2007.08.31 <a href="http://www.radiantcore.com">Jay Goldman</a>
+</p>
+
+<p>
+The code below probably won't work out of the box with you unless
+ you're using Planner+BBDB+my mail tracking hacks, but maybe it'll give
+ you ideas.
+</p>
+
+<pre class="example">
+(defun sacha/bbdb-print-with-timestamp (records)
+  (while records
+    (insert (sacha/bbdb-last-timestamp (car records))
+            " |\t"
+            (or (sacha/planner-bbdb-annotation-from-bbdb records) "")
+            "\n")
+    (setq records (cdr records))))
+
+;; (assert (equal (sacha/extract-regexp "a." "ab ac bb") '("ab" "ac")))
+(defun sacha/extract-regexp (regexp string &amp;optional group)
+  (let (result
+        s
+        (start 0))
+    (while (string-match regexp string start)
+      (setq result (cons (match-string (or group 0) string) result))
+      (setq start (match-end 0)))
+    (nreverse result)))
+
+(defun sacha/bbdb-timestamps (rec)
+  "Return a list of timestamps found in the notes or contact field of REC."
+  (sort
+   (sacha/extract-regexp planner-date-regexp
+                         (concat (or (bbdb-record-notes rec) "")
+                                 " "
+                                 (bbdb-record-getprop rec 'contact)))
+   (lambda (a b) (string&lt; b a))))
+
+(defun sacha/bbdb-last-timestamp (rec)
+  "Return the most recent timestamp for REC or nil if none."
+  (or (car (sacha/bbdb-timestamps rec)) "0000.00.00"))
+</pre>
+
+<p>
+Yes, I do weird things. Next step for this one: Review the list, see
+ who I haven't talked to in one year, and decide who I want to get back
+ in touch with. Also, analyze my e-mail and come up with pretty graphs.
+</p>
+
+<p>
+Random Emacs symbol: gnus-server-kill-server - Command: Kill the server
+on the current line.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

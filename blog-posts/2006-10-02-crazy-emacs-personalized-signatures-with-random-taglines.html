@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Crazy Emacs: Personalized signatures with random taglines</title>
+<!-- 2014-04-30 Wed 17:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Crazy Emacs: Personalized signatures with random taglines</h1>
+<p>
+October 2nd, 2006 -
+<a href="http://sachachua.com/blog/p/3904"><a href="http://sachachua.com/blog/p/3904">http://sachachua.com/blog/p/3904</a></a>
+</p>
+
+<p>
+Of course, that naturally leads to the crazy idea: “What if I can
+ personalize my signatures?” Knowing that Paul Lussier is an Emacs geek,
+I can reward him for reading all the way
+ to the bottom of my message&#x2026; ;)
+</p>
+
+<pre class="example">
+(defun sacha/gnus-personalize-signature ()
+  "Personalizes signature based on BBDB signature field.
+BBDB signature field should be a lambda expression.
+First person with a custom signature field gets used."
+  (let* ((bbdb-get-addresses-headers
+          (list (assoc 'recipients bbdb-get-addresses-headers)))
+         (records (bbdb-update-records
+                   (bbdb-get-addresses
+                    nil
+                    gnus-ignored-from-addresses 'gnus-fetch-field)
+                   nil
+                   nil))
+         signature)
+    (while (and records (not signature))
+      (when (bbdb-record-getprop (car records) 'signature)
+        (setq signature
+              (eval (read (bbdb-record-getprop (car records)
+                                               'signature)))))
+      (setq records (cdr records)))
+    (or signature t)))
+(setq-default message-signature 'sacha/gnus-personalize-signature)
+</pre>
+
+<p>
+So then all I have to do is add the following field to his record:
+</p>
+
+<pre class="example">
+signature: (concat "Sacha Chua - Emacs geek
+           What crazy idea can I help you hack next?
+           Random Emacs symbol: "
+           (sacha/random-tagline
+            "~/.taglines.random-emacs-symbols"))
+</pre>
+
+<p>
+Emacs. One crazy idea at a time. Now I can use this to select random
+ information, like my favorite networking books or a list of my
+ upcoming events&#x2026;
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>,
+<a href="http://www.technorati.com/tag/bbdb">bbdb</a>,
+<a href="http://www.technorati.com/tag/elisp">elisp</a>,
+<a href="http://www.technorati.com/tag/hack">hack</a>
+</p>
+
+<p>
+Random Emacs symbol: sort-coding-systems-predicate &#x2013; Variable: If
+non-nil, a predicate function to sort coding systems.
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

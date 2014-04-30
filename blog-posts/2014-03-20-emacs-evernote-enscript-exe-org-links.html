@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs, Evernote (through enscript.exe), and Org links</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs, Evernote (through enscript.exe), and Org links</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Link-related convenience functions</a></li>
+<li><a href="#sec-2">Evernote-related extract</a></li>
+</ul>
+</div>
+</div>
+<p>
+March 20th, 2014 -
+<a href="http://sachachua.com/blog/p/27043"><a href="http://sachachua.com/blog/p/27043">http://sachachua.com/blog/p/27043</a></a>
+</p>
+
+<p>
+I've given myself permission to
+<a href="http://www.flickr.com/photos/sachac/13089037624/">spend an hour or two
+tickling my brain</a> with various technical ideas and prototypes every
+day. This means Emacs geekery is going to turn up on my blog more often.
+=) Here's a recent hack that I put together to make my weekly reviews a
+little easier.
+</p>
+
+<p>
+I skim a lot of blog posts on my phone using the
+<a href="http://feedly.com">Feedly</a> app. (See:
+<a href="http://sachachua.com/blog/2014/01/read-blogs-efficiently-feed-reader/">How
+to read blogs efficiently with a feed reader</a>.) I save the posts I want
+to follow up on or include in my weekly round-up. I have an
+<a href="http://ifttt.com">If This Then That</a> recipe that monitors my saved
+items and stashes them in Evernote with the <code>roundup</code> tag. If I come
+across other interesting pages while browsing on my computer, I use the
+Evernote Web Clipper to save those pages with the <code>roundup</code> tag as well.
+</p>
+
+<p>
+In the past, I selected a range of notes to export from Evernote, saved
+them to a file, and used my sacha/evernote-extract-links-for-review
+function to extract the titles and URLs. I opened each of the pages with
+C-c C-o (<code>org-open-at-point</code>) to refresh my memory and follow up. I
+deleted lines that were no longer relevant. Since IFTTT had changed to
+rewriting the URLs instead of leaving the source URLs alone, I copied
+the original URLs and replaced the links that were in Org.
+</p>
+
+<p>
+This is Emacs, though, and even that can be smoothened with a little
+scripting. Now I can use the code below to expand URLs and to open all
+the URLs in the region.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Link-related convenience functions</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I picked this up from
+<a href="http://www.emacswiki.org/emacs/AlexSchroederConfigOrientalibombus"><a href="http://www.emacswiki.org/emacs/AlexSchroederConfigOrientalibombus">http://www.emacswiki.org/emacs/AlexSchroederConfigOrientalibombus</a></a>
+.
+</p>
+
+<pre class="example">
+(defun kensanata/resolve-redirect (url)
+  "Resolve shortened URL by launching `curl --head' and parsing the result."
+  (let* ((curl (shell-command-to-string
+                (format "curl --silent --head %s" url)))
+         (location (when (and (string-match "\\`HTTP/1\.1 301" curl)
+                              (string-match "^Location: \\(.*\\)" curl))
+                     (match-string 1 curl))))
+    (or location url)))
+
+(defun sacha/resolve-urls-in-region (beg end)
+  "Expand URLs between BEG and END."
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward org-bracket-link-regexp nil t)
+        (replace-match (save-match-data (kensanata/resolve-redirect
+                                         (match-string 1))) t t nil 1))
+      (goto-char (point-min))
+      (while (re-search-forward org-link-re-with-space nil t)
+        (replace-match (save-match-data (kensanata/resolve-redirect
+                                         (match-string 0))) t t nil)))))
+
+(defun sacha/open-urls-in-region (beg end)
+  "Open URLs between BEG and END."
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward org-plain-link-re nil t)
+        (org-open-at-point)))))
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Evernote-related extract</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Evernote on Windows doesn't have the same kind of scripting capabilities
+that Evernote on the Mac has, but it turns out you can still do a fair
+bit of scripting with the <code>enscript</code> tool.
+</p>
+
+<pre class="example">
+(defun sacha/evernote-export-and-extract (start-date end-date)
+  "Extract notes created on or after START-DATE and before END-DATE."
+  (let ((filename "c:/sacha/tmp/Evernote.enex"))
+    (call-process 
+     "c:/Program Files (x86)/Evernote/Evernote/enscript.exe"
+     nil t t
+     "exportNotes"
+     "/q" (concat
+           " tag:roundup"
+           " created:" (replace-regexp-in-string "-" "" start-date)
+           " -created:" (replace-regexp-in-string "-" "" end-date))
+     "/f" filename)
+    (sacha/evernote-extract-links-for-review filename)))
+
+(defun sacha/evernote-extract-links-for-review (filename)
+  "Extract note names and URLs from FILENAME.
+     The file should be an ENEX export."
+  (interactive (list (read-file-name "File: ")
+                     (org-read-date)
+                     (org-read-date)))
+  (let (list)
+    (with-temp-buffer
+      (insert-file-contents filename)
+      (goto-char (point-min))
+      (while (re-search-forward "&lt;title&gt;\\(.+?\\)&lt;/title&gt;\\(.*?\n\\)*?.*?href=\"\\(.*?\\)\"" nil t)
+        (setq list
+              (cons
+               (cons
+                (match-string-no-properties 1)
+                (match-string-no-properties 3)) list))))
+    (setq list
+          (mapconcat (lambda (x)
+                       (concat "- [["
+                               (kensanata/resolve-redirect (cdr x))
+                               "][" (car x) "]]: ")) list "\n"))
+          (if (called-interactively-p 'any)
+              (insert list)
+            list)))
+</pre>
+
+<p>
+Let's see how this new workflow goes. =) If you're curious, you can
+check out the rest of my
+<a href="http://sachachua.com/dotemacs#weekly-review">weekly-review-related
+code in my Emacs configuration</a>.
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

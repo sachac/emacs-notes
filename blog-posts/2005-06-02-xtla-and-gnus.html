@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>xtla and Gnus</title>
+<!-- 2014-04-30 Wed 16:58 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">xtla and Gnus</h1>
+<p>
+June 2nd, 2005 -
+<a href="http://sachachua.com/blog/p/2771"><a href="http://sachachua.com/blog/p/2771">http://sachachua.com/blog/p/2771</a></a>
+</p>
+
+<blockquote>
+<p>
+There is a feature in xtla.el to send/review patches via gnus.
+</p>
+
+<p>
+To set it up, you need the following lines for your .emacs:
+</p>
+
+<pre class="example">
+(tla-insinuate-gnus)
+(setq tla-apply-patch-mapping
+      '(((nil "planner" nil  nil nil) "~/work/planner-dev/")))
+</pre>
+
+<p>
+Replace ~/work/planner-dev/ with your planner working directory
+</p>
+
+<p>
+The patches are sent as .tar.gz files.
+</p>
+
+<p>
+When you receive such a patch (I will send one soon), You can hit
+ K t v to view the patch
+ K t a to apply the patch
+</p>
+
+<p>
+I can even provide a log message in the mail.
+ You can insert the log message via C-c C-p in the tla-log-edit
+buffer.
+</p>
+</blockquote>
+
+<p>
+E-Mail from Stefan ReichÃƒÂƒÃ‚Â¶r
+</p>
+
+<p>
+ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ©Ã‚Â™Ã‚Â?ÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â‚Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ¦Ã‚Â€Ã‚Â§ÃƒÂ¨Ã‚ÂƒÃ‚Â½ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â‚Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ§Ã‚Â§Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¦ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ¥Ã‚Â¹Ã‚Â»ÃƒÂ¦Ã‚Â»Ã‚Â&#x2026;ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¦Ã‚Â„Ã‚ÂŸÃƒÂ£Ã‚Â?Ã‚Â˜ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+Its limited capability has disenchanted me with computer.
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

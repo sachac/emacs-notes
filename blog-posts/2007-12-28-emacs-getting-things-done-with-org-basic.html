@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs: Getting Things Done with Org &#x2013; Basic</title>
+<!-- 2014-04-30 Wed 17:07 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs: Getting Things Done with Org &#x2013; Basic</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Set up</a></li>
+<li><a href="#sec-2">Org and GTD</a>
+<ul>
+<li><a href="#sec-2-1">Collect</a></li>
+<li><a href="#sec-2-2">Process</a></li>
+<li><a href="#sec-2-3">Organize</a></li>
+<li><a href="#sec-2-4">Review</a></li>
+<li><a href="#sec-2-5">Do</a></li>
+<li><a href="#sec-2-6">Wrapping up</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+December 28th, 2007 -
+<a href="http://sachachua.com/blog/p/4543"><a href="http://sachachua.com/blog/p/4543">http://sachachua.com/blog/p/4543</a></a>
+</p>
+
+<p>
+2(please remove leading spaces from code excerpts)
+</p>
+
+<p>
+You'd like to use the Org Mode for Emacs to manage your tasks. In this
+ blog post, I'll cover the absolute minimum you need to get started.
+ We'll assume that you already have GNU Emacs 22 and that you're
+reasonably
+ familiar with using Emacs, including installing external modules and
+ adding them to your load path.
+</p>
+
+<p>
+There are a million ways to plan, but we're going to focus on two. The
+ first approach is Getting Things Done (GTD), described by David Allen
+ in the book of the same title. GTD focuses on next actions (the very
+ next thing you can do) and uses context lists to keep things
+ manageable. Popular ways to do GTD are with index cards, recycled
+ business cards, or software programs. If most of your tasks are in
+ your head or scattered on scraps of paper, GTD will probably give you
+ the most organizational bang for the least effort.
+</p>
+
+<p>
+The second approach is day planning. You plan your week based on your
+ projects and priorities, write your tasks onto the pages for each day,
+ and copy unfinished tasks over to the next day. If you've used one of
+ those Filofax, Franklin-Covey or Dayrunner personal organizers, you're
+ probably used to this way of planning.
+</p>
+
+<p>
+As you learn more about Emacs and task management, you'll probably
+ develop your own way of doing things. These two are a good place to
+ start, though. (Don't recognize how you plan your day, but
+ interested in using Emacs anyway? Please get in touch with me! I may
+ know of something that fits, and I'd certainly love to hear about the
+ way you work.)
+</p>
+
+<p>
+If you use GTD, read on. Otherwise, read the Setup and then wait for
+ the next blog post! =)
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Set up</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Org is part of Emacs 22. To make it even easier to collect tasks and
+ notes, install a separate package called Remember.
+</p>
+
+<p>
+First, download and unpack Remember. As of this writing, Remember is
+ at version 1.9. You can get the TAR.GZ from
+</p>
+
+<p>
+<a href="http://download.gna.org/remember-el/remember-1.9.tar.gz"><a href="http://download.gna.org/remember-el/remember-1.9.tar.gz605">http://download.gna.org/remember-el/remember-1.9.tar.gz605</a></a>
+or the ZIP
+ archive from
+<a href="http://download.gna.org/remember-el/remember-1.9.zip"><a href="http://download.gna.org/remember-el/remember-1.9.zip606">http://download.gna.org/remember-el/remember-1.9.zip606</a></a>
+. If
+ these instructions are out of date, check
+</p>
+
+<p>
+<a href="http://www.emacswiki.org/cgi-bin/wiki/RememberMode"><a href="http://www.emacswiki.org/cgi-bin/wiki/RememberMode607">http://www.emacswiki.org/cgi-bin/wiki/RememberMode607</a></a>
+to find out where to get Remember.
+</p>
+
+<p>
+Then add this basic configuration for Org and Remember to your ~/.emacs,
+</p>
+
+<pre class="example">
+(add-to-list 'load-path "~/elisp/remember-1.9")                                  ;; (1)
+(require 'remember-autoloads)
+(setq org-remember-templates
+   '(("Tasks" ?t "* TODO %?\n  %i\n  %a" "~/organizer.org")                      ;; (2)
+     ("Appointments" ?a "* Appointment: %?\n%^T\n%i\n  %a" "~/organizer.org")))
+(setq remember-annotation-functions '(org-remember-annotation))
+(setq remember-handler-functions '(org-remember-handler))
+(eval-after-load 'remember
+  '(add-hook 'remember-mode-hook 'org-remember-apply-template))
+(global-set-key (kbd "C-c r") 'remember)                                         ;; (3)
+
+(require 'org)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))                           ;; (4)
+(global-set-key (kbd "C-c a") 'org-agenda)                                       ;; (5)
+(setq org-todo-keywords '("TODO" "STARTED" "WAITING" "DONE"))                    ;; (6)
+(setq org-agenda-include-diary t)                                                ;; (7)
+(setq org-agenda-include-all-todo t)                                             ;; (8)
+</pre>
+
+<ul class="org-ul">
+<li>(1): Change the directory as necessary.
+</li>
+<li>(2): You can use a different filename.
+</li>
+<li>(3): You can change this keyboard shortcut.
+</li>
+<li>(4): This tells Emacs to open all .org files in org-mode.
+</li>
+<li>(5): You can change this keyboard shortcut.
+</li>
+<li>(6): This makes it easy to pull in holidays and other events. See the
+chapter on managing your schedule.
+</li>
+<li>(7): This includes all unfinished todos in the Org daily and weekly
+views. You can remove this line when you get used to working with
+todo lists.
+</li>
+</ul>
+
+<p>
+After you evaluate that code by calling M-x eval-buffer or restarting
+Emacs, you're ready to create an Org file.
+</p>
+
+<ol class="org-ol">
+<li>Open ~/organizer.org (or whichever file you specified in (2)).
+</li>
+<li>Save it. This is probably the only time you'll have an empty TODO
+list.
+</li>
+<li>Use C-c [ (org-agenda-file-to-front) to add it to your
+org-agenda-files. You only need to do this once for this agenda file.
+</li>
+</ol>
+
+<p>
+Read on to find out how to use your new Org file for GTD, or skip ahead
+to the section on Day Planning to find out how to plan by day!
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Org and GTD</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+So you've read David Allen's book about Getting Things Done (or any of
+ the countless summaries of it on the Net), and you'd like to get
+ started with Emacs and Org mode. I'll show you the bare minimum you
+ need to support the five phases in the GTD task workflow:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">Phase</td>
+<td class="left">GTD</td>
+<td class="left">Org</td>
+</tr>
+
+<tr>
+<td class="left">Collect</td>
+<td class="left">Capture everything you need to do.</td>
+<td class="left">Collect all your bits of paper or put everything into your inbox</td>
+</tr>
+
+<tr>
+<td class="left">Process</td>
+<td class="left">Actionable? Yes: do, delegate, or defer; no: file, throw, or incubate</td>
+<td class="left">Put tasks on your list, track delegated tasks</td>
+</tr>
+
+<tr>
+<td class="left">Organize</td>
+<td class="left">Next actions, projects, waiting for, someday/maybe</td>
+<td class="left">Tag tasks, view tasks by tag</td>
+</tr>
+
+<tr>
+<td class="left">Review</td>
+<td class="left">Daily, weekly, etc.</td>
+<td class="left">Agenda view</td>
+</tr>
+
+<tr>
+<td class="left">Do</td>
+<td class="left">Actually do the work!</td>
+<td class="left">No, Emacs won't do the work for you&#x2026; (But it can brew coffee!)</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Collect</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+The first thing you need to do is get all the tasks out of your head,
+ off scraps of paper, out of your e-mail, and so on. If this is the
+ first time you're putting tasks into Org, you have a lot of tasks to
+ collect. The best way to collect lots of tasks is to open your Org
+ agenda file (~/organizer.org) and put this heading at the end of the
+ file:
+</p>
+
+<pre class="example">
+* Inbox
+</pre>
+
+<p>
+Now go to the end of the file, and type in ** TODO and the first task
+ you can think of, like this:
+</p>
+
+<pre class="example">
+** TODO Buy milk
+</pre>
+
+<p>
+Press C-M-RET and keep typing other tasks. Keep going until you've
+ gone through all the things in your head and all the scraps of paper
+ lying around. Do not get distracted. Your goal is to write all the
+ tasks down. If you are as easily distracted as I am, do not even open
+ up a browser window or look at your e-mail. It can be a real struggle
+ sometimes to focus long enough to get everything down, especially when
+ you're writing down all these tasks that you can work on. DO NOT DO A
+ TASK UNLESS IT TAKES LESS THAN TWO MINUTES TO DO. In fact, if you are
+ just starting out with GTD, you might find it better to resist all
+ temptations to do tasks during this step. Get it all out.
+</p>
+
+<p>
+Now that you've gotten your tasks out of your head and into your
+ organizer.org file, breathe. There's less stress in your brain now,
+ because you don't have to worry about forgetting things (as long as
+ you remember to check your Org file, that is!).
+</p>
+
+<p>
+DO NOT FILL YOUR BRAIN BACK UP WITH OTHER THINGS TO DO. The brain is a
+ wonderful thing, but it's not good at remembering what you need to do.
+ Whenever a task comes your wayâ€”through e-mail, in conversation, in
+ the showerâ€”put it in your ~/organizer.org. Well, you probably don't
+ want to drip all over the computer, so sometimes you'll need to hang
+ on to an ideaâ€”but get it out of your head and into your organizer as
+ quickly as possible.
+</p>
+
+<p>
+To collect tasks within Emacs as they come up, use Remember. With the
+ basic configuration you set up in the previous section, you can use
+ C-c r t (or M-x remember and “t” for the Tasks template) to pop up a
+ buffer where you can type in the task description and some notes.
+</p>
+
+<pre class="example">
+## Filing location: Select interactively, default, or last used:
+##     C-u C-c C-c  to select file and header location interactively.
+##         C-c C-c  "~/notebook/personal/organizer.org" -&gt; "* Tasks"
+## C-u C-u C-c C-c  "???" -&gt; "* ???"
+## To switch templates, use `M-x org-remember'.
+
+* TODO
+</pre>
+
+<p>
+And if you're lucky, there will even be a hyperlink to the file or
+ e-mail you were looking at when you called C-c r t (remember, tasks).
+</p>
+
+<p>
+If you brain-dump your tasks and use C-c r t to collect tasks as they
+ come up, you can free up your brain for other things, such as
+ contemplating the meaning of life.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Process</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+Now that you've collected all those tasks into your inbox, you can
+ process them. Open your Org agenda file and go to your inbox.
+</p>
+
+<p>
+For every item there, decide if it's something that you need to act
+ on. Is it really just a note? If so, take out the TODO keyword and
+ organize it like you would store other notes. If it's a true-blue
+ task, decide if it's something you can do within the next two minutes,
+ delegate to someone else, or leave on your task list. Go through your
+ list systematically, delegating and eliminating whenever possible.
+</p>
+
+<p>
+If you delegate the task, change it to WAITING by moving your cursor
+ to the headline with the TODO keyword and typing S-r (org-shiftright)
+ until it changes to WAITING. To keep track of who you delegated it to,
+ just edit the task description to reflect it. Your organizer file will
+ look like this:
+</p>
+
+<pre class="example">
+** WAITING Buy milk - WJY
+</pre>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Organize</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+You have a list of tasks that \<sub>you\</sub>_ need to act on. If you've
+ braindumped everything that people have asked you to do and that
+ you've thought of doing, this is probably a very long list.
+ Intimidatingly long. The next step in restoring sanity to your life is
+ to organize your list into next actions, projects, things you're
+ waiting for, and someday/maybe tasks.
+</p>
+
+<p>
+Review that task list. For each task, decide if it's something you can
+ do immediately. Is it something you can do in one sitting, and do you
+ have everything you need in order to do it? If so, great! It's a next
+ action. Leave it on your task list.
+</p>
+
+<p>
+If you can't immediately work on a task, it may be a project in
+ disguise, and it needs to be broken down into smaller, concrete next
+ actions. For example, the task:
+</p>
+
+<pre class="example">
+** TODO Write a book about Emacs
+</pre>
+
+<p>
+would probably result in me getting complete writer's block. If you're
+ faced with a big task like this, move it out of your inbox and make it
+ a project. Then you can think of the very next action you need to do.
+ Your Org file could look something like this:
+</p>
+
+<pre class="example">
+* Projects
+
+** Emacs book
+*** TODO Write about basic Org and GTD
+
+* Inbox
+
+** TODO ... lots of other things go here ...
+** TODO ... lots of other things go here ...
+** TODO ... lots of other things go here ...
+</pre>
+
+<p>
+A task might also be stuck because you need to wait for someone else.
+ For example, I'm currently working on renewing my visa, but I need to
+ wait for the embassy. Mark those stuck tasks as WAITING with S-right
+ (org-shiftright).
+</p>
+
+<p>
+Someday/maybe tasks are nice to think about once in a while, but you
+ don't want to clutter your day-to-day tasks with them. A basic way to
+ deal with this is to move those tasks into a separate Organizer file
+ such as ~/someday.org . Another is to use tags, which we'll cover in
+ the section on intermediate Org. For now, just move them to another
+ file.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Review</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+You've gone from a whole bunch of tasks in your brain and on pieces of
+ paper to one text file containing everything you need to do, with an
+ easy way to get to just the things you can do right now. To view all
+ your tasks, type C-c a t (org-agenda, tasks). You'll get something
+ that looks like this:
+</p>
+
+<pre class="example">
+Global list of TODO items of type: ALL
+Available with `N r': (0)ALL (1)TODO (2)STARTED (3)WAITING (4)DONE
+TODO Write about basic Org and GTD
+TODO Blog
+TODO Answer my mail
+TODO Alter slacks
+...
+</pre>
+
+<p>
+Type “1 r” to show only the active tasks, and review what you're
+ waiting for with “3 r”. Review this WAITING list every so often
+ to make sure that nothing falls through the cracks.
+</p>
+
+<p>
+Type “f” to start follow mode, which displays the relevant lines from
+ your Org agenda file as you move around. This is helpful for quickly
+ reviewing your task list.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">Do</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+All of the above should take you less than fifteen minutes of planning
+ each day. The rest of the time, you can focus on doing the work,
+ undistracted by shiny new tasks that pop up because you can get them
+ out of your way with C-c r t.
+</p>
+
+<p>
+To work, review your task list with either C-c a t (org-agenda, tasks)
+ or C-a a (org-agenda, agenda). From the agenda view, type “t”
+ (org-agenda-todo) to change the task status. I find it helpful to mark
+ a task as STARTED because it helps me remember what I was working on
+ in case I get distracted by something urgent, but you can also use C-u
+ t to jump to a status without cycling through the ones in between
+ (say, marking a task as DONE). You can also press ENTER to jump to the
+ task headline and edit it directly.
+</p>
+
+<p>
+Going back to reviews: As you mark tasks done, you'll also want to do
+ daily and weekly reviews. You can see those with C-c a a (org-agenda,
+ org-agenda-list), which opens an Org agenda view. To see completed
+ tasks in the Org agenda view, type l (org-agenda-log-mode). To switch
+ to the day view, type d (org-agenda-day-view). To switch to the week
+ view, type w (org-agenda-week-view). The basic configuration I've
+ suggested here will automatically include unfinished tasks at the
+ beginning of the agenda. Scroll up to review your tasks, and press
+ ENTER on a line to jump to it.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6">Wrapping up</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+There's a lot more you can do with Org to make it support GTD, but
+ here's a basic configuration that can get you started on collecting,
+ processing, organizing, managing, and actually doing your tasks. Stay
+ tuned for the intermediate Org article for more tips on setting up
+ repeated tasks, clocking time, working with projects, and tagging
+ tasks!
+</p>
+
+<p>
+On Technorati: <a href="http://www.technorati.com/tag/emacs">emacs608</a>,
+<a href="http://www.technorati.com/tag/wickedcoolemacs">wickedcoolemacs609</a>,
+<a href="http://www.technorati.com/tag/org">org610</a>,
+<a href="http://www.technorati.com/tag/gtd">gtd611</a>
+</p>
+
+<p>
+Random Emacs symbol: bbdb-edit-current-field &#x2013; Command: Edit the
+contents of the Insidious Big Brother Database field displayed on
+</p>
+
+<p>
+UPDATE: Thanks, Victor, for catching the bug! Changed org-install to
+org.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

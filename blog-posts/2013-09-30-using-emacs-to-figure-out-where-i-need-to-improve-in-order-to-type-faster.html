@@ -1,0 +1,933 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Using Emacs to figure out where I need to improve in order to type</title>
+<!-- 2014-04-30 Wed 17:01 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Using Emacs to figure out where I need to improve in order to type</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Using Emacs to test my raw typing speed</a></li>
+<li><a href="#sec-2">Pure speed</a></li>
+<li><a href="#sec-3">Alternates versus rolls</a></li>
+<li><a href="#sec-4">Two-character pairs</a></li>
+<li><a href="#sec-5">Single-finger twitching</a></li>
+<li><a href="#sec-6">Three characters with repositioning</a></li>
+<li><a href="#sec-7">Interrupted combinations</a></li>
+<li><a href="#sec-8">Wrap-up</a></li>
+<li><a href="#sec-9">Next steps</a></li>
+</ul>
+</div>
+</div>
+<p>
+faster
+</p>
+
+<p>
+September 30th, 2013 -
+<a href="http://sachachua.com/blog/p/26050"><a href="http://sachachua.com/blog/p/26050">http://sachachua.com/blog/p/26050</a></a>
+</p>
+
+<p>
+I've been thinking about
+<a href="http://sachachua.com/blog/2013/08/thinking-about-how-to-type-faster/">how
+to type faster than 110wpm</a>, and digging into the specific factors that
+I could improve. In particular, I wanted to get a sense of:
+</p>
+
+<ul class="org-ul">
+<li>my theoretical top speed
+</li>
+<li>whether alternates or rolls are better for me
+</li>
+<li>how quickly I can twitch, measured by single-key repeats or two-key
+alternations
+</li>
+</ul>
+
+
+<div class="figure">
+<p><a href="uploads/2013/09/shutterstock_145785482.jpg"><img src="uploads/2013/09/shutterstock_145785482_thumb.jpg" alt="shutterstock_145785482_thumb.jpg" /></a>
+</p>
+</div>
+
+<p>
+By using totally artificial typing tests (ex: type “thththth&#x2026;”)
+instead of word-based ones, I can explore the relationships between
+character combinations and speed without worrying about hitting SPC,
+sounding out words, correcting errors, and so on. Since I can do the
+tests in short sprints, I can rest enough in between to minimize my risk
+of RSI.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Using Emacs to test my raw typing speed</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I haven't come across an online typing test that gives the kind of stats
+I want, or even a per-character or digram breakdown. I thought about
+writing a Javascript-based typing timer, but I figured it would be less
+work to cajole Emacs into measuring what I wanted. Here's the code:
+</p>
+
+<pre class="example">
+(defun sacha/timer-go ()
+  "Quick keyboard timer."
+  (interactive)
+  (insert "GO\n")
+  (run-with-timer 3 nil (lambda () (insert "\n")))  ; for warmup
+  (run-with-timer 15 nil (lambda () ; 12 seconds + the 3-second warmup
+                           (let ((col (- (point) (line-beginning-position))))
+                             (insert (format " | %d | \n" col)))
+                           )))
+(local-set-key (kbd "&lt;f7&gt;") 'sacha/timer-go)
+</pre>
+
+<p>
+This prints “GO” to show you that it's running. You have three seconds
+to warm up, so you don't have to worry about wasting any milliseconds
+after <code>M-x sacha/timer-go</code> (or <code>F7</code>, the keyboard shortcut I bound mine
+to). After the warmup, Emacs adds a newline and the “race” is on.
+There's a 12 second period of actual typing, and then Emacs adds the
+number of characters you typed. When you see that, you can stop.
+</p>
+
+<p>
+Twelve seconds is a useful number for estimating typing speed because
+the conversion from characters per minute (CPM) to words per minute
+(WPM) usually uses a factor of 5: CPM / 5 = WPM. So the number of
+characters you can type in <code>60 seconds / 5</code> is probably the number of
+“words” you could type in a minute.
+</p>
+
+<p>
+Note: L and R refer to left and right hand. I've also numbered the
+fingers with 1 being the thumb and 5 being the pinky. The patterns I
+used are based on a Dvorak keyboard, but that doesn't matter as much.
+You can probably figure out what the equivalent patterns are on your
+preferred keyboard layout.
+</p>
+
+<p>
+Limitations: I didn't do any special calculations to deal with errors
+(there were many doubling or transposition errors multi-character
+sequences), so the actual CPM will be lower. Also, repeated character
+sequences are definitely not normal and have quirks of their own. It's
+interesting to establish the range and see the kinds of errors that show
+up when I go faster than I'm comfortable with, though.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Pure speed</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Key description
+</p>
+
+<p>
+Pattern
+</p>
+
+<p>
+Estimated WPM based on CPM/5
+</p>
+
+<p>
+keyboard mashing
+</p>
+
+<p>
+-none- (mashing)
+</p>
+
+<p>
+379
+</p>
+
+<p>
+keyboard mashing
+</p>
+
+<p>
+-none- (mashing)
+</p>
+
+<p>
+379
+</p>
+
+<p>
+keyboard mashing
+</p>
+
+<p>
+-none- (mashing)
+</p>
+
+<p>
+354
+</p>
+
+<p>
+R side mashing
+</p>
+
+<p>
+-none- (mashing)
+</p>
+
+<p>
+245
+</p>
+
+<p>
+L side mashing
+</p>
+
+<p>
+-none- (mashing)
+</p>
+
+<p>
+217
+</p>
+
+<p>
+If you don't care what you're typing, it's easy to type quickly. This is
+just about how fast my hands go if I don't have to think about which
+finger to activate. This mostly ended up as alternating left- and
+right-hand rolls (ex: aoeusntoahuesnto). Because I didn't have to
+precisely alternate, two-handed mashing resulted in more characters than
+one-handed mashing. Interestingly, my right hand is slightly faster than
+my left.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Alternates versus rolls</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+4-key combinations
+</p>
+
+<p>
+Key description
+</p>
+
+<p>
+Pattern
+</p>
+
+<p>
+Estimated WPM based on CPM/5
+</p>
+
+<p>
+R-side 4-key roll
+</p>
+
+<p>
+snthsnth
+</p>
+
+<p>
+232
+</p>
+
+<p>
+L-side 4-key roll
+</p>
+
+<p>
+aoeuaoue
+</p>
+
+<p>
+201
+</p>
+
+<p>
+L 3 &amp; 2, R 3 &amp; 2
+</p>
+
+<p>
+eutheuth
+</p>
+
+<p>
+164
+</p>
+
+<p>
+3-key combinations
+</p>
+
+<p>
+Key description
+</p>
+
+<p>
+Pattern
+</p>
+
+<p>
+Estimated WPM based on CPM/5
+</p>
+
+<p>
+R 3 &amp; 2, L 3
+</p>
+
+<p>
+thethe
+</p>
+
+<p>
+187
+</p>
+
+<p>
+L 5, R 4 &amp; 2
+</p>
+
+<p>
+andand
+</p>
+
+<p>
+184
+</p>
+
+<p>
+R 3 &amp; 2, L 3
+</p>
+
+<p>
+thethe
+</p>
+
+<p>
+182
+</p>
+
+<p>
+roll R 3
+</p>
+
+<p>
+nthnth
+</p>
+
+<p>
+176
+</p>
+
+<p>
+R 3 &amp; 2, L 3
+</p>
+
+<p>
+thethe
+</p>
+
+<p>
+170
+</p>
+
+<p>
+roll L 3
+</p>
+
+<p>
+oeuoue
+</p>
+
+<p>
+166
+</p>
+
+<p>
+roll L 3
+</p>
+
+<p>
+oeuoeu
+</p>
+
+<p>
+164
+</p>
+
+<p>
+R 3 &amp; 2, L 3
+</p>
+
+<p>
+thethe
+</p>
+
+<p>
+159
+</p>
+
+<p>
+roll R 3
+</p>
+
+<p>
+nthnth
+</p>
+
+<p>
+152
+</p>
+
+<p>
+R 3, L 4 &amp; 3
+</p>
+
+<p>
+toetoe
+</p>
+
+<p>
+140
+</p>
+
+<p>
+I expected rolls to be faster than alternates, but it turns out that
+alternating works out fine too (“the” and “and” on a Dvorak keyboard).
+Same-hand rolls had fewer errors than alternates, though &#x2013; timing can
+be tricky when doing high-speed repeats. That can be partially handled
+by autocorrecting “teh” to “the” and similar transpositions. I use an
+AutoHotkey-based autocorrect script, but it screws up the typing tests I
+like, so I can't take advantage of it then.
+</p>
+
+<p>
+A roll-optimized keyboard layout might be more effective. 3- and
+4-character rolls like the ones I tested aren't that common in actual
+typing, but it might be possible to find keyboard layouts that are
+better-optimized for the languages I use. I've read that Arensito,
+Capewell, and Colemak focus more on rolls and alternating rolls, so they
+might be worth a look.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Two-character pairs</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Key description
+</p>
+
+<p>
+Pattern
+</p>
+
+<p>
+Estimated WPM based on CPM/5
+</p>
+
+<p>
+alt L and R 1
+</p>
+
+<p>
+uhuh
+</p>
+
+<p>
+139
+</p>
+
+<p>
+L 5, R 5
+</p>
+
+<p>
+asas
+</p>
+
+<p>
+137
+</p>
+
+<p>
+R 2 &amp; 3
+</p>
+
+<p>
+chch
+</p>
+
+<p>
+135
+</p>
+
+<p>
+R 2 &amp; 3
+</p>
+
+<p>
+thth
+</p>
+
+<p>
+134
+</p>
+
+<p>
+L 2, R 3
+</p>
+
+<p>
+tutu
+</p>
+
+<p>
+130
+</p>
+
+<p>
+R 3, L 4
+</p>
+
+<p>
+toto
+</p>
+
+<p>
+129
+</p>
+
+<p>
+L 2, R 2
+</p>
+
+<p>
+uhuh
+</p>
+
+<p>
+128
+</p>
+
+<p>
+R 1 &amp; 5
+</p>
+
+<p>
+xsxs
+</p>
+
+<p>
+126
+</p>
+
+<p>
+L 2 &amp; 3
+</p>
+
+<p>
+eueu
+</p>
+
+<p>
+124
+</p>
+
+<p>
+R 2 and 5
+</p>
+
+<p>
+shsh
+</p>
+
+<p>
+115
+</p>
+
+<p>
+Two-character patterns are slower than three-character patterns,
+probably indicating that there's a small delay as I think about
+repeating things. Alternates and same-hand two-character pairs seem to
+work okay. Even for same-hand two-character pairs, I get the occasional
+doubling or transposition error.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Single-finger twitching</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Key description
+</p>
+
+<p>
+Pattern
+</p>
+
+<p>
+Estimated WPM based on CPM/5
+</p>
+
+<p>
+R 2
+</p>
+
+<p>
+hhhh
+</p>
+
+<p>
+79
+</p>
+
+<p>
+R 3
+</p>
+
+<p>
+tttt
+</p>
+
+<p>
+76
+</p>
+
+<p>
+R 1
+</p>
+
+<p>
+mmmm
+</p>
+
+<p>
+75
+</p>
+
+<p>
+R 4
+</p>
+
+<p>
+nnnn
+</p>
+
+<p>
+74
+</p>
+
+<p>
+L 2
+</p>
+
+<p>
+uuuu
+</p>
+
+<p>
+73
+</p>
+
+<p>
+R 5
+</p>
+
+<p>
+ssss
+</p>
+
+<p>
+71
+</p>
+
+<p>
+L 3
+</p>
+
+<p>
+eeee
+</p>
+
+<p>
+71
+</p>
+
+<p>
+L 4
+</p>
+
+<p>
+oooo
+</p>
+
+<p>
+65
+</p>
+
+<p>
+L 1
+</p>
+
+<p>
+kkkk
+</p>
+
+<p>
+64
+</p>
+
+<p>
+L 5
+</p>
+
+<p>
+aaaa
+</p>
+
+<p>
+61
+</p>
+
+<p>
+Single-finger keypresses (no automatic repeats) are slow. Good thing I
+don't have to do them that often. If this represents the speed at which
+I can send an impulse to my finger and have it do something, this might
+be a limiting factor for my typing speed, which is compensated for by
+alternates and rolls.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Three characters with repositioning</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Key description
+</p>
+
+<p>
+Pattern
+</p>
+
+<p>
+Estimated WPM based on CPM/5
+</p>
+
+<p>
+R 3, L 2, L 2
+</p>
+
+<p>
+cupcup
+</p>
+
+<p>
+67
+</p>
+
+<p>
+R 3, L 5, R 3
+</p>
+
+<p>
+catcat
+</p>
+
+<p>
+66
+</p>
+
+<p>
+R 2, L 4, R 2
+</p>
+
+<p>
+dogdog
+</p>
+
+<p>
+64
+</p>
+
+<p>
+Moving my fingers takes time too. Also, did you know that there are
+typing equivalents of tongue-twisters? I can't type “ranranranran&#x2026;” a
+long time without it turning into rna and other permutations. Maybe my
+brain gets hiccups.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Interrupted combinations</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Key description
+</p>
+
+<p>
+Pattern
+</p>
+
+<p>
+Estimated WPM based on CPM/5
+</p>
+
+<p>
+R 4, L 4, R 3
+</p>
+
+<p>
+notnot
+</p>
+
+<p>
+63
+</p>
+
+<p>
+L 4, R 4, L 3
+</p>
+
+<p>
+oneone
+</p>
+
+<p>
+57
+</p>
+
+<p>
+L 5, R 4, L 3
+</p>
+
+<p>
+areare
+</p>
+
+<p>
+55
+</p>
+
+<p>
+Alternating hands is actually pretty tough if you have to care about
+timing. Oddly, this is slower than repositioning. Maybe it's because the
+repositioning helps me remember where I am in the word when I'm
+repeating it, so natural typing will be a different case.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Wrap-up</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Chunking seems to make a big difference for me. 4-character combinations
+tend to beat 3-character combinations and those tend to beat 2-character
+combinations, unless there's some timing involved. Common combinations
+(the, and) are easier to type. If I can get better at chunking words
+into syllables, that might help. The most common digraphs are TH, HE,
+AN, IN, ER, ON, RE, ED, ND, HA, AT, EN, ES, OF, NT, EA, TI, TO, IO, LE,
+IS, OU, AR, AS, DE, RT, and VE
+(<a href="http://scottbryce.com/cryptograms/stats.htm">source</a>), so that might
+be good to look at next.
+</p>
+
+<p>
+Twitching or moving individual fingers are slow operations, so being
+able to “look ahead” and move my fingers to the right spots while I'm
+typing the first few characters helps. Muscle memory also helps minimize
+errors. Also, maybe finger dexterity and agility exercises?
+</p>
+
+<p>
+I'm probably in the region of Diminishing Returns here. I could spend
+hours inching up my typing speed&#x2026; or I could spend that time doing
+other things. Now that I've identified specific areas to look into,
+though, I might be able to set up exercises to take advantage of
+interstitial time. For example, while I'm reading a book, I could do
+finger dexterity exercises (pausing, of course, if I feel any hint of
+strain &#x2013; I'd like to avoid RSI if I can).
+</p>
+
+<p>
+On another note, testing my theoretical speed in this way reminded me a
+little of how we used to play Decathlon on the computer as kids. (Was it
+<a href="http://www.mobygames.com/game/microsoft-decathlon/screenshots">Microsoft
+Decathlon</a>? The screenshots look familiar&#x2026;) Somehow our keyboard
+survived the rampage back then. =)
+</p>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Next steps</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Because alternation can lead to typing errors or slowness for me, I
+might look into Colemak, which optimizes for single-hand rolls. Still,
+I'm pretty happy with Dvorak, and the
+<a href="http://colemak.com/wiki/index.php?title=FAQ#Is_it_worth_switching_from_Dvorak_to_Colemak.3F">Colemak
+FAQ</a> warns that the switch might not be worth it. Another thing I'm
+looking into is <a href="http://plover.stenoknight.com">Plover</a>, which lets
+you do stenography using a regular keyboard. My laptop keyboard can't
+easily do some of the combinations and I'm more visual than phonetic
+when it comes to words, so it might be a challenge to learn.
+</p>
+
+<p>
+The easiest win will probably come from training my speech recognition
+software to recognize my words more accurately. I've been dictating book
+notes to my computer. This is great because it reinforces the key points
+of the book in my memory, trains the computer, and helps me practice
+clear diction. I've gotten to the point of using speech recognition to
+take notes during my first pass through a book, editing after each
+paragraph. I feel that the accuracy is gradually improving. I make fewer
+edits as I learn how to speak the way the computer wants me to and I
+teach the computer to understand the way I speak.
+</p>
+
+<p>
+Besides, an average of 107 wpm on Dvorak is fast enough to let me get
+words out of my head and onto my computer, and I can focus on what I
+want to say instead of how to type. There's plenty more to learn about
+how to write <i>efficiently./Time to go back to David Fryxell's /How to
+Write Fast (While Writing Well)</i>! So it's interesting to dig into what
+my rate-limiting factors are when it comes to typing faster, but it's
+even better to focus on how I can think faster (although speech
+recognition will still be useful for the benefits mentioned above).
+</p>
+
+<p>
+Have you analyzed your typing? What did you learn?
+</p>
+
+<p>
+Image credits:
+<a href="http://www.shutterstock.com/cat.mhtml?lang=en&search_source=search_form&search_tracking_id=UJurJ-EjV-g4OeA_smwhzw&version=llv1&anyorall=all&safesearch=1&searchterm=stopwatch+keyboard&search_group=&orient=&search_cat=&searchtermx=&photographer_name=&people_gender=&people_age=&people_ethnicity=&people_number=&commercial_ok=&color=&show_color_wheel=1#id=145785482&src=PMdrBv_xVaDBStpCZ3W0Rg-1-31">Keyboard
+with time (Cienpies Design, Shutterstock)</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>
