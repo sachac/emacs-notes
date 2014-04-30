@@ -1,0 +1,132 @@
+#+TITLE: Japanese word list generator
+
+January 7th, 2005 -
+[[http://sachachua.com/blog/p/2552][http://sachachua.com/blog/p/2552]]
+
+#+BEGIN_QUOTE
+  MWAHAHAHAHA! I just pulled off a really neat Emacs
+   hack. <grin> It's Japanese-related. So I've been
+   translating this document for the past two days. It's really slow
+   and boring work because there's no soft copy, so I have to write
+   the characters (blurry because this is a photocopy of a
+   photocopy) using the mouse, and hope I don't make any mistakes
+   along the way. In the course of copying down kanji (Chinese
+   characters) for later translation, I created a spreadsheet with
+   two columns: the kanji word and the number of the slide it
+   appears on. Then I exported that to CSV, opened that in Emacs,
+   and wrote an Emacs Lisp function that split the words up into
+   individual characters. I passed this through
+   shell-command-on-region to sort and uniquify the characters. I
+   then went back to the CSV with words and slide numbers, wrote
+   another Emacs Lisp function that searched edict (Jim Breen's
+   electronic Japanese dictionary) for the words, split the word
+   into individual characters, and filed the word info under each
+   character, also marking words that were not found in the
+   dictionary. After that, I wrote yet another function to add table
+   markup and individual character definitions to each line, then
+   copied the result into an HTML file.
+#+END_QUOTE
+
+This should probably be rewritten as a Perl script.
+
+#+BEGIN_EXAMPLE
+    ;; Generate the list of characters
+    ;; Use add-all to add all the words to the list
+    ;; call sacha/kanji/format-kanji-with-references
+
+    (defvar sacha/kanji/output-file "~/tmp/kanji")
+
+    (defun sacha/kanji/process-csv ()
+      (interactive)
+      (sacha/kanji/split-dictionary)
+      (sacha/kanji/add-all)
+      (sacha/kanji/format-kanji-with-references))
+
+    (defun sacha/kanji/split-dictionary ()
+      (interactive)
+      (let ((buffer (current-buffer)))
+        (with-current-buffer (find-file-noselect sacha/kanji/output-file)
+          (erase-buffer)
+          (insert-buffer-substring buffer)
+          (goto-char (point-min))
+          (while (re-search-forward "^\"\\([^\"]+\\)\":" nil t)
+            (delete-region (match-end 1) (line-end-position))
+            (goto-char (line-beginning-position))
+            (delete-char 1)
+            (while (not (eolp))
+              (forward-char 1)
+              (unless (bolp)
+                (insert "\n"))))
+          (goto-char (line-beginning-position))
+          (delete-matching-lines "^\\s-*$")
+          (shell-command-on-region (point-min) (point-max) "sort | uniq"  nil t))))
+
+    (defun sacha/kanji/add-all ()
+      (interactive)
+      (while (not (eobp))
+        (sacha/add-word)
+        (forward-line 1)))
+
+    (defun sacha/kanji/format-kanji-with-references ()
+      "Add character meaning and table markup."
+      (interactive)
+      (find-file sacha/kanji/output-file)
+      (goto-char (point-min))
+      (while (not (eobp))
+        (goto-char (line-beginning-position))
+        (unless (= (char-after (point)) ?<)
+          (forward-char 1)
+          (let* ((kanji (buffer-substring (line-beginning-position) (point)))
+                 (definition (sacha/kanji/find-definition kanji)))
+            (when definition
+              (save-excursion
+                (forward-char -1)
+                (insert ""))
+              (insert "")
+              (insert definition)
+              (goto-char (line-end-position))
+              (insert ""))))
+        (forward-line)))
+
+    (defun sacha/kanji/find-definition (kanji)
+      "Look up kanji definition."
+      (with-current-buffer
+          (find-file-noselect "/usr/share/edict/kanjidic")
+        (goto-char (point-min))
+        (when (and (search-forward kanji)
+                   (re-search-forward "\\({[^}]+}\\( {[^}]+}\\)+\\)"))
+          (match-string 0))))  ;; kanji definitions
+
+    (defun sacha/kanji/lookup-word (key)
+      "Return the definition of the current word. Ensure edict is loaded before running this."
+      (with-current-buffer edict-buffer
+        (goto-char (point-min))
+        (when (re-search-forward (concat "^" key " \\[\\([^]]+\\)\\] /\\(.*\\)") nil t)
+          (list (match-string 1) (match-string 2)))))
+
+    (defun sacha/add-word ()
+      "Look up this word's definition and add the word to individual character entries."
+      (interactive)
+      (when (looking-at "^\"\\([^\"]+\\)\".*?:\\([0-9]+\\)")
+        (let ((word (match-string 1))
+              (slide (match-string 2))
+              definition
+              chars)
+          (setq definition (sacha/kanji/lookup-word word))
+          (setq chars (split-string word "" t))
+          (while chars
+            (with-current-buffer (find-file-noselect sacha/kanji/output-file)
+              (goto-char (point-min))
+              (when (re-search-forward (concat "^" (car chars)) nil t)
+                (goto-char (line-end-position))
+                (insert "S:" slide " " word "")
+                (if definition
+                    (insert " " (elt definition 0) ""
+                            " " (elt definition 1) "")
+                  (insert "???"))))
+            (delete (car chars) chars)
+            (setq chars (cdr chars))))))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/japanese][japanese]]

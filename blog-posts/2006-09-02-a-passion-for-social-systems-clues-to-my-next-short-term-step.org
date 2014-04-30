@@ -1,0 +1,52 @@
+#+TITLE: A passion for social systems -- clues to my next short-term step?
+
+September 2nd, 2006 -
+[[http://sachachua.com/blog/p/3821][http://sachachua.com/blog/p/3821]]
+
+Each day brings an opportunity for me to reaffirm my decision that
+ connecting with people is important to me and that I want to learn how
+ to be really good at building and maintaining relationships. I've been
+ spending a fair bit of time thinking about the tools for doing so,
+ from my extensive customizations of the Emacs Big Brother Database
+ to [[http://sachachua.com/notebook/wiki/2006.08.31.php#anchor-6][why I
+like OpenBC]].
+
+Every time I use Emacs+Gnus+Planner+BBDB,
+[[http://www.linkedin.com][LinkedIn]], [[http://www.openbc.com][OpenBC]]
+or even my
+ little black Moleskine notebook and fountain pen, I always find little
+ things to improve. I'm in that zone again, and I'm having *so* much
+ fun. Emacs and my Moleskine are nearly infinitely hackable within the
+ constraints of computer and paper, respectively. As for LinkedIn and
+OpenBC---that *itch* is making me want to write code for someone else.
+
+The last time I felt like this was when I was in the thick of Planner
+ development, working with a fantastic community of enthusiastic users
+ around the world. It was *amazing* being able to make all these little
+ differences in people's lives. I stayed with the project until I found
+ myself too content, and then I turned it over to someone else because
+ it was something that deserved passion.
+
+Maybe I've found my coding passion again, something wider in scope
+ than the little ways I customize my blog or my e-mail client or my
+ contact database.
+
+The more I think about it, the more attractive it is. How strange that
+ low-key services like LinkedIn and OpenBC appeal to me more
+ than the big names in the industry! I have the feeling that I'll be
+ able to make more of a difference there (at least for now) than in
+ companies like IBM, Google, or Yahoo -- although those three are
+ certainly exciting in terms of the other cool geeks I'd get to work
+ with...
+
+... but oooh, imagine the opportunity to work directly with really
+ cool users? I could so totally rock. I'd *love* to be able to bring my
+ technical *and* social passions to the table. That feels like a good
+ short-term next step.
+
+Figuring out my options...
+
+On Technorati: [[http://www.technorati.com/tag/career][career]],
+[[http://www.technorati.com/tag/purpose][purpose]],
+[[http://www.technorati.com/tag/networking][networking]],
+[[http://www.technorati.com/tag/passion][passion]]

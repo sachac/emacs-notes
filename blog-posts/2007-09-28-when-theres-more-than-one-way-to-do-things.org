@@ -1,0 +1,28 @@
+#+TITLE: When there's more than one way to do things
+
+September 28th, 2007 -
+[[http://sachachua.com/blog/p/4366][http://sachachua.com/blog/p/4366]]
+
+Writing about Emacs turns out to be difficult. There are so many ways
+ to do something. My goal for this book is to show people some of the
+ things that are possible and to help people choose. I'm starting to
+ feel a little overwhelmed myself, too. The key thing that's making
+ this manageable for me is giving myself permission to write snippets
+ here and there, leaving the editing and organization to later.
+
+I'm currently working on a chapter about planning your day within
+ Emacs. It gives me an excuse to poke around Planner and other modules,
+ figuring out how to do things. While writing about Planner and
+ appointments, I took my first close look at planner-appt. Now I have
+ to think: is this better than the way I'm currently keeping track of
+ my appointments? Should I switch to it? How do I describe it for
+ others? Should I show how to use it together with planner-cyclic?
+
+Maybe I just need to stay focused on the reader, instead of on the
+ features of the software. What do people want to be able to do? That's
+ the key...
+
+Gah. This writing thing is hard. But it'll be worth it...
+
+Random Emacs symbol: tty-display-color-cells -- Function: Return the
+number of colors supported by TTY on DISPLAY.

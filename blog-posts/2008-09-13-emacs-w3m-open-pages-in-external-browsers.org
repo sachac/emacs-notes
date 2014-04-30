@@ -1,0 +1,46 @@
+#+TITLE: Emacs w3m: Open pages in external browsers
+
+September 13th, 2008 -
+[[http://sachachua.com/blog/p/5138][http://sachachua.com/blog/p/5138]]
+
+Sometimes w3m is not enough. To make it easier to open the current page
+in a browser such as Mozilla Firefox, add the following to your
+/~/.emacs/:
+
+#+BEGIN_EXAMPLE
+    (defun wicked/w3m-open-current-page-in-firefox ()
+      "Open the current URL in Mozilla Firefox."
+      (interactive)
+      (browse-url-firefox w3m-current-url)) ;; (1)
+
+    (defun wicked/w3m-open-link-or-image-in-firefox ()
+      "Open the current link or image in Firefox."
+      (interactive)
+      (browse-url-firefox (or (w3m-anchor) ;; (2)
+                              (w3m-image)))) ;; (3)
+#+END_EXAMPLE
+
+This defines a function that uses the current URL being browsed(1) and
+another function that takes the URL of the link at point(2). If no link
+is found, it takes the URL of the image at point(3).
+
+You can use other browse-url functions instead of =browse-url-firefox=.
+For example, replacing =browse-url-firefox= with =browse-url-kde= will
+open the page, link, or image in Konqueror, KDE's web browser.
+
+I like binding f to the function that opens the current URL in Mozilla
+Firefox and F to the function that opens the current link or image in
+Mozilla Firefox. To do the same, add the following to your /~/.emacs/:
+
+#+BEGIN_EXAMPLE
+    (eval-after-load 'w3m
+      (progn 
+        (define-key w3m-mode-map "f" 'wicked/w3m-open-current-page-in-firefox)
+        (define-key w3m-mode-map "F" 'wicked/w3m-open-link-or-image-in-firefox)))
+#+END_EXAMPLE
+
+---
+ This is part of the
+[[http://sachachua.com/wp/category/wickedcoolemacs][book that I'm
+writing about Emacs]], which will be published by No Starch Press if I
+manage to get it together in time.

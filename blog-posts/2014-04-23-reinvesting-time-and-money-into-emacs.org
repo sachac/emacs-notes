@@ -1,0 +1,155 @@
+#+TITLE: Reinvesting time and money into Emacs
+
+April 23rd, 2014 -
+[[http://sachachua.com/blog/p/27185][http://sachachua.com/blog/p/27185]]
+
+I received a wonderful token of appreciation from someone who found my
+Emacs posts useful. It got me thinking: what would it be like if I made
+Emacs a large part of my life's work, and how can I invest even more
+into it?
+
+Emacs is already a big part of my life. I like the community. I get a
+lot of positive feedback indicating I might be doing useful things. It's
+not like much would change, except perhaps that I'd give myself
+permission to focus on this, to put more eggs in this basket. I might
+write about Emacs more often, even if it makes other people boggle. I
+might tweak the design of my blog to simplify browsing through
+Emacs-related resources, and maybe come up with an easier-to-spell
+domain name for that part of my site. Focusing on Emacs is probably
+low-risk, since my savings give me a decent runway if I need to build up
+more marketable skills like WordPress or Rails. (Or I could be, like,
+one of the few Emacs coaches/consultants in the world. ;) )
+
+To make the decision clearer to myself, here's what would go on the
+backburner: specializing in a more popular platform (WordPress, Rails,
+etc.), Quantified Self, helping people with blogging, helping people
+with sketchnoting, helping people with freelancing/semi-retirement,
+delegation, and so on. I could probably build up a reputation in those
+communities later on, but I like Emacs the most right now.
+
+I like focusing on helping people discover the joys of exploring and
+customizing Emacs: blog posts, tutorials, suggestions, screencasts,
+maps, and maybe someday those guides and books I've been talking about
+writing. I like helping make Emacs learning slightly more manageable --
+“if you know about this, you might want to check out that.” I enjoy
+coding, but I haven't gotten deeply into the big improvements people are
+working on for Emacs 24 and later. I'll probably continue to focus on
+filling in the gaps instead of pushing Emacs forward.
+
+I've been thinking about how I can reinvest money into the Emacs
+community. There was a recent thread on the Orgmode mailing list about
+[[http://comments.gmane.org/gmane.emacs.orgmode/83318][donations]] --
+trying to figure out how to put people's donations to the best use.
+Sometimes I receive donations too. Since I keep my expenses low and
+there's only so much safety you can save up for, how can I put small
+amounts of money to good use in open source?
+
+*Domain name, hosting, etc.*:
+[[http://sachachua.com/blog/2011/10/decision-review-switching-from-rackspace-cloud-to-linode/][I
+use a Linode VPS -- I switched from Rackspace in 2011]]. A virtual
+private server is more expensive than shared hosting providers. I like
+how I can ssh to it to try different things. I've thought about lowering
+my costs by using DigitalOcean, but I don't know enough yet about server
+optimization to properly configure my web server setup so that I'm
+confident I'd fit into a smaller plan. (Hmm, this might be worth
+experimenting with someday, especially since I could set up a snapshot
+and save it...) I've budgeted for this and for domain naimes since this
+is such a big part of what I do, so I don't mind covering this myself
+and using donations/unexpected income for other things.
+
+*Transcripts for Emacs Chats and other videos*: I've been outsourcing
+this instead of doing it myself because transcription is a
+well-specified chunk of work that I can pass to other people (who can
+learn a little more along the way). It takes about $35-$60 for a
+transcript, and then I often edit it a little. The assistant who does my
+Emacs Chat transcripts is interested in programming, but hasn't gotten
+into Emacs specifically. It might be interesting to find someone who's
+interested in Emacs and who will get even more out of transcribing
+videos. (If this describes you, e-mail me!)
+
+*Emacs/Org conference?* Meeting folks in person was super-awesome. If
+last year's conference happened because someone found a venue willing to
+host us for free, it makes sense for me to pay for a venue. Even if it's
+over a thousand dollars, that's cheaper than a flight and visas and all
+sorts of other things.
+
+*Emacs meetups?* [[http://quantifiedself.com][Quantified Self Labs]]
+supports QS meetups by sponsoring Meetup.com fees ($144 per year),
+pitching in for video cameras, and paying someone to process videos.
+They also have people working on blog posts and other community-related
+projects. Would a similar model make a big difference? Maybe it makes
+sense to get a few of them off the ground. What's in the way of my
+hosting an Emacs meetup here?
+
+*Editors / information organizers:* I try to make my writing easy to
+understand, but it can be good to have other people review something to
+see if it makes sense and to spot the gaps. Volunteers and blog readers
+help a lot. Still, it might be a good idea to pay people to help me with
+this. I'm not looking for surface-level editing, but more developmental
+editing: helping me organize ideas so that they make sense and they're
+in a logical order. I'm not sure if looking on the usual freelance
+writer sites will help me find someone who can do this, but maybe if I
+can offer a good enough incentive, then maybe a freelance
+developer/writer will be able to spend some time helping me with this.
+(Or I can just take longer and I can get better at asking for
+feedback...)
+
+*Bounties?*
+[[https://www.bountysource.com][https://www.bountysource.com]] does not
+seem very popular for Emacs or Org. I'm still not sure how bounties
+interact with intrinsic motivation and unequal valuing of work, or how
+to even value a fix.
+
+There's still so much beyond money that I haven't yet fully delved into.
+Aside from re-investing money, I can invest time -- and that's probably
+more important, more useful.
+
+How can I invest more time into the Emacs community? What do I want to
+work towards? How can I improve how I learn and share?
+
+*Continue what I'm doing, and do more of it*: Tweak Emacs and write
+about it. Be that friendly co-worker or friend you chat with because you
+know she's always coming up with the weirdest things to try, and
+sometimes that leads to surprisingly useful things. Post more
+screenshots and screencasts, since we could really use those.
+
+*Fill in more gaps*: Answer newbie questions. Map topics to learn. Write
+tutorials. Link to resources. Make screencasts. Organize information.
+Read EmacsWiki and other resources, and organize/edit/fill in as I come
+across opportunities to improve things.
+
+*Guide more people towards Emacs Lisp*: Help people make that jump to
+writing their first custom bit of Emacs Lisp. Learn more about Emacs
+Lisp style and functionality, and help people improve their packages.
+
+*Help inspire and connect people. Bring the community together*:
+Interview people for Emacs Chats, so that other people can get a sense
+of people like them who are enthusiastic about Emacs and who use Emacs
+to do interesting things. Set up a regular Emacs show-and-tell series?
+
+On a related note: *what would it take to figure out how to do Emacs
+coaching properly?* I'd want to keep track of people's progress and set
+up recurring calls, so probably Org, maybe in Google Drive or Git... I
+have a little bit of an impostor syndrome around this because I don't
+know enough about setting up Emacs as a modern IDE, but I can learn.
+Clojure, Rails are probably good starting points, and there's Emacs Lisp
+itself. On the other hand, if I answer questions in newsgroups and
+mailing lists, I help more people, and it's easier (and more reliable)
+to turn those into blog posts. Plus they're searchable. But sometimes
+one-on-one real-time helping is what helps me map or understand things
+better, and it can really make a difference in someone's confidence or
+comfort level. So yes, continue to do these, and continue to nudge
+people to share.
+
+Do these decisions make sense even considering a scenario where, say,
+Emacs becomes irrelevant? I'll have learned more about related
+programming tools and topics. I'll be a better writer and teacher. I'll
+probably know a whole bunch of people who are happy about what I've
+shared and who can help me make the transition to other things as
+needed, maybe by sharing information or by taking a chance on me. And
+then there are all the other skills I'll build on the way: making sense
+of technical things, learning more about how things learn, and playing
+with all sorts of other things along the way.
+
+Payoffs? Tickled brain, happy mastery. Besides, you meet the nicest
+people using Emacs. =)

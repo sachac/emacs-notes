@@ -1,0 +1,18 @@
+#+TITLE: Testing from Emacs
+
+February 2nd, 2008 -
+[[http://sachachua.com/blog/p/4728][http://sachachua.com/blog/p/4728]]
+
+I'm using
+[[http://elisp.info/package/weblogger/weblogger.el][weblogger.el]] and
+[[http://elisp.info/package/xml-rpc/xml-rpc.el][xml-rpc.el]] to post
+directly to my WordPress.
+
+I wonder how well it works...
+
+Sorry about the RSS thrashing! <sheepish grin> It took a while for the
+idea of a test blog to occur to me. So sorry. =)
+
+In conclusion: Emacs posting to external weblogs -- not quite there yet.
+Weblogger.el is somewhat okay, g-client and atom-api didn't work at all
+on my system. Waah. Quite frustrating.

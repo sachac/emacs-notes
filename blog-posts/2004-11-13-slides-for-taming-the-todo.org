@@ -1,0 +1,17 @@
+#+TITLE: Slides for “Taming the TODO”
+
+November 13th, 2004 -
+[[http://sachachua.com/blog/p/2378][http://sachachua.com/blog/p/2378]]
+
+-
+[[http://sacha.free.net.ph/notebook/presentations/20041113-taming-the-todo.pdf][http://sacha.free.net.ph/notebook/presentations/20041113-taming-the-todo.pdf]]
+: Adobe PDF
+ -
+[[http://sacha.free.net.ph/notebook/presentations/20041113-taming-the-todo.sxi][http://sacha.free.net.ph/notebook/presentations/20041113-taming-the-todo.sxi]]
+: OpenOffice.org (source)
+ -
+[[http://sacha.free.net.ph/notebook/presentations/20041113-taming-the-todo.ppt][http://sacha.free.net.ph/notebook/presentations/20041113-taming-the-todo.ppt]]
+: Microsoft PowerPoint
+ -
+[[http://sacha.free.net.ph/notebook/presentations/20041113-taming-the-todo.swf][http://sacha.free.net.ph/notebook/presentations/20041113-taming-the-todo.swf]]
+: Macromedia Flash

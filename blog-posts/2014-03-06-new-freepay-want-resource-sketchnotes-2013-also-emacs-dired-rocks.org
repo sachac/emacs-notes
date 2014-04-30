@@ -1,0 +1,55 @@
+#+TITLE: New free/pay what you want resource: Sketchnotes 2013; also, Emacs
+Dired rocks
+
+March 6th, 2014 -
+[[http://sachachua.com/blog/p/26945][http://sachachua.com/blog/p/26945]]
+
+[[http://sachachua.com/sketchnotes2013][[[http://sachachua.com/blog/wp-content/uploads/2014/02/cover-266x200.png]]]]
+
+*[[https://gum.co/sketchnotes2013][Get your copy of the Sketchnotes 2013
+collection]]*
+
+Since people found my
+[[http://sachachua.com/blog/sketchnotes2012][collection of sketchnotes
+from 2012]] handy, I've put together a categorized collection of
+sketchnotes from 2013 as well. Enjoy! =)
+
+/Behind the scenes/
+
+This was how I made the 2012 collection:
+
+1. Create a Microsoft Powerpoint presentation. Fill it with high-res
+   images. Resize and position all the images. Use AutoHotkey to save
+   myself time and avoid going crazy.
+2. Create a spreadsheet with titles and page numbers. Add captions with
+   liberal use of AutoHotkey.
+3. Create a manual table of contents and link to all the images. Mostly
+   use AutoHotkey, except for the part where if you create a link to a
+   slide number that consists of repeated numbers (ex: 55 or 66), you
+   have to select it a different way, because typing “55″ gets you #51
+   (and “555″ gets you #52, etc).
+4. Save as PDF.
+
+There was a lot of manual fiddling around involved in making that
+collection, so I'm experimenting with a different approach that may be
+useful. For Sketchnotes 2013, I wanted to see if there were ways I could
+simplify the packaging process while enabling people to do other things
+with the files.
+
+Here's what I did:
+
+1. I used Emacs dired-mode's C-x C-q (=dired-toggle-read-only=) to go
+   into editable mode, which allowed me to easily edit all the filenames
+   to include #keywords. I used C-x C-q to save the changes.
+2. Then I used Emacs dired's % m to select multiple files by regular
+   expressions and R to move the files into a specified directory.
+3. Tada! Neatly organized files. I packaged it up as a ZIP and put it on
+   Gumroad.
+4. Since Dropbox also allows you to share folders, I created a public
+   link to the folder that had my organized sketches. That way, people
+   can download a single directory if they want to, instead of
+   downloading all 250+ MB.
+
+It still might be interesting to make a PDF, especially if I can make
+one that can be published through something like CreateSpace. More
+packaging... =)

@@ -1,0 +1,34 @@
+#+TITLE: Thoughts on Toodledo versus Emacs Org
+
+June 10th, 2009 -
+[[http://sachachua.com/blog/p/6350][http://sachachua.com/blog/p/6350]]
+
+It's been a couple of months since I switched to using the Toodledo
+instead of Emacs Org to manage my tasks. I decided to use Toodledo
+because I wanted a to-do list that I could access on any computer and on
+my iPod Touch, so that I could capture tasks from anywhere. I liked
+Toodledo more than I liked Remember the Milk because Toodledo's tagging
+and time-tracking features fit the way I work. I also liked how I could
+ask my virtual assistant to fill in templates--for example, preparation
+tasks for upcoming presentations--based on certain dates.
+
+I still like Toodledo, but I feel an unsatisfied itch. Toodle-do is a
+great Getting Things Done system for capturing and tracking tasks, but
+even though it has some support for defining short-, medium-, and
+long-term goals, I wasn't using them because they were split up on
+multiple screens. I missed the outlines of Org where I could define my
+higher-level goals, easily add new ones, and create tasks and subtasks.
+I missed the close integration with my schedule and the ability to
+easily see my historical task information. I missed the distinction
+between scheduled dates and deadlines, and the calculation of days until
+something is due.
+
+So I think it's time to switch back, at least temporarily. Maybe I can
+find a way to seamlessly synchronize my Org files so that changes are
+reflected on the different computers I'm on, and maybe I can find a way
+to easily capture or review tasks while I'm on the go. Perhaps I'll
+continue working on org-toodledo so that I can export tasks from Org to
+the web-based interface. That way, I can quickly review today's tasks
+while I'm out and about.
+
+Hmm...

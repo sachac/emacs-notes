@@ -1,0 +1,138 @@
+#+TITLE: Note-taking: Random notes, journal entries, outlines, and hyperlinks
+
+January 9th, 2008 -
+[[http://sachachua.com/blog/p/4665][http://sachachua.com/blog/p/4665]]
+
+I take at least three different kinds of notes, and I need to manage
+them differently. Here are some rough thoughts on the different kinds of
+notes I work with and how I manage them. I'd love to hear about your
+note-management strategies in comments or e-mail!
+
+*** Random notes
+
+When I worked on my thesis, I filed hundreds of lines from my literature
+review. I needed to quickly pull together just the notes matching a
+certain keyword or belonging to a particular section. I also needed to
+be able to properly cite each note. Lastly, I structured my notes so
+that I could get a random note, which turned out to be really helpful
+for breaking me out of writing ruts and for helping me see creative
+connections.
+
+Writers and public speakers keep similar databases of story ideas and
+great quotations. They need to be able to search their databases for
+matching records, and they might not think of these categories ahead of
+time.
+
+Random information management isn't just for word geeks and researchers.
+If you've got scraps of paper or a text file with notes from meetings,
+clips from interesting articles, and thoughts to yourself, you're
+already managing random information. You just might not have a good
+system for capturing and searching the information.
+
+Important things for a random information manager:
+
+-  You should be able to easily capture information.
+-  You should be able to easily search for information.
+
+(An ideal random information manager might even suggest relevant
+entries.
+ Come to think of it, I should find out if I can get the Remembrance
+Agent running again. That was really cool.)
+
+I started using Howm for this before. It was a great random information
+manager for Emacs. I haven't been using it lately, though, as I hadn't
+set it up on my work laptop. I might do so soon.
+
+*** Journal entries
+
+Journal entries tend to be short, chronological notes. They can be
+private or public, or a mix of both. They can be also be retrospective
+or forward-looking. Journal entries are more structured than random
+information snippets because they're associated with a specific date and
+are generally about activities, experiences, or goals.
+
+My blog is an example of a journal. It has public and private entries.
+The private entries are removed from the blog before publishing.
+
+Important things for a journal manager or a blog:
+
+-  You shouldn't have to enter date and time yourself.
+-  You should be able to flip through your entries or search them for
+   keywords.
+-  You should be able to get an overview of your notes for a time
+   period.
+
+I use Planner for this because Planner makes it easy to publish day
+pages and RSS. I also write some entries directly on a WordPress blog,
+which also imports my Planner blog entries.
+
+*** Outlines
+
+Some notes belong to a bigger structure. For example, if you're drafting
+a document, you might work on different sections that will ultimately be
+merged. Random information management and journals are not enough
+because you need structure. An outline helps you see how things fit
+together.
+
+The draft for this book is an example of an outline. I sometimes work
+top-down by starting with the headings and defining more detail. I also
+work bottom-up by writing blocks of content and then fitting them into
+my outline.
+
+Important things for an outline:
+
+-  You should be able to structure your notes into headings and
+   subheadings.
+-  You should be able to promote, demote, and rearrange those headings
+   quickly.
+-  You should be able to quickly get an overview or drill down into
+   detail.
+
+I use Org for outlined text because Org makes it really easy to
+manipulate outlines.
+
+*** Hyperlinked Text
+
+The structure of hyperlinked text can actually be applied to the other
+three types of notes. Random notes benefit from freely-defined
+hyperlinks, where you can specify keywords that will automatically be
+linked without needing to edit each note where the keyword occurs.
+Journal entries can link to other journal entries or to topic-oriented
+pages. Outlines and other documents may allow people to jump to related
+sections through hyperlinks. Hyperlinks allow you to work with more
+freedom than a strict hierarchy of topics would permit.
+
+An example of a hyperlinked note system would be the way the posts on my
+blog are often linked with plan pages that focus on specific topics.
+(These links are only on my hard disk, so don't worry if you don't see
+them!) Topic pages allow me to review my topic-related notes as well as
+other freeform notes I've added.
+
+Important things for hyperlinks:
+
+-  You should be able to link to resources outside the note-taking
+   system.
+-  You should be able to link to other notes in the note-taking system.
+-  You may want to be able to link to other sections of the same note.
+
+I tend to use Muse with Planner for hyperlinked pages, but I've also
+tried it with Howm.
+
+*** Search
+
+A note-taking system good at capturing journal entries may not
+necessarily be good at capturing and searching random information or
+managing outlines. It helps to have different note-taking systems, each
+optimized for different tasks, or a tool that adapts to what you need at
+that time. A search that spans your different note-taking systems is
+also a great help.
+
+Currently, I don't have a unified search system. Well, aside from
+grep... This is one of the things I plan to work on while writing this
+chapter. =)
+
+*** Feedback?
+
+Do you keep other types of notes, and/or do you have tips for managing
+notes? Please share them here so that I can think about how Emacs can be
+tweaked to support them!

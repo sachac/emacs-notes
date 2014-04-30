@@ -1,0 +1,54 @@
+#+TITLE: Automation
+
+March 27th, 2010 -
+[[http://sachachua.com/blog/p/7065][http://sachachua.com/blog/p/7065]]
+
+A repetitive task is an excuse to learn more about automation tools. My
+text automation tool of choice is
+[[http://en.wikipedia.org/wiki/Emacs][Emacs]], a ridiculously
+programmable text editor. When it comes to numbers, I can do a lot with
+equations, pivot tables / data pilot, and judicious use of macros. For
+general automation on Windows, there's
+[[http://autohotkey.com][AutoHotkey]].
+
+My threshold for automation is lower than most people's. When faced with
+a repetitive task that will take me an afternoon to do, I'll spend maybe
+half an hour understanding the task, an hour figuring out how to do it
+using the tools, and another half hour to an hour completing it with
+automation's help. I spend the extra time learning more about the
+automation tools or sharing what I've done.
+
+Even if the time savings are probably not going to be significant, if
+the task is sufficiently repetitive, I'll go for the intellectual thrill
+of automating it. Bonus: if I have to do the task again (which
+occasionally happens), I have my process all ready to go.
+
+What would it take for people to learn how to automate more things? How
+do I do it? How did I pick up this habit?
+
+Part of it is knowing the capabilities of a tool. I know that I can
+simulate mouse clicks and keypresses, so when I catch myself repeating
+certain motions, I think about how I can automate that.
+
+Part of it is being able to abstract the steps in a procedure. I can
+figure out what can be easily automated and what needs manual
+intervention. If I can automate 80% of something, that's usually enough.
+
+Part of it is being able to program and not being afraid of geeky
+interfaces.
+
+Part of it is asking if the time-intensive parts of the procedure are
+really necessary. (Sometimes they're not.)
+
+I like automation. I
+[[http://sachachua.com/wp/2008/12/why-automation-matters-to-me/][wish
+more people were comfortable doing it]].
+
+Want to get started? The best way is probably to pick a tool depending
+on what you spend most of your time doing, learning lots about your
+tool, and doing little experiments. For Emacs, it might be learning how
+to use keyboard macros, then using Lisp. For Excel, learn different
+functions (I use CONCATENATE and IF a lot). For AutoHotkey, try using it
+for abbreviations, then expand.
+
+Have fun and save time!

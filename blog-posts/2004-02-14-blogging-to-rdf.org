@@ -1,0 +1,11 @@
+#+TITLE: Blogging to RDF
+
+February 14th, 2004 -
+[[http://sachachua.com/blog/p/1705][http://sachachua.com/blog/p/1705]]
+
+[[http://feedvalidator.org/check.cgi?url=http%3A%2F%2Fsacha.free.net.ph%2Fnotebook%2Fwiki%2Fblog.rdf][http://feedvalidator.org/check.cgi?url=http%3A%2F%2Fsacha.free.net.ph%2Fnotebook%2Fwiki%2Fblog.rdf]]
+says that my feed validates fine now. I hope that this blogs correctly!
+
+This entry by Sacha Chua.
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/rss.el][../../notebook/emacs/emacs-wiki/rss.el]]

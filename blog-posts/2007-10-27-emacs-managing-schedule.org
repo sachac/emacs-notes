@@ -1,0 +1,47 @@
+#+TITLE: Emacs: managing schedule
+
+October 27th, 2007 -
+[[http://sachachua.com/blog/p/4423][http://sachachua.com/blog/p/4423]]
+
+If you spend a lot of time in Emacs---writing code, reading mail,
+ saving the world---then it makes sense to manage your schedule in Emacs
+ as well.
+
+Here are some productivity tips for getting the most out of Emacs
+scheduling:
+
+-  Make it easy to add to your schedule. Bind your appointment-creation
+   functions to shortcut keys and practice using them until you've
+   memorized where they are.
+-  Make it easy to review your schedule for the day. The keybinding C-c
+   s is handy for this. If you prefer not to use the Control key, then
+   F9 s or any of the other function keys might work. Diary: Bind M-x
+   diary to a shortcut key. Org: Bind org-agenda-list to a shortcut key.
+   Planner: Bind planner-goto-today to a shortcut key.
+-  Set up an automatic reminder system such as Appt. If you can trust
+   that your reminder system will interrupt you even if you're focusing
+   on something else, you'll worry less about missing appointments.
+   You'll find it easier to stay focused because you won't need to check
+   your schedule as often.
+-  If you need to be reminded earlier than normal, create another,
+   earlier appointment. For example, if the commute to a meeting takes
+   half an hour, you don't want to be reminded of the meeting only 10
+   minutes before it starts. Create another appointment that starts at
+   least half an hour before so that you'll be on your way. It might be
+   a good idea to start even earlier.
+-  Planning ahead helps you save time and avoid stress. Plan your day
+   the night before, or in the morning if you need to. Spend a little
+   time during the weekend to review your upcoming week, making sure to
+   schedule in time for your important tasks. Diary: C-u 7 M-x diary.
+   Org: org-agenda (bind this to C-c a), choose the agenda view (a), and
+   switch to week (w). Planner: Use planner-appt and M-x
+   planner-appt-forthcoming-display. To include this in your Planner
+   page, create a section for forthcoming appointments. For example, on
+   your Saturday and Sunday templates, you can add a section heading *
+   Forthcoming Appointments. I'll post code on how to have day-specific
+   templates soon.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: custom-variable-p -- Function: Return non-nil if
+VARIABLE is a custom variable.

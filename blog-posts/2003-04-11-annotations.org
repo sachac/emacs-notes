@@ -1,0 +1,7 @@
+#+TITLE: Annotations
+
+April 11th, 2003 -
+[[http://sachachua.com/blog/p/679][http://sachachua.com/blog/p/679]]
+
+Cross-reference:
+[[http://sachachua.com/notebook/wiki/PlannerMode#5][PlannerMode#5]]

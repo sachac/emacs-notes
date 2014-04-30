@@ -1,0 +1,24 @@
+#+TITLE: gnu.emacs.sources/tex-skak.el: a way to typeset chess moves and board
+diagrams in LaTeX
+
+February 16th, 2004 -
+[[http://sachachua.com/blog/p/1718][http://sachachua.com/blog/p/1718]]
+
+#+BEGIN_QUOTE
+  This is a special mode for editing LaTeX files which use the skak
+  package.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  \usepackage{skak} is a beautiful way to typeset chess
+   moves and board diagrams in LaTeX. This file implements
+   a special editing mode for such documents ontop of the
+   AUC TeX and chess.el packages. Both packages are very
+   flexible and extensible. This file can be considered glue
+   code to unify the power of both packages.
+#+END_QUOTE
+
+Mirrored at
+[[http://sachachua.com/notebook/emacs/tex-skak.el][../emacs/tex-skak.el]]
+
+E-Mail from Mario Lang

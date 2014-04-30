@@ -1,0 +1,32 @@
+#+TITLE: Emacs: Not bad, just misunderstood
+
+November 9th, 2005 -
+[[http://sachachua.com/blog/p/3129][http://sachachua.com/blog/p/3129]]
+
+People love dissing the Emacs text editor. Emacs is one of those
+ arcane things that even \_geeks\_ aren't expected to understand. It's
+ probably the canonical example of a tool built for geeks by geeks:
+ hard to use, hard to understand, hard to just pick up and play with.
+
+I really don't think Emacs is bad. It's just misunderstood, the way
+ mainstream people think Linux is bad because it's all command-line
+ when the truth is that Linux is so much more than that. Emacs is so
+ much more than what people think it is, but people just settle for the
+ quick sound bite.
+
+As Alex Schroeder (kensanata) blogged:
+
+| 23:29   | kensanata   | eek. on creating happy programmers, quote: As Nat Torkington explained to me in his non-politically-correct but useful way, “It's no longer aspergers and emacs... we're putting people back into the equation.”   |
+| 23:29   | kensanata   | aspergers and emacs ÃƒÂ¢Ã‚Â€Ã‚Â“ that the social niche we live in.                                                                                                                                                 |
+| 23:29   | hober       | yeah                                                                                                                                                                                                               |
+| 23:29   | hober       | kensanata: I'm going to blog about that tonight                                                                                                                                                                    |
+| 23:30   | e1f         | you have aspergers?                                                                                                                                                                                                |
+| 23:30   | kensanata   | no, i have emacs.                                                                                                                                                                                                  |
+
+I'm going to blog about this too.
+
+-  [[http://headrush.typepad.com/creating_passionate_users/2005/11/creating_happy_.html][Read
+   Kathy Sierra: Creating happy programmers]]
+-  [[http://www.emacswiki.org/cgi-bin/alex/2005-11-08_Software][Read
+   kensanata's response]]
+

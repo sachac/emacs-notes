@@ -1,0 +1,116 @@
+#+TITLE: Personal contact relationship management
+
+December 12th, 2006 -
+[[http://sachachua.com/blog/p/4064][http://sachachua.com/blog/p/4064]]
+
+It's a good thing that computer geeks appreciate automation. They can
+ sniff out form e-mail in seconds, but they don't mind as long as it
+ comes from a very clever technical hack. Such was the case with the
+ form letter engine I put together just in time to ask people for their
+ postal addresses for my holiday updates. Paul Lussier wanted to know
+what kind of Emacs Lisp magic I was doing
+ behind the scenes. [[http://uc.org/simon][Simon Ditner]] got his
+ revenge by obfuscating his reply with 1337sp34|<. People humored me and
+replied with their addresses and birthdays, knowing that although the
+e-mail they got may have been mostly automated, my interest in them and
+my replies to the replies they sent me were very much real.
+
+Good magicians never reveal their tricks, but I like talking about the
+ crazy Emacs wizardry that goes on behind the scenes. Let me lift the
+ curtain:
+
+#+BEGIN_EXAMPLE
+    (concat
+     "Hello, " (or (bbdb-record-getprop record 'nick) (bbdb-record-name record)) "!
+
+    I've actually managed to write my 2006 life update / holiday
+    letter somewhat in time, and will be mailing them out soon. I'd
+    love to find out how your year has been and what you're planning
+    to do next year, and I'd be happy to keep you up to date too!
+
+    "
+
+    (cond
+     ((= (length (bbdb-record-addresses record)) 1)
+      (concat "Is this address the best one to reach you at?\n\n"
+              (sacha/bbdb-address-string (car (bbdb-record-addresses record)))))
+     ((> (length (bbdb-record-addresses record)) 1)
+      (concat "Which of these addresses is the best one to reach you at?\n\n"
+              (mapconcat 'sacha/bbdb-address-string (bbdb-record-addresses record) "\n")))
+     (t "I don't seem to have a mailing address for you, though. I'd
+    like to be able to snail-mail you postcards or holiday updates.
+    I promise not to use your address for anything evil! =) What's the best
+    way to send something to you?"))
+
+    (if (bbdb-record-getprop record 'birthdate)
+        ""
+      "\n\nBy the way, when is your birthday?")
+    "\n\nHope to hear from you soon!
+
+    Sacha Chua
+
+    p.s. No kittens were harmed in the writing of this message.")
+#+END_EXAMPLE
+
+That's the source for my form letter -- a Lisp expression, allowing me
+ to use the full power of Emacs. I used that as the input to the
+ following function:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/gnus-send-message-to-all (subject &optional text)
+      "Compose message to everyone, with notes.
+    SUBJECT is a string.
+    TEXT is a string or an arbitrary Lisp expression starting with (."
+      (interactive
+       (list (read-string "Subject: ")
+             (read-string "Body: ")))
+      (let ((records bbdb-records))
+        (while records
+          (when (bbdb-record-net (caar records))
+            (bbdb-send-mail (caar records) subject)
+            (goto-char (point-min))
+            (re-search-forward "--text " nil t)
+            (forward-line 1)
+            (let ((record (caar records)))
+              (when text
+                (insert (if (= (aref text 0) ?\() (eval (read text)) text))))
+            (when (bbdb-record-notes (caar records))
+              (save-excursion
+                (insert "\n--- NOTES ---\n"
+                        (bbdb-record-notes (caar records))
+                        "\n--- END NOTES ---\n"))))
+          (setq records (cdr records)))))
+#+END_EXAMPLE
+
+The function composed a message for each of the records currently
+ displayed. I edited the messages by hand, combining messages where
+ appropriate, and sent them off.
+
+What else can I do with this? Because this function accepts arbitrary
+ Lisp expressions, it would be really easy to include a random
+ holiday-related greeting or poem. If I had a database of significant
+ events, I can include a random factoid about the recipient's birthday.
+ If I had a local database of people's names, I could send one-off
+ messages including the meaning of their names.
+
+Yes, it's pretty crazy, but that's what you get when you have a geek
+ who cares about connecting with people. I've stolen all the cool
+ features from the contact relationship management systems I know
+ about, and I keep trying out more ideas. It's a pity that the base
+ system I'm working on can be quite intimidating. If I found the time
+ to learn enough, say, Microsoft Outlook programming to implement a
+ similar system, I think I'd have quite a market.
+
+Even with my idiosyncratic setup, though, it's fun pushing the
+ envelope. =) There are a lot of other things I'd like to add, and I
+ don't think I'll ever stop coming up with new ideas. In terms of
+ personal contact relationship management, I've got one of the most
+ advanced systems I know---which just means I need to get to know more
+ people, so that I can find other inspirations!
+
+On Technorati: [[http://www.technorati.com/tag/networking][networking]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: previous-buffer -- Command: Switch to the previous
+buffer in cyclic order.

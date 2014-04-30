@@ -1,0 +1,33 @@
+#+TITLE: Org: Changing the task states
+
+October 28th, 2007 -
+[[http://sachachua.com/blog/p/4425][http://sachachua.com/blog/p/4425]]
+
+I find it useful to keep track of which tasks I've started. Adding the
+ following line to the start of my Org file adds STARTED to my to-do
+ status keywords.
+
+#+BEGIN_EXAMPLE
+    #+SEQ_TODO: TODO(t) STARTED(s) WAITING(w) | DONE(d)
+#+END_EXAMPLE
+
+Here's some code to make it easier to clock in and out of tasks:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/org-clock-in-if-starting ()
+      "Clock in when the task is marked STARTED."
+      (when (and (string= state "STARTED")
+                 (not (string= last-state state)))
+        (org-clock-in)))
+    (add-hook 'org-after-todo-state-change-hook
+          'sacha/org-clock-in-if-starting)
+    (defadvice org-clock-in (after sacha activate)
+      "Set this task's status to 'STARTED'."
+      (org-todo "STARTED"))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/org][org]]
+
+Random Emacs symbol: isearch-update-ring -- Function: Add STRING to the
+beginning of the search ring.

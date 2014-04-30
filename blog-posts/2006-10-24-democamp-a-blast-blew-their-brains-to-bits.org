@@ -1,0 +1,48 @@
+#+TITLE: Democamp a blast! Blew their brains to bits
+
+October 24th, 2006 -
+[[http://sachachua.com/blog/p/3971][http://sachachua.com/blog/p/3971]]
+
+I set out to geek the heck out of Toronto's hippest geeks, and I did.
+ I showed them Emacs as they'd never seen it before---and even that was
+ a tiny fraction of my config. Lots of cool stuff behind the scenes,
+ too. When I showed them M-x doctor (the Emacs psychotherapist),
+ someone shouted out, “Is Emacs talking to you?” I laughed and
+ continued. What I *really* should've done was break the sequence of my
+ presentation, hook up the speakers, and tell them about Emacspeak -
+ presentation sequence be darned. ;) Oh, if they only knew how easy it
+ was to make jokes reality under Emacs! I remember writing my ‘bot
+ implants' -- the hippie-expand code I used to answer questions really
+ really quickly on IRC...
+
+Anyway. That was FUN. And it was relatively easy to get through,
+ especially with the cue system I made (Emacspeak rocks!). I'll talk
+ about that some other time. It's a really cool hack and well worth
+exploring.
+
+SO. The [[http://democamp.ca][democamp.ca]] folks will eventually get
+ around to posting a vidcast. In the meantime, I have a 431MB MPEG
+ movie that I need to either downsample or cut up in order to put
+ online, maybe on [[http://www.youtube.com][YouTube]]. I don't have
+ enough memory or hard disk space to play around with this (have you
+ seen my computer?!), but I'll happily put the video up if we can
+ figure out how to go about doing that.
+
+If you enjoyed the talk, missed it, or just want to hear/see me bounce
+ up and down about Emacs some more, come to the
+*[[http://www.linuxcaffe.ca][Linux Caffe]]*
+ on *Saturday (Oct 28, 2006) from 1:00 PM to 3:00 PM*. I'll be there,
+ and we might even see about having some kind of mini-show / vidcast. I
+wonder if
+ David has a projector. =)
+
+That was fun! Can't wait to do it again!
+
+On Technorati: [[http://www.technorati.com/tag/democamp][democamp]],
+[[http://www.technorati.com/tag/democamptoronto][democamptoronto]],
+[[http://www.technorati.com/tag/democamptoronto10][democamptoronto10]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/linuxcaffe][linuxcaffe]]
+
+Random Emacs symbol: comint-input-sender-no-newline -- Variable: Non-nil
+directs the `comint-input-sender' function not to send a newline.

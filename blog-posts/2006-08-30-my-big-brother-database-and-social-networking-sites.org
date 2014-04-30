@@ -1,0 +1,42 @@
+#+TITLE: My Big Brother Database and social networking sites
+
+August 30th, 2006 -
+[[http://sachachua.com/blog/p/3803][http://sachachua.com/blog/p/3803]]
+
+Yes, I keep a database on people. ;) I use an Emacs module aptly
+ called the Big Brother Database (BBDB), which is just a keystroke away
+ from my mail (Gnus) and my blog (Planner). I keep all sorts of notes
+ in it, like when I met someone or what their food preferences are.
+
+The following bit of Emacs Lisp code extracts all the names and e-mail
+ addresses from my BBDB. I have 1852 distinct e-mail addresses,
+ although a number of them are not for people.
+
+#+BEGIN_EXAMPLE
+    (mapc
+     (lambda (rec)
+       (if (bbdb-record-net rec)
+           (let ((name (bbdb-record-name rec)))
+             (mapc
+              (lambda (addr)
+                (insert name "\t" addr "\n"))
+              (bbdb-record-net rec)))))
+     (bbdb-records))
+#+END_EXAMPLE
+
+I uploaded the list to [[http://www.linkedin.com][LinkedIn]] and
+ [[http://www.openbc.com][OpenBC]], my two favorite business networking
+ sites. I found that a lot of my contacts had joined the services since
+ I last checked. It was great being able to refer to my notes and make
+ those connections. For example, one record said that I'd met someone
+ in 2004 at a Tokyo Linux Users Group meeting -- something I'd probably
+ not have remembered on my own...
+
+Some of the records didn't have much annotation aside from the note
+ “personal mail”, which means I probably should set up mail indexing
+ and search again. Hmm.
+
+It's nice to have these notes at my fingertips.
+
+On Technorati: [[http://www.technorati.com/tag/networking][networking]],
+[[http://www.technorati.com/tag/emacs][emacs]]

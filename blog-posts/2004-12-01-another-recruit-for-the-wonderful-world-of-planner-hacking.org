@@ -1,0 +1,29 @@
+#+TITLE: Another recruit for the wonderful world of Planner hacking!
+
+December 1st, 2004 -
+[[http://sachachua.com/blog/p/2452][http://sachachua.com/blog/p/2452]]
+
+Chris Parsons wrote:
+
+#+BEGIN_QUOTE
+  Well, I was using the excellent new planner-create-note-from-task, and
+   thought, “wouldn't it be nice to have the note optionally created on
+  the
+   plan page rather than the (less useful) date page? I must ask Sacha
+  to
+   do that.”
+
+  And then I thought, “No! I'll venture into the previously unchartered
+   depths of lisp programming... and work out how to do it myself.”
+
+  Here's my diff. Pass a prefix argument to always create on the plan
+   page. Perhaps this should be the default -- Sacha's call, I guess.
+
+  Be gentle, it's my first proper lisp coding :)
+#+END_QUOTE
+
+Wheeeeee! Another person discovered the joys of Emacs Lisp hacking!
+
+See, Planner is easy to hack. =)
+
+E-Mail from Chris Parsons

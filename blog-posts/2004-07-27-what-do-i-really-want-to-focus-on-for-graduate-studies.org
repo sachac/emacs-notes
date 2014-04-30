@@ -1,0 +1,16 @@
+#+TITLE: What do I really want to focus on for graduate studies?
+
+July 27th, 2004 -
+[[http://sachachua.com/blog/p/2203][http://sachachua.com/blog/p/2203]]
+
+I think there's some promise in this planner.el thing. I'm intrigued
+ by the fact that we can make personal information managers truly
+ personal. Instead of adapting to the software's structures, we tend to
+ adapt planner.el to our idiosyncrasies. How do people's usage patterns
+ evolve? I know mine has changed several times. Could the patterns
+ discovered by advanced users who tweak the framework be embedded into
+ popular PIM clients and tested on novice users? For example, how would
+ normal people react to automatic hyperlinking? What about the use of a
+ PIM for collaborative information management, like the way people are
+ using planner.el to manage teams when it was originally designed for
+ personal use? Interesting stuff...

@@ -1,0 +1,22 @@
+#+TITLE: Emacs on Mac OS X
+
+December 2nd, 2004 -
+[[http://sachachua.com/blog/p/2456][http://sachachua.com/blog/p/2456]]
+
+Sven Kloppenburg said:
+
+#+BEGIN_QUOTE
+  using Emacs on Macosx myself, I can tell you that emacs 21.2.1 comes
+   with macosx. If you want a more recent version, you can just checkout
+   the CVS-Emacs and cd mac; ./make-package ---self-contained to get an
+   installable macosx-app that plays nice with planner.
+
+  btw.: a .dmg file is mounted by double-clicking it ;-)
+#+END_QUOTE
+
+Ooooh, nifty. I wonder if it comes with pretty widgets. I want my mom
+ to have a menubar right away. <grin>
+
+Thanks for the tip!
+
+E-Mail from Richi's server

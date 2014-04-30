@@ -1,0 +1,21 @@
+#+TITLE: planner-el development version now available through darcs
+
+May 26th, 2004 -
+[[http://sachachua.com/blog/p/2077][http://sachachua.com/blog/p/2077]]
+
+#+BEGIN_EXAMPLE
+    To get the initial commit:
+    darcs get -m "Initial commit" http://sacha.free.net.ph/notebook/darcs/dev/planner/
+
+    To get succeeding patches:
+    darcs pull http://sacha.free.net.ph/notebook/darcs/dev/planner/
+
+    And then afterwards:
+    darcs pull
+
+    If you want to be picky
+    darcs pull --interactive
+#+END_EXAMPLE
+
+remember-el is also available at
+[[http://sacha.free.net.ph/notebook/darcs/dev/remember/][http://sacha.free.net.ph/notebook/darcs/dev/remember/]]

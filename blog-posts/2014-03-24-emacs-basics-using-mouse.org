@@ -1,0 +1,75 @@
+#+TITLE: Emacs Basics: Using the mouse
+
+March 24th, 2014 -
+[[http://sachachua.com/blog/p/27075][http://sachachua.com/blog/p/27075]]
+
+This entry is part 1 of 3 in the series
+[[http://sachachua.com/blog/series/emacs-basics-2/][Emacs Basics]]
+
+[[http://archive.org/download/EmacsBasicsUsingTheMouse/Emacs-Basics-Using-the-Mouse.mp3][You
+can download the MP3 from archive.org.]]
+
+Transcript:
+
+I'm Sacha Chua and this is an Emacs Basics episode on using the mouse.
+The best way to use Emacs is to master the keyboard shortcuts, but when
+you're starting out, don't worry about them yet. You might find yourself
+using the mouse a whole lot more than you used to, but over time, you
+will learn more and more keyboard shortcuts as you get used to Emacs. So
+let's say that you're just starting out. What are some of the things
+that you can do right away to get the hang of using Emacs?
+
+The Emacs tutorial is a great place to start. You can get to that by
+clicking on the Emacs tutorial link on the splash screen. If you've done
+the tutorial before, it will offer to let you resume at that point. If
+you don't have the splash screen handy, you can also get to the tutorial
+from *Help > Emacs tutorial*. Go through this and you'll learn a lot of
+the common keyboard shortcuts that will come in handy.
+
+The toolbar and the menu will also give you quick access to a lot of
+common commands. If you'd like to create a new file or open an existing
+file, you can click on the *New file* icon located in the top left. You
+can specify the file, and if the file doesn't exist yet, it will create
+it. To save the file, click on the *Save* icon. If you'd like to close a
+file, just click on the *X* mark. You can open the file again using the
+toolbar icon.
+
+To copy and paste, use your mouse to select a region of text, then copy
+or cut it. Then you can paste it wherever you want. You could also
+search for text. Click on that search button and start typing what
+you're looking for. It will highlight the search results. Press *Ctrl+s*
+to search for the next instance. Press *Enter* to stop searching.
+
+The menus also offer a lot of other commands. For example, you can
+insert a file. You can save the current buffer with another file name.
+You can split your windows so you can see more than one file at the same
+time. If you'd like to close a window and go back to having one file
+across your entire screen, you just have to use *File > Remove other
+windows*. To switch between the files you have open, use the *Buffers*
+menu. Explore the menus for other options.
+
+One of the interesting things in Emacs is that you can copy or cut
+multiple things and then paste them without having to keep copying or
+cutting each time. For example, if I copy this, then *Paste* will paste
+that. But you could also access the things that you copied or cut
+previously. Just click on *Edit > Paste from kill menu,* then select the
+item you want to paste.
+
+There are lots of other tools that are available in Emacs. The
+availability of these tools may depend on what else you've installed.
+Again, for more information, check out the Emacs tutorial or read the
+Emacs manual.
+
+Have fun!
+
+Series
+Navigation[[http://sachachua.com/blog/2014/03/emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm/][Emacs
+Basics: Call commands by name with M-x (with tips for better completion
+using ido or helm) »]]
+
+[[http://archive.org/download/EmacsBasicsUsingTheMouse/Emacs-Basics-Using-the-Mouse.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[http://archive.org/download/EmacsBasicsUsingTheMouse/Emacs-Basics-Using-the-Mouse.mp3][Play
+in new window]] |
+[[http://archive.org/download/EmacsBasicsUsingTheMouse/Emacs-Basics-Using-the-Mouse.mp3][Download]]

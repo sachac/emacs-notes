@@ -1,0 +1,14 @@
+#+TITLE: two-mode-mode: Multiple modes in one Emacs buffer
+
+January 12th, 2005 -
+[[http://sachachua.com/blog/p/2560][http://sachachua.com/blog/p/2560]]
+
+two-mode-mode allows you to switch between two major modes in a single
+ buffer. You can find it at
+
+[[http://www.dedasys.com/freesoftware/files/two-mode-mode.el][http://www.dedasys.com/freesoftware/files/two-mode-mode.el]]
+If you need
+ to deal with more modes, check out Multiple Major Modes at
+ [[http://mmm-mode.sourceforge.net][http://mmm-mode.sourceforge.net]] .
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

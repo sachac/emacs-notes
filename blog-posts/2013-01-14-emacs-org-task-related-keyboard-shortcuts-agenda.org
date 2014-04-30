@@ -1,0 +1,63 @@
+#+TITLE: Emacs Org: Task-related keyboard shortcuts for the agenda
+
+January 14th, 2013 -
+[[http://sachachua.com/blog/p/24335][http://sachachua.com/blog/p/24335]]
+
+I really love the way you can tweak Emacs' keyboard shortcuts and
+functionality to fit the way you want to work. Here are three keyboard
+shortcuts I've added to my Org agenda to make it even easier to work
+with tasks.
+
+=x=: Mark the current task as done. Same as typing =t x=, but somehow it
+feels like it has more oomph as a single-character shortcut.
+
+=X=: Mark the current task as done and create a new task at the same
+level, taking advantage of the task template I'd previously created in
+=org-capture-templates=.
+
+=N=: Create a new note or task at the current position.
+
+*Make it easy to mark a task as done*
+
+#+BEGIN_EXAMPLE
+    (defun sacha/org-agenda-done (&optional arg)
+      "Mark current TODO as done.
+    This changes the line at point, all other lines in the agenda referring to
+    the same tree node, and the headline of the tree node in the Org-mode file."
+      (interactive "P")
+      (org-agenda-todo "DONE"))
+    ;; Override the key definition for org-exit
+    (define-key org-agenda-mode-map "x" 'sacha/org-agenda-done)
+#+END_EXAMPLE
+
+*Make it easy to mark a task as done and create a follow-up task*
+
+#+BEGIN_EXAMPLE
+      (defun sacha/org-agenda-mark-done-and-add-followup ()
+        "Mark the current TODO as done and add another task after it.
+    Creates it at the same level as the previous task, so it's better to use
+    this with to-do items than with projects or headings."
+        (interactive)
+        (org-agenda-todo "DONE")
+        (org-agenda-switch-to)
+        (org-capture 0 "t"))
+    ;; Override the key definition
+    (define-key org-agenda-mode-map "X" 'sacha/org-agenda-mark-done-and-add-followup)
+#+END_EXAMPLE
+
+*Capture something based on the agenda position*
+
+#+BEGIN_EXAMPLE
+    (defun sacha/org-agenda-new ()
+      "Create a new note or task at the current agenda item.
+    Creates it at the same level as the previous task, so it's better to use
+    this with to-do items than with projects or headings."
+      (interactive)
+      (org-agenda-switch-to)
+      (org-capture 0))
+    ;; New key assignment
+    (define-key org-agenda-mode-map "N" 'sacha/org-agenda-new)
+#+END_EXAMPLE
+
+[[http://dl.dropbox.com/u/3968124/sacha-emacs.html][Check out my Emacs
+configuration]] for other ideas.

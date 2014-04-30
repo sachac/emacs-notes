@@ -1,0 +1,48 @@
+#+TITLE: Wicked Cool Emacs: get in on the action!
+
+December 1st, 2007 -
+[[http://sachachua.com/blog/p/4481][http://sachachua.com/blog/p/4481]]
+
+Ever since I started on this “Wicked Cool Emacs” project with No Starch
+Press, I've run into all sorts of amazing geeks who have been working on
+something similar. For example, [[http://tedroden.com/][Ted Roden]]‘s
+further along in writing the book than I am. It would be a shame to
+waste that effort. <laugh>
+
+I would /love/ to work on this book with other people. I think that it
+would become an even better book than I could write by myself, just as
+Emacs is better because all these people have worked on it. Besides, I'd
+love an opportunity to widen my Emacs network!
+
+So here's the outline I planned:
+
+| Preface                  | 15 pages                             |
+| A Day in the Life        | 30 pages                             |
+| Customizing Emacs        | 20 pages                             |
+| Working with Files       | 80 pages                             |
+| Working with Code        | 40 pages                             |
+| Browsing the Web         | 15 pages                             |
+| Reading Mail with Gnus   | 30 pages                             |
+| Being Big Brother        | 30 pages                             |
+| Taking Notes             | 35 pages                             |
+| Managing Tasks           | 35 pages                             |
+| Managing Your Schedule   | 20 pages -- DRAFTED AND SENT, YAY!   |
+| Other weird stuff        | ?                                    |
+
+I'd be totally happy to co-author this book with someone else who can
+commit time over the next year to help me do it. Take a look at the
+first chapter I've written:
+[[http://sachachua.com/notebook/wickedcoolemacs/wicked-cool-organizing-your-schedule.odt][Organizing
+your schedule]] (OpenOffice.org document). I know you can do better than
+that. =) Let's find out how wonderful we can make this book.
+
+If you're seriously interested in coauthoring this, get in touch with me
+and we'll talk to the folks over at NSP.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs]],
+[[http://www.technorati.com/tag/writing][writing]]
+
+Random Emacs symbol: message-insert-disposition-notification-to --
+Command: Request a disposition notification (return receipt) to this
+message.

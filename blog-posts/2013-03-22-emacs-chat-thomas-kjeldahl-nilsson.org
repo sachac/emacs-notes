@@ -1,0 +1,25 @@
+#+TITLE: Emacs chat: Thomas Kjeldahl Nilsson
+
+March 22nd, 2013 -
+[[http://sachachua.com/blog/p/24597][http://sachachua.com/blog/p/24597]]
+
+I got to chat with Thomas about Emacs and picking up configuration
+snippets from EmacsWiki. He's so lucky -- he gets to work with lots of
+other Emacs geeks! =)
+
+[[http://vimeo.com/61912848][Thomas Kjeldahl Nilsson -- Emacs chat]]
+from [[http://vimeo.com/user1851927][Sacha Chua]] on
+[[http://vimeo.com][Vimeo]].
+
+[[http://kjeldahlnilsson.net/][More about Thomas on
+kjeldahlnilsson.net]]
+
+[[https://archive.org/details/EmacsThomasKjeldahlNilsson][Just want the
+audio? Get it from archive.org]]
+
+[[https://archive.org/download/EmacsThomasKjeldahlNilsson/Emacs%20-%20Thomas%20Kjeldahl%20Nilsson.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[https://archive.org/download/EmacsThomasKjeldahlNilsson/Emacs%20-%20Thomas%20Kjeldahl%20Nilsson.mp3][Play
+in new window]] |
+[[https://archive.org/download/EmacsThomasKjeldahlNilsson/Emacs%20-%20Thomas%20Kjeldahl%20Nilsson.mp3][Download]]

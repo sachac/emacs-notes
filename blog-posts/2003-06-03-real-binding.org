@@ -1,0 +1,14 @@
+#+TITLE: real-binding
+
+June 3rd, 2003 -
+[[http://sachachua.com/blog/p/816][http://sachachua.com/blog/p/816]]
+
+If REAL-BINDING is a symbol and has a non-`nil' `menu-enable'
+ property, that property is an expression that controls whether the menu
+ item is enabled. Every time the keymap is used to display a menu,
+ Emacs evaluates the expression, and it enables the menu item only if
+ the expression's value is non-`nil'. When a menu item is disabled, it
+ is displayed in a “fuzzy” fashion, and cannot be selected.
+
+How do I get the property of a symbol?
+ (symbol-plist symbol)

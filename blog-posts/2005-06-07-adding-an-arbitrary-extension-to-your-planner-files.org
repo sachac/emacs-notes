@@ -1,0 +1,65 @@
+#+TITLE: Adding an arbitrary extension to your planner files
+
+June 7th, 2005 -
+[[http://sachachua.com/blog/p/2775][http://sachachua.com/blog/p/2775]]
+
+Do you want all of your planner files to have a TXT extension so that
+ they'll be searched by tools such as Google Desktop or Apple Spotlight?
+
+Use the ‘rename' tool to add .txt extensions to all of your files, or
+ use the following code to rename all of your planner files from a
+ running Planner setup:
+
+#+BEGIN_EXAMPLE
+    (defun my-rename-planner-files ()
+      "Rename all my planner files to .txt if they don't have that extension yet."
+      (interactive)
+      (mapcar
+       (lambda (file)
+         (unless (string-match "\\.txt$" (cdr file))
+           (rename-file (cdr file) (concat (cdr file) ".txt"))
+           (message "%s" (cdr file))))
+       (planner-file-alist))
+      (with-planner
+        (emacs-wiki-refresh-file-alist)))
+#+END_EXAMPLE
+
+Then add this to your ~/.emacs before you load Planner:
+
+#+BEGIN_EXAMPLE
+    (setq emacs-wiki-ignored-extensions-regexp "\\.txt")
+
+    (defadvice emacs-wiki-find-file (around extension activate)
+      "Open the Emacs Wiki page WIKI by name.
+    If COMMAND is non-nil, it is the function used to visit the file.
+    If DIRECTORY is non-nil, it is the directory in which the Wiki
+    page will be created if it does not already exist."
+      (unless (interactive-p)
+        (setq wiki (cons wiki
+                         (cdr (assoc wiki (emacs-wiki-file-alist))))))
+      ;; At this point, `wiki' is (GIVEN-PAGE FOUND-FILE).
+      (if (cdr wiki)
+          (let ((buffer (funcall (or command 'find-file) (cdr wiki))))
+            (if (= (prefix-numeric-value current-prefix-arg) 16)
+                (with-current-buffer buffer
+                  (set (make-variable-buffer-local 'emacs-wiki-directories)
+                       (cons (file-name-directory (cdr wiki))
+                             emacs-wiki-directories))
+                  (set (make-variable-buffer-local 'emacs-wiki-file-alist)
+                       nil)))
+            buffer)
+        (let* ((dirname (or directory
+                            (emacs-wiki-maybe t)
+                            (car emacs-wiki-directories)))
+               (filename (expand-file-name (car wiki) dirname)))
+          (unless (file-exists-p dirname)
+            (make-directory dirname t))
+          (funcall (or command 'find-file) (concat filename ".txt")))))
+#+END_EXAMPLE
+
+ÃƒÂ¦Ã‚Â--Ã‚Â°ÃƒÂ£Ã‚Â?Ã‚Â---ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚ÂƒÃ‚Â‘ÃƒÂ£Ã‚Â‚Ã‚Â½ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¨Ã‚Â²Ã‚Â·ÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â?Ã‚Â¤ÃƒÂ£Ã‚Â‚Ã‚Â‚ÃƒÂ£Ã‚Â‚Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ©Ã‚Â‡Ã‚Â‘ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¦Ã‚ÂºÃ‚ÂœÃƒÂ£Ã‚Â‚Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â‚Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚Â
+ÃƒÂ£Ã‚Â€Ã‚Â‚ I am saving money in order to buy a new personal computer.
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/code][code]]

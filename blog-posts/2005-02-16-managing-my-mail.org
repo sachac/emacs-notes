@@ -1,0 +1,76 @@
+#+TITLE: Managing my mail
+
+February 16th, 2005 -
+[[http://sachachua.com/blog/p/2625][http://sachachua.com/blog/p/2625]]
+
+I use Gnus, one of the many mail/news clients available for Emacs.
+ The following features help me manage the volume of mail I get each
+day.
+
+Mail splitting
+
+Yes, yes, the Gmail way is to keep everything in one folder and then
+ use searches to filter your messages. Still, I like being able to
+ glance at my screen and see 2 personal messages and 3 planner-related
+ messages.
+
+Topics and group hiding
+
+I use Gnus topics to divide my mail into folders and subfolders.
+ Mail groups are hidden unless they have mail. Some groups like
+ mail.misc and mail.planner are generally useful, so I keep them visible
+ even if they don't have unread mail.
+
+Scoring
+
+Gnus allows you to automatically score threads and messages up and
+ down based on various criteria. You can set it to completely hide
+ boring messages, show them in a different color, show interesting
+ messages in a different color, etc.
+
+On most mailing lists and newsgroups, I don't bother reading message
+ bodies. I just scan through subjects, hitting k to kill entire threads
+ I don't find interesting. Gnus remembers what threads I've killed,
+ marks them as read, and scores them down automatically. It also scores
+ up messages containing certain keywords, replies to my posts, and
+ threads I found interesting.
+
+Integration with my contacts
+
+I put interesting people in my BBDB contact database. Gnus indicates
+ messages from them with a little + beside their name in the message
+ summary. If someone I know is interested in a thread, I might find it
+ interesting as well.
+
+Hiding and article washing
+
+I've set Gnus up to hide quoted text. This makes browsing through
+ threads much easier because I can concentrate only on the the new
+ parts. I can hit a few keys to expose sections of the quoted text if
+ the replies aren't immediately obvious from the context.
+
+I can also set it up to remove ads at the bottom of messages,
+ particularly long signatures, To: lines with more than N recipients,
+ that sort of thing. I can tell it to strip out HTML, too.
+
+Displaying parent article
+
+Sometimes I'll jump into the middle of a thread. I can use \^ to get to
+ the parent message.
+
+Searching
+
+I use swish++ to index and search through my personal and
+ planner-related mail.
+
+Planner hyperlinks
+
+Most of my tasks come in through e-mail. Planner lets me keep track of
+ my TODOs easily by automatically hyperlinking to the mail message I'm
+ looking at when I create a task. Dealing with a few items on my TODO
+ list is much easier than going through a large inbox! =)
+
+On Technorati:
+[[http://www.technorati.com/tag/productivity][productivity]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/mail][mail]]

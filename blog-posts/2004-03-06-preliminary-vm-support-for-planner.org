@@ -1,0 +1,13 @@
+#+TITLE: Preliminary VM support for planner
+
+March 6th, 2004 -
+[[http://sachachua.com/blog/p/1848][http://sachachua.com/blog/p/1848]]
+
+You can create tasks from VM messages and virtual folders, and you can
+ jump to URLs of the form vm:// INBOX / MESSAGE-ID. Right now it jumps
+ to the message directly. It would be nice to jump to the summary.
+
+See
+[[http://sachachua.com/notebook/emacs/emacs-wiki/planner-vm.el][../emacs/emacs-wiki/planner-vm.el]]
+
+[[http://sachachua.com/notebook/wiki/PlannerModeVM][PlannerModeVM]]

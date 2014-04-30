@@ -1,0 +1,95 @@
+#+TITLE: The Wonderful World of Emacs -- planner.el --- emacs, planner
+
+April 14th, 2003 -
+[[http://sachachua.com/blog/p/690][http://sachachua.com/blog/p/690]]
+
+Migs, the one who wrote in recently about non-working
+[[http://sachachua.com/notebook/wiki/Year2003][Year2003]],
+ [[http://sachachua.com/notebook/wiki/Year2002][Year2002]] and
+[[http://sachachua.com/notebook/wiki/Year2001][Year2001]] links, has
+this to ask:
+
+#+BEGIN_QUOTE
+  I'm very curious as to how you get so much done with a
+   console based (?) text editor. Like do you have sort of summary view
+   of your calendar, tasks, etc in emacs? Maybe you can post a few
+   screenshots of what you look at everyday. Personally, I'd be lost
+   without an app like Evolution or Korganizer. I can't imagine how you
+   manage all that with emacs.
+#+END_QUOTE
+
+Migs, that is precisely it. =)
+[[http://sachachua.com/notebook/emacs/planner.el][planner.el]] is an
+Emacs module that
+ gives me a summary view of my tasks, schedule, and notes inside Emacs
+ (which incidentally has a nice graphical interface, too). Together
+ with
+[[http://sachachua.com/notebook/emacs/emacs-wiki.el][emacs-wiki.el]], it
+lets me easily manage
+[[http://richip.dhs.org/~sachac/notebook/wiki/WelcomePage.php][my
+website]]. Another
+ ultra-handy thing is M-x remember from
+[[http://sachachua.com/notebook/emacs/remember.el][remember.el]], which
+pops up a
+ buffer asking me what I want to remember and stores a note in my daily
+ planner page. For example, this is one such note created by
+ remember.el. A patch contributed by Thomas Gehrlein allows easy
+ navigation of planner pages -- simply select dates from M-x calendar.
+
+Personally, I prefer this text-file-based system to Evolution or
+ Korganizer. I remember dropping down to M-x grep to quickly search for
+ something in my daily planner files. I can backup my data files in a
+ .tar.gz. I can perform diffs and version control (although I haven't
+ gotten around to doing so yet! =) ). I can even run it in
+ conjunction with the Remembrance Agent.
+
+My tasks and notes can be linked to my address book through BBDB
+ integration with Planner, and I've modified the BBDB url support to
+ take advantage of certain fields in my database. For example, typing
+ Sacha Chua results in the
+ following link: Sacha Chua. Locally, this brings up the address book
+ record that matches that regular expression. On the Web, it is
+ transformed into a URL following these rules of preference: blog, web,
+ e-mail. That allows me to link to other people and even sites much
+ more easily than HTML or the usual blogging systems might let me do,
+ since HTML and [[http://www.blogger.com][http://www.blogger.com]] still
+require me to type the
+ URLs to which I want to link.
+
+Because all of these things run inside
+[[http://www.gnu.org/software/emacs/][GNU Emacs]], I can easily
+ access all of my data. I can embed Emacs LISP code into my planner
+ files and have them automatically evaluated and displayed. I can
+ switch to my planner file easily from my IRC chat session or from my
+ mail. I can hook into built-in Emacs functionality or make use of
+ modules developed by other people. It's tons of fun!
+
+And I didn't even write planner.el. Ubercoder
+[[http://newartisans.com/johnw/][John Wiegley]] did. I
+ discovered planner.el around 2001.11.03. I liked it so much I e-mailed
+ John Wiegley to volunteer tech support and bugfixing for it, and he
+ suggested that I take over maintaining planner.el
+ instead. (2002.11.21) Open source is so much fun! =)
+
+To see a sample of the text files I work with, you can check out my
+ planner directory at
+[[http://richip.dhs.org/~sachac/notebook/plans/][http://richip.dhs.org/~sachac/notebook/plans/]]
+.
+ The published files are listed at
+
+[[http://richip.dhs.org/~sachac/notebook/wiki/WikiIndex.php][http://richip.dhs.org/~sachac/notebook/wiki/WikiIndex.php]].
+
+People interested in duplicating my setup may want to check out my
+ configuration files. They are all found in my
+[[http://sachachua.com/notebook/emacs/][notebook/emacs/]]
+ directory. Files of interest are
+[[http://sachachua.com/notebook/emacs/planner-config.el][planner-config.el]],
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki-config.el][emacs-wiki-config.el]],
+and
+[[http://sachachua.com/notebook/emacs/remember-config.el][remember-config.el]].
+Please write to me
+ at [[mailto:sacha@free.net.ph][sacha@free.net.ph]] if you have any
+comments or suggestions, and
+ don't hesitate to ask for help in setting up a wonderful personal
+ information management system in Emacs.

@@ -1,0 +1,14 @@
+#+TITLE: Eclipse plugin: Emacs Environment to Eclipse
+
+November 15th, 2004 -
+[[http://sachachua.com/blog/p/2392][http://sachachua.com/blog/p/2392]]
+
+[[http://eclipse-plugins.2y.net/eclipse/plugin_details.jsp?id=287][http://eclipse-plugins.2y.net/eclipse/plugin\_details.jsp?id=287]]
+
+- Use tab to indent the current line.
+[[http://park.ruru.ne.jp/ando/work/who/ee2e/index.html][http://park.ruru.ne.jp/ando/work/who/ee2e/index.html]]
+
+A TLUGger mentioned this as a barrier to use recently, so may be
+ interested in this plugin.
+
+Not sure how Emacsy things become, though.

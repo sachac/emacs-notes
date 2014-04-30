@@ -1,0 +1,35 @@
+#+TITLE: Planner for Eclipse?
+
+September 9th, 2005 -
+[[http://sachachua.com/blog/p/2971][http://sachachua.com/blog/p/2971]]
+
+One of the things I really love about
+[[http://sachachua.com/notebook/wiki/PlannerMode][Planner]] is that
+ my blogging and task tracking tool is built into my working
+ environment. A task or note is never more than a keystroke away.
+
+When Stephen asked me if there was a blogging plugin for Eclipse, I
+ thought: hey, there should be one. Why hasn't something like Planner
+ been written for Eclipse yet? It's insanely useful. A search for
+ “blog” on the Eclipse plugin page turns up nothing promising.
+
+Right after Stephen asked me about blogging plugins, Alvin remarked
+ that it was too much trouble to switch to a separate application for
+ blogging. \_Exactly\_ why I like Planner so much.
+
+And exactly why a pluggable and hackable wikiblog like Planner would
+ be perfect for Eclipse.
+
+I wonder if we're on to something here. Building blogging and wiki
+ tools into a development environment allows the blog/wiki engine to
+ take advantage of rich metadata. We can make it easy for people to
+ keep project blogs and personal knowledgebases. This would be Good
+ Stuff.
+
+And---more challenging---we can go beyond the line-number hyperlinking
+ done by Planner. We can take advantage of Eclipse's semantic parsing
+ to attach entries to pieces of code that might be refactored. How
+ would that work? I don't know how to do that yet.
+
+What do we get? A developer's notebook. This is good stuff. Time to
+ find out if it's masters-level good stuff...

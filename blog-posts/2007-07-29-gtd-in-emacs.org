@@ -1,0 +1,11 @@
+#+TITLE: GTD in Emacs
+
+July 29th, 2007 -
+[[http://sachachua.com/blog/p/4305][http://sachachua.com/blog/p/4305]]
+
+credmp has an excellent blog post on
+[[http://www.credmp.org/index.php/2007/07/28/getting-things-done-in-emacs/][GTD
+with Emacs]] using Planner and Remember. I'm so happy! =)
+
+Random Emacs symbol: x-last-selected-text-primary -- Variable: The value
+of the PRIMARY X selection last time we selected or

@@ -1,0 +1,49 @@
+#+TITLE: Response to Adam Rifkin; personal information management
+
+March 11th, 2004 -
+[[http://sachachua.com/blog/p/1877][http://sachachua.com/blog/p/1877]]
+
+I like your [[http://www.mod-pubsub.org/blog/index.php][technical]] and
+[[http://ifindkarma.typepad.com/relax/][personal]] and I think I can
+learn much from you. =)
+
+In particular, I am interested in personal information management. I
+ maintain
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]], an
+organizer for Emacs. I use it to blog
+ ([[http://sacha.free.net.ph][http://sacha.free.net.ph]]). My Emacs
+setup allows me to hit a
+ keystroke to remember anything from almost anywhere. It automatically
+ captures context and allows me to jump back to that. The source pages
+ are on my hard disk, so I regularly regexp-search through them. This
+ lets me use my blog to remember things.
+
+People are surprised to find my task list, schedule and notes online.
+ They ask me why I don't mind the lack of privacy. I find that
+ publishing my notes works to my advantage. Almost every other day,
+ someone writes in with a bit of info or a tip that'll help me finish a
+ task. Plus, publishing my task list shames me into procrastinating
+ less.
+
+I'd like to work on making it easier to retrieve information from my
+ blog and my e-mail. The Remembrance Agent
+
+([[http://rhodes.www.media.mit.edu/people/rhodes/RA/][http://rhodes.www.media.mit.edu/people/rhodes/RA/]])
+is great for
+ indexing mail and a few other resources. It brings up entries that are
+ relevant to the words around your cursor. You've probably run across
+ the software and related papers---if not, check it out!
+
+I'm also interested in XML. I hacked in RSS export for my blog. It
+ autocategorizes my posts based on a regular expression. A minor
+ modification will let me define arbitrary rules.
+
+Answering JP, someone else on the
+[[http://www.mod-pubsub.org/blog/index.php][technical]] groupblog:
+
+I like the idea of RSS syndication because I want to aggregate and
+ search blogs without having to scrape HTML. With either a simple
+ regexp search or search-engine-like relevance ranking, finding
+ information in other people's knowledgebases becomes much easier. If I
+ download feeds, I can even search offline. Push on creation is useful,
+ but people still need a way to get to old posts.

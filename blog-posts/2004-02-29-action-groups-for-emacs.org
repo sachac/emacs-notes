@@ -1,0 +1,61 @@
+#+TITLE: Action groups for Emacs
+
+February 29th, 2004 -
+[[http://sachachua.com/blog/p/1800][http://sachachua.com/blog/p/1800]]
+
+#+BEGIN_QUOTE
+  Agroups (Action Groups) 2.3 for Emacs has been released and is
+  available
+   for download at
+#+END_QUOTE
+
+[[http://www.interhack.net/projects/agroups][http://www.interhack.net/projects/agroups]]
+
+#+BEGIN_QUOTE
+  If you like to automate your day to day work-flow you might like
+  Agroups.
+#+END_QUOTE
+
+Short Overview
+
+#+BEGIN_QUOTE
+  Action Groups are groups of action entries that an Emacs user can
+   create, save, name and access quickly. In a general sense these
+  actions
+   are any automation that a user can imagine to help with his
+  activities.
+   The user instantiates these automations as action entries which are a
+   specific instances of some action from the current collection of
+   actions. Actions can be as simple as finding a commonly used file in
+  a
+   buffer, to more complex like executing a previously defined keyboard
+   macro, to very complex like an unimaginable whopper defined by a user
+   created Action Template. Action Templates are an extensibility
+  feature
+   of Action Groups and allows the user to easily create new actions,
+   Agroups supplies a useful predefined collection of actions created
+  with
+   Action Templates.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  A collection of action entries is called an action group. Typically
+   the user associates each action group with a concentrated activity
+  such
+   as a project. Each entry of an action group is associated with a
+   specific instance of an action. A group itself is actually an entry
+   associated with a special action called `group' so that a group entry
+   can be yet another group itself. This implies that groups can have
+   subgroups and subgroups can have subgroups and so on. This gives the
+   user structured organizational capabilities.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  The Action Groups facility was designed to allow easy and fast
+   creation of groups and entries to help automate an Emacs user's work.
+   At the same time it was designed to allow fast execution of the
+   entries. To this end a user can use the Emacs completion facility to
+   execute entries or key bindings or a combination of both.
+#+END_QUOTE
+
+E-Mail from William Paul Vrotney

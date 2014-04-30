@@ -1,0 +1,36 @@
+#+TITLE: Writing progress
+
+December 30th, 2007 -
+[[http://sachachua.com/blog/p/4556][http://sachachua.com/blog/p/4556]]
+
+2For the chapter on task management, I have 10,715 words or 38 pages of
+raw text that still need be edited. This probably means I'm going to
+miss my goal of December 31. I still need to write two more sections on
+using tags and projects, which will be roughly another 2,000 words. I'll
+try to write another 1,000 words today. I'm planning to spend the
+evenings and all of January 1 working on this. I think I can finish it
+this week. I'll e-mail my editor to adjust my goal one week forward.
+
+The next chapter is the one on taking notes. It's also 35 pages, and
+I've budgeted a month for it. If I push my current deadline forward one
+week, I might still be able to make it to my next deadline of January
+31, 2008. The raw text should take me about six days of writing 2,000
+words each. I'm planning to write about the one-file approach, Remember,
+Org, Planner, Howm, Records, and blogging from Emacs. Budget in maybe
+one weekend for editing, and that comes out to writing for three hours
+every other weekday and doing a little more work on it during weekends.
+This kind of schedule will help me avoid the mistake I did this month,
+which was focusing on work during weekday evenings and working on the
+book only during weekends.
+
+I'm also happy to say that I'm getting the hang of dictating to Dragon
+NaturallySpeaking. I've trained it to recognize things like Emacs and
+C-c, and I'm getting used to working with a combination of typing and
+speaking. I carry a portable voice recorder with me, and I dictate into
+it after I've taken off my contact lenses and can't work at the
+computer. I've been using it for blog posts, chapter drafts, and the
+occasional rant about Emacs versioning. I'm also getting the hang of not
+freaking out about the ungrammatical things that Dragon
+NaturallySpeaking thinks I've said.
+
+And I like not having to type.

@@ -1,0 +1,21 @@
+#+TITLE: planner: so addictive, even the vim people want it
+
+October 26th, 2005 -
+[[http://sachachua.com/blog/p/3102][http://sachachua.com/blog/p/3102]]
+
+Seen on
+[[http://permalink.gmane.org/gmane.editors.vim/36654][gmane.editors.vim]]
+:
+
+#+BEGIN_QUOTE
+
+  #+BEGIN_QUOTE
+    Is there a vim script that mimics the emacs planner mode?
+  #+END_QUOTE
+
+  There's a couple of wiki plugins, but nothing like planner.el sadly.
+   One of the few things that sometimes makes me jealous of emacs users
+   :)
+#+END_QUOTE
+
+Awwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww... =)

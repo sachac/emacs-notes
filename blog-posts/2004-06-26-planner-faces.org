@@ -1,0 +1,7 @@
+#+TITLE: Planner faces
+
+June 26th, 2004 -
+[[http://sachachua.com/blog/p/2139][http://sachachua.com/blog/p/2139]]
+
+Some people find the headings a bit large. Almost intimidating, even.
+ I wonder what reasonable defaults would be...

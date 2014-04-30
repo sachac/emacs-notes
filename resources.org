@@ -1,0 +1,2 @@
+- http://www.masteringemacs.org/articles/2011/01/14/effective-editing-movement/
+  - Movement

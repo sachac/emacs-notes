@@ -1,0 +1,25 @@
+#+TITLE: Might need to spend more time hanging out with Emacs geeks =)
+
+July 6th, 2008 -
+[[http://sachachua.com/blog/p/4942][http://sachachua.com/blog/p/4942]]
+
+This is dreadful. I've made no progress on my book, and I've noticed
+that it has steadily crept down my list of priorities. I suspect it has
+a lot to do with the kinds of people I hang out with and the kinds of
+places I hang out. ;)
+
+I used to hang out in irc.freenode.net#emacs a lot, and I used to
+frequently check the RecentChanges page of
+[[http://www.emacswiki.org][http://www.emacswiki.org]]. Both were great
+sources for Emacs questions and answers, and they often inspired me to
+go and write blog posts sharing what I discovered.
+
+Lately, I've been hanging out with Drupal geeks and social networking
+geeks--hence all the blog posts about Drupal and technology evangelism.
+This is because of work, and so my blog posts are about things I'm
+learning at work. My Emacs use is down to reading mail, reading news,
+and managing my day. I still use it every day, but I'm not doing a lot
+of development in it. (Hmm, maybe that's something else I can set up.)
+
+Maybe I should start writing from the front of the book instead -- basic
+Emacs stuff, leading up to more advanced tips...

@@ -1,0 +1,32 @@
+#+TITLE: sacha/planner-create-note-from-task
+
+November 19th, 2004 -
+[[http://sachachua.com/blog/p/2413][http://sachachua.com/blog/p/2413]]
+
+#+BEGIN_EXAMPLE
+    ;; Improvements:
+    ;; - Link back to the task?
+    ;; - Make it possible to have your note on another page?
+    (defun sacha/planner-create-note-from-task ()
+      "Create a note based on the current task."
+      (interactive)
+      (let* ((task-info (planner-current-task-info))
+             note-num)
+        (when task-info
+          (setq note-num (planner-create-note (planner-page-name)))
+          (save-excursion
+            (save-window-excursion
+              (when (planner-find-task task-info)
+                (planner-edit-task-description
+                 (concat (planner-task-description task-info) " "
+                         (planner-make-link
+                          (concat (planner-page-name) "#"
+                                  (number-to-string note-num))
+                          "..."))))))
+          (insert (planner-task-description task-info) "\n\n"))))
+
+    ;; I use F9 p to go to today's page, anyway.
+    (define-key planner-mode-map (kbd "C-c C-n") 'sacha/planner-create-note-from-task)
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/planner-config.el][../emacs/planner-config.el]]

@@ -1,0 +1,4 @@
+Resources
+
+- http://www.emacswiki.org/emacs/CodingStyle
+- http://www.nongnu.org/emacs-tiny-tools/elisp-coding/

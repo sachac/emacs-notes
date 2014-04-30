@@ -1,0 +1,123 @@
+#+TITLE: Wicked Cool Emacs: BBDB: Use nicknames and custom salutations
+
+March 24th, 2008 -
+[[http://sachachua.com/blog/p/4808][http://sachachua.com/blog/p/4808]]
+
+I like starting my e-mail with a short salutation such as “Hello,
+Mike!”, “Hello, Michael”, or “Hello, Mikong!”, but it can be hard to
+remember which nicknames people prefer to use, and calling someone by
+the wrong name is a bit of a faux pas. Sometimes people sign e-mail with
+their preferred name, but what if you haven't sent e-mail to or received
+e-mail from someone in a while? In this project, you'll learn how to set
+up my BBDB to remember people's nicknames for you using a custom “nick”
+field, and to use those nicknames when replying to messages in Gnus or
+composing messages from my BBDB.
+
+The nickname code worked so well that I started thinking of what else I
+could customize. It was easy to go from nicknames to personalized
+salutations. This hack started because one of my friends is from
+Romania, so I thought I'd greet her in Romanian with “Salut, Letitia!”
+instead of just “Hello, Letitia!”. The code in this project uses a
+“hello” field to store these salutations in your BBDB.
+
+To set up personalized nicknames and salutations, add the following code
+to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (defvar wicked/gnus-nick-threshold 5 "*Number of people to stop greeting individually. Nil means always greet individually.")  ;; (1)
+    (defvar wicked/bbdb-hello-string "Hello, %s!" "Format string for hello. Example: \"Hello, %s!\"")
+    (defvar wicked/bbdb-hello-all-string "Hello, all!" "String for hello when there are many people. Example: \"Hello, all!\"")
+    (defvar wicked/bbdb-nick-field 'nick "Symbol name for nickname field in BBDB.")
+    (defvar wicked/bbdb-salutation-field 'hello "Symbol name for salutation field in BBDB.")
+
+    (defun wicked/gnus-add-nick-to-message ()
+      "Inserts \"Hello, NICK!\" in messages based on the recipient's nick field."
+      (interactive)
+      (save-excursion
+        (let* ((bbdb-get-addresses-headers ;; (2)
+                (list (assoc 'recipients bbdb-get-addresses-headers)))
+               (recipients (bbdb-get-addresses
+                            nil
+                            gnus-ignored-from-addresses
+                            'gnus-fetch-field))
+               recipient nicks rec net salutations)
+          (goto-char (point-min))
+          (when (re-search-forward "--text follows this line--" nil t)
+            (forward-line 1)
+            (if (and wicked/gnus-nick-threshold 
+                     (>= (length recipients) wicked/gnus-nick-threshold))
+                (insert wicked/bbdb-hello-all-string "\n\n") ;; (3)
+              (while recipients
+                (setq recipient (car (cddr (car recipients))))
+                (setq net (nth 1 recipient))
+                (setq rec (car (bbdb-search (bbdb-records) nil nil net)))
+                (cond
+                 ((null rec) ;; (4)
+                  (add-to-list 'nicks (car recipient))) 
+                 ((bbdb-record-getprop rec wicked/bbdb-salutation-field) ;; (5)
+                  (add-to-list 'salutations 
+                               (bbdb-record-getprop rec wicked/bbdb-salutation-field))) 
+                 ((bbdb-record-getprop rec wicked/bbdb-nick-field) ;; (6)
+                  (add-to-list 'nicks 
+                               (bbdb-record-getprop rec wicked/bbdb-nick-field)))
+                 (t (bbdb-record-name rec))) ;; (7) 
+                (setq recipients (cdr recipients))))
+            (when nicks ;; (8)
+              (insert (format wicked/bbdb-hello-string 
+                              (mapconcat 'identity (nreverse nicks) ", "))
+                      " "))
+            (when salutations ;; (9)
+              (insert (mapconcat 'identity salutations " ")))
+            (when (or nicks salutations)
+              (insert "\n\n")))))
+      (goto-char (point-min)))
+
+    (defadvice gnus-post-news (after wicked/bbdb activate)
+      "Insert nicknames or custom salutations."
+      (wicked/gnus-add-nick-to-message))
+
+    (defadvice gnus-msg-mail (after wicked/bbdb activate)
+      "Insert nicknames or custom salutations."
+      (wicked/gnus-add-nick-to-message))
+
+    (defadvice gnus-summary-reply (after wicked/bbdb activate)
+      "Insert nicknames or custom salutations."
+      (wicked/gnus-add-nick-to-message))
+#+END_EXAMPLE
+
+After you add this code, you can store personalized nicknames and
+salutations in your BBDB. Nicknames and salutations will be looked up
+using people's e-mail addresses. While in the *BBDB* buffer, you can
+type C-o (bbdb-insert-new-field) to add a field to the current record.
+Add a “nick” field with the person's nickname, or a “hello” field with a
+custom salutation. When you compose a message to or reply to a message
+from that person, the salutation or nickname will be included. If no
+nickname can be found, the recipient's name will be used instead.
+
+A number of variables can be used to modify the behavior of this
+code(1). For example, you may or may not want to greet 20 people
+individually. The default value of wicked/gnus-nick-threshold is to
+greet up to four people individually, and greet more people
+collectively. If you always want to greet people individually, add (setq
+wicked/gnus-nick-threshold nil) to your ~/.emacs. If you want to change
+the strings used to greet people individually or collectively, change
+wicked/bbdb-hello-string and wicked/bbdb-hello-all-string. If you want
+to store the data into different fields, change wicked/bbdb-nick-field
+and wicked/bbdb-salutation-field, but note that old data will not be
+automatically copied to the new fields.
+
+Here's how the code works. First, it retrieves the list of addresses
+from the header(2). If there are more addresses than
+wicked/gnus-nick-threshold, then wicked/bbdb-hello-all-string is used to
+greet everyone. If not, each recipient address is looked up. If the
+recipient cannot be found in your BBDB, then the recipient's name or
+e-mail address is used(4). If there is a personalized salutation, it is
+used(5). If there is a nickname, it is used(6). If the person has a
+record but neither salutation or nickname, then the name of the record
+is used(7). After all recipients have been processed, the names are
+added to the message(8), followed by the salutations(9). This function
+is added to the different Gnus message-posting functions, so it should
+be called whenever you compose or reply to messages.
+
+You can use BBDB to personalize even more. Check out “Project XXX:
+Personalize signatures” for more ideas.

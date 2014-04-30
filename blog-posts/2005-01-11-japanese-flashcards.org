@@ -1,0 +1,67 @@
+#+TITLE: Japanese flashcards
+
+January 11th, 2005 -
+[[http://sachachua.com/blog/p/2555][http://sachachua.com/blog/p/2555]]
+
+This extracts all kanji in the buffer and converts them to the format
+ expected by
+[[http://sachachua.com/notebook/emacs/flashcard.el][flashcard.el]].
+
+#+BEGIN_EXAMPLE
+    (defun sacha/kanji/get-ordered-kanji-list ()
+      "Return a list of characters in the buffer."
+      (goto-char (point-min))
+      (let (kanji-list)
+        (while (not (eobp))
+          (let ((c (char-after (point))))
+            (when (>= c ?Ã¤ÂºÂœ) (add-to-list 'kanji-list c)))
+          (forward-char 1))
+        kanji-list))
+
+    (defun sacha/kanji/to-flashcard-j2e (&optional list)
+      "Return a Japanese-English flashcard set.
+    If LIST is non-nil, use that instead of the current buffer."
+      (interactive (list (sacha/kanji/get-ordered-kanji-list)))
+      (unless list (setq list (sacha/kanji/get-ordered-kanji-list)))
+      (let ((result
+             (with-current-buffer (find-file-noselect "/usr/share/edict/kanjidic")
+               (mapconcat
+                (lambda (kanji)
+                  (goto-char (point-min))
+                  (when (re-search-forward (format "^%c.*?{\\(.*\\)}" kanji) nil t)
+                    (format "%c : %s\n"
+                            kanji
+                            (replace-regexp-in-string "}\\s-+{" "," (match-string 1)))))
+                list
+                ""))))
+        (if (interactive-p) (kill-new result) result)))
+
+    (defun sacha/flashcard-method-leitner-check-answer (card answer)
+      "Check answer for correctness. Allow multiple correct answers and provide feedback."
+      (if (member answer (split-string (flashcard-card-answer card) ","))
+          (progn
+            (flashcard-insert "Correct! Answer is:\n"
+                              (propertize (flashcard-card-answer card)
+                                          'face 'flashcard-answer-face
+                                          'rear-nonsticky t)
+                              "\n"
+                              "\n")
+            t)
+        (flashcard-insert "The correct answer is:\n"
+                          (propertize (flashcard-card-answer card)
+                                      'face 'flashcard-answer-face
+                                      'rear-nonsticky t)
+                          "\n"
+                          "\n")
+        (y-or-n-p "Was your answer correct? ")))
+
+    (setq flashcard-method-check-answer-function 'sacha/flashcard-method-leitner-check-answer)
+    (add-to-list 'auto-mode-alist '("\\.deck\\'" . flashcard-mode))
+    (add-hook 'flashcard-mode-hook 'flashcard-add-scroll-to-bottom)
+    (add-hook 'flashcard-positive-feedback-functions 'flashcard-feedback-highlight-answer)
+    (add-hook 'flashcard-positive-feedback-functions 'flashcard-feedback-congratulate)
+    (add-hook 'flashcard-positive-feedback-functions 'flashcard-method-leitner-positive-feedback)
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/japanese][japanese]]

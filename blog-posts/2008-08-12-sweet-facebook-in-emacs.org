@@ -1,0 +1,19 @@
+#+TITLE: Sweet! Facebook in Emacs!
+
+August 12th, 2008 -
+[[http://sachachua.com/blog/p/5066][http://sachachua.com/blog/p/5066]]
+
+So here's how to access Facebook from w3m, one of the web browsers in
+ Emacs:
+
+1. Enable cookies by setting w3m-use-cookies to t.
+ 2. Go to http://m.facebook.com .
+ 3. Choose the HTTP login.
+ 4. Log in with your username and password.
+
+Hooray for mobile interfaces that don't require Javascript! =D
+
+So far, it seems to work. I can update my status! Sweet!
+
+Next step: Figure out how to set up shimbun for Facebook mail so that I
+can read my Facebook mail like a newsgroup...

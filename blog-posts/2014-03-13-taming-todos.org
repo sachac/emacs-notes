@@ -1,0 +1,33 @@
+#+TITLE: Drafting a baby-steps guide to managing your tasks with Org Mode for
+Emacs
+
+March 13th, 2014 -
+[[http://sachachua.com/blog/p/26797][http://sachachua.com/blog/p/26797]]
+
+[[http://orgmode.org][Org mode for Emacs]] is powerful and flexible,
+which can make it intimidating for newcomers. After helping several
+people with essentially the same problem--an unmanageably large heap of
+tasks--I thought about what might help people get the hang of the key
+features of Org Mode slowly.
+
+Here are some general ideas. Start by writing your tasks down. Group
+them into projects. Once you get the hang of that, schedule your tasks.
+You might find yourself overestimating what you can do in a day, so
+reschedule or get rid of tasks as needed.
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-08-A-path-toward-taming-your-TODO-list.png][[[http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-08-A-path-toward-taming-your-TODO-list-640x486.png]]]]
+
+2014-02-08 A path toward taming your TODO list
+
+Here's a visual overview of how you can apply that to Org, starting with
+simple outlines and moving on to scheduling.
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-16-Org-TODO-basics.png][[[http://sachachua.com/blog/wp-content/uploads/2014/02/2014-02-16-Org-TODO-basics-640x482.png]]]]
+
+2014-02-16 Org TODO basics
+
+I've started to put together an outline/draft for
+[[http://sach.ac/baby-steps-org-todo][A Baby Steps Guide to Managing
+Your Tasks with Org Mode]], which you can find at
+[[http://sach.ac/baby-steps-org-todo][sach.ac/baby-steps-org-todo]].
+Comments and questions welcome!

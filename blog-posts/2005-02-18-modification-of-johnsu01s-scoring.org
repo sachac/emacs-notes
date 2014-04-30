@@ -1,0 +1,32 @@
+#+TITLE: Modification of johnsu01′s scoring
+
+February 18th, 2005 -
+[[http://sachachua.com/blog/p/2630][http://sachachua.com/blog/p/2630]]
+
+The following code allows you to sort tasks based on regexp matches
+ against the line. It's fairly simple, but may give people ideas about
+ fancier task sorting.
+
+#+BEGIN_EXAMPLE
+    (setq planner-sort-tasks-key-function 'planner-sort-tasks-by-score)
+
+    (defvar planner-score-rules '(("read" . 50))
+      "Alist of planner scoring rules of the form (regexp . score-value).
+    Tasks with higher scores are listed first.")
+
+    (defun planner-sort-tasks-by-score ()
+      "Sort tasks by the rule in the table."
+      (let ((score 0)
+            (case-fold-search t)
+            (line (buffer-substring-no-properties (line-beginning-position)
+                                                  (line-end-position))))
+        (mapc
+         (lambda (item)
+           (when (string-match (car item) line)
+             (setq score (- score (cdr item)))))
+         planner-score-rules)
+        score))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/planner][planner]]

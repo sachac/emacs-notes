@@ -1,0 +1,154 @@
+#+TITLE: More thoughts about Google
+
+October 8th, 2005 -
+[[http://sachachua.com/blog/p/3052][http://sachachua.com/blog/p/3052]]
+
+My computing dream: universal bookmarking
+
+My dream for computing is universal bookmarking. I want to be able to
+ bookmark and link to anything on my system. I know it's a radically
+ fun concept because it's what we're playing with in Emacs, and I can't
+ wait to see what'll happen when bookmarking Just Works across
+ applications. =)
+
+Google Desktop is in a good position to take advantage of this, if
+ they do get into it. It would be ubercool to not only be able to
+ search through various data items, but also to annotate them for easy
+ retrieval later on. IBM's also working on interesting personal
+ chronicling tools at their T.J. Watson lab. Exciting times.
+
+Universal bookmarking is important. Once you've got that working, then
+ universal blogging's easy to add. \_That\_ would be ultracool for
+ personal and enterprise knowledge management.
+
+I have a few months that I can use to plunge into a technology and
+ beef up my application if I decide to apply for Google. One of the
+ best ways to convince them I've got smarts is to go ahead and do
+ something cool, like this universal bookmarking thing I keep dreaming
+ about.
+
+Google Desktop = ack, Windows programming
+
+Unfortunately, working with Google Desktop would mean immersing myself
+ in Microsoft Windows stuff. I can probably ask the department to find
+ me a PC, and I'll squeeze it into my cubicle somehow.
+
+I've done Microsoft programming before. I was part of a team that
+ developed a distributed computing platform in college, winning
+ Microsoft Worldwide .NET Best Academic Solution and USD 100k of MS
+ hardware and software for the school. Microsoft can sure pick good
+ hardware. We had boxes and boxes of wireless routers, thanks to that
+ contest.
+
+That was actually kinda fun, particularly the postback stuff that was
+ Really New back then. It was also fun having to figure out stuff
+ ourselves whenever we encountered placeholder documentation! (Ah, the
+ perils of not-quite-polished software...)
+
+So yeah, Microsoft programming isn't too bad. If my impressions are
+ right, Google's done most of the heavy lifting of trying to figure out
+ how to talk to the applications, anyway. Still, it's C or C++ and
+ Microsoft Windows, and I've gotten spoiled by Emacs Lisp...
+
+Limited brainspace
+
+Would doing something like that fit into my plans? Should I spend the
+ next few months getting really deep into Google Desktop hacking, get
+ known in the community, and then apply for a summer internship? I
+ don't have infinite brainspace; is it worth the cost of not being able
+ to get as deeply into other things?
+
+What are my other options? I can use the brainspace to get into
+ Eclipse development in preparation for a possible snippets project
+ that could get me funding for my master's. IBM has a lab near here and
+ the people are quite nice. My research supervisor and a few other
+ people from IBM have been helping me figure out how my research
+ interests align with their research and business interests. Working on
+ Eclipse will get me into another fun, large open source community.
+
+I also use brainspace for writing and Toastmasters. After getting so
+ much nice feedback from the first article, I want to write another
+ article for the Linux Journal! And then there's the speech contest I'm
+ joining next week...
+
+If I build up my skills so that I can hit the ground running, I'll
+ have a stronger case for Google and my small contribution might
+ reach more users.
+
+If I focus on other stuff, I don't get the fun in-person
+ intellectual stimulation of working at Google, but I do get much
+ better return-on-investment. For example, if I use the time to work
+ on [[http://www.plannerlove.com][Planner]] instead, then I make
+ maybe 200 people absurdly happy. If I get into Eclipse development,
+ then I'll know another open source platform for hacking.
+
+Not being of unlimited brainspace, I have to choose what to learn. I
+ have to focus. That's always been my problem: there's so much I can do
+ if I put my mind to it, so I need to figure out what fits me best and
+ what I fit best.
+
+Do they need me?
+
+Google's got a lot of interest going for it, if the room full of
+ excited computer scientists and engineers at the recruitment talk was
+ any indication. It'll have no problems finding great talent.
+
+Open source? There are no slick recruitment brochures or free
+ T-shirts. Open source isn't going to get me “ooohs” and “aaaahs” from
+ the general public, but it'll throw me into the thick of things. I'm
+ no open source bigwig, but I have my place within the open source
+ world, and it's going to miss me if I throw myself into closed
+ development. I want to be even more involved with open source in the
+ future.
+
+I used to dream about working for Google. (Hey, I also used to dream
+ about working at Microsoft.) Now, I'm not so sure. Now, the call of
+ open source is too strong. Now, I'd rather eke out a living as a
+ teacher (or personal coach, or public speaker, or writer, or whatever)
+ while I hack on open source. I want to give without having to worry
+ about competitive advantage or NDAs. I want to make a difference in
+ people's lives even if I never get paid for it.
+
+Google and open source
+
+Google occasionally helps out open source projects like Mozilla
+ Firefox. There was that totally cool Google Summer of Code, too. I
+ need more than 20% time, though. And yeah, well, with Google's
+ understandable focus on going after the majority, we non-Windows users
+ kinda feel like second-class citizens. I thought they'd be more
+ geek-friendly considering their server work, but the recruitment talk
+ made me realize that they're a company like most other companies. I
+ really wish I could enjoy all that in-person geeking out---I'd learn
+ \_tons\_---but I don't really see how open source fits into what they
+ \_do\_, so I don't know if I'd fit in.
+
+Tim James, Joel Zacaharias: thanks for dropping by my blog and
+ reassuring readers that yes, international interns are welcome. I'll
+ probably apply for an internship next year, just in case the job
+ interviews convince me that open source really does make sense at
+ Google. I won't drop my open source stuff and focus on Windows
+ development, though. Instead, I'll get even deeper into open source
+ development and documentation. If my skills and interests aren't a
+ good match for Google when I do apply (Emacs Lisp? Who uses Lisp?! ;)
+ ), then Google can reject me with no hard feelings. =) If Google's
+ interests aren't a good match for me, then I'll continue playing
+ around with open source.
+
+Best case? Someone in Google likes the idea of universal bookmarking
+ and makes it happen. As long as the idea doesn't get patented and
+ locked away, I'd be completely thrilled if someone else went and did
+ it. I make some kind of a living doing either non-computer stuff so
+ they're not concerned about open source intellectual property, or I
+ get paid for working on open source. My dad always told me: “Do what
+ you love and the money will follow.”
+
+Don Marti was right when he encouraged me to focus on open source
+ instead of fun but closed stuff (the thing in question was Mac OS X).
+ I have the power and responsibility to help and influence many users.
+ I'm here to help people be first-class citizens instead of subjects.
+ Open source needs me. I need open source.
+
+(To readers who've had to put up with \_really\_ long Google-related
+ posts these past few days: Sorry about flooding your blog readers. =)
+ I've learned a lot reflecting on this, though, and as always I'd love
+ to hear your insights.)

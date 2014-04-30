@@ -1,0 +1,81 @@
+#+TITLE: Fancy striped tables
+
+April 15th, 2004 -
+[[http://sachachua.com/blog/p/1970][http://sachachua.com/blog/p/1970]]
+
+Ephrem wrote:
+
+#+BEGIN_QUOTE
+  Here's a bit of magic to make fancy striped tables. The javascript is
+  from
+
+  [[http://alistapart.com/articles/zebratables/][http://alistapart.com/articles/zebratables/]].
+  4 steps. One caveat, if you have
+   multiple tables on a page (not including headers and footers) this
+   could result in multiple instances of id=”tabular”. If anyone knows
+  how to adapt the
+   javascript to identify class instead of id, that would be an
+  improvement.
+
+  1. Edit emacs-wiki-publishing-header and add this javascript somewhere
+     within
+      the head tag:
+
+     #+BEGIN_EXAMPLE
+
+             
+             
+     #+END_EXAMPLE
+
+  2. Edit emacs-wiki-publishing-header so that the body tag has an
+     onload attribute as follows:
+
+     #+BEGIN_EXAMPLE
+             
+     #+END_EXAMPLE
+
+  3. Edit emacs-wiki-table-attributes so that it includes id=”tabular”:
+
+     #+BEGIN_EXAMPLE
+             (setq emacs-wiki-table-attributes "id=\"tabular\" border=\"0\"
+         cellpadding=\"2\" cellspacing=0")
+     #+END_EXAMPLE
+
+  4. Add something like the following to your stylesheet:
+
+     #+BEGIN_EXAMPLE
+             /*
+             // Only tables with the "tabular" id, thereby avoiding header
+             // and footer tables.
+            */
+
+             table#tabular {
+                 border: 3px solid #555;
+             }
+
+
+             /*
+             // Apply border to all td elements which are not in the first row.
+             */
+
+             table#tabular tr + tr>td {
+                 border-top: 1px solid #aaa;
+             }
+
+             table#tabular td {
+                 padding: .5ex .5em;
+             }
+
+
+             /*
+             // Apply left border to all columns except the first.
+             */
+
+             table#tabular td + td {
+                 border-left: 1px dotted #aaa;
+             }
+     #+END_EXAMPLE
+
+  E-Mail from ephrem@tuirgin.com
+#+END_QUOTE
+

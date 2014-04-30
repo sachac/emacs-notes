@@ -1,0 +1,8 @@
+#+TITLE: equals in URLs and emacs-wiki.el
+
+March 25th, 2003 -
+[[http://sachachua.com/blog/p/596][http://sachachua.com/blog/p/596]]
+
+I suspect that URLs need to be verbatim; stray equal signs and
+ underscores can be their undoing! Maybe I should just blank out the
+ markup-word thing...

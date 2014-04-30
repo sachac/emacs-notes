@@ -1,0 +1,7 @@
+#+TITLE: (Thu Sep 12:07 2002,2002.09.12)
+
+September 12th, 2002 -
+[[http://sachachua.com/blog/p/384][http://sachachua.com/blog/p/384]]
+
+(global-set-key (kbd “<f9> R SPC”) ‘planner-remember-region)
+ w00t. It just works.

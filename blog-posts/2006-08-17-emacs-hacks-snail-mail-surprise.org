@@ -1,0 +1,28 @@
+#+TITLE: Emacs hacks: Snail mail surprise
+
+August 17th, 2006 -
+[[http://sachachua.com/blog/p/3763][http://sachachua.com/blog/p/3763]]
+
+I like sending snail mail. This Emacs Lisp snippet displays all the
+ contacts for whom I have addresses, sorted according to country. This
+ makes it easy for me to, say, jump to all the USA contacts whom I
+ should mail before heading back over the border.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-filter-records-for-address (records)
+      "Filter records for addresses."
+      (sort
+       (delq nil
+             (mapcar
+              (lambda (rec) (and (bbdb-record-addresses rec) rec))
+              records))
+       (lambda (a b)
+         (string< (bbdb-address-country (car (bbdb-record-addresses a)))
+                  (bbdb-address-country (car (bbdb-record-addresses b)))))))
+
+    ;; Do the actual work here
+    (bbdb-display-records (sacha/bbdb-filter-records-for-address (bbdb-records)))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

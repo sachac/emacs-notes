@@ -1,0 +1,11 @@
+#+TITLE: Testing... testing... is the mic on?
+
+October 28th, 2005 -
+[[http://sachachua.com/blog/p/3110][http://sachachua.com/blog/p/3110]]
+
+If this works, then I've successfully gotten planner-rss to work. Like
+ before it is an idiosyncratic mess of duct tape and string, but people
+ who want to steal my config can go ahead and make it better.
+
+Today was an intensive writing day. Four hours on my lab report, one
+ hour of PHP, and two hours of Emacs Lisp. Yum!

@@ -1,0 +1,14 @@
+#+TITLE: planner.el goodness
+
+April 21st, 2005 -
+[[http://sachachua.com/blog/p/2733][http://sachachua.com/blog/p/2733]]
+
+#+BEGIN_QUOTE
+  <comfrey\_> i spent most of this past weekend reading the elisp manual
+  because planner.el is sucking me in
+#+END_QUOTE
+
+Awwwwwwwwwwwwwwwwwwwwwwwwwwww... =)
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/goodkarma][goodkarma]]

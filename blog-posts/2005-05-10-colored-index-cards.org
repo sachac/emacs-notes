@@ -1,0 +1,95 @@
+#+TITLE: Colored index cards
+
+May 10th, 2005 -
+[[http://sachachua.com/blog/p/2757][http://sachachua.com/blog/p/2757]]
+
+I love posting my productivity ideas because every time I do so, I get
+ comments suggesting even better ways to do things. Today's tip comes
+ from [[http://dustycloud.org/][Christopher Allan Webber]], whose
+ colored index cards are leaps and bounds ahead of my deck of
+ plain white index cards. He has some cool ideas here!
+
+He uses colored notecards to separate his notes into categories.
+
+#+BEGIN_QUOTE
+  | Yellow   | schedule & project cards                                        |
+  | Red      | todo cards (or just stuff I should copy to planner-mode)        |
+  | Blue     | idea cards                                                      |
+  | Green    | expenses (writing down stuff to copy to my ledger file later)   |
+#+END_QUOTE
+
+He also uses cards that are lined on just one side. On the lined side of
+schedule & project cards, he
+ writes down:
+
+#+BEGIN_QUOTE
+  Photography
+
+  | Mon   | 5/9    | Lab                                                                              |
+  | Wed   | 5/11   | Critique of Assignment II & I (pics don't have to be dry -- must by Wednesday)   |
+  | Mon   | 5/16   | Field trip                                                                       |
+  | .     | .      | Assignment #2 dry-mounted                                                        |
+#+END_QUOTE
+
+On the back, he keeps a TODO list. When a task needs to be done
+ multiple times---for example, preparing a print of a picture---he adds
+ extra checkboxes before the task.
+
+I think he writes down non-project-related TODOs and random notes on
+ red cards, which are easy to pick out in the pack. Right now, I jumble
+ them all together on white index cards. I'll try keeping the front
+ half of the deck for tasks and the back half for notes.
+
+Green cards help him keep track of his expenses. I keep receipts in
+ front of my index cards using the handy fold-back clip, although an
+ organized table view would be pretty cool.
+
+I don't know where he managed to find lined-on-one-side 3×5 colored
+ index cards. I guess bookstores in other countries are better stocked.
+ On the other hand, I found 3×5 organizer refills, so I'm not
+ absolutely deprived.
+
+He was bemused by my mention of “two pages of month templates from a
+ 3×5 day planner”. If you crack open a pack of 3×5 organizer refills,
+ you'll get year, month, and day views. Normally a single month would
+ span two pages, but if you're using a planner where month views
+ haven't been labeled “January”, “February”---in short, blank
+ones---then
+ you can use one page to represent one month. If you don't have
+ organizer refills handy, simply print the numbers 1 to 15 down one
+ side of an index card and 16 to 31 on the other. Leave space at the
+ top for the month name, and space beside the numbers for appointments.
+
+He also had this interesting anecdote to relate about a friend's way
+ of planning.
+
+#+BEGIN_QUOTE
+  “Oh, I gave up keeping track of to do lists,” she sighed. “These days
+   I just write everything on my mirror with a dry-erase marker, so when
+   I groggily stumble into my bathroom in the morning I go, ‘OH SHIT! I
+   HAVE *THAT* TO DO TODAY!'”
+#+END_QUOTE
+
+I should do that with a random Japanese quote of the day. I'll write
+ it down the day before, then groggily try to read it in the morning.
+ Or I can scribble my Big, Hairy, Audacious Goals (superb teaching and
+ quality assurance for computer science education, and strategy
+ coaching for life planning (must find better way to summarize these
+ things!)) on my ceiling at home. Ooooh. My ceiling is low enough for
+ me to do that...
+
+Check out Christopher Allan Webber's website at
+[[http://dustycloud.org/][http://dustycloud.org/]] . =)
+
+I love swapping ideas with people, so feel free to send in more
+suggestions!
+
+ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ¥Ã‚Â?Ã‚Â˜ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ¨Ã‚Â¨Ã‚ÂˆÃƒÂ§Ã‚Â®Ã‚Â---ÃƒÂ¦Ã‚Â©Ã‚ÂŸÃƒÂ£Ã‚Â?Ã‚Â
+ÃƒÂ£Ã‚Â?Ã‚Â¨ÃƒÂ¨Ã‚Â€Ã‚ÂƒÃƒÂ£Ã‚Â?Ã‚ÂˆÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â‚Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+Computers are thought of as mere calculating machines.
+
+On Technorati: [[http://www.technorati.com/tag/planning][planning]],
+[[http://www.technorati.com/tag/productivity][productivity]],
+[[http://www.technorati.com/tag/hipster][hipster]],
+[[http://www.technorati.com/tag/hipsterpda][hipsterpda]],
+[[http://www.technorati.com/tag/organizer][organizer]]

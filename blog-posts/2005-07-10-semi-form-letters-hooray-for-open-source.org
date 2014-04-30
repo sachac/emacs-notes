@@ -1,0 +1,92 @@
+#+TITLE: semi-form letters: hooray for open source!
+
+July 10th, 2005 -
+[[http://sachachua.com/blog/p/2820][http://sachachua.com/blog/p/2820]]
+
+I needed to write 31 thank-you-for-attending-my-send-off-party e-mail
+ messages. Instead of having a generic letter that I'd send to lots of
+ people all listed in To: or Bcc:, I decided to personalize it a bit by
+ including their nicknames, two-year goals, and a personal message I'd
+ add to each letter in different places.
+
+Fortunately, my mail client was up to the task. One of the benefits of
+ having both your contact information and your mail client in an
+ easily-programmable environment is that you can hack together a quick
+ program to do exactly what you want.
+
+I had typed everyone's two-year-plans into my contact information
+ manager's Notes field following a special format. It was the work of a
+ few minutes to record and run a macro that extracted the data and
+ created a signature for each person who attended my send-off party.
+
+I then wrote a couple of short functions that looped over the
+ currently displayed contact records and drafted messages for each of
+ them following a template.
+
+This resulted in 31 drafts I could edit and send without hassles. Much
+ fun!
+
+For future reference (and for the handful of Emacs geeks or learners
+ in the audience), here's the code I used to make it all happen:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-send-form-mail (bbdb-record &optional subject template)
+      "Compose a form message to the people indicated by the current BBDB record(s)."
+      (interactive (list (if (bbdb-do-all-records-p)
+                             (mapcar 'car bbdb-records)
+                           (bbdb-current-record))
+                         (read-string "Subject: ")
+                         (read-string "Template (): ")))
+      (if (consp bbdb-record)
+          (let ((records bbdb-record))
+            (while records
+              (sacha/bbdb-send-form-mail-1 (car records) subject template)
+              (setq records (cdr records))))
+        (sacha/bbdb-send-form-mail-1 bbdb-record subject template)))
+
+    (defun sacha/bbdb-send-form-mail-1  (bbdb-record &optional subject template)
+      "Compose a form message for one person."
+        (if bbdb-inside-electric-display
+          (bbdb-electric-throw-to-execute
+           (list 'sacha/bbdb-send-form-mail bbdb-record subject)))
+      ;; else...
+      (cond ((null bbdb-record) (error "record unexists"))
+            ((null (bbdb-record-net bbdb-record))
+             (message "%s record unhas a network addresses." (or (bbdb-record-name bbdb-record) "Unknown")))
+            (t (bbdb-send-mail-internal (bbdb-dwim-net-address bbdb-record)
+                                        subject (list bbdb-record))
+               (goto-char (point-min))
+               (when (re-search-forward "--text follows this line--" nil t)
+                 (forward-line 1)
+                 (insert template)
+                 (goto-char (point-min))
+                 (while (search-forward "" nil t)
+                   (replace-match (or (bbdb-record-getprop bbdb-record 'nick)
+                                      (bbdb-record-name bbdb-record))
+                                  t t))
+                 (when (bbdb-record-getprop bbdb-record 'signature)
+                   (goto-char (point-max))
+                   (insert "\n")
+                   (let ((p (point)))
+                     (insert (bbdb-record-getprop bbdb-record 'signature))
+                     (fill-region-as-paragraph p (point))))
+                 (goto-char (point-min))
+                 (if (re-search-forward "^Subject: $" nil t) (end-of-line))))))
+#+END_EXAMPLE
+
+I used M-x local-set-key to bind sacha/bbdb-send-form-mail to M. * M
+ then applies the function to all displayed records.
+
+[[http://sachachua.com/notebook/emacs/miniedit.el][../emacs/miniedit.el]]
+makes it easy to edit long strings in the
+ minibuffer, and that made the template much easier to write.
+
+Emacs totally rocks. Nothing else has ever given me this much power.
+
+ÃƒÂ¨Ã‚Â‡Ã‚ÂªÃƒÂ¥Ã‚Â‹Ã‚Â•ÃƒÂ¨Ã‚Â»Ã‚ÂŠÃƒÂ¨Ã‚Â£Ã‚Â½ÃƒÂ©Ã‚Â€Ã‚Â
+ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ¤Ã‚ÂºÃ‚ÂºÃƒÂ©Ã‚Â--Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¥Ã‚ÂŠÃ‚Â´ÃƒÂ¥Ã‚ÂƒÃ‚Â?ÃƒÂ¨Ã‚Â€Ã‚Â...ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ¤Ã‚Â»Ã‚Â£ÃƒÂ£Ã‚Â‚Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ§Ã‚ÂµÃ‚Â„ÃƒÂ£Ã‚Â?Ã‚Â¿ÃƒÂ¨Ã‚Â¾Ã‚Â¼ÃƒÂ£Ã‚Â?Ã‚Â¾ÃƒÂ£Ã‚Â‚Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚ÂƒÃ‚Â­ÃƒÂ£Ã‚ÂƒÃ‚ÂœÃƒÂ£Ã‚ÂƒÃ‚ÂƒÃƒÂ£Ã‚ÂƒÃ‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ¨Ã‚Â¡Ã‚ÂŒÃƒÂ£Ã‚Â‚Ã‚Â?ÃƒÂ£Ã‚Â‚Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+Car manufacturing is carried out by computer-programmed robots in place
+of human workers.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/code][code]]

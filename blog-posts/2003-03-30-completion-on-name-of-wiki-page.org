@@ -1,0 +1,7 @@
+#+TITLE: completion on name of wiki page
+
+March 30th, 2003 -
+[[http://sachachua.com/blog/p/634][http://sachachua.com/blog/p/634]]
+
+Cross-reference:
+[[http://sachachua.com/notebook/wiki/PlannerMode#9][PlannerMode#9]]

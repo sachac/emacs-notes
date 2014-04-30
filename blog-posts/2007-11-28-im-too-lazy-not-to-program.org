@@ -1,0 +1,131 @@
+#+TITLE: I'm too lazy not to program
+
+November 28th, 2007 -
+[[http://sachachua.com/blog/p/4465][http://sachachua.com/blog/p/4465]]
+
+Yesterday, I imported five years of blog posts into WordPress through
+ RSS. This would have been \_painful\_ if I wasn't comfortable with
+ programming. With 4587 posts in 2596 files, I wouldn't have even
+ thought about copying them over manually. Instead, I would have just
+ started with a clean slate. I didn't think anyone's really going to
+ want to go back and see everything I've written on my blog. ;) Who was
+ going to notice?
+
+But five years of blog posts---reflections, ideas, notes, interesting
+ links---might still be worth something, so I decided to give it a shot.
+ Initially, I wrote a function which visited files, searched for notes,
+ and added the note to one big RSS feed. However, this slowed down too
+ much when I hit megabytes, so I changed it to dump each note to a
+ file in a directory.
+
+#+BEGIN_EXAMPLE
+    ;(sacha/planner-dump-rss "~/public_html/blog-dump/" nil nil)
+    (defun sacha/planner-dump-rss (directory from to)
+      (let ((pages (planner-get-day-pages from to))
+            (planner-rss-feed-limits nil)
+            (planner-rss-initial-contents "")
+            buffer)
+        (while pages
+          (condition-case err2
+              (progn
+                (planner-find-file (caar pages))
+                (setq buffer (current-buffer))
+                (unwind-protect
+                    (progn
+                      (goto-char (point-min))
+                      (while (re-search-forward "^\\.#\\([0-9]+\\)" nil t)
+                        (save-excursion
+                          (condition-case err
+                              (progn
+                                (let ((inhibit-read-only t)
+                                      (file (concat directory
+                                                    (caar pages) "-"
+                                                    (match-string 1))))
+                                  (planner-rss-add-note file)
+                                  (find-file file)
+                                  (save-buffer 0)
+                                  (kill-buffer (current-buffer))))
+                            (error
+                             (message "Problems processing note on %s: %s"
+                                      (caar pages)
+                                      (error-message-string err)))))))
+                  (kill-buffer buffer)))
+            (error (message "Problems processing %s: %s"
+                            (caar pages)
+                            (error-message-string err2))))
+          (setq pages (cdr pages)))))
+#+END_EXAMPLE
+
+I then concatenated all of these files using
+
+#+BEGIN_EXAMPLE
+    cat header 200* footer > dump.rdf
+#+END_EXAMPLE
+
+This file was still much too big, so I manually split it by year,
+ copying and pasting text into different files. I used
+ [[http://www.feedvalidator.org][http://www.feedvalidator.org]] to check
+for errors. After Feedvalidator
+ verified that the files were all valid RSS, I tried to import them
+ into Feedwordpress. Nope, still too big. I needed to trim them to
+ around 400k, so I used the following code on the server:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/split-dump ()
+     (interactive)
+     (goto-char (min 400000 (point-max)))
+     (let ((counter 0)
+     (base-name (file-name-sans-extension buffer-file-name)))
+     (while (not (eobp))
+     (re-search-backward "<item>") 
+     (kill-region (match-beginning 0) (point-max))
+     (insert "</channel></rss>")
+     (save-buffer 0)
+     (find-file (format "%s%d.rdf" base-name counter))
+     (erase-buffer)
+     (goto-char (point-min))
+     (insert "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+    <rss version=\"2.0\">
+      <channel>
+        <title>M-x plan :: sachachua's blog</title>
+        <link>http://sachachua.com/notebook/wiki/today.php</link>
+        <description>Sacha Chua's blog about Emacs, personal information management, open source, and random stuff</description>")
+          (yank)
+          (setq counter (1+ counter))
+          (goto-char (min 400000 (point-max))))))
+#+END_EXAMPLE
+
+This program looks complicated, but it really isn't. In fact, I could
+ have probably done something just as powerful with keyboard macros,
+ not writing a single line of code. But the code was easy to write, and
+ I figured that I'd keep it around just in case I needed to do
+ something like this again.
+
+After a little bit of manual tweaking, I got all the entries into
+ [[http://sachachua.com/wp/][http://sachachua.com/wp/]] .
+
+The ability to write short programs quickly and interactively has not
+ only saved me so much time, but it's also made it possible for me to
+ even \_think\_ of doing some things. =) I could probably have written
+ the same snippets in Perl or Ruby, but being able to combine manual
+ editing and automated operations in the text editor made it just so
+ much faster. I really like being able to scan back and forth in
+ buffers easily in Emacs, instead of thinking in terms of
+ file streams as in other programming languages.
+
+If you work with lots of text, I definitely recommend learning Emacs
+ Lisp, or whatever language your editor can be programmed in. I started
+ by reading other people's source code and the Emacs Lisp Intro and
+ Emacs Lisp info files. I reread them countless times, picking up a
+ little more each time I went through. Now Emacs Lisp is one of the
+ first things I turn to whenever I want to save time doing something
+ complex and repetitive on the computer, such as adding everyone's
+ pictures to a wiki page. (That's a story for next time!)
+
+Emacs is awesome stuff. More than 20 years old, it's the most advanced
+ program I've ever used. What makes it special? It's \_definitely\_
+ optimized for the power user, and it provides so many reasons to
+ become one.
+
+Random Emacs symbol: gnus-summary-goto-last-article -- Command: Go to
+the previously read article.

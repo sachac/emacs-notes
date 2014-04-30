@@ -1,0 +1,31 @@
+#+TITLE: More Emacs fun: Composing mail to everyone with notes
+
+September 1st, 2006 -
+[[http://sachachua.com/blog/p/3817][http://sachachua.com/blog/p/3817]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/compose-mail-to-everyone (&optional subject)
+      (mapc (lambda (rec)
+              (setq rec (car rec))
+              (when (bbdb-record-net rec)
+                (bbdb-send-mail rec subject)
+                (save-excursion
+                  (message-goto-signature)
+                  (forward-line -2)
+                  (insert "\n---- NOTES ---\n" (bbdb-record-notes rec) "\n"))))
+            bbdb-records))
+
+    (defun sacha/gnus-delete-notes ()
+      (goto-char (point-min))
+      (when (re-search-forward "^--- NOTES ---" nil t)
+        (goto-char (match-beginning 0))
+        (message-kill-to-signature)))
+    (add-hook 'message-send-hook 'sacha/gnus-delete-notes)
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/lisp][lisp]],
+[[http://www.technorati.com/tag/hack][hack]],
+[[http://www.technorati.com/tag/gnus][gnus]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

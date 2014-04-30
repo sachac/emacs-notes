@@ -1,0 +1,29 @@
+#+TITLE: Mailing non-Emacs users your Org notes
+
+August 26th, 2011 -
+[[http://sachachua.com/blog/p/22421][http://sachachua.com/blog/p/22421]]
+
+Andras uses Emacs Org-mode to take notes during meetings, and wanted to
+know how to share those notes (including tables) with colleagues
+afterwards. Here are some tips for sharing Org notes with non-Org
+people.
+
+*You can copy the information as plain text.* If you don't have too much
+Org markup, you can copy and paste the text into your mail message. To
+get tables and other segments to line up nicely, make sure you format
+the text with a monospace font such as Courier New or Lucida Console.
+
+*You can export the information to HTML and then copy it into your
+message.* Export the entire file with =M-x org-export= or export a
+region with =M-x org-export-region-as-html=. Save it to a file, open
+that file in your browser, then copy and paste the information. If you
+find yourself working with the same files often, consider using Org's
+publishing support to simplify the creation of related HTML files.
+
+*You can also publish your notes on an internal or external blog.* I
+post many of my notes on my blog (including this one!) using
+[[https://github.com/punchagan/org2blog][org2blog.el]]. If you publish
+your posts on a blog, you can send people a link, update your post with
+new information, and share your post with others.
+
+Hope that helps!

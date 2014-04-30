@@ -1,0 +1,15 @@
+#+TITLE: C-u M-x planner-create-task-from-buffer
+
+March 8th, 2004 -
+[[http://sachachua.com/blog/p/1857][http://sachachua.com/blog/p/1857]]
+
+dto on #emacs suggested a way to create tasks associated with planner
+pages.
+ Arch repository and dev snapshot should have working version of this.
+
+Adding a prefix argument to M-x planner-create-task-from-buffer will
+ make it prompt for the plan page. If the plan page is different from
+ the current annotation, it will move the annotation into the
+ description of the task. Any other suggestions? =)
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/planner.el][../../notebook/emacs/emacs-wiki/planner.el]]

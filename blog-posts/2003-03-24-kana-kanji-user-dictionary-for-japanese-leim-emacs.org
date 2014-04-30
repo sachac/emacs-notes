@@ -1,0 +1,7 @@
+#+TITLE: kana-kanji user dictionary for Japanese LEIM --- emacs
+
+March 24th, 2003 -
+[[http://sachachua.com/blog/p/579][http://sachachua.com/blog/p/579]]
+
+Charles Muller figured out how to add to the kana-kanji conversion
+dictionary -- modify ja-dic.el and recompile.

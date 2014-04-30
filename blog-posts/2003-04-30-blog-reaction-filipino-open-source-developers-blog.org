@@ -1,0 +1,18 @@
+#+TITLE: Blog reaction: Filipino Open Source Developers --- blog
+
+April 30th, 2003 -
+[[http://sachachua.com/blog/p/733][http://sachachua.com/blog/p/733]]
+
+Reply to
+[[http://www.spaceants.org/cgi-bin/blosxom.cgi/computing/software/filoos-280403.writeback][http://www.spaceants.org/cgi-bin/blosxom.cgi/computing/software/filoos-280403.writeback]]
+:
+
+Glad to say that students get to seriously work with Linux in Ateneo -
+ you can thank Horatio Bogbindero and Dr. Manalastas for that! =)
+
+Never underestimate the importance of playing. I play with Emacs all the
+time,
+ and I learn something new every day.
+
+(Incidentally, I should also figure out this trackback thing... I wonder
+if emacs-wiki.el can handle that.)

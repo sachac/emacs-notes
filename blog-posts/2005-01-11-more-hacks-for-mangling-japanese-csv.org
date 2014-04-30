@@ -1,0 +1,38 @@
+#+TITLE: More hacks for mangling Japanese CSV
+
+January 11th, 2005 -
+[[http://sachachua.com/blog/p/2554][http://sachachua.com/blog/p/2554]]
+
+This is for use with kdrill.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/kanji/get-ordered-kanji-list ()
+      (let (kanji-list)
+        (while (not (eobp))
+          (let ((c (char-after (point))))
+            (cond
+             ((= c ?\"))
+             ((= c ?\n))
+             ((= c ?:) (forward-line 1) (forward-char -1))
+             (t (add-to-list 'kanji-list c))))
+          (forward-char 1))
+        kanji-list))
+
+    (defun sacha/kanji/ordered-usefile-to-kill ()
+      (interactive)
+      ;; Look up kanji in kanjidic
+      (let ((list (sacha/kanji/get-ordered-kanji-list)))
+        (kill-new
+         (with-current-buffer (find-file-noselect "/usr/share/edict/kanjidic")
+           (mapconcat
+            (lambda (kanji)
+              (goto-char (point-min))
+              (when (search-forward (char-to-string kanji) nil t)
+                (skip-syntax-forward " ")
+                (buffer-substring-no-properties (point) (and (skip-syntax-forward "^ ") (point)))))
+            list
+            "\n")))))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/japanese][japanese]]

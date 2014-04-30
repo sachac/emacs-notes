@@ -1,0 +1,60 @@
+#+TITLE: Living life online
+
+August 9th, 2006 -
+[[http://sachachua.com/blog/p/3741][http://sachachua.com/blog/p/3741]]
+
+People often find the public nature of my blog remarkable. They boggle
+ at the idea that I put my task list online and that I share my
+ reflections on my quarter-life crisis.
+
+I share a lot, but this blog doesn't have *everything.* There are a
+ lot of things I don't write about because I haven't figured them out
+ yet or because I don't feel like writing about them. I also have quite
+ a number of stories that I just haven't gotten around to writing!
+
+But yes, my life is mostly public. Why, when I know that Google and
+ Archive.org will mean that these things will be around for pretty much
+ forever? ;)
+
+In particular, people find my task list unusual.
+[[http://www.doubleblind.ca/2006/08/01/richard-gets-it/][Sacha Peter]]
+said:
+
+#+BEGIN_QUOTE
+  ... she has taken the step to pretty much put her task lists online
+  for the whole world to see.
+#+END_QUOTE
+
+He wonders whether it might be interesting to look back over several
+ years of data. Hmm... Come to think of it, I've been using Planner for
+ four and a half years now. Whoa.
+
+I use my task list as both a tool for proactive planning, reactive
+ management, and retrospective reflection. I mainly use it to plan
+ ahead, get stuff out of my head, and keep track of what I accomplished
+ for the day. I *could* use Planner to keep track of tasks that I
+ didn't finish or didn't get around to, and I might change to doing
+ that one of these days.
+
+I guess the strange thing is that I do this kind of planning out in
+ public. This has helped me countless times. A public task list lets
+ people figure out if I remembered that I have a meeting with them.
+ Sometimes people will remind me of things if they see me
+ procrastinate. And every so often, people offer tips and suggestions
+ that help me do my work more effectively.
+
+It's easy to have private tasks. Here's the basic Emacs Lisp code I'd
+ need for that:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-skip-private ()
+      "Remove all lines matching {{ private }} (no spaces)."
+      (goto-char (point-min))
+      (delete-matching-lines "{{private}\}")) ; escaped here just so that you can see it
+#+END_EXAMPLE
+
+I don't think I'll use it often, though. It's kinda nice keeping
+ people up to date on what I'm working on even if I don't have the time
+ to write long blog entries...
+
+On Technorati: [[http://www.technorati.com/tag/planning][planning]]

@@ -1,0 +1,57 @@
+#+TITLE: Creating Passionate Users: The importance of seduction and curiosity
+
+March 31st, 2005 -
+[[http://sachachua.com/blog/p/2689][http://sachachua.com/blog/p/2689]]
+
+[[http://headrush.typepad.com/creating_passionate_users/2005/03/the_importance_.html][“The
+importance of seduction and curiosity”]] is another great entry from one
+of my favorite blogs,
+[[http://headrush.typepad.com/creating_passionate_users/][Creating
+Passionate Users]]. Kathy Sierra writes:
+
+#+BEGIN_QUOTE
+  Part of creating passionate users starts with building curiosity.
+  Inspire them to want to learn, know, and do more.
+#+END_QUOTE
+
+I love making people curious about things, whether it's Emacs,
+ Planner, computer science, or even far-out stuff like street
+ performance.
+
+Kathy Sierra gives these tips:
+
+1. Be passionately curious yourself.
+2. Be seductive.
+3. Make them curious by doing something unusual, without an obvious
+   explanation.
+4. Offer a puzzle or interesting question... without giving them the
+   solution.
+
+*Be passionately curious yourself.* Heck yeah. I love learning
+ about things. When people give me feedback on my talk, the first thing
+ that usually comes to their mind is my enthusiasm for the topic. Even
+ when I can't go into a lot of detail about something like Squeak, they
+ pick up on the fact that I think it's really interesting and something
+ worth being curious about.
+
+*Be seductive.* I often do my Planner help that way when the
+ person I'm talking to expresses interest in learning Lisp. I'll take
+ them partway to a solution and leave enough for them to figure things
+ out. Even with the hacks we put together for Planner, there's always
+ that tantalizing glimpse of what \_else\_ could be possible.
+
+*Make them curious by doing something unusual, without an obvious
+ explanation.* This is why I've taken to starting my Knoppix
+ presentations with a Windows display. ;)
+
+*Offer a puzzle or interesting question... without giving them the
+ solution.* Oooh, still have to figure out how to do this one
+ properly.
+
+Fun.
+
+Ã§Â§Â?Ã£Â?Â¯Ã¯Â¼Â‘Ã¥ÂŒÂ¹Ã£Â?Â®Ã©Â»Â'Ã§ÂŒÂ«Ã£Â?ÂŒÃ£Â?Â?Ã£Â?Â®Ã¥Â®Â¶Ã£Â?Â¸Ã¨ÂµÂ°Ã£Â‚ÂŠÃ¨Â¾Â¼Ã£Â‚Â€Ã£Â?Â®Ã£Â‚Â'Ã¨Â¦Â‹Ã£Â?ÂŸÃ£Â€Â‚
+I saw a black cat run into the house.
+
+On Technorati: [[http://www.technorati.com/tag/advocacy][advocacy]],
+[[http://www.technorati.com/tag/passion][passion]]

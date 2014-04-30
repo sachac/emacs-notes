@@ -1,0 +1,28 @@
+#+TITLE: Emacs: Jump to anything
+
+September 5th, 2008 -
+[[http://sachachua.com/blog/p/5117][http://sachachua.com/blog/p/5117]]
+
+I just came across the
+[[http://www.emacswiki.org/cgi-bin/wiki/Anything][Anything]] extension
+for Emacs. After you load anything.el, you can type M-x anything RET and
+a substring of, well, anything. Looks like a handy shortcut. It's like
+Quicksilver, but for Emacs. Grab
+[[http://www.emacswiki.org/cgi-bin/wiki/download/anything-config.el][anything-config.el]]
+for a bunch of useful functions.
+
+Here's my current configuration:
+
+#+BEGIN_EXAMPLE
+    (require 'anything)
+    (require 'anything-config)
+    (setq anything-sources
+          (list anything-c-source-buffers
+                anything-c-source-file-name-history
+                anything-c-source-info-pages
+                anything-c-source-man-pages
+            anything-c-source-file-cache
+                anything-c-source-emacs-commands))
+    (global-set-key (kbd "M-X") 'anything)
+#+END_EXAMPLE
+

@@ -1,0 +1,127 @@
+#+TITLE: Weekly review 2007.10.21 -- 2007.10.28
+
+October 28th, 2007 -
+[[http://sachachua.com/blog/p/4424][http://sachachua.com/blog/p/4424]]
+
+Summary -- In terms of my goals from last week:
+
+| Organize information           | Haven't rearranged our group Activity yet.                           |
+| Plan external blog             | Brainstormed names. Now to brainstorm topics...                      |
+| Plan podcast                   | Done. Several ideas, even.                                           |
+| Library run                    | Done. Picked up more books.                                          |
+| CASCON presentation            | Survived.                                                            |
+| Meeting with Gordon Lee        | Done. Scheduled another meeting this week.                           |
+| Emacs blog entries, pages      | Blog entries done, not yet laid out into pages or merged into text   |
+| CAS dinner                     | Skipped                                                              |
+| Dogear podcast script, audio   | Drafted, but not satisfied with quality                              |
+| Dogear podcast video           | Waiting for script                                                   |
+
+Next week's goals:
+
+-  Dogear podcast due Nov 3, one segment targeted for power users,
+   another basic one
+-  Client project? Cool =)
+-  2000 more words in Emacs-related blog entries
+-  Go to DemoCamp, reconnect with people
+-  Request papers needed for permanent residency application
+
+UP: My second week of work was dominated by CASCON, the conference
+ organized by the IBM Toronto Center for Advanced Studies. I presented
+ a short paper about my thesis, summarizing 72 pages and 1.5 years of
+ my life into five minutes and what really amounts to this sentence:
+ “Blogs, bookmarks, and people-tags may be able to help people find
+ expertise within their company, so let's make a search engine that
+ combines all three.” I also enjoyed helping out with Stephen
+ Perelgut's Second Life workshop, even though only half of the people
+ could get on the metaverse. Aaron, Bernie and I met a couple of times
+ during the conference, and I did manage to squeeze in some “real work”
+ as well. I also had my two-week check-in with my manager. We're
+ thinking of making those weekly, just to keep everyone in the loop. A
+ couple of market scans here and there, some podcast plans... work is
+ good, and getting even better.
+
+UP: I got back in touch with Gino Ledesma, a friend of mine from
+ university. We had a lot of fun catching up. I was thrilled to hear
+ about what he and my other batchmates have been up to, and
+ particularly by the way he's been giving back to the Philippines. His
+ company is very impressed by him and is looking for more Filipinos to
+ hire. That's gotta be something. =) That reminds me: I need to
+ introduce him to Winston Damarillo, who might be interested in having
+ Gino give some presentations to his Java folks.
+
+DOWN: Trapeze lessons have been postponed. It was an informal class in
+ somebody's loft, and that somebody needs to now focus on med school.
+ Ah well. Time to look for another form of exercise. I don't really
+ feel like spending money on this, and I'm sure I can find plenty of
+ free, fun ways to exercise around the house. Winter is coming, so
+ running might not be my cup of tea. I'll look around for ideas.
+
+DOWN: The paperwork requirements for the permanent residency
+ application are a little bit intimidating, aren't they? I felt
+ overwhelmed earlier. W- gave me a wonderful hug and helped me remember
+ to divide and conquer.
+
+UP: I've found a good way to get more material for my book. =) It's
+ easy for me to write if I think of things as blog posts. Even basic
+ information is fun to share. But I need to protect that time. I
+ managed to write a little bit during the evenings, and more during the
+ weekends. Let's see if that works out next week too.
+
+1. [[http://sachachua.com/notebook/wiki/2007.10.23.php#anchor-2][2007.10.23#2:
+   Why Emacs]]
+2. [[http://sachachua.com/notebook/wiki/2007.10.25.php#anchor-1][2007.10.25#1:
+   Emacs: The difference between a task and an appointment]]
+3. [[http://sachachua.com/notebook/wiki/2007.10.27.php#anchor-1][2007.10.27#1:
+   Emacs: managing schedule]]
+4. [[http://sachachua.com/notebook/wiki/2007.10.27.php#anchor-2][2007.10.27#2:
+   Tweaking day-specific planner pages]]
+5. [[http://sachachua.com/notebook/wiki/2007.10.27.php#anchor-3][2007.10.27#3:
+   Choosing a daily schedule in Emacs]]
+6. [[http://sachachua.com/notebook/wiki/2007.10.28.php#anchor-1][2007.10.28#1:
+   Clocking work time under Org]]
+7. [[http://sachachua.com/notebook/wiki/2007.10.28.php#anchor-2][2007.10.28#2:
+   Clocking work time under Planner]]
+8. [[http://sachachua.com/notebook/wiki/2007.10.28.php#anchor-3][2007.10.28#3:
+   Org: Changing the task states]]
+
+DOWN: The downside to this is that I'm not sure how to make the time
+ to meet my friends face-to-face. I'm growing a lot more protective of
+ the rare four-hour chunks I can carve out of my day, so I tend to keep
+ the weekends for myself. A wonderful home life makes me want to spend
+ more time at home instead of going to cafes and meeting friends. Blogs
+ are easy to fit into the spaces in my day, but what about the friends
+ who don't blog? I'll try tweaking my schedule a bit this week.
+ Tomorrow I'm going to go to DemoCamp, but only the pub night part, and
+ I'm planning to go after dinner. It doesn't make that much sense to go
+ back and forth considering I'm working from downtown, but I can do
+ productive things on the subway (hmm, rush hour, so that means
+ listening to a podcast or doing blue-sky thinking), and I do like
+ being there when J- comes home from school. =)
+
+DOWN: E-mail is also lower on my priority list. It's becoming easier
+ to tell myself, “I'm going to do one hour of e-mail, and that's that.”
+ Or 30 minutes, or whatever time I can set aside. I'm a little mixed
+ about this because a number of books I've read recommended quick
+ responses as a way of showing you care, but as long as expectations
+ are also adjusted, I think things will be fine. If I take a long time
+ to reply, it's just that I have other priorities.
+
+UP: And somehow I still found the time to read library books and
+ encode more notes, too! =) I probably won't be updating my Booksnake
+ blog for a while (again, other priorities!), but my workflow is
+ getting better.
+
+UP: I'm happy with the overall balance of this week. My 50,000-feet
+ view is becoming clearer: I want to become a
+[[http://sachachua.com/notebook/wiki/2007.10.23.php#anchor-1][practice
+evangelist]],
+ [[http://sachachua.com/notebook/wiki/2007.10.26.php#anchor-1][business
+practice maven,]] or whatever the proper term is. On the
+ ground-view, I manage to complete most of my planned tasks without
+ feeling as if I'm wasting time. In terms of personal stuff, I'm doing
+ well, too. =) Happy with this week, can't wait for the next.
+
+On Technorati: [[http://www.technorati.com/tag/weekly][weekly]]
+
+Random Emacs symbol: make-hippie-expand-function -- Macro: Construct a
+function similar to `hippie-expand'.

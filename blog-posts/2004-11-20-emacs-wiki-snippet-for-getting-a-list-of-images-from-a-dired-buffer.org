@@ -1,0 +1,37 @@
+#+TITLE: emacs-wiki snippet for getting a list of images from a dired buffer
+
+November 20th, 2004 -
+[[http://sachachua.com/blog/p/2418][http://sachachua.com/blog/p/2418]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/emacs-wiki-marked-images-as-kill ()
+      "Return a list of images ready to be inserted into a wiki page."
+      (interactive)
+      (kill-new (mapconcat
+                 'emacs-wiki-make-link
+                 (dired-get-marked-files)
+                 "\n")))
+#+END_EXAMPLE
+
+bash script for timestamping and thumbnailing pictures
+
+#+BEGIN_EXAMPLE
+    #!/bin/bash
+    SIZE=320x240
+    while [ -n "$1" ]; do
+      if [ -f $1 ]; then
+        DATE=$(date +"%Y%m%d-%H%M%S" --reference="$1")
+        EXT=$(echo "$1" | sed 's/.*\././')
+        echo $1
+        cp $1 "$DATE$EXT"
+        cp "$DATE$EXT" "thumb-$DATE$EXT"
+        touch --reference="$1" "$DATE$EXT"
+        if [ "$EXT" == ".jpg" ]; then
+           convert -size $SIZE -resize $SIZE "$DATE$EXT" "thumb-$DATE$EXT"
+           touch --reference="$1" "thumb-$DATE$EXT"
+        fi
+      fi
+      shift
+    done
+#+END_EXAMPLE
+

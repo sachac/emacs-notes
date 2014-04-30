@@ -1,0 +1,9 @@
+#+TITLE: Another day, another blog
+
+November 24th, 2007 -
+[[http://sachachua.com/blog/p/3][http://sachachua.com/blog/p/3]]
+
+Starting yet another blog because I want something that I can update and
+cross-post from anywhere and I haven't quite set up Planner on my work
+laptop or web server yet. Will I be able to make WordPress dance, or
+will I run back to my comfortable Emacs setup? Stay tuned. ;)

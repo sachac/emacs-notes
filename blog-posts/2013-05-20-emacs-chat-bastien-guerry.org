@@ -1,0 +1,21 @@
+#+TITLE: Emacs Chat: Bastien Guerry
+
+May 20th, 2013 -
+[[http://sachachua.com/blog/p/24857][http://sachachua.com/blog/p/24857]]
+
+In this chat, Bastien tells stories about getting started in Emacs,
+reading his mail/news/blogs in Gnus, and hacking his life with Org. =)
+Enjoy!
+
+Want just the audio? You can get MP3s or OGG from
+[[https://archive.org/details/EmacsChatBastienGuerryAndSachaChua][archive.org]].
+
+[[https://docs.google.com/a/sachachua.com/document/d/1PosKGw9UZTeTm8tKpS3GdUzqicWive7EZkvjxwU8PcQ/edit][Update
+2014-03-07: Transcript posted!]]
+
+[[https://archive.org/download/EmacsChatBastienGuerryAndSachaChua/Emacs%20Chat%20-%20Bastien%20Guerry%20and%20Sacha%20Chua.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[https://archive.org/download/EmacsChatBastienGuerryAndSachaChua/Emacs%20Chat%20-%20Bastien%20Guerry%20and%20Sacha%20Chua.mp3][Play
+in new window]] |
+[[https://archive.org/download/EmacsChatBastienGuerryAndSachaChua/Emacs%20Chat%20-%20Bastien%20Guerry%20and%20Sacha%20Chua.mp3][Download]]

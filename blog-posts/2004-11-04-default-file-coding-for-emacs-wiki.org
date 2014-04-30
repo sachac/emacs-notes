@@ -1,0 +1,6 @@
+#+TITLE: Default file coding for emacs-wiki
+
+November 4th, 2004 -
+[[http://sachachua.com/blog/p/2348][http://sachachua.com/blog/p/2348]]
+
+I really should get around to making UTF-8 the default...

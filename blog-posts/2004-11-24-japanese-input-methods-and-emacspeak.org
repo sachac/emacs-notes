@@ -1,0 +1,8 @@
+#+TITLE: Japanese input methods and Emacspeak
+
+November 24th, 2004 -
+[[http://sachachua.com/blog/p/2425][http://sachachua.com/blog/p/2425]]
+
+prime-el and skk don't work with Emacspeak. quail's the only thing
+ that seems to work, but the completion is dodgy. I should expand the
+ dictionary, I guess.

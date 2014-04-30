@@ -1,0 +1,81 @@
+#+TITLE: Emacs and PHP: On-the-fly syntax checking with Flymake
+
+July 31st, 2008 -
+[[http://sachachua.com/blog/p/5021][http://sachachua.com/blog/p/5021]]
+
+The dreaded white screen of nothingness usually means that I've
+misplaced a quotation mark or brace somewhere in my PHP code. On-the-fly
+syntax checking in Eclipse helped me find those errors quickly because I
+could scan the right scrollbar for areas marked with red. I knew that
+shifting to Emacs wouldn't automatically cure me of the propensity to
+mismatch my parentheses. If I could get on-the-fly syntax checking
+working in Emacs, I'd save myself a lot of time.
+
+It took me a while to sort out various configuration problems. Most were
+due to the fact that PHP didn't report parse errors with my original
+configuration, even though I had uncommented the line after “Show only
+errors”. As it turned out, the error\_reporting option in php.ini needs
+to include E\_PARSE in order for php to report parsing error details.
+Here's the value I'm currently using in /etc/php.ini:
+
+#+BEGIN_EXAMPLE
+    error_reporting = E_ERROR|E_COMPILE_ERROR|E_CORE_ERROR|E_PARSE
+#+END_EXAMPLE
+
+Flymake is the package responsible for on-the-fly syntax checking in
+Emacs. Out of the box, it supports C, C++, XML, XHTML, Perl, Java, TeX,
+and IDL. To load Flymake and add support for PHP, add the following to
+your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (require 'flymake)
+
+    (defun flymake-php-init ()
+      "Use php to check the syntax of the current file."
+      (let* ((temp (flymake-init-create-temp-buffer-copy 'flymake-create-temp-inplace))
+         (local (file-relative-name temp (file-name-directory buffer-file-name))))
+        (list "php" (list "-f" local "-l"))))
+
+    (add-to-list 'flymake-err-line-patterns 
+      '("\\(Parse\\|Fatal\\) error: +\\(.*?\\) in \\(.*?\\) on line \\([0-9]+\\)$" 3 4 nil 2))
+
+    (add-to-list 'flymake-allowed-file-name-masks '("\\.php$" flymake-php-init))
+
+    ;; Drupal-type extensions
+    (add-to-list 'flymake-allowed-file-name-masks '("\\.module$" flymake-php-init))
+    (add-to-list 'flymake-allowed-file-name-masks '("\\.install$" flymake-php-init))
+    (add-to-list 'flymake-allowed-file-name-masks '("\\.inc$" flymake-php-init))
+    (add-to-list 'flymake-allowed-file-name-masks '("\\.engine$" flymake-php-init))
+
+    (add-hook 'php-mode-hook (lambda () (flymake-mode 1)))
+    (define-key php-mode-map '[M-S-up] 'flymake-goto-prev-error)
+    (define-key php-mode-map '[M-S-down] 'flymake-goto-next-error)
+#+END_EXAMPLE
+
+Evaluate that code, open one of your PHP files, and intentionally break
+it. The syntax error should be highlighted. To change the highlighting,
+move your point to the error and type M-x customize-face. Accept the
+default (flymake-errline), then customize it as desired. Don't forget to
+save your customizations for future sessions.
+
+If your syntax errors are not highlighted and you get a message like
+this:
+
+#+BEGIN_EXAMPLE
+    Configuration error occured while running (php -f test_flymake.php -l). flymake will be switched OFF
+#+END_EXAMPLE
+
+double-check your /etc/php.ini to make sure that E\_PARSE is included as
+one of the options for error\_reporting. You can check the output by
+running php -f /yourfile.php/ -l. You should see the line number of the
+parse error. Make sure that this matches the regular expression added to
+flymake-err-line-patterns in your ~/.emacs. If your PHP returns a
+slightly different message, modify your flymake-err-line-patterns
+accordingly.
+
+Flymake can save you a lot of programmer frustration for the cost of a
+little CPU time. Use it to check for errors before you save files or
+commit them to your source code control repository, and you and other
+developers will be much happier.
+
+(UPDATE: Fixed typo in flymake-php-init)

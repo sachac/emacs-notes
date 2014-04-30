@@ -1,0 +1,8 @@
+#+TITLE: Tense changed.
+
+April 16th, 2003 -
+[[http://sachachua.com/blog/p/705][http://sachachua.com/blog/p/705]]
+
+From now on, planner page stories will be written in past tense
+ whenever appropriate. Present tense just sounded too weird. Old
+ planner pages will not be updated to reflect this.

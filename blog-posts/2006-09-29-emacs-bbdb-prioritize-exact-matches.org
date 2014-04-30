@@ -1,0 +1,46 @@
+#+TITLE: Emacs BBDB: Prioritize exact matches
+
+September 29th, 2006 -
+[[http://sachachua.com/blog/p/3890][http://sachachua.com/blog/p/3890]]
+
+I often include people's names in my notes on other people, such as
+ when I'm tracking who introduced me to whom. The following code
+ modifies BBDB's behavior to put exact matches for name, company, or
+ network address above matches for notes.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb (string elidep)
+      "Display all entries in the BBDB matching the regexp STRING
+    in either the name(s), company, network address, or notes.
+    Prioritize non-note matches."
+      (interactive
+       (list (bbdb-search-prompt "Search records %m regexp: ")
+             current-prefix-arg))
+      (let* ((bbdb-display-layout (bbdb-grovel-elide-arg elidep))
+             (notes (cons '* string))
+             (records-top
+              (bbdb-search (bbdb-records) string string string nil
+                           nil))
+             (records
+              (bbdb-search (bbdb-records) string string string notes
+                           nil))
+             temp)
+        (setq temp records-top)
+        (while temp
+          (setq records (delete (car temp) records))
+          (setq temp (cdr temp)))
+        (if (or records-top records)
+            (bbdb-display-records (append
+                                   records-top
+                                   records))
+          ;; we could use error here, but it's not really an error.
+          (message "No records matching '%s'" string))))
+
+    (defalias 'bbdb 'sacha/bbdb)
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/crm][crm]],
+[[http://www.technorati.com/tag/elisp][elisp]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

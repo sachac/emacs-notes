@@ -1,0 +1,88 @@
+#+TITLE: Optimizing your action loop
+
+November 28th, 2007 -
+[[http://sachachua.com/blog/p/4475][http://sachachua.com/blog/p/4475]]
+
+If you want to be radically more effective at doing things, get better
+ at deciding what to do. Few things are more personal than figuring out
+ what you're going to do with your life: at this moment, for this day,
+ for the next few years. Few decisions are made as frequently. If you
+ can improve the way you make that decision, you'll reap the benefits
+ everywhere.
+
+We've all developed some ways of coping. We all have our quirks.
+ One of mine is that I can't settle on one way of planning my tasks.
+ Some days, I'm all strategic and top-down, connecting my life goals
+ with the tasks I plan to do that day. Other days, I just need to get a
+ crucial task out of my head so that I don't forget it while hunting
+ for my keys. Some days, I block out time to work on my priority
+ projects. Other days, I have to work around other people's schedules,
+ so it's all about cramming whatever I can into whenever I've got.
+
+Now think of all the other geeks out there, and you'll understand how
+ to-do list programs might outnumber programmers. Despite the
+ collective efforts of companies like Microsoft and IBM, despite the
+ coolness of Web 2.0 services like Remember the Milk, despite the
+ renaissance of paper-based planners such as the Hipster PDA, I have
+ never found anything as powerful as a plain text file in terms of
+ personal productivity: a plain text file with shortcuts that are
+ form-fitted to the way I work.
+
+Here's what my workday looks like:
+
+-  I do a \_quick\_ scan of e-mail to see if any tasks have come in. I
+   copy those into my inbox. I resist the urge to reply right away, as
+   that turns e-mail into a huge timesink.
+-  5-10 minutes are enough to schedule and prioritize my tasks for the
+   day. I see both my calendar and my task list at the same time, and I
+   can estimate my load. I leave plenty of space for things that come
+   up. I feel better when I finish my scheduled tasks and then cross off
+   a few more, than when I don't finish everything I planned and I have
+   to postpone tasks to the next day.
+-  I work on my highest-priority task for the day.
+-  \_Then\_ I respond to e-mail.
+-  Then I work through everything else in roughly 45-minute chunks, with
+   some downtime in between to recharge my brain and take care of
+   routine tasks.
+-  My computer is set up to encourage me to take 10-second breaks every
+   5 minutes and 2.5 minute breaks every hour. The numbers are
+   arbitrary, but the result feels good. This works out even better when
+   I work from home: 2.5 minutes is just enough time to clear the sink,
+   or to empty the dishwasher, or to start some tea...
+
+A plain text file keeps me all organized, thanks to the Org module for
+ the Emacs text editor. The text file shows me what's on my horizon and
+ what's on today's schedule. The text file helps me deal with
+ interruptions because it keeps track of what I was working on and what
+ I need to do.
+
+The text file even helps me learn more about myself and my skills
+ through detailed time-tracking. Every time I start a task, the clock
+ starts. Every time I mark a task as waiting or done, the clock stops,
+ and the elapsed time is stored in the task. This helps me tune my time
+ estimates and report time at the end of the week.
+
+And it's just amazing. I don't feel that I waste a lot of time. I have
+ a sense of progress. I can see the big picture, and things almost
+ never fall through the cracks. (When they do, that's because I hadn't
+ gotten around to putting them in my text file yet.) Sure, this still
+ doesn't give me enough time to do everything I want to do, but I don't
+ feel stressed out about it because I'm working well. From now on, most
+ of the performance improvement will come from improving my skills and
+ learning more.
+
+If I can do this much as a new hire with a pretty nifty task
+ management system, think about what you can do with all your
+ experience. What \_could\_ you do if you spent less time fighting with
+ your memory or with your TODO system, and more time making the
+ difference you want to make?
+
+On Technorati: [[http://sachachua.com/wp/category/planning][planning]],
+[[http://sachachua.com/wp/category/book-draft][book-draft]],
+[[http://sachachua.com/wp/category/org][org]],
+[[http://sachachua.com/wp/category/emacs][emacs]],
+[[http://sachachua.com/wp/category/tasks][tasks]],
+[[http://sachachua.com/wp/category/pim][pim]]
+
+Random Emacs symbol: edebug-stop -- Command: Stop execution and do not
+continue.

@@ -1,0 +1,15 @@
+#+TITLE: Ignoring orkut addresses in BBDB (EmacsHacks#21)
+
+April 15th, 2004 -
+[[http://sachachua.com/blog/p/1966][http://sachachua.com/blog/p/1966]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-canonicalize-net-hook (addr)
+      "Do not notice member@orkut.com addresses."
+      (cond ((null addr) addr)
+            ((string-match "member@orkut\\.com" addr) nil)
+            (t addr)))
+    (setq bbdb-canonicalize-net-hook 'sacha/bbdb-canonicalize-net-hook)
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/bbdb-config.el][../../notebook/emacs/bbdb-config.el]]

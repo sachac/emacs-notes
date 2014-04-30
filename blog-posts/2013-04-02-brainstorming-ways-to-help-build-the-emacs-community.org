@@ -1,0 +1,121 @@
+#+TITLE: Brainstorming ways to help build the Emacs community
+
+April 2nd, 2013 -
+[[http://sachachua.com/blog/p/24633][http://sachachua.com/blog/p/24633]]
+
+John Wiegley and I had lots of fun brainstorming ways to help move Emacs
+forward, particularly as I'm carving out more of my time to focus on
+Emacs. Here's what we talked about:
+
+*A rough outline of things to flesh out into articles/chapters:*
+
+-  productivity, org-mode
+-  development
+
+   -  emacs lisp
+   -  haskel, rails, java, and other languages...
+
+-  writing
+-  e-mail
+-  IRC/Twitter/FB
+-  web
+-  games and diversions
+-  documentation
+-  learning and discovery
+
+*Learning Emacs development:*
+
+-  tools
+-  cons cells
+-  macros, quoting
+-  control structures
+-  Emacs structures: windows, buffers, text properties, etc.
+-  lambdas
+-  libraries
+
+*Ideas for visualizations:*
+
+-  #emacs word cloud or URL frequency/analysis
+-  IUseThis for Emacs, maybe with annotations
+
+*Cookbook:*
+
+-  PLEAC for Emacs? Emacs Lisp cookbook?
+-  Coding patterns
+
+*IDE challenges:*
+
+-  IntelliSense
+-  Excellent project browsing
+-  Refactoring
+-  Integrated test harnesses
+-  Asynchronous operation
+-  Performance (especially of code analysis and navigation tools)
+
+*Target communities/audiences?*
+
+-  Emacs beginners: getting more into Emacs, learning more about
+   packages, customizing Emacs; learning path through packages, maybe
+   with time estimates?
+-  Emacs intermediate: tweaking Emacs, getting into Emacs Lisp,
+   contributing upstream; need to update Writing GNU Emacs Extensions
+-  Keyboard enthusiasts: keyboard shortcuts, customizability
+-  Non-developers (writers, scientists, mathematicians, etc.):
+   Context-specific functionality, starter kits, easy installs,
+   articles, screencasts -- learn from Aquamacs, Ready Lisp. Pre-built
+   Org starter kits? screencasts, interactive tutorials, games as
+   introductions
+-  Users of defunct editors: migrated features, migration guides
+-  IDE users: integration with other parts of life
+-  Vim users: configurability envy, migration/emulation
+
+*Emacs performance:*elp, memory-use-counts, garbage collection,
+algorithms, cookbook, core work
+
+*Discovery:*
+
+-  packages: popularity, reverse dependency graph, URL log for #emacs,
+   24 packages for Christmas and other blog series, IUseThis, reminders
+   to be lazier / stories for inspiration
+-  EmacsWiki: guided tour, CSS design
+
+*Imagining awesomeness in 5 years:*Responsive editor that's easy to set
+up; SEO so that people can find useful resources; context/goal-specific
+documentation; regular virtual show&tell
+
+*Imagining nonawesomeness:*Weak async; marginal/niche; people moving
+away to other editors because of growing gaps; performance issues;
+unmaintained code; developer burnout
+
+*EmacsConf:* mailing list for next year, venue?
+
+Here's what I'm looking forward to devoting some of my time to:
+
+*Write and draw*
+
+-  EmacsWiki page updates
+-  Guided tours
+-  Emacs Lisp cookbook
+-  Package reviews
+-  Interviews with people so that they can share their tips (incl.
+   screencast and transcript)
+
+*Analyze*
+
+-  Package use
+-  Performance
+-  Logs
+
+*Learn*
+
+-  Performance optimization (Emacs Lisp and core)
+-  Package descriptions and use
+
+*Code*
+
+-  Issues
+-  Feature requests
+-  Integration
+-  New code
+
+Lots of possibilities!

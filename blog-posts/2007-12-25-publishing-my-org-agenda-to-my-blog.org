@@ -1,0 +1,58 @@
+#+TITLE: Publishing my Org agenda to my blog
+
+December 25th, 2007 -
+[[http://sachachua.com/blog/p/4536][http://sachachua.com/blog/p/4536]]
+
+[[http://sachachua.com/wp/2007/11/25/feedwordpress-and-planner-blog-awesome/][Some
+people like reading my task list]].
+
+No, I don't know why, either. =)
+
+But it's up again, just in case you want to see it. This one is based
+ on Org-mode for Emacs, so it's not the same task list that used to
+ show up on my [[http://sachachua.com/notebook/wiki/today.php][Planner
+wiki]].
+
+Expect this to change a lot as I figure out how I want it to fit in.
+ The downside of using WordPress as my front-end is that it looks like
+ it's going to be difficult to get the kind of day view I have with my
+ [[http://sachachua.com/notebook/wiki/today.php][Planner]] version. How
+ do I get it to display future pages?
+
+I may end up writing yet another layer on top of this... =(
+
+Anyway, here's my highly idiosyncratic config, just in case you want
+ to get started hacking this onto your system:
+
+#+BEGIN_EXAMPLE
+    (defvar sacha/org-publish-agenda-directory "~/notebook/org/" "*Directory to save the published agenda to.")
+    (org-defkey org-agenda-mode-map  "p" 'sacha/org-publish-agenda)
+    (defun sacha/org-publish-agenda ()
+      "Copy the agenda buffer to a file in `sacha/org-publish-agenda-directory'."
+      (interactive)
+      ;; Take the entire contents of the agenda and dump it into a text file labeled with the date.
+      (let ((agenda (with-current-buffer org-agenda-buffer-name
+                      (unless org-agenda-show-log (org-agenda-log-mode))
+                      (buffer-string)))
+            (filename (format-time-string "%Y-%m-%d.txt" (if org-starting-day (calendar-time-from-absolute (1+ org-starting-day) 0)
+                                                           (current-time)))))
+        (with-temp-buffer
+          (insert agenda)
+          (write-file (expand-file-name filename
+                                        sacha/org-publish-agenda-directory)))))
+
+    (defun sacha/org-publish-agenda-today (interactive)
+      "Publish today's agenda. Suitable for ~/.emacs, we hope."
+      (let ((entry (assoc "a" org-agenda-custom-commands)))
+        (if entry
+            (org-run-agenda-series (nth 1 entry) (cddr entry))
+          (call-interactively 'org-agenda-list))
+      (sacha/org-publish-agenda)))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/org][org]],
+[[http://www.technorati.com/tag/wordpress][wordpress]]
+
+Random Emacs symbol: hack-local-variables -- Function: Parse and put
+into effect this buffer's local variables spec.

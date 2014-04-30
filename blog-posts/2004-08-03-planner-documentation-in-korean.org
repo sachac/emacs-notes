@@ -1,0 +1,9 @@
+#+TITLE: Planner documentation in Korean!
+
+August 3rd, 2004 -
+[[http://sachachua.com/blog/p/2215][http://sachachua.com/blog/p/2215]]
+
+Someone's written very very basic Planner notes in Korean. Nifty. =)
+
+[[http://hermian.sarang.net/moniwiki/wiki.php/EmacsEditor/PlannerMode][HoSungWiki:
+Emacs Editor/Planner Mode]]

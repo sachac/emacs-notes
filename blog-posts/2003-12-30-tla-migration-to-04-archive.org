@@ -1,0 +1,24 @@
+#+TITLE: TLA migration to 04 archive
+
+December 30th, 2003 -
+[[http://sachachua.com/blog/p/1541][http://sachachua.com/blog/p/1541]]
+
+#+BEGIN_EXAMPLE
+    cd ~/notebook/emacs/emacs-wiki/
+    tla register-archive sacha@free.net.ph--main ~/notebook/arch/
+    tla my-default-archive sacha@free.net.ph--main
+    tla make-archive -l sacha@free.net.ph
+    tla tag sacha@free.net.ph--03/emacs-wiki--sacha--1.0 emacs-wiki--sacha--1.0
+    tla cacherev
+#+END_EXAMPLE
+
+Here I use -l to make sure my archive is http-gettable, then tag the
+ old file over to the new one, then cache the old revisions to make
+ this run faster.
+
+To update to Damien's tree, just:
+
+#+BEGIN_EXAMPLE
+    tla star-merge arch@repose.cx--03/emacs-wiki--dev--1.0
+#+END_EXAMPLE
+

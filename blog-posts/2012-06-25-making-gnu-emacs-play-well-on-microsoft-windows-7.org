@@ -1,0 +1,58 @@
+#+TITLE: Making GNU Emacs play well on Microsoft Windows 7
+
+June 25th, 2012 -
+[[http://sachachua.com/blog/p/23513][http://sachachua.com/blog/p/23513]]
+
+Emacs 24 has been released, hooray! Here's how you can download and
+install it on Windows 7. Bonus tip: pin it to your taskbar so that you
+can open Emacs easily.
+
+*Step 1.* Get the Emacs zip file from
+[[http://ftp.gnu.org/pub/gnu/emacs/windows/][http://ftp.gnu.org/pub/gnu/emacs/windows/]]
+. You're looking for something like emacs-24.1-bin-i386.zip, or whatever
+the latest version is. Download and extract the files. I like extracting
+it to C:\ and renaming the new emacs-24.1 directory to c:\emacs so that
+I can get to it easily. I'll assume you're renaming it too, but if you
+prefer to keep your Emacs installation elsewhere, just translate the
+rest of these instructions.
+
+*Step 2.* Add Emacs to your path. This way, you can start Emacs or
+emacsclient from anywhere. To change your system path, click on the
+Windows logo, right-click on *Computer*, and choose *Properties*. Click
+on *Advanced system settings*, then click on *Environment Variables*.
+
+If you see a *Path* variable under *User variables*, click on it, then
+click on Edit. Add =c:\emacs\bin= to the beginning of this path,
+separating it from the next item with a semicolon. Click *OK.*
+
+On the other hand, if you don't see a *Path* variable under *User
+variables*, click on New and add it. The variable name should be =Path=
+and the value should be =c:\emacs\bin=. Click *OK*.
+
+*Step 3.* While you're here, you might as well set your *Home* variable.
+This is what Emacs will use whenever you refer to ~, or the home
+directory. To set that, look under *User variables* and click on *New*.
+Create a variable called =HOME=, and set the value to whichever
+directory you would like to use as your home directory. For example,
+I'll set mine to c:\sacha. Again, click on *OK*, then click *OK* a few
+more times until you're done with the System Properties dialog box.
+
+*Step 4.* All right, let's start up Emacs! Click on the Windows icon,
+and type =runemacs= at the Run prompt. You should see *runemacs* in the
+list. If you don't, you may need to log out and log in so that your new
+path settings are applied. Once you've sorted that out, start
+=runemacs=. You should see Emacs open, yay!
+
+*Step 5.* Want to be able to start up and switch to Emacs quickly? To
+pin Emacs to your task bar, right-click on the Emacs icon in the task
+bar. Right-click on the small Emacs icon that appears, and click on
+*Properties*. Change the target to =c:\emacs\bin\runemacs.exe=, and
+change the start directory to whichever directory you prefer. You can
+also choose to start it maximized -- handy. Once you've set that up,
+click *OK.* I like dragging the Emacs icon so that it's the very first
+item in my task bar. That way, pressing the Windows key and the number 1
+at the same time lets me switch to Emacs and away from Emacs easily.
+
+That's it. Check out
+[[http://planet.emacsen.org][http://planet.emacsen.org]] for lots of
+other Emacs bloggers. Happy editing!

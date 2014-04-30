@@ -1,0 +1,6 @@
+#+TITLE: Checking remember with timestamp (Thu Sep 12:18 2002,2002.09.12)
+
+September 12th, 2002 -
+[[http://sachachua.com/blog/p/383][http://sachachua.com/blog/p/383]]
+
+Hey, I think this actually works.

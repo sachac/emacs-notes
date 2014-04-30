@@ -1,0 +1,20 @@
+#+TITLE: Pimp My Emacs
+
+July 20th, 2006 -
+[[http://sachachua.com/blog/p/3680][http://sachachua.com/blog/p/3680]]
+
+Along the lines of TV shows like Pimp My Ride, I'm thinking of
+ regularly blogging something along the lines of Pimp My Emacs. For
+ those readers who haven't had to listen to me bubble for hours on end
+ about this text editor / way of life, Emacs is ostensibly a program
+ that you use to edit text files. Right. But because it's insanely
+ programmable, there are all sorts of interesting things for it, like
+ more than five ways to read one's e-mail.
+
+Watch for it on Technorati with tags emacs or pimpmyemacs, or
+ subscribe to
+[[http://feeds.feedburner.com/pimpmyemacs][http://feeds.feedburner.com/pimpmyemacs]]
+. =)
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

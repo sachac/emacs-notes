@@ -1,0 +1,32 @@
+#+TITLE: Hipster PDA: GTD Tiddly Wiki
+
+May 12th, 2005 -
+[[http://sachachua.com/blog/p/2760][http://sachachua.com/blog/p/2760]]
+
+Miguel Javier said:
+
+#+BEGIN_QUOTE
+  GTD Tiddly Wiki is a GettingThingsDone adaptation of JeremyRuston's
+   Open Source TiddlyWiki. The purpose of GTD Tiddly Wiki is to give
+   users a single repository for their GTD lists and support materials
+  so
+   they can create/edit lists, and then print directly to 3×5 cards for
+   use with the HipsterPDA.
+
+  [[http://shared.snapgrid.com/gtd_tiddlywiki.html][http://shared.snapgrid.com/gtd\_tiddlywiki.html]]
+#+END_QUOTE
+
+No kidding. I wonder what we should do to get Planner to support 3×5
+ index cards sanely...
+
+E-Mail from Miguel Javier
+
+ÃƒÂ¥Ã‚Â½Ã‚Â¼ÃƒÂ¥Ã‚Â¥Ã‚Â³ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ¥Ã‚Â¨Ã‚Â˜ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ£Ã‚ÂƒÃ‚Â‘ÃƒÂ£Ã‚Â‚Ã‚Â½ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¨Ã‚Â²Ã‚Â·ÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â‚Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â€Ã‚Â‚
+She got her daughter a personal computer.
+
+On Technorati: [[http://www.technorati.com/tag/wiki][wiki]],
+[[http://www.technorati.com/tag/gtd][gtd]],
+[[http://www.technorati.com/tag/hipster][hipster]],
+[[http://www.technorati.com/tag/hipsterpda][hipsterpda]],
+[[http://www.technorati.com/tag/productivity][productivity]],
+[[http://www.technorati.com/tag/organizer][organizer]]

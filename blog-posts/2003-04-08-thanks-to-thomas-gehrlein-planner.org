@@ -1,0 +1,10 @@
+#+TITLE: Thanks to Thomas Gehrlein --- planner
+
+April 8th, 2003 -
+[[http://sachachua.com/blog/p/663][http://sachachua.com/blog/p/663]]
+
+Thomas has been patiently helping me figure out how to become a better
+ maintainer, with loads of useful comments, patches, and tips on
+ maintaining better changelogs. Thanks also to people like Jody Klymak
+ and David Forrest for the recent burst of feature additions and
+ bugfixes. =)

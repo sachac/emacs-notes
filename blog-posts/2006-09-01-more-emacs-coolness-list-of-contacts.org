@@ -1,0 +1,48 @@
+#+TITLE: More Emacs coolness: List of contacts
+
+September 1st, 2006 -
+[[http://sachachua.com/blog/p/3818][http://sachachua.com/blog/p/3818]]
+
+This bit of Emacs Lisp code produces a Planner-ready list of the
+contacts displayed in the BBDB window.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-bbdb-annotation-from-bbdb (&optional record)
+      "If called from a bbdb buffer, return an annotation.
+    Suitable for use in `planner-annotation-functions'."
+      (when (or record (eq major-mode 'bbdb-mode))
+        (setq record (if record (car record) (bbdb-current-record)))
+        (or (bbdb-record-getprop record 'plan)
+            ;; From a BBDB entry with a plan page; use that. Yay!
+            (planner-make-link
+             (concat "bbdb://"
+                     (planner-replace-regexp-in-string
+                        " " "." (bbdb-record-name record)))
+             (bbdb-record-name record)))))
+    (defalias 'planner-bbdb-annotation-from-bbdb 'sacha/planner-bbdb-annotation-from-bbdb)
+
+    (defun sacha/yank-planner-bbdb-list ()
+      "Copy the list of people displayed in the buffer."
+      (interactive)
+      (kill-new
+       (mapconcat 'sacha/planner-bbdb-annotation-from-bbdb
+                  bbdb-records
+                  ", "))
+            (sacha/planner-bbdb-annotation-from-bbdb rec))
+#+END_EXAMPLE
+
+It allows me to say, for example, that I met 23 people yesterday:
+ Bruce, [[http://blog.digitalketchup.net/][Daniel Charles]], Shane
+D'Costa, Emily, [[http://www.mistergadgets.ca][Greg A. Fitz]], Clara
+Fong, [[http://www.radiantcore.com][Jay Goldman]], Harvey, Kai Fai Ho,
+Iris, KC, Charles McCulloch, [[http://www.scimatic.com][Jamie McQuay]],
+Joshua Meles, Naomi, [[http://www.nonlinear.ca][Helen Overland]],
+[[http://www.aiim.com][Wayne Penney]],
+[[http://www.simonrowland.com][Simon Rowland]], San, Colin Smillie,
+Solomon, Le Quan Truong, Perry Wong
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/hack][hack]],
+[[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

@@ -1,0 +1,23 @@
+#+TITLE: More stuff about finite automata in LaTeX
+
+March 9th, 2004 -
+[[http://sachachua.com/blog/p/1864][http://sachachua.com/blog/p/1864]]
+
+#+BEGIN_QUOTE
+  I had exactly this issue when I was tutoring a group of Computability
+   Theory students. I found that only GNU Pic gave good results. You can
+   embed pic inline in LaTeX documents and have it render properly but
+   it's probably better results to use a Makefile and run pic/groff to
+   get EPS files.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  check
+  [[http://advogato.org/person/dto/diary.html?start=67][http://advogato.org/person/dto/diary.html?start=67]]
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  P.S. thanks for all the planner-mode help... I am up and running!!
+#+END_QUOTE
+
+E-Mail from David O'Toole

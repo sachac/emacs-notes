@@ -1,0 +1,56 @@
+#+TITLE: Personalized personal information management systems
+
+September 8th, 2005 -
+[[http://sachachua.com/blog/p/2964][http://sachachua.com/blog/p/2964]]
+
+[[http://dmarti.spikesource.com/genetically_engineered_cash_cow.htm][Don
+Marti quotes an e-mail from Microsoft CEO Steve Ballmer]]:
+
+#+BEGIN_QUOTE
+  The productivity software we have today is designed for
+   everyone, but it doesn't really map to the specific kinds of jobs
+   people have.
+#+END_QUOTE
+
+Sophisticated, feature-packed personal information managers are out
+ there, but most people use a fraction of the functionality, or even
+ throw their hands up in despair and stick with e-mail as their
+ task-manager and calendar all in one. We're moving towards
+ simplification. [[http://www.37signals.com][37signals.com]]‘s big win
+ is that they make web-based task managers that are simple enough to do
+ just what people want and not more.
+
+I think that the biggest win in terms of personal information
+ management comes when we customize software to the kind of data people
+ work with---and more importantly, the \_way\_ they work with that data.
+ The ultracustomizable
+ [[http://www.emacswiki.org/cgi-bin/wiki/PlannerMode][Planner]] showed
+ me that even something as small as task sort order could be incredibly
+ individualized. For example, today I tried sorting my tasks by role
+ and then by my usual stuff. Other times I've sorted it by combinations
+ of categories. Other people have written code to sort it by importance
+ and urgency, following Dr. Stephen Covey's suggestions, and yet others
+ sort by more sophisticated rules. All of that from something that
+ traditional PIMs would limit to predefined table headings like “Due
+ date” or “Category”!
+
+How would this kind of tailoring scale? Boxed software products aim to
+ satisfy the majority and make their profits on economies of scale.
+ Customized software takes advantage of the economies of niches, of the
+ [[http://longtail.typepad.com/the_long_tail/][long tail]] effect of the
+Web.
+
+When it comes to Planner, I don't mind spending time writing code for
+ just one person. Chances are, other people will find that code useful
+ too. Besides, most tweaks are created and shared by the community, and
+ that's ubercool. I learn \_so\_ much from them, and I'm grateful for
+the
+ opportunity to help tailor Planner to become \_their\_ personal
+ information manager.
+
+Looking at all the Web 2.0 stuff coming out, I think that kind of
+ customization is going to be even more important. User-centered design
+ is front and center. Users take an active role in shaping the features
+ of an application. Software is turning into a conversation.
+
+That's cool.

@@ -1,0 +1,201 @@
+#+TITLE: One day with Planner
+
+December 23rd, 2007 -
+[[http://sachachua.com/blog/p/4529][http://sachachua.com/blog/p/4529]]
+
+The
+[[http://sachachua.com/wp/2007/12/22/a-day-in-a-life-with-org/][daily
+rituals I described yesterday]] can also be done with Planner, another
+personal information manager for Emacs. In fact, I spent about four
+years managing my tasks using Planner before I tried out Org. My process
+then was similar to my Org process now in that I wrote the tasks down
+before I tried to organize or do them, and I built in some time for a
+review. The difference was that I didn't organize most of my tasks into
+separate projects (or plan pages, as Planner calls them). Instead, I
+tended to organize them according to day. This was helpful when
+publishing my blog, as I could post my task list along with it. I also
+liked the greater control I had over my daily task list, and I often
+used blank lines or extra notes to keep things organized.
+
+The core of the process was the same, though:
+
+1. Get the tasks out of your head.
+2. Schedule the tasks.
+3. Do the tasks.
+4. Review the tasks.
+
+**** Get the tasks out of your head
+
+The first thing I did each day was to put all of my tasks into my
+ Planner. I briefly scanned through my mail looking for action items,
+ and whenever I found something I needed to do that would take more
+ than two minutes, I created a task for it using
+ planner-create-task-from-buffer. This automatically created a
+ hyperlink back to the e-mail or file I was reading, and included
+ useful information such as the e-mail author.
+
+I treated appointments just like tasks, although I added a timestamp
+ like @13:00 to make it easier to see and sort my appointments.
+
+planner-create-task-from-buffer helped me keep track of reactive
+ tasks, or things that I needed to do because someone else asked me to
+ do them. However, I also made a point of reviewing my goals and making
+ up my own tasks so that I could work on my personal projects. For
+ example, I had a plan page where I put all my writing ideas, and I
+ added those tasks to today's page once in a while.
+
+I also scanned the last few day pages to see if I'd missed anything,
+ and the next few days to see if I needed to plan for anything.
+ Although the M-x plan command automatically brings tasks forward, I
+ didn't use it to start my day. Instead, I reviewed the last three days
+ or so, marking tasks that I'd completed but not updated, cancelling
+ tasks I no longer wanted or needed to do, and rescheduling other tasks
+ forward using C-c C-c (planner-copy-or-move-task). I also reviewed the
+ next three days or so. C-c C-j C-y (planner-goto-yesterday) and C-c
+ C-j C-t (planner-goto-tomorrow) were handy for flipping through pages.
+ To make the shortcuts shorter and more natural, I bound them to F9 F8
+ and F9 F10 with:
+
+#+BEGIN_EXAMPLE
+    (global-set-key (kbd "<f9> <f8>") 'planner-goto-yesterday)
+    (global-set-key (kbd "<f9> <f10>") 'planner-goto-tomorrow)
+#+END_EXAMPLE
+
+At the end of this step, I had all the things I needed to do scheduled
+ for today.
+
+So the first thing you need to do is get used to creating tasks
+ quickly. Get them out of your head and into Planner, where you can
+ then schedule, organize, act on, and review them. You can bind
+ planner-create-task-from-buffer to a convenient shortcut key such as
+ C-c t SPC by using the following code in your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (global-set-key (kbd "C-c t SPC") 'planner-create-task-from-buffer)
+#+END_EXAMPLE
+
+By default, planner-create-task-from-buffer asks you for a date and a
+ plan page when you create tasks. You can either slow down and think
+ about this, hit RET twice to accept the defaults, or modify Planner so
+ that it doesn't prompt you at all. Being lazy, I chose to let Planner
+ put all the tasks on today's page and a copy on the
+[[http://sachachua.com/notebook/wiki/TaskPool][TaskPool]] plan page
+ for backup. If I knew I had to do something on a specific date, I
+ could tell it to prompt for the date by using the prefix argument (C-u
+ before the command).
+
+Here's the code that makes that happen:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-read-task ()
+      "Do not prompt for date unless the prefix argument is given."
+      (let ((planner-expand-name-favor-future-p t))
+        (list (read-string "Describe task: ")
+              (if current-prefix-arg (planner-read-date) (planner-today))
+              "TaskPool"
+              planner-default-task-status)))
+    (defalias 'planner-read-task 'sacha/planner-read-task)
+#+END_EXAMPLE
+
+**** Organize the tasks
+
+Getting the tasks out of my head often resulted in a long list of
+ tasks, not all of which I needed to do or could even do that day. Then
+ it was time to ruthlessly use C-c C-c (planner-copy-or-move-task) and
+ M-x planner-copy-or-move-region to trim my task list down to a
+ manageable size. I moved tasks that didn't need to be done on a
+ certain date to the
+[[http://sachachua.com/notebook/wiki/TaskPool][TaskPool]], which I
+checked whenever I had some free
+ time.
+
+If I wanted to assign a task to a specific time, I just added a
+ timestamp such as @14:30 to the task. I had some code which
+ automatically sorted the tasks by time, so it would go to the right
+ place.
+
+I also used M-down and M-up (planner-lower-task and
+ planner-raise-task) to move tasks around. To visually group tasks, I
+ added blank lines and explanatory text. For example, I put errands
+ together and I moved the tasks up and down into a logical order for
+ doing things.
+
+If there were a lot of small items in my day, I also separated the
+ “must-be-dones” from the “nice-to-dos”. This wasn't related to the
+ importance of the task, just the urgency. Urgent items went in the
+ first group, and non-urgent items went in the second group of tasks.
+
+At the end of this step, I had a daily plan page which showed me my
+ tasks and appointments for the day, in the rough order in which I
+ planned to do them. I also had some tasks on future days, and some
+ tasks in my [[http://sachachua.com/notebook/wiki/TaskPool][TaskPool]].
+
+**** Do the tasks
+
+Now that all my tasks were on the page, it was easy to go through
+ them. To start working on a task, I marked it as in-progress with C-c
+ C-i (planner-task-in-progress). If I needed to postpone it, I used C-c
+ C-p (planner-task-pending). To mark it finished, I used C-c C-x
+ (planner-task-done). To mark it cancelled, I used C-c C-S-x
+ (planner-task-cancelled; does not work in some terminals).
+
+Because I had loaded planner-timeclock.el using code like this:
+
+#+BEGIN_EXAMPLE
+    (require 'planner-timeclock)
+#+END_EXAMPLE
+
+the clock automatically started when I marked tasks as in-progress and
+stopped when I marked tasks as pending or done. I could also clock out
+of a task manually by using C-c C-o (timeclock-out).
+
+**** Review the tasks
+
+To review what I did that day, all I had to do was go to the day page
+using planner-goto-today, which I bound to F9 F9 with:
+
+#+BEGIN_EXAMPLE
+    (global-set-key (kbd "<f9> <f9>") 'planner-goto-today)
+#+END_EXAMPLE
+
+I checked my timeclock reports with M-x planner-timeclock-summary-show,
+which gave me reports that looked like this:
+
+#+BEGIN_EXAMPLE
+    Timeclock summary report for 2007.11.25
+
+    Project     | Time     | Ratio  | Task
+    Not Planned |  0:28:38 | 38.6%  | Do weekly review
+    .           |  0:45:37 | 61.4%  | Figure out how to set up syndicated blog on WordPress
+    Total:      |  1:14:15 | 100.0% | .
+
+
+    Day began: 21:01:20, Day ended: 22:16:06
+    Time elapsed: 1:14:46, Time clocked: 1:14:15
+    Time clocked ratio: 99.3%
+#+END_EXAMPLE
+
+It's easy to configure planner-timeclock-summary to add that report to
+ day pages automatically, but I rarely checked my time usage then, so I
+ didn't set that up. I also didn't usually need to see my time summary
+ for a particular project, but you could get that with
+ planner-timeclock-summary-proj.el.
+
+So at the end of this step, I had a warm and fuzzy feeling from seeing
+ many checked-off tasks on my task list. I published my task list to
+ the Net, too, which made it easy for other people to keep up to date
+ with what I was doing. Good stuff.
+
+Planner helped me keep track of the different things I wanted to do.
+ Working with the other Planner geeks was also an incredible
+ experience. I've switched to Org for my task management because Org
+ does timeclocking better, but I still miss being able to easily
+ organize, publish, and tweak my daily task list. =) If you're new to
+Emacs planning, I suggest giving both
+[[http://www.emacswiki.org/cgi-bin/wiki/OrgMode][OrgMode]] and
+[[http://www.emacswiki.org/cgi-bin/wiki/PlannerMode][PlannerMode]] a
+try!
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs]],
+[[http://www.technorati.com/tag/book][book]]

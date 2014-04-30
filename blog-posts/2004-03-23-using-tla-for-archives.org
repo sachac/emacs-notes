@@ -1,0 +1,17 @@
+#+TITLE: Using tla for archives
+
+March 23rd, 2004 -
+[[http://sachachua.com/blog/p/1919][http://sachachua.com/blog/p/1919]]
+
+Look! I'm being used as an example!
+
+[[http://tkd.kicks-ass.net/planner/GnuArch.html][http://tkd.kicks-ass.net/planner/GnuArch.html]]
+
+That's it, I've got to check out this checksumming thing... My name is
+at stake! ;)
+
+#+BEGIN_EXAMPLE
+       sachAway: Now that is definitely final, you are famous now.
+       sachAway: good idea, while you are it, sign your changes
+#+END_EXAMPLE
+

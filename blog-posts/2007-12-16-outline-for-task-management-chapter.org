@@ -1,0 +1,92 @@
+#+TITLE: Outline for task management chapter
+
+December 16th, 2007 -
+[[http://sachachua.com/blog/p/4513][http://sachachua.com/blog/p/4513]]
+
+**** Why manage your tasks in Emacs
+
+#+BEGIN_EXAMPLE
+    - [ ] What you might be using now
+      - [ ] Your brain
+      - [ ] Paper
+      - [ ] A text file
+      - [ ] A sophisticated task management system
+    - [ ] The power of customization (tell a story)
+    - [ ] Integrating with your non-Emacs life
+#+END_EXAMPLE
+
+**** Strategies for task management
+
+#+BEGIN_EXAMPLE
+    - [ ] Top-down
+    - [ ] Bottom-up
+    - [ ] Combining both strategies
+    - [ ] The daily and weekly reviews
+#+END_EXAMPLE
+
+**** Choosing a task manager
+
+#+BEGIN_EXAMPLE
+    - [ ] Outline-oriented planning, dynamic views
+    - [ ] Day orientation, more flexibility in prioritizing individual tasks, publishing, sharing additional information
+#+END_EXAMPLE
+
+**** Org
+
+#+BEGIN_EXAMPLE
+    - [ ] A day in the life
+    - [ ] The basics
+      - [ ] Working with tasks
+      - [ ] Viewing your task list
+      - [ ] Prioritizing tasks
+      - [ ] Scheduling tasks
+      - [ ] Viewing your agenda
+      - [ ] Marking a task as done
+      - [ ] Weekly reviews
+    - [ ] Intermediate topics
+      - [ ] Clocking time
+      - [ ] Repeating tasks
+      - [ ] Working with projects
+      - [ ] Working with tags
+    - [ ] Advanced stuff
+      - [ ] Managing multiple identities
+      - [ ] Estimating your time
+      - [ ] Publishing your task list
+        - [ ] Twitter task updates
+        - [ ] Daily task list
+        - [ ] Project summary
+#+END_EXAMPLE
+
+**** Planner
+
+#+BEGIN_EXAMPLE
+    - [ ] A day in the life
+    - [ ] The basics
+      - [ ] Working with tasks
+      - [ ] Viewing your task list for the day
+      - [ ] Prioritizing tasks
+      - [ ] Scheduling tasks
+      - [ ] Marking a task as done
+      - [ ] Weekly reviews
+    - [ ] Intermediate topics
+      - [ ] Clocking time
+      - [ ] Working with plan pages
+      - [ ] Task overviews
+      - [ ] Repeating tasks
+    - [ ] Advanced stuff
+      - [ ] Estimating your time
+      - [ ] Publishing your task list
+        - [ ] Private information in your tasks
+        - [ ] Twitter task updates
+        - [ ] Daily task list
+        - [ ] Project summary
+#+END_EXAMPLE
+
+**** Wrapping up
+
+On Technorati: [[http://www.technorati.com/tag/book][book]],
+[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs]],
+[[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: appt-display-format -- Variable: How appointment
+reminders should be displayed.

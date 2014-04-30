@@ -1,0 +1,82 @@
+#+TITLE: Keeping in touch
+
+May 5th, 2005 -
+[[http://sachachua.com/blog/p/2748][http://sachachua.com/blog/p/2748]]
+
+How can I keep in touch with other people?
+
+One way is to call people up or write them a friendly note every so
+ often. I find this difficult to do because I'm still not used to small
+ talk. I'm also not used to being interrupted for a purely social call
+ unless it's someone I know well. I'm much more comfortable dealing
+ with information. I want to be useful.
+
+First, I need to keep track of people's interests. When I run across
+ something that might be useful for them, I can send them the
+ information. If I also keep track of other little facts I know about
+ people, then I can make them feel a little more special.
+
+Second, I should regularly refresh my contacts. I should make sure I
+ keep in touch with people. Maybe I should set goals for how often I
+ should get in touch with different kinds of people. There are people I
+ don't expect further contact with, there are people I should write at
+ least once a year, and there are people I'd like to correspond with
+ more frequently.
+
+The next step would be to proactively search for useful information.
+ If I periodically read about other people's interests, I will not only
+ learn many new things and gain more common ground with them, but might
+ also find resources they haven't run across before.
+
+WHAT I CURRENTLY HAVE:
+
+I already keep notes on people in my BBDB (Big Brother Database,
+ Emacs). BBDB makes it easy for me to associate notes with e-mail.
+ Whenever I read a message from someone in my address book, the BBDB
+ record pops up and I can review or add notes easily.
+
+However, I don't regularly review these contacts or make a conscious
+ effort to stay in touch with a wide range of people. I tend to react
+ instead of act, and I'd like to change that.
+
+WHAT I'D LIKE TO HAVE:
+
+I would like to be able to see my contacts grouped by relative
+ frequency. This would allow me to flip through, say, all the people I
+ have yet to contact this year, and randomly pick people to get in
+ touch with. I need to also keep track of our last few communications,
+ in terms of both when I got in touch with that person and when I got a
+ reply.
+
+I would like to be able to see my contacts grouped by interest. I can
+ achieve the same effect by searching through the records for a
+ particular keyword. This would allow me to easily look up all the
+ people I should get in touch with regarding a particular topic.
+
+I would like to be able to create tasks based on each contact or group
+ of contacts. I should be able to list all the tasks associated with a
+ particular person as well as see the tasks on my day page, perhaps
+ under the “social” context.
+
+WHAT I CAN DO:
+
+First, I should add two fields to my BBDB records to keep track of the
+ last time I spoke/wrote to the person and the last time I received a
+ reply. I can probably configure Gnus to update this automatically for
+ mail, although I can also do that myself. I can also add an entry for
+ maximum days without contact, or something like that.
+
+I can add another field called “Next action”, which keeps track of the
+ next thing I can do for that person.
+
+I can write Emacs Lisp code to extract all the relevant information
+ from BBDB and prioritize the list.
+
+Hmmm. Sounds useful.
+
+Ã¦ÂœÂ€Ã¨Â¿Â‘Ã£Â‚Â³Ã£ÂƒÂ³Ã£ÂƒÂ”Ã£ÂƒÂ¥Ã£ÂƒÂ¼Ã£Â‚Â¿Ã§Â”Â¨Ã£Â?Â®Ã¦Â--Â°Ã£Â?Â---Ã£Â?Â„Ã¦ÂœÂºÃ£Â‚Â'Ã¨Â²Â·Ã£Â?Â„Ã£Â?Â¾Ã£Â?Â---Ã£Â?ÂŸÃ£Â€Â‚
+I just bought a new desk for my computer.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/productivity][productivity]],
+[[http://www.technorati.com/tag/organizer][organizer]]

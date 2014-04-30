@@ -1,0 +1,8 @@
+#+TITLE: Emacs macros
+
+August 5th, 2003 -
+[[http://sachachua.com/blog/p/969][http://sachachua.com/blog/p/969]]
+
+Keyboard macros in Emacs allow me to easily generate the gallery from
+ the pipe-separated values I exported from Gnumeric. Viva open source!
+ Viva la revolucion!

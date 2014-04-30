@@ -1,0 +1,12 @@
+#+TITLE: Faster mail with Emacs
+
+April 12th, 2008 -
+[[http://sachachua.com/blog/p/4835][http://sachachua.com/blog/p/4835]]
+
+I spent a few minutes getting offlineimap to synchronize my Gmail
+messages with dovecot, an IMAP server on my laptop. I also set up Gnus
+to work with the messages. Now I'm having /fun/ speeding through my
+inbox. I don't know why, but my text-based terminal seems a lot zippier
+and a lot easier to work with than Gmail... =)
+
+I'm glad I'm back to doing my mail in Emacs!

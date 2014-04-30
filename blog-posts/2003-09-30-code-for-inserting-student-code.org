@@ -1,0 +1,26 @@
+#+TITLE: Code for inserting student code
+
+September 30th, 2003 -
+[[http://sachachua.com/blog/p/1188][http://sachachua.com/blog/p/1188]]
+
+#+BEGIN_EXAMPLE
+    (defvar sacha/project-base-path nil "*The path to the project files, excluding the ending /")
+    (defun sacha/insert-student-files (id)
+      (interactive "MID: ")
+      (if (file-directory-p (concat sacha/project-base-path "/" id))
+          (progn
+            (cd (concat sacha/project-base-path "/" id))
+            (mapcar (lambda (item)
+                      (print item)
+                      (insert "--------------------------------------------------------------------\n")
+                      (insert "Your code: " item "\n")
+                      (insert "--------------------------------------------------------------------\n")
+                      (let ((retval (cadr (insert-file-contents item))))
+                        (goto-char (+ (point) retval))
+                        (insert "\n")))
+                    (file-expand-wildcards "*")))
+         (insert "***********************************************************\n"
+                 "You have not yet submitted any files.\n"
+                 "***********************************************************\n")))
+#+END_EXAMPLE
+

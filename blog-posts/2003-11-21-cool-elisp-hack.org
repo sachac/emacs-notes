@@ -1,0 +1,51 @@
+#+TITLE: Cool elisp hack!
+
+November 21st, 2003 -
+[[http://sachachua.com/blog/p/1380][http://sachachua.com/blog/p/1380]]
+
+I've gotten the bot-like improvements I wanted thanks to these snippets
+of elisp code:
+
+#+BEGIN_EXAMPLE
+    (require 'hippie-exp)
+
+    (setq hippie-expand-try-functions-list
+          '(sacha/try-expand-factoid-from-bbdb
+            try-complete-file-name
+            try-expand-all-abbrevs
+            try-expand-dabbrev-from-kill
+            try-expand-dabbrev-visible
+            try-expand-dabbrev-all-buffers))
+
+    ;; Particularly fun with ERC. I am now a bot!
+    (defun sacha/try-expand-factoid-from-bbdb (old)
+      "Try to expand from BBDB. If OLD is non-nil, cycle through other possibilites."
+      (unless old
+          ;; First time, so search through the BBDB records for the factoid.
+        (progn
+          (he-init-string (he-dabbrev-beg) (point))
+          (setq he-expand-list nil)
+          (mapc
+           (lambda (item)
+             (setq he-expand-list (append he-expand-list (list (bbdb-record-getprop item 'blog))))
+             (setq he-expand-list (append he-expand-list (list (bbdb-record-getprop item 'web))))
+             (setq he-expand-list (append he-expand-list (list (car (bbdb-record-net item)))))
+             (setq he-expand-list (append he-expand-list (list (bbdb-record-getprop item 'notes)))))
+           (bbdb-search (bbdb-records) he-search-string he-search-string he-search-string he-search-string nil))
+          (setq he-expand-list (delq nil he-expand-list))))
+      (while (and he-expand-list
+                  (or (not (car he-expand-list))
+                      (he-string-member (car he-expand-list) he-tried-table t)))
+        (setq he-expand-list (cdr he-expand-list)))
+      (if (null he-expand-list)
+          (progn
+            (if old (he-reset-string))
+            nil)
+        (progn
+          (he-substitute-string (car he-expand-list) t)
+          (setq he-expand-list (cdr he-expand-list))
+          t)))
+#+END_EXAMPLE
+
+hippie-expand inside an ERC buffer will then cycle through the blog,
+web, net and notes fields of whatever entries I have. Yay! =)

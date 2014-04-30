@@ -1,0 +1,84 @@
+#+TITLE: BBDB: Show a phone list
+
+February 14th, 2008 -
+[[http://sachachua.com/blog/p/4763][http://sachachua.com/blog/p/4763]]
+
+When I find myself in an airport, I sometimes take a little time to say
+hi to a bunch of people who are suddenly just a local call a way. Or
+sometimes I'm thinking of going somewhere, and instead of flipping
+through my phone's address book, I'll check my computer to see who might
+be interested.
+
+You can use this function to filter phone numbers in your BBDB based on
+a regular expression. As usual, leaving the regular expression blank
+means that all records with phone numbers will be displayed. By default,
+the function works on the currently displayed records, allowing you to
+apply multiple filters. You can call it with a universal prefix argument
+(C-u M-x sacha/bbdb-find-people-with-phones) to match against all
+contacts in your database.
+
+Here's the code:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-find-people-with-phones (&optional regexp records)
+      "Search for phone numbers that match REGEXP in BBDB RECORDS.
+    Without a prefix argument, filter the list of displayed records.
+    Call with a prefix argument to search the entire database.  This
+    works best if you use a consistent format to store your phone
+    numbers.  The search will strip out non-numeric characters. For
+    example, +1-888-123-4567 will be treated as +18001234567.
+
+    To search for all numbers in Toronto, search for
+    \"+1\\(416\\|647\\)\". If you search for certain areas
+    frequently, it might be a good idea to define a function for
+    them."
+      (interactive (list (read-string "Regexp: ")
+                 (if current-prefix-arg
+                 (bbdb-records)
+                   (or bbdb-records (bbdb-records)))))
+      (let (filtered next)
+        (while records
+          (when
+              (and (bbdb-record-get-field-internal
+            (if (arrayp (car records))
+                (car records)
+              (caar records)) 'phone)
+                   (or
+                    (null regexp)
+            (string= regexp "")
+                    (delq nil
+                          (mapcar
+                           (lambda (phone)
+                 (when (string-match regexp (sacha/bbdb-phone-string phone))
+                   (concat (bbdb-phone-location phone) ": " (bbdb-phone-string phone))))
+                           (bbdb-record-get-field-internal
+                            (if (arrayp (car records))
+                                (car records)
+                              (caar records)) 'phone)))))
+            (setq filtered (cons (if (arrayp (car records))
+                                     (car records)
+                                   (caar records)) filtered)))
+          (setq records (cdr records)))
+        (bbdb-display-records (nreverse filtered))))
+
+    (defun sacha/bbdb-phone-string (&optional phone)
+      "Strip non-numeric characters from PHONE, except for +."
+      (replace-regexp-in-string "[^+1234567890]" "" (bbdb-phone-string phone)))
+       
+    (defun sacha/bbdb-yank-phones ()
+      "Copy a phone list into the kill ring."
+      (interactive)
+      (kill-new
+       (mapconcat
+        (lambda (record)
+          (mapconcat
+           (lambda (phone)
+         (concat (bbdb-record-name (car record)) "\t" 
+                     (bbdb-phone-location phone) "\t"
+             (bbdb-phone-string phone)))
+            (bbdb-record-get-field-internal (car record) 'phone)
+            "\n"))
+        bbdb-records
+        "\n")))
+#+END_EXAMPLE
+

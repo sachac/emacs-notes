@@ -1,0 +1,49 @@
+#+TITLE: Writing macrons in Linux for Latin pronunciation
+
+April 25th, 2011 -
+[[http://sachachua.com/blog/p/22212][http://sachachua.com/blog/p/22212]]
+
+Frustrated with the inability to search the scanned images of the 1822
+Latin textbook we're using (Albert Harkness'
+[[http://www.archive.org/details/aneasymethodfor00harkgoog][An Easy
+Method for Beginners in Latin]] -- get the PDF, the full-text version is
+badly OCRed), W- has taken it upon himself to recreate the public-domain
+textbook as a fully searchable TiddlyWiki (sans illustrations). This
+meant that he needed to type in a great number of macrons in the words,
+and /that/ meant finding a better way than copying and pasting from
+KDE's character map.
+
+[[http://en.wikipedia.org/wiki/Macron][Macrons]] turn up in many
+languages. In Japanese, you use them to indicate that vowels are
+doubled. 大阪（おおさか）can be romanized as Oosaka or Ōsaka. In Latin,
+beginner textbooks often use macrons (macra) to indicate pronunciation.
+(Why do we care about pronunciation for a dead language used mostly in
+church hymns? W- and I actually want to be able to use this
+conversationally, at least with each other. After all, if you don't use
+it, you lose it.)
+
+I suggested Emacs. In Emacs, it's just a matter of using
+=M-x set-input-method= to choose =latin-alt-postfix=. With that input
+method, you can add macrons to letters by typing -- after them. For
+example, typing “a -” will result in ā. Not only that, dynamic
+abbreviations (=M-/=) make it easier to retype words you've already
+written before.
+
+W- wouldn't hear of using Emacs, being almost as firmly wedded to =vi=
+as he is to me. ;)
+
+Instead, we spent some time figuring out how to set up KDE and gvim to
+make it easier for him to type in macrons. HTML character sequences were
+out of the question, of course. W- used KDE's settings to map his unused
+Windows key and menu key to compose keys. That made it easier to produce
+ē, ī, ō, and ū using the key sequence “Compose + hyphen + vowel”.
+However, “Compose + hyphen + a” produced ã, not ā. This was probably a
+bug based on some issue reports we found on the Net, but the suggested
+fix didn't work (im-switch -c to change to default-xim). I found a page
+describing an =.XCompose= fix, customizing the key sequences. He copied
+the relevant key sequences from en-US's locale settings for Compose in
+=/usr/share/X11=, restarted X, and it worked.
+
+Now he's off and typing!
+
+2011-04-24 Sun 23:21

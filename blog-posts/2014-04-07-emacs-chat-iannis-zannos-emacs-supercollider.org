@@ -1,0 +1,19 @@
+#+TITLE: Emacs Chat: Iannis Zannos -- Emacs and SuperCollider
+
+April 7th, 2014 -
+[[http://sachachua.com/blog/p/27163][http://sachachua.com/blog/p/27163]]
+
+Emacs! Music! [[https://plus.google.com/114167753587024532473][Iannis
+Zannos]] shares how Emacs can be used for all sorts of awesomeness with
+Org Mode and SuperCollider.
+
+Check this
+[[https://plus.google.com/events/c092ip9f2vv6fhs6tbtid83h1sg][event
+page]] for details and comments =)
+
+[[http://archive.org/download/EmacsChatIannisZannos/Emacs-Chat_Iannis-Zannos.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[http://archive.org/download/EmacsChatIannisZannos/Emacs-Chat_Iannis-Zannos.mp3][Play
+in new window]] |
+[[http://archive.org/download/EmacsChatIannisZannos/Emacs-Chat_Iannis-Zannos.mp3][Download]]

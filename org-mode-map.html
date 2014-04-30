@@ -1,0 +1,607 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>org-mode-map</title>
+<!-- 2014-04-30 Wed 16:09 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<link rel="stylesheet" type="text/css" href="./css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="./css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="./css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="./css/emacs-notes.css"></link>
+<script src="./js/jquery.min.js"></script>
+<script src="./js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">org-mode-map</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#Map">1. Map</a>
+<ul>
+<li><a href="#Outlines">1.1. Outlines</a></li>
+<li><a href="#Outline_manipulation">1.2. Outline manipulation</a></li>
+<li><a href="#Simple_markup">1.3. Simple markup</a></li>
+<li><a href="#Lists">1.4. Lists</a></li>
+<li><a href="#List_manipulation">1.5. List manipulation</a></li>
+<li><a href="#Tables">1.6. Tables</a></li>
+<li><a href="#Spreadsheets">1.7. Spreadsheets</a></li>
+<li><a href="#Links">1.8. Links</a></li>
+<li><a href="#Export">1.9. Export</a></li>
+<li><a href="#Blocks">1.10. Blocks</a></li>
+<li><a href="#File_options">1.11. File options</a></li>
+<li><a href="#Publishing">1.12. Publishing</a></li>
+<li><a href="#Blogging">1.13. Blogging</a></li>
+<li><a href="#TODOs">1.14. TODOs</a></li>
+<li><a href="#Scheduling">1.15. Scheduling</a></li>
+<li><a href="#Date_offsets">1.16. Date offsets</a></li>
+<li><a href="#Agendas">1.17. Agendas</a></li>
+<li><a href="#Repeating">1.18. Repeating</a></li>
+<li><a href="#Logs">1.19. Logs</a></li>
+<li><a href="#Tags">1.20. Tags</a></li>
+<li><a href="#Search">1.21. Search</a></li>
+<li><a href="#Custom_agenda">1.22. Custom agenda</a></li>
+<li><a href="#Stuck_projects">1.23. Stuck projects</a></li>
+<li><a href="#Config">1.24. Config</a></li>
+<li><a href="#Capture">1.25. Capture</a></li>
+<li><a href="#Refiling">1.26. Refiling</a></li>
+<li><a href="#Sorting">1.27. Sorting</a></li>
+<li><a href="#Archiving">1.28. Archiving</a></li>
+<li><a href="#Multiple_files">1.29. Multiple files</a></li>
+<li><a href="#Include">1.30. Include</a></li>
+<li><a href="#MobileOrg">1.31. MobileOrg</a></li>
+<li><a href="#Clock">1.32. Clock</a></li>
+<li><a href="#Report">1.33. Report</a></li>
+<li><a href="#Effort">1.34. Effort</a></li>
+<li><a href="#Columns">1.35. Columns</a></li>
+<li><a href="#Dynamic_blocks">1.36. Dynamic blocks</a></li>
+<li><a href="#Babel">1.37. Babel</a></li>
+<li><a href="#Presentations">1.38. Presentations</a></li>
+<li><a href="#Deadlines">1.39. Deadlines</a></li>
+<li><a href="#Properties">1.40. Properties</a></li>
+<li><a href="#Images">1.41. Images</a></li>
+<li><a href="#Attachments">1.42. Attachments</a></li>
+</ul>
+</li>
+<li><a href="#Code">2. Code</a></li>
+</ul>
+</div>
+</div>
+<ul class="org-ul">
+<li><code>[X]</code> Outlines
+</li>
+<li><code>[X]</code> Capture
+</li>
+</ul>
+
+<div id="outline-container-Map" class="outline-2">
+<h2 id="Map"><a id="sec-1" name="sec-1"></a><span class="section-number-2">1</span> Map</h2>
+<div class="outline-text-2" id="text-Map">
+
+<pre class="example">
+org_mode_map.png
+</pre>
+
+
+<div class="figure">
+<p><img src="org_mode_map.png" alt="org_mode_map.png" usemap="#G" style="max-width: none" />
+</p>
+</div>
+
+<map id="G" name="G">
+<area shape="rect" id="node1" href="#Dynamic_blocks" title="Dynamic blocks" alt="" coords="313,188,391,211"/>
+<area shape="rect" id="node2" href="#Babel" title="Babel" alt="" coords="529,235,564,258"/>
+<area shape="rect" id="node3" href="#Columns" title="Columns" alt="" coords="328,235,377,258"/>
+<area shape="rect" id="node4" href="#Properties" title="Properties" alt="" coords="324,281,380,304"/>
+<area shape="rect" id="node5" href="#Effort" title="Effort" alt="" coords="266,188,301,211"/>
+<area shape="rect" id="node6" href="#Report" title="Report" alt="" coords="291,142,331,165"/>
+<area shape="rect" id="node7" href="#Clock" title="Clock" alt="" coords="294,95,329,119"/>
+<area shape="rect" id="node8" href="#Multiple_files" title="Multiple files" alt="" coords="2,235,68,258"/>
+<area shape="rect" id="node9" href="#Include" title="Include" alt="" coords="14,281,57,304"/>
+<area shape="rect" id="node10" href="#Archiving" title="Archiving" alt="" coords="29,188,79,211"/>
+<area shape="rect" id="node11" href="#Refiling" title="Refiling" alt="" coords="99,142,142,165"/>
+<area shape="rect" id="node12" href="#Sorting" title="Sorting" alt="" coords="100,188,141,211"/>
+<area shape="rect" id="node13" href="#Capture" title="Capture" alt="" coords="107,95,153,119"/>
+<area shape="rect" id="node14" href="#Search" title="Search" alt="" coords="211,281,251,304"/>
+<area shape="rect" id="node15" href="#Stuck_projects" title="Stuck projects" alt="" coords="153,328,224,351"/>
+<area shape="rect" id="node16" href="#Custom_agenda" title="Custom agenda" alt="" coords="235,328,314,351"/>
+<area shape="rect" id="node17" href="#Tags" title="Tags" alt="" coords="214,235,249,258"/>
+<area shape="rect" id="node18" href="#Repeating" title="Repeating" alt="" coords="261,235,315,258"/>
+<area shape="rect" id="node19" href="#Logs" title="Logs" alt="" coords="271,281,306,304"/>
+<area shape="rect" id="node20" href="#Agendas" title="Agendas" alt="" coords="179,188,227,211"/>
+<area shape="rect" id="node21" href="#MobileOrg" title="MobileOrg" alt="" coords="80,235,136,258"/>
+<area shape="rect" id="node22" href="#Deadlines" title="Deadlines" alt="" coords="148,235,202,258"/>
+<area shape="rect" id="node23" href="#Date_offsets" title="Date offsets" alt="" coords="172,142,234,165"/>
+<area shape="rect" id="node24" href="#Scheduling" title="Scheduling" alt="" coords="174,95,232,119"/>
+<area shape="rect" id="node25" href="#TODOs" title="TODOs" alt="" coords="242,49,284,72"/>
+<area shape="rect" id="node26" href="#Config" title="Config" alt="" coords="244,95,282,119"/>
+<area shape="rect" id="node27" href="#Publishing" title="Publishing" alt="" coords="661,235,716,258"/>
+<area shape="rect" id="node28" href="#Blogging" title="Blogging" alt="" coords="665,281,712,304"/>
+<area shape="rect" id="node29" href="#File_options" title="File options" alt="" coords="658,188,719,211"/>
+<area shape="rect" id="node30" href="#Export" title="Export" alt="" coords="593,142,632,165"/>
+<area shape="rect" id="node31" href="#Blocks" title="Blocks" alt="" coords="501,188,539,211"/>
+<area shape="rect" id="node32" href="#Presentations" title="Presentations" alt="" coords="551,188,622,211"/>
+<area shape="rect" id="node33" href="#Links" title="Links" alt="" coords="764,142,799,165"/>
+<area shape="rect" id="node34" href="#Footnotes" title="Footnotes" alt="" coords="784,188,838,211"/>
+<area shape="rect" id="node35" href="#Attachments" title="Attachments" alt="" coords="849,188,916,211"/>
+<area shape="rect" id="node36" href="#Images" title="Images" alt="" coords="731,188,772,211"/>
+<area shape="rect" id="node37" href="#Tables" title="Tables" alt="" coords="891,142,930,165"/>
+<area shape="rect" id="node38" href="#Spreadsheets" title="Spreadsheets" alt="" coords="927,188,997,211"/>
+<area shape="rect" id="node39" href="#Lists" title="Lists" alt="" coords="487,142,522,165"/>
+<area shape="rect" id="node40" href="#List_manipulation" title="List manipulation" alt="" coords="403,188,489,211"/>
+<area shape="rect" id="node41" href="#Simple_markup" title="Simple markup" alt="" coords="575,95,651,119"/>
+<area shape="rect" id="node42" href="#Outline_manipulation" title="Outline manipulation" alt="" coords="428,49,532,72"/>
+<area shape="rect" id="node43" href="#Outlines" title="Outlines" alt="" coords="348,3,395,26"/>
+</map>
+</div>
+
+<div id="outline-container-Outlines" class="outline-3">
+<h3 id="Outlines"><a id="sec-1-1" name="sec-1-1"></a><span class="section-number-3">1.1</span> Outlines</h3>
+<div class="outline-text-3" id="text-Outlines">
+<p>
+Next: <a href="#sec-1-2">1.2</a>
+See also: <a href="#sec-1-14">1.14</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Outline_manipulation" class="outline-3">
+<h3 id="Outline_manipulation"><a id="sec-1-2" name="sec-1-2"></a><span class="section-number-3">1.2</span> Outline manipulation</h3>
+<div class="outline-text-3" id="text-Outline_manipulation">
+<p>
+Next: <a href="#sec-1-3">1.3</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Simple_markup" class="outline-3">
+<h3 id="Simple_markup"><a id="sec-1-3" name="sec-1-3"></a><span class="section-number-3">1.3</span> Simple markup</h3>
+<div class="outline-text-3" id="text-Simple_markup">
+<p>
+Next: <a href="#sec-1-8">1.8</a>
+See also: <a href="#sec-1-4">1.4</a>
+See also: <a href="#sec-1-6">1.6</a>
+See also: <a href="#sec-1-9">1.9</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Lists" class="outline-3">
+<h3 id="Lists"><a id="sec-1-4" name="sec-1-4"></a><span class="section-number-3">1.4</span> Lists</h3>
+<div class="outline-text-3" id="text-Lists">
+<p>
+Next: <a href="#sec-1-5">1.5</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-List_manipulation" class="outline-3">
+<h3 id="List_manipulation"><a id="sec-1-5" name="sec-1-5"></a><span class="section-number-3">1.5</span> List manipulation</h3>
+<div class="outline-text-3" id="text-List_manipulation">
+</div>
+</div>
+
+<div id="outline-container-Tables" class="outline-3">
+<h3 id="Tables"><a id="sec-1-6" name="sec-1-6"></a><span class="section-number-3">1.6</span> Tables</h3>
+<div class="outline-text-3" id="text-Tables">
+<p>
+Next: <a href="#sec-1-7">1.7</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Spreadsheets" class="outline-3">
+<h3 id="Spreadsheets"><a id="sec-1-7" name="sec-1-7"></a><span class="section-number-3">1.7</span> Spreadsheets</h3>
+<div class="outline-text-3" id="text-Spreadsheets">
+</div>
+</div>
+
+<div id="outline-container-Links" class="outline-3">
+<h3 id="Links"><a id="sec-1-8" name="sec-1-8"></a><span class="section-number-3">1.8</span> Links</h3>
+<div class="outline-text-3" id="text-Links">
+<p>
+Next: <a href="#sec-1-41">1.41</a>
+See also: <a href="#sec-1-42">1.42</a>
+See also: <a href="#sec"></a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Export" class="outline-3">
+<h3 id="Export"><a id="sec-1-9" name="sec-1-9"></a><span class="section-number-3">1.9</span> Export</h3>
+<div class="outline-text-3" id="text-Export">
+<p>
+Next: <a href="#sec-1-11">1.11</a>
+See also: <a href="#sec-1-37">1.37</a>
+See also: <a href="#sec-1-38">1.38</a>
+See also: <a href="#sec-1-10">1.10</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Blocks" class="outline-3">
+<h3 id="Blocks"><a id="sec-1-10" name="sec-1-10"></a><span class="section-number-3">1.10</span> Blocks</h3>
+<div class="outline-text-3" id="text-Blocks">
+</div>
+</div>
+
+<div id="outline-container-File_options" class="outline-3">
+<h3 id="File_options"><a id="sec-1-11" name="sec-1-11"></a><span class="section-number-3">1.11</span> File options</h3>
+<div class="outline-text-3" id="text-File_options">
+<p>
+Next: <a href="#sec-1-12">1.12</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Publishing" class="outline-3">
+<h3 id="Publishing"><a id="sec-1-12" name="sec-1-12"></a><span class="section-number-3">1.12</span> Publishing</h3>
+<div class="outline-text-3" id="text-Publishing">
+<p>
+Next: <a href="#sec-1-13">1.13</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Blogging" class="outline-3">
+<h3 id="Blogging"><a id="sec-1-13" name="sec-1-13"></a><span class="section-number-3">1.13</span> Blogging</h3>
+<div class="outline-text-3" id="text-Blogging">
+</div>
+</div>
+
+<div id="outline-container-TODOs" class="outline-3">
+<h3 id="TODOs"><a id="sec-1-14" name="sec-1-14"></a><span class="section-number-3">1.14</span> TODOs</h3>
+<div class="outline-text-3" id="text-TODOs">
+<p>
+Next: <a href="#sec-1-15">1.15</a>
+See also: <a href="#sec-1-24">1.24</a>
+See also: <a href="#sec-1-32">1.32</a>
+See also: <a href="#sec-1-25">1.25</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Scheduling" class="outline-3">
+<h3 id="Scheduling"><a id="sec-1-15" name="sec-1-15"></a><span class="section-number-3">1.15</span> Scheduling</h3>
+<div class="outline-text-3" id="text-Scheduling">
+<p>
+Next: <a href="#sec-1-16">1.16</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Date_offsets" class="outline-3">
+<h3 id="Date_offsets"><a id="sec-1-16" name="sec-1-16"></a><span class="section-number-3">1.16</span> Date offsets</h3>
+<div class="outline-text-3" id="text-Date_offsets">
+<p>
+Next: <a href="#sec-1-17">1.17</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Agendas" class="outline-3">
+<h3 id="Agendas"><a id="sec-1-17" name="sec-1-17"></a><span class="section-number-3">1.17</span> Agendas</h3>
+<div class="outline-text-3" id="text-Agendas">
+<p>
+Next: <a href="#sec-1-39">1.39</a>
+See also: <a href="#sec-1-18">1.18</a>
+See also: <a href="#sec-1-20">1.20</a>
+See also: <a href="#sec-1-31">1.31</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Repeating" class="outline-3">
+<h3 id="Repeating"><a id="sec-1-18" name="sec-1-18"></a><span class="section-number-3">1.18</span> Repeating</h3>
+<div class="outline-text-3" id="text-Repeating">
+<p>
+Next: <a href="#sec-1-19">1.19</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Logs" class="outline-3">
+<h3 id="Logs"><a id="sec-1-19" name="sec-1-19"></a><span class="section-number-3">1.19</span> Logs</h3>
+<div class="outline-text-3" id="text-Logs">
+</div>
+</div>
+
+<div id="outline-container-Tags" class="outline-3">
+<h3 id="Tags"><a id="sec-1-20" name="sec-1-20"></a><span class="section-number-3">1.20</span> Tags</h3>
+<div class="outline-text-3" id="text-Tags">
+<p>
+Next: <a href="#sec-1-21">1.21</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Search" class="outline-3">
+<h3 id="Search"><a id="sec-1-21" name="sec-1-21"></a><span class="section-number-3">1.21</span> Search</h3>
+<div class="outline-text-3" id="text-Search">
+<p>
+Next: <a href="#sec-1-22">1.22</a>
+See also: <a href="#sec-1-23">1.23</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Custom_agenda" class="outline-3">
+<h3 id="Custom_agenda"><a id="sec-1-22" name="sec-1-22"></a><span class="section-number-3">1.22</span> Custom agenda</h3>
+<div class="outline-text-3" id="text-Custom_agenda">
+</div>
+</div>
+
+<div id="outline-container-Stuck_projects" class="outline-3">
+<h3 id="Stuck_projects"><a id="sec-1-23" name="sec-1-23"></a><span class="section-number-3">1.23</span> Stuck projects</h3>
+<div class="outline-text-3" id="text-Stuck_projects">
+</div>
+</div>
+
+<div id="outline-container-Config" class="outline-3">
+<h3 id="Config"><a id="sec-1-24" name="sec-1-24"></a><span class="section-number-3">1.24</span> Config</h3>
+<div class="outline-text-3" id="text-Config">
+</div>
+</div>
+
+<div id="outline-container-Capture" class="outline-3">
+<h3 id="Capture"><a id="sec-1-25" name="sec-1-25"></a><span class="section-number-3">1.25</span> Capture</h3>
+<div class="outline-text-3" id="text-Capture">
+<p>
+Next: <a href="#sec-1-26">1.26</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Refiling" class="outline-3">
+<h3 id="Refiling"><a id="sec-1-26" name="sec-1-26"></a><span class="section-number-3">1.26</span> Refiling</h3>
+<div class="outline-text-3" id="text-Refiling">
+<p>
+Next: <a href="#sec-1-27">1.27</a>
+See also: <a href="#sec-1-28">1.28</a>
+</p>
+</div>
+</div>
+<div id="outline-container-Sorting" class="outline-3">
+<h3 id="Sorting"><a id="sec-1-27" name="sec-1-27"></a><span class="section-number-3">1.27</span> Sorting</h3>
+<div class="outline-text-3" id="text-Sorting">
+</div>
+</div>
+
+<div id="outline-container-Archiving" class="outline-3">
+<h3 id="Archiving"><a id="sec-1-28" name="sec-1-28"></a><span class="section-number-3">1.28</span> Archiving</h3>
+<div class="outline-text-3" id="text-Archiving">
+<p>
+Next: <a href="#sec-1-29">1.29</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Multiple_files" class="outline-3">
+<h3 id="Multiple_files"><a id="sec-1-29" name="sec-1-29"></a><span class="section-number-3">1.29</span> Multiple files</h3>
+<div class="outline-text-3" id="text-Multiple_files">
+<p>
+Next: <a href="#sec-1-30">1.30</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Include" class="outline-3">
+<h3 id="Include"><a id="sec-1-30" name="sec-1-30"></a><span class="section-number-3">1.30</span> Include</h3>
+<div class="outline-text-3" id="text-Include">
+</div>
+</div>
+
+<div id="outline-container-MobileOrg" class="outline-3">
+<h3 id="MobileOrg"><a id="sec-1-31" name="sec-1-31"></a><span class="section-number-3">1.31</span> MobileOrg</h3>
+<div class="outline-text-3" id="text-MobileOrg">
+</div>
+</div>
+
+<div id="outline-container-Clock" class="outline-3">
+<h3 id="Clock"><a id="sec-1-32" name="sec-1-32"></a><span class="section-number-3">1.32</span> Clock</h3>
+<div class="outline-text-3" id="text-Clock">
+<p>
+Next: <a href="#sec-1-33">1.33</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Report" class="outline-3">
+<h3 id="Report"><a id="sec-1-33" name="sec-1-33"></a><span class="section-number-3">1.33</span> Report</h3>
+<div class="outline-text-3" id="text-Report">
+<p>
+Next: <a href="#sec-1-34">1.34</a>
+See also: <a href="#sec-1-36">1.36</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Effort" class="outline-3">
+<h3 id="Effort"><a id="sec-1-34" name="sec-1-34"></a><span class="section-number-3">1.34</span> Effort</h3>
+<div class="outline-text-3" id="text-Effort">
+<p>
+Next: <a href="#sec-1-35">1.35</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Columns" class="outline-3">
+<h3 id="Columns"><a id="sec-1-35" name="sec-1-35"></a><span class="section-number-3">1.35</span> Columns</h3>
+<div class="outline-text-3" id="text-Columns">
+<p>
+Next: <a href="#sec-1-40">1.40</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Dynamic_blocks" class="outline-3">
+<h3 id="Dynamic_blocks"><a id="sec-1-36" name="sec-1-36"></a><span class="section-number-3">1.36</span> Dynamic blocks</h3>
+<div class="outline-text-3" id="text-Dynamic_blocks">
+<p>
+Next: <a href="#sec-1-37">1.37</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-Babel" class="outline-3">
+<h3 id="Babel"><a id="sec-1-37" name="sec-1-37"></a><span class="section-number-3">1.37</span> Babel</h3>
+<div class="outline-text-3" id="text-Babel">
+</div>
+</div>
+
+<div id="outline-container-Presentations" class="outline-3">
+<h3 id="Presentations"><a id="sec-1-38" name="sec-1-38"></a><span class="section-number-3">1.38</span> Presentations</h3>
+<div class="outline-text-3" id="text-Presentations">
+</div>
+</div>
+
+<div id="outline-container-Deadlines" class="outline-3">
+<h3 id="Deadlines"><a id="sec-1-39" name="sec-1-39"></a><span class="section-number-3">1.39</span> Deadlines</h3>
+<div class="outline-text-3" id="text-Deadlines">
+</div>
+</div>
+
+<div id="outline-container-Properties" class="outline-3">
+<h3 id="Properties"><a id="sec-1-40" name="sec-1-40"></a><span class="section-number-3">1.40</span> Properties</h3>
+<div class="outline-text-3" id="text-Properties">
+</div>
+</div>
+
+<div id="outline-container-Images" class="outline-3">
+<h3 id="Images"><a id="sec-1-41" name="sec-1-41"></a><span class="section-number-3">1.41</span> Images</h3>
+<div class="outline-text-3" id="text-Images">
+</div>
+</div>
+
+<div id="outline-container-Attachments" class="outline-3">
+<h3 id="Attachments"><a id="sec-1-42" name="sec-1-42"></a><span class="section-number-3">1.42</span> Attachments</h3>
+<div class="outline-text-3" id="text-Attachments">
+</div>
+</div>
+</div>
+
+<div id="outline-container-Code" class="outline-2">
+<h2 id="Code"><a id="sec-2" name="sec-2"></a><span class="section-number-2">2</span> Code</h2>
+<div class="outline-text-2" id="text-Code">
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp" id="path-from-tree">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">sacha/fill-string</span> (string new-fill-column <span style="font-weight: bold; text-decoration: underline;">&amp;optional</span> replace-char)
+  <span style="font-style: italic;">"Wrap STRING to NEW-FILL-COLUMN. Change newlines to REPLACE-CHAR."</span>
+  (<span style="font-weight: bold;">with-temp-buffer</span>
+    (insert string)
+    (<span style="font-weight: bold;">let</span> ((fill-column new-fill-column))
+      (fill-region (point-min) (point-max))
+      (<span style="font-weight: bold;">if</span> replace-char
+          (<span style="font-weight: bold;">progn</span>
+            (goto-char (point-min))
+            (<span style="font-weight: bold;">while</span> (re-search-forward <span style="font-style: italic;">"\n"</span> nil t)
+              (replace-match replace-char t t))))
+      (buffer-string))))
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">sacha/org-map-path</span> ()
+  <span style="font-style: italic;">"Return an alist, based on the tree and \"so that I can\" link structure.</span>
+<span style="font-style: italic;">Structure: ((nodes . ((components) ...)) (edges . ((a . b) ...)))"</span>
+  (<span style="font-weight: bold;">let</span> (nodes edges)
+    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Go through the entries</span>
+    (org-map-entries
+     (<span style="font-weight: bold;">lambda</span> ()
+       (<span style="font-weight: bold;">let</span> ((heading (org-heading-components)))
+         (<span style="font-weight: bold;">when</span> (= (car heading) 2)
+           (<span style="font-weight: bold;">save-excursion</span>
+             (<span style="font-weight: bold;">save-restriction</span>
+               <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Ignore subtrees in the body</span>
+               (org-narrow-to-subtree)
+               (<span style="font-weight: bold;">save-excursion</span>
+                 (org-set-property <span style="font-style: italic;">"CUSTOM_ID"</span> (replace-regexp-in-string <span style="font-style: italic;">"[</span><span style="font-style: italic;">^</span><span style="font-style: italic;">A-Za-z0-9]"</span> <span style="font-style: italic;">"_"</span> (elt heading 4))))
+               (end-of-line)
+               (narrow-to-region
+                (point-min)
+                (<span style="font-weight: bold;">if</span> (re-search-forward
+                     (concat <span style="font-style: italic;">"[\r\n]</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">"</span> org-outline-regexp <span style="font-style: italic;">"</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">"</span>) nil t)
+                    (match-beginning 1)
+                  (point-max)))
+               (goto-char (point-min))
+               (<span style="font-weight: bold;">when</span> (&gt; (car heading) 1)
+                 (setq nodes (cons heading nodes)))
+               (<span style="font-weight: bold;">while</span> (re-search-forward <span style="font-style: italic;">"</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">Next</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">See also</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">:"</span> nil t)
+                 (<span style="font-weight: bold;">while</span> (re-search-forward org-bracket-link-regexp (line-end-position) t)
+                   (setq edges (cons (cons (elt heading 4) (match-string-no-properties 1)) edges))))))))))
+    (list (cons 'nodes nodes) (cons 'edges edges)))) 
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">sacha/org-map-path-to-graphviz</span> (map fill-column)
+  <span style="font-style: italic;">"Convert MAP to a graphviz representation. Wrap titles at FILL-COLUMN."</span>
+  (<span style="font-weight: bold;">let</span> ((completed 
+         (mapcar (<span style="font-weight: bold;">lambda</span> (x) 
+                   (<span style="font-weight: bold;">if</span> (string-match <span style="font-style: italic;">"\\[</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">.*?</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">\\] +</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">.*</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">"</span> x) (cons (match-string 2 x) (match-string 1 x)))) completed)))
+    (concat
+     <span style="font-style: italic;">"digraph G {\n"</span>
+     <span style="font-style: italic;">"node [shape=box,fontname=\"Open Sans\",pad=1]\n"</span>
+     <span style="font-style: italic;">"edge [color=\"#CCCCCC\"]\n"</span>
+     (mapconcat
+      (<span style="font-weight: bold;">lambda</span> (x)
+        (format <span style="font-style: italic;">"\"%s\" -&gt; \"%s\""</span> 
+                (sacha/fill-string (car x) fill-column <span style="font-style: italic;">"\\n"</span>)
+                (sacha/fill-string (cdr x) fill-column <span style="font-style: italic;">"\\n"</span>)))
+      (cdr (assoc 'edges map))
+      <span style="font-style: italic;">"\n"</span>)
+     <span style="font-style: italic;">"\n"</span>
+     (mapconcat (<span style="font-weight: bold;">lambda</span> (x)
+                  (format
+                   (<span style="font-weight: bold;">if</span> (equal (assoc-default (elt x 4) completed) <span style="font-style: italic;">"CBON"</span>)
+                       <span style="font-style: italic;">"\"%s\" [style=filled, URL=\"#%s\", tooltip=\"%s\"]"</span>
+                     <span style="font-style: italic;">"\"%s\" [URL=\"#%s\", tooltip=\"%s\"]"</span>)
+                   (sacha/fill-string (elt x 4) fill-column <span style="font-style: italic;">"\\n"</span>)
+                   (replace-regexp-in-string <span style="font-style: italic;">"[</span><span style="font-style: italic;">^</span><span style="font-style: italic;">A-Za-z0-9]"</span> <span style="font-style: italic;">"_"</span> (elt x 4))
+                   (elt x 4)))
+                (cdr (assoc 'nodes map)) <span style="font-style: italic;">"\n"</span>)
+     <span style="font-style: italic;">"}\n"</span>)))
+(org-babel-execute:dot (sacha/org-map-path-to-graphviz (sacha/org-map-path) fill-column) params)
+</pre>
+</div>
+
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.back-to-top:hover {    
+    background-color: rgba(135, 135, 135, 0.50);
+}
+</style>
+
+<a class="back-to-top" href="#top">Back to top</a>
+
+<script type="text/javascript">
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+</script>    
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2014-04-30 Wed 16:09</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org">Org</a> mode 8.2.5h)</p>
+<p class="validation"></p>
+</div>
+</body>
+</html>

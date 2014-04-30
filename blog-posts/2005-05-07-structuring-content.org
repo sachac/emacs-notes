@@ -1,0 +1,61 @@
+#+TITLE: Structuring content
+
+May 7th, 2005 -
+[[http://sachachua.com/blog/p/2752][http://sachachua.com/blog/p/2752]]
+
+What do I write about that other people might find useful/interesting?
+
+-  Emacs-related stuff
+-  Personal information management and productivity
+-  [[http://sachachua.com/notebook/wiki/ShortStories.php][ShortStories]]
+   and
+   [[http://sachachua.com/notebook/wiki/FlashFiction.php][FlashFiction]]
+-  Teaching reflections (haven't been posting anything on this lately)
+
+How do I currently organize things?
+
+-  <notes> tag and cross-referencing notes on a topic page
+-  Emacs-related stuff:
+   [[http://sachachua.com/notebook/wiki/emacs.php][emacs]],
+   [[http://sachachua.com/notebook/wiki/planner.php][planner]],
+   [[http://sachachua.com/notebook/wiki/PlannerMode.php][PlannerMode]],
+   [[http://sachachua.com/notebook/wiki/EmacsHacks.php][EmacsHacks]],
+   [[http://sachachua.com/notebook/wiki/EmacsTips.php][EmacsTips]]
+-  PIM and productivity:
+   [[http://sachachua.com/notebook/wiki/LifeHacks.php][LifeHacks]]
+-  Teaching reflections:
+   [[http://sachachua.com/notebook/wiki/TeachingReflections.php][TeachingReflections]],
+   [[http://sachachua.com/notebook/wiki/TeachingIdeas.php][TeachingIdeas]]
+-  Topic-related RSS feeds:
+   [[http://sachachua.com/notebook/wiki/emacs.rdf][../wiki/emacs.rdf]],
+   [[http://sachachua.com/notebook/wiki/planner.rdf][../wiki/planner.rdf]],
+   [[http://sachachua.com/notebook/wiki/education.rdf][../wiki/education.rdf]],
+   [[http://sachachua.com/notebook/wiki/flash.rdf][../wiki/flash.rdf]]
+
+However, my wiki is not as organized and easy-to-read as it can be. It's
+difficult for people to find Emacs-related code and posts, for example.
+There are a lot of posts all over the place. I need to make it easy for
+people to browse titles so that they can get an idea of the things I
+blog about as well as spot something possibly useful. Articles should
+also be linked to previous articles in the same topic.
+
+The “Recent topics” thing in my sidebar is a good start. That way,
+people who visit my page instead of using an aggregator will be able to
+see a list of posts even if I skip days.
+
+Hmmm... I wonder how I can improve the way things are organized, not
+only for people who read this on my site but also for people who
+aggregate things...
+
+May 8, 2012
+
+I think a lot about how I can organize the information in my blog so
+that I can find things again and so that other people can make sense of
+my brain. My latest attempt is to manually maintain a
+[[https://dl.dropbox.com/u/3968124/blog.html][topical index of my blog
+posts]]. WordPress plugins also help people discover old blog posts.
+
+The links here are no longer useful because I've stopped using Planner
+to organize my notes. I've moved my Planner notes into WordPress,
+though, so you can browse through the categories and subscribe to them
+at [[http://sachachua.com][sachachua.com]].

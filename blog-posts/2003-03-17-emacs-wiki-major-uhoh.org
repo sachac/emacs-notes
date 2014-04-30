@@ -1,0 +1,7 @@
+#+TITLE: emacs-wiki major uhoh
+
+March 17th, 2003 -
+[[http://sachachua.com/blog/p/517][http://sachachua.com/blog/p/517]]
+
+Something is seriously screwing up some of my pages. NOTE: Make backup
+of correct plans! Must do damage control immediately.

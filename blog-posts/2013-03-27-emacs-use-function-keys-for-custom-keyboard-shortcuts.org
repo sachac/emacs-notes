@@ -1,0 +1,35 @@
+#+TITLE: Emacs: Use function keys for custom keyboard shortcuts
+
+March 27th, 2013 -
+[[http://sachachua.com/blog/p/24535][http://sachachua.com/blog/p/24535]]
+
+Quick tip since it was an aha! moment for some people on the #emacs IRC
+channel.
+
+You can define keyboard shortcuts that are sequences of keys. This is
+how Emacs can have keyboard shortcuts like =C-c C-c=. The function keys
+are great for this, because (a) they often don't have assigned functions
+(or have ones that you don't mind losing), and (b) you don't have to
+press two or more keys to start your shortcut sequence, like you would
+do with C-c.
+
+I like using F8 or F9 because I'm right-handed and my keyboard groups
+function keys together. On my keyboard, there's a slight gap separating
+F5-F8 and F9-F12, which means it's easy to distinguish F8 from F9 by
+feel if I happen to land on the edge.
+
+Define those keyboard shortcuts as sequences so that you can add more
+shortcuts easily without having to rejig your muscle memory.
+
+#+BEGIN_EXAMPLE
+    (global-set-key (kbd "<f9> <f9>") 'org-agenda-list)
+    (global-set-key (kbd "<f9> <f8>") (lambda () (interactive) (org-capture nil "r")))
+#+END_EXAMPLE
+
+If you want to rebind something that was previously bound to a
+non-prefix map, you can unbind it first:
+
+#+BEGIN_EXAMPLE
+    (global-unset-key (kbd "<f9>"))
+#+END_EXAMPLE
+

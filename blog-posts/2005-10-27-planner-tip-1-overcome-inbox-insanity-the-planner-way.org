@@ -1,0 +1,114 @@
+#+TITLE: Planner tip #1: Overcome inbox insanity the Planner way
+
+October 27th, 2005 -
+[[http://sachachua.com/blog/p/3105][http://sachachua.com/blog/p/3105]]
+
+(641 words)
+
+Overloaded with e-mail? Overcome inbox insanity by using
+[[http://www.plannerlove.com][Planner]] to
+ keep track of what you need to do. If you use Emacs as your mail
+ client, then Planner's automatic hyperlinking can help you capture and
+ organize your tasks.
+
+Capture
+
+Create planner tasks whenever e-mail requires you to act. That way,
+ you don't have to hunt through your inbox every time you need to
+ figure out what to work on. If your response to an e-mail will take
+ less than two minutes and you know you won't get distracted, go ahead
+ and act on it immediately; you don't need to capture it. If you want
+ to track your action for completeness, create a task for it. Planner
+ makes it so easy to capture and organize tasks that even two-minute
+ tasks are still worth recording.
+
+Tasks are automatically linked to the e-mail message being viewed,
+ making it easy to return to the original message for more details. You
+ can schedule tasks immediately or leave them on today's page. If you
+ want tasks to be undated by default, set planner-expand-name-default
+ to nil.
+
+Create planner tasks whenever you need to follow up a task you've
+ delegated to someone else. Assign it to a different plan page. If you
+ prefer to use a single plan page, make task sorting easier by adding a
+ keyword to the description (ex: #A \_ +waiting for year-end sales
+ report : E-Mail from Jim). This makes it easy to review all the things
+ you're waiting for.
+
+Write clear and concise task descriptions. “Prepare year-end sales
+ report” is a better task description than “Work on this”. Planner will
+ automatically add the e-mail author's name as a hyperlink, like “:
+ E-Mail from Kathy”.
+
+Organize
+
+Using Planner to keep track of your e-mail related tasks also makes it
+ easier for you to organize and plan your day. E-mail doesn't let you
+ specify when you want to work on something, but Planner lets you
+ schedule your tasks onto specific days. It can also carry over
+ unfinished tasks, so you know that nothing will slip through the
+ cracks.
+
+After you've read all your e-mail and responded to everything you
+ could quickly process, you can choose when to work on other tasks that
+ take more time. Review your list of e-mail-related tasks and start
+ organizing them.
+
+You can schedule a task onto a particular day by using
+ planner-copy-or-move-task (C-c C-c) while point is on the task. You
+ can specify actual dates (yyyy.mm.dd, mm.dd, or just dd), or you can
+ use Planner's relative dates features to schedule things for next
+ Friday (+fri), two days from now (+2), or even the 3rd Tuesday after
+ March 1 (+3tue3.1). Use planner-copy-or-move-region to schedule
+ multiple tasks.
+
+You can schedule tasks for particular times as well. Simply add time
+ (ex: @1000-1300) to your task description using
+ planner-edit-task-description (bind this to a shortcut key if you use
+ it often). Modules like planner-appt.el can extract the time
+ information and display your schedule, and you can change your
+ planner-sort-tasks-key-function to sort tasks by time first and then
+ by priority.
+
+And there you have it---an organized way to make sense of your inbox by
+ making it easy to see just what you need to do.
+
+Set up
+
+1. Set up mail for Emacs, if you haven't done that already. If you're
+
+#+BEGIN_QUOTE
+  new to Emacs, I recommend checking out
+  [[http://www.emacswiki.org][http://www.emacswiki.org]] and
+   [[http://my.gnus.org][http://my.gnus.org]] .
+#+END_QUOTE
+
+2. Bind planner-create-task-from-buffer to a keyboard shortcut you can
+
+#+BEGIN_QUOTE
+  use from anywhere. For example, add the following line to your ~/emacs
+   in order to use C-c t as your create-task shortcut:
+#+END_QUOTE
+
+#+BEGIN_EXAMPLE
+    (global-set-key "\C-ct" 'planner-create-task-from-buffer)
+#+END_EXAMPLE
+
+3. Load the Planner module corresponding to your preferred mail client:
+
+| Gnus         | planner-gnus.el        |
+| MH-E         | planner-mhe.el         |
+| Rmail        | planner-rmail.el       |
+| Unix mail    | planner-unix-mail.el   |
+| VM           | planner-vm.el          |
+| Wanderlust   | planner-wl.el          |
+
+For example, add
+
+#+BEGIN_EXAMPLE
+    (require 'planner-gnus)
+#+END_EXAMPLE
+
+to your ~/.emacs
+
+Now you can deal with inbox insanity the Planner way!

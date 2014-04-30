@@ -1,0 +1,38 @@
+#+TITLE: The Great Merge
+
+September 17th, 2005 -
+[[http://sachachua.com/blog/p/2987][http://sachachua.com/blog/p/2987]]
+
+Thanks to [[http://www.lifl.fr/~hodique/][Yann Hodique]]‘s totally
+awesome
+ backend structure in
+[[mailto:hodique@lifl.fr][hodique@lifl.fr]]---test/planner---merge---1.0,
+the distinction between planner/emacs-wiki and planner/muse is on the
+way to disappearing. Yann's Elisp-fu is far beyond mine, and it shows in
+the elegance and cleanliness of the backend code.
+
+It's much, much better than my kludgy attempts when I wrote the first
+ port of Planner to Muse. I kept running into problems thinking of an
+ elegant way to combine both backends. I just wanted to get Planner out
+ the door, so I tagged a new branch and replaced all the emacs-wiki
+ code with muse equivalents.
+
+That spurred a lot of development on the planner-muse front, and we
+ blessed Michael Olson's tree as the canonical planner-muse branch.
+ Keeping up with patches became a real headache, though, because of all
+ the translation between branches.
+
+I've tagged a new tree off Yann Hodique's branch and made emacs-wiki
+ work again. I've also brought it up to the latest dev (I think!), and
+ I'll be using it for the next few weeks. A number of modules still
+ require emacs-wiki, and with the Planner community's help, we hope to
+ open them up to Muse people as well!
+
+You can grab the merged tree with
+
+#+BEGIN_EXAMPLE
+    tla register-archive http://sacha.free.net.ph/notebook/arch
+    tla get sacha@free.net.ph--main/planner--merge--1.0 planner
+#+END_EXAMPLE
+
+Back up your plans and customize planner-backend. Have fun!

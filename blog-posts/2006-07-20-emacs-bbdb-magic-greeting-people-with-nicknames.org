@@ -1,0 +1,50 @@
+#+TITLE: Emacs BBDB magic: Greeting people with nicknames
+
+July 20th, 2006 -
+[[http://sachachua.com/blog/p/3681][http://sachachua.com/blog/p/3681]]
+
+I use Gnus to read my mail within the Emacs text editor. One of the
+ advantages of using a mail client that's infinitely programmable is
+ that you can add all sorts of little tweaks to it. Gnus can be
+ integrated with Emacs' Big Brother Database (BBDB), a semi-structured
+ text database in which I store all sorts of weird notes. This little
+ hack takes the nick field of the database and automatically inserts a
+ greeting. If someone signs himself as Mikong, I should call him that
+ instead of Joseph Michael. Similarly, I sign my messages as Sacha, not
+ Sandra Jean. This little tidbit makes it easier to remember to call
+ people by their nicknames.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/gnus-add-nick-to-message ()
+      "Inserts \"Hello, NICK!\" in messages based on the recipient's nick field."
+      (interactive)
+      (save-excursion
+        (let ((bbdb-get-addresses-headers (list (assoc 'recipients bbdb-get-addresses-headers)))
+              nicks)
+          (setq nicks
+                (delq nil
+                      (mapcar (lambda (rec) (bbdb-record-getprop rec 'nick))
+                              (bbdb-update-records
+                               (bbdb-get-addresses nil gnus-ignored-from-addresses 'gnus-fetch-field)
+                               nil
+                               nil))))
+          (goto-char (point-min))
+          (when (and nicks
+                     (re-search-forward "--text follows this line--" nil t))
+            (forward-line 1)
+            (insert "Hello, "
+                    (mapconcat 'identity nicks ", ")
+                    "!\n\n")))))
+
+    (defadvice gnus-post-news (after sacha activate)
+      (sacha/gnus-add-nick-to-message))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/gnus][gnus]],
+[[http://www.technorati.com/tag/code][code]],
+[[http://www.technorati.com/tag/elisp][elisp]]
+
+Random Japanese sentence:
+ÃƒÂ¨Ã‚Â™Ã‚ÂŽÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¥Ã‚Â¤Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ§Ã‚ÂŒÃ‚Â«ÃƒÂ£Ã‚Â?Ã‚Â¨ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ¥Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚Â˜ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ§Ã‚ÂŒÃ‚Â«ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¥Ã‚Â°Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â•ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ¨Ã‚Â™Ã‚ÂŽÃƒÂ£Ã‚Â?Ã‚Â¨ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â‚Ã‚Â‚ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â€Ã‚Â‚
+You may as well call a cat a small tiger as call a tiger a big cat.

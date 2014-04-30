@@ -1,0 +1,59 @@
+#+TITLE: Emacs: Automating the insertion of text
+
+July 24th, 2006 -
+[[http://sachachua.com/blog/p/3692][http://sachachua.com/blog/p/3692]]
+
+As the VP Education of [[http://www.toastit.org][Toast I.T.
+Toastmasters]] in downtown Toronto, I'm responsible for assigning people
+roles in upcoming meetings and confirming these roles by e-mail. We
+currently do our scheduling in a spreadsheet. Copying and pasting the
+roles for the spreadsheet results in the following text:
+
+#+BEGIN_EXAMPLE
+    Ari Caylakyan
+    Anthony D'Costa
+    Chris Charabaruk
+    Michael Chan
+    Chris Charabaruk
+    Chris Charabaruk
+    Khalid Ghaffar
+    Natasha Guigova
+
+
+
+    Ari Caylakyan - C&L 5
+    Anthony D'Costa
+    Jackie Achonu
+    Sacha Chua
+#+END_EXAMPLE
+
+Adding role descriptions to this was a bit of a pain, so I wrote a
+ short Emacs Lisp function that inserted descriptions if and only if
+ there was a corresponding person assigned to that role.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/toast-add-roles ()
+      "Add role descriptions."
+      (interactive)
+      (mapcar (lambda (item)
+                (goto-char (line-beginning-position))
+                (unless (looking-at "^[ \t]*$")
+                  (insert item ": "))
+                (forward-line 1))
+              '("President" "Toastmaster" "Sgt at Arms" "Timekeeper" "Ah-counter"
+                "Grammarian" "Table-topics Master" "General Evaluator" ""
+                "Educational Speaker" "Guest Speaker"
+                "Speaker #1" "Evaluator #1"
+                "Speaker #2" "Evaluator #2"
+                "Speaker #3" "Evaluator #3")))
+#+END_EXAMPLE
+
+Next step: Personalized e-mail that highlights upcoming roles, just as
+ I wrote Emacs Lisp functions to make it easier to send students
+ personalized feedback on their programs.
+
+That's one of the coolest things about Emacs -- it's so easy to automate
+tasks.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

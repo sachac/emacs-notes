@@ -1,0 +1,6 @@
+#+TITLE: Emacs annoyance
+
+October 23rd, 2003 -
+[[http://sachachua.com/blog/p/1265][http://sachachua.com/blog/p/1265]]
+
+I've tracked it down -- make-variable-buffer-local needs to be done..

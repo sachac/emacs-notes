@@ -1,0 +1,24 @@
+#+TITLE: Emacs Chat: Jānis Mancēvičs
+
+April 21st, 2014 -
+[[http://sachachua.com/blog/p/27191][http://sachachua.com/blog/p/27191]]
+
+Chatting with [[https://plus.google.com/u/0/114888672958382153886][Jānis
+Mancēvičs]] about literate programming, Unity game development, and code
+folding.
+
+Want just the audio?
+[[https://archive.org/details/EmacsChatJanisMancevics][Get it from
+archive.org]]:
+[[https://ia902503.us.archive.org/11/items/EmacsChatJanisMancevics/Emacs-Chat-Janis-Mancevics.mp3][MP3]]
+
+Check out [[http://sachachua.com/blog/emacs-chat][Emacs Chat]] for more
+interviews like this. Got a story to tell about how you learned about or
+how you use Emacs? [[http://sachachua.com/blog/contact][Get in touch!]]
+
+[[http://archive.org/download/EmacsChatJanisMancevics/Emacs-Chat-Janis-Mancevics.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[http://archive.org/download/EmacsChatJanisMancevics/Emacs-Chat-Janis-Mancevics.mp3][Play
+in new window]] |
+[[http://archive.org/download/EmacsChatJanisMancevics/Emacs-Chat-Janis-Mancevics.mp3][Download]]

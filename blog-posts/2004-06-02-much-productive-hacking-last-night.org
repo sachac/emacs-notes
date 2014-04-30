@@ -1,0 +1,67 @@
+#+TITLE: Much productive hacking last night
+
+June 2nd, 2004 -
+[[http://sachachua.com/blog/p/2089][http://sachachua.com/blog/p/2089]]
+
+- Dusted off
+[[http://sachachua.com/notebook/wiki/CoursesSubmission][CoursesSubmission]]
+and started hacking on it again: minor
+
+#+BEGIN_QUOTE
+  template tweaks (tables instead of lists, for example) and some code
+   refactoring into objects.
+#+END_QUOTE
+
+- Almost done with
+[[http://sachachua.com/notebook/wiki/JavaCd][JavaCd]]. Just need to
+download Eclipse RC1 and
+
+#+BEGIN_QUOTE
+  update the installation instructions, then we'll be all set. I don't
+   think I'll be able to put my material on the CD, but at least I've
+   included the PPT slides from the aegis website as well as the
+   excellent
+  [[http://chortle.ccsu.ctstateu.edu/cs151/cs151java.html][chortle
+  tutorial]].
+#+END_QUOTE
+
+- Sent Ching a formal thank-you note for the lunch with Som Mittal.
+
+- Upgraded my kernel to 2.6.6.
+
+- Started work on
+[[http://sachachua.com/notebook/wiki/PlannerDatabase][PlannerDatabase]],
+which will get around the problem
+
+#+BEGIN_QUOTE
+  of having tasks in different places. Should probably consider
+   working with one of the real database packages like EDB, but will
+   have fun coding it anyway. Actually have a test-suite with decent
+   coverage.
+#+END_QUOTE
+
+- Have also figured out how to use testcover.el. Am pleasantly
+
+#+BEGIN_QUOTE
+  surprised to find out that it's actually in main Emacs, so will
+   remove it from my [[http://sachachua.com/notebook/emacs][../emacs]]
+  directory. Have not yet figured out
+   how to properly use 1value, but that's okay.
+#+END_QUOTE
+
+- Am changing the way I use planner. Have realized that I don't
+
+#+BEGIN_QUOTE
+  actually need planner-align-tasks, planner-renumber-tasks and
+   planner-renumber-notes in my write-file-functions, and will probably
+   remove those from the default.
+#+END_QUOTE
+
+- Used Gnus to pull data out of old Eudora mailboxes. Whee! My mom
+
+#+BEGIN_QUOTE
+  needed to find mail related to her business trip to Malaysia. The
+   semi-fuzzy search was fun.
+#+END_QUOTE
+
+- Found my apartment keys. Yay!

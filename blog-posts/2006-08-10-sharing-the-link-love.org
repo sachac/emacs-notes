@@ -1,0 +1,92 @@
+#+TITLE: Sharing the link love
+
+August 10th, 2006 -
+[[http://sachachua.com/blog/p/3747][http://sachachua.com/blog/p/3747]]
+
+People who visit my [[http://sachachua.com][blog]] instead of reading
+ it on an RSS aggregator get a couple of nifty extras, including my
+ task list and a list of e-mail messages sent. It's a personal
+ experiment I've been running for a while now with unexpectedly
+ positive results. People have helped me with things on my task list,
+ and my sent mail list resulted in reminders from two people who
+ noticed that they hadn't received some messages listed as sent---the
+ messages had gotten stuck in my mail queue.
+
+These things are easy for me to track because I use
+ [[http://www.emacswiki.org/cgi-bin/wiki/PlannerMode][Planner]], an
+ insanely customizable personal information manager for the Emacs text
+ editor. Today I realized that my list of sent e-mail is a good way to
+ share the link love and direct you to the websites of the people I
+ talk to, so I added a bit of code to my config.
+
+On my computer, “E-mail to” is hyperlinked to the actual e-mail, and
+ names are hyperlinked to their contact records. On the Web, “E-mail
+ to” is not a hyperlink, and names are hyperlinked to people's blogs or
+ websites.
+
+It's a little tweak, but who knows what it'll lead to? If you end up
+ discovering an interesting person through this, way cool. And hey, it
+ gives people whom I write extra Google juice... =)
+
+I might do the same for the tasks, although that requires a teensy bit
+ more coding. Hmm.
+
+I'm thinking of listing the subject header again. It'll give people
+ more of an idea of what other people talk to me about.
+ Dan Howard was concerned about privacy. I
+ occasionally delete subjects if I think they're sensitive. Do you
+ think I might get away with a mostly opt-out system?
+
+Anyway, check out my actual [[http://sachachua.com][blog]] every now and
+then! =)
+
+Emacs Lisp code:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-gnus-track-sent ()
+      "Add this to `message-sent-hook' to keep track of messages sent on your daily page.
+    Result: Adds it to * E-mail sent."
+      ;; Grab the header
+      (let ((mail-link
+             (concat "gnus://" gnus-newsgroup-name "/"
+                     (planner-gnus-get-message-id)))
+            (addresses
+             (split-string (planner-gnus-get-address "To") ", *"))
+            text)
+        (setq text
+              (concat
+               (planner-make-link mail-link "E-mail to")
+               " "
+               (mapconcat
+                (lambda (address)
+                  (let (rec)
+                    ;; Look up record
+                    (setq addr (mail-extract-address-components address))
+                    (setq rec (apply 'bbdb-search-simple addr))
+                    (if rec
+                        (planner-make-link
+                         (concat "bbdb://"
+                                 (planner-replace-regexp-in-string
+                                  " " "."
+                                  (bbdb-record-name
+                                   rec)))
+                         (bbdb-record-name rec))
+                      (or (car address) (cadr address)))))
+                addresses
+                ",")))
+              ;;            ": "
+              ;;           (message-fetch-field "Subject"))))
+        (save-window-excursion
+          (save-excursion
+            (planner-goto-today)
+            (planner-seek-to-first "E-mail sent")
+            (insert " 1. " text "\n"))))
+      nil)
+
+    (add-hook 'message-mode-hook
+              (lambda ()
+                (add-hook 'message-sent-hook 'sacha/planner-gnus-track-sent)))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/emacs][emacs]]

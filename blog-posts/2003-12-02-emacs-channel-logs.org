@@ -1,0 +1,6 @@
+#+TITLE: emacs channel logs
+
+December 2nd, 2003 -
+[[http://sachachua.com/blog/p/1454][http://sachachua.com/blog/p/1454]]
+
+[[http://tunes.org/~nef/logs/emacs/][http://tunes.org/~nef/logs/emacs/]]

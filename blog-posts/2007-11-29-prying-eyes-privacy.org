@@ -1,0 +1,63 @@
+#+TITLE: Prying eyes privacy
+
+November 29th, 2007 -
+[[http://sachachua.com/blog/p/4478][http://sachachua.com/blog/p/4478]]
+
+[[http://tedroden.com/emacs/prying_eyes_privacy.ejr][Ted Roden uses
+ROT13 to protect his secrets from prying eyes]], which
+ comes in pretty handy when you're keeping gift lists on a shared
+ computer.
+
+My boyfriend would probably be stumped by that for all of two seconds.
+ See, my significant other is a geek, and can spot ROT13 a mile away. I
+ wouldn't be surprised if he could decode them in his head, as we used
+ to do cryptograms over meals. Morse is also easy to recognize and
+ break. If he were really determined to find out my secrets, that
+ wouldn't help at all.
+
+Nothing but strong encryption will do. Fortunately, Emacs makes this
+ very easy. I keep sensitive account information in a text file called
+ “numbers.gpg”. Following the instructions on
+
+[[http://www.emacswiki.org/cgi-bin/wiki/AutoEncryption][http://www.emacswiki.org/cgi-bin/wiki/AutoEncryption]]
+, I've set up
+ automatic GnuPG encryption for files ending in .gpg. When I open the
+ file, I'm prompted for my passphrase. When I save the file, the data
+ is encrypted again.
+
+If I want to encrypt just bits of a file, like the way I sometimes do
+ encrypted sections in blog entries, I select the region and use M-x
+ pgg-encrypt-region. This replaces the text with something like this:
+
+#+BEGIN_EXAMPLE
+    -----BEGIN PGP MESSAGE-----
+    Version: GnuPG v1.4.6 (GNU/Linux)
+
+    hQEOAzQ6c9jHW5SMEAP/dJi8sc9wEqfODOxULzCJYtEY0CKqCIJmlP6jMUFcXmzk
+    o/C2HSEl0wQ39r6+D85EH4AhMrFCDLuW70S+etcbeJKF03PKrb5PjdShQdO3v4vu
+    0YokWEIZWdF4a/5bI+lcNz+YMv14ScsFjSLPRwz+OPXOX+rTQH/wxvYC5dLwUS8D
+    /2/ermrKuis0RCTpYy7LXIARNB5Sji8gMqVuidmRh9UFwyukRIJZPcgZt9nXGlZe
+    3HXvuWTh8Y36gsCa1iY/tN23yJel94d22hIzWdnqsWo31IsuLqquQ59mdgZjTu5a
+    Wpvd8AFEy69J2WKdFEInYc2tjf/KtYFYb4mXDnv/exFC0kkByzM4+TBzCUGuC5Dj
+    I0lwZnGOMTPvkW88Uru6gxfFEasQnMQeoDABOkMA+8PrX6ALSZJeNZG60Lallhu8
+    Vmh+u9aBWcYO7DKP
+    =++8d
+    -----END PGP MESSAGE-----
+#+END_EXAMPLE
+
+Granted, my secret key is on the hard disk, but I use a strong
+ password for that one.
+
+All of this is overkill for holiday shopping lists, of course, as my
+ boyfriend would never think of snooping in my files anyway. But hey,
+ it's always a good idea to keep some parts of your life hush-hush. If
+ I were \_really\_ paranoid, I'd think about something like OrdoEmacs in
+ Cryptonomicon. (Of \_course\_ it had to be OrdoEmacs. OrdoVi would just
+ be an abomination. ;) )
+
+Ah, Emacs. You try doing \_that\_ in Microsoft Word! ;)
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: eshell-deferrable-commands -- Variable: *A list of
+functions which might return an ansychronous process.

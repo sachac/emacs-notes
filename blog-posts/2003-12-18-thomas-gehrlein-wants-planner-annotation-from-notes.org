@@ -1,0 +1,8 @@
+#+TITLE: Thomas Gehrlein wants planner annotation from notes
+
+December 18th, 2003 -
+[[http://sachachua.com/blog/p/1526][http://sachachua.com/blog/p/1526]]
+
+So I guess people use that feature after all... =)
+
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]

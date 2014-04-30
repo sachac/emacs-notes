@@ -1,0 +1,86 @@
+#+TITLE: Title suggestions
+
+April 6th, 2005 -
+[[http://sachachua.com/blog/p/2703][http://sachachua.com/blog/p/2703]]
+
+From Jan Alonzo:
+
+#+BEGIN_QUOTE
+  I think the reason why I mentioned “Planning the Unplanned” is because
+  we plan
+   (and prioritize) the stuff we want to do for the day, analyse it, and
+  see how
+   much “procrastination time” we have for that day. By looking at your
+  tasks,
+   you kinda think “Oh I've got a bit of \_space\_ here, let's read some
+  email.
+   That sort of thing. Well, at least, that's how I think anyway :-).
+#+END_QUOTE
+
+From [[http://clair.free.net.ph][Clair]]:
+
+#+BEGIN_QUOTE
+  Hehehe. M-x plan. I like it as a title for your blog. Very appropriate
+  :D
+#+END_QUOTE
+
+From Gerd Flaig:
+
+#+BEGIN_QUOTE
+  How do you like the term ‘agile planning'?
+#+END_QUOTE
+
+From Paul Lussier:
+
+#+BEGIN_QUOTE
+  Just read your blog on procrastination. It might amuse you to know
+   that I coined the term (with my best friend Celeste) “Productive
+   Procrastination” over 15 years ago! :)
+
+  I'm sure we weren't the first to come up with, what with me being one
+   of the wholly most un-original people on this planet. But Celeste and
+   I would constantly “help” each other “productively procrastinate” on
+  a
+   regular basis. The definition of “Productive Procrastination” is:
+
+  #+BEGIN_QUOTE
+    The avoidance of doing something mostly uninteresting by doing
+     something else which also legitimately needs to be accomplished,
+    but
+     probably not nearly as urgently as that task which you are
+     attempting to avoid.
+  #+END_QUOTE
+
+  Often times this would be in the form of studying for one class in
+   order to avoid studying for another. Or working on a CS project which
+   was due soon, but not nearly as soon as the impending calculus exam
+  :)
+   Just today infact, I avoided building 2 Windows laptops by figuring
+   out how to extend planner! I'm sure you get the point...
+
+  I've recently (in the past year or so) come across another term for my
+   “Productive Procrastination”:
+
+  #+BEGIN_QUOTE
+    Shaving the Yak
+  #+END_QUOTE
+
+  as defined here:
+
+  #+BEGIN_QUOTE
+    [[http://www.ai.mit.edu/lab/gsb/gsb-archive/gsb2000-02-11.html][http://www.ai.mit.edu/lab/gsb/gsb-archive/gsb2000-02-11.html]]
+  #+END_QUOTE
+
+  So, you have my vote in favor of using “Productive Procrastination” as
+   your wiki title :)
+#+END_QUOTE
+
+Hey, that sounds like structured procrastination, mentioned by an
+ essay I read a year ago or so...
+
+Mmkay, let's try “productively procrastinating”. (Title of the day!)
+
+Ã§ÂŒÂ«Ã£Â?Â¯Ã¦Â?Â•Ã£Â‚Â‰Ã£Â?ÂˆÃ£Â?ÂŸÃ£ÂƒÂ?Ã£Â‚ÂºÃ£ÂƒÂŸÃ£Â‚Â'Ã¥Â¼Â•Ã£Â?Â?Ã¨Â£Â‚Ã£Â?Â?Ã¥Â§Â‹Ã£Â‚Â?Ã£Â?ÂŸÃ£Â€Â‚
+The cat began to tear at the mouse it caught.
+
+On Technorati: [[http://www.technorati.com/tag/website][website]]

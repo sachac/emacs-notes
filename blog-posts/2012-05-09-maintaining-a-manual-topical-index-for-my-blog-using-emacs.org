@@ -1,0 +1,48 @@
+#+TITLE: Maintaining a manual topical index for my blog using Emacs
+
+May 9th, 2012 -
+[[http://sachachua.com/blog/p/23343][http://sachachua.com/blog/p/23343]]
+
+I've been blogging for almost ten years. I started with notes from my
+university classes and snippets of open source code, and became
+comfortable enough to share decisions I'm puzzling through and things
+I'm learning about life. There's a lot of stuff in my archive, and I
+want to be able to review things again.
+
+Categories would probably make this easier, but I use categories
+liberally and sometimes inconsistently. I use them like tags, quick
+keywords that I add so that people might explore a category and bump
+into other posts. I probably should split it out so that I assign posts
+to one category and leave everything else as tags. Someday.
+
+In the meantime, it's easy enough to maintain a manual
+[[https://dl.dropbox.com/u/3968124/blog.html][topical index]] of my blog
+posts, and it's a good opportunity to review what I've been writing as
+well.
+
+I use Emacs [[http://orgmode.org/][Org Mode]] to manage a large text
+file divided into headings. Every month, I copy a list of titles into my
+topical index. I hacked Org-friendly output into my WordPress theme --
+you can see [[#sachachua.com-blog-2012-04-org-1][April's blog posts]] as
+an example
+([[#sachachua.com-blog-2012-04-org-1][sachachua.com/blog/2012/04/?org=1]]).
+I manually organize the list items under different headings, splitting
+off new headings when I can see a pattern. Working with two windows
+viewing the same buffer makes it easy to move information around, and
+=org-refile= is handy too. I use a checklist structure so that Org can
+automatically update the number of posts under each heading
+(=C-u M-x org-update-statistics-cookies=). When I'm happy with the
+structure, I use =org-publish-current-file= to publish it using the
+settings I've configured. The files are in my public Dropbox folder, so
+they're automatically published to the Web. It takes me about 10 minutes
+to add a month of posts to my index and publish the page.
+
+I like seeing how much I've written about different topics, and it
+encourages me to write and organize more posts. Maybe the index might be
+handy for other people too!
+
+-  [[http://dl.dropbox.com/u/3968124/blog.org][Org source for my blog
+   index]]
+-  [[http://dl.dropbox.com/u/3968124/blog.html][Topical index as a
+   webpage]]
+

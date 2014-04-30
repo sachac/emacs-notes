@@ -1,0 +1,20 @@
+#+TITLE: Comments! Finally!
+
+September 20th, 2005 -
+[[http://sachachua.com/blog/p/2999][http://sachachua.com/blog/p/2999]]
+
+After receiving so many helpful and caring comments regarding my
+breathing post
+ (eat well, get plenty of rest, etc.), and seeing wonderful well-thought
+discussion over at [[http://clair.free.net.ph/174][Clair's blog]], I
+finally got motivated enough to hack dynamic comments into Planner.
+
+[[http://www.haloscan.com][Haloscan]] made it a piece of cake! Search
+for the segment on “Permalinks and comments” in
+[[http://sachachua.com/notebook/emacs/planner-config.el][../emacs/planner-config.el]]
+to see the actual code.
+
+So please introduce yourself in the comments to this entry, and see
+ who else reads this blog! =) Who are you? What are you interested in?
+ How did you find out about this blog? (How on earth do you put up with
+ my rambling? =) )

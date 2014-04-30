@@ -1,0 +1,52 @@
+#+TITLE: Adventures with Ruby
+
+February 4th, 2005 -
+[[http://sachachua.com/blog/p/2616][http://sachachua.com/blog/p/2616]]
+
+This is my second day of Ruby, a programming language that is rather
+ popular in Japan. I'm in love. It's now my second-favorite programming
+ language. (Emacs Lisp is, of course, the first.)
+
+Yesterday's script parsed schedule data and checked that monthly cost
+ and day constraints were observed. Today I wanted to visualize the
+verified schedule.
+
+At first I tried working with planner (formerly known as
+ MrProject and not to be confused with
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]). I
+wrote a
+[[http://sachachua.com/notebook/ruby/schedule-to-planner.rb][Ruby
+program]] that converted my schedule.csv into XML, and planner loaded it
+successfully. However, I didn't think planner would let me do funky
+color coding. I thought about using etask, but ended up deciding to
+write something using libgd-ruby.
+
+It was surprisingly easy to write
+[[http://sachachua.com/notebook/ruby/schedule-to-image.rb][a Gantt-like
+visualizer]] for the schedule
+ and even easier to manipulate it once I had written it. For example, I
+could do silly things like
+
+s.to\_image((s.schedule.sort { |a,b| a.start <=> b.start }, 0, 2500,
+1800, image)
+
+[[http://sachachua.com/notebook/pics/japan/20050204-gantt1.png][Sorted
+by start date]]
+
+to see the tasks sorted by start date. Being a Lisp girl, I had no
+problems writing silly things like
+
+s.to\_image((s.schedule.collect { |x| x if x.person\_id == '08-1′ } -- [
+nil ]).sort { |a,b| a.start <=> b.start }, 0, 2500, 1800, image)
+
+but then I realized that this was much cleaner:
+
+s.to\_image((s.schedule.sort { |a,b| x = a.person\_id <=> b.person\_id;
+if x == 0 then a.start <=> b.start else x end }, 0, 2500, 1800, image)
+
+[[http://sachachua.com/notebook/pics/japan/20050204-gantt2.png][Sorted
+by person and then start date]]
+
+Ruby is so cute!
+
+On Technorati: [[http://www.technorati.com/tag/ruby][ruby]]

@@ -1,0 +1,23 @@
+#+TITLE: Emacs braindump from John Wiegley =)
+
+June 20th, 2012 -
+[[http://sachachua.com/blog/p/23508][http://sachachua.com/blog/p/23508]]
+
+I'm going to edit and post my Skype chat with John Wiegley, but here are
+some quick notes:
+
+-  Read Emacswiki and go through the package lists to find cool stuff
+-  Learn the Emacs way of doing things (keybindings, etc.)
+-  paredit
+-  redshank
+-  helm
+-  ace-jump
+-  color-moccur
+-  use-package
+-  async?
+
+Looks like Camtasia Studio 8 grabbed the video just fine, so I'll work
+on editing it tomorrow. Whee! I totally have to chat with other Emacs
+geeks about their config and their projects -- it's such a different
+experience from just reading people's configuration files or chatting on
+IRC...

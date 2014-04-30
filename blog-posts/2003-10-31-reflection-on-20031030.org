@@ -1,0 +1,34 @@
+#+TITLE: Reflection on 2003.10.30
+
+October 31st, 2003 -
+[[http://sachachua.com/blog/p/1293][http://sachachua.com/blog/p/1293]]
+
+Hacked on planner.el and planner-id.el. Practically rewrote
+ planner-id.el, in fact, as I wanted to use an alist of data instead.
+ Have gotten it mostly working.
+
+Played an amusing real-time card game named “Falling.” The objective
+ of the game is simply to hit the ground \_last\_. Exciting play,
+ although the table can get fairly messy. Might be something fun for
+ programming.
+
+Got a call from Richi. Yay! =)
+
+Remembered
+[[http://sachachua.com/notebook/wiki/EssayIdeas#holidays][reflection on
+holidays]] and
+ resolved to do something different.
+
+Met Kris, Martin-Nix-Tala-Mog's friend. Laid-back sort of person.
+ He's interested in surfing.
+
+Chatted with SuperLag from #linuxhelp. Warm and fuzzy feeling,
+ good karma. =)
+
+Did well: met one new person in real life and talked to another more
+ on the Net.
+
+Could be improved: procrastinated following up on unapplied ACM Lite
+ Discount.
+
+Have resolved to write a book Real Soon Now.

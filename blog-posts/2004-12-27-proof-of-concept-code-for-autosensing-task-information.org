@@ -1,0 +1,58 @@
+#+TITLE: Proof-of-concept code for autosensing task information
+
+December 27th, 2004 -
+[[http://sachachua.com/blog/p/2518][http://sachachua.com/blog/p/2518]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-create-task-from-buffer ()
+      (interactive)
+      (let ((annotation (run-hook-with-args-until-success 'planner-annotation-functions))
+            (default-text "")
+            task-text
+            plan
+            date
+            (case-fold-search t))
+        (setq planner-default-page
+              (if (and (planner-derived-mode-p 'planner-mode)
+                       (planner-page-name)
+                       (not (string-match planner-date-regexp
+                                          (planner-page-name))))
+                  (planner-page-name)
+                planner-default-page))
+        ;; INTERESTING CODE STARTS HERE
+        (save-excursion
+          (goto-char (point-min))
+          (when (and (re-search-forward "^+++" nil t)
+                     (re-search-forward "^@@" nil t))
+            (setq default-text "Merge patch for ")))
+        (setq task-text (read-string "Describe task: "
+                                     default-text))
+        (when (or (string-match "planner" annotation)
+                  (string-match "planner" task-text))
+          (setq planner-default-page "PlannerModeMaintenance"))
+        ;; END INTERESTING CODE
+        (setq date (cond
+                    ;; Universal prefix means pick up from current page
+                    ((and current-prefix-arg
+                          (derived-mode-p 'planner-mode)
+                          (string-match planner-date-regexp (planner-page-name)))
+                     (planner-page-name))
+                    ;; Date selected in calendar
+                    ((condition-case nil (calendar-cursor-to-date) (error nil))
+                     (planner-date-to-filename (calendar-cursor-to-date)))
+                    ;; Prompt for date
+                    (t (let ((planner-expand-name-favor-future-p
+                              (or planner-expand-name-favor-future-p
+                                  planner-task-dates-favor-future-p)))
+                         (planner-read-date)))))
+        (setq plan
+              (if (and current-prefix-arg (planner-derived-mode-p 'planner-mode)
+                       (not (string-match planner-date-regexp (planner-page-name))))
+                  ;; Universal prefix means pick up from current page
+                  (planner-page-name)
+                (planner-read-non-date-page
+                 (planner-file-alist))))
+        (planner-create-task-from-buffer task-text date plan)))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/planner-config.el][../emacs/planner-config.el]]

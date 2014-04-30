@@ -1,0 +1,6 @@
+#+TITLE: planner journal linked list
+
+March 13th, 2003 -
+[[http://sachachua.com/blog/p/498][http://sachachua.com/blog/p/498]]
+
+Bah. Perl script to update links. Foo.

@@ -1,0 +1,73 @@
+#+TITLE: Emacs beginner resources
+
+April 14th, 2014 -
+[[http://sachachua.com/blog/p/27144][http://sachachua.com/blog/p/27144]]
+
+Sometimes it's hard to remember what it's like to be a beginner, so I'm
+experimenting with asking other people to help me with this. =) I asked
+one of my assistants to look for beginner tutorials for Emacs and
+evaluate them based on whether they were interesting and easy to
+understand. Here's what she put together! -- Sacha
+
+*[[http://www.youtube.com/watch?v=MRYzPWnk2mE][Emacs #1 - Getting Started and Playing Games by jekor]]*
+ Probably the most helpful Emacs tutorial series on YouTube. Goes beyond
+the “what to type” how-tos that other tutorials seem bent on explaining
+over and over. Emphasizes games and how they help users familiarize
+themselves with the all-keyboard controls. 5/5 stars
+
+*[[http://orgmode.org/worg/org-tutorials/org4beginners.html][Org-mode beginning at the basics]]*
+ What it says on the tin. Essential resource for those who are new to
+Emacs and org-mode. Provides steps on how to organize workflow using
+org-mode written in a simple, nontechnical, writing style. 5/5 stars
+
+*[[http://ergoemacs.org/emacs/emacs.html][Xah Emacs Tutorial]]*
+ Though the landing page says that the tutorial is for scientists and
+programmers, beginners need not be intimidated! Xah Emacs Tutorial is
+very noob-friendly. Topics are grouped under categories (e.g. Quick
+Tips, Productivity, Editing Tricks, etc.) Presentation is a bit wonky
+though. 4.5/5 stars
+
+*[[https://www.youtube.com/watch?v=16Rd46SE-20][RT 2011: Screencast 01 -- emacs keyboard introduction by Kurt Scwehr]]*
+ Keyboard instruction on Emacs from the University of New Hampshire.
+Very informative and also presents some of the essential keystrokes that
+beginners need to memorize to make the most out of the program. But at
+25 mins, I think that the video might be too long for some people. 4/5
+stars
+
+*[[http://www.emacswiki.org/][Emacs Wiki]]*
+Nothing beats the original- or in this case, the official- wiki. Covers
+all aspects of Emacs operation. My only gripe with this wiki is that the
+groupings and presentation are not exactly user-friendly (links are all
+over the place!), and it might take a bit of time for visitors to find
+what they are looking for. 4/5 stars
+
+*[[http://www.masteringemacs.org/articles/2010/10/04/beginners-guide-to-emacs/][Mastering Emacs: Beginner's Guide to Emacs]]*
+ The whole website itself is one big tutorial. Topics can be
+wide-ranging but it has a specific category for beginners.
+ whole website itself is one big tutorial. Looks, feels, and reads more
+like a personal blog rather than a straightforward wiki/tutorial. 4/5
+stars
+
+*[[http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/][Jessica Hamrick's Absolute Beginner's Guide to Emacs]]*
+ Clear and concise. Primarily focused on providing knowledge to people
+who are not used to text-based coding environments. It covers a lot of
+basic stuff, but does not really go in-depth into the topics. Perfect
+for “absolute beginners” but not much else. 3/5 stars
+
+*[[http://www.jimmenard.com/emacs_tips.html][Jim Menard's Emacs Tips and Tricks]]*
+ Personal tips and tricks from a dedicated Emacs user since 1981. Not
+exactly beginner level, but there's a helpful trove of knowledge here.
+Some chapters are incomplete. 3/5 stars
+
+*[[http://emacsredux.com/][Emacs Redux]]*
+ Not a tutorial, but still an excellent resource for those who want to
+be on the Emacs update loop. Constantly updated and maintained by an
+Emacs buff who is currently working on a few Emacs related projects. 3/5
+stars
+
+*[[http://jeremy.zawodny.com/emacs/emacs.html][Jeremy Zawodny's Emacs Beginner's HOWTO]]*
+ Lots of helpful information, but is woefully not updated for the past
+decade or so. 2/5 stars
+
+This list was put together by Marie Alexis Miravite. In addition, you
+might want to check out [[http://doc.norang.ca/org-mode.html][how Bernt Hansen uses Org]], which is also pretty cool.

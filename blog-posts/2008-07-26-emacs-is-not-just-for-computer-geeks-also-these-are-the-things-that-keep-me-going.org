@@ -1,0 +1,74 @@
+#+TITLE: Emacs is not just for computer geeks; also, these are the things that
+keep me going
+
+July 26th, 2008 -
+[[http://sachachua.com/blog/p/4992][http://sachachua.com/blog/p/4992]]
+
+/Reposted with permission because (a) it shows that people who aren't
+computer geeks can also love Emacs, and (b) it gave me a warm and fuzzy
+feeling and encouraged me to keep writing, so I want to keep it around
+just in case I get in a rut again./
+
+#+BEGIN_QUOTE
+  Sacha,
+
+  I'm an emacs newbie who's trying to both simplify and empower my
+  computing life, and I've chosen emacs as the tool to do that. I'm
+  pretty excited about that, and overwhelmed, too.
+
+  Actually, a little background might help: I'm a PhD student in early
+  modern (read: renaissance) English literature. Yeah, I'm a Shakespeare
+  guy. I work in a field in which computers are, to most folks, MS Word,
+  MS Entourage, and MS Explorer. I'm a nut who actually plays with
+  stuff. (Actually, I don't tell my colleagues about it. It could
+  honestly damage my career. I know, it's disturbing.) I also have some
+  tech chops, being a refugee from the heady late 1990s tech boom where
+  I co-founded a small company that made some money before it collapsed.
+  I've been able to do the basics in emacs for years. The basics, but
+  nothing more.
+
+  My introduction this time was a rather circuitous route: I moved from
+  Mellel (on the Mac), to Scrivener where I discovered the wonders of
+  MultiMarkdown. Happily I discovered that I could use MMD and TextMate
+  to create LaTeX files without having to look at a bunch of distracting
+  LaTeX markup. I could write plain text and, with a couple of handy
+  keystrokes, create beautiful PDF files that my committee would
+  appreciate. The plain text files took up no space and could be edited
+  anywhere. I could fit a bazillion of them on my USB drive and carry
+  loads of research with me to my office on campus (where I got a
+  hand-me-down Dell running XP v.e.r.y.s.l.o.w.l.y) and on my much
+  speedier Mac at home and even in Linux. Neat. Still, MMD felt hack-y
+  and was only supported by one guy and I wondered if there was anything
+  else like it out there.
+
+  Which lead me to muse-mode. From there you can guess my path of
+  discovery: org-mode, planner-mode, remember: oh my!
+
+  For a prose writer like myself, the ability to have the cursor jump
+  forward and backward by letter, word, line, and paragraph was nothing
+  new, but M-a and M-e have changed my life. Why don't all word/text
+  processors understand that the sentence is the fundamental unit of
+  prose writing? Why don't they all allow me to navigate using units
+  that make logical sense?
+
+  Whoever said that emacs was for programmers only surely isn't a
+  writer.
+
+  (This is becoming much longer than I had anticipated, sorry.) My point
+  in writing is to tell you how invaluable I have found your two public
+  chapters (I think they're 7 and 8) have been for me. The whole idea of
+  writing a book about emacs as cool (as opposed to just highly
+  functional) is both obvious and revolutionary. Know that I would buy a
+  copy today if only it were available.
+
+  I noticed in your blog that you felt you had lost some steam on the
+  book. Please don't. My life is better, my writing is better, my
+  research is better, and, much to the joy of my wife, my progress
+  toward a completed PhD is better, all thanks to emacs which, based on
+  the tools I'm using, is also in thanks to you.
+
+  So thank you, and keep writing. I, for one, and hungry for more. I'm
+  sure others are, too.
+#+END_QUOTE
+
+Jeffrey Windsor

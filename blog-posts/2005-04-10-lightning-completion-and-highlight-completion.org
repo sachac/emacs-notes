@@ -1,0 +1,17 @@
+#+TITLE: Lightning completion and highlight completion
+
+April 10th, 2005 -
+[[http://sachachua.com/blog/p/2711][http://sachachua.com/blog/p/2711]]
+
+A stray mention in #emacs led me to
+
+[[http://www.math.washington.edu/~palmieri/Emacs/][http://www.math.washington.edu/~palmieri/Emacs/]]
+, which has Emacs Lisp
+ code for lightning completion and highlight completion. Both are
+ pretty interesting, and I wonder how I can put them to good use.
+ Hmmm...
+
+Ã§Â§Â?Ã£Â?Â¯Ã£Â?Â“Ã£Â?Â®Ã§ÂŒÂ«Ã£Â?Â®Ã¤Â¸Â--Ã¨Â©Â±Ã£Â‚Â'Ã£Â?Â---Ã£Â?ÂªÃ£Â?Â‘Ã£Â‚ÂŒÃ£Â?Â°Ã£Â?ÂªÃ£Â‚Â‰Ã£Â?ÂªÃ£Â?Â„Ã£Â€Â‚
+I have to look after this cat.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

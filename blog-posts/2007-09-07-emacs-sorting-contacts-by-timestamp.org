@@ -1,0 +1,112 @@
+#+TITLE: Emacs: sorting contacts by timestamp
+
+September 7th, 2007 -
+[[http://sachachua.com/blog/p/4345][http://sachachua.com/blog/p/4345]]
+
+Last September, I started automatically tracking my e-mails. Every
+ time I sent a message to someone already in my addressbook, his or her
+ contact record would be updated with the date and subject of the
+ message. I also made it easy to note that I met someone in person or
+ that I talked to them on the phone, although this wasn't automatic.
+
+So now I have almost a year of contact information in my address book.
+ I was curious---whom haven't I talked to in a year?
+
+Here are some numbers:
+
+I've contacted 396 people in my addressbook since January 1, 2007.
+
+In the past 365 days (2006.09.07 -- 2007.09.07), I've contacted 670
+ people in my address book.
+
+93 people have a contact timestamp (maybe the day I met them), but I
+ haven't contacted them in the past 365 days. This breaks down to 37
+ people I haven't contacted since 2006, 32 people I haven't contacted
+ since 2005, and 24 from 2004 or earlier.
+
+1230 records do not have any contact timestamp. Some of these are
+ bots, some of these are duplicate records I still haven't gotten
+ around to merging, others are contacts from before I started tracking
+ and I haven't e-mailed or talked to them since.
+
+I figured this out by writing a bit of Emacs Lisp to print a
+ hyperlinked list of contacts with the date of last contact. This was
+ then very easy to sort using M-x sort-lines and M-x reverse-region.
+
+For example, here are the people I've e-mailed in the last seven days:
+
+2007.09.07 Wayne Young
+ 2007.09.07 Tania Samsonova
+ 2007.09.07 Papa
+ 2007.09.07 Mike Bailey
+ 2007.09.07 [[http://daysstories.blogspot.com][Mama]]
+ 2007.09.07 Leigh Honeywell
+ 2007.09.07 Lawrence J. Rooney
+ 2007.09.07 [[http://kathychua.kom.ph][Kathy Chua]]
+ 2007.09.07 Don Marti
+ 2007.09.07 [[http://3w-agility.blogspot.com][Dean Michael Berris]]
+ 2007.09.07 Ching Valdezco
+ 2007.09.07 [[http://www.nostarch.com][Bill Pollock]]
+ 2007.09.06 [[http://www.livejournal.com/users/ninjapeps/][Peppy
+Salita]]
+ 2007.09.06 Mallory Chua
+ 2007.09.06 [[http://mysite.verizon.net/johnsu01/][John Sullivan]]
+ 2007.09.06 [[http://www.livejournal.com/~eclair/][Clair Ching]]
+ 2007.09.06 Allan Tan
+ 2007.09.05 Mark Chignell
+ 2007.09.04 [[http://www.gabrielmansour.com][Gabriel Mansour]]
+ 2007.09.03 Thomas Knoll
+ 2007.09.03 [[http://uc.org/simon][Simon Ditner]]
+ 2007.09.03 [[http://richip.dhs.org/~richip/blog/day.php][Richard
+Plana]]
+ 2007.09.03 Neil Ernst
+ 2007.09.03 Mike C. Fletcher
+ 2007.09.03 Michal Jacovi
+ 2007.09.03 Michael J. Muller
+ 2007.09.03 Eugene Jarder
+ 2007.08.31 [[http://www.simonrowland.com][Simon Rowland]]
+ 2007.08.31 [[http://www.radiantcore.com][Jay Goldman]]
+
+The code below probably won't work out of the box with you unless
+ you're using Planner+BBDB+my mail tracking hacks, but maybe it'll give
+ you ideas.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-print-with-timestamp (records)
+      (while records
+        (insert (sacha/bbdb-last-timestamp (car records))
+                " |\t"
+                (or (sacha/planner-bbdb-annotation-from-bbdb records) "")
+                "\n")
+        (setq records (cdr records))))
+
+    ;; (assert (equal (sacha/extract-regexp "a." "ab ac bb") '("ab" "ac")))
+    (defun sacha/extract-regexp (regexp string &optional group)
+      (let (result
+            s
+            (start 0))
+        (while (string-match regexp string start)
+          (setq result (cons (match-string (or group 0) string) result))
+          (setq start (match-end 0)))
+        (nreverse result)))
+
+    (defun sacha/bbdb-timestamps (rec)
+      "Return a list of timestamps found in the notes or contact field of REC."
+      (sort
+       (sacha/extract-regexp planner-date-regexp
+                             (concat (or (bbdb-record-notes rec) "")
+                                     " "
+                                     (bbdb-record-getprop rec 'contact)))
+       (lambda (a b) (string< b a))))
+
+    (defun sacha/bbdb-last-timestamp (rec)
+      "Return the most recent timestamp for REC or nil if none."
+      (or (car (sacha/bbdb-timestamps rec)) "0000.00.00"))
+#+END_EXAMPLE
+
+Yes, I do weird things. Next step for this one: Review the list, see
+ who I haven't talked to in one year, and decide who I want to get back
+ in touch with. Also, analyze my e-mail and come up with pretty graphs.
+
+Random Emacs symbol: gnus-server-kill-server - Command: Kill the server
+on the current line.

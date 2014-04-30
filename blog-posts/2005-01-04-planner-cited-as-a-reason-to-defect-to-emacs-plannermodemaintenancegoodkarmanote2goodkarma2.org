@@ -1,0 +1,23 @@
+#+TITLE: Planner cited as a reason to defect to Emacs
+
+January 4th, 2005 -
+[[http://sachachua.com/blog/p/2542][http://sachachua.com/blog/p/2542]]
+
+(PlannerModeMaintenance”[[GoodKarma#note2][GoodKarma:2]])
+
+#+BEGIN_QUOTE
+  You point is well taken. I find myself living in an application more
+  and more. At work, it's my editor
+   and I'd like it to handle the G.T.D. tasks and my schedule. I never
+  set out to do this, I've just seen it
+   happening.
+#+END_QUOTE
+
+Tyler will probably love being able to create hyperlinked tasks from
+anywhere. =)
+
+[[http://praytothemachine.com/evil/index.php?p=13][praytothemachine Ã‚Â»
+Should I defect to Emacs?]]
+
+On Technorati: [[http://www.technorati.com/tag/happy][happy]],
+[[http://www.technorati.com/tag/planner][planner]]

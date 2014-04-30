@@ -1,0 +1,7 @@
+#+TITLE: emacs-wiki
+
+February 21st, 2003 -
+[[http://sachachua.com/blog/p/443][http://sachachua.com/blog/p/443]]
+
+Emacs Wiki index needs a function to say whether a planner page should
+be indexed or not..

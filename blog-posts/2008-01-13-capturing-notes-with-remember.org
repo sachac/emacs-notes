@@ -1,0 +1,350 @@
+#+TITLE: Capturing Notes with Remember
+
+January 13th, 2008 -
+[[http://sachachua.com/blog/p/4674][http://sachachua.com/blog/p/4674]]
+
+Ideas come from everywhere. While reading this blog, you might come
+across interesting snippets that you'd like to save. While writing code,
+you might be hit by an idea for something you want to do with the
+program. While on a phone call, you might need to write down what you
+need to prepare for a meeting the next day.
+
+How do you take notes now? Do you jot your notes on a scrap of paper or
+into a leather notebook? Do you copy and paste what you're looking at
+into a plain text file or document? Do you scribble things into a
+personal digital assistant?
+
+I've tried different note-taking strategies: colorful mindmaps, outlined
+text files, even voice recordings. I felt frustrated every time I had to
+write down whose e-mail or which webpage prompted the note (shouldn't
+the computer do that automatically?), but I was even more frustrated
+when I'd come across a note and not remember why I wrote it.
+
+Remember changed all that for me. The key ideas behind Remember are that
+you should be able to write notes with minimal distraction, and that as
+the context should be automatically picked up so that you don't have to
+write it down. If you're writing a note based on a mail message,
+Remember will pick up the details of the message and create a hyperlink
+so that you can view the original message when reviewing your notes. If
+you're working on a file, Remember will link to it so that you can jump
+back to it. If you're browsing a web page (in Emacs, of course),
+Remember will remember the title and URL, so that you can go back to the
+page when you want to clarify something in your notes. After you save
+the note, you'll be back in the same environment you were: no need to
+switch applications and no need to remember different keyboard
+shortcuts.
+
+You might think that Remember's only worth it if you do \_everything\_
+in Emacs. For me, it worked the other way around. I started by using
+Remember to take notes in Planner, a personal information manager
+available for Emacs. As I got accustomed to the way Remember and Planner
+just automatically hyperlinked to whatever I was looking at, I thought:
+Why doesn't my mail client do this? Why doesn't my web browser do this?
+Why doesn't my chat client do this? So I ended up reading through the
+manuals, figuring out how to do all these things in Emacsâ€”and I loved
+it, eventually doing most of my work (and play!) within an Emacs frame.
+Although I use other applications now, like Lotus Notes for work mail
+and Mozilla Firefox for browsing, I still switch back to Emacs for my
+notes.
+
+In this section, you'll learn how to set up Remember and take quick
+notes in Emacs. We'll start by configuring Remember to save your notes
+to a file, and how to configure Remember to save to different places
+depending on the content. You'll also learn how to quickly search your
+notes file for entries.
+
+You can also integrate Remember into other note-taking systems in Emacs.
+The sections that cover those systems will also show you how to
+configure Remember to save your notes there.
+
+**** Setting Up Remember
+
+Remember is a separate package, which you can download from
+[[https://gna.org/projects/remember-el][https://gna.org/projects/remember-el]]
+. As of this writing, the latest stable release is Remember 1.9.
+Download the latest version and unpack it into your ~/elisp directory.
+You should end up with a new directory, ~/elisp/remember-1.9 .
+
+To configure Remember to save to plain text files, add this code to your
+~/.emacs and evaluate it:
+
+#+BEGIN_EXAMPLE
+    (add-to-list 'load-path "~/elisp/remember-1.9") ;; (1)
+    (require 'remember-autoloads)
+    (setq remember-data-file "~/notes.txt")  ;; (2)
+    (global-set-key (kbd "C-c r") 'remember) ;; (3)
+
+    (defun wicked/remember-review-file ()
+     "Open `remember-data-file'."
+     (interactive)
+     (find-file-other-window remember-data-file))
+    (global-set-key (kbd "C-c R") 'wicked/remember-review-file) ;; (4)
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    ;; Not (global-set-key (kbd "C-c r")... as originally written... Thanks for catching that, Seth!
+#+END_EXAMPLE
+
+-  1: Change this to the directory that contains remember.el
+-  2: Notes will be saved to this file. You can change this if you want;
+   just keep in mind that this section refers to ~/notes.txt.
+-  3: C-c r (remember) is a handy shortcut key for remember. You can
+   also bind it to other shortcut keys such as F9 r.
+-  4: This shortcut makes it easy to check your remembered notes.
+
+After you've configured Remember, try it out by typing C-c r (remember).
+Your Emacs frame will be split in two, and one of the windows will be a
+*Remember* buffer. Type your note. The first line will be the headline,
+and the rest of the buffer will be the body of the note. If you call C-c
+r (remember) from a file, the filename will automatically be included at
+the end of the buffer. Type C-c C-c (remember-buffer) to save the note.
+
+Try it now by typing C-c r (remember) to bring up the buffer, typing in
+a short note, and using C-c c (remember-buffer) to save it. If you open
+~/notes.txt to review your note, you'll find something like this:
+
+#+BEGIN_EXAMPLE
+     ** Sat Jan 12 14:43:02 2008 (Your headline goes here)
+
+     Your note body goes here
+
+     /home/sacha/.emacs
+#+END_EXAMPLE
+
+You can even save yourself some copying and pasting. Mark a region of
+text and use C-u C-c r (remember). The selected text will be included in
+the buffer, so all you have to do is comment on it.
+
+Make a habit of typing C-c C-r or C-u C-c C-r (remember) when you need
+to remember something. Type C-c C-c (remember-buffer) to get back to
+work, knowing that your notes have been safely saved in your ~/notes.txt
+file.
+
+**** Reviewing Your Notes
+
+Use C-c R (wicked/remember-review-file) to check your notes, or open
+~/notes.txt yourself.
+ To search your notes, use C-c R (wicked/remember-review-file) to open
+the file, then use C-s (isearch-forward) to search for words
+interactively, or use M-x occur to find all lines containing a word.
+
+You may notice that the default format that Remember uses is an outline
+format that is compatible with Org and Allout, both of which have
+powerful outline-editing tools. I prefer Org's outline-editing commands,
+and you'll learn about them in the “Outline Notes with Org” section.
+Here's a quick summary.
+
+First, you need to switch the buffer to Org mode by typing M-x org-mode.
+To automatically open your notes file in Org mode, add
+
+#+BEGIN_EXAMPLE
+    -*- mode: org -*-
+#+END_EXAMPLE
+
+to the first line of your ~/notes.txt. Then, when you open your
+~/notes.txt file, it will be in Org mode.
+
+You can quickly collapse or expand all the outline entries by pressing
+S-TAB (org-shifttab). To collapse or expand a single entry, move the
+point to the headline (the line beginning with *, **, or any number of
+asterisks), then press TAB (org-cycle). To move an entry up or down,
+move the point to the headline and press S-UP (org-shiftup) or S-DOWN
+(org-shiftdown). To demote or promote a heading, press M-RIGHT
+(org-metaright) or M-LEFT (org-metaleft).
+
+You can treat ~/notes.txt as your inbox, and keep your organized notes
+in another file or groups of files. Cut and paste the text between the
+files to clear your inbox, and use M-x grep to search multiple files.
+Alternatively, you can keep all of your notes in one large text file,
+and use C-s (isearch-forward) and M-x occur to search for information.
+
+Now you know the basics of remembering information, saving it into a
+file, and reviewing the file. By default, Remember annotates your notes
+with a filename, if you were looking at a file when you called C-c r
+(remember). As you learn more about Emacs, you may want to configure
+Remember to add more intelligent annotations and other text to the
+Remember buffer. The more work Remember does for you, the less work you
+have to do!
+
+**** Enabling annotation functions
+
+The easiest way to get Remember to automatically understand mail
+messages, Web pages, info files, BBDB contact records, and other sources
+of information in Emacs is to use either Org or Planner. To learn how to
+integrate Remember with either Org or Planner, read the section on
+“Outline Your Notes with Org” and “Writing Your Journal with Planner”.
+
+You can also define your own annotation functions. When you call C-c r
+(remember) from a buffer, Remember goes through each of the functions in
+remember-annotation-functions, and it uses the first non-nil value
+returned.
+
+For example, you may work with many temporary buffers that don't have
+filenames. To create an annotation function that adds buffer names, add
+the following code to your ~/.emacs after the basic Remember
+configuration code:
+
+#+BEGIN_EXAMPLE
+    (eval-after-load 'remember
+      '(progn
+        (add-to-list 'remember-annotation-functions 'buffer-name t)))
+#+END_EXAMPLE
+
+This adds buffer-name to the end of the annotation list, making it a
+last resort.
+
+What if you want line numbers included with the filename or buffer name?
+You could replace the previous code with this:
+
+#+BEGIN_EXAMPLE
+    (defun wicked/remember-line-numbers-and-file-names ()
+     "Return FILENAME line NUMBER."
+     (save-restriction
+      (widen)
+       (format " %s line %d"
+        (or (buffer-file-name) (buffer-name))
+        (line-number-at-pos))))
+    (eval-after-load 'remember
+      '(progn
+         (add-to-list 'remember-annotation-functions
+                      'wicked/remember-line-numbers-and-file-names)))
+#+END_EXAMPLE
+
+With that code, C-c r (remember) will automatically pick up the line
+number from your file or buffer.
+
+By default, Remember saves your notes to a plain-text file, so you'll
+have to open the files manually. The command M-x ffap or
+find-find-file-at-point may be convenient. If you want hyperlinks that
+you can visit easily, consider saving your notes in an Org or Planner
+file instead.
+
+Now you've got context. What else can you do with the Remember buffer?
+
+**** Adding Other Text to the Remember Buffer
+
+Remember has plenty of hooks that let you modify the behavior. For
+example, you might want to insert a random tagline or fortune-cookie
+saying whenever you create a note. This is a fun way to encourage
+yourself to write more, because then there's a little surprise every
+time you open a Remember buffer.
+
+Here is a totally small-scale way to use random lines from a text file.
+Let's say that you have a text file made up of movie quotes, taglines,
+knock-knock jokes, or short fortune-cookie sayings. When I wrote this
+code, I used Japanese/English sentence pairs about cats, because I was
+studying Japanese. You can use whatever tickles your fancy, as long as
+this text file (~/taglines.txt) has one line per saying.
+
+#+BEGIN_EXAMPLE
+    (defun wicked/random-tagline (&optional file)
+      "Return a random tagline."
+      (with-current-buffer (find-file-noselect (or file "~/taglines.txt"))
+        (goto-char (random (point-max)))
+        (let ((string
+               (buffer-substring (line-beginning-position)
+                                 (line-end-position))))
+          string)))
+
+    (eval-after-load 'remember
+      '(progn
+         (defadvice remember (after wicked activate)
+           "Add random tagline."
+           (save-excursion
+             (goto-char (point-max))
+             (insert "\n\n" (wicked/random-tagline) "\n\n")))))
+#+END_EXAMPLE
+
+If you want multi-line sayings, look into the Emacs fortune cookie
+package, and replace wicked/random-tagline with a function that returns
+a random string.
+
+This code modifies the behavior of C-c r (remember) by inserting a
+random tagline after the buffer has been prepared. You can use the same
+idea to insert a timestamp noting the time you started, use a template,
+or modify the text in other ways.
+
+**** Saving to Different Places
+
+You can also change how Remember saves its notes. For example, if you
+want all of the notes that contain the word “:EMACS:” or “:WORK:” to go
+into separate files, you can add this code to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (defvar wicked/remember-keywords
+      '((":EMACS:" . "~/emacs.txt")
+        (":WORK:" . "~/work.txt"))
+      "*List of (REGEXP . FILENAME).
+    If an entry matches REGEXP, it will be storied in FILENAME.
+    The first regular expression that matches is used.")
+    (eval-after-load 'remember
+      '(progn
+         (defadvice remember-region (around wicked activate)
+           "Save notes matching `wicked/remember-keywords' elsewhere."
+           (let* ((b (or beg (min (point) (or (mark) (point-min)))))
+              (e (or end (max (point) (or (mark) (point-max)))))
+              (string (buffer-substring-no-properties b e))
+              (done nil)
+              (keywords wicked/remember-keywords))
+         (while keywords
+           (when (string-match (caar keywords) string)
+             (let ((remember-data-file (cdar keywords)))
+               ad-do-it)
+             (setq keywords nil done t))
+           (setq keywords (cdr keywords)))
+         (unless done
+           ad-do-it)))))
+#+END_EXAMPLE
+
+You can even configure Remember to use different handler functions. This
+chapter covers several note-taking systems for Emacs, and you may want
+to use Remember to save to more than one note-taking system. For
+example, you can set up C-c r p to start a Remember buffer that saves to
+Planner, and C-c r o to start a Remember buffer that saves to Org.
+Here's the code for your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (defun wicked/remember-to-org ()
+      "Remember to Org."
+      (let ((remember-annotation-functions   ;; (1)
+         (cons 'org-remember-annotation
+               remember-annotation-functions)))
+        (remember)
+        (set (make-variable-buffer-local
+          'remember-handler-functions)
+         '(org-remember-handler))))      ;; (2)
+
+    (defun wicked/remember-to-planner ()
+      "Remember to Planner."
+      (let ((remember-annotation-functions   ;; (3)
+         (append planner-annotation-functions
+             remember-annotation-functions)))
+        (remember)
+        (set (make-variable-buffer-local
+          'remember-handler-functions)
+         '(remember-planner-append))))      ;; (4)
+
+    (global-unset-key (kbd "C-c r"))  ;; (5)
+    (global-set-key (kbd "C-c r o") 'wicked/remember-to-org)
+    (global-set-key (kbd "C-c r p") 'wicked/remember-to-planner)
+#+END_EXAMPLE
+
+-  1: We need to make sure that Org-compatible links are created.
+-  2: This makes C-c C-c save the note to the Org file.
+-  3: Planner uses a list of annotation functions, so we add all of them
+   to the beginning of the list.
+-  4: This makes C-c C-c save the note to the Planner page.
+-  5: We need to unset keyboard shortcuts before we can set longer
+   keyboard shortcuts that start with the same sequence.
+
+To learn more about configuring Remember with the different note-taking
+systems, read the sections for those systems.
+
+On Technorati:
+[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs]],
+[[http://www.technorati.com/tag/book][book]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/remember][remember]]
+
+Random Emacs symbol: compilation-find-file -- Function: Find a buffer
+for file FILENAME.

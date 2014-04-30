@@ -1,0 +1,12 @@
+#+TITLE: So far, so good
+
+March 16th, 2004 -
+[[http://sachachua.com/blog/p/1898][http://sachachua.com/blog/p/1898]]
+
+muse opens my planner files. WikiPages are still not marked up, but
+ one can argue that this is a good thing and that all links should be
+ explicitly linked anyway. Yvonne Thomson
+ will be pleased by that. Maybe not having automatic WikiLinks is a
+ good thing.
+
+[[http://sachachua.com/notebook/emacs/muse-sacha/muse-mode.el][../../notebook/emacs/muse-sacha/muse-mode.el]]

@@ -1,0 +1,13 @@
+#+TITLE: Planner supports Wanderlust
+
+March 8th, 2004 -
+[[http://sachachua.com/blog/p/1858][http://sachachua.com/blog/p/1858]]
+
+Yvonne Thomson contributed Wanderlust mail client support for
+ [[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]. Check
+out
+
+[[http://sacha.free.net.ph/notebook/emacs/emacs-wiki/planner-wl.el][http://sacha.free.net.ph/notebook/emacs/emacs-wiki/planner-wl.el]]
+.
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/planner-wl.el][../../notebook/emacs/emacs-wiki/planner-wl.el]]

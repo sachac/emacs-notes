@@ -1,0 +1,11 @@
+#+TITLE: emacs-wiki-id.el
+
+January 2nd, 2004 -
+[[http://sachachua.com/blog/p/1574][http://sachachua.com/blog/p/1574]]
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/emacs-wiki-id.el][../emacs/emacs-wiki/emacs-wiki-id.el]]
+contains a first attempt at
+ an ID system for emacs-wiki and indeed is quite nice. Following IDs
+works.
+ I'll figure out how to automatically add, create, remove, yadayada them
+soon.

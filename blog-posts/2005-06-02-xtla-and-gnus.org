@@ -1,0 +1,35 @@
+#+TITLE: xtla and Gnus
+
+June 2nd, 2005 -
+[[http://sachachua.com/blog/p/2771][http://sachachua.com/blog/p/2771]]
+
+#+BEGIN_QUOTE
+  There is a feature in xtla.el to send/review patches via gnus.
+
+  To set it up, you need the following lines for your .emacs:
+
+  #+BEGIN_EXAMPLE
+      (tla-insinuate-gnus)
+      (setq tla-apply-patch-mapping
+            '(((nil "planner" nil  nil nil) "~/work/planner-dev/")))
+  #+END_EXAMPLE
+
+  Replace ~/work/planner-dev/ with your planner working directory
+
+  The patches are sent as .tar.gz files.
+
+  When you receive such a patch (I will send one soon), You can hit
+   K t v to view the patch
+   K t a to apply the patch
+
+  I can even provide a log message in the mail.
+   You can insert the log message via C-c C-p in the tla-log-edit
+  buffer.
+#+END_QUOTE
+
+E-Mail from Stefan ReichÃƒÂƒÃ‚Â¶r
+
+ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ©Ã‚Â™Ã‚Â?ÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â‚Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ¦Ã‚Â€Ã‚Â§ÃƒÂ¨Ã‚ÂƒÃ‚Â½ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â‚Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ§Ã‚Â§Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¦ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ¥Ã‚Â¹Ã‚Â»ÃƒÂ¦Ã‚Â»Ã‚Â...ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¦Ã‚Â„Ã‚ÂŸÃƒÂ£Ã‚Â?Ã‚Â˜ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+Its limited capability has disenchanted me with computer.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

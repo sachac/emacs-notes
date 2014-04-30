@@ -1,0 +1,78 @@
+#+TITLE: How I use Emacs Org Mode for my weekly reviews
+
+June 26th, 2013 -
+[[http://sachachua.com/blog/p/25043][http://sachachua.com/blog/p/25043]]
+
+*Summary: I use a
+custom*[[http://sachachua.com/dotemacs#weekly-review][*Emacs Lisp
+function*]]*to extract my upcoming tasks and logged tasks from my Org
+agenda, and I combine that with data from QuantifiedAwesome.com using a
+JSON interface.*
+
+I use [[http://orgmode.org][Emacs Org Mode]] to keep track of my tasks
+because of its flexibility. It's difficult to imagine doing the kinds of
+things I do with a different task management system. For example, I've
+written some code that extracts data from my Org Mode task list and my
+QuantifiedAwesome.com time log to give me the basis of a weekly review.
+Here's what my workflow is like.
+
+Throughout the week, I add tasks to Org Mode to represent things that I
+plan to do. I also create tasks for things I've done that I want to
+remember, as I find that I forget things even within a week. I track my
+time through [[http://quantifiedawesome.com][QuantifiedAwesome.com]], a
+website I built myself for tracking things that I'm curious about.
+
+On Saturday, I use [[http://sachachua.com/dotemacs#weekly-review][*M-x
+sacha/org-prepare-weekly-review*]], which:
+
+-  runs org-agenda for the upcoming week and extracts all my non-routine
+   tasks
+-  runs org-agenda in log mode and extracts all finished tasks from the
+   previous week
+-  gets the time summary from Quantified Awesome's JSON interface
+
+Here's what the raw output looks like:
+
+[[http://sachachua.com/blog/wp-content/uploads/2013/06/image5.png][[[http://sachachua.com/blog/wp-content/uploads/2013/06/image_thumb6.png]]]]
+
+I like including a list of blog posts so that people can click on them
+if they missed something during the week. Besides, my blog posts often
+help me remember what I did that week. I customized my WordPress theme
+to give me an org-friendly list if I add ?org=1 to the date URL. For
+example, here's the list for this month:
+[[http://sachachua.com/blog/2013/06/?org=1][sachachua.com/blog/2013/06/?org=1]]
+. I copy and paste the relevant part of the list (or lists, for weeks
+near the beginning or end of a month) into the *Blog posts section*. I
+could probably automate this, but I haven't bothered.
+
+Then I organize the past and future tasks by topic. Topics are useful
+because I can see which areas I've been focusing on and which ones I've
+neglected. I do this organization manually, although I could probably
+figure out how to use tags to jumpstart the process.
+=(setq org-cycle-include-plain-lists 'integrate)= means that I can use
+TAB to hide or show parts of the list. I use M-<down> and M-<right> for
+most of the tasks, and I also cut and paste lines as needed. Because my
+code sorts tasks alphabetically, I'm starting to name tasks with the
+context at the beginning to make them easier to organize.
+
+If I remember other accomplishments, I add them to this list. If I think
+of other things I want to do, I add them to the list and I create tasks
+for them. (I should probably write a function that does that...)
+
+The categories and time totals are part of the weekly review template
+inserted by =sacha/org-prepare-weekly-review=. I use my smartphone or
+laptop to track time whenever I switch activities, occasionally
+backdating or editing records if I happen to be away or distracted. If
+I'm at my computer, I sometimes estimate and track time at the task
+level using Org Mode's clocking feature. Since I'm not consistent with
+task-based time-tracking, I use that mainly for investigating how much
+time it takes me to do specific things, and I don't automatically
+include that in my reports.
+
+When I'm done, I use
+[[https://github.com/punchagan/org2blog][=org2blog/wp-post-subtree=]] to
+publish the draft to my blog. I preview it in WordPress to make sure
+everything looks all right, and then publish it.
+
+It's wonderful being able to tweak your task manager to fit the way you
+work. Yay Emacs, Org Mode, WordPress, and making your own tools!

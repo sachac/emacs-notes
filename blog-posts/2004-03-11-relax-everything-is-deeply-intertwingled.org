@@ -1,0 +1,22 @@
+#+TITLE: Relax, Everything Is Deeply Intertwingled
+
+March 11th, 2004 -
+[[http://sachachua.com/blog/p/1876][http://sachachua.com/blog/p/1876]]
+
+[[http://ifindkarma.typepad.com/relax/][http://ifindkarma.typepad.com/relax/]]
+
+I'm also interested in personal information management. Fisher sounds
+ really cool, although naturally I'd need it to be open-source and
+ Emacsable. I find that planner \_is\_ already changing my life,
+changing
+ my patterns for doing things. I like how it helps me manage my mail,
+ keep my blog, search the bits and pieces I remembered.
+
+Browsing through Adam Rifkin's entries, I think that he's someone I
+ should learn from.
+
+Incidentally, I have 115,729,742 bytes in my mail.misc now. That's
+ mostly personal mail. I have 3,095,920 bytes in my ~/notebook/plans .
+ That's my blog entries, schedules and tasks. =)
+
+E-Mail from Adam Rifkin

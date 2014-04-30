@@ -1,0 +1,59 @@
+#+TITLE: How to Learn Emacs: A Hand-drawn One-pager for Beginners / A visual tutorial
+
+May 17th, 2013 -
+[[http://sachachua.com/blog/p/24836][http://sachachua.com/blog/p/24836]]
+
+This entry is part 1 of 4 in the series
+[[http://sachachua.com/blog/series/a-visual-guide-to-emacs/][A Visual Guide to Emacs]]
+
+- UPDATE 2013-09-23: New, much larger version -- see below!
+- UPDATE 2013-06-01: [[http://www.maplib.net/fullmap.php?id=16358&legend=1&lat=-53.424311519827155&lng=35.8538818359375&z=8][Here's a zoomable, pannable version thanks to MapLib!]]
+
+*Here's version 2 (September 2013).* You can print this at 16.5″x10.75″
+at 300dpi. Have an ordinary printer? Check out [[http://sourceforge.net/projects/posterazor][PosteRazor]]!
+
+[[http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large.png][http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large-640x416.png]]
+
+--------------
+
+Original post from May 2013:
+[[http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8.png][
+]]I thought I'd draw a one-page guide for some of the things that people
+often ask me about or that would help people learn Emacs (and enjoy it).
+You can click on the image for a larger version that you can scroll
+through or download. It should print all right on 8.5×11″ paper
+(landscape) if you want to keep it around as a reminder. Might even work
+at 11×17″. =)
+
+[[http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8.png][http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8-640x480.png]]
+
+You can find the image on [[http://imgur.com/m0WsEvH][Imgur]] and [[http://www.flickr.com/photos/sachac/8748351168/sizes/o/in/photostream/][Flickr]] too.
+
+Feel free to share, reuse, or modify this under the Creative Commons
+Attribution Licence. Enjoy!
+
+Possibly counterintuitive point: It's good to learn at least the basics
+of Vim. Despite the perception of a “Emacs vs. Vi” holy war (one of the
+classic battles in computer science), it makes sense to know both
+editors especially if you work with people who use Vi a lot. Know enough
+Vi to find your way around, and then learn how to customize Emacs to fit
+you to a tee. That way, you'll avoid the pressure of not being able to
+work well with your team or your infrastructure, and you'll have the
+space to explore Emacs. =) Emacs is totally awesome.
+
+Need help with Emacs? Feel free to leave a comment or [[http://sachachua.com/blog/contact][get in touch
+with me]]. I'm often in the #emacs channel on irc.freenode.net , and I
+also occasionally schedule time to [[http://sachachua.com/blog/2013/04/emacs-chat-intro/][help people one-on-one]]. Also, the
+Emacs community (mailing lists, newsgroups, IRC channel) can be
+wonderful, so definitely reach out to them too. =)
+
+/Meta discussion:/ How can I make this even better? What else would
+you like me to draw a guide for? I'd love to hear your thoughts! Also,
+thanks to dash, nicferrier, fledermaus, ijp, hypnocat, Fuco, macrobat,
+taylanub, axrfnu, Sebboh, thorkill, jave\_, jrm, and the rest of
+#emacs for suggestions and feedback!
+
+/Update 2013-05-18:/ Check out the conversations on [[https://news.ycombinator.com/item?id=5728296][Hacker News]] and
+[[http://www.reddit.com/r/emacs/comments/1ejdu6/how_to_learn_emacs_a_handdrawn_onepager_for/][Reddit]]!
+
+Series Navigation: [[http://sachachua.com/blog/2013/09/how-to-learn-emacs-keyboard-shortcuts-a-visual-tutorial-for-newbies/][How to learn Emacs keyboard shortcuts (a visual tutorial for newbies) »]]

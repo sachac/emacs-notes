@@ -1,0 +1,23 @@
+#+TITLE: Emacs Conference 2013 videos
+
+April 11th, 2013 -
+[[http://sachachua.com/blog/p/24677][http://sachachua.com/blog/p/24677]]
+
+Here are the Emacs Conference 2013 videos!
+[[http://j.mp/emacs2013videos][http://j.mp/emacs2013videos]]
+
+Unfortunately, our keynote wasn't livestreamed, but I managed to
+[[http://archive.org/details/EmacsConf201301KeynoteBySachaChuaAndJohnWiegley][record
+the audio]] so that you can hear what John Wiegley and I sound like.
+
+I haven't uploaded the Meta-eX performance because it's a music
+performance. (Sam Aaron, do you want me to go ahead and post it?)
+
+Sketchnotes:
+[[http://sachachua.com/blog/2013/04/emacs-conference-2013-sketchnotes-also-pdf/][http://sachachua.com/blog/2013/04/emacs-conference-2013-sketchnotes-also-pdf/]]
+
+More Emacs conference information:
+[[http://emacswiki.org/emacs/Emacs_Conference_2013][http://emacswiki.org/emacs/Emacs\_Conference\_2013]],
+[[http://emacsconf.org][http://emacsconf.org]]
+
+Enjoy!

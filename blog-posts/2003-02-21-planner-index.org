@@ -1,0 +1,9 @@
+#+TITLE: planner index
+
+February 21st, 2003 -
+[[http://sachachua.com/blog/p/440][http://sachachua.com/blog/p/440]]
+
+It should be easy to modify the
+[[http://sachachua.com/notebook/wiki/WikiIndex][WikiIndex]] so that it
+splits planner entries off and provides a link to today's entry... I
+might event want to double-publish today as PlannerToday.

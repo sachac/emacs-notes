@@ -1,0 +1,127 @@
+#+TITLE: Emacs, Evernote (through enscript.exe), and Org links
+
+March 20th, 2014 -
+[[http://sachachua.com/blog/p/27043][http://sachachua.com/blog/p/27043]]
+
+I've given myself permission to
+[[http://www.flickr.com/photos/sachac/13089037624/][spend an hour or two
+tickling my brain]] with various technical ideas and prototypes every
+day. This means Emacs geekery is going to turn up on my blog more often.
+=) Here's a recent hack that I put together to make my weekly reviews a
+little easier.
+
+I skim a lot of blog posts on my phone using the
+[[http://feedly.com][Feedly]] app. (See:
+[[http://sachachua.com/blog/2014/01/read-blogs-efficiently-feed-reader/][How
+to read blogs efficiently with a feed reader]].) I save the posts I want
+to follow up on or include in my weekly round-up. I have an
+[[http://ifttt.com][If This Then That]] recipe that monitors my saved
+items and stashes them in Evernote with the =roundup= tag. If I come
+across other interesting pages while browsing on my computer, I use the
+Evernote Web Clipper to save those pages with the =roundup= tag as well.
+
+In the past, I selected a range of notes to export from Evernote, saved
+them to a file, and used my sacha/evernote-extract-links-for-review
+function to extract the titles and URLs. I opened each of the pages with
+C-c C-o (=org-open-at-point=) to refresh my memory and follow up. I
+deleted lines that were no longer relevant. Since IFTTT had changed to
+rewriting the URLs instead of leaving the source URLs alone, I copied
+the original URLs and replaced the links that were in Org.
+
+This is Emacs, though, and even that can be smoothened with a little
+scripting. Now I can use the code below to expand URLs and to open all
+the URLs in the region.
+
+*** Link-related convenience functions
+
+I picked this up from
+[[http://www.emacswiki.org/emacs/AlexSchroederConfigOrientalibombus][http://www.emacswiki.org/emacs/AlexSchroederConfigOrientalibombus]]
+.
+
+#+BEGIN_EXAMPLE
+    (defun kensanata/resolve-redirect (url)
+      "Resolve shortened URL by launching `curl --head' and parsing the result."
+      (let* ((curl (shell-command-to-string
+                    (format "curl --silent --head %s" url)))
+             (location (when (and (string-match "\\`HTTP/1\.1 301" curl)
+                                  (string-match "^Location: \\(.*\\)" curl))
+                         (match-string 1 curl))))
+        (or location url)))
+
+    (defun sacha/resolve-urls-in-region (beg end)
+      "Expand URLs between BEG and END."
+      (interactive "r")
+      (save-excursion
+        (save-restriction
+          (narrow-to-region beg end)
+          (goto-char (point-min))
+          (while (re-search-forward org-bracket-link-regexp nil t)
+            (replace-match (save-match-data (kensanata/resolve-redirect
+                                             (match-string 1))) t t nil 1))
+          (goto-char (point-min))
+          (while (re-search-forward org-link-re-with-space nil t)
+            (replace-match (save-match-data (kensanata/resolve-redirect
+                                             (match-string 0))) t t nil)))))
+
+    (defun sacha/open-urls-in-region (beg end)
+      "Open URLs between BEG and END."
+      (interactive "r")
+      (save-excursion
+        (save-restriction
+          (narrow-to-region beg end)
+          (goto-char (point-min))
+          (while (re-search-forward org-plain-link-re nil t)
+            (org-open-at-point)))))
+#+END_EXAMPLE
+
+*** Evernote-related extract
+
+Evernote on Windows doesn't have the same kind of scripting capabilities
+that Evernote on the Mac has, but it turns out you can still do a fair
+bit of scripting with the =enscript= tool.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/evernote-export-and-extract (start-date end-date)
+      "Extract notes created on or after START-DATE and before END-DATE."
+      (let ((filename "c:/sacha/tmp/Evernote.enex"))
+        (call-process 
+         "c:/Program Files (x86)/Evernote/Evernote/enscript.exe"
+         nil t t
+         "exportNotes"
+         "/q" (concat
+               " tag:roundup"
+               " created:" (replace-regexp-in-string "-" "" start-date)
+               " -created:" (replace-regexp-in-string "-" "" end-date))
+         "/f" filename)
+        (sacha/evernote-extract-links-for-review filename)))
+
+    (defun sacha/evernote-extract-links-for-review (filename)
+      "Extract note names and URLs from FILENAME.
+         The file should be an ENEX export."
+      (interactive (list (read-file-name "File: ")
+                         (org-read-date)
+                         (org-read-date)))
+      (let (list)
+        (with-temp-buffer
+          (insert-file-contents filename)
+          (goto-char (point-min))
+          (while (re-search-forward "<title>\\(.+?\\)</title>\\(.*?\n\\)*?.*?href=\"\\(.*?\\)\"" nil t)
+            (setq list
+                  (cons
+                   (cons
+                    (match-string-no-properties 1)
+                    (match-string-no-properties 3)) list))))
+        (setq list
+              (mapconcat (lambda (x)
+                           (concat "- [["
+                                   (kensanata/resolve-redirect (cdr x))
+                                   "][" (car x) "]]: ")) list "\n"))
+              (if (called-interactively-p 'any)
+                  (insert list)
+                list)))
+#+END_EXAMPLE
+
+Let's see how this new workflow goes. =) If you're curious, you can
+check out the rest of my
+[[http://sachachua.com/dotemacs#weekly-review][weekly-review-related
+code in my Emacs configuration]].

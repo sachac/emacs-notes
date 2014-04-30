@@ -1,0 +1,7 @@
+#+TITLE: align-regexp
+
+September 19th, 2003 -
+[[http://sachachua.com/blog/p/1127][http://sachachua.com/blog/p/1127]]
+
+=C-u M-x align-regexp RET \(\s-*\)| RET RET RET y RET=
+ will align planner tables beautifully.

@@ -1,0 +1,13 @@
+#+TITLE: Planet Emacsen
+
+October 27th, 2006 -
+[[http://sachachua.com/blog/p/3982][http://sachachua.com/blog/p/3982]]
+
+[[http://planet.emacsen.org/][http://planet.emacsen.org/]] by Edward
+O'Connor. ‘Nuff said! =D
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: ido-subdir -- Face: *Font used by ido for
+highlighting subdirs in the alternatives.

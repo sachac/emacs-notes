@@ -1,0 +1,28 @@
+#+TITLE: Animating things in Emacs
+
+June 11th, 2013 -
+[[http://sachachua.com/blog/p/24957][http://sachachua.com/blog/p/24957]]
+
+Some years ago, I came across *M-x animate-birthday-present* (and
+therefore *animate-string*and*animate-sequence*) while reading through
+the output of *M-x apropos-command RET . RET*, which lists all of the
+interactive commands. (Well worth exploring! The Emacs Manual also lists
+a few unusual things under
+“[[http://www.gnu.org/software/emacs/manual/html_node/emacs/Amusements.html][Amusements.]]”)
+It's one of my favourite examples of odd things you can find in Emacs,
+like *M-x doctor* and *M-x tetris.* I use animate-string to create the
+title sequences of Emacs chats
+[[http://sachachua.com/blog/2013/05/emacs-chat-bastien-guerry][like this
+one with Bastien Guerry]].
+
+It turns out that lots of people use the Emacs text editor for animating
+things. Andrea Rossetti (from Trieste, Italy) e-mailed to share this
+little thing he put together to simulate
+[[https://github.com/thesoftwarebin/the-emacs-software-bin/blob/master/teletype.el][typing
+in Emacs]]. And, boggle of boggles, someone even taught a *course* on
+[[http://dantorop.info/project/emacs-animation/][Emacs Lisp
+Animations]].
+
+Next: Maybe someone can make an onion-skin animation mode to go on top
+of artist-mode so that we can make Emacs flipbooks?
+[[http://sachachua.com/blog/wp-content/uploads/2013/06/wlEmoticon-winkingsmile.png]]

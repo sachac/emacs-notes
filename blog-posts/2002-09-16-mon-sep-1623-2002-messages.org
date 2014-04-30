@@ -1,0 +1,7 @@
+#+TITLE: (Mon Sep 16:23 2002, *Messages*)
+
+September 16th, 2002 -
+[[http://sachachua.com/blog/p/399][http://sachachua.com/blog/p/399]]
+
+Fixed planner remember bug -- context was getting picked up after the
+switch of buffer.

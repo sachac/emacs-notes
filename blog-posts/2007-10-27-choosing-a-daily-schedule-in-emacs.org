@@ -1,0 +1,86 @@
+#+TITLE: Choosing a daily schedule in Emacs
+
+October 27th, 2007 -
+[[http://sachachua.com/blog/p/4421][http://sachachua.com/blog/p/4421]]
+
+There's more than one way to plan your day in Emacs, just like there's
+ more than one way to do everything in Emacs. The basic end of the
+ spectrum includes Diary, Calendar, and Appt. More sophisticated
+ modules include Org (part of Emacs 22) and Planner (available
+ separately). Then there are Emacs modules to export and import
+ calendar data to and from external programs, such as Remind.
+
+If all you need to do is keep track of recurring events such as
+ birthdays and anniversaries, then Diary can be a good fit for you. All
+ it takes is one text file specifying the dates and descriptions of
+ one-time or recurring events, and one line in your ~/.emacs file to
+ display the diary entries for today whenever you start up. If you
+ switch to either Org or Planner later on, you can configure your Emacs
+ to include information from your old diary file.
+
+If you find yourself wanting more integration with your task list and
+ your notes so that you can see everything related to the day, then
+ you'll want to go for either Org or Planner. The choice between the
+ two depends on how you want to plan your day. ...
+
+If you've worked with a *paper-based planner or a typical calendar
+application*
+ for a while, then Planner might be a good fit for the way you think.
+ Planner has a strong day orientation. With Planner, you plan your
+ schedule in terms of day pages, and optionally cross-reference the
+ tasks with project pages. You can keep your schedule as plain text on
+ your day page, or you can follow the format suggested by Planner so
+ that your scheduled tasks and appointments will be added to Emacs'
+ appointment reminder system. Planner is similar to the scheduling
+ method of Franklin-Covey day planners and other paper organizers. I
+ like Planner because it's easy to scribble notes onto my daily
+ schedule, just like I would pencil comments into my paper planner.
+
+*Org focuses on projects instead of days.* With Org, you plan your
+ projects first, and then schedule specific tasks or appointments onto
+ your calendar. Your daily view is then dynamically generated from the
+ headlines of the outline nodes that are scheduled for the day. You
+ need to use a special format, but built-in commands make it easy to
+ create and edit timestamps. Org has great support for David Allen's
+ Getting Things Done (GTD) productivity technique. If you think in
+ terms of next actions or outlines, Org is a good fit for you.
+
+You can still think in terms of projects with Planner, but you'll need
+ to remember to use the built-in commands for editing functions so that
+ your changes are also reflected in the day pages. You don't need to
+ organize your Org file by project. You can throw everything into one
+ outline if you want. However, you'll still need to use the
+ dynamically-generated summary view (org-agenda-list) to see your daily
+ or weekly schedule, and reading all the text associated with the day
+ could mean some jumping around.
+
+*In short:*
+
+-  If you think in terms of day schedules, start with Planner.
+-  If you think in terms of projects or outlines, start with Org.
+
+If you haven't figured out how your brain works yet, *I recommend
+ starting with Org.* I think that the project-based approach will
+ probably help more people out in the long run. I have to admit that I
+ love Planner and I've been using it very happily for more than four
+ years. I love being able to add all sorts of free-form notes while
+ going through the day, and Planner makes it easy to publish that as my
+ blog. (Automatically removing all my private notes, of course!) I've
+ gotten used to the way Planner works, and because of my extensive
+ modifications, Planner's gotten used to the way I work as well. If
+ you're starting from scratch, you might like Org's better support for
+ projects, outlines, and overviews. Give Org a try first. If you find
+ yourself wanting more flexibility in your day view, try Planner next.
+
+----
+
+If you've tried both, I'd love to hear your thoughts on the
+ differences between them. I'm trying to figure out when one fits
+ better than the other because I'm working on a book called “Wicked
+ Cool Emacs”. I love Planner, I'm getting the hang of Org, and I'd love
+ to hear from other people who have given both a shot. =)
+
+Random Emacs symbol: message-forward-decoded-p -- Variable: Non-nil
+means the original message is decoded.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

@@ -1,0 +1,9 @@
+#+TITLE: Fixed EmacsCvsAndDebian
+
+March 13th, 2003 -
+[[http://sachachua.com/blog/p/501][http://sachachua.com/blog/p/501]]
+
+Added some more notes on faking emacs21. Local wiki node
+[[http://sachachua.com/notebook/wiki/EmacsCvsAndDebian][EmacsCvsAndDebian]],
+canonical location
+[[http://www.emacswiki.org][http://www.emacswiki.org]]

@@ -1,0 +1,87 @@
+#+TITLE: Better!
+
+February 27th, 2004 -
+[[http://sachachua.com/blog/p/1789][http://sachachua.com/blog/p/1789]]
+
+Finally got emacs-wiki highlighting just the way I want it.
+ Apparently, it bypasses the normal font-lock thing. Changes: I made
+ the example tag remove all the properties from the bounded region.
+ Here's the relevant snippet from my
+[[http://sachachua.com/notebook/emacs/emacs-wiki-config.el][../emacs/emacs-wiki-config.el]]:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/htmlfontify-insert-region (buffer begin end)
+      "Insert into BUFFER the htmlified text between BEGIN and END."
+      (save-excursion
+        (let* ((hfy-optimisations (cons 'skip-refontification hfy-optimisations))
+           (input-text (buffer-substring begin end))
+           (temp-file (make-temp-file "html-input"))
+           output-buffer)
+          (with-temp-buffer
+        (insert input-text)
+        (setq buffer-file-name temp-file)
+        (save-excursion (setq output-buffer (htmlfontify-buffer nil nil)))
+        (set-buffer-modified-p nil))
+          (unwind-protect
+          (let (b e yanked-output)
+            (set-buffer output-buffer)
+            (goto-char (point-min))
+            (search-forward "\n")
+            (setq b (line-beginning-position))
+            (goto-char (point-max))
+            (search-backward "
+#+END_EXAMPLE
+
+")
+ (forward-line -1)
+ (setq e (line-beginning-position))
+ (setq yanked-output (buffer-substring-no-properties b e))
+ (set-buffer buffer)
+ (insert yanked-output))
+ (set-buffer output-buffer)
+ (set-buffer-modified-p nil)
+ (delete-file temp-file)
+ (kill-buffer output-buffer)))))
+
+(defun sacha/emacs-wiki-example-tag (beg end attrs highlight-p)
+ "Mark up text as an example with optional font-locking."
+ (if highlight-p
+ (progn
+ (remove-text-properties
+ beg end '(face nil font-lock-multiline nil
+ invisible nil intangible nil display nil
+ mouse-face nil keymap nil help-echo nil))
+ (goto-char end))
+ ;; I don't know what would happen if you don't have
+ ;; htmlfontify. I guess if you are installing this you
+ ;; should have it...
+ (let ((end-marker (set-marker (make-marker) (1+ end))))
+ (save-restriction
+ (narrow-to-region beg end)
+ (let* ((mode (cdr (assoc "mode" attrs)))
+ (start (progn (forward-line) (point)))
+ (stop (progn (goto-char end) (beginning-of-line) (point)))
+ (text (buffer-substring-no-properties start stop))
+ (buffer (current-buffer)))
+ (delete-region beg end)
+ (with-temp-buffer
+ (insert text)
+ (when (and mode (and (stringp mode) (functionp (intern mode))))
+ (funcall (intern mode))
+ (font-lock-fontify-buffer))
+ (sacha/htmlfontify-insert-region buffer (point-min) (point-max)))
+ (goto-char (point-min))
+ (insert "
+
+#+BEGIN_EXAMPLE
+    \n")
+          (goto-char (point-max))
+          (insert "
+#+END_EXAMPLE
+
+\n")
+ (add-text-properties (point-min) (point-max)
+ '(rear-nonsticky (read-only) read-only t))))
+ (goto-char end-marker))))
+
+(add-hook 'emacs-wiki-mode-hook 'emacs-wiki-highlight-buffer t)

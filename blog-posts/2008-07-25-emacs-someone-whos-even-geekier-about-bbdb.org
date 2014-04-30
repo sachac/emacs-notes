@@ -1,0 +1,17 @@
+#+TITLE: Emacs: Someone who's even geekier about BBDB!
+
+July 25th, 2008 -
+[[http://sachachua.com/blog/p/4985][http://sachachua.com/blog/p/4985]]
+
+Remember all those tweaks I posted for
+[[http://sachachua.com/wp/category/bbdb][working with contacts using
+Emacs' Big Brother Database]]? John Sturdy has even cooler stuff. Check
+out his
+[[http://www.cb1.com/~john/computing/emacs/lisp/my-extensions-to-packages/bbdb/index.html][BBDB
+extensions]]. His
+[[http://www.cb1.com/~john/computing/emacs/lisp/my-extensions-to-packages/bbdb/bbdb-export-lists.el][bbdb-export-lists.el]]
+can divide people into different phone and address lists, and his
+[[http://www.cb1.com/~john/computing/emacs/lisp/my-extensions-to-packages/bbdb/bbdb-human-names.el][bbdb-human-names.el]]
+will even try to address people properly. Clearly, I don't talk to
+enough Reverend Doctors to require code like this. (And shouldn't there
+be “Right Honorables” and “His Grace”s in there, too? ;) )

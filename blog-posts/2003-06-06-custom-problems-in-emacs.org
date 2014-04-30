@@ -1,0 +1,7 @@
+#+TITLE: Custom problems in Emacs
+
+June 6th, 2003 -
+[[http://sachachua.com/blog/p/822][http://sachachua.com/blog/p/822]]
+
+Custom problems in Emacs seem to have mysteriously disappeared in last
+night's CVS. Yay open source!

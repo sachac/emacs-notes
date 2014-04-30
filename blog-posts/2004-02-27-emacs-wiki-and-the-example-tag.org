@@ -1,0 +1,11 @@
+#+TITLE: emacs-wiki and the example tag
+
+February 27th, 2004 -
+[[http://sachachua.com/blog/p/1788][http://sachachua.com/blog/p/1788]]
+
+I firmly believe that stuff in example tags should not get marked up
+ on the page, and may have to fiddle around with the faces in order to
+ get that to happen. Actually, restoring it to the bottom makes
+ sense...
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/emacs-wiki.el][../../notebook/emacs/emacs-wiki/emacs-wiki.el]]

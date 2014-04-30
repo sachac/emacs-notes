@@ -1,0 +1,9 @@
+#+TITLE: Testing the hopefully fixed restrictions
+
+December 7th, 2003 -
+[[http://sachachua.com/blog/p/1472][http://sachachua.com/blog/p/1472]]
+
+I was having problems with planner-update-task messing around with my
+ restrictions. Phooey.
+
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]

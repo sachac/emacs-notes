@@ -1,0 +1,8 @@
+#+TITLE: CEDET
+
+September 17th, 2002 -
+[[http://sachachua.com/blog/p/414][http://sachachua.com/blog/p/414]]
+
+(Wed Sep 18:06 2002, *Article*)
+
+[[http://cedet.sourceforge.net/semantic.shtml][http://cedet.sourceforge.net/semantic.shtml]]

@@ -1,0 +1,7 @@
+#+TITLE: planner-move-task-to-plan-page
+
+October 8th, 2003 -
+[[http://sachachua.com/blog/p/1213][http://sachachua.com/blog/p/1213]]
+
+Cross-reference:
+[[http://sachachua.com/notebook/wiki/PlannerMode#6][PlannerMode#6]]

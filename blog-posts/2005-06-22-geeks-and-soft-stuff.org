@@ -1,0 +1,66 @@
+#+TITLE: Geeks and soft stuff
+
+June 22nd, 2005 -
+[[http://sachachua.com/blog/p/2789][http://sachachua.com/blog/p/2789]]
+
+Kathy Sierra
+([[http://headrush.typepad.com/creating_passionate_users/][Creating
+Passionate Users]]) was surprised to
+ find that
+[[http://headrush.typepad.com/creating_passionate_users/2005/06/open_source_pas.html][geeks
+are very interested in learning about “soft” topics like community.]]
+
+I'm \_crazy\_ about my community of passionate users and co-developers.
+[[http://www.emacswiki.org/cgi-bin/wiki/PlannerMode][The personal
+information manager I maintain]] gives me so many opportunities to
+tailor it to fit people's individual quirks. I love getting things to
+fit people. It's about people, not code. I love helping people become
+more productive. Dominique says I'm wired differently. He hasn't met a
+lot of maintainer-types; most open source developers he's met are just
+happy to get something out there. Me, I get my kick out of the
+relationship I build with the other people throughout the years. I get
+my kick out of making people's lives easier. I don't write extremely
+clever code, but I learn so much from them about the ways people plan!
+
+I'm also crazy about organizing information and collecting knowledge.
+[[http://www.online-learning.com/course_id_5.html][“So where are all the
+Information Designers?”]] gave me a name for my interest in wikis and
+developing a culture of documentation in communities. Again, it's about
+people! =) Sure, I have to know the technology to set up a good wiki and
+customize it to their needs, but I'm really more focused on the process
+and the culture.
+
+Is it ungeeky to be interested in these things, to devour business and
+ psychology books even more avidly than I do technical books? I don't
+ think so. To me, people and organizations have even more complex and
+ fascinating systems that I want to hack. They're way, way, way cool.
+ I've come a long way since my “eewww, MIS!” days, and I look forward
+ to learning more about the way people work.
+
+ÃƒÂ£Ã‚Â‚Ã‚Â¸ÃƒÂ£Ã‚ÂƒÃ‚Â§ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚Â‚Ã‚ÂºÃƒÂ¥Ã‚Â...Ã‚ÂˆÃƒÂ§Ã‚Â”Ã‚ÂŸÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¦Ã‚Â•Ã‚Â™ÃƒÂ£Ã‚Â?Ã‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â¾ÃƒÂ£Ã‚Â?Ã‚Â™ÃƒÂ£Ã‚Â€Ã‚Â‚
+Mrs. Jones is teaching computer science.
+
+UPDATE: I'm not the only one! [[http://janoli.com.ar][J. Alejandro
+Noli]] said: “Wow Sacha, I completely understand that point and let me
+tell you: I'm with you!”
+
+UPDATE: [[http://clair.free.net.ph][Clair wrote:]]
+
+#+BEGIN_QUOTE
+  I think that geeks would be more or less interested in communities
+   because geeks like being in communities *laugh* That is purely my
+   opinion though. But if you will observe the people into FOSS, we are
+   all interacting on a regular basis, sharing tips and new developments
+   or code. And if you think about it, if not for the community of
+  geeks,
+   where would be FOSS now? ;) Maybe geeks aren't the typical sociable
+   people but geeks seem to enjoy going together as groups :) I guess
+   it's because geeks tend to have a certain focus on things we like in
+   common but I suppose that not all geeks are out and out very
+  sociable.
+   But the sense of community is definitely there. (But as I already
+   mentioned earlier, this is purely my opinion, based on my
+   experiences.)
+#+END_QUOTE
+
+On Technorati: [[http://www.technorati.com/tag/geek][geek]]

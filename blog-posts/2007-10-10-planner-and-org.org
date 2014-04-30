@@ -1,0 +1,28 @@
+#+TITLE: Planner and Org
+
+October 10th, 2007 -
+[[http://sachachua.com/blog/p/4393][http://sachachua.com/blog/p/4393]]
+
+As part of my research for
+[[http://sachachua.com/notebook/wiki/WickedCoolEmacs][WickedCoolEmacs]],
+I'm exploring Org, the PIM
+ that's now built into Emacs 22. I like the way it handles outlines,
+ and the remember templates are handy too. I also like the dynamic
+ agenda views.
+
+I miss some things about Planner, though. I miss the way I can just
+ move tasks around in Planner, grouping them together as I organize my
+ day. I miss the way it was easy to publish a day view that included my
+ tasks and my notes. I miss little conveniences like +2tue . Maybe I
+ can hack some of those in. I want to avoid turning org into something
+ it isn't, though.
+
+I need to find people who live org and how they do it. John Wiegley's
+excellent blog post on
+[[http://www.newartisans.com/blog_files/org.mode.day.planner.php][using
+org-mode as a day planner]] is a good start. Who else is a power user of
+org? Must read the mailing list to find the tips and tricks people have
+shared...
+
+Random Emacs symbol: ido-report-no-match -- Variable: Report [No Match]
+when no completions matches `ido-text'.

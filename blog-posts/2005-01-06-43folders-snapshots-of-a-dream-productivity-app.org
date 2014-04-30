@@ -1,0 +1,31 @@
+#+TITLE: 43Folders: Snapshots of a Dream Productivity App
+
+January 6th, 2005 -
+[[http://sachachua.com/blog/p/2548][http://sachachua.com/blog/p/2548]]
+
+#+BEGIN_QUOTE
+  Hooks and more hooks -- As IÃ¢Â€Â™ve repeated until IÃ¢Â€Â™m hoarse,
+  apps like Quicksilver change the way you use
+   your Mac. Drastically. Ditto for any app thatÃ¢Â€Â™s open to
+  interaction via (the vastly underutilized) OS X
+   Services. There are smart ways to provide some kind of access to most
+  any program without switching from
+   the foreground app and the task at hand. I want ways to append
+  information, create new items, and do any
+   Ã¢Â€ÂœcapturingÃ¢Â€Â? from wherever I am. At the very least, I want a
+  universal Ã¢Â€Âœdrop boxÃ¢Â€Â? to which I can
+   periodically return to process, file, and enrich any kind of
+  productivity app data (reminders, phone
+   numbers, notes, etc.).
+#+END_QUOTE
+
+See, Planner's onto something here.
+
+We're not very good at ad hoc collections, though.
+
+[[http://www.43folders.com/2005/01/i_want_a_pony_s.html][43 Folders: I
+Want a Pony: Snapshots of a Dream Productivity App]]
+
+On Technorati:
+[[http://www.technorati.com/tag/productivity][productivity]],
+[[http://www.technorati.com/tag/planner][planner]]

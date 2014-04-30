@@ -1,0 +1,10 @@
+#+TITLE: emacs-wiki fudging
+
+March 13th, 2003 -
+[[http://sachachua.com/blog/p/497][http://sachachua.com/blog/p/497]]
+
+Maybe I can “publish” to an intermediate file format (replace BBDB and
+ Gnus links, for example), and then use PHP's file-reading to handle
+ it. What do I want? I want to be able to have a table of contents
+ floating on the right, to give people an overview. I want to be able
+ to offer easy Previous Day / Next Day navigation.

@@ -1,0 +1,29 @@
+#+TITLE: Brilliant idea!
+
+February 26th, 2004 -
+[[http://sachachua.com/blog/p/1782][http://sachachua.com/blog/p/1782]]
+
+Global planner IDs should be hyperlinks in their own right. They are of
+the form
+
+plan://id-number or
+ plan://id-number/page,page,page,page
+
+But then how do we define anchors and references?
+
+Reference: plan:///id-number or plan:///id-number/page,page,page,page
+(note: triple-slashes)
+
+Or maybe =plan:id-number[/page,page,page]= for the anchor.
+Double-slashes will not be updated.
+
+I want IDs because I'd like to e able to update notes in case of
+ typos.
+
+Then this is no longer emacs-wiki-id, but really just planner-id.
+
+Yikes, I will so break the existing planner-id support with
+ this... There must be a better way. At the very least, I should offer
+ a conversion function.
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/emacs-wiki-id.el][../../notebook/emacs/emacs-wiki/emacs-wiki-id.el]]

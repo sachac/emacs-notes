@@ -1,0 +1,27 @@
+#+TITLE: publishing my journal as an RSS feed
+
+March 21st, 2003 -
+[[http://sachachua.com/blog/p/548][http://sachachua.com/blog/p/548]]
+
+chrisb wrote in with a tip about Hugo's
+
+[[http://larve.net/people/hugo/2003/scratchpad/RssForEmacsWiki.html][http://larve.net/people/hugo/2003/scratchpad/RssForEmacsWiki.html]]
+.
+ emacs-wiki-rss.el makes very nice lists of the wiki pages I have, but
+ I was thinking more of publishing each journal entry (like this one!)
+ as an RSS item.
+
+One way to do it is to parse all the day planner pages. I'd need to
+ extract the timestamp, but that shouldn't be too hard because I've
+ already been keeping track of that. I can call this after
+ emacs-wiki-publish, or make it part of a wikipage without header or
+ footer. Hmmm. I'll probably want to force absolute links, then. How
+ do I do that? And I'll want to find out how RSS feeds deal with edits.
+
+Another way to do it is to modify remember.el so that it remembers to
+ an RSS file as well. This seems to make a lot of sense, too, and has
+ the benefit of being able to publish in chronological order. However,
+ if you edit the planner page, your changes won't show up in the RSS
+ feed -- which may or may not be a bad thing, after all.
+
+I think hooking into remember.el might be fun.

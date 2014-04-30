@@ -1,0 +1,11 @@
+#+TITLE: Ebook: Emacs in 24 hours
+
+February 16th, 2004 -
+[[http://sachachua.com/blog/p/1714][http://sachachua.com/blog/p/1714]]
+
+Ran across
+[[http://freebooks.by.ru/view/EmacsIn24h/emacs173.htm][http://freebooks.by.ru/view/EmacsIn24h/emacs173.htm]]
+from google:gnus+nntp+mail+source+example . Looks like a pretty good
+resource.
+
+{{2:2004.02.16,[[http://sachachua.com/notebook/wiki/EmacsTips][EmacsTips]]}}

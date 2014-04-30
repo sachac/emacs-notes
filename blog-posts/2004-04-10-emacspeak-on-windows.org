@@ -1,0 +1,16 @@
+#+TITLE: Emacspeak on windows
+
+April 10th, 2004 -
+[[http://sachachua.com/blog/p/1958][http://sachachua.com/blog/p/1958]]
+
+Gerhard Stenzel wrote:
+
+#+BEGIN_QUOTE
+  Some years ago, I wrote a description about how to make emacspeak work
+   with emacs under windows. I have not verified if this will still work
+   today. However, here is the link to the description:
+
+  [[http://home.vr-web.de/~gerhard.stenzel/emacspeak/install-win32.html][http://home.vr-web.de/~gerhard.stenzel/emacspeak/install-win32.html]]
+#+END_QUOTE
+
+E-Mail from Gerhard Stenzel

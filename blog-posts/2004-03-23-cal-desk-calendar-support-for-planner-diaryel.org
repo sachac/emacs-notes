@@ -1,0 +1,39 @@
+#+TITLE: cal-desk-calendar support for planner-diary.el
+
+March 23rd, 2004 -
+[[http://sachachua.com/blog/p/1916][http://sachachua.com/blog/p/1916]]
+
+Travis B. Hartwell wrote:
+
+#+BEGIN_QUOTE
+  Hi all,
+
+  I patched what I hope is the most recent version of planner-diary.el
+   from tla to optionally utilize cal-desk-calendar. cal-desk-calendar
+   is an add-on for diary-mode which displays the day's events in a neat
+   “desk calendar” like way. I wanted to be able to have this pulled
+   into my day planner pages instead of just a list of the scheduled
+   event. To do this, I added a variable
+  ‘planner-diary-use-cal-desk-calendar',
+   which when set to non-nil will cause cal-desk-calendar to be used. I
+   patched planner-diary-get-diary-entries to handle this.
+
+  A screenshot of this in action:
+
+  [[http://www.travishartwell.net/planner.png][http://www.travishartwell.net/planner.png]]
+
+  To get cal-desk-calendar.el:
+
+  [[http://sacha.free.net.ph/notebook/emacs/cal-desk-calendar.el][http://sacha.free.net.ph/notebook/emacs/cal-desk-calendar.el]]
+
+  My changed planner-diary.el:
+
+  [[http://www.travishartwell.net/planner-diary.el][http://www.travishartwell.net/planner-diary.el]]
+
+  My elisp skills aren't the greatest, so I'm open for corrections or
+   enhancements. I hope others can find this as useful as I have.
+
+  Travis
+#+END_QUOTE
+
+E-Mail from Travis B. Hartwell

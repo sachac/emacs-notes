@@ -1,0 +1,8 @@
+#+TITLE: Wow! Cleared my mail inbox!
+
+August 25th, 2005 -
+[[http://sachachua.com/blog/p/2929][http://sachachua.com/blog/p/2929]]
+
+Finally unticked everything in mail.misc and mail.planner. All the
+ ticked mails are now represented as tasks in my planner... Yay! =)
+ That feels good, too.

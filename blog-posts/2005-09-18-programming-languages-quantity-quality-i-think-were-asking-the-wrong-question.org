@@ -1,0 +1,88 @@
+#+TITLE: Programming languages: Quantity? Quality? I think we're asking the
+wrong question.
+
+September 18th, 2005 -
+[[http://sachachua.com/blog/p/2990][http://sachachua.com/blog/p/2990]]
+
+More from [[http://hackmybrain.blogspot.com][Francis Ocoma]]:
+
+#+BEGIN_QUOTE
+  Should I try to master every popular programming language
+   that I come across, or should I just pick the ones I really like, and
+   stick to them (Right now my favorites are Ruby and C++)? Our school
+   currently forces us to learn such uglies as VB.NET
+  <[[http://VB.NET][http://VB.NET]]> and
+   VBScript, imagine that! And now I'm having a hard time concentrating
+   on my self-study of Python, which I know is far more popular than
+   Ruby. Is it really worth learning these programming languages now,
+   just because I might end up being hired by a company that requires
+   them in the future?
+#+END_QUOTE
+
+I could tell you to focus on quality, not quantity. I could advise you
+ to pay attention to what you need for your school and your career. Or
+ I could point out that we could be missing the big picture here.
+
+I think that how many programming languages you know is far less
+ important than what you actually \_do\_ with those languages. A lot of
+ people focus on listing programming languages on their resume, but
+ they don't show how they've actually \_used\_ these languages beyond
+the
+ toy exercises in the classroom.
+
+I think this is where most graduates fail. That's why they have such a
+ hard time finding jobs. They can list popular languages, but they
+ can't show what they can do with them, and they can't speak with any
+ real passion about their work.
+
+What does it mean to have studied VB.NET for a semester? What does it
+ mean to be able to make graphical applications in Java? What does it
+ mean to have two years of experience in C++?
+[[http://www.norvig.com/21-days.html][It takes ten years to become an
+expert.]]
+ There's a huge difference between ten years experience, and one year
+repeated ten times.
+
+That's why open source projects are so important. They give you
+ real-world opportunities to work with other people. If you're lucky
+ enough to work for a company that'll pay you while you figure out a
+ new language, good for you. If you're not, open source gives you a way
+ to experiment and keep learning.
+
+The amazing thing is that you don't have to know a lot in order to
+ contribute. I joined the iPaq bootldr project only vaguely remembering
+ C and without any assembly experience. I started maintaining Planner
+ barely comfortable with Emacs Lisp. All you really need is the ability
+ to read other people's code and create a solution that fits in---a
+ skill highly prized by employers.
+
+Your work will be reviewed by other developers, who'll tell you what
+ you can improve and teach you better ways of doing things. It will
+ also be inspected by your users, who'll judge your code not by how
+ elegant it is or how long it took you to write it, but whether it
+ works for them. And when you read other people's code, you're going to
+ learn the idioms and tricks that people accumulate with years and
+ years of experience.
+
+Even more important: you'll pick up domain knowledge.
+[[http://www.korson-mcgregor.com/publications/korson/usecase3/][Software
+engineers are useless.]] Generic software engineers, that is.
+Programming is not an end. It is a \_means\_.
+ Learn enough about at least one area to make a difference in it.
+ And you know what? If you find the domain you're interested in and you
+ become comfortable with the programming languages you need to solve
+ problems in that domain, then you'll probably be able to choose any job
+you want.
+
+If you're not interested in the domain, however, then no amount of
+ programming expertise can make your work truly satisfying and
+ productive. You'd be a hammer in search of a nail, a solution looking
+ for a problem. You need to be interested in your work. You need to see
+ how you're making a difference. If not, it's just a 9 -- 5 job with too
+ much overtime and stress, and you're going to burn out.
+
+So get out there, find out what you're interested, and learn with a
+ purpose. Don't just collect computer languages for the sake of listing
+ them on your resume. Solve real problems and make a difference, and
+ you'll have plenty of experience and transferable skills to enrich
+ your career.

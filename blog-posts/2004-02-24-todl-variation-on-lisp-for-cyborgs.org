@@ -1,0 +1,35 @@
+#+TITLE: TODL, variation on LISP for cyborgs
+
+February 24th, 2004 -
+[[http://sachachua.com/blog/p/1768][http://sachachua.com/blog/p/1768]]
+
+| From      | Joe Corneli ([[mailto:jcorneli@math.utexas.edu][jcorneli@math.utexas.edu]])   |
+| Subject   | Re: displaying one character per line.                                        |
+| To        | help-gnu-emacs ([[mailto:help-gnu-emacs@gnu.org][help-gnu-emacs@gnu.org]])    |
+| Date      | Tue Feb 24 03:47:55 2004 +0800                                                |
+
+#+BEGIN_QUOTE
+  I want to be able to switch between different list views of a
+   document. For example, one might want to look at a text document as
+   a list of characters, a list of words, a list of phonemes, a list
+   (tree) of syntactic clauses, a list of sentences, or a list of topic
+   sentences that link to paragraphs, etc. Characters just happen to be
+   the simplest.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  This is part of designing a mode I call todl-mode (for TODo List).
+   TODL is a variation on LISP specially designed for cyborgs :). The
+   idea is that if you can switch between different list views and add
+   hyperlinks to elements of each view, you will have a very powerful
+   tool for processing information.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  I think of it as being somewhere in between lisp-mode,
+   emacs-wiki-mode, and something like outline-mode. It should be
+   possible to implement a TODL variant for any kind of code (so
+   todl-mode is also something like font-lock-mode).
+#+END_QUOTE
+
+E-Mail from Joe Corneli

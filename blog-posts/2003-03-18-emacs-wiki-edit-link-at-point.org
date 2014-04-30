@@ -1,0 +1,7 @@
+#+TITLE: emacs-wiki-edit-link-at-point
+
+March 18th, 2003 -
+[[http://sachachua.com/blog/p/532][http://sachachua.com/blog/p/532]]
+
+emacs-wiki-edit-link-at-point works again. It can be found in
+[[http://sachachua.com/notebook/emacs/emacs-wiki-config.el][../emacs/emacs-wiki-config.el]]

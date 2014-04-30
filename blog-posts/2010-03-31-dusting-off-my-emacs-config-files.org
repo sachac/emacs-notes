@@ -1,0 +1,39 @@
+#+TITLE: Dusting off my Emacs config files
+
+March 31st, 2010 -
+[[http://sachachua.com/blog/p/7130][http://sachachua.com/blog/p/7130]]
+
+In June 2009, I
+[[http://sachachua.com/wp/2009/06/changing-hats/][switched hats]] and
+started facilitating workshops instead of developing Drupal code.
+Organizing resources and learning more about consulting kept me in a
+mostly-Windows environment with little reason to delve into the
+mysteries of the Emacs text editor, although I occasionally used Emacs
+to
+[[http://sachachua.com/wp/2009/11/automating-tedious-wiki-editing-tasks-with-emacs-and-w3m][automate
+repetitive editing tasks]].
+
+Even though I haven't played around with Emacs for a while, the text
+editor---and the community around it---hasn't let go of me yet. My
+Emacs-related posts remain among the most popular on my blog, and people
+often write to me to ask questions or thank me for inspiration. I still
+keep [[http://planet.emacsen.org][Planet Emacsen]] in my feed reader,
+and I occasionally drop by the [[http://emacswiki.org][Emacs Wiki]].
+
+I miss working on Wicked Cool Emacs. I've turned it over to
+[[http://twitter.com/IEURE][Ian Eure]], whom I assume is persistently
+plugging away at it (although he might also have gotten distracted by
+real life as well--totally understandable). Now that I'm no longer
+distracted by the fun of tweaking Drupal (almost as flexible as Emacs,
+thanks to its hook system), Emacs calls.
+
+I miss geeking out in #emacs on irc.freenode.net, helping people with
+questions on mailing lists, and playing with ideas that can be
+translated into code.
+
+So I'm dusting off my configuration files and my notes, writing an
+org-toodledo module that pulls in my tasks from the web-based Toodledo
+task management system I've been using, and developing a rudimentary
+synchronization system that will help me make the transition.
+
+(message “Hello, world!”)

@@ -1,0 +1,18 @@
+#+TITLE: Emacs
+
+September 11th, 2007 -
+[[http://sachachua.com/blog/p/4351][http://sachachua.com/blog/p/4351]]
+
+Terrific comic from UserFriendly about
+[[http://ars.userfriendly.org/cartoons/?id=20070910][my favorite text
+editor]].
+
+I might take sick leave too! ;)
+
+Random Emacs symbol: general-holidays -- Variable: General holidays.
+Default value is for the United States.
+
+Sent by Stephen Perelgut
+
+On Technorati:
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

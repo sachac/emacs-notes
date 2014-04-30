@@ -1,0 +1,40 @@
+#+TITLE: Demo tomorrow
+
+December 8th, 2004 -
+[[http://sachachua.com/blog/p/2475][http://sachachua.com/blog/p/2475]]
+
+Objective: Give Prof. Chignell some ideas about Planner so that he can
+ introduce me to the wearable computing and personal information
+ management research groups.
+
+I don't have to convince him to let me do this kind of research for my
+ master's. I could use more time to bring out and document different
+ usage patterns, anyway. I do want to show him that I care about users
+ and I'm good at tweaking things for particular needs, though.
+
+Medical handhelds seem very interesting. I don't have to take personal
+ information management up for my master's as long as I make sure I
+ talk to the people in that group and learn how they do research.
+ Medical handhelds would be far more useful to people in the
+ Philippines. I should get in touch with Doc Oly as well as the UP
+ Manila folks.
+
+What points can I highlight that will transfer well to that field?
+
+- Different requirements: interface, functionality.
+
+- Minimizing attention required: context switch, distraction,
+
+#+BEGIN_QUOTE
+  automatic context.
+#+END_QUOTE
+
+- Evolving functionality based on user feedback. Quick development.
+
+#+BEGIN_QUOTE
+  User-contributed code.
+#+END_QUOTE
+
+‘course, I'll have to rewrite my
+[[http://sachachua.com/notebook/wiki/StatementOfPurpose][StatementOfPurpose]]
+at some point.

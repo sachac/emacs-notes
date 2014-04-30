@@ -1,0 +1,17 @@
+#+TITLE: Excellent newbie guide for Planner
+
+January 3rd, 2005 -
+[[http://sachachua.com/blog/p/2540][http://sachachua.com/blog/p/2540]]
+
+Clair Ching has posted a wonderful guide to Planner, complete with
+ screenshots. Check out the following links:
+
+-
+[[http://eclair.bizhat.com/emacs/plannernewbie.html][http://eclair.bizhat.com/emacs/plannernewbie.html]]
+ -
+[[http://eclair.bizhat.com/emacs/plannerscreen1.html][http://eclair.bizhat.com/emacs/plannerscreen1.html]]
+ -
+[[http://eclair.bizhat.com/emacs/plannerscreen2.html][http://eclair.bizhat.com/emacs/plannerscreen2.html]]
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/documentation][documentation]]

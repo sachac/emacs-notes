@@ -1,0 +1,17 @@
+#+TITLE: plan and BBDB
+
+March 7th, 2004 -
+[[http://sachachua.com/blog/p/1850][http://sachachua.com/blog/p/1850]]
+
+I want to collect all of my notes about people into wiki pages about
+ them so that I can easily see timestamps. I will also need to
+ cross-reference. In the meantime, I can keep this information in my
+ daily notes.
+
+Issues:
+
+- Privacy? I'd like some things public and some things encrypted.
+ - planner-bbdb-remember dependencies. I think I'll need the
+condition-case idiom.
+
+[[http://sachachua.com/notebook/wiki/PlannerModeBBDB][PlannerModeBBDB]]

@@ -1,0 +1,7 @@
+#+TITLE: Hyper in Emacs
+
+September 15th, 2003 -
+[[http://sachachua.com/blog/p/1115][http://sachachua.com/blog/p/1115]]
+
+Apparently, hyper in Emacs is C-x @ h if you haven't bound a key to it.
+ To wit, C-h c C-x @ h a will tell you what's bound to H-a.

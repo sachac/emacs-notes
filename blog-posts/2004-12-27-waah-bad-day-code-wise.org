@@ -1,0 +1,8 @@
+#+TITLE: Waah. Bad day, code-wise
+
+December 27th, 2004 -
+[[http://sachachua.com/blog/p/2520][http://sachachua.com/blog/p/2520]]
+
+A bit of code thrashing in planner.el as I... err... committed silly
+ mistakes. How embarrassing. I'm so, so sorry. I hope no one caught
+ planner in the middle of broken-ness.

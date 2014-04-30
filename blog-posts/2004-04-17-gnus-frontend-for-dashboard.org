@@ -1,0 +1,10 @@
+#+TITLE: Gnus frontend for Dashboard
+
+April 17th, 2004 -
+[[http://sachachua.com/blog/p/1979][http://sachachua.com/blog/p/1979]]
+
+Hans de Graaff wrote Lisp code to make Gnus send clue packets to
+ Dashboard. Fascinating... I should try that for planner after I get
+ dashboard up and running!
+
+E-Mail from Hans de Graaff

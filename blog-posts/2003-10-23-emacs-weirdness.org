@@ -1,0 +1,19 @@
+#+TITLE: Emacs weirdness
+
+October 23rd, 2003 -
+[[http://sachachua.com/blog/p/1263][http://sachachua.com/blog/p/1263]]
+
+For some reason, local-write-file-hooks had the BBDB stuff in it, so
+ cookies were getting added to my data...
+
+Hmm. Test script.
+
+#+BEGIN_EXAMPLE
+    (let ((old-hook local-write-file-hooks))
+        (with-temp-buffer (add-hook 'local-write-file-hooks 'foo))
+        (unless (equal local-write-file-hooks old-hook)
+          (error "Failed test. local-write-file-hooks was modified in this buffer."))
+        ;; Let's put things back the way they were
+        (setq-default local-write-file-hooks old-hook))
+#+END_EXAMPLE
+

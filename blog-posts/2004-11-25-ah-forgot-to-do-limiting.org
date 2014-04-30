@@ -1,0 +1,7 @@
+#+TITLE: Ah, forgot to do limiting
+
+November 25th, 2004 -
+[[http://sachachua.com/blog/p/2426][http://sachachua.com/blog/p/2426]]
+
+For some reason, my planner-rss-feed-limits had lost its
+ customization. Apologies for the really large feed.

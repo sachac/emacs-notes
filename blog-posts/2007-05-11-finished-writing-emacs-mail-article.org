@@ -1,0 +1,19 @@
+#+TITLE: Finished writing Emacs mail article!
+
+May 11th, 2007 -
+[[http://sachachua.com/blog/p/4566][http://sachachua.com/blog/p/4566]]
+
+Woohoo! I finished the Emacs mail productivity article that
+ Don Marti asked me to write. If you look back at
+ my past few days of inbox entries, you'll note that I haven't really
+ been staying at Inbox Zero -- but at least it feels manageable. I also
+ threw in a few more tips, like mail scoring. Much much much fun.
+
+I'll let them publish it first, 'cause they're paying me for it. Then
+ I'll repost it over here after some time... =)
+
+Well, that was fun. =D
+
+Random Emacs symbol: keyboard-coding-system -- Function: Return coding
+system specified for decoding keyboard input. -- Variable: Specify
+coding system for keyboard input.

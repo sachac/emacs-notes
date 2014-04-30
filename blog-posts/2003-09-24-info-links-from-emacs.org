@@ -1,0 +1,79 @@
+#+TITLE: info links from Emacs
+
+September 24th, 2003 -
+[[http://sachachua.com/blog/p/1144][http://sachachua.com/blog/p/1144]]
+
+#+BEGIN_EXAMPLE
+    ;;
+    ;; The following functions to insert info-links into a buffer were originaly
+    ;; posted on gnu.emacs.gnus by Reiner Steib, August 2003.
+    ;; Message-ID: 
+    ;;
+
+    (defvar jk/info-goto-node-string "info" ; "Info-goto-node"
+      ;; Stefan Monnier suggested to use `info' instead of `Info-goto-node', but
+      ;; this doesn't work for XEmacs.  OTOH, Reiner says he submitted a patch for
+      ;; XEmacs, so "info" should be okay.
+      "Command string to insert with `jk/insert-current-info-node'")
+
+    (defun jk/current-info-node (&optional arg)
+      "Insert reference to current Info node in buffer.
+
+    If ARG is...
+    - nil:  Insert `\(info \"\(file\)node\"\)'.
+    - 4 (\\[universal-argument]):   Add a note about `C-x C-e', too.
+    - 16 (2 \\[universal-argument]'s):  Insert `'
+    - the symbol `string':  Only return the string, don't insert.
+
+    In emacs-lisp-mode a custom link is inserted."
+      (interactive "p")
+      (let ((what
+         (cond
+          ((eq major-mode 'emacs-lisp-mode)
+           'lisp)
+          ((numberp arg)
+           (cond
+            ((= arg 4) 'gnus-url)
+            ((= arg (* 4 4)) 'info-press)
+            (t 'info)))
+          ((eq arg 'string)
+           'string)
+          (t 'info)))
+        (buffer (buffer-name))
+        (ret ""))
+        ;; The next lines are borrowed from Karl Pflaesterer's code in
+        ;; .
+        (set-buffer "*info*")
+        (let* ((node Info-current-node)
+           (nodeurl (jk/replace-in-string node " " "+"))
+           (file Info-current-file)
+           (fileurl (file-name-nondirectory file))
+           (fileurl (jk/replace-in-string fileurl "\\.gz$" ""))
+           (fileurl (jk/replace-in-string fileurl "\\.info$" "")))
+          (set-buffer buffer)
+          (setq ret
+            (cond
+             ((eq what 'lisp)
+              (beginning-of-line)
+              (insert ":link '(custom-manual \"(" fileurl ")" node "\")")
+              (lisp-indent-line)
+              (newline))
+             ((eq what 'gnus-url)
+              (concat ""))
+             (t ;; (or (eq what 'info) (eq what 'info-press))
+              (concat "(" jk/info-goto-node-string
+                  " \"(" fileurl ")" node "\")"
+                  (if (eq what 'info-press)
+                  "; <== Press C-x C-e here!"
+                "")))))
+          (if (or (eq what 'string) (eq what 'lisp))
+          ret
+        (insert ret)))))
+
+    (defun jk/boxquote-info ()
+      "Boxquote current yank-buffer and put current info node in title"
+      (interactive)
+      (boxquote-yank)
+      (boxquote-title (jk/current-info-node 'string)))
+#+END_EXAMPLE
+

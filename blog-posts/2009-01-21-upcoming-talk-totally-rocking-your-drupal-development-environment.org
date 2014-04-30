@@ -1,0 +1,41 @@
+#+TITLE: Upcoming talk: Totally Rocking Your Drupal Development Environment
+
+January 21st, 2009 -
+[[http://sachachua.com/blog/p/5649][http://sachachua.com/blog/p/5649]]
+
+On February 12, at 12 EST, I'll be giving a teleconference presentation
+to the IBM Drupal Users Group. =) It's internal-only, but I wanted to
+post it here because I often need to look up my abstracts and bios. The
+abstract is the same as the talk I submitted to
+[[http://dc2009.drupalcon.org/session/totally-rocking-your-development-environment][DrupalCon09
+(Totally Rocking Your Development Environment)]], but I'll add some more
+IBM-specific tips.
+
+*Abstract:*
+
+#+BEGIN_QUOTE
+  Are you a lazy developer? If you aren't, you should be! Find out about
+  editor tricks that can save you hours and hours of effort and
+  frustration. Learn about browser tips that make it easy to test your
+  sites with different users, track down elusive bugs, and test. Develop
+  the virtue of laziness by automating as much as you can with
+  makefiles, the Drupal Shell, regression tests, and other goodies.
+  Share your best tips during this interactive session. Use your new
+  free time to rock even more!
+#+END_QUOTE
+
+*Bio*
+
+#+BEGIN_QUOTE
+  Sacha Chua has an unshakable belief that life is too short to waste
+  doing repetitive tasks that can be automated, an irrational love for
+  tweaking her development environment, and an irresistible urge to
+  share whatever she's learned along the way. To learn more about her
+  and Web 2.0, Drupal, Emacs, and other things she's interested, visit
+  [INTERNAL IBM URL] or
+  [[http://livinganawesomelife.com][http://LivingAnAwesomeLife.com]]
+  (personal blog).
+#+END_QUOTE
+
+Inside IBM and want to get a copy of the calendar invite? Contact
+William Shaouy.

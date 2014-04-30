@@ -1,0 +1,7 @@
+#+TITLE: Recognizing coding systems in Emacs
+
+November 23rd, 2003 -
+[[http://sachachua.com/blog/p/1415][http://sachachua.com/blog/p/1415]]
+
+For when Emacs doesn't correctly autodetect it: C-x RET c CODING-SYSTEM
+RET M-x revert-buffer RET

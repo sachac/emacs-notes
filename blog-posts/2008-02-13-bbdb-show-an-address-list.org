@@ -1,0 +1,91 @@
+#+TITLE: BBDB: Show an address list
+
+February 13th, 2008 -
+[[http://sachachua.com/blog/p/4762][http://sachachua.com/blog/p/4762]]
+
+I sometimes feel like bringing out my stationery, my fountain pen, and a
+coil of stamps, and writing cards to random people in my address book.
+When I travel, I also enjoy writing quick postcards to people who live
+in the country I'm visiting. That's why I wrote this code to filter my
+address book so that I could see only the contacts with snail-mail
+addresses, or only the contacts whose snail-mail addresses match a
+regular expression.
+
+You can call *M-x wicked/bbdb-find-people-with-addresses* to filter the
+displayed BBDB records. Press RET at the “Regexp: ” prompt in order to
+show all records with addresses, or type in a regular expression that
+matches anything in the addresses field. By default,
+
+wicked/bbdb-find-people-with-addresses works on the BBDB records already
+shown in the *BBDB* window, or all records if none are shown. This
+allows you to successively filter BBDB records. (Combined with the other
+BBDB projects I'll blog about, you'll be able to get a list of all the
+people you haven't talked to in three months but who you've talked to
+within the year, who are interested in Emacs and cooking but not social
+networking, and who have a phone number in your contact database! How's
+/that/ for targeted mail? ;) ) Anyway, if you want to start your search
+from scratch and you don't want to call *M-x bbdb* with . as the regular
+expression, use the universal prefix argument (*C-u M-x
+wicked/bbdb-find-people-with-addresses*) and it will search your entire
+contact database.
+
+Have fun! =)
+
+#+BEGIN_EXAMPLE
+    (defun wicked/bbdb-find-people-with-addresses (&optional regexp records)
+      "Filter the displayed BBDB records to those with addresses."
+      (interactive "MRegexp: ")
+      (let ((records (if current-prefix-arg (bbdb-records)
+               (or records bbdb-records (bbdb-records))))
+            filtered
+            cons next)
+        (while records
+          (when (and (bbdb-record-get-field-internal (if (arrayp (car records))
+                                (car records)
+                                                     (caar records)) 'address)
+             (or (null regexp)
+                 (string= regexp "")
+                 (delq nil
+                   (mapcar
+                    (lambda (address)
+                      (string-match regexp (wicked/bbdb-address-string address)))
+                    (bbdb-record-get-field-internal
+                     (if (arrayp (car records))
+                     (car records)
+                       (caar records)) 'address)))))
+            (setq filtered (cons (if (arrayp (car records))
+                                     (car records)
+                                   (caar records)) filtered)))
+          (setq records (cdr records)))
+        (bbdb-display-records (nreverse filtered))))
+
+    (defun wicked/bbdb-address-string (address)
+      "Return ADDRESS as a string."
+      (mapconcat
+       'identity
+       (delq nil
+             (list
+              (mapconcat 'identity (bbdb-address-streets address) ", ")
+              (let ((s (bbdb-address-city address))) (and (not (string= s "")) s))
+          (let ((s (bbdb-address-state address))) (and (not (string= s "")) s))
+          (let ((s (bbdb-address-zip address))) (and (not (string= s "")) s))
+          (let ((s (bbdb-address-country address))) (and (not (string= s "")) s))))
+       ", "))
+
+    (defun wicked/bbdb-yank-addresses ()
+      "Copy displayed addresses to the kill ring."
+      (interactive)
+      (kill-new
+       (mapconcat
+        (lambda (record)
+          (concat
+           (bbdb-record-name (car record)) "\n"
+           (mapconcat
+        (lambda (address)
+          (concat (bbdb-address-location address) ": " (wicked/bbdb-address-string address)))
+        (bbdb-record-get-field-internal (car record) 'address)
+        "\n")))
+        bbdb-records
+        "\n\n")))
+#+END_EXAMPLE
+

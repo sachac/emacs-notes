@@ -1,0 +1,120 @@
+#+TITLE: Planner Tip #2: Streamline undated tasks
+
+October 31st, 2005 -
+[[http://sachachua.com/blog/p/3115][http://sachachua.com/blog/p/3115]]
+
+One of the coolest things about Planner is the way you can tweak it to
+ fit the way you think. Customizing planner-create-task isn't about
+ shaving seconds off your task-creation time. It's about making it
+ easier to get tasks out of your head and into Planner.
+
+Variables like planner-expand-name-default and planner-use-day-pages
+ make it easy to change Planner behavior to fit common ways of doing
+ things. If you want to make greater changes, you can add advice to
+ functions. See “Advising Functions” in the Elisp info manual for more
+ information. Function advice is called only after arguments have been
+ read. If you want to change the way arguments are asked for, define a
+ new function and make an alias to it, or just redefine the old one.
+
+Do you prefer working with mostly-undated tasks? Defaulting to undated
+ tasks allow you to postpone thinking about when to do something. It
+ keeps your day page task lists meaningful and manageable, too. This
+ also makes Planner a better fit for the Getting Things Done method
+ (GTD), which encourages a distinction between getting tasks into your
+ trusted system and deciding when to do them.
+
+Creating undated tasks
+
+Let's say that you want to create undated tasks while still
+ using day pages for other parts of Planner. Here's one way to do that.
+
+#+BEGIN_EXAMPLE
+    (defadvice planner-read-task (around sacha activate)
+      (let ((planner-use-day-pages nil))
+        ad-do-it))
+#+END_EXAMPLE
+
+To disable that piece of advice, use M-x ad-deactivate RET
+planner-read-task.
+
+What if you want to create dated tasks if
+ planner-create-task-from-buffer is called with the universal prefix
+ (C-u)? Disable the previous piece of advice or remove it from your
+ ~/.emacs and use this instead:
+
+#+BEGIN_EXAMPLE
+    (defun planner-read-task ()
+      "Return a list of information for a task."
+      (list
+       (read-string "Describe task: ")
+       ;; This part changes
+       (when current-prefix-arg
+         (if (condition-case nil (calendar-cursor-to-date) (error nil))
+             (planner-date-to-filename (calendar-cursor-to-date))
+           (let ((planner-expand-name-favor-future-p
+                  (or planner-expand-name-favor-future-p
+                      planner-task-dates-favor-future-p)))
+             (planner-read-date))))
+       ;; This part still stays the same
+       (when planner-use-plan-pages
+         (let ((planner-default-page
+            (if (and (planner-derived-mode-p 'planner-mode)
+                 (planner-page-name)
+                 (not (string-match planner-date-regexp
+                        (planner-page-name))))
+            (planner-page-name)
+              planner-default-page)))
+           (planner-read-non-date-page
+        (planner-file-alist))))
+       planner-default-task-status))
+#+END_EXAMPLE
+
+What if you always want to prompt for the date, but want it to default
+to undated when you hit RET?
+ Use the following to your ~/.emacs instead:
+
+#+BEGIN_EXAMPLE
+    (setq planner-expand-name-default nil)
+#+END_EXAMPLE
+
+Copying undated tasks somewhere
+
+If you're working with undated tasks, then you probably want to make
+ sure they're copied onto a task page somewhere. You can use
+ planner-multi to automatically do so when you create a task.
+
+#+BEGIN_EXAMPLE
+    (require 'planner-multi)
+    (setq planner-multi-copy-tasks-to-page "TaskPool")
+#+END_EXAMPLE
+
+You can specify multiple pages for planner-multi-copy-tasks-to-page. For
+example:
+
+#+BEGIN_EXAMPLE
+    (setq planner-multi-copy-tasks-to-page "TaskPool [[TaskPoolByProject][p]] [[TaskPoolByContext][c]]")
+#+END_EXAMPLE
+
+If you want to be explicitly prompted for pages, but default to
+ Task Pool if not specified:
+
+#+BEGIN_EXAMPLE
+    (defun planner-read-task ()
+      "Return a list of information for a task."
+      (list
+       (read-string "Describe task: ")
+       (when (and planner-use-day-pages current-prefix-arg)
+         (if (condition-case nil (calendar-cursor-to-date) (error nil))
+             (planner-date-to-filename (calendar-cursor-to-date))
+           (let ((planner-expand-name-favor-future-p
+                  (or planner-expand-name-favor-future-p
+                      planner-task-dates-favor-future-p)))
+             (planner-read-date))))
+       (when planner-use-plan-pages
+         (let ((planner-default-page "TaskPool"))
+           (planner-read-non-date-page
+            (planner-file-alist))))
+      planner-default-task-status))
+#+END_EXAMPLE
+
+Have fun with undated tasks!

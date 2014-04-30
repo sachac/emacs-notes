@@ -1,0 +1,44 @@
+#+TITLE: Emacs and a British voice
+
+October 12th, 2006 -
+[[http://sachachua.com/blog/p/3936][http://sachachua.com/blog/p/3936]]
+
+There's something about deep, deep cultural programming. Anything
+ spoken with a British accent just sounds infinitely cool. Everyone
+ uses the default voice for Asterisk and all of that -- an American
+ male.
+
+You want to install festvox-rablpc16k or festvox-rablpc8k in addition
+ to all the usual things you need for emacspeak. You'll also need
+ espeakf from CVS.
+
+#+BEGIN_EXAMPLE
+    cvs -d:pserver:anonymous@espeakf.cvs.sourceforge.net:/cvsroot/espeakf login
+    cvs -z3 -d:pserver:anonymous@espeakf.cvs.sourceforge.net:/cvsroot/espeakf co -P espeakf
+    cd espeakf
+    sudo make install
+#+END_EXAMPLE
+
+One of these lines is responsible for setting up espeakf. I just can't
+ be bothered with figuring out which. ;) Probably the dtk-program line.
+
+#+BEGIN_EXAMPLE
+    (setq dtk-program "/usr/share/emacs/site-lisp/emacspeak/servers/espeakf.pl")
+    (setenv "DTK_TCL" dtk-program)
+    (setenv "DTK_PROGRAM" dtk-program)
+#+END_EXAMPLE
+
+Then add this to your /etc/festival.scm:
+
+#+BEGIN_EXAMPLE
+    (set! voice_default 'voice_rab_diphone)
+#+END_EXAMPLE
+
+Yummy British accent goodness.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/emacspeak][emacspeak]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: mail-extr-disable-voodoo -- Variable: *If it is a
+regexp, names matching it will never be modified.

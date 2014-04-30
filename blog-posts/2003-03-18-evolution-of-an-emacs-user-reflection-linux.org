@@ -1,0 +1,35 @@
+#+TITLE: Evolution of an Emacs user --- reflection, linux
+
+March 18th, 2003 -
+[[http://sachachua.com/blog/p/526][http://sachachua.com/blog/p/526]]
+
+Like almost all newbies, I started out with pico, the editor that
+ comes with pine. pico was friendly. pico was easy to use. pico also
+ kept wrapping my lines, which is a Very Bad Idea when you're
+ programming. I discovered that =pico -w= would turn such
+ undesirable behavior off, and =alias pico="pico -w "=
+ became part of my .bashrc everywhere.
+
+However, I felt mildly ashamed of pico. All the Unix books said I
+ should learn how to use vi, so I did. vi was fun, too -- vim,
+ especially. I had my funky one-line ex commands, like :s%/foo/bar/g. I
+ could go to any line with :linenumber. I regularly used :! to invoke
+ shell commands. I liked the way it syntax-colored practically all the
+ files I edited -- even the more obscure ones -- and I was even thinking
+ of writing my own syntax files for the things it didn't handle yet.
+
+I suppose it was sheer curiosity that made me try out Emacs. Emacs was
+ an intellectual challenge. I found myself attracted to its
+ intimidating complexity. I wanted to see if I could get the hang of it.
+
+Emacs was surprisingly easy to use. I read through the tutorial. I
+ even browsed through the info node in my spare time. I used the menu
+ bar and the tool bar until I learned the different shortcuts and
+ extended commands. It was pretty cool.
+
+Then one summer, I opened the Emacs LISP intro manual. I got hooked.
+ I started reading Emacs source code. I traced through functions. I
+ wrote my own. I did more and more stuff in Emacs and I realized how
+ much I had missed by using other editors.
+
+Emacs is cool. =)

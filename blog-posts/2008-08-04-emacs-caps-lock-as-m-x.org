@@ -1,0 +1,19 @@
+#+TITLE: Emacs: Caps lock as M-x
+
+August 4th, 2008 -
+[[http://sachachua.com/blog/p/5034][http://sachachua.com/blog/p/5034]]
+
+Inspired by Lennart Borgman's recent post on help.gnu.emacs about
+[[http://groups.google.com/group/gnu.emacs.help/msg/5196ae31694b6052][binding
+Caps Lock to M-x on Microsoft Windows]], I set my system up with the
+Linux equivalent.
+
+To make Caps Lock a shortcut for M-x, add the following lines to your
+~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (if (eq window-system 'x)
+        (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = F13'"))
+    (global-set-key [f13] 'execute-extended-command)
+#+END_EXAMPLE
+

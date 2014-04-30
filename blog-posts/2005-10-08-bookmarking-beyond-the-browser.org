@@ -1,0 +1,41 @@
+#+TITLE: Bookmarking beyond the browser
+
+October 8th, 2005 -
+[[http://sachachua.com/blog/p/3053][http://sachachua.com/blog/p/3053]]
+
+Bookmarking web pages is a breeze with tag-based bookmarking services
+like [[http://del.icio.us][del.icio.us]], which reduced the need for
+up-front organization and made it much easier to search for relevant
+bookmarks. New tag-based search engines like Yahoo's
+[[http://myweb2.search.yahoo.com][MyWeb 2.0]] search not only the tag
+descriptions but also the bookmarked web pages, allowing people to
+create targeted search spaces. [[http://www.citeulike.org][CiteULike]]
+and [[http://www.connotea.org][Connotea]] automatically extract
+bibliographic references from websites, making life easier for academic
+researchers.
+
+What if we took bookmarking beyond the browser? What if you could
+bookmark any resource on your computer as easily as you bookmark web
+pages now? What if you could organize those bookmarks into collections?
+
+Some of these things are possible within applications. For example, the
+[[http://www.microsoft.com/mac/products/entourage2004/entourage2004.aspx?pid=entourage2004][Microsoft
+Entourage]] personal information manager allows you to link mail,
+events, tasks, notes, and contacts. In the Emacs text editor,
+[[http://www.plannerlove.com][Planner]] allows you to link to almost
+anything within the Emacs environment.
+
+What if you could bookmark *anything?*
+
+Some projects explore cross-application data sharing. For example,
+[[http://desktop.google.com/][Google Desktop for Microsoft Windows]]
+exposes an event stream from multiple applications and presents a
+sidebar of relevant items. [[http://www.nat.org/dashboard/][GNOME
+Dashboard]] provides a similar service for Linux.
+[[http://www.ethomaz.com/onlife/][OnLife for Mac OS X]] visualizes user
+activity in Safari, Firefox, iTunes, iChat, TextEdit and Mail. IBM T.J.
+Watson Labs prototyped
+[[http://portal.acm.org/citation.cfm?id=1026662][personal chronicling
+tool]] for Microsoft Windows.
+
+What if bookmarking Just Worked for all applications?

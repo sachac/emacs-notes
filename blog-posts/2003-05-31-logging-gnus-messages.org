@@ -1,0 +1,17 @@
+#+TITLE: Logging gnus messages
+
+May 31st, 2003 -
+[[http://sachachua.com/blog/p/797][http://sachachua.com/blog/p/797]]
+
+#+BEGIN_EXAMPLE
+    (defun message-to-diary ()
+      (make-diary-entry (concat
+                 (calendar-date-string (calendar-current-date) t)
+                 (if (message-fetch-field "newsgroups")
+                 (concat " Sent news To: " (message-fetch-field "newsgroups"))
+                   (concat " Sent mail To: " (message-fetch-field "to")))
+                 " Subject: \"" (message-fetch-field "subject") "\""
+                 " Message-ID: " (message-fetch-field "message-id"))))
+    (add-hook 'message-sent-hook 'message-to-diary)
+#+END_EXAMPLE
+

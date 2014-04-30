@@ -1,0 +1,17 @@
+#+TITLE: Interesting uses of Emacspeak
+
+October 6th, 2003 -
+[[http://sachachua.com/blog/p/1205][http://sachachua.com/blog/p/1205]]
+
+CSJ wrote on the debian-user mailing list:
+
+#+BEGIN_EXAMPLE
+    For helping teach my kid to read I used emacs running emacspeak.
+    The robotic language, via the eflite speech synthesis server, was
+    sufficient to get the words' pronunciation across.  Type
+    "D-O-G-" in a buffer and you get the audio feedback "dog."
+    I used to set the xterm to the most massive font size available
+    (by adjusting the font and screen sizes) to make reading, or so I
+    assumed, easier for preschool eyes.
+#+END_EXAMPLE
+

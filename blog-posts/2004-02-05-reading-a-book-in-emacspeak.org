@@ -1,0 +1,17 @@
+#+TITLE: Reading a book in Emacspeak
+
+February 5th, 2004 -
+[[http://sachachua.com/blog/p/1675][http://sachachua.com/blog/p/1675]]
+
+From Nath on the emacspeak mailing list:
+
+#+BEGIN_QUOTE
+  You can try C-e n which will read you the text until you stop the
+  speech
+   by pressing C-e s but the cursor will stay at the position it was
+  just
+   before you run the command. Sorry I don't know the command which will
+   cause the cursor to move in the same time the text is read.
+#+END_QUOTE
+
+E-Mail from Nath

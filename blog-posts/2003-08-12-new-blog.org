@@ -1,0 +1,12 @@
+#+TITLE: New blog!
+
+August 12th, 2003 -
+[[http://sachachua.com/blog/p/983][http://sachachua.com/blog/p/983]]
+
+[[http://sacha.free.net.ph/blog][http://sacha.free.net.ph/blog]] now
+points to
+
+[[http://servlet.techscene.com/roller/page/sachachua/Weblog][http://servlet.techscene.com/roller/page/sachachua/Weblog]],
+which will
+ probably be my primary blog because it can do XML excerpts. I'll try
+ to find a way to hack planner+remem support for it.

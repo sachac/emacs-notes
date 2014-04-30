@@ -1,0 +1,11 @@
+#+TITLE: John Wiegley's new homepage: http://www.emacswiki.org/johnw/
+
+April 11th, 2003 -
+[[http://sachachua.com/blog/p/675][http://sachachua.com/blog/p/675]]
+
+John Wiegley, the author of planner.el, remember.el and emacs-wiki.el
+(the only reasons why I can maintain this kind of website with very
+little effort) has moved from
+[[http://www.gci-net.com/users/j/johnw/WelcomePage.html][http://www.gci-net.com/users/j/johnw/WelcomePage.html]]
+to [[http://www.emacswiki.org/johnw/][http://www.emacswiki.org/johnw/]]
+.

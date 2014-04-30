@@ -1,0 +1,48 @@
+#+TITLE: Problem with footnote.el and auctex
+
+March 21st, 2004 -
+[[http://sachachua.com/blog/p/1909][http://sachachua.com/blog/p/1909]]
+
+From Rainer Volz:
+
+#+BEGIN_QUOTE
+  In case anybody has the same problem, I (probably) found the source
+  and a
+   workaround.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  The error “Symbol's function definition is void: TeX-add-style-hook”
+  is caused
+   by the footnote-mode, which in turn is loaded by muse-mode, as a
+  default minor
+   mode in “Muse/Muse Mode/Muse Mode Hook”.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  Turning footnote-mode off lets me enter muse-mode (and planner-mode)
+  without
+   the error. Since I rarely use footnotes I can live without
+  footnote-mode.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  If you can't: several messages found on the net seem to indicate that
+  the real
+   source of the problem is a path/duplicate file problem between the
+  normal
+   texinfo.el and a texinfo.el supplied by Auctex. footnote-mode tries
+  to load
+   the normal texinfo.el but gets the Auctex version, which then tries
+  to run the
+   function “TeX-add-style-hook”. A solution could be to change the
+  load-path for
+   Emacs libraries or to deinstall Auctex.
+#+END_QUOTE
+
+#+BEGIN_QUOTE
+  Hope that helps,
+   Raine
+#+END_QUOTE
+
+E-Mail from Rainer Volz

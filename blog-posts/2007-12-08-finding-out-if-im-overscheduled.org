@@ -1,0 +1,190 @@
+#+TITLE: Finding out if I'm overscheduled
+
+December 8th, 2007 -
+[[http://sachachua.com/blog/p/4494][http://sachachua.com/blog/p/4494]]
+
+If you're anything like me, your task list is long and growing, but
+ the time you have is just as fixed. How do you manage that? I handle
+ that problem by looking at my calendar and my task list together when
+ I'm planning my day. I tend to be too optimistic about my tasks,
+ trying to schedule more into my day than I should. Fortunately, Emacs
+ can help me make sure I don't overcommit. Here's how it works.
+
+When I create and schedule tasks, I try my best to add time estimates.
+ The numbers in the TODO headline represent minutes.
+
+#+BEGIN_EXAMPLE
+    * TODO 15 Announce tea party
+      SCHEDULED: <2007-12-08 Sat>
+    * DONE 30 Drop letters off at post office
+      SCHEDULED: <2007-12-08 Sat>
+    * TODO 60 Write blog post about tasks
+      SCHEDULED: <2007-12-08 Sat>
+    * TODO 60 Make book notes
+      SCHEDULED: <2007-12-09 Sun>
+    * TODO 30 Start on my letter for 2007
+      SCHEDULED: <2007-12-08 Sat>
+    * TODO 60 Follow up with DemoCamp contacts
+      SCHEDULED: <2007-12-08 Sat>
+      DEADLINE: <2007-12-09 Sun>
+    * TODO 60 Respond to mail
+      SCHEDULED: <2007-12-08 Sat>
+#+END_EXAMPLE
+
+Then my custom agenda view looks like this:
+
+#+BEGIN_EXAMPLE
+    Day-agenda:
+    Saturday   8 December 2007
+      6:00......  --------------------
+      8:00......  --------------------
+     10:00......  --------------------
+     12:00......  --------------------
+     14:00......  --------------------
+     14:00-17:15  Scheduled:  TODO Take another driving lesson - emergency stuff
+     16:00......  --------------------
+     18:00......  --------------------
+     20:00......  --------------------
+     22:00......  --------------------
+                  In   1 d.:  TODO 60 Follow up with DemoCamp contacts
+                  Scheduled:  TODO 15 Announce tea party
+                  Scheduled:  TODO 60 Write blog post about tasks
+                  Scheduled:  TODO 30 Start on my letter for 2007
+                  Scheduled:  TODO 60 Follow up with DemoCamp contacts
+                  Scheduled:  TODO 60 Respond to mail
+                  In 937 d.:  101 things in 1001 days
+    62.7% load: 225 minutes to be scheduled, 359 minutes free, 134 minutes gap
+#+END_EXAMPLE
+
+I'll need to figure out over the next few weeks what kind of a load
+ threshold is good (you really don't want to try for 100%), but at
+ least it's visible!
+
+#+BEGIN_EXAMPLE
+    (setq org-agenda-custom-commands
+          '(("i" "My agenda"
+             ((org-agenda-list nil nil 1)
+              (sacha/org-load)))
+            ;; ... other stuff goes here
+          ))
+
+    (defun sacha/org-show-load ()
+      "Show my unscheduled time and free time for the day."
+      (interactive)
+      (let ((time (sacha/org-calculate-free-time
+                   ;; today
+                   (calendar-gregorian-from-absolute (time-to-days (current-time)))
+                   ;; now
+                   (let* ((now (decode-time))
+                          (cur-hour (nth 2 now))
+                          (cur-min (nth 1 now)))
+                     (+ (* cur-hour 60) cur-min))
+                   ;; until the last time in my time grid
+                   (let ((last (car (last (elt org-agenda-time-grid 2)))))
+                     (+ (* (/ last 100) 60) (% last 100))))))
+        (message "%.1f%% load: %d minutes to be scheduled, %d minutes free, %d minutes gap"
+                (/ (car time) (* .01 (cdr time)))
+                (car time)
+                (cdr time)
+                (- (cdr time) (car time)))))
+
+    (defun sacha/org-load (match)
+      "Can be included in `org-agenda-custom-commands'."
+      (let ((inhibit-read-only t)
+            (time (sacha/org-calculate-free-time
+                   ;; today
+                   (calendar-gregorian-from-absolute org-starting-day)
+                   ;; now if today, else start of day
+                   (if (= org-starting-day
+                          (time-to-days (current-time)))
+                       (let* ((now (decode-time))
+                              (cur-hour (nth 2 now))
+                              (cur-min (nth 1 now)))
+                         (+ (* cur-hour 60) cur-min))
+                     (let ((start (car (elt org-agenda-time-grid 2))))
+                       (+ (* (/ start 100) 60) (% start 100))))
+                     ;; until the last time in my time grid
+                   (let ((last (car (last (elt org-agenda-time-grid 2)))))
+                     (+ (* (/ last 100) 60) (% last 100))))))
+        (goto-char (point-max))
+        (insert (format
+                 "%.1f%% load: %d minutes to be scheduled, %d minutes free, %d minutes gap"
+                 (/ (car time) (* .01 (cdr time)))
+                 (car time)
+                 (cdr time)
+                 (- (cdr time) (car time))))))
+
+    (defun sacha/org-calculate-free-time (date start-time end-of-day)
+      "Return a cons cell of the form (TASK-TIME . FREE-TIME) for DATE, given START-TIME and END-OF-DAY.
+    DATE is a list of the form (MONTH DAY YEAR).
+    START-TIME and END-OF-DAY are the number of minutes past midnight."
+      (save-window-excursion
+      (let ((files org-agenda-files)
+            (total-unscheduled 0)
+            (total-gap 0)
+            file
+            rtn
+            rtnall
+            entry
+            (last-timestamp start-time)
+            scheduled-entries)
+        (while (setq file (car files))
+          (catch 'nextfile
+            (org-check-agenda-file file)
+            (setq rtn (org-agenda-get-day-entries file date :scheduled :timestamp))
+            (setq rtnall (append rtnall rtn)))
+          (setq files (cdr files)))
+        ;; For each item on the list
+        (while (setq entry (car rtnall))
+          (let ((time (get-text-property 1 'time entry)))
+            (cond
+             ((and time (string-match "\\([^-]+\\)-\\([^-]+\\)" time))
+              (setq scheduled-entries (cons (cons
+                                             (save-match-data (appt-convert-time (match-string 1 time)))
+                                             (save-match-data (appt-convert-time (match-string 2 time))))
+                                            scheduled-entries)))
+             ((and time
+                   (string-match "\\([^-]+\\)\\.+" time)
+                   (string-match "^[A-Z]+ \\([0-9]+\\)" (get-text-property 1 'txt entry)))
+              (setq scheduled-entries
+                    (let ((start (and (string-match "\\([^-]+\\)\\.+" time)
+                                     (appt-convert-time (match-string 1 time)))))
+                      (cons (cons start
+                                  (and (string-match "^[A-Z]+ \\([0-9]+\\)" (get-text-property 1 'txt entry))
+                                       (+ start (string-to-number (match-string 1 (get-text-property 1 'txt entry))))))
+                            scheduled-entries))))
+             ((string-match "^[A-Z]+ \\([0-9]+\\)" (get-text-property 1 'txt entry))
+              (setq total-unscheduled (+ (string-to-number
+                                          (match-string 1 (get-text-property 1 'txt entry)))
+                                         total-unscheduled)))))
+          (setq rtnall (cdr rtnall)))
+        ;; Sort the scheduled entries by time
+        (setq scheduled-entries (sort scheduled-entries (lambda (a b) (< (car a) (car b)))))
+
+        (while scheduled-entries
+          (let ((start (car (car scheduled-entries)))
+                (end (cdr (car scheduled-entries))))
+          (cond
+           ;; are we in the middle of this timeslot?
+           ((and (>= last-timestamp start)
+                 (<= last-timestamp end))
+            ;; move timestamp later, no change to time
+            (setq last-timestamp end))
+           ;; are we completely before this timeslot?
+           ((< last-timestamp start)
+            ;; add gap to total, skip to the end
+            (setq total-gap (+ (- start last-timestamp) total-gap))
+            (setq last-timestamp end)))
+          (setq scheduled-entries (cdr scheduled-entries))))
+        (if (< last-timestamp end-of-day)
+            (setq total-gap (+ (- end-of-day last-timestamp) total-gap)))
+        (cons total-unscheduled total-gap))))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/org][org]],
+[[http://www.technorati.com/tag/scheduling][scheduling]],
+[[http://www.technorati.com/tag/tasks][tasks]]
+
+Random Emacs symbol: select-safe-coding-system-function -- Variable:
+Function to call to select safe coding system for encoding a text.

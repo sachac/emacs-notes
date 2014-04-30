@@ -1,0 +1,39 @@
+#+TITLE: Emacs and w3m: Making tabbed browsing easier
+
+September 12th, 2008 -
+[[http://sachachua.com/blog/p/5137][http://sachachua.com/blog/p/5137]]
+
+If you browse with a lot of open tabs, like I do, w3m will be much
+easier to use once you remap =w3m-next-buffer= and =w3m-previous-buffer=
+onto single-key shortcuts, allowing you to press a key to quickly flip
+between tabs.
+
+By default, =w3m-previous-buffer= is mapped to C-c C-p and
+=w3m-next-buffer= is mapped to C-c C-n. On a QWERTY keyboard, you may
+want to remap =w3m-previous-buffer= to q and =w3m-next-buffer= to w.
+You'll probably also want to remap =w3m-close-window= (which had been
+bound to q), and x is a good keybinding for that. To make all these
+changes, add the following to your /~/.emacs/:
+
+#+BEGIN_EXAMPLE
+    (eval-after-load 'w3m
+      '(progn
+         (define-key w3m-mode-map "q" 'w3m-previous-buffer)
+         (define-key w3m-mode-map "w" 'w3m-next-buffer)
+         (define-key w3m-mode-map "x" 'w3m-close-window)))
+#+END_EXAMPLE
+
+If you use a Dvorak keyboard layout, you can bind . to
+=w3m-previous-buffer= and , to =w3m-next-buffer= instead. Just add the
+following code to your /~/.emacs/:
+
+#+BEGIN_EXAMPLE
+    (eval-after-load 'w3m
+      '(progn
+         (define-key w3m-mode-map "." 'w3m-previous-buffer)
+         (define-key w3m-mode-map "," 'w3m-next-buffer)))
+#+END_EXAMPLE
+
+(This is part of the draft for my
+[[http://sachachua.com/wp/category/wickedcoolemacs][book on Emacs]], to
+be published by No Starch Press if I'm not too late.)

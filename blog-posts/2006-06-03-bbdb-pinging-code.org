@@ -1,0 +1,66 @@
+#+TITLE: BBDB pinging code
+
+June 3rd, 2006 -
+[[http://sachachua.com/blog/p/3570][http://sachachua.com/blog/p/3570]]
+
+I love tweaking Emacs to fit the way I work. Here's some code to make it
+easier to keep track of pinged people.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-ping-bbdb-record (bbdb-record text &optional date regrind)
+      "Adds a note for today to the current BBDB record.
+    Call with a prefix to specify date."
+      (interactive (list (bbdb-current-record t)
+                         (read-string "Notes: ")
+                         (if current-prefix-arg (planner-read-date) (planner-today))
+                         t))
+      (bbdb-record-set-notes bbdb-record (concat date ": " text "\n" (bbdb-record-notes bbdb-record)))
+      (if regrind
+          (save-excursion
+            (set-buffer bbdb-buffer-name)
+            (bbdb-redisplay-one-record bbdb-record)))
+      nil)
+
+    (defun sacha/bbdb-gnus-ping (text)
+      "Add a ping for authors/recipients of this message.
+    Call with a prefix to specify a manual note."
+      (interactive (list (if current-prefix-arg (read-string "Notes: "))))
+      (let* ((from-me-p
+              (string-match gnus-ignored-from-addresses
+                            (message-fetch-field "From")))
+             (bbdb-get-only-first-address-p nil)
+             (bbdb-get-addresses-headers
+              (list (assoc (if from-me-p 'recipients 'authors) bbdb-get-addresses-headers)))
+             (bbdb/gnus-update-records-mode 'annotating)
+             (bbdb-message-cache nil)
+             (bbdb-user-mail-names nil)
+             (gnus-ignored-from-addresses nil)
+             records)
+        (setq records (bbdb/gnus-update-records t))
+        (if records
+            (bbdb-display-records records)
+          (bbdb-undisplay-records))
+        (while records
+          (sacha/bbdb-ping-bbdb-record
+           (car records)
+           (concat
+            (if from-me-p "-> " "<- ")
+            (or text (message-fetch-field "Subject")))
+           (planner-date-to-filename
+            (date-to-time (message-fetch-field "Date"))))
+          (setq records (cdr records)))
+        (setq records (bbdb/gnus-update-records t))
+        (if records
+            (bbdb-display-records records)
+          (bbdb-undisplay-records))))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/networking][networking]]
+
+[[../emacs/bbdb-config.el][/home/sacha/notebook/emacs/bbdb-config.el]]
+
+Random Japanese sentence:
+ÃƒÂ§Ã‚ÂŒÃ‚Â«ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚Â‚Ã‚Â½ÃƒÂ£Ã‚ÂƒÃ‚Â•ÃƒÂ£Ã‚Â‚Ã‚Â¡ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¤Ã‚Â¸Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ¥Ã‚Â¯Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+A cat is lying on the sofa.

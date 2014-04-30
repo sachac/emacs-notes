@@ -1,0 +1,193 @@
+#+TITLE: How Org Mode helps me deal with an ever-growing backlog
+
+April 25th, 2014 -
+[[http://sachachua.com/blog/p/27181][http://sachachua.com/blog/p/27181]]
+
+If you're like me, you probably have a to-do list several miles long. I
+like thinking of this as the backlog from agile programming. It's a list
+of tasks that I could choose to work on, but I haven't committed to
+doing everything on the list. This means I don't have to waste energy
+feeling guilty about not getting everything done. Instead, I can treat
+it like a
+[[http://sachachua.com/blog/2014/03/reflecting-goals-time/][buffet of
+projects]] to choose from depending on what I feel like working on.
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/04/2014-04-28-Dealing-with-an-ever-growing-backlog.png][[[http://sachachua.com/blog/wp-content/uploads/2014/04/2014-04-28-Dealing-with-an-ever-growing-backlog-640x378.png]]]]
+
+2014-04-28 Dealing with an ever-growing backlog
+
+I think I add tasks faster than I cross tasks out. (Hmm, I should track
+this!) It never ends. Most tasks suggest next steps I could take after I
+finish the first ones. You might think that an ever-growing to-do list
+is a bad thing. This is okay. In fact, this is good. It means that I'll
+always have a variety of tasks to choose from.
+
+People manage tasks in different ways. For my personal tasks, I use
+several large text files in [[http://orgmode.org][Org Mode]] for Emacs.
+Org Mode is an outline-based tool which makes it easy for me to organize
+my tasks into projects and projects into themes. It also supports
+tagging, links, agendas, dynamic views, and all sorts of other great
+ways to slice-and-dice my task list. Here's how I deal with some of the
+common challenges people face with a large task backlog:
+
+-  Making sure important, urgent tasks don't fall through the cracks
+-  Making sure you don't neglect important but not urgent tasks
+-  Keeping track of what you're waiting for
+-  Catching procrastination
+
+*** Making sure important, urgent tasks don't fall through the cracks
+
+If something has a deadline, I add the deadline in Org using =C-c C-d=
+(=org-deadline=). This means that reminders will appear on my daily
+agenda for the 14 days before the deadline, counting down to the
+deadline itself. (The number of days is controlled by
+=org-deadline-warning-days=.) In addition, I usually schedule the task
+for a day that I want to work on it, so that I can get the task out of
+the way.
+
+I'm careful about what I commit to, erring on the side of
+under-committing rather than over-committing. I'm selective about my
+client work and my volunteering. I keep my schedule as open as I can,
+and I'm not afraid to reschedule if I need to. Hardly anything I work on
+could be considered urgent. If an urgent request does come in, I ask
+questions to determine its true urgency, including potential
+alternatives and consequences of failure.
+
+You might not have as much choice about what to work on, but you might
+also be surprised by how much you can push back. Be careful about what
+you allow to be urgent in your life.
+
+*** Making sure you don't neglect important but not urgent tasks
+
+I have plenty of space to work on things that are important but not
+urgent because I manage my commitments carefully. This means that I can
+usually finish a few important-but-not-urgent tasks every day.
+
+Which tasks do I consider important? I like thinking in terms of
+projects. Important tasks tend to be associated with projects instead of
+standing in isolation. Important tasks move me toward a specific goal. I
+have [[http://sachachua.com/evil-plans][many goals and projects]], but
+because they're fewer than the number of tasks I have, I can prioritize
+them more easily. I can decide that some projects are in the background
+and some are in focus. Important tasks are the tasks that help me make
+more progress on the projects I consider important.
+
+Because I like having two or three projects on the go, it helps to make
+sure that I make regular progress on those projects instead of getting
+carried away on just one. Tracking my time helps me stay aware of that
+balance. I also review my projects every week and schedule specific
+tasks for each of them, so I can make a little progress at least. Once I
+switch context and start thinking about a project, it's easy to pick
+another couple of tasks in that area and get even more done.
+
+If you're struggling with creating enough space to work on important but
+not urgent tasks, you might be able to partner up with someone so that
+you can block off time to work on non-urgent things. Many teams have a
+rotating schedule for dealing with customer requests or urgent issues.
+One person covers the requests for a day, allowing the rest of the team
+to focus. Then the next person takes on that duty, and so on.
+
+*** Keeping track of what you're waiting for
+
+One of the useful tips I picked up from David Allen's Getting Things
+Done book was the idea of marking a task as WAITING. I usually add a
+description of what I'm waiting for, who's responsible, and when I want
+to follow up. This makes it easier to follow up. When I'm waiting for a
+specific date (ex: the library makes a DVD hold-able after a certain
+date), I schedule the task for then.
+
+I use the [[http://www.boomeranggmail.com/][Boomerang for Gmail]]
+extension when I'm waiting for an e-mail reply. Boomerang lets me pop
+the message back into my inbox if I haven't received a reply by a
+specific date, so I don't have to keep track of that myself.
+
+*** Handling less-important but still useful things
+
+There are tasks on my to-do list that have been on that list for years.
+This is okay.
+ I'm getting better at noting names and contact information in my tasks
+so that I can follow up with people even after some time. This is
+particularly useful for book recommendations. I get a lot of book
+recommendations and I get most of my books from the library, so there's
+usually a delay of a few weeks. Because Org Mode lets me add notes and
+links to the body of a task, I can look up information easily.
+
+I work on less-important tasks when I don't feel like working on my
+major tasks, or when I'm looking for small tasks so I can fill in the
+gaps of my day. Org Mode gives me plenty of ways to look up tasks. I
+usually look for tasks by projects, navigating through my outline. I can
+also look for tasks by effort estimate, so I can see everything that
+will probably take me less than 15 minutes. Context is useful too -- I
+can search for various tags to find tasks I can do while I'm on the
+phone, or out on errands, or when I feel like writing or drawing.
+
+I like thinking in terms of low-hanging fruit, so I often choose tasks
+that require little time or effort and have good impact. It can be
+overwhelming to look at a long list of tasks and decide which ones have
+good return. It's easier to tag these tasks when you create the task, or
+to think in terms of projects instead.
+
+Some tasks grow in importance or urgency over time. If I want to make
+sure that I revisit a task on a certain date, I schedule it for then.
+
+*** Catching procrastination
+
+I still end up rescheduling tasks multiple times. (I've been putting off
+redoing my business cards for a few months now!) I've noticed that there
+are different kinds of procrastination, including:
+
+-  *Procrastinating because you don't have time today:* It's easy to
+   reschedule things a few weeks or a month in advance. In fact, Org has
+   a built-in command for bulk-scattering tasks. From the agenda view,
+   you can type =m= to mark multiple tasks, then type =B= and then =S=
+   to scatter tasks randomly over the next N days. (Call it with a
+   prefix argument as =C-u B S= to limit it to weekdays.) If I catch
+   myself procrastinating because I don't have enough time, that's
+   usually a sign to be more cautious about my estimates and
+   commitments, so I adjust those too.
+-  *Procrastinating because it's less important than other tasks:* This
+   is related to the time reason. I have no qualms about pushing
+   less-important tasks forward.
+-  *Procrastinating because you don't feel like working on it:* Is the
+   task actually important? If it's not, I usually get rid of it without
+   feeling guilty. If it's still useful, I might unschedule it so that I
+   see it only if I'm looking for tasks in that project or in that
+   context. Alternatively, I can just mark the task as CANCELLED or
+   SOMEDAY. If the task is important, I think about whether I'm likely
+   to feel like working on it at some point in the future. If I'm likely
+   to not feel any different about it, I might delegate it, or I might
+   just sit down and do it since procrastination doesn't add value. On
+   the other hand, if I'm likely to feel like working on it at some
+   point, then I tag it with that context and push it out to some other
+   date.
+-  *Procrastinating because you forgot about it:* I usually check my
+   agenda every day and Org shows forgotten things in a different
+   colour, so I catch these quickly. If the tasks are more important
+   than the tasks I've already scheduled, I might work on those first.
+   Alternatively, I might schedule it for sometime later.
+
+I procrastinate based on my to-do list, not based on my inbox. The inbox
+is a terribly unstructured way to manage your tasks. I use Boomerang for
+Gmail to defer some mail to a later date, but that's usually so that I
+can pop it back into my inbox the day that I meet someone so that I have
+context and so that I don't have to copy the link into the calendar
+entry or my TO-DO list.
+
+*** Wrapping up
+
+So that's how I deal with having a large backlog. I focus first on the
+stuff that I need to do, and I make sure that shows up on my agenda.
+Then I make it easy to look for stuff that I want to do using Org's
+support for projects, tags, time estimates, and so on. I don't feel
+guilty about having lots of tasks to choose from. I view my backlog
+positively. It lets me do good stuff without worrying too much about how
+I spend my time.
+
+How do you deal with your backlog? =)
+
+Sneak peek! Writing this post prompted me to start tracking whether my
+backlog grew or shrank each day.
+[[http://sachachua.com/blog/?p=27211&shareadraft=baba27211_535a80ec49274][Check
+out my preliminary results and the code I used to analyze my TODOs.]]
+
+2014-04-27: Fixed typo in keybinding -- thanks, Sujith Abraham!

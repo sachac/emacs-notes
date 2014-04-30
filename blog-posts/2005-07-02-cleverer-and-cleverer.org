@@ -1,0 +1,91 @@
+#+TITLE: Cleverer and cleverer
+
+July 2nd, 2005 -
+[[http://sachachua.com/blog/p/2805][http://sachachua.com/blog/p/2805]]
+
+My mom called me in a panic. “I just got this message from info AT
+ adphoto.com.ph saying that my e-mail account has been suspended.”
+
+I grumbled. Yet another notice. Our e-mail had recently been suspended
+ because people weren't deleting their old mail. I had just spent a few
+ days with [[http://www.ipowerweb.com][ipowerweb]] tech support and
+ [[http://www.adphoto.com.ph][Adphoto]] employees working out the
+ issues. Another notice? I was going to track down and scold the errant
+ employee.
+
+\_After\_ helping my sister, who paged me to come down so that I could
+ help her with the market study along the highway. And meeting my
+ friends. And tracking down that planner bug. ARGH!
+
+My mom poked her head into the Internet room. “SACHA, fix my e-mail
+ now.”
+
+Informal tech support people the world over know that when moms use
+ that tone of voice, everything else gets bumped down the priority
+ list.
+
+I trudged over to her Mac and brought up the Ipowerweb help support.
+
+Kathy called to follow up. My mom picked up the phone and said,
+ “Sacha's here fixing my e-mail.”
+
+“No no no, I'm just going to show you how to ask for help. Where's the
+ message?”
+
+“Why don't you fix it first and then you can teach me how to ask for
+ help next time?”
+
+“I \_can't\_ fix it. It's up to the Ipowerweb people. Where's the
+ message? Okay. Hmm. Temporarily suspended... check account details...”
+ I didn't catch any typos during my cursory glance, but it didn't feel
+ like the other notices we'd gotten from Ipowerweb. The message felt
+ wrong. I read further. “Adphoto Support Team... Wait a minute, we
+ don't \_have\_ an Adphoto Support Team.” I looked up. Sure enough,
+there
+ was an attachment named “account-details.zip” just begging to be
+opened.
+
+“So what's wrong with my e-mail?”
+
+“Nothing,” I replied, disgusted. I reread the message. Clever of them
+ to work the first part of the domain into the message. “It's one of
+ those fake messages with attachments.”
+
+“Wait! How do I tell which ones are real and which aren't?”
+
+How do I explain that feeling of something being wrong? It's a blink
+moment.
+
+-  Messages that ask you to look at attachments are immediately
+    suspicious, even if they come from someone you know. Most worms fake
+    the From: address to be someone you might now. Write the person who
+    supposedly sent you the message and ask if that's really the
+    intended attachment.
+-  Don't click on random links, too. This could open you up to more spam
+    or attacks that exploit browser vulnerabilities.
+-  If the message says it comes from an automated system and you
+    shouldn't bother replying, see if there's a human somewhere you can
+    get in touch with.
+-  Tech announcements shouldn't be coming from info AT adphoto.com.ph,
+    but rather an ipowerweb account. This is particularly true when
+    they're announcements I don't remember making.
+-  Make life easier for other people. If you send an attachment or link
+    to someone else, include enough outside-the-computer information to
+    let the other person know you're human. For example, you could give
+    some details about the job just finished.
+
+I've had to enable e-mail access from the PCs. I've made the employees
+ promise not to click on strange links or attachments, and Internet
+ access is restricted to a set of government websites and the Adphoto
+ website itself. That should provide us with some modicum of protection
+ because there's no way for them to establish a direct connection to
+ the outside.
+
+With social engineers getting cleverer and cleverer, though, will that
+ be enough?
+
+ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¤Ã‚Â¼Ã‚ÂšÃƒÂ§Ã‚Â¤Ã‚Â¾ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ¥Ã‚Â°Ã‚ÂŽÃƒÂ¥Ã‚Â...Ã‚Â¥ÃƒÂ£Ã‚Â?Ã‚Â•ÃƒÂ£Ã‚Â‚Ã‚ÂŒÃƒÂ£Ã‚Â?Ã‚Â¤ÃƒÂ£Ã‚Â?Ã‚Â¤ÃƒÂ£Ã‚Â?Ã‚Â‚ÃƒÂ£Ã‚Â‚Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â¾ÃƒÂ£Ã‚Â?Ã‚Â™ÃƒÂ£Ã‚Â€Ã‚Â‚
+Computers are being introduced into this company.
+
+On Technorati: [[http://www.technorati.com/tag/phishing][phishing]],
+[[http://www.technorati.com/tag/mom][mom]]

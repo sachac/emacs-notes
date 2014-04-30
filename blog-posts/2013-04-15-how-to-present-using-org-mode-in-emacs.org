@@ -1,0 +1,96 @@
+#+TITLE: How to present using Org-mode in Emacs
+
+April 15th, 2013 -
+[[http://sachachua.com/blog/p/24686][http://sachachua.com/blog/p/24686]]
+
+You can do pretty much everything in Emacs, so why not give
+presentations too? [[http://orgmode.org][Org-mode]] is an extensible
+outliner and Swiss Army knife for the Emacs text editor. Because it's a
+great way to organize information, people have written a number of
+packages for presenting information from Org.
+
+Here are some options for preparing and giving presentations using
+Org-mode, along with some guidance on what to use when. It may be a good
+idea to browse through the examples and create a small test presentation
+using the systems that catch your eye. If you choose your system before
+drafting your presentation, that can save you a lot of time, since the
+approaches differ in terms of the code you'll need to add to your Org
+file.
+
+*** Presenting outside Emacs
+
+Do you need to distribute your presentation to non-Emacs users, or do
+you want to minimize the risk of getting your Emacs configuration
+confused? You can export your presentation to a number of formats.
+
+*Export to Beamer (LaTeX) and generate a PDF*: Use this if you need to
+distribute your presentation as a PDF. You will need to install LaTeX,
+which could be a bit heavy-weight. Beamer is a slide package for LaTeX,
+and Org can export an outline to LaTeX code. Check out
+[[http://orgmode.org/worg/exporters/beamer/tutorial.html][Writing Beamer
+presentations in Org-mode]] for sample screenshots and a tutorial.
+
+*Export to HTML and use S5*: Light-weight browser-based slideshows are
+becoming more popular. They can be distributed as ZIPs or .tar.gz, or
+uploaded to web servers. See the section in the Org tutorials for
+[[http://orgmode.org/worg/org-tutorials/non-beamer-presentations.html#sec-3][Non-Beamer
+Presentations: S5]]. Here are some
+[[http://eschulte.github.io/org-S5/][sample presentations]].
+
+*** Presenting within Emacs
+
+Presenting within Emacs allows you to edit your presentation, execute
+code, or do all sorts of other interesting things. And it doesn't have
+to be plain text -- Org allows you to include inline images. (Microsoft
+Windows users may need to install additional libraries --
+[[http://stackoverflow.com/questions/2650041/emacs-under-windows-and-png-files][see
+StackOverflow for tips]].)
+
+There are several ways to present from Org-mode. They tend to differ on:
+
+-  the markup you need to add to your slides
+-  the keyboard shortcuts to help you navigate between slides
+
+so you can choose the one you feel the most comfortable with.
+
+[[https://github.com/rlister/org-present][Org-present]] is simple and
+defines very few keyboard shortcuts: left for previous slide, right for
+next slide, C-c C-= or C-c C-- to adjust text size, and C-q to quit.
+This makes it easy to edit your presentation as you go along. You'll
+need to edit your ~/.emacs file to include some code. See the
+documentation in org-present.el for details.
+
+[[https://github.com/eschulte/epresent][EPresent]] is a bit more
+complex. It supports converting LaTeX into images, so you can embed
+pretty equations. The epresent keybindings include “n” for next and “p”
+for previous, so don't use this if you're planning to edit your
+presentation on the fly.
+
+[[https://github.com/nicferrier/org-presie][Org-presie]] takes a
+different approach by showing the outline instead of focusing on just
+one slide. When you press SPC, the previous headline's content is
+hidden, and the next one's content is expanded. It's good for always
+giving people a sense of where they are in your presentation.
+
+And then sometimes you may want to write your own. For my presentation
+at Emacs Conference 2013, I wanted to be able to:
+
+-  allow me to indicate various headings as slides so that I can
+   organize an outline of slides (why should they all have to be
+   top-level?),
+-  for each slide
+
+   -  automatically execute pre-written Emacs Lisp code (for animations
+      and demonstrations!), OR
+   -  display images that fit the full height or width of the window, OR
+   -  display text if I don't specify code or images
+
+-  and have globally-set keyboard shortcuts so that I can go forward,
+   backward, or re-do a slide no matter where I am in Emacs (and with
+   AutoHotkey, even when I'm in a non-Emacs window)
+
+You can find my code at
+[[https://gist.github.com/sachac/5278905][https://gist.github.com/sachac/5278905]]
+
+Emacs and Org-mode are wonderfully customizable, so you can probably
+build something that works just the way you want to work. Enjoy!

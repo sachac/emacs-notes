@@ -1,0 +1,10 @@
+#+TITLE: Org maintainer ultra-active! \^\_\^
+
+August 25th, 2004 -
+[[http://sachachua.com/blog/p/2228][http://sachachua.com/blog/p/2228]]
+
+The org.el maintainer seems to be as compulsive as I am; probably
+ Googles for org.el just like I check for
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]] and
+planner.el.
+ Just got e-mail about my thoughts on org.el. Will reply soon.

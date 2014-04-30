@@ -1,0 +1,13 @@
+#+TITLE: emacs-wiki--gary--1.0--patch-1
+
+April 25th, 2004 -
+[[http://sachachua.com/blog/p/2011][http://sachachua.com/blog/p/2011]]
+
+This patch adds support for subdirectories under a main wiki
+ directory. Subdirectories are recursively added. On publishing, the
+ directory name is resolved relative to the main wiki directory, then
+ expanded relative to the publishing directory.
+
+Haven't added this patch yet. Should think about it more first.
+
+[[http://sachachua.com/tmp/emacs-wiki--gary--1.0--patch-5/emacs-wiki--gary--1.0--patch-1.patches/patches/emacs-wiki.el.patch][../../tmp/emacs-wiki--gary--1.0--patch-5/emacs-wiki--gary--1.0--patch-1.patches/patches/emacs-wiki.el.patch]]

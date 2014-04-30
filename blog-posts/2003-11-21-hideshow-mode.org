@@ -1,0 +1,18 @@
+#+TITLE: HideShow mode
+
+November 21st, 2003 -
+[[http://sachachua.com/blog/p/1384][http://sachachua.com/blog/p/1384]]
+
+M-x hs-minor-mode
+
+I think I rather like hs-hide-all...
+
+#+BEGIN_EXAMPLE
+    (defun sacha/hs-minor-mode-hide-all ()
+      "Turn on `hs-minor-mode' and hide everything."
+      (hs-minor-mode 1)
+      (hs-hide-all))
+
+    (add-hook 'emacs-lisp-mode-hook 'sacha/hs-minor-mode-hide-all t)
+#+END_EXAMPLE
+

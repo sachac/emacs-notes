@@ -1,0 +1,8 @@
+#+TITLE: resolve and emacs-wiki
+
+February 19th, 2003 -
+[[http://sachachua.com/blog/p/421][http://sachachua.com/blog/p/421]]
+
+See how ickily emacs-wiki renders this? Then again, it's probably just a
+matter of making a good stylesheet. I eventually want to have a
+blog-like thing...

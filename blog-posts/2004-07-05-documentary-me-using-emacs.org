@@ -1,0 +1,39 @@
+#+TITLE: Documentary: me using Emacs? ;)
+
+July 5th, 2004 -
+[[http://sachachua.com/blog/p/2156][http://sachachua.com/blog/p/2156]]
+
+Andy Sy said:
+
+#+BEGIN_QUOTE
+  Is there a film documentary available somewhere showing you how you
+   use Emacs? God knows I've tried and tried to get the hang of it and
+   still find myself heavily disliking Emacs.
+
+  I want to visually experience someone else using Emacs to see if it's
+   really more efficient to do things like mail, news, web browsing
+   (??!? how do you do that without graphics?) in it.
+
+  I don't see it displacing SciTE as my favorite editor anytime,
+   but perhaps Mozilla as my email/news client of choice...?
+#+END_QUOTE
+
+And in another post...
+
+#+BEGIN_QUOTE
+  More like mind-numbing for me, because there are just too many
+  keybindings
+   to remember and it is so annoying when you get them wrong. Anyway, I
+  was
+   hoping someone would make a film documentary showing Sacha (or some
+  other
+   Emacs guru) doing everday stuff under Emacs, to see how much of a
+  speed
+   and efficiency advantage it has (if any) compared to using say,
+  Mozilla
+   for browsing newsgroups/replying to email, and perhaps SciTE, for
+  editing
+   programs.
+#+END_QUOTE
+
+E-Mail from Andy Sy

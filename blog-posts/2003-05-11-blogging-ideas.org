@@ -1,0 +1,47 @@
+#+TITLE: Blogging ideas
+
+May 11th, 2003 -
+[[http://sachachua.com/blog/p/758][http://sachachua.com/blog/p/758]]
+
+Richi Plana also wrote:
+
+#+BEGIN_QUOTE
+  I'm thinking of starting my own blog. I intend to create a system
+  which
+   will act as my organizer, contacts list, diary/journal/blog and
+  infobase.
+   I intend to write it from scratch (as opposed to adopting an existing
+   project). I advocate code re-use just as much as the next guy, but
+  there
+   are just some things which you want to do yourself (and no, it's not
+  the
+   NIH mentality).
+
+  The backend will be filesystem-based and I intend to use XML. I'm
+  trying
+   to decide whether to write things in PHP or Python. I'm leaning more
+   towards PHP but Python's cool, too. I'll probably write it in PHP and
+  I've
+   printed out all the PHP docs for XML handling.
+
+  I mentioned to you a long time ago how I wanted to move my web photo
+  album
+   to a system with free-form output, right? Well, I was able to get one
+  step
+   closer a few months back when I wrote the function to resize images
+  and I
+   started that in PHP. May as well build from that.
+#+END_QUOTE
+
+Hmmmmmmmm. <looks at Emacs>
+
+- Organizer? Check. (planner)
+ - Contacts? Check. (bbdb)
+ - Diary/journal/blog? Check. (planner + emacs-wiki)
+ - Infobase? Check. (planner + remember)
+ - Filesystem-based? Check. (text files)
+ - XML? Hmmm, maybe I can write an export function.
+
+=)
+
+Emacs is the Way. ;)

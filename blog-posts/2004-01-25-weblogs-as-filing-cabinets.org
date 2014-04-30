@@ -1,0 +1,17 @@
+#+TITLE: Weblogs as Filing Cabinets
+
+January 25th, 2004 -
+[[http://sachachua.com/blog/p/1633][http://sachachua.com/blog/p/1633]]
+
+[[http://blogs.salon.com/0002007/categories/businessInnovation/2003/03/03.html][http://blogs.salon.com/0002007/categories/businessInnovation/2003/03/03.html]]
+
+#+BEGIN_QUOTE
+  Weblogs could be a mechanism to coherently codify and
+   ‘publish' in a completely voluntary and personal manner the
+  individual
+   worker's entire filing cabinet, complete with annotations,
+  marginalia,
+   post-its and personal indexing system.
+#+END_QUOTE
+
+Precisely why I use planner+remember...

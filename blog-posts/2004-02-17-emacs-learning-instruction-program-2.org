@@ -1,0 +1,40 @@
+#+TITLE: Emacs Learning Instruction Program
+
+February 17th, 2004 -
+[[http://sachachua.com/blog/p/1721][http://sachachua.com/blog/p/1721]]
+
+#+BEGIN_QUOTE
+  The beta of ELIP, the Emacs Learning Instruction Program, is now
+   stable enough for wide release.
+
+  ELIP is “flashcards on steroids” and provides learning via
+
+  - spaced interval recall (like SuperMemo)
+   - Leitner “box” method
+   - plain old flashcards
+
+  Modes are present for questions and answers in
+
+  - simple form
+   - ellipsis form, generated from chosen text material
+   - passage memorization form (i.e., memorize the Gettysburg address).
+
+  ELIP installation requires some EMACS ‘smarts' and had EDB, the EMACS
+   Database, as a prerequisite. This is all explained in the
+   documentation.
+
+  The distribution comes with a small Hawaiian language database, a
+   large Spanish vocabulary database, a large Esperanto vocabulary
+   database, an Esperanto grammar database, and the “I Have a Dream”
+   speech for learning by memorization.
+
+  There is a small, low volume mailing list available.
+
+  ELIP is found at
+
+  [[http://www.chungkuo.org/elisp/elip.zip][http://www.chungkuo.org/elisp/elip.zip]]
+
+  and comments, bug reports, ideas and suggestions are welcome.
+#+END_QUOTE
+
+E-Mail from ChipsChap

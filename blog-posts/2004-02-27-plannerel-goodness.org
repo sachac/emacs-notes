@@ -1,0 +1,21 @@
+#+TITLE: planner.el goodness
+
+February 27th, 2004 -
+[[http://sachachua.com/blog/p/1785][http://sachachua.com/blog/p/1785]]
+
+Andrew Laing wrote:
+
+#+BEGIN_QUOTE
+  I think the work you put into Planner et al is fantastic. I have spent
+   quite a bit of time over the past week poring over your web page and
+  .el
+   files and just wanted to take a second to say thank you for all your
+   work. I have recently switched to Emacs as my text-editor and
+  sincerely
+   appreciate sites like yours which help me understand it better. Thank
+   you!
+#+END_QUOTE
+
+Awwwwwwww! =)
+
+E-Mail from Andrew Laing

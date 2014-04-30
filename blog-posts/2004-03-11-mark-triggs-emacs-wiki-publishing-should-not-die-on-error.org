@@ -1,0 +1,11 @@
+#+TITLE: Mark Triggs: Emacs-wiki publishing should not die on error
+
+March 11th, 2004 -
+[[http://sachachua.com/blog/p/1873][http://sachachua.com/blog/p/1873]]
+
+Mark Triggs submitted a patch to make
+ emacs-wiki not die on publishing errors. I modified his patch to use
+ the standard warning display functions and replace invalid Lisp code
+ with the text “INVALID LISP CODE.”
+
+[[http://sachachua.com/notebook/wiki/EmacsWikiMode][EmacsWikiMode]]

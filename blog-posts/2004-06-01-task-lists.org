@@ -1,0 +1,11 @@
+#+TITLE: Task lists
+
+June 1st, 2004 -
+[[http://sachachua.com/blog/p/2087][http://sachachua.com/blog/p/2087]]
+
+If we store all tasks in a plain text file, we can generate task lists
+ based on that text file instead. That will allow us to slice and dice
+ the tasks any way we want. The file will not be rescanned all the
+ time, but only when an update is forced.
+
+[[http://sachachua.com/notebook/wiki/PlannerDatabase][PlannerDatabase]]

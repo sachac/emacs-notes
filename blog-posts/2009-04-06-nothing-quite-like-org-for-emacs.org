@@ -1,0 +1,42 @@
+#+TITLE: Nothing quite like Org for Emacs
+
+April 6th, 2009 -
+[[http://sachachua.com/blog/p/6078][http://sachachua.com/blog/p/6078]]
+
+I've been trying lots of different Web-based GTD task managers like
+[[http://www.rememberthemilk.com][Remember the Milk]],
+[[http://www.toodledo.com][Toodledo]], and
+[[http://www.gtdagenda.com][GTDAgenda]]. I'm slowly coming to the
+conclusion that there's nothing quite like [[http://orgmode.org/][Org
+for Emacs]].
+
+Here's what I like about the other services:
+
+-  Both Remember the Milk and Toodledo have iPhone/iPod Touch
+   interfaces, so I can review, check off, and create tasks anywhere.
+-  All those services allow me to e-mail tasks to an address.
+-  It's easy to filter tasks by context.
+-  I can share my tasks with my assistant so that he or she can remind
+   me of the tasks I've scheduled for the day.
+
+Here's what I like about Org:
+
+-  I can use templates and outlines to organize my tasks however I want.
+-  I can set deadlines, scheduled tasks, and prior notice easily.
+-  I can track time more finely than Toodledo can.
+-  I can use Org as an activity log.
+-  I can schedule tasks onto specific timeslots.
+
+Of all the options I've tried, Toodledo is closest to where I am with
+Org, although it still doesn't do everything.
+
+Some options are:
+
+-  Use worg or develop a web-based interface for displaying tasks based
+   on my Org file
+-  Write code for synchronizing Org with Toodledo or RememberTheMilk,
+   making lots of geeks happy in the process =)
+
+#+CAPTION: 
+
+[[http://img.zemanta.com/pixy.gif?x-id=91fba46e-ed29-8637-a258-ee7f1942881a]]

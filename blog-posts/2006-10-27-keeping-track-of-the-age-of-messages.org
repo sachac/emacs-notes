@@ -1,0 +1,49 @@
+#+TITLE: Keeping track of the age of messages
+
+October 27th, 2006 -
+[[http://sachachua.com/blog/p/3981][http://sachachua.com/blog/p/3981]]
+
+I can get pretty bad at responding to e-mail. This is an experiment to
+ see whether the negative reinforcement of seeing just how old a
+ message is will help me be more responsive. Either that, or I can
+ strive for a Mean Time Between Responses of whatever... ;)
+
+Hmm, maybe I should combine this with my blog and start distinguishing
+ between E-mail to and Reply to...
+
+#+BEGIN_EXAMPLE
+    (defadvice gnus-post-news (around sacha/gnus-track-message-age activate)
+      "Insert a header showing how old a message is, to shame me into replying faster."
+      ;; Before you post the news, figure out how old it is
+      (let (days)
+        (when article-buffer
+          (setq days
+                (- (time-to-days (current-time))
+                   (time-to-days
+                    (gnus-date-get-time
+                     (mail-header-date
+                      (gnus-summary-article-header
+                       (gnus-summary-article-number))))))))
+        ad-do-it
+        (when days
+          (goto-char (point-min))
+          (when (re-search-forward "--text follows this line--" nil t)
+            (forward-line 1)
+            (insert "In reply to a message sent by "
+                    (mail-header-from message-reply-headers)
+                    " "
+                    (cond
+                     ((= days 0) "today")
+                     ((= days 1) "yesterday")
+                     (t (format "%d days ago" days)))
+                    ": \n\n")))))
+    (setq message-citation-line-function nil)
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]],
+[[http://www.technorati.com/tag/gnus][gnus]]
+
+Random Emacs symbol: tramp-perl-directory-files-and-attributes --
+Variable: Perl script implementing `directory-files-attributes' as Lisp
+`read'able

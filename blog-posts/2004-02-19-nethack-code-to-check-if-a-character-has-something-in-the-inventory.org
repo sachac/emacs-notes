@@ -1,0 +1,42 @@
+#+TITLE: nethack code to check if a character has something in the inventory
+
+February 19th, 2004 -
+[[http://sachachua.com/blog/p/1725][http://sachachua.com/blog/p/1725]]
+
+#+BEGIN_EXAMPLE
+    (defvar nethack-temp-log nil "String containing captured messages.")
+
+    (defun nethack-has-item-p (regexp)
+      "Return non-nil if the character has an item matching REGEXP in the inventory."
+      (let ((nh-filter-hook (append (list 'nethack-store-log) nh-filter-hook))
+            (nethack-temp-log nil))
+        (nh-send-and-wait "inv 1")
+        (nh-send nil)
+        (string-match regexp nethack-temp-log)))
+
+    (defun nethack-store-log (string)
+      (setq nethack-temp-log (concat nethack-temp-log string "\n")))
+
+    (defvar nh-filter-hook nil "Hook that is called with the received line.")
+
+    (defadvice nh-filter (around sacha activate)
+      "Insert contents of STRING into the buffer associated with PROC.
+    Evaluate the buffer contents if we are looking at a prompt and then
+    delete the contents, perhaps logging the text."
+      ;; insert output into process buffer
+      (with-current-buffer (process-buffer proc)
+        (goto-char (point-max))
+        (insert string)
+        (forward-line 0)
+        (if (looking-at nh-prompt-regexp)
+        (let ((prompt (match-string 1)))
+              (nh-log (buffer-substring (point-min) (point)))
+              (unless (run-hook-with-args-until-success 'nh-filter-hook (buffer-substring (point-min) (point)))
+            (eval-region (point-min) (point)))
+          (cond ((or (equal prompt "command")
+                 (equal prompt "menu"))
+             (nh-print-status)
+             (sit-for 0)
+             (setq nh-at-prompt t)))))))
+#+END_EXAMPLE
+

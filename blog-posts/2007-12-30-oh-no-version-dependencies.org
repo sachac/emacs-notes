@@ -1,0 +1,16 @@
+#+TITLE: Oh no! Version dependencies...
+
+December 30th, 2007 -
+[[http://sachachua.com/blog/p/4552][http://sachachua.com/blog/p/4552]]
+
+2I really want to share my code for reviewing Org timeclock entries for
+each date. However, it depends on functionality that's only in the
+development version of Org. Do I tell people to change to that version?
+Do I try to make it work with the standard version that comes with
+Emacs? And the development version of Org comes with all sorts of nice
+goodies, too...
+
+Okay, I figured out what to do. I'm going to include it, but I'll use a
+distinctive background to show people that this is only available with a
+newer version of Org. That way, the bleeding edge geeks can still do all
+sorts of cool stuff.

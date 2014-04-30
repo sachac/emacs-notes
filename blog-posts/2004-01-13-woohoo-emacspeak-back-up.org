@@ -1,0 +1,18 @@
+#+TITLE: Woohoo! Emacspeak back up!
+
+January 13th, 2004 -
+[[http://sachachua.com/blog/p/1597][http://sachachua.com/blog/p/1597]]
+
+After struggling with
+[[http://sachachua.com/notebook/emacs/emacspeak-config.el][../emacs/emacspeak-config.el]],
+Emacs with
+ Emacspeak now boots all the way up to my tasks. Now I get to play with
+ it a whole lot more. Next step -- get another Twiddler (Dr. Rodrigo
+ said that the department will spring for it). Also, check out gestures
+ for Emacs. Oh, and have lots of fun... =)
+
+emacspeak-planner.el in
+[[http://sachachua.com/notebook/emacs/emacs-wiki][../emacs/emacs-wiki]]
+has preliminary
+ support. emacspeak doesn't seem to like invisible text in emacs-wiki.
+ Fix one of these days.

@@ -1,0 +1,118 @@
+#+TITLE: BBDB: Filtering by Mail Alias
+
+February 16th, 2008 -
+[[http://sachachua.com/blog/p/4765][http://sachachua.com/blog/p/4765]]
+
+You can use “a” (bbdb-add-or-remove-mail-alias) in BBDB buffers to add a
+mail alias to the current entry, or “* a” to add a mail alias to all
+displayed entries. I use mail aliases to tag or categorize my contacts
+(example: emacs, writing, etc.). The following functions can make it
+easy for you to filter displayed records using a combination of
+keywords:
+
+| Display records matching ALIAS and ALIAS   | M-x sacha/bbdb-filter-displayed-records-by-alias RET alias alias       |
+| Display records matching ALIAS or ALIAS    | C-u M-x sacha/bbdb-filter-displayed-records-by-alias RET alias alias   |
+| Omit records matching ALIAS and ALIAS      | M-x sacha/bbdb-omit-displayed-records-by-alias RET alias alias         |
+| Omit records matching ALIAS or ALIAS       | C-u M-x sacha/bbdb-omit-displayed-records-by-alias RET alias alias     |
+
+Here's the code:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-filter-by-alias-match-all (query-aliases record-aliases)
+      "Return non-nil if all QUERY-ALIASES are in RECORD-ALIASES."
+      (let ((result t))
+        (while query-aliases
+          (unless (member (car query-aliases) record-aliases)
+            (setq query-aliases nil
+                  result nil))
+          (setq query-aliases (cdr query-aliases)))
+        result))
+
+    (defun sacha/bbdb-filter-by-alias-match-any (query-aliases record-aliases)
+      "Return non-nil if any in QUERY-ALIASES can be found in RECORD-ALIASES."
+      (let (result)
+        (while query-aliases
+          (when (member (car query-aliases) record-aliases)
+            (setq query-aliases nil
+                  result t))
+          (setq query-aliases (cdr query-aliases)))
+        result))
+
+    ;; Moved this to a convenience function so that we don't
+    ;; have to deal with invert and property splitting.
+    (defun sacha/bbdb-filter-by-alias (bbdb-records
+                                       alias-filter-function
+                                       query
+                                       &optional invert)
+      "Return only the BBDB-RECORDS that match ALIAS-FILTER-FUNCTION.
+    ALIAS-FILTER-FUNCTION should accept two arguments:
+     - QUERY, a list of keywords to search for
+     - aliases, a list of keywords from the record
+    If INVERT is non-nil, return only the records that do
+    not match."
+      (delq nil
+            (mapcar
+             (lambda (rec)
+               (if (funcall alias-filter-function
+                            query
+                            (split-string
+                             (or (bbdb-record-getprop
+                                  (if (vectorp rec)
+                                      rec
+                                    (car rec))
+                                  'mail-alias) "")
+                             "[ \n\t,]+"))
+                   (when (null invert) rec)
+                 (when invert rec)))
+             bbdb-records)))
+
+    ;; Splitting this into two functions because of interactive calling.
+    (defun sacha/bbdb-filter-displayed-records-by-alias (query &optional any)
+      "Display only records whose mail-aliases match QUERY.
+    If ANY is non-nil, match if any of the keywords in QUERY are
+    present.
+    See also `sacha/bbdb-omit-displayed-records-by-alias'."
+      (interactive (list
+                    (let ((crm-separator " "))
+                      (completing-read-multiple
+                       "Mail aliases: "
+                       (bbdb-get-mail-aliases)))
+                    current-prefix-arg))
+      (when (stringp query)
+        (setq query (split-string query "[ \n\t,]+")))
+      (bbdb-display-records
+       (sacha/bbdb-filter-by-alias
+        (or bbdb-records (bbdb-records))
+        (if any
+            'sacha/bbdb-filter-by-alias-match-any
+          'sacha/bbdb-filter-by-alias-match-all)
+        query)))
+
+    ;; Splitting this into two functions because of interactive calling.
+    (defun sacha/bbdb-omit-displayed-records-by-alias (query &optional any)
+      "Display only records whose mail-aliases do not match QUERY.
+    If ANY is non-nil, match if any of the keywords in QUERY are
+    present.
+
+    See also `sacha/bbdb-filter-displayed-records-by-alias'."
+      (interactive (list
+                    (let ((crm-separator " "))
+                      (completing-read-multiple
+                       "Mail aliases: "
+                       (bbdb-get-mail-aliases))
+                      current-prefix-arg)))
+      (when (stringp query)
+        (setq query (split-string query "[ \n\t,]+")))
+      (bbdb-display-records
+       (sacha/bbdb-filter-by-alias
+        (or bbdb-records (bbdb-records))
+        (if any
+            'sacha/bbdb-filter-by-alias-match-any
+          'sacha/bbdb-filter-by-alias-match-all)
+        query
+        t)))
+#+END_EXAMPLE
+
+This will be part of my book,
+[[http://sachachua.com/wp/category/wickedcoolemacs][Wicked Cool Emacs]].
+Looking forward to putting it together!

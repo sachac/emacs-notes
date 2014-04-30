@@ -1,0 +1,80 @@
+#+TITLE: Android life so far
+
+December 14th, 2010 -
+[[http://sachachua.com/blog/p/21960][http://sachachua.com/blog/p/21960]]
+
+It's been three weeks since I bought my Android phone, and I'm having
+lots of fun hacking it. *Here's what I'm doing with it now:*
+
+-  Tracking the time I spend on various activities so that I can (a) get
+   better at estimating time for travel and other things, (b) log my
+   work hours, and (c) find out where my time really went.
+   Experimenting with grocery tracking systems so that I can organize my
+   shopping list and track prices.
+   [[http://www.appbrain.com/app/grocery-tracker/easicorp.gtracker][GTracker]]
+   seems okay, although there are a bunch of features I still want, so I
+   might build my own someday.
+-  Synchronizing my files with
+   [[http://www.appbrain.com/app/dropbox/com.dropbox.android][Dropbox]],
+   reviewing spreadsheets, and using the files in various applications.
+-  Mindmapping with
+   [[http://www.appbrain.com/app/thinking-space/net.thinkingspace][ThinkingSpace]],
+   which understands Freemind files I've downloaded with Dropbox.
+-  Taking pictures and sharing them on Facebook and
+   [[http://picasaweb.google.com/sachac/Phone#][Picasa]].
+-  Capturing notes, mostly with
+   [[http://www.appbrain.com/app/mobileorg/com.matburt.mobileorg][MobileOrg]].
+   Still tweaking this.
+
+*What am I working on being able to do with my Android?*
+
+-  *Retrieve contact data from BBDB:* I'm most of the way to being able
+   to show records from the Emacs Big Brother Database in my Android
+   contacts. Mwahaha! I've figured out how to parse the records with
+   StringTokenizer, interpret the alists, add information to records,
+   and add records to visible groups. I just want to set up a new
+   account manager for BBDB, and then group the items using mail
+   aliases. It took me a while to piece things together from bits of
+   documentation and tutorials. I'm looking forward to applying for
+   permission to share my BBDB stuff as open source, too.
+-  *Improve Org interface:* I'm also most of the way towards making the
+   MobileOrg capture interface close to the MobileOrg iOS capture
+   interface, which I had been quite happy with. You
+-  *Check my Toodledo tasks:*None of the Toodledo clients I've tried are
+   as slick as Toodledo for iOS. Who knows, this might just push me back
+   into using Emacs Org to manage everything, with my org-toodledo for
+   syncing to the Web.
+-  *Get better at using a timer:* Not quite Pomodoro technique, more
+   like a timer just to remind myself to stop doing something. =) The
+   open source [[http://www.appbrain.com/app/tea-timer/goo.TeaTimer][Tea
+   Timer]] is a decent fit, and I've kludged it on my phone to make it
+   easier to add multiples of five minutes.
+-  *Track my time in more detail:* Maybe with task-level tracking, or
+   finer categories for the things I care about?
+
+*What am I learning?*
+
+Looking at my preliminary stats from a little over two weeks of
+tracking, I'm pleasantly surprised by how much time I spent on social
+interaction -- more than I thought I did, looking back. I also get a
+decent amount of walking and other exercise into my schedule. It takes
+me about 13 minutes to walk to the subway station, and the subway ride
+to work takes an average of 19 minutes -- a little over my estimate of
+30 minutes travel time. I've been putting that time to good use,
+listening to podcasts while walking, and writing Christmas cards if I
+can get a seat.
+
+I might shift our preparation routines around so that I can move more
+non-computer things into weekday evenings. I want to do more blogging
+and Android development in my personal time. Even though I take frequent
+typing breaks to avoid those pangs of incipient RSI, a long day of
+working on the computer is probably still a bad idea. ;) Most of our
+weekend preparations involve laundry or cooking. Both are more
+efficiently batched on the weekends -- cheaper electricity, too. Tidying
+up and folding laundry can be done as a break that separates work from
+evenings. Drawing might exercise different muscles (and different parts
+of my brain). Investing time into training speech recognition might pay
+off, too, although I get self-conscious about dictating when other
+people are around. <laugh>
+
+Definitely like my Android.

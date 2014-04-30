@@ -1,0 +1,88 @@
+#+TITLE: Aha! moment --- 43 Emacsen --- feel free to steal this idea! =)
+
+October 24th, 2005 -
+[[http://sachachua.com/blog/p/3097][http://sachachua.com/blog/p/3097]]
+
+Feel free to Make This Happen, or get in touch with me if you want to
+ hack on this with a Ruby/Rails newbie. =)
+
+You know how geeks do \_really\_ crazy things with their favorite
+ applications? Like the way I practically live in Emacs? And the way
+ some people practically live in Microsoft Excel? We use applications
+ for \_far\_ more than they were originally imagined to do.
+
+So let's help people think out of the box. Let's show them what geeks
+ push their applications to do.
+
+What would be ultracool?
+
+Think of the way [[http://www.43things.com][43things]] lets you say
+ you've either done something or you plan to do something. Add a
+ software context and support screenshots. For example, you could add
+ “Do mail” to your list of things, set “Emacs” as your software, and
+ post a screenshot (optional) of Gnus (or even Rmail). Tick a little
+ checkbox if you don't mind if people to ask you for help, and add a
+ short note about your experience if you want... Oooh, and throw
+ tagging in there somewhere.
+
+Why is this ubercool?
+
+- You see what other people do with a certain application. (And you
+
+#+BEGIN_QUOTE
+  will begin to appreciate the insane flexibility of the Emacs text
+   editor!)
+#+END_QUOTE
+
+- You see how other people do something, and maybe even how popular
+
+#+BEGIN_QUOTE
+  something is.
+#+END_QUOTE
+
+- You see what friends and similar people use. =)
+
+I want this. I think it would totally rock. I'm crazier about it than
+ the Eclipse snippets project my research supervisor wants me to
+ consider. I think we might get all sorts of useful data about geek
+ program usage, if we can get people to do this. For example, I'd
+ \_love\_ to find out what other crazy geek things people who have
+ similar usage patterns for Emacs might be doing, or what other
+ applications they're crazy about... For example, I'm crazy about
+ Mozilla Firefox---but I know people out there are doing even cooler
+ things with it!
+
+Steal this idea. Run with it. Make it happen. If I can use it for free
+ and I can copy my data easily, I'll be one of your first users and
+evangelists! =)
+
+--------------
+
+Tracing the thoughtpath for fun: how did I get to thinking about that?
+
+1.  Well, I was thinking about Google and how I want to be an evangelist
+     more than I want to be an engineer.
+2.  Then I thought about evangelism and what I usually get excited
+    about.
+3.  Which naturally made me think about Emacs.
+4.  So I thought about all the crazy stuff you can do with Emacs.
+5.  And then I thought about Danny O' Brien's lifehacks talk and how
+     power users do crazy things with applications.
+6.  Which made me wonder what other people are doing with Emacs.
+7.  Which made me want to start a blog (or revive emacstidbits).
+8.  ... but then I wanted to see \_other\_ people's stories...
+9.  ... and although some stories are on
+    [[http://www.emacswiki.org][http://www.emacswiki.org]] , they're
+    still
+     buried in technical information...
+10. ... so wouldn't it be cool if we could bring those stories out and
+    make them
+
+    #+BEGIN_QUOTE
+      easy to capture and browse?
+    #+END_QUOTE
+
+11. Which made me think of other services that did that, like 43things.
+12. Which gave me that aha! moment!
+
+N degrees of Sacha Chua's mind. Emacs is my Kevin Bacon. ;)

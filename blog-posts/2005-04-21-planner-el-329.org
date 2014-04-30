@@ -1,0 +1,54 @@
+#+TITLE: planner-el-3.29
+
+April 21st, 2005 -
+[[http://sachachua.com/blog/p/2731][http://sachachua.com/blog/p/2731]]
+
+Announcing planner-el-3.29, available at
+
+[[http://sacha.free.net.ph/notebook/emacs/sacha-stable.tar.gz][http://sacha.free.net.ph/notebook/emacs/sacha-stable.tar.gz]]
+and deb
+
+[[http://sacha.free.net.ph/notebook/emacs/planner/][http://sacha.free.net.ph/notebook/emacs/planner/]]
+. =)
+
+| Summary    | Synchronize with sacha AT free.net.ph---main/planner---dev---1.0---patch-380   |
+| Revision   | planner---stable---1.0---patch-116                                             |
+
+New
+
+-  dev/369: planner-annotation-symbol-string
+-  dev/369: planner-create-task-from-note
+-  dev/370: planner-timewarp
+-  dev/371: planner-annotation-from-dired
+-  dev/372: planner-psvn for version control
+
+Updates
+
+dryice/33-38, dev/365-379, jeho/50-60, johnsu01/0-3
+
+Bugfixes
+
+-  dev/366: planner-multi read-only prompt, sort-task excursions,
+   planner-appt advice
+-  dev/367: Always add menu to planner-mode buffers
+-  dev/368: planner-multi-read-name bugfix from jeho
+-  dev/369: planner-timeclock-summary-proj bugfix
+-  dev/370: Group .-? regexp to deal with possible XEmacs bug
+-  dev/372: planner-vm-browse-url and message IDs
+-  dev/376: planner-id bugfixes with completed/cancelled tasks
+-  dev/377: planner-gnus: pick up group name properly
+-  dev/380: planner-multi replace mapc with mapcar for emacs20
+
+Docfixes
+
+-  dev/365: Update my sample configuration file
+-  dev/374: New URL for remind
+-  dev/375: Carrying over unfinished tasks
+-  dev/379: Document planner-trunk
+
+E-Mail to emacs-wiki-discuss
+
+Ã§ÂŒÂ«Ã£Â?Â¯Ã£ÂƒÂ?Ã£Â‚ÂºÃ£ÂƒÂŸÃ£Â‚Â'Ã¦Â?Â•Ã£Â?Â¾Ã£Â?ÂˆÃ£Â?Â¾Ã£Â?Â---Ã£Â?ÂŸÃ£Â€Â‚
+The cat caught the rats.
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]]

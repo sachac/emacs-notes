@@ -1,0 +1,113 @@
+#+TITLE: BBDB tags
+
+May 6th, 2005 -
+[[http://sachachua.com/blog/p/2749][http://sachachua.com/blog/p/2749]]
+
+Right, that tags thing looks like a good idea. It should be easy to
+ hack into BBDB. I'll need to actually tag people, and then write an
+ Emacs Lisp script that scans through all of the records, gathers them
+ into categories, and then creates the list.
+
+HEY. This might actually work. Here's a quick test of tags:
+
+| ateneo    | Charles Yeung,[[http://lengthofwords.blogspot.com][Sean Uy]],[[http://optics.blogspot.com/][Ryan Kristoffer Tan]],[[http://www.ebloggy.com/blog.php?username=fannysy][Stephanie Sy]],[[http://www.bitdesigns.net/blog.php][Bit Santos]],[[http://www.thespoke.net/MyBlog/punzie/MyBlog.aspx][Jerome Punzalan]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| pisay     | [[http://www.thespoke.net/MyBlog/punzie/MyBlog.aspx][Jerome Punzalan]],[[http://www.livejournal.com/~eclair/][clair ching]],[[http://www.engg.upd.edu.ph/~mario/][mario carreon]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| linux     | [[http://trouble.free.net.ph][Eric Pareja]],[[http://www.pikko-software.com/roller/page/jaredflo][Jared Odulio]],[[http://blog.apc.edu.ph][Chris G. Haravata]],[[http://lone_geek.tripod.com/geekblog][levi guerrero]],Zak B. Elep,[[http://www.livejournal.com/~eclair/][clair ching]],[[http://3w-agility.blogspot.com][Dean Michael Berris]],[[http://www.unpluggable.com/blog/bloz/][Jan Alonzo]]                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| blog      | Charles Yeung,[[http://lengthofwords.blogspot.com][Sean Uy]],[[http://optics.blogspot.com/][Ryan Kristoffer Tan]],[[http://www.ebloggy.com/blog.php?username=fannysy][Stephanie Sy]],[[http://aadis.de/blog][Aaditya Sood]],[[http://www.bitdesigns.net/blog.php][Bit Santos]],Raven,[[http://www.thespoke.net/MyBlog/punzie/MyBlog.aspx][Jerome Punzalan]],[[http://richip.dhs.org/~richip/blog/day.php][Richard Plana]],[[http://blogs.salon.com/0000002/][Phillip Pearson]],[[http://trouble.free.net.ph][Eric Pareja]],[[http://www.pikko-software.com/roller/page/jaredflo][Jared Odulio]],[[http://programmingprogamer.blogspot.com/][Celsus Kintanar]],[[http://www.livejournal.com/~cyberlizard/][Jan Michael Ibanez]],[[http://mah.everybody.org/weblog/][Mark A. Hershberger]],[[http://blog.apc.edu.ph][Chris G. Haravata]],[[http://lone_geek.tripod.com/geekblog][levi guerrero]],[[http://www.chasys.net/index.php?blogid=1][Cha Gascon]],Sim Gamboa, III,[[http://mistervader.blogspot.com][Marcelle Fabie]],Zak B. Elep,[[http://www.dme.org/blog][David Edmondson]],[[http://elfstone.blogspot.com][edelgado]],[[http://villageidiotsavant.blogspot.com][Dominique Cimafranca]],[[http://www.livejournal.com/~eclair/][clair ching]],[[http://subluminal.livejournal.com/][Sean Champ]],[[http://3w-agility.blogspot.com][Dean Michael Berris]],[[http://blog.dynatica.com/][Jason Banico]],[[http://genehack.net/diary][John S. J. Anderson]],[[http://www.unpluggable.com/blog/bloz/][Jan Alonzo]]   |
+| debian    | Federico Sevilla III,Paul Lussier,Angus Lees,Frederik Fouvry,Zak B. Elep,[[http://math.utexas.edu/~jcorneli/][Joe Corneli]],[[http://www.livejournal.com/~eclair/][clair ching]],[[http://subluminal.livejournal.com/][Sean Champ]],Miles Bader,[[http://www.unpluggable.com/blog/bloz/][Jan Alonzo]],Jesse Alama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| emacs     | Manoj Srivastava,Paul Lussier,Lukhas,Angus Lees,[[http://www.delysid.org/cgi-bin/moin.cgi/MarioLang][Mario Lang]],[[http://www.livejournal.com/~cyberlizard/][Jan Michael Ibanez]],[[http://mah.everybody.org/weblog/][Mark A. Hershberger]],Frederik Fouvry,[[http://www.livejournal.com/~eclair/][clair ching]],Miles Bader,Ethan Aubin,[[http://genehack.net/diary][John S. J. Anderson]],Jesse Alama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| planner   | Paul Lussier,[[http://mah.everybody.org/weblog/][Mark A. Hershberger]],Frederik Fouvry,Zak B. Elep,[[http://math.utexas.edu/~jcorneli/][Joe Corneli]],[[http://www.livejournal.com/~eclair/][clair ching]],Ethan Aubin,[[http://genehack.net/diary][John S. J. Anderson]],Jesse Alama                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+Use C-o to add a “tags” field to your BBDB records. This should be a
+space-delimited list of tags (case-sensitive for now).
+ Call M-x sacha/planner-bbdb-insert-tags-alist to produce a list like
+the one above.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-get-tags (record)
+      "Return the tags for RECORD as a list."
+      (let ((tags (bbdb-record-getprop record 'tags)))
+        (when tags (split-string tags))))
+
+    (defun sacha/bbdb-test-tags (query tags)
+      "Return non-nil if QUERY is a subset of TAGS."
+      (let ((result t))
+        (while (and result query)
+          (unless (member (car query) tags)
+            (setq result nil))
+          (setq query (cdr query)))
+        result))
+
+    (defun sacha/bbdb-search-tags-internal (records tags)
+      "Return a list of RECORDS matching TAGS."
+      (when (stringp tags) (setq tags (split-string tags)))
+      (let (result)
+        (while records
+          (when (sacha/bbdb-test-tags tags
+                                      (sacha/bbdb-get-tags (car records)))
+            (setq result (cons (car records) result)))
+          (setq records (cdr records)))
+        result))
+
+    (defun sacha/bbdb-search-tags (tags)
+      "Display all the records that match TAGS."
+      (interactive "MTags: ")
+      (bbdb-display-records (sacha/bbdb-search-tags-internal (bbdb-records) tags)))
+
+    (defun sacha/planner-bbdb-link (record)
+      "Return a link to RECORD."
+      (or (bbdb-record-getprop record 'plan)
+          ;; From a BBDB entry with a plan page; use that. Yay!
+          (concat "[[bbdb://"
+                  (emacs-wiki-replace-regexp-in-string
+                   " " "."
+                   (bbdb-record-name record))
+                  "][" (bbdb-record-name record)
+                  "]]")))
+
+    (defun sacha/bbdb-get-tags-index ()
+      "Return a list of tags and records."
+      (let ((tags-alist '())
+            (records (bbdb-records))
+            tags
+            entry
+            list
+            link)
+        (while records
+          (setq tags (sacha/bbdb-get-tags (car records)))
+          (while tags
+            (setq entry (assoc (car tags) tags-alist))
+            (setq list (cdr entry))
+            (add-to-list 'list (car records))
+            (if entry
+                (setcdr entry list)
+              (add-to-list 'tags-alist (cons (car tags) list)))
+            (setq tags (cdr tags)))
+          (setq records (cdr records)))
+        tags-alist))
+
+    (defun sacha/planner-bbdb-insert-tags-alist (&optional tag-alist)
+      "Insert TAG-ALIST into the current buffer."
+      (interactive)
+      (unless tag-alist (setq tag-alist (sacha/bbdb-get-tags-index)))
+      (insert (mapconcat
+               (lambda (item)
+                 (concat (car item) " | "
+                         (mapconcat
+                          'sacha/planner-bbdb-link
+                          (cdr item)
+                          ",")))
+               tag-alist
+               "\n")))
+#+END_EXAMPLE
+
+To think that only took me an hour of leisurely coding (including
+tagging my contact information)...
+
+ÃƒÂ¦Ã‚Â˜Ã‚Â¨ÃƒÂ¥Ã‚Â¹Ã‚Â´ÃƒÂ¥Ã‚ÂºÃ‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â?Ã‚Â‹ÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¥Ã‚ÂˆÃ‚Â©ÃƒÂ§Ã‚Â›Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ¤Ã‚Â»Ã‚ÂŠÃƒÂ¥Ã‚Â¹Ã‚Â´ÃƒÂ¥Ã‚ÂºÃ‚Â¦ÃƒÂ¥Ã‚ÂˆÃ‚Â†ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â‚Ã‚ÂŠÃƒÂ£Ã‚Â‚Ã‚Â‚ÃƒÂ¯Ã‚Â¼Ã‚Â‘ÃƒÂ¯Ã‚Â¼Ã‚Â?ÃƒÂ¯Ã‚Â¼Ã‚Â...ÃƒÂ¨Ã‚Â¿Ã‚Â‘ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ¥Ã‚Â¤Ã‚ÂšÃƒÂ£Ã‚Â?Ã‚Â‹ÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â€Ã‚Â‚
+Profit on computers for the previous year was nearly ten percent higher
+than the current year.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/productivity][productivity]],
+[[http://www.technorati.com/tag/organizer][organizer]]

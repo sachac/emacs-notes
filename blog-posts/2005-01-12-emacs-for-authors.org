@@ -1,0 +1,13 @@
+#+TITLE: Emacs for Authors
+
+January 12th, 2005 -
+[[http://sachachua.com/blog/p/2561][http://sachachua.com/blog/p/2561]]
+
+[[http://www.therandymon.com/papers/emacs-for-writers.pdf][http://www.therandymon.com/papers/emacs-for-writers.pdf]]
+
+A book writer has written a guide on how to use Emacs in lieu of
+ mainstream word processors. Check it out!
+
+Post from R. Wood on comp.emacs
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

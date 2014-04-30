@@ -1,0 +1,42 @@
+#+TITLE: BBDB: Print birthdates
+
+January 15th, 2007 -
+[[http://sachachua.com/blog/p/4142][http://sachachua.com/blog/p/4142]]
+
+This snippet goes through all the records in my Big Brother Database,
+ prints out birthdate and a link to the record, and then sorts the
+ results.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/bbdb-insert-birthdates ()
+      "Insert a list of birthdates, sorted by month.
+    For best effect, dates should be of the form yyyy.mm.dd."
+      (insert
+       (with-temp-buffer
+         (mapcar
+          (lambda (rec)
+            (when (bbdb-record-getprop rec 'birthdate)
+              (insert
+               (if (string-match "..\\...$" (bbdb-record-getprop rec 'birthdate))
+                   (match-string 0 (bbdb-record-getprop rec 'birthdate))
+                 (bbdb-record-getprop rec 'birthdate))
+               " | "
+               (planner-make-link
+                (concat "bbdb://"
+                        (planner-replace-regexp-in-string
+                         " " "." (bbdb-record-name rec)))
+                (bbdb-record-name rec))
+               "\n")))
+          (bbdb-records))
+         (sort-lines nil (point-min) (point-max))
+         (buffer-string)))
+      nil)
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/crm][crm]]
+
+Random Emacs symbol: find-tag-noselect -- Command: Find tag (in current
+tags table) whose name contains TAGNAME.

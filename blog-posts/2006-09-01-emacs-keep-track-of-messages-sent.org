@@ -1,0 +1,43 @@
+#+TITLE: Emacs: Keep track of messages sent
+
+September 1st, 2006 -
+[[http://sachachua.com/blog/p/3819][http://sachachua.com/blog/p/3819]]
+
+Because a Big Brother Database of my contacts isn't complete if I
+ don't keep track of what e-mail I sent them and when I sent it, this
+ bit of Emacs Lisp code adds Gnus subjects to the BBDB records of the
+ people to whom I sent e-mail.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/gnus-add-subject-to-bbdb-record ()
+      "Add datestamped subject note for each person this message has been sent to."
+      (let* ((subject (concat (planner-today)
+                              ": E-mail: " (message-fetch-field "Subject") "\n"))
+             (bbdb-get-addresses-headers
+              (list (assoc 'recipients bbdb-get-addresses-headers)))
+             records)
+        (setq records
+              (bbdb-update-records
+               (bbdb-get-addresses nil gnus-ignored-from-addresses 'gnus-fetch-field)
+               nil nil))
+        (mapc (lambda (rec)
+                (bbdb-record-set-notes rec
+                                       (concat subject
+                                               (bbdb-record-notes rec))))
+                records)))
+    (add-hook 'message-send-hook 'sacha/gnus-add-subject-to-bbdb-record)
+#+END_EXAMPLE
+
+It should be really easy to set up Gnus to expand some kind of
+ !followup macro into a TODO item in my planner and an “I hope to hear
+ from you by ....”. Ridiculously easy with Emacs Lisp and an insanely
+ customizable editor, but I might not have enough battery life. I've
+ got 28 minutes, and then I'm off PC for a while.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/lisp][lisp]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]],
+[[http://www.technorati.com/tag/hack][hack]]
+
+[[/mnt/media/sacha/notebook/emacs/dotgnus.el][/mnt/media/sacha/notebook/emacs/dotgnus.el]]

@@ -1,0 +1,25 @@
+#+TITLE: Tweaking my Windows 7 setup more: Emacs on all virtual desktops!
+
+October 8th, 2011 -
+[[http://sachachua.com/blog/p/22529][http://sachachua.com/blog/p/22529]]
+
+I've been using [[http://virtuawin.sourceforge.net/][VirtuaWin]] to set
+up four virtual desktops on my computer. This makes it easy to group
+applications: one desktop for client T, one desktop for client I, one
+desktop for client O, and one desktop for other stuff, such as drawing.
+The most memory use I've seen on this system so far is less than 6 GB
+(out of 8 GB), so running virtual desktops doesn't make the performance
+of my other apps worse.
+
+Using virtual desktops helps me keep things organized, but I also want
+to be able to quickly switch to Emacs and take notes without caring
+about which desktop I'm on. Fortunately, VirtuaWin makes it easy to set
+up an application to run on all desktops. Left-clicking on the VirtuaWin
+icon in my status bar lets me set my Emacs window as “Always Show”. To
+make it even easier to consistently get to Emacs, I pinned the program
+to the task bar (right-click on the task bar icon and pin the program),
+moved the pinned program to the first slot on the task bar, and got into
+the habit of using Windows+1 to switch to the application. Yay!
+
+[[http://virtuawin.sourceforge.net/][VirtuaWin]] is a free open source
+program for Microsoft Windows.

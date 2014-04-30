@@ -1,0 +1,9 @@
+#+TITLE: Emacs-wiki community wiki
+
+January 2nd, 2004 -
+[[http://sachachua.com/blog/p/1571][http://sachachua.com/blog/p/1571]]
+
+[[http://www.emacswiki.org/cgi-bin/community/SiteMap][http://www.emacswiki.org/cgi-bin/community/SiteMap]]
+
+Didn't know there was something like this -- or that we now enjoy near
+ links in oddmuse. What a cute feature!

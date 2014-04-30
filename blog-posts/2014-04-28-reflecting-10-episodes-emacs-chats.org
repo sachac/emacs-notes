@@ -1,0 +1,130 @@
+#+TITLE: Reflecting on 10 episodes of Emacs Chats
+
+April 28th, 2014 -
+[[http://sachachua.com/blog/p/27196][http://sachachua.com/blog/p/27196]]
+
+I've posted ten [[http://sachachua.com/blog/emacs-chat][Emacs Chat]]
+episodes so far, and the transcripts for the most recent ones are coming
+soon. These are hour-long conversations with Emacs geeks about how they
+got started with Emacs, why they like it, and how they use it. We
+usually go through people's config files, too, since that often leads to
+interesting tips.
+
+[[http://sachachua.com/blog/2014/04/emacs-chat-janis-mancevics/][file:uploads/2014/04/janis_mancevics1-280x157.jpg]]
+
+[[http://sachachua.com/blog/2014/04/emacs-chat-janis-mancevics/][*Jānis Mancēvičs*]]: Literate programming, Unity game development, code folding
+
+[[http://sachachua.com/blog/2014/04/emacs-chat-tom-marble/][file:uploads/2014/04/Emacs-Chat-Tom-Marble-280x151.jpg]]
+
+[[http://sachachua.com/blog/2014/04/emacs-chat-tom-marble/][*Tom Marble*]]: Org Mode, time tracking, LaTeX, and invoice generation.
+Also, Clojure + Emacs and other good things.
+
+[[http://sachachua.com/blog/2014/04/emacs-chat-iannis-zannos-emacs-supercollider/][file:uploads/2014/04/Emacs-Chat-Iannis-Zannos-280x154.jpg]]
+
+*[[http://sachachua.com/blog/2014/04/emacs-chat-iannis-zannos-emacs-supercollider/][Iannis Zannos]]*: Music and SuperCollider
+
+[[http://sachachua.com/blog/2013/11/emacs-chat-magnar-sveen-emacs-rocks/][file:uploads/2014/04/Emacs-Chat-Magnar-Sveen-280x155.jpg]]
+
+[[http://sachachua.com/blog/2013/11/emacs-chat-magnar-sveen-emacs-rocks/][*Magnar Sveen*]]: Hanging out with other Emacs geeks, Emacs Rocks, and board games
+
+[[http://sachachua.com/blog/2013/05/emacs-chat-bastien-guerry/][file:uploads/2014/04/Emacs-Chat-Bastien-Guerry-280x153.jpg]]
+
+[[http://sachachua.com/blog/2013/05/emacs-chat-bastien-guerry/][*Bastien Guerry*]]: Org Mode maintenance, getting started with Emacs, hacking his life with
+Org
+
+[[http://sachachua.com/blog/2013/03/emacs-chat-carsten-dominik/][file:uploads/2014/04/Emacs-Chat-Carsten-Dominik-280x157.jpg]]
+
+[[http://sachachua.com/blog/2013/03/emacs-chat-carsten-dominik/][*Carsten Dominik*]]: Getting started with Emacs, the joys of Calc, and other cool things
+
+[[http://sachachua.com/blog/2013/03/emacs-chat-thomas-kjeldahl-nilsson/][file:uploads/2014/04/Thomas-Kjeldahl-Nilsson-Emacs-chat-280x157.jpg]]
+
+[[http://sachachua.com/blog/2013/03/emacs-chat-thomas-kjeldahl-nilsson/][*Thomas Kjeldahl Nilsson*]]: Thomas shares about Emacs and picking up configuration snippets from
+EmacsWiki.
+
+[[http://sachachua.com/blog/2013/03/emacs-chat-with-avdi-grimm-org-mode-ruby-etc/][file:uploads/2014/04/Emacs-Chat-with-Avdi-Grimm-280x157.jpg]]
+
+[[http://sachachua.com/blog/2013/03/emacs-chat-with-avdi-grimm-org-mode-ruby-etc/][*Avdi Grimm*: ]]Org-mode literate programming, Ruby, and how he got started with
+Emacs.
+
+[[http://sachachua.com/blog/2012/06/emacs-chatting-with-john-wiegley-about-the-cool-things-he-does-with-emacs/][file:uploads/2014/04/John-Wiegley-280x140.jpg]]
+
+[[http://sachachua.com/blog/2012/06/emacs-chatting-with-john-wiegley-about-the-cool-things-he-does-with-emacs/][*John Wiegley*: ]]Emacs Lisp development and other good things
+
+and me! =)
+
+[[http://sachachua.com/blog/2013/07/emacs-chat-sacha-chua-with-bastien-guerry/][*Sacha Chua*: ]]in which Bastien Guerry interviews me
+
+I started this because it was so much fun meeting Emacs geeks in person
+at the Emacs Conference in London last year. (When are we having another
+one? I'm happy to sponsor a reasonable venue.) You pick up lots of tips
+when you watch how someone else uses Emacs, but not everyone has the
+luck of working near other Emacs geeks. (I don't!) I also wanted to get
+to know other Emacs geeks so that I could “hear” their voices when
+reading mailing list messages and code snippets. I wanted other people
+to get that feeling of knowing people in the community -- other real
+people who use Emacs.
+
+I was pretty anxious about it in the beginning. Would I be able to ask
+interesting questions, or would there be dead silence? What if I hadn't
+researched people well enough? Would asking people about their
+beginnings get repetitive after many episodes? I feel a little more
+relaxed now. It turns out that it's easy to invite people to be on one
+of these conversations, and I always find the conversation interesting.
+People are so enthusiastic about Emacs. Yay!
+
+It's been great hearing stories from people who've been using Emacs for
+ages (like Iannis Zannos and Tom Marble) and people who've gotten into
+Emacs fairly recently (like the way Magnar Sveen only seriously started
+using it a few years ago). Org Mode frequently pops up in conversation.
+I've learned about lots of other interesting packages as well, like
+redshank and erefactor.
+
+People tell me that they enjoy listening to the episodes. The episodes
+are still on the long side (an hour or so, versus short-and-punchy 15-
+or 30-minute chats), but they're good for picking up odd tips.
+
+Of the little podcast experiments I've been running, the Emacs Chats
+series is my favourite. Other experiments were easier to sketchnote
+(which people also really enjoyed), but I like the Emacs community the
+most. =)
+
+From these experiments, I've learned that Google Hangout on Air is a
+convenient way to create an audio/video show with guests. With a little
+bit of work, you can turn these conversations into podcasts that people
+can download and subscribe to, transcripts that people can read, and so
+on.
+
+I wanted to learn how to delegate a smoothly-running process. That
+worked out really well. Now, when I finish an episode, I simply add a
+card to my Trello board with the URL and my assistants will post the
+show notes and the transcript for me.
+
+I could probably make this even better by following up. I can spend more
+time editing the transcripts, adding links, and summarizing key points.
+Maybe I'll convert the transcripts to Org Mode and then structure things
+more from there.
+
+In terms of scheduling, picking times that are a month or two away seems
+to be working well. I like proposing specific times with Boomerang
+Calendar. It feels more proactive than asking people to check
+[[http://sachachua.com/meet][http://sachachua.com/meet]] for meeting
+times, although both ways still involve a bit of work for the other
+person since they have to check their calendar. If I suggest the times
+and do the timezone conversions myself, that means we can set the time
+with fewer clicks required from the other person. It doesn't feel as
+stand-offish as cc-ing an assistant who may or may not be able to
+quickly reply. (Although perhaps I should train my current assistants to
+do this, since they seem to be fairly responsive...)
+
+I mostly find people through recommendations, so if you want to hear
+from someone, suggest them or introduce us by e-mail. I'd love to
+interview more women who use Emacs (maybe Amelia Andersdotter?), but I'm
+happy to chat with all sorts of folks about Emacs. You don't have to be
+famous. =) If you've got an interesting demo to share, I'd love to hear
+from you too.
+
+Onward! With Alex Poslavsky's help, I've been adding more Emacs Chats
+resources to [[http://github.com/sachac/emacs-chats/][Github]] so that
+people can easily subscribe to it or contribute there. I noticed a few
+of them were missing transcripts, so we'll work on that too. What else
+would make these Emacs Chats better or more useful for you?

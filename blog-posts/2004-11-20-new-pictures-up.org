@@ -1,0 +1,10 @@
+#+TITLE: New pictures up!
+
+November 20th, 2004 -
+[[http://sachachua.com/blog/p/2419][http://sachachua.com/blog/p/2419]]
+
+2004.11.16 -- 2004.11.14 -- 2004.11.08 -- 2004.11.03 -- 2004.11.02 --
+2004.10.30 -- 2004.10.24 -- 2004.10.23
+
+Emacs makes all things hackable. I wrote a function to quickly pull
+ thumbnails into an emacs-wiki buffer. Yay.

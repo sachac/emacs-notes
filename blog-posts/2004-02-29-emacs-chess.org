@@ -1,0 +1,7 @@
+#+TITLE: Emacs chess
+
+February 29th, 2004 -
+[[http://sachachua.com/blog/p/1799][http://sachachua.com/blog/p/1799]]
+
+I'll need to look at chess-pgn-read-plies to get emacs-wiki support for
+chess stuff.

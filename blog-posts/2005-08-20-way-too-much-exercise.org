@@ -1,0 +1,43 @@
+#+TITLE: Way too much exercise
+
+August 20th, 2005 -
+[[http://sachachua.com/blog/p/2915][http://sachachua.com/blog/p/2915]]
+
+I got out of bed at 8 this morning and walked all the way down to Lake
+ Ontario. Two hours of leisurely walking punctuated by oranges bought
+ at a nearby market made an excellent start to my day, and I was
+ satisfied by the fact that I'd (gasp!) managed to get myself out of
+ bed on a Saturday morning to exercise.
+
+Of course, I knew that was just another form of procrastination. I do
+ very odd things in order to procrastinate writing articles. I even
+ managed to vacuum and mop the kitchen floor while “taking a break from
+ writing”.
+
+But I managed to finish the article today! I started out by drafting
+ it as a letter to a student who had asked me for advice a few months
+ back, and then I edited it to make the letter more general. I can't
+ post the article on my blog yet, but those of you who watch my
+ [[http://del.icio.us/sachac][del.icio.us]] bookmarks may have an idea
+ of what October's column for the On Campus magazine will be like. =)
+
+I decided to reward myself by releasing another version of
+[[http://www.emacswiki.org/cgi-bin/wiki/PlannerMode][Planner]], the
+personal inforation manager I maintain.
+ (Yes, my reward system is all screwed up.) I merged more than 70
+ changes from the development tree into the stable tree and released a
+ new version available at
+[[http://sacha.free.net.ph/notebook/emacs/sacha.tar.gz][http://sacha.free.net.ph/notebook/emacs/sacha.tar.gz]]
+and all the usual places. I haven't put it up on plannerlove yet, but
+I'll be working on that next weekend.
+
+Then I decided to walk to Goodwill. I ran into Tarun on the way out, and
+he decided to come along. We walked all the way to Sherbourne Street (a
+good 40 minutes' walk) only to find out that Goodwill closed earlier
+than I thought. It was fun chatting with him about the MBA program,
+though, so the extra exercise wasn't too bad.
+
+All in all, a good day. I feel marginally fitter, but that might just be
+delusion. ;)
+
+On Technorati: [[http://www.technorati.com/tag/writing][writing]]

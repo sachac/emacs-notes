@@ -1,0 +1,14 @@
+#+TITLE: planner-multi-read-name
+
+January 11th, 2005 -
+[[http://sachachua.com/blog/p/2557][http://sachachua.com/blog/p/2557]]
+
+I read through crm.el on the train. Now that I have an idea as to how
+ completing reads work, I think I've gotten spaces in multiple page
+ names to work. I'm still having problems---TAB complains that something
+ is read-only---but this looks promising.
+
+[[http://sachachua.com/notebook/emacs/dev/planner/planner-multi.el][../emacs/dev/planner/planner-multi.el]]
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/emacs][emacs]]

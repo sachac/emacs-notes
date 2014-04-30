@@ -1,0 +1,8 @@
+#+TITLE: ff and C/C++ programming --- Emacs
+
+September 27th, 2003 -
+[[http://sachachua.com/blog/p/1180][http://sachachua.com/blog/p/1180]]
+
+These functions look interesting for C and C++ programming:
+ - ff-find-the-other-file
+ - ff-find-related-file

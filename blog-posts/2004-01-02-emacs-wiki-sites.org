@@ -1,0 +1,167 @@
+#+TITLE: emacs-wiki sites
+
+January 2nd, 2004 -
+[[http://sachachua.com/blog/p/1572][http://sachachua.com/blog/p/1572]]
+
+In fit of insanity, searched for sites that used emacs-wiki. Quite a
+list.
+
+-
+[[http://www.self-core.org/~kaoru-k/wiki/EmacsWiki.html][http://www.self-core.org/~kaoru-k/wiki/EmacsWiki.html]]
+ -
+[[http://larve.net/people/hugo/2003/scratchpad/EmacsWiki.html][http://larve.net/people/hugo/2003/scratchpad/EmacsWiki.html]]
+(has RSS)
+ -
+[[http://www.oranda.demon.co.uk/planner/EmacsWiki.html][http://www.oranda.demon.co.uk/planner/EmacsWiki.html]]
+(uses planner)
+ -
+[[http://members.iinet.net.au/~mtriggs/emacs-wiki.html][http://members.iinet.net.au/~mtriggs/emacs-wiki.html]]
+(has a gallery)
+ -
+[[http://gohome.org/teranisi/EmacsWiki.html][http://gohome.org/teranisi/EmacsWiki.html]]
+(has recent changes)
+ -
+[[http://www.gohome.org/teranisi/news/][http://www.gohome.org/teranisi/news/]]
+(hey, nice linking)
+ -
+[[http://www.naney.org/personal/diary/2002/04/c.html#200204224][http://www.naney.org/personal/diary/2002/04/c.html#200204224]]
+(like planner, but several days on a page)
+ -
+[[http://senzai07.poly.kit.jp/~iwata/EmacsWiki.html][http://senzai07.poly.kit.jp/~iwata/EmacsWiki.html]]
+(uses the emacs-wiki-rss module, I think)
+ -
+[[http://www.geocities.co.jp/SiliconValley-SanJose/7474/EmacsWiki.html][http://www.geocities.co.jp/SiliconValley-SanJose/7474/EmacsWiki.html]]
+(nice index)
+ -
+[[http://www.iris.dti.ne.jp/~yoshimik/EmacsWiki.html][http://www.iris.dti.ne.jp/~yoshimik/EmacsWiki.html]]
+ -
+[[http://homepage.mac.com/yenlung/WebWiki/EmacsWiki.html][http://homepage.mac.com/yenlung/WebWiki/EmacsWiki.html]]
+ -
+[[http://www.apollostar.com/k-ishii/EmacsWiki.html][http://www.apollostar.com/k-ishii/EmacsWiki.html]]
+ -
+[[http://db.cs.hit.edu.cn/people/WangChunyu/wiki][http://db.cs.hit.edu.cn/people/WangChunyu/wiki]]
+(zope, also)
+ -
+[[http://verify.stanford.edu/satyaki/emacs/EmacsWikiTricks.html][http://verify.stanford.edu/satyaki/emacs/EmacsWikiTricks.html]]
+(fontlocking)
+ -
+[[http://verify.stanford.edu/satyaki/backpacking/EmacsWikiAlbumCreation.html][http://verify.stanford.edu/satyaki/backpacking/EmacsWikiAlbumCreation.html]]
+(album)
+ -
+[[http://satosan.jp/EmacsWiki.html][http://satosan.jp/EmacsWiki.html]]
+(looks like some planner, too, but very old version)
+ -
+[[http://tkskkc.at.infoseek.co.jp/WebWiki/emacs-wiki.htm][http://tkskkc.at.infoseek.co.jp/WebWiki/emacs-wiki.htm]]
+ -
+[[http://senzai07.poly.kit.ac.jp/~iwata/ChalowForEmacsWiki.html][http://senzai07.poly.kit.ac.jp/~iwata/ChalowForEmacsWiki.html]]
+(changelog on the web)
+ -
+[[http://gnufans.net/~deego/DeegoWiki/WikiIndex.html][http://gnufans.net/~deego/DeegoWiki/WikiIndex.html]]
+(deego)
+ -
+[[http://www.frankgerhardt.com/WikiIndex.html][http://www.frankgerhardt.com/WikiIndex.html]]
+(indexed by date)
+ -
+[[http://www.math.tu-berlin.de/~baier/WebWiki/Public/WikiIndex.html][http://www.math.tu-berlin.de/~baier/WebWiki/Public/WikiIndex.html]]
+ -
+[[http://www.archi.is.tohoku.ac.jp/people/yusuke/Emacs-wiki.html][http://www.archi.is.tohoku.ac.jp/people/yusuke/Emacs-wiki.html]]
+(planner and remember, but some old workarounds)
+ -
+[[http://mux03.tdiary.net/20031206.html][http://mux03.tdiary.net/20031206.html]]
+(nonplanner diary with headlines on the side, but actually running on
+tdiary not emacs-wiki)
+ -
+[[http://air.zive.net/emacs-wiki/EmacsWiki.html][http://air.zive.net/emacs-wiki/EmacsWiki.html]]
+ -
+[[http://www.biostat.umn.edu/~nali/AboutThisSite.html][http://www.biostat.umn.edu/~nali/AboutThisSite.html]]
+(source link, good idea)
+ -
+[[http://www.ntu.edu.sg/home5/PG04878518/EmacsTools.html][http://www.ntu.edu.sg/home5/PG04878518/EmacsTools.html]]
+(grid computing)
+ -
+[[http://www.self-core.org/~kaoru-k/wiki/EmacsWiki.html][http://www.self-core.org/~kaoru-k/wiki/EmacsWiki.html]]
+(planner, looks old style and custom)
+ -
+[[http://www.teria.com/~koseki/emacswiki/EmacsWiki.html][http://www.teria.com/~koseki/emacswiki/EmacsWiki.html]]
+ -
+[[http://www.xatax.de/phobos/WelcomePage.html][http://www.xatax.de/phobos/WelcomePage.html]]
+ - [[http://aadis.de/wiki/PageIndex][http://aadis.de/wiki/PageIndex]]
+(referers, index, search)
+ -
+[[http://supermon.sourceforge.net/][http://supermon.sourceforge.net/]]
+(on sf for work)
+ -
+[[http://www.tc.bham.ac.uk/~matt/WikiIndex.html][http://www.tc.bham.ac.uk/~matt/WikiIndex.html]]
+ -
+[[http://home.earthlink.net/~rdtietjen/Hypersphere/BackLinks.html#wikiweb][http://home.earthlink.net/~rdtietjen/Hypersphere/BackLinks.html#wikiweb]]
+(hmm, backlinks might be fun)
+ -
+[[http://ne.cs.uec.ac.jp/~miya/WebWiki/WikiIndex.html][http://ne.cs.uec.ac.jp/~miya/WebWiki/WikiIndex.html]]
+(simple)
+ -
+[[http://www.8ung.at/rotty/Software.html][http://www.8ung.at/rotty/Software.html]]
+(planner)
+ -
+[[http://www.ceres.dti.ne.jp/~george/jdiaryA21001.html#2002100701][http://www.ceres.dti.ne.jp/~george/jdiaryA21001.html#2002100701]]
+(brief mention)
+ -
+[[http://www.apollostar.com/k-ishii/TableOfContents.html][http://www.apollostar.com/k-ishii/TableOfContents.html]]
+(internationalized links, too)
+ -
+[[http://saslab.is.titech.ac.jp/~nakaya/WikiIndex.html][http://saslab.is.titech.ac.jp/~nakaya/WikiIndex.html]]
+ - [[http://tao.uab.es/jao/][http://tao.uab.es/jao/]] -- just one page
+ -
+[[http://www.cs.unc.edu/~lastra/Courses/Verilog/talk/html/WebLinks.html][http://www.cs.unc.edu/~lastra/Courses/Verilog/talk/html/WebLinks.html]]
+(for courses)
+ -
+[[http://kind.cs.kun.nl/~kiniry/Wiki/WikiIndex.html][http://kind.cs.kun.nl/~kiniry/Wiki/WikiIndex.html]]
+(planner custom)
+ -
+[[http://www.contactor.se/~matsl/WikiIndex.html][http://www.contactor.se/~matsl/WikiIndex.html]]
+ -
+[[http://viz.aset.psu.edu/ga5in/WikiIndex.html][http://viz.aset.psu.edu/ga5in/WikiIndex.html]]
+ -
+[[http://www.nongnu.org/xmakemol/WikiIndex.html][http://www.nongnu.org/xmakemol/WikiIndex.html]]
+ -
+[[http://dev.gentoo.org/~mkennedy/WikiIndex.html][http://dev.gentoo.org/~mkennedy/WikiIndex.html]]
+ -
+[[http://www.ipd.bth.se/mhy/KB/WikiIndex.html][http://www.ipd.bth.se/mhy/KB/WikiIndex.html]]
+ -
+[[http://www.aoc.nrao.edu/~bwaters/Wiki/WikiIndex.html][http://www.aoc.nrao.edu/~bwaters/Wiki/WikiIndex.html]]
+(planner)
+ -
+[[http://www.daimi.au.dk/~terryp/WikiIndex.html][http://www.daimi.au.dk/~terryp/WikiIndex.html]]
+ -
+[[http://www.geocities.com/CapeCanaveral/Lab/6422/WikiIndex.html][http://www.geocities.com/CapeCanaveral/Lab/6422/WikiIndex.html]]
+ -
+[[http://www.1729.com/wiki/WikiIndex.html][http://www.1729.com/wiki/WikiIndex.html]]
+(not sure)
+ -
+[[http://elektrubadur.se/WikiIndex.html][http://elektrubadur.se/WikiIndex.html]]
+ -
+[[http://home.t-online.de/home/c.ehbrecht/WebWiki/WikiIndex.html][http://home.t-online.de/home/c.ehbrecht/WebWiki/WikiIndex.html]]
+ -
+[[http://alcor.concordia.ca/~peter/WikiIndex.html][http://alcor.concordia.ca/~peter/WikiIndex.html]]
+ -
+[[http://www.ime.usp.br/~renato/WikiIndex.html][http://www.ime.usp.br/~renato/WikiIndex.html]]
+ -
+[[http://www.cs.brown.edu/people/roth/WikiIndex.html][http://www.cs.brown.edu/people/roth/WikiIndex.html]]
+ -
+[[http://www.geocities.co.jp/SiliconValley-PaloAlto/7043/WikiIndex.html][http://www.geocities.co.jp/SiliconValley-PaloAlto/7043/WikiIndex.html]]
+ -
+[[http://www.cs.utexas.edu/users/hllu/WikiIndex.html][http://www.cs.utexas.edu/users/hllu/WikiIndex.html]]
+ -
+[[http://www004.upp.so-net.ne.jp/nagae-r/WikiIndex.html][http://www004.upp.so-net.ne.jp/nagae-r/WikiIndex.html]]
+(diary file)
+
+Google for [[http://sachachua.com/notebook/wiki/WikiIndex][WikiIndex]]
+and find many, many more.
+
+Notes
+
+-
+[[http://www.me.ics.saitama-u.ac.jp/~hira/emacs/howm/][http://www.me.ics.saitama-u.ac.jp/~hira/emacs/howm/]]
+has some ideas for guids and grep.
+ -
+[[http://d.hatena.ne.jp/tengsama/20030704][http://d.hatena.ne.jp/tengsama/20030704]]
+mentioned emacs-wiki

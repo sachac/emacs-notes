@@ -1,0 +1,9 @@
+#+TITLE: remember-planner change in behavior
+
+November 16th, 2004 -
+[[http://sachachua.com/blog/p/2396][http://sachachua.com/blog/p/2396]]
+
+Finally got around to moving the page check later. This makes a lot
+ more sense. Thanks to emacs-wiki-discuss for pointing this out!
+
+[[http://sachachua.com/notebook/emacs/dev/remember/remember-planner.el][../emacs/dev/remember/remember-planner.el]]

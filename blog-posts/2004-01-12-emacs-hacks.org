@@ -1,0 +1,13 @@
+#+TITLE: Emacs hacks
+
+January 12th, 2004 -
+[[http://sachachua.com/blog/p/1592][http://sachachua.com/blog/p/1592]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/reverse-line ()
+      (interactive)
+      (let ((string (buffer-substring (line-beginning-position) (line-end-position))))
+        (delete-region (line-beginning-position) (line-end-position))
+        (insert (apply 'string (reverse (string-to-list string))))))
+#+END_EXAMPLE
+

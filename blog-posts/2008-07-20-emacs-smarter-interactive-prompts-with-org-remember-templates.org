@@ -1,0 +1,112 @@
+#+TITLE: Emacs: Smarter interactive prompts with Org remember templates
+
+July 20th, 2008 -
+[[http://sachachua.com/blog/p/4970][http://sachachua.com/blog/p/4970]]
+
+Paul Lussier wanted to know how to interactively prompt for a value and
+use that value multiple times in org-remember-templates. His example is:
+
+#+BEGIN_EXAMPLE
+    (setq org-link-abbrev-alist
+          '(("RT" . "https://rt/Ticket/Display.html?id=")))
+
+    (setq org-remember-templates
+          '(("Tasks" ?t "* TODO %?\n  %i\n  %a"            "~/organizer.org")
+            ("Appts" ?a "* Appointment: %?\n%^T\n%i\n  %a" "~/organizer.org")
+            ("RT"    ?R "* [[RT:%^{Number}][%^{Number}/%^{Description}]]" "~/org/rt.org")))
+#+END_EXAMPLE
+
+The version of Org on my system prompts for Number twice. We want to
+store the value in an associative list somewhere so that if Org
+encounters another prompt with the same text, it'll use the stored
+value. Here's a diff that'll do the trick.
+
+#+BEGIN_EXAMPLE
+    diff -u /home/sachac/elisp/org/org.el /tmp/buffer-content-4571Oz1
+    --- /home/sachac/elisp/org/org.el   2008-07-20 11:28:54.000000000 -0400
+    +++ /tmp/buffer-content-4571Oz1 2008-07-20 11:42:06.000000000 -0400
+    @@ -12822,38 +12822,52 @@
+            (org-set-local 'org-remember-default-headline headline))
+        ;; Interactive template entries
+        (goto-char (point-min))
+    -   (while (re-search-forward "%^\\({\\([^}]*\\)}\\)?\\([guUtT]\\)?" nil t)
+    -     (setq char (if (match-end 3) (match-string 3))
+    -       prompt (if (match-end 2) (match-string 2)))
+    -     (goto-char (match-beginning 0))
+    -     (replace-match "")
+    -     (cond
+    -      ((member char '("G" "g"))
+    -       (let* ((org-last-tags-completion-table
+    -           (org-global-tags-completion-table
+    -            (if (equal char "G") (org-agenda-files) (and file (list file)))))
+    -          (org-add-colon-after-tag-completion t)
+    -          (ins (completing-read
+    -            (if prompt (concat prompt ": ") "Tags: ")
+    -            'org-tags-completion-function nil nil nil
+    -            'org-tags-history)))
+    -         (setq ins (mapconcat 'identity
+    -                 (org-split-string ins (org-re "[^[:alnum:]]+"))
+    -                 ":"))
+    -         (when (string-match "\\S-" ins)
+    +   (let (interactive-entries lookup)
+    +     (while (re-search-forward "%^\\({\\([^}]*\\)}\\)?\\([guUtT]\\)?" nil t)
+    +       (setq char (if (match-end 3) (match-string 3))
+    +         prompt (if (match-end 2) (match-string 2))
+    +         lookup (assoc prompt interactive-entries))
+    +       (goto-char (match-beginning 0))
+    +       (replace-match "")
+    +       (cond
+    +        ((member char '("G" "g"))
+    +         (let* ((org-last-tags-completion-table
+    +             (org-global-tags-completion-table
+    +              (if (equal char "G") (org-agenda-files) (and file (list file)))))
+    +            (org-add-colon-after-tag-completion t)
+    +            (ins (if lookup
+    +                 (cdr lookup)
+    +               (completing-read
+    +                (if prompt (concat prompt ": ") "Tags: ")
+    +                'org-tags-completion-function nil nil nil
+    +                'org-tags-history))))
+    +       (if (null lookup)
+    +           (setq interactive-entries (cons (cons prompt ins) interactive-entries)))
+    +       (setq ins (mapconcat 'identity
+    +                    (org-split-string ins (org-re "[^[:alnum:]]+"))
+    +                    ":"))
+    +       (when (string-match "\\S-" ins)
+            (or (equal (char-before) ?:) (insert ":"))
+            (insert ins)
+            (or (equal (char-after) ?:) (insert ":")))))
+    -      (char
+    -       (setq org-time-was-given (equal (upcase char) char))
+    -       (setq time (org-read-date (equal (upcase char) "U") t nil
+    -                     prompt))
+    -       (org-insert-time-stamp time org-time-was-given
+    -                  (member char '("u" "U"))
+    -                  nil nil (list org-end-time-was-given)))
+    -      (t
+    -       (insert (read-string
+    -            (if prompt (concat prompt ": ") "Enter string"))))))
+    +        (char
+    +         (setq org-time-was-given (equal (upcase char) char))
+    +         (setq time (if lookup (cdr lookup) (org-read-date (equal (upcase char) "U") t nil
+    +                               prompt)))
+    +         (if (null lookup)
+    +         (setq interactive-entries (cons (cons prompt time) interactive-entries))
+    +       (org-insert-time-stamp time org-time-was-given
+    +                      (member char '("u" "U"))
+    +                      nil nil (list org-end-time-was-given))))
+    +        (t
+    +         (let ((text
+    +            (if lookup
+    +            (cdr lookup)
+    +              (read-string
+    +           (if prompt (concat prompt ": ") "Enter string")))))
+    +       (insert (or text ""))
+    +       (if (null lookup)
+    +           (setq interactive-entries (cons (cons prompt text) interactive-entries))))))))
+        (goto-char (point-min))
+        (if (re-search-forward "%\\?" nil t)
+            (replace-match "")
+#+END_EXAMPLE
+
+Have fun!

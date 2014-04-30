@@ -1,0 +1,6 @@
+#+TITLE: InstructionalSoftwareDesign
+
+July 16th, 2003 -
+[[http://sachachua.com/blog/p/935][http://sachachua.com/blog/p/935]]
+
+I'll start keeping really nice planner notes for ISD (CS215).

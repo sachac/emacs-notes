@@ -1,0 +1,9 @@
+#+TITLE: emacs-wiki--gary--1.0--patch-2: favor page names over interwiki names
+
+April 25th, 2004 -
+[[http://sachachua.com/blog/p/2012][http://sachachua.com/blog/p/2012]]
+
+patch 2 changes current emacs-wiki behavior to favor intra-wiki page
+ names over interwiki names, which may or may not be a good thing.
+
+[[http://sachachua.com/tmp/emacs-wiki--gary--1.0--patch-5/emacs-wiki--gary--1.0--patch-2.patches/patches/emacs-wiki.el.patch][../../tmp/emacs-wiki--gary--1.0--patch-5/emacs-wiki--gary--1.0--patch-2.patches/patches/emacs-wiki.el.patch]]

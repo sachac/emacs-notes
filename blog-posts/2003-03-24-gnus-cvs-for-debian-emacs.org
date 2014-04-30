@@ -1,0 +1,14 @@
+#+TITLE: Gnus CVS for Debian --- emacs
+
+March 24th, 2003 -
+[[http://sachachua.com/blog/p/584][http://sachachua.com/blog/p/584]]
+
+Add this to your /etc/apt/sources.list
+
+#+BEGIN_EXAMPLE
+    # For daily Gnus snapshots
+    deb http://people.debian.org/~srivasta ./packages/
+#+END_EXAMPLE
+
+Source:
+[[http://emacswiki.wikiwikiweb.de/cgi-bin/wiki.pl?GnusCvsForDebian][EmacsWiki:GnusCvsForDebian]]

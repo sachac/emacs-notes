@@ -1,0 +1,9 @@
+#+TITLE: recentf.el and session.el --- emacs
+
+March 24th, 2003 -
+[[http://sachachua.com/blog/p/573][http://sachachua.com/blog/p/573]]
+
+On the [[mailto:help-gnu-emacs@gnu.org][help-gnu-emacs@gnu.org]] mailing
+list, Hans Larsen says that
+ session.el replaced recentf.el a long time ago. I used to use
+ recentf.el. Maybe I should check session.el out...

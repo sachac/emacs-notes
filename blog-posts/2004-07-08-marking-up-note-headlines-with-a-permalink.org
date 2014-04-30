@@ -1,0 +1,23 @@
+#+TITLE: Marking up note headlines with a permalink
+
+July 8th, 2004 -
+[[http://sachachua.com/blog/p/2174][http://sachachua.com/blog/p/2174]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-markup-note ()
+      "Replace note with marked-up span."
+      (let ((id (concat
+                 emacs-wiki-bare-digits-anchor-prefix
+                 (match-string 1)))
+            (val (match-string 1)))
+        (replace-match
+         (save-match-data
+           (format "#%s\n** %s " id
+                   (planner-make-link
+                    (concat (emacs-wiki-page-name)
+                            "#" val)
+                    (concat val ".")))))))
+
+    (defalias 'planner-markup-note 'sacha/planner-markup-note)
+#+END_EXAMPLE
+

@@ -1,0 +1,72 @@
+#+TITLE: Setting up appointment reminders in Org
+
+November 7th, 2007 -
+[[http://sachachua.com/blog/p/4435][http://sachachua.com/blog/p/4435]]
+
+Although the agenda view is very handy, it is generally not a good
+ idea to check the agenda view every three seconds to see if you have
+ upcoming appointments. You can set up Org to use the Emacs appointment
+ reminder system, which can pop up a reminder buffer before your
+ appointment or display a reminder in the modeline.
+
+org-agenda-to-appt scans all your agenda files for appointments for
+today.
+ The code for org-agenda-to-appt can be found in org.el. It's marked
+ experimental, so future versions may not include it. If you do not
+ have org-agenda-to-appt, add the following to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    ;; Make appt aware of appointments from the agenda
+    (defun org-agenda-to-appt ()
+      "Activate appointments found in `org-agenda-files'."
+      (interactive)
+      (require 'org)
+      (let* ((today (org-date-to-gregorian
+             (time-to-days (current-time))))
+         (files org-agenda-files) entries file)
+        (while (setq file (pop files))
+          (setq entries (append entries (org-agenda-get-day-entries
+                         file today :timestamp))))
+        (setq entries (delq nil entries))
+        (mapc (lambda(x)
+            (let* ((event (org-trim (get-text-property 1 'txt x)))
+               (time-of-day (get-text-property 1 'time-of-day x)) tod)
+              (when time-of-day
+            (setq tod (number-to-string time-of-day)
+                  tod (when (string-match
+                      "\\([0-9]\\{1,2\\}\\)\\([0-9]\\{2\\}\\)" tod)
+                     (concat (match-string 1 tod) ":"
+                         (match-string 2 tod))))
+            (if tod (appt-add tod event))))) entries)))
+#+END_EXAMPLE
+
+Load today's appointments every time you start Emacs by adding the
+ following to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (org-agenda-to-appt)
+#+END_EXAMPLE
+
+or call it interactively with M-x org-agenda-to-appt.
+
+If you delete an appointment from your Org agenda file, the
+ corresponding alert is not deleted. To delete the appointment, use M-x
+ appt-delete and select it from the list.
+
+A better way to keep your appointment list clean would be to remove
+ all the appointment entries before calling org-agenda-to-appt. Add the
+ following to your ~/.emacs to do so:
+
+#+BEGIN_EXAMPLE
+    (defadvice org-agenda-to-appt (before wickedcool activate)
+      "Clear the appt-time-msg-list."
+      (setq appt-time-msg-list nil))
+#+END_EXAMPLE
+
+To learn more about configuring the Emacs appointment reminder system,
+ check out the Emacs manual.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: ibuffer-mode -- Function: A major mode for viewing
+a list of buffers.

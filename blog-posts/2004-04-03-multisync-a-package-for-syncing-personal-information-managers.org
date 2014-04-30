@@ -1,0 +1,22 @@
+#+TITLE: Multisync: a package for syncing personal information managers
+
+April 3rd, 2004 -
+[[http://sachachua.com/blog/p/1932][http://sachachua.com/blog/p/1932]]
+
+[[http://multisync.sourceforge.net][http://multisync.sourceforge.net]]
+
+#+BEGIN_EXAMPLE
+    Package: multisync
+    Description: A program to synchronize PIM data
+     Synchronize calendars, addressbooks and  other PIM data between programs
+     on your computer and other computers, mobile devices, PDAs or cell phones.
+     Currently it has client plugins for Ximian Evolution and IrMC mobile
+     clients (cell phones such as SonyEricsson T39/T68 and Siemens S45i) via
+     Bluetooth, IR and cable. To get all plugins install libmultisync-plugin-all.
+     .
+     To get all
+      Homepage http://multisync.sourceforge.net
+#+END_EXAMPLE
+
+Can someone write a plugin for
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]? =)

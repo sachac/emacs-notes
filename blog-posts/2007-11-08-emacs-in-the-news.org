@@ -1,0 +1,37 @@
+#+TITLE: Emacs in the news
+
+November 8th, 2007 -
+[[http://sachachua.com/blog/p/4437][http://sachachua.com/blog/p/4437]]
+
+I am not happy. Well, mock-unhappy. I'm fine, but mock-peeved.
+
+The December 2007 issue of the Linux Journal has an article on turning
+ Emacs into a PIM using Org, and I didn't write it.
+
+Okay, I *am* happy that somebody else is getting the message out, but
+ STILL. <laugh> I had a lot of fun writing the Emacs and Planner
+ article for Linux Journal before, and I wish I'd made the time to
+ write another article. It's a good article, though.
+
+NOTE TO SELF: That's it, I'm waking up *really* early in the morning
+ to work on the book.
+
+I may have a non-Emacs article idea or two in my blog. For example, I
+ now have two years of personal financial data in Ledger, and I've done
+ some cool things with Gnuplot. I can write that one up.
+
+Also, timeclocking. I should be able to make pretty graphs from Org,
+ too. Hmmm. That sounds like something that would be fun to hack.
+
+Then there are little tips, too.
+
+And there's analyzing Facebook data and making a Flashcard application,
+again in Emacs.
+
+<steeples fingers> Hmmmm. How to squeeze more writing time into
+ my day... <taptaptap>
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: gnus-emphasis-underline-italic -- Face: Face used
+for displaying underlined italic emphasized text (\_/word/\_).

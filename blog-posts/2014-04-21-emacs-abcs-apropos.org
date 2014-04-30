@@ -1,0 +1,49 @@
+#+TITLE: Emacs ABCs: A is for Apropos
+
+April 21st, 2014 -
+[[http://sachachua.com/blog/p/27166][http://sachachua.com/blog/p/27166]]
+
+Sometimes one gets the strangest ideas. I've had this kicking around in
+my brain for a few weeks. Since you read and re-read books to kids
+endless times anyway, why not learn more yourself along the way? For
+example, Emacs is something that is worth repeated learning. You forget
+commands, you rediscover them, you dig into them more. I think it might
+be interesting to have kid's books with technical subtext. While you're
+saying the letters and helping kids learn to read, you can silently (or
+not-so-silently!) read the notes, and pick one command to try later. In
+this case: M-x apropos?
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/04/emacs-a-is-for-apropos.png][[[http://sachachua.com/blog/wp-content/uploads/2014/04/emacs-a-is-for-apropos-640x640.png]]]]
+
+A is for apropos
+
+Here's a list of interesting possibilities:
+
+-  apropos
+-  browse-kill-ring
+-  customize / compile / calc
+-  dired, debug-on-entry
+-  edebug-defun, eshell
+-  fastnav, ffap, fixup-whitespace
+-  grep-find, gnus
+-  help-with-help, helm
+-  ielm
+-  just-one-space
+-  keyboard macros, kmacro-start-macro, kbd-macro-query
+-  load-library, locate-library, list-packages
+-  magit, make-indirect-buffer
+-  name-last-kbd-macro
+-  occur (and occur-edit-mode); org
+-  package-list-packages, picture-mode
+-  quick-url, query-replace-regexp-eval
+-  regexp-builder, recursive-edit, recover-this-file,
+-  savehist-mode, server-start, smartparens
+-  tags-search, term, thumbs, tmm-menubar, type-break
+-  undo-tree-visualize
+-  vc-next-action, view-lossage, visual-line-mode
+-  where-is, winner-mode, windmove, window-configuration-to-register
+-  M-x (execute-extended-command)
+-  yank-pop
+-  zap-to-char
+
+Crazy? Neat? =) What do you think?

@@ -1,0 +1,38 @@
+#+TITLE: Emacs for my Mom
+
+December 1st, 2004 -
+[[http://sachachua.com/blog/p/2454][http://sachachua.com/blog/p/2454]]
+
+#+BEGIN_QUOTE
+  Do you think Emacs is something we can learn?
+#+END_QUOTE
+
+I think Emacs is something my parents can learn, but something they
+ currently don't have reason to study. Even the PIM aspect won't be
+ helpful, as my mom is really uses Outlook synchronization with mobile
+ devices.
+
+Right tool for the right job, I guess. =)
+
+People sometimes try new things for the sheer heck of it. My dad tries
+ different lighting techniques. My mom tries new ways of management. I
+ try new sites and new software (mostly related to PIMs). We do that
+ because we are interested in the topic and we can see the long-term
+ benefits either directly caused by the tool or indirectly due to
+ keeping our minds flexible. We serve as gateways (or gatekeepers?) for
+ other people who don't have the time to explore these things.
+
+Sometimes we're not looking for new ways to work. Sometimes we're just
+ curious about stuff. That's cool, too. If my mom's curious about this
+ software program I keep writing about, she can give it a whirl. =)
+
+[[http://mindlube.com/products/emacs/index.html][http://mindlube.com/products/emacs/index.html]]
+seems to have Emacs for
+ Mac OS X, although I've never actually tried it because I don't have a
+ Mac. (Hint? ;) ) Pick “Emacs for OS X (your version here)”. Err, I
+ don't know what “mount the DMG disk image” means under Mac OS X, but
+ it might be something you can find under the option-click (or one of
+ those funky buttons) menu...
+
+Knowing my mom, hmmm... I suggest trying out Tools: Games: Tetris
+ first. =)

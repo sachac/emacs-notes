@@ -1,0 +1,25 @@
+#+TITLE: Emacs basics: Changing the background color
+
+January 18th, 2009 -
+[[http://sachachua.com/blog/p/5635][http://sachachua.com/blog/p/5635]]
+
+One of the first things you'll probably want to change about Emacs is
+the default face. This controls the foreground color, the background
+color, the font, and other attributes. For example, many graphical
+environments give Emacs a background of white. If you prefer a black
+background (which can be less tiring during long periods of use), you
+can change the background to black my customizing the default face.
+
+To change the background color and other attributes, use the command
+=M-x customize-face=, and specify =default= as the face to customize.
+Change the attributes and the sample text will reflect your settings.
+When you are satisfied, select *Save for future sessions*. Your changes
+will be saved to ~/.emacs and reloaded the next time you start the
+editor.
+
+--------------
+
+This is a draft for
+[[http://sachachua.com/wp/category/wickedcoolemacs][Wicked Cool Emacs]],
+a book that will be published by [[http://www.nsp.com][No Starch
+Press]]. (if we manage to get it all together! =)

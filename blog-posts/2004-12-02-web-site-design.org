@@ -1,0 +1,58 @@
+#+TITLE: Web site design
+
+December 2nd, 2004 -
+[[http://sachachua.com/blog/p/2455][http://sachachua.com/blog/p/2455]]
+
+After seeing the quotation from the web design firm my mom's thinking
+ of using, I have gotten sufficiently annoyed about the current design.
+ I will apply my one-hour hacking challenge to
+ [[http://www.adphoto.com.ph][http://www.adphoto.com.ph]] tomorrow. That
+is, in one hour, I will try
+ to whiz through as many improvements as possible.
+
+It's been enough time that I've forgotten what their design looked
+ like. I'll sit down tomorrow and hack up something small and simple.
+ Neat. No frills. Clean and elegant, though, and search-friendly. It
+ won't get picked up by the search engines right away, but I'll see
+ what I can do about that also.
+
+If they think the design resembles theirs too much, I can modify it.
+ <shrug> Still, better to have code I understand than autogen
+ code I don't.
+
+Some insights:
+
+- Websites can be tweaked over time, just like software. I can improve
+
+#+BEGIN_QUOTE
+  it incrementally. I should think of it like planner.
+#+END_QUOTE
+
+- I wanted a professional design firm because I wanted a real
+
+#+BEGIN_QUOTE
+  copywriter to go over the stuff. I don't want people to just
+   copy-and-paste blocks of text from the company profile.
+#+END_QUOTE
+
+- I also wanted someone to do the initial implementation so that I can
+
+#+BEGIN_QUOTE
+  just do maintenance, which I enjoy. If I'm sufficiently annoyed,
+   though, I can just evolve the site. One of the most effective ways
+   to get me to do something is to make me annoyed enough with the
+   current situation.
+#+END_QUOTE
+
+- Design: As long as it isn't horrible, it's okay. People will visit
+
+#+BEGIN_QUOTE
+  for photos and information, not for website design tips.
+#+END_QUOTE
+
+- Future: Stock photos CMS, delicious-style tagging. But not now.
+
+#+BEGIN_QUOTE
+  Small hack forward.
+#+END_QUOTE
+

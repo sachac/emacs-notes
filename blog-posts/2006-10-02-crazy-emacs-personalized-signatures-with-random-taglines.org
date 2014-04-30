@@ -1,0 +1,55 @@
+#+TITLE: Crazy Emacs: Personalized signatures with random taglines
+
+October 2nd, 2006 -
+[[http://sachachua.com/blog/p/3904][http://sachachua.com/blog/p/3904]]
+
+Of course, that naturally leads to the crazy idea: “What if I can
+ personalize my signatures?” Knowing that Paul Lussier is an Emacs geek,
+I can reward him for reading all the way
+ to the bottom of my message... ;)
+
+#+BEGIN_EXAMPLE
+    (defun sacha/gnus-personalize-signature ()
+      "Personalizes signature based on BBDB signature field.
+    BBDB signature field should be a lambda expression.
+    First person with a custom signature field gets used."
+      (let* ((bbdb-get-addresses-headers
+              (list (assoc 'recipients bbdb-get-addresses-headers)))
+             (records (bbdb-update-records
+                       (bbdb-get-addresses
+                        nil
+                        gnus-ignored-from-addresses 'gnus-fetch-field)
+                       nil
+                       nil))
+             signature)
+        (while (and records (not signature))
+          (when (bbdb-record-getprop (car records) 'signature)
+            (setq signature
+                  (eval (read (bbdb-record-getprop (car records)
+                                                   'signature)))))
+          (setq records (cdr records)))
+        (or signature t)))
+    (setq-default message-signature 'sacha/gnus-personalize-signature)
+#+END_EXAMPLE
+
+So then all I have to do is add the following field to his record:
+
+#+BEGIN_EXAMPLE
+          signature: (concat "Sacha Chua - Emacs geek
+                     What crazy idea can I help you hack next?
+                     Random Emacs symbol: "
+                     (sacha/random-tagline
+                      "~/.taglines.random-emacs-symbols"))
+#+END_EXAMPLE
+
+Emacs. One crazy idea at a time. Now I can use this to select random
+ information, like my favorite networking books or a list of my
+ upcoming events...
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/elisp][elisp]],
+[[http://www.technorati.com/tag/hack][hack]]
+
+Random Emacs symbol: sort-coding-systems-predicate -- Variable: If
+non-nil, a predicate function to sort coding systems.

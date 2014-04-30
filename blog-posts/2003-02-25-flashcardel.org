@@ -1,0 +1,6 @@
+#+TITLE: flashcard.el
+
+February 25th, 2003 -
+[[http://sachachua.com/blog/p/461][http://sachachua.com/blog/p/461]]
+
+Flashcard.el is pretty good. =) And useful.

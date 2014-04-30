@@ -1,0 +1,10 @@
+#+TITLE: Indexer for planner notes
+
+May 31st, 2004 -
+[[http://sachachua.com/blog/p/2085][http://sachachua.com/blog/p/2085]]
+
+Just realized that planner-search-notes with a match-all will do
+perfectly well.
+ I don't have to do this yet, then. =)
+
+[[http://sachachua.com/notebook/wiki/WearableMemoryAugmentation][WearableMemoryAugmentation]]

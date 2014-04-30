@@ -1,0 +1,15 @@
+#+TITLE: Automatic encryption of wiki pages
+
+November 21st, 2003 -
+[[http://sachachua.com/blog/p/1382][http://sachachua.com/blog/p/1382]]
+
+From
+[[http://www.emacswiki.org/cgi-bin/wiki/AutoEncryption][EmacsWiki#AutoEncryption]]
+
+;; crypt++ -- i use this in conjunction with emacs-wiki
+ (require ‘crypt++)
+ (setq crypt-encryption-type ‘mcrypt
+
+crypt-encryption-file-extension “\\(Secure\\)$\\|\\(\\.enc\\)$”)
+ (setq emacs-wiki-ignored-extensions-regexp
+“\\.\\(bz2\\|gz\\|[Zz]\\|enc\\)\\'”)

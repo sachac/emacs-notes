@@ -1,0 +1,97 @@
+#+TITLE: Building MobileOrg for Android
+
+August 5th, 2012 -
+[[http://sachachua.com/blog/p/23631][http://sachachua.com/blog/p/23631]]
+
+If you want to use your Android device to work with your Org-mode files,
+there's [[https://github.com/matburt/mobileorg-android][MobileOrg]] and
+there's [[https://github.com/kvj/mobileorg-android][MobileOrg NG]].
+MobileOrg seems to have more recent activity and more contributors, but
+NG has a more tablet-optimized layout and better support for navigating
+large files, so it would be good to apply some of the ideas from NG to
+the main MobileOrg project. Might be a useful way for me to learn more
+about mobile development.
+
+Here's how to build MobileOrg (the matburt version).
+
+1. Copy the URI to the Git repository (ex:
+   =git://github.com/matburt/mobileorg-android.git=).
+2. In Eclipse, click on *File -- Import -- Projects from Git -- URI*.
+   This may autodetect the URI. If not, paste in the URI. Click *Next*.
+3. You should now see a list of branches. You can leave them all
+   selected. Click *Next.*
+4. Check the box for *Clone Submodules.* This will make sure that the
+   project's dependencies are also checked out. Click *Next*.
+5. When you see the dialog called *Select a wizard to use for importing
+   projects*, click on *Cancel.*
+
+Because the .project file hasn't been set up, you'll need to import the
+project using a different wizard. However, there's
+[[http://stackoverflow.com/questions/4054216/opening-existing-project-from-source-control][an
+Eclipse bug]] that can make this a bit of a hassle, so this is what you
+should do to get the projects set up in your system.
+
+1. Close Eclipse.
+2. Move the =mobileorg-android= subdirectory from your Eclipse workspace
+   directory to a different directory that is not in your workspace.
+3. Start Eclipse again.
+4. Click on *File -- Import -- Existing Android Code Into Workspace*.
+   Click *Browse* and choose the =mobileorg-android= folder.
+5. Click on *Deselect All.*Reselect the following:
+
+   -  com.matburt.mobileorg.Gui.OutlineActivity
+   -  library
+   -  com.twofortyfouram.locale.MarketActivity
+
+6. Click on *Finish.*
+
+Now you should have a bunch of projects in your system. You may need to
+adjust the libraries and build paths.
+
+1. Right-click on the =com.matburt.mobileorg.Gui.OutlineActivity=
+   project and choose *Properties*.
+2. Click on *Android* and confirm that both libraries are detected. If
+   not, you may need to remove and re-add them.
+3. Wait for the libraries to be built. If you notice that the compiled
+   JARs don't have classes, doublecheck that the =src= folder has loaded
+   the sources. Right-click on the =src= folder and choose *Refresh* in
+   order to get the sources recognized by Eclipse.
+
+Re-detect the Git connection by doing the following:
+
+1. Right-click on the =com.matburt.mobileorg.Gui.OutlineActivity=
+   project and choose *Team -- Share Project*.
+2. Choose *Git*.
+3. Check the *Use or create repository in parent folder of project*.
+4. Check the .git directory you're using.
+5. Click on *Finish.*
+
+I also had to remove some code from AndroidManifest.xml because you're
+apparently not supposed to have more than one action in an
+intent-filter:
+
+#+BEGIN_EXAMPLE
+    diff --git a/AndroidManifest.xml b/AndroidManifest.xml
+    index 01c4f1e..9fc3eb1 100644
+    --- a/AndroidManifest.xml
+    +++ b/AndroidManifest.xml
+    @@ -64,14 +64,11 @@
+                 android:name=".Gui.OutlineActivity"
+                 android:label="MobileOrg"
+                 android:theme="@style/Theme.MobileOrgActionbar" >
+                 <intent-filter>
+                     <action android:name="android.intent.action.MAIN" />
+    -
+                     <category android:name="android.intent.category.LAUNCHER" />
+    -
+    -                <action android:name="com.matburt.mobileorg.Synchronizer.action.SYNC_UPDATE" />
+                 </intent-filter>
+             </activity>
+             <activity
+                 android:name=".Gui.NodeViewActivity"
+                 android:label="Org View"
+#+END_EXAMPLE
+
+[[http://stackoverflow.com/questions/4801371/what-does-it-mean-no-launcher-activity-found][(StackOverflow)]]
+
+Hope that helps!

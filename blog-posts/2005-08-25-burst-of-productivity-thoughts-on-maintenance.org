@@ -1,0 +1,20 @@
+#+TITLE: Burst of productivity, thoughts on maintenance
+
+August 25th, 2005 -
+[[http://sachachua.com/blog/p/2928][http://sachachua.com/blog/p/2928]]
+
+It's 9:17 and I'm looking at a neat list of completed planner tasks,
+ mainly thanks to Sergey Vlasov's attention to detail and neat
+ bugfixing skills. The Planner community has really grown in all
+ directions. Practically all the bugfixes and new features come from
+ the users themselves; they're really more co-developers. My role as a
+ maintainer, then, is more of documenting what's there, helping
+ newbies, guiding people through the source code, and hosting the
+ thing. Other projects have maintainers who set the project's
+ direction. On the other hand, I follow where people go. I really enjoy
+ doing that, and it thrills me to no end when I can hack something
+ together quickly to fit a particular person's way of working. =) I'm
+ not much of a maintainer---bugs keep creeping in, new features hardly
+ get worked on---but I really love working with the community.
+\_They're\_
+ the real maintainers, and they're soooooo cool.

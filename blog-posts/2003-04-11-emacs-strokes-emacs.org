@@ -1,0 +1,7 @@
+#+TITLE: Emacs strokes --- emacs
+
+April 11th, 2003 -
+[[http://sachachua.com/blog/p/671][http://sachachua.com/blog/p/671]]
+
+You know, I really should check out stroke mode under Emacs for sheer
+ coolness factor.

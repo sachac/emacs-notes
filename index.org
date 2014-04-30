@@ -1,7 +1,37 @@
-What's here:
+#+TITLE: Emacs Life
 
-   + [[file:baby-steps-org.org][A Baby Steps Guide to Managing Your Tasks with Org]]
-   + [[file:how-to-read-emacs-lisp.org][How to read Emacs Lisp so that you can customize Emacs]]
-   + [[file:emacs-lisp-tutorial.org][Learn Emacs Lisp while customizing Emacs]]
+#+begin_html
+<table><tr><td>
+#+end_html
+* Start with Emacs
+
+- [[file:blog-posts/2014-04-14-emacs-beginner-resources.org][Emacs beginner resources]]
+- [[file:blog-posts/2013-05-17-how-to-learn-emacs-a-hand-drawn-one-pager-for-beginners.org][How to learn Emacs]] - a hand-drawn one-page guide for beginners
+- [[file:blog-posts/2013-09-02-how-to-learn-emacs-keyboard-shortcuts-a-visual-tutorial-for-newbies.org][How to learn Emacs keyboard shortcuts]] - another visual guide
+- [[file:blog-posts/2014-03-24-emacs-basics-using-mouse.org][Emacs Basics: Using the mouse]]
+- [[file:blog-posts/2014-03-31-emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm.org][Emacs Basics: Calling commands by name]]
+- [[file:blog-posts/2014-04-07-emacs-basics-customizing-emacs.org][Emacs Basics: Customizing Emacs]]
+- [[file:baby-steps-org.org][A baby steps guide to managing your tasks with Org]]
+- [[file:how-to-read-emacs-lisp.org][How to read Emacs Lisp so that you can customize Emacs]]
+
+#+begin_html
+</td><td>
+#+end_html
+* Improve your Emacs setup
+
+- [[file:blog-posts/2014-01-13-tips-learning-org-mode-emacs.org][Tips for learning Org Mode for Emacs]]
+
+#+begin_html
+</td><td>
+#+end_html
+
+* Enjoy Emacs
+
+- [[file:blog-posts/2014-04-28-reflecting-10-episodes-emacs-chats.org][Emacs Chats]]: hour-long conversations with various people about Emacs
+
+#+begin_html
+</td></table>
+#+end_html
+
 
 Source: http://github.com/sachac/emacs-notes

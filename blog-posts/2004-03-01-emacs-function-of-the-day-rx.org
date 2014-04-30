@@ -1,0 +1,9 @@
+#+TITLE: Emacs function of the day: rx
+
+March 1st, 2004 -
+[[http://sachachua.com/blog/p/1804][http://sachachua.com/blog/p/1804]]
+
+Translate a regular expression REGEXP in sexp form to a regexp string.
+ See also `rx-to-string' for how to do such a translation at run-time.
+
+Tip from delysid.

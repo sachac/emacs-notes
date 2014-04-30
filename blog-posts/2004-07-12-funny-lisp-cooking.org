@@ -1,0 +1,46 @@
+#+TITLE: Funny Lisp cooking
+
+July 12th, 2004 -
+[[http://sachachua.com/blog/p/2180][http://sachachua.com/blog/p/2180]]
+
+[[http://www.emacswiki.org/cgi-bin/utis/2004-07-04][http://www.emacswiki.org/cgi-bin/utis/2004-07-04]]
+
+#+BEGIN_EXAMPLE
+        (defun make-arugolo-risotto ()
+          "Return a pot of risotto with arugola."
+          (interactive)
+          (let ((onions (chop (get-onions) 'fine))
+                (rice (get-rice))
+                (wine (get-wine))
+                (butter (get-butter))
+                (stock (get-stock 'vegetable))
+                (cheese (rasp (get-cheese 'parmesan)))
+                (pot (get-pot 'large))
+                (vegetable (chop (wash (get-vegetable 'arugola))
+                                 'medium)))
+            (setq pot (heat-pot pot 'medium))
+            (with-current-pot pot
+              (add butter)
+              (add onions)
+              (while (not-glassy-p onions) ; FIXME
+                ;; not-glassy-p probably returns t too late in the process.
+                (stir pot))
+              (add rice)
+              (while (not (covered-with-butter-p rice)) ; FIXME
+                (stir pot))
+              (add wine)
+              (while (liquidity-not-absorbed-p rice)
+                (stir pot))
+              (finish-risotto pot rice stock)
+              (add vegetable)
+              (add cheese)
+              pot)))
+
+        (defun finish-risotto (pot rice stock)
+          (with-current-pot pot
+            (while (not (rice-ready-p rice))
+              (add stock)
+              (while (liquidity-not-absorbed-p rice)
+                (stir pot))))
+#+END_EXAMPLE
+

@@ -1,0 +1,18 @@
+#+TITLE: More Emacs tips
+
+October 26th, 2004 -
+[[http://sachachua.com/blog/p/2319][http://sachachua.com/blog/p/2319]]
+
+[[http://www.douglasjohnston.net][http://www.douglasjohnston.net]]
+
+From Douglas Johnston:
+
+#+BEGIN_QUOTE
+  In case you're interested, the second part of my “Emacs retreat” is
+   online at the blog. (It's mainly for wanna-be Emacs users, but
+   emacs-wiki/planner figure prominently in my usage.)
+#+END_QUOTE
+
+[[http://www.douglasjohnston.net/weblog/index.php/archives/2004/10/21/emacs-experiment-2/][http://www.douglasjohnston.net/weblog/index.php/archives/2004/10/21/emacs-experiment-2/]]
+
+E-Mail%20from%20Richi's%20server

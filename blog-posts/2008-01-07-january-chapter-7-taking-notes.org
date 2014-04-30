@@ -1,0 +1,42 @@
+#+TITLE: January -- Chapter 7: Taking Notes
+
+January 7th, 2008 -
+[[http://sachachua.com/blog/p/4659][http://sachachua.com/blog/p/4659]]
+
+For January 2008, my assignment is to write a chapter on taking notes
+ with Emacs. Here are the blog posts that I plan to write, each around
+ 1000-2000 words long. This should give me plenty of material to edit,
+ if I don't go mad first. ;)
+
+#+BEGIN_EXAMPLE
+     - [ ] Keeping Notes in Emacs
+           Structured vs Unstructured (outline, free-form)
+           Flat vs Hyperlinked
+           Private vs Public
+           File structure (one file, daily, snippets)
+     - [ ] Outline Notes with Org, Blorg
+     - [ ] Daily Notes with Planner
+     - [ ] Hyperlinked Notes and Muse
+     - [ ] Publishing Muse
+     - [ ] Publishing Planner, RSS
+     - [ ] Remember: quick note entry
+     - [ ] Snippets with Howm
+     - [ ] Blogging from Emacs - WordPress, LJ, Blogger,Muse-Blosxom, EmacsAtomAPI
+     - [ ] Encrypted Notes (full file, segments) - MOSTLY WRITTEN
+#+END_EXAMPLE
+
+I find that thinking of a book as a collection of articles works out
+ well for me. Starting with a rough outline like this, I'll write
+ 2000-word articles of the kind that I'd write for Linux Journal or
+ LinuxWorld, and then I'd put them into my outline and add transitions.
+ After I write all the pieces, then I can write the introduction and
+ the wrap-up sections.
+
+Slowly getting the hang of this writing thing... =)
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/writing][writing]],
+[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs]]
+
+Random Emacs symbol: message-narrow-to-headers-or-head -- Function:
+Narrow the buffer to the head of the message.

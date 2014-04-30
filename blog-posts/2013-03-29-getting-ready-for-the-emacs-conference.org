@@ -1,0 +1,35 @@
+#+TITLE: Getting ready for the Emacs Conference
+
+March 29th, 2013 -
+[[http://sachachua.com/blog/p/24622][http://sachachua.com/blog/p/24622]]
+
+I'm in London for [[http://emacsconf.org][Emacs Conference 2013]]
+(squee!!), which is tomorrow. John Wiegley and I are starting the day
+off with a whirlwind tour of Emacs' past, present, and future. The
+program looks excellent, and I can't wait to learn from all these
+wonderful people. Let's find out what sketchnotes of an extremely geeky
+conference look like! =D
+
+I'd worked on this presentation about 9 hours before leaving for London.
+I wrote most of the
+[[http://dl.dropbox.com/u/3968124/sacha-emacs.html#emacsconf2013][presentation
+code]] on the airplane (functions to go forward and backward, and to
+process the current slide).
+
+I finished the rest of the content this morning, then headed out with
+Alex and his wife Tina. Today I got to experience a slice of regular
+life over here: a walk through the market, a grocery trip, a yummy
+home-cooked meal. Alex and Tina have been fantastic hosts! =)
+
+After dinner, I worked a little more on the presentation. I made slides
+and a PDF just in case my Org presentation doesn't work out, and helped
+with nametags and the list of people attending.
+
+I'm looking forward to the conference. I think this will be an excellent
+adventure! I'll post my presentation afterwards, so subscribe to my blog
+or follow the [[https://twitter.com/search?q=emacsconf][#emacsconf]]
+hashtag. If you're attending tomorrow, come and say hi! I'll be the
+short Asian girl bouncing around and possibly hyperventilating at all
+the awesomeness. I'll also be drawing sketchnotes on a tablet PC,
+assuming I don't give up and stick everything into org-capture instead.
+=)

@@ -1,0 +1,18 @@
+#+TITLE: Proof of concept: Deleting private tasks
+
+January 11th, 2005 -
+[[http://sachachua.com/blog/p/2558][http://sachachua.com/blog/p/2558]]
+
+It's easy to tweak Planner. For example, the following two lines of
+ code delete all lines that contain {{private}} before publishing. Your
+ planner pages will be fine, but the published HTML won't contain them.
+
+#+BEGIN_EXAMPLE
+    (add-to-list 'planner-publishing-markup (lambda () (delete-matching-lines "{{private}}")))
+    (planner-update-wiki-project)
+#+END_EXAMPLE
+
+Fun, isn't it?
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/emacs][emacs]]

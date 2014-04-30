@@ -1,0 +1,56 @@
+#+TITLE: Emacs Gnus hack: Prioritize based on the number of recipients
+
+October 4th, 2006 -
+[[http://sachachua.com/blog/p/3920][http://sachachua.com/blog/p/3920]]
+
+Ever found yourself confronted with an inbox overflowing with general
+ messages that you can ignore and messages that you and only you can
+ act on? Here's something to help you sort the wheat from the chaff.
+
+This indicates how personal messages are so you can immediately see
+which messages are just for you and which are part of a long Cc. Stephen
+Perelgut showed me the feature in Lotus Notes and I wanted to steal it
+sometime, so I did it while waiting for the Instant Rails archive.
+
+To use it, add %ur to your gnus-summary-line-format.
+
+#+BEGIN_EXAMPLE
+    (add-to-list 'nnmail-extra-headers 'To)
+    (add-to-list 'nnmail-extra-headers 'Cc)
+    (defvar sacha/gnus-count-recipients-threshold 5
+      "*Number of recipients to consider as large.")
+
+    (defun sacha/gnus-count-recipients (header)
+      "Given a Gnus message header, returns priority mark.
+    If I am the only recipient, return \"!\".
+    If I am one of a few recipients, but I'm listed in To:, return \"*\".
+    If I am one of a few recipients, return \"/\".
+    If I am one of many recipients, return \".\".
+    Else, return \" \"."
+      (let* ((to (or (cdr (assoc 'To (mail-header-extra header))) ""))
+             (cc (or (cdr (assoc 'Cc (mail-header-extra header))) "")))
+        (cond
+         ((string-match gnus-ignored-from-addresses to)
+          (let ((len (length (bbdb-split to ","))))
+            (cond
+             ((= len 1) "!")
+             ((< len sacha/gnus-count-recipients-threshold) "*")
+             (t "/"))))
+         ((string-match gnus-ignored-from-addresses
+                        (concat to ", " cc))
+          (if (< (length (bbdb-split (concat to ", " cc) ","))
+                 sacha/gnus-count-recipients-threshold)
+              "/"
+            "."))
+         (t " "))))
+
+    (defalias 'gnus-user-format-function-r 'sacha/gnus-count-recipients)
+#+END_EXAMPLE
+
+Random Emacs symbol: dired-listing-switches - Variable: *Switches passed
+to `ls' for Dired. MUST contain the `l' option.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/gnus][gnus]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]],
+[[http://www.technorati.com/tag/emacslisp][emacslisp]]

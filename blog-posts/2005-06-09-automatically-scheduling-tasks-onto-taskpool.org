@@ -1,0 +1,41 @@
+#+TITLE: Automatically scheduling tasks onto TaskPool
+
+June 9th, 2005 -
+[[http://sachachua.com/blog/p/2776][http://sachachua.com/blog/p/2776]]
+
+#+BEGIN_EXAMPLE
+    (defadvice planner-create-task-from-buffer (before paul activate)
+      "Automatically schedule task onto TaskPool as well as other projects."
+      (if plan-page
+          (unless (string-match plan-page "TaskPool")
+            (setq plan-page (concat plan-page planner-multi-separator "TaskPool")))
+        (setq plan-page "TaskPool")))
+#+END_EXAMPLE
+
+Here's another snippet that will unschedule tasks from
+[[http://sachachua.com/notebook/wiki/TaskPool][TaskPool]] when
+ you mark them completed with C-c C-x (planner-task-done). Nifty stuff,
+ huh?
+
+#+BEGIN_EXAMPLE
+    (defadvice planner-task-done (after paul activate)
+      "Remove completed tasks from the TaskPool if that still leaves them linked."
+      (let ((info (planner-current-task-info)))
+        (when (planner-task-link-text info)
+          ;; If it is linked to TaskPool _and_ at least one other thing
+          (if (string-match planner-multi-separator (planner-task-link-text info))
+              (planner-multi-replan-task
+               (planner-multi-make-link (planner-multi-filter-links "^TaskPool$" (planner-multi-task-link-as-list info) t)))
+            ;; Else if it has a date and is linked to TaskPool
+            (if (and (planner-task-date info)
+                     (string= (planner-task-link info) "TaskPool"))
+                (planner-replan-task nil))))))
+#+END_EXAMPLE
+
+ÃƒÂ¥Ã‚ÂŽÃ‚ÂŸÃƒÂ¥Ã‚Â§Ã‚Â‹ÃƒÂ§Ã‚ÂšÃ‚Â„ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ¨Ã‚Â¨Ã‚ÂˆÃƒÂ§Ã‚Â®Ã‚Â---ÃƒÂ¦Ã‚Â©Ã‚ÂŸÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ©Ã‚Â--Ã‚Â‹ÃƒÂ§Ã‚Â™Ã‚ÂºÃƒÂ£Ã‚Â?Ã‚Â•ÃƒÂ£Ã‚Â‚Ã‚ÂŒÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â?Ã‚ÂšÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚Â¨ÃƒÂ¤Ã‚Â»Ã‚Â¥ÃƒÂ¥Ã‚Â‰Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ¥Ã‚Â­Ã‚Â˜ÃƒÂ¥Ã‚ÂœÃ‚Â¨ÃƒÂ£Ã‚Â?Ã‚Â---ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â€Ã‚Â‚
+Primitive calculating machines existed long before computers were
+developed.
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/code][code]]

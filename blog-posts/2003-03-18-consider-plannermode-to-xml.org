@@ -1,0 +1,8 @@
+#+TITLE: consider PlannerMode to XML
+
+March 18th, 2003 -
+[[http://sachachua.com/blog/p/523][http://sachachua.com/blog/p/523]]
+
+Some thoughts have been added to the
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]] wikinode
+on parsing it as a tree, and transforming it to XML.

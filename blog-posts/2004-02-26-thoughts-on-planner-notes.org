@@ -1,0 +1,13 @@
+#+TITLE: Thoughts on planner-notes
+
+February 26th, 2004 -
+[[http://sachachua.com/blog/p/1781][http://sachachua.com/blog/p/1781]]
+
+Actually, subcategories are already handled by separate plan pages, so
+ I don't need subtopics any more. I would, however, like to see all the
+ note headlines, possibly bounded by certain dates. That would be fun.
+ In which case, I don't need to merge anything in from planner-notes -
+ I can just work with the export functions I already have in
+ planner-experimental.
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/planner-notes.el][../../notebook/emacs/emacs-wiki/planner-notes.el]]

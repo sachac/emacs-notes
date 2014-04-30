@@ -1,0 +1,34 @@
+#+TITLE: Emacs Chat with Avdi Grimm (Org-mode, Ruby, etc.)
+
+March 4th, 2013 -
+[[http://sachachua.com/blog/p/24540][http://sachachua.com/blog/p/24540]]
+
+/Update 2013-03-16:/
+[[https://archive.org/download/EmacsSachaChuaAvdiGrimm/Emacs%20-%20Avdi%20Grimm.mp3][Get
+the MP3]] or
+[[https://archive.org/download/EmacsSachaChuaAvdiGrimm/Emacs%20-%20Avdi%20Grimm.ogg][Ogg
+Vorbis]] files, or
+[[https://archive.org/details/EmacsSachaChuaAvdiGrimm][listen to them on
+archive.org]]!
+
+Thanks to Matthew Darling's comment on
+[[http://sachachua.com/blog/2013/01/helping-people-learn-more-about-programming/][my
+post about code coaching]], I came across Avdi Grimm's work with pair
+programming -- and was delighted to find that he uses Emacs too. =)
+Check out my Skype chat with Avdi about Org-mode literate programming,
+Ruby, and how he got started with Emacs.
+
+[[http://vimeo.com/60848459][Emacs Chat with Avdi Grimm]] from
+[[http://vimeo.com/user1851927][Sacha Chua]] on
+[[http://vimeo.com][Vimeo]]. If you liked this, you might also like
+[[http://sachachua.com/blog/2012/06/emacs-chatting-with-john-wiegley-about-the-cool-things-he-does-with-emacs/][my
+chat with John Wiegley]]. Do you use Emacs? Want to share your story and
+the nifty things you think other people should know about? Comment below
+or [[http://sachachua.com/contact][get in touch]] with me!
+
+[[https://archive.org/download/EmacsSachaChuaAvdiGrimm/Emacs%20-%20Avdi%20Grimm.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[https://archive.org/download/EmacsSachaChuaAvdiGrimm/Emacs%20-%20Avdi%20Grimm.mp3][Play
+in new window]] |
+[[https://archive.org/download/EmacsSachaChuaAvdiGrimm/Emacs%20-%20Avdi%20Grimm.mp3][Download]]

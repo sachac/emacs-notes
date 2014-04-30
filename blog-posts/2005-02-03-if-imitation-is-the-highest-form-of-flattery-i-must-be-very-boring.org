@@ -1,0 +1,73 @@
+#+TITLE: If imitation is the highest form of flattery, I must be very boring
+
+February 3rd, 2005 -
+[[http://sachachua.com/blog/p/2610][http://sachachua.com/blog/p/2610]]
+
+[[http://journal.houseonahill.net/index.php/journal/entry/3781][sassylawyer
+has been plagiarized]]. That got me to
+ thinking about plagiarism, and you know? I don't think I've ever been
+ badly plagiarized. Probably not a single line maliciously lifted from
+my [[http://sachachua.com/notebook/wiki/Ph104][Ph104]] or
+ [[http://sachachua.com/notebook/wiki/JapanTraining][JapanTraining]]
+notes.
+ No one reposts me to get +5 Insightful or to increase post count on
+ some bulletin board. I saw a number of Google queries poking around my
+ [[http://sachachua.com/notebook/][notebook]] directory back when I
+still had files from college,
+ but those were probably people who would've copied netlists or
+ programs from elsewhere on the Net, anyway.
+
+Conclusion: I must be really boring. ;)
+
+I suppose it also helps that the only things I post on my blog are
+ [[http://sachachua.com/notebook/wiki/EmacsHacks][random code
+snippets]], [[http://sachachua.com/notebook/wiki/ShortStories][bad short
+stories]], [[http://sachachua.com/notebook/wiki/2005.01.28#5][business
+ideas]],
+ and my TODO list, all of which can be freely reposted anywhere you
+want.
+ (In fact, please steal my TODO list!)
+
+The only people who read my blog are geeks, my family and my friends.
+ They're all smarter than I am and have no problems coming up with
+ insightful posts on their own.
+
+I'm not concerned about plagiarism. I trust that if my thoughts are
+ being posted to a forum by someone who's too lazy to think up cool
+ stuff, the mere fact that the poster would think other people would
+ find such things interesting means that some of the readers might've
+ stumbled across my blog before. Then they laugh at the poster,
+ completely destroying the poster's reputation. Mwahaha.
+
+Even if I never get attributed, it's nice that the ideas are out
+ there. My ideas are more important than my byline. I don't care who
+ eventually makes stuff happen as long as the stuff happens. I learn by
+ writing, and I lose nothing if people copy me. If people go to the
+ trouble of stripping out my identity, then they'll just have to deal
+ with questions and bugs themselves.
+
+I don't care if people stumbling upon my work never bother to find out
+ who I am. If they find something in my braindump useful, well and
+ good. If they copy-and-paste what I've written into something they
+ need to submit for class or work, they've lost the opportunity to
+ exercise their mind.
+
+If someone ever accuses me of plagiarizing my own work, I'll simply
+ laugh and point to the other stuff I've written or to the things I've
+ done. People know I'm real.
+
+So there. I trust you, reader. I'll never use Javascript hacks to make
+ it difficult for you to save data from my website.
+ I'll never make it difficult for you to syndicate my blog
+ ([[http://feeds.feedburner.com/sachac][RSS feed]]) or copy it
+ whole-sale. Heck, if you want
+ an archive of my planner, either wget -r
+
+[[http://sacha.free.net.ph/notebook/plans/][http://sacha.free.net.ph/notebook/plans/]]
+or e-mail me for an archive.
+
+Go ahead and steal my thoughts. Add your insights. Make them better.
+
+On Technorati: [[http://www.technorati.com/tag/principles][principles]],
+[[http://www.technorati.com/tag/best][best]],
+[[http://www.technorati.com/tag/soapbox][soapbox]]

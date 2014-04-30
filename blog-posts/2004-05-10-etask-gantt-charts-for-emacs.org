@@ -1,0 +1,8 @@
+#+TITLE: Etask: Gantt charts for Emacs
+
+May 10th, 2004 -
+[[http://sachachua.com/blog/p/2041][http://sachachua.com/blog/p/2041]]
+
+[[http://www.reneweichselbaum.com/etask.html][http://www.reneweichselbaum.com/etask.html]]
+
+Wow, pretty! I should check this out...

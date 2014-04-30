@@ -1,0 +1,8 @@
+#+TITLE: Hey, RSS blogging seems to work!
+
+February 14th, 2004 -
+[[http://sachachua.com/blog/p/1706][http://sachachua.com/blog/p/1706]]
+
+And it still validates, which is always a very good thing...
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/remember.el][../../notebook/emacs/emacs-wiki/remember.el]]

@@ -1,0 +1,23 @@
+#+TITLE: Emacs: Chatting with John Wiegley about the cool things he does with
+Emacs
+
+June 27th, 2012 -
+[[http://sachachua.com/blog/p/23526][http://sachachua.com/blog/p/23526]]
+
+[[http://vimeo.com/44778543][John Wiegley -- June 26, 2012]] from
+[[http://vimeo.com/user1851927][Sacha Chua]] on
+[[http://vimeo.com][Vimeo]].
+
+Transcript:
+[[http://sachachua.com/blog/2012/07/transcript-emacs-chat-john-wiegley/][http://sachachua.com/blog/2012/07/transcript-emacs-chat-john-wiegley/]]
+
+[[http://newartisans.com/2011/04/letter-to-the-fsf/][Read more context
+for John Wiegley's thoughts on the GPL]]. Note from Sacha: The WordPress
+folks seem to have figured out how to earn money with premium themes,
+plugins, and training, so it's not incompatible with the GPL... =)
+
+John Wiegley is one of my Emacs heroes. =) Check out John's
+[[https://github.com/jwiegley][Emacs configuration and other tools]] on
+Github. John occasionally posts Emacs-related things at
+[[http://newartisans.com/][newartisans.com]]. You can find him on
+Twitter as [[http://twitter.com/jwiegley][@jwiegley]]. Enjoy!

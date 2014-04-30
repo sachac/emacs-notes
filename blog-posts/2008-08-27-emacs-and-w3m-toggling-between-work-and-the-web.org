@@ -1,0 +1,44 @@
+#+TITLE: Emacs and W3M: Toggling between work and the Web
+
+August 27th, 2008 -
+[[http://sachachua.com/blog/p/5088][http://sachachua.com/blog/p/5088]]
+
+Here's a handy shortcut that toggles between the W3M web browser and
+other buffers you're working on. I use it to quickly switch between code
+and documentation (or your favorite timewasting site, as it also makes a
+handy boss key).
+
+Define the function by adding the following code to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (defun wicked/toggle-w3m ()
+      "Switch to a w3m buffer or return to the previous buffer."
+      (interactive)
+      (if (derived-mode-p 'w3m-mode)
+          ;; Currently in a w3m buffer
+          ;; Bury buffers until you reach a non-w3m one
+          (while (derived-mode-p 'w3m-mode)
+        (bury-buffer))
+        ;; Not in w3m
+        ;; Find the first w3m buffer
+        (let ((list (buffer-list)))
+          (while list
+        (if (with-current-buffer (car list)
+              (derived-mode-p 'w3m-mode))
+            (progn
+              (switch-to-buffer (car list))
+              (setq list nil))
+          (setq list (cdr list))))
+          (unless (derived-mode-p 'w3m-mode)
+        (call-interactively 'w3m)))))
+#+END_EXAMPLE
+
+Then bind it to a shortcut key sequence (F7 F7 in this example) by
+adding the following code to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (global-set-key (kbd " ") 'wicked/toggle-w3m)
+#+END_EXAMPLE
+
+You can then use F7 F7 to switch back and forth between your web browser
+and whatever else you're working on.

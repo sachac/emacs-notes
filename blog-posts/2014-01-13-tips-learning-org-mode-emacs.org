@@ -1,0 +1,48 @@
+#+TITLE: Some tips for learning Org Mode for Emacs
+
+January 13th, 2014 -
+[[http://sachachua.com/blog/p/26658][http://sachachua.com/blog/p/26658]]
+
+This entry is part 3 of 4 in the series
+[[http://sachachua.com/blog/series/a-visual-guide-to-emacs/][A Visual
+Guide to Emacs]]
+
+When I learn something new, I always find myself wishing there was some
+kind of map to help me figure out where to start, how to track progress,
+and what to learn next. So now I'm making them. Here's one for learning
+[[http://orgmode.org][Org Mode]], a popular outline/TODO/everything-else
+mode for the Emacs text editor. You can probably figure out the relevant
+manual sections to read based on the keywords, but feel free to ask in
+the comments if you need more help.
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-07-Map-for-learning-Org-Mode-for-Emacs.png][[[http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-07-Map-for-learning-Org-Mode-for-Emacs-640x480.png]]]]
+
+/Map for Learning Org Mode for Emacs/
+
+Here's another short guide with suggestions for evolving your Org file
+organization:
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-09-Tips-for-organizing-your-Org-mode-files.png][[[http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-09-Tips-for-organizing-your-Org-mode-files-640x489.png]]]]
+
+/Tips for organizing your Org-mode files/
+
+And here's the one-page cheat sheet I made before helping someone dig
+into tracking time with Org. It's a great way to measure your time on
+specific tasks.
+
+[[http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-06-Tracking-time-with-Org-mode.png][[[http://sachachua.com/blog/wp-content/uploads/2014/01/2014-01-06-Tracking-time-with-Org-mode-640x480.png]]]]
+
+/Tracking time with Org Mode/
+
+Eventually I'll get around to writing/drawing a book on
+[[http://sachachua.com/blog/book-thinking-with-emacs][thinking with
+Emacs]]. If you want it to happen, keep asking questions! =)
+
+(Images are shared under the Creative Commons Attribution license, so
+reshare/reuse/remix away! Click on the images for larger versions.)
+
+Series
+Navigation[[http://sachachua.com/blog/2013/09/how-to-learn-emacs-keyboard-shortcuts-a-visual-tutorial-for-newbies/][«
+How to learn Emacs keyboard shortcuts (a visual tutorial for
+newbies)]][[http://sachachua.com/blog/2014/04/emacs-drawings-dired-moving-around/][More
+Emacs drawings: Dired, moving around »]]

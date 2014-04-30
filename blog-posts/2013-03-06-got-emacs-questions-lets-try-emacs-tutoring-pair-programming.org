@@ -1,0 +1,22 @@
+#+TITLE: Got Emacs questions? Let's try Emacs tutoring / pair programming!
+
+March 6th, 2013 -
+[[http://sachachua.com/blog/p/24533][http://sachachua.com/blog/p/24533]]
+
+Getting started with Emacs? Need help tweaking your Emacs configuration?
+Curious about the tools and packages out there? Want to learn more about
+Emacs Lisp? Working on some open source Emacs code? Just want to talk
+Emacs with someone?
+
+We can connect on Skype or Google Hangout, or I can ssh into your system
+if you've got that set up.
+Pay-what-you-can-and-what-you-think-it's-worth. =) (It's an experiment!)
+Student / in between jobs? Reach out anyway!
+
+Comment below, [[http://sachachua.com/blog/contact][contact me]], or
+e-mail me at [[mailto:sacha@sachachua.com][sacha@sachachua.com]] with
+the subject “Emacs pair programming”. I'm generally available M-W-F and
+I'm in Toronto, so Eastern Standard Time (EST). Tell me when you're
+available (and what timezone you're in), what you're curious about, and
+other things it would be nice to know about you. Let's see what we can
+do! =)

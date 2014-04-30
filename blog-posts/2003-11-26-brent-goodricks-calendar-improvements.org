@@ -1,0 +1,7 @@
+#+TITLE: Brent Goodrick's calendar improvements
+
+November 26th, 2003 -
+[[http://sachachua.com/blog/p/1427][http://sachachua.com/blog/p/1427]]
+
+Xref:
+[[http://sachachua.com/notebook/wiki/PlannerMode#11][PlannerMode#11]]

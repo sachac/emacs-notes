@@ -1,0 +1,13 @@
+#+TITLE: Spaceants' blog, emacs-wiki
+
+December 4th, 2003 -
+[[http://sachachua.com/blog/p/1460][http://sachachua.com/blog/p/1460]]
+
+While searching for Google:linux+academe, ran across
+
+[[http://www.spaceants.org/bloz/2003/Apr][http://www.spaceants.org/bloz/2003/Apr]]
+. Reference to
+ [[http://www.emacswiki.org][http://www.emacswiki.org]], my
+[[http://sachachua.com/notebook/wiki/OnLove][OnLove]] page, and Linux; I
+\_must\_ have
+ written this person before to comment on that...

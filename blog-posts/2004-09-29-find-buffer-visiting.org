@@ -1,0 +1,7 @@
+#+TITLE: find-buffer-visiting
+
+September 29th, 2004 -
+[[http://sachachua.com/blog/p/2243][http://sachachua.com/blog/p/2243]]
+
+Now there's a useful Emacs function. I might be able to use that for
+ planner-tasks-file-behavior...

@@ -1,0 +1,85 @@
+#+TITLE: Eclipse to Emacs: Navigating your source tree
+
+July 27th, 2008 -
+[[http://sachachua.com/blog/p/4998][http://sachachua.com/blog/p/4998]]
+
+Two other things I like about the Eclipse development environment are
+the ability to jump to a function definition and the ability to open any
+resource in the workspace. Fortunately, these shortcuts are easy to
+duplicate in Emacs.
+
+[[http://ctags.sourceforge.net/][Exuberant Ctags]] is a utility that
+builds an index of the function definitions in your source code. You can
+use this index to jump to any function definition using editors such as
+vi or emacs. To index your Drupal source code, for example, go to the
+root of your source directory and use a command like this:
+
+#+BEGIN_EXAMPLE
+    find . -name \*.module -o -name \*.php -o -name \*.inc -o -name \*.install -o -name \*.engine -o -name \*.profile | etags -l php -
+#+END_EXAMPLE
+
+To use this index in Emacs, add the following code to your ~/.emacs,
+changing drupal-project-path as necessary:
+
+#+BEGIN_EXAMPLE
+    (defvar drupal-project-path "~/proj/example" "*Base path for your project")
+
+    (require 'etags)
+    (setq tags-file-name (expand-file-name "TAGS" drupal-project-path))
+#+END_EXAMPLE
+
+Evaluate the code. You can then use M-. (find-tag) to jump to the
+declaration of a function in your project.
+
+To open any resource in your source tree with a few keystrokes, index
+the files with filecache and use ido to open the file. Ido is well worth
+learning how to use. Here's the code I use, taken almost directly from
+the filecache documentation:
+
+#+BEGIN_EXAMPLE
+    (require 'filecache)
+    (require 'ido)
+    (defun file-cache-ido-find-file (file)
+      "Using ido, interactively open file from file cache'.
+    First select a file, matched using ido-switch-buffer against the contents
+    in `file-cache-alist'. If the file exist in more than one
+    directory, select directory. Lastly the file is opened."
+      (interactive (list (file-cache-ido-read "File: "
+                                              (mapcar
+                                               (lambda (x)
+                                                 (car x))
+                                               file-cache-alist))))
+      (let* ((record (assoc file file-cache-alist)))
+        (find-file
+         (expand-file-name
+          file
+          (if (= (length record) 2)
+              (car (cdr record))
+            (file-cache-ido-read
+             (format "Find %s in dir: " file) (cdr record)))))))
+
+    (defun file-cache-ido-read (prompt choices)
+      (let ((ido-make-buffer-list-hook
+         (lambda ()
+           (setq ido-temp-list choices))))
+        (ido-read-buffer prompt)))
+
+    (ido-mode t)
+    ;; Change this to filter out your version control files
+    (add-to-list 'file-cache-filter-regexps "\\.svn-base$")
+    (if drupal-project-path
+        (file-cache-add-directory-using-find drupal-project-path))
+
+    (global-set-key (kbd "ESC ESC f") 'file-cache-ido-find-file)
+#+END_EXAMPLE
+
+This turns ESC ESC f into a handy shortcut for finding files anywhere in
+your project tree. Read the source code (ido.el) for more information on
+ido shortcuts.
+
+Good luck and have fun!
+
+(UPDATE: Added “.” to the find command -- two people suggested it! =) )
+ (UPDATE: Forced etags to detect files as php and added .engine and
+.profile to the list of extensions)
+ (UPDATE: Added version control filter for file-cache)

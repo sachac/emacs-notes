@@ -1,0 +1,24 @@
+#+TITLE: Don't lose remember buffers when closing Emacs
+
+November 24th, 2004 -
+[[http://sachachua.com/blog/p/2423][http://sachachua.com/blog/p/2423]]
+
+#+BEGIN_EXAMPLE
+    (defun ajk/my-cleanup-then-save-buffers-kill-emacs (&optional arg)
+      "Clean up before saving buffers and killing Emacs."
+      (interactive "P")
+      ;; stop here if there's a *Remember* buffer
+      (if (get-buffer remember-buffer)
+          (remember)
+        ;; clean up Gnus
+        (and
+         (fboundp 'gnus-alive-p)
+         (gnus-alive-p)
+         (let ((gnus-interactive-exit nil))
+           (gnus-group-exit)))
+        (save-buffers-kill-emacs arg)))
+    (defalias 'sacha/save-buffers-kill-emacs
+              'ajk/my-cleanup-then-save-buffers-kill-emacs)
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/remember-config.el][../emacs/remember-config.el]]

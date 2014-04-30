@@ -1,0 +1,62 @@
+#+TITLE: Highrise HQ
+
+September 11th, 2007 -
+[[http://sachachua.com/blog/p/4352][http://sachachua.com/blog/p/4352]]
+
+I took a look at [[http://www.highrisehq.com/][Highrise HQ]] following a
+recommendation by Winston Damarillo. It's a web-based contact
+relationship manager (CRM) by 37signals, so it's all pretty and Web
+2.0-y.
+
+Looking further, I'm surprised at how much my hand-hacked Emacs-based
+CRM can do:
+
+-  *Review a colleagueÃƒÂ¢Ã‚Â€Ã‚Â™s notes before calling her contact at
+   the printer* :: I do this with BBDB. Not only that, but my system
+   automatically inserts notes into any e-mail I compose to that person.
+-  *See all the follow-ups scheduled for this week* :: Got that with
+   Planner
+-  *Set a reminder to write your client a thank-you note next
+   Friday* :: Ditto with Planner
+-  *Keep all important emails from a customer together on one page* :: I
+   suppose I could do that with mail search. There must be a better way,
+   though...
+-  *Schedule a follow-up sales call with a lead in 30 days* :: Gotcha.
+-  *Review all communications with your investors* :: I haven't figured
+   out how to do this one yet. Mail folders help. Maybe I can hook up
+   BBDB with my mail search engine...
+-  *Build a list of all the designers your company has hired in the
+   past* :: Can do this with tags. In fact, I can build a list of people
+   who are tagged with A but not B and whom I've talked to in the last
+   year... =)
+-  *Enter notes from a call with a potential client* :: Gotcha.
+-  *Enter contact info for people you met at the conference this
+   week* :: Gotcha.
+-  *Generate a list of contractors you worked with last year* :: Gotcha.
+-  *See all the people your company knows at The New York
+   Times* :: Regexp search, easy enough.
+
+Highrise: you can share your notes with other people. I don't need that
+yet, and I don't think I'll need it any time soon.
+
+Emacs: I can use it offline. That totally rocks. Also, I can do lots
+ of complicated batch operations, such as composing form letters that
+ include conditional text, randomized text, and personalized
+ signatures. I can add arbitrary data fields and write code to do all
+ sorts of things. I don't need Firefox or a mouse.
+
+You know, if I just figured out how to translate my setup to the Web,
+ I'd make a killing. ;)
+
+I'm going to steal the idea of a pretty view, and I'm going to make it
+ easier to see all the tasks associated with a person instead of
+ relying on my daily view. I also need to make it easier to mark
+ something as for-followup. Hmmm... But yeah, not too bad, not too
+ bad...
+
+On Technorati:
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: gnus-server-opened -- Function: Check whether a
+connection to GNUS-COMMAND-METHOD has been opened. -- Face: Face used
+for displaying OPENED servers

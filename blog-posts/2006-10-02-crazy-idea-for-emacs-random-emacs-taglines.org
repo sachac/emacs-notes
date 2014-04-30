@@ -1,0 +1,49 @@
+#+TITLE: Crazy idea for Emacs: Random Emacs taglines
+
+October 2nd, 2006 -
+[[http://sachachua.com/blog/p/3905][http://sachachua.com/blog/p/3905]]
+
+Would anyone happen to know of a way to select a random symbol with a
+ description?
+
+Actually. Hmm.
+
+#+BEGIN_EXAMPLE
+    (progn
+      (apropos ".")
+      (write-file "~/.taglines.random-emacs-symbols")
+      (delete-matching-lines "Plist")
+      (delete-matching-lines "not documented")
+      (replace-regexp "\n  " " - " nil)
+      (delete-non-matching-lines " - "))
+#+END_EXAMPLE
+
+Et voila! Random Emacs taglines together with the code:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/random-tagline (&optional file)
+      "Return a random tagline and put it in the kill ring."
+      (interactive)
+      (with-current-buffer (find-file-noselect (or file "~/.taglines"))
+        (goto-char (random (point-max)))
+        (let ((string
+               (buffer-substring (line-beginning-position)
+                                 (line-end-position))))
+          (kill-new string)
+          string)))
+
+    (defadvice remember (after sacha-tagline activate)
+      "Add random tagline."
+      (save-excursion
+      (goto-char (point-max))
+      (insert "\n\nRandom Emacs symbol: "
+              (sacha/random-tagline "~/.taglines.random-emacs-symbols")
+              "\n\n")))))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]],
+[[http://www.technorati.com/tag/elisp][elisp]]
+
+Random Emacs symbol: eshell-remove-entries -- Function: From PATH,
+remove all of the given FILES, perhaps interactively.

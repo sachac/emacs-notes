@@ -1,0 +1,12 @@
+#+TITLE: Navigating the kill ring
+
+July 6th, 2004 -
+[[http://sachachua.com/blog/p/2162][http://sachachua.com/blog/p/2162]]
+
+Snippet from bojohan:
+
+#+BEGIN_EXAMPLE
+    (defun yank-rpop (arg) (interactive "*p") (yank-pop (- arg)))
+#+END_EXAMPLE
+
+Map this to M-Y and you'll be all set.

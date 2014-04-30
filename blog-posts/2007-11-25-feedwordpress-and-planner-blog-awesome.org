@@ -1,0 +1,30 @@
+#+TITLE: Feedwordpress and Planner blog = awesome
+
+November 25th, 2007 -
+[[http://sachachua.com/blog/p/4468][http://sachachua.com/blog/p/4468]]
+
+I've been thinking about adding public comments and other nifty
+ features to my Planner blog for the longest time. It would be nice if
+ people could search and navigate through my blog the way they can
+ with, say, WordPress blogs. I thought about switching to WordPress,
+ but Emacs is just so much handier for me.
+
+Today I had a thinko -- why not find a way to pull entries from my
+ Emacs Planner blog feed into WordPress? I knew there /had/ to be
+ a plugin to do this. Sure enough, a quick search found
+ [[http://projects.radgeek.com/feedwordpress/install/][Feedwordpress]],
+ which took me only a few minutes to install. I don't know why I hadn't
+ made that connection before. ;) I mean, spam blogs use things like
+ this /all the time/.
+
+ANYWAY, this neatly solves my problem. I can still blog within Emacs
+ with all the syntax and support I've gotten used to, but I can now
+ provide a different interface for people who like the whizbang
+ Wordpress stuff. =)
+
+Watch out for more blog craziness in the future. ;)
+
+On Technorati: [[http://www.technorati.com/tag/wordpress][wordpress]],
+[[http://www.technorati.com/tag/blogging][blogging]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/planner][planner]]

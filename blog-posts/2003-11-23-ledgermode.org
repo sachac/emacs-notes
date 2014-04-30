@@ -1,0 +1,26 @@
+#+TITLE: LedgerMode
+
+November 23rd, 2003 -
+[[http://sachachua.com/blog/p/1410][http://sachachua.com/blog/p/1410]]
+
+I want to be able to use Emacs for my double-entry accounting so that
+ I don't have to start GnuCash. I would like it to be emacs-wiki
+ compatible so that I can publish it as an emacs-wiki file. I can begin
+ with having all of my entries in a GeneralLedger wiki page. Each entry
+ can be of the form
+
+| Date   | {{Finance:GUID}}   | Transaction name / notes   | Account   | Amount   |
+
+The amount would be expressed as either Amount (credit) or -Amount
+ (debit).
+
+I want to be able to quickly cycle or complete accounts, and I
+ think I'll be able to do that with hippie-expand or some way to choose
+ accounts easily.
+
+- I want to be able to see a summary of the balances of accounts.
+ - I want to be able to view income/expense reports aggregated by month.
+ - I want to be able to see expense reports per month.
+ - I want to allow split transactions.
+
+[[http://sachachua.com/notebook/wiki/LedgerMode][LedgerMode]]

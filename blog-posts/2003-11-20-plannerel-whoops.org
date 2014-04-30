@@ -1,0 +1,7 @@
+#+TITLE: planner.el whoops
+
+November 20th, 2003 -
+[[http://sachachua.com/blog/p/1378][http://sachachua.com/blog/p/1378]]
+
+Referred to old way of favoring future dates. Silly me. Forgot I renamed
+that. Tsk tsk tsk.

@@ -1,0 +1,83 @@
+#+TITLE: Trackback implementation for Emacs
+
+October 21st, 2004 -
+[[http://sachachua.com/blog/p/2311][http://sachachua.com/blog/p/2311]]
+
+From
+[[http://elisp.info/archive/80614224][http://elisp.info/archive/80614224]],
+posted by Mark A. Hershberger:
+
+#+BEGIN_QUOTE
+  This will be put into nnrss.el or weblogger.el, but, for now, here
+   is an implementation of trackback.
+#+END_QUOTE
+
+#+BEGIN_EXAMPLE
+    (defun tb-find-tb-url (url &optional local)
+      "Find the track-back URL for a resource."
+      (with-temp-buffer
+        (let* (xmlform htmlform)
+          ;; bit o' work necessary for w3 pre-cvs and post-cvs
+          (if local
+          (let ((coding-system-for-read 'binary))
+            (insert-file-contents url))
+        (mm-url-insert url)))
+        (when (re-search-forward "" nil t)
+          (let ((rdf-end (match-end 0)))
+            (goto-char rdf-start)
+            (re-search-forward "trackback:ping=\"\\([^\"]+\\)" rdf-end)
+            (match-string-no-properties 1)))))))
+
+    (defun tb-get-trackback (url)
+      "Get who's tb-ed an entry."
+      (let ((tb-url (tb-find-tb-url url)))
+        (when (not tb-url)
+          (error "No trackback URL found at %s" url))
+        (w3-fetch (concat tb-url "?__mode=rss"))))
+
+    (defun tb-send-trackback (url data &optional no-seek)
+      "Send a trackback."
+      (let ((tb-url (tb-find-tb-url url)))
+        (when (and (not no-seek)
+               (not tb-url))
+          (error "No trackback URL found at %s" url))
+        (let* ((enctype "multipart/form-data")
+           (query (w3-encode-multipart/form-data data))
+           (url-request-method "POST")
+           (url-request-data (cdr query))
+           (url-request-extra-headers
+            (cons (cons "Content-type" (concat enctype "; boundary=\""
+                               (substring (car query) 2 nil)
+                               "\""))
+              url-request-extra-headers)))
+          (w3-fetch (or tb-url url)))))
+
+    (defun w3-encode-multipart/form-data (items)
+      ;; Create a multipart form submission.
+      ;; Returns a cons of two strings.  Car is the separator used.
+      ;; cdr is the body of the MIME message."
+      (let ((separator (format-time-string
+                "--separator-%Y%j%H%M%S-for-www-form-data")))
+        (cons separator
+          (concat
+           (mapconcat
+            (function
+             (lambda (item)
+               (w3-form-encode-make-mime-part
+            (car item) (cdr item) separator)))
+            items "\r\n")
+           "\r\n" separator "--\r\n"))))
+
+    Example Code:
+
+    (tb-send-trackback
+     "http://www.movabletype.org/mt/trackback/3"
+     '(("title"     . "Emacs Trackback Implementation")
+       ("excerpt" . "An implementation of trackback for emacs webloggers.")
+       ("url"       . "http://elisp.info/archive/80614224")
+       ("blog_name" . "elisp.info")) t)
+#+END_EXAMPLE
+
+Now all we need is a way to receive trackback pings...
+
+[[http://elisp.info/archive/80614224][http://elisp.info/archive/80614224]]

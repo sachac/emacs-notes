@@ -1,0 +1,72 @@
+#+TITLE: One #emacs day -- 0. 2005.01.05 and 1. 2005.01.06
+
+January 6th, 2005 -
+[[http://sachachua.com/blog/p/2551][http://sachachua.com/blog/p/2551]]
+
+([[EmacsDay#note1][EmacsDay:1]]”[[EmacsTips#note20][EmacsTips:20]])
+
+(Technically, one and a half, because this is the first entry)
+
+Here are interesting tidbits from irc://irc.freenode.net/#emacs
+
+Code
+
+- =M-x column-number-mode= makes Emacs show column numbers.
+ - =emms-locate= is a useful way to play selected media files.
+ - Powerful buffer switching: With either iswitchb or ido, C-x b C-s.
+ido seems to be better than iswitchb for multitty Emacs, and comes with
+CVS GNU Emacs. iswitchb is in GNU Emacs and the edit-utils package for
+XEmacs. If you want to stick with iswitchb fulltime, add
+=(iswitchb-default-keybindings) to your init.el. - ess (emacs spreadsheet): ==set-variable set-goal-column nil=
+for neater navigation
+ - emms: =(define-key dired-mode-map [.] 'emms-play-dired)= after dired
+is already loaded
+ - Editing XML: Many people recommend nxml (GNU Emacs only). xsl-mode is
+also useful even for other XML files. xsl-mode indentation is better
+than xml-mode, too. xsl-mode is in the xslide package, and in the cygwin
+sumo package.
+ - If you want Python files recognized, install python-mode and
+=(add-to-list 'auto-mode-alist (cons "\\.py\\'" 'python-mode))=
+ - Gnus: You can use B DEL to delete drafts.
+ - Recursion in lambdas!
+=(funcall #1=(lambda (n) (if (= n 0) 1 (* n (funcall #1# (1- n))))) 5)=
+- result: 120. Not recommended.
+ - Use M-x goto-line to go to the nth line.
+ - To copy the font setting and color-theme of the old frame when you
+create a new frame:
+=(defadvice make-frame (around frob-frame-parameters activate) (let ((default-frame-alist (frame-parameters))) ad-do-it))=
+ - How to get rid of all the \^Ms at the end of lines:
+=M-% C-q C-m RET C-q RET RET= . (Better solution:
+=M-x revert-buffer-with-coding-system=, dos.)
+ - =desktop= can make Emacs jump to the previous position in a file when
+you reopen the file
+ - Setting auto-fill in file comments:
+=-*- mode: major; mode: auto-fill -*-=, where major is the major mode
+you want
+
+Issues
+
+- ess toolbar variables (customization) need to be set before ess is
+loaded, but ess is loaded in site-start. How do you set it, then?
+
+Misc
+
+- ljupdate darcs repository:
+[[http://edward.oconnor.cx/code/ljupdate/][http://edward.oconnor.cx/code/ljupdate/]]
+ - ERC seems to be the most popular IRC client.
+ - Have you checked out the Emacs LiveJournal community?
+[[http://www.livejournal.com/community/emacs/][http://www.livejournal.com/community/emacs/]]
+ - Don't worry about losing local changes when you modify the source
+code of CVS Emacs. CVS does patches.
+ - Emacs under screen: C-\ might be a good Screen escape key.
+ - People use normal synchronization tools like rsync, unison, and CVS
+to sync their planner.el pages between computers.
+ - Hook variables named -hook tend to not take arguments, while hook
+variables named -functions might be called with arguments.
+ - Debian: /etc/emacs/site-start.d and
+/usr/share/emacs/site-lisp/debian-startup.el are responsible for lines
+like “Loading 00debian-vars (source)...”, while
+/usr/lib/emacsen-common/emacs-package-install is called when the deb is
+being set up.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

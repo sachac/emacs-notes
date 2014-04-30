@@ -1,0 +1,75 @@
+#+TITLE: tala's open source interview
+
+March 17th, 2003 -
+[[http://sachachua.com/blog/p/518][http://sachachua.com/blog/p/518]]
+
+Not one of my most coherent responses, but it must be done.
+
+*How do you/does your organization support and advocate Open Source
+ Software? What activities have you spearheaded or joined in?*
+
+I maintain or contribute source code and time to a few open source
+ projects like the Emacs Planner module. I've given several talks at
+ local Linux events such as the UP Open Source Day held on February 20,
+ 2003, and the Ateneo I.T. Forum held on March 7, 2003. I am also the
+ current vice president of the Philippine Linux Users Group and I am
+ active in a couple of mailing lists like plug and ph-linux-newbie.
+
+*Why do you support the use of Open Source Software?*
+
+Because it's fun. Because it helps me practice my skills. Because it
+ gives me bucketloads of free software that I can use, customize, debug
+ and develop. Because it helps me make a difference.
+
+What are the advantages of using Open Source Software over
+
+#+BEGIN_QUOTE
+  Proprietary Software generally and specifically for the Philippines?
+   From a techie's point of view? From a layman's point of view (such
+   as a student or an office secretary or clerk)?
+#+END_QUOTE
+
+Speaking as a techie, I find open source to be absolutely wonderful. I
+ can learn as much as I want from whatever software program I choose. I
+ can tweak, experiment, and rewrite to my heart's content. For me, free
+ and open source software is about freedom -- the freedom to learn, the
+ freedom to improve.
+
+You might also be interested in an essay of mine.
+[[http://www.inq7.net/inf/2002/sep/26/inf_27-1.htm][http://www.inq7.net/inf/2002/sep/26/inf\_27-1.htm]]
+
+*What is the current state of Open Source Software in the Philippines?*
+
+You might want to check out the openminds\_ph archives for a lot of
+ discussion on that.
+[[http://groups.yahoo.com/groups/openminds_ph][http://groups.yahoo.com/groups/openminds\_ph]]
+
+*In your opinion, will the use of Open Source Software spread and
+ gain more popularity? What factors will help the spread of use?*
+
+I don't see why not. Open source software just makes a lot of sense to
+ me. There are a lot of companies and schools looking into open
+ source, and even our government is slowly exploring open source.
+
+*What factors will hinder the spread of the use of Open Source
+ Software in the Philippines?*
+
+Many businesses are locked into proprietary solutions because they'd
+ come to rely on a single vendor, and big software companies try to
+ make sure that people don't know they have alternatives. For example,
+ if you didn't know that you could save files in other formats simply
+ by using the File -> Save As command in Microsoft Word, you'd end up
+ saving in the closed Microsoft Word format. If you're using something
+ like Microsoft Word 2002 and your friends only have Microsoft Word 98,
+ they'll have to buy new software just to open your file. People buy
+ Microsoft Office because “everyone else uses it.”
+
+There's also the impression that open source is intimidating and that
+ it's only for geeks. A lot of work is being done to improve it on the
+desktop,
+ and companies are springing up to provide Linux support.
+
+*In your opinion, does Open Source Software have a future in the
+ Philippine IT industry?*
+
+Definitely.

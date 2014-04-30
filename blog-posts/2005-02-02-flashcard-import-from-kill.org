@@ -1,0 +1,32 @@
+#+TITLE: flashcard-import-from-kill
+
+February 2nd, 2005 -
+[[http://sachachua.com/blog/p/2607][http://sachachua.com/blog/p/2607]]
+
+The following code snippet makes it easier for me to import segments
+ from my dictionary files. It uses
+[[http://sachachua.com/notebook/emacs/flashcard.el][../emacs/flashcard.el]].
+
+#+BEGIN_EXAMPLE
+    (defun flashcard-import-from-kill (deck)
+      "Import cards for DECK from the clipboard, which should be colon-separated.
+
+    Question : Answer"
+      (interactive (list flashcard-deck))
+      (unless (eq major-mode 'flashcard-mode)
+        (error "You're not in a deckfile."))
+      (with-temp-buffer
+        (yank)
+        (goto-char (point-min))
+        (while (re-search-forward "^ *\\(.*\\) +: +\\(.*\\)$" nil t)
+          (flashcard-add-card deck
+                              (flashcard-make-card (match-string 1)
+                                                   (match-string 2)))))
+      (when (and (interactive-p)
+                 (not flashcard-card))
+        (flashcard-ask)))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/flashcard-config.el][../emacs/flashcard-config.el]]
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

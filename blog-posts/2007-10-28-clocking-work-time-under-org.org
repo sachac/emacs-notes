@@ -1,0 +1,48 @@
+#+TITLE: Clocking work time under Org
+
+October 28th, 2007 -
+[[http://sachachua.com/blog/p/4427][http://sachachua.com/blog/p/4427]]
+
+Whether you submit detailed timesheets to clients or not, it's a good
+ idea to estimate and keep track of the time you spend working on
+ tasks. I find that this helps me focus on the task at hand, and the
+ schedule feedback allows me to get a better idea of how much time it
+ will take to do something in the future. It's also a good way to find
+ out where your time goes, of course.
+
+It's easy to clock work time under Org. When on a TODO item, type C-c
+ C-x C-i (org-clock-in). Work on the task. When you're done, mark the
+task
+ as done with C-c C-t (org-todo), which automatically calls clock-out.
+ You can also clock out of a task manually by calling C-c C-x Co
+ (org-clock-out). The elapsed time will be added to the task headline.
+To
+ review the time summaries for your project, type C-c C-x C-d
+ (org-clock-display). If you want to add notes when you mark a task as
+ done, add “#+STARTUP: lognoteclock-out” to the beginning of your file.
+
+How would you use this to keep track of your day? One way is to
+ keep track of the difference between your planned schedule and your
+ actual schedule. Add time estimates to your tasks. For example,
+
+#+BEGIN_EXAMPLE
+       ** TODO 20min Respond to mail
+#+END_EXAMPLE
+
+could represent twenty minutes of handling mail. Clock in and out of
+ tasks as you do them. To review the day's accomplishments, type ‘l'
+ (org-agenda-log-mode) from the agenda view. This shows the completed
+ tasks and the time it took to accomplish them.
+
+(Now I'm tempted to write an easy way to filter the Org task view by
+ estimated number of minutes. ;) Another nice little hack before that
+ would be to have a modeline countdown based on the estimate of the
+ currently-clocked-in task. Hmm. And then there's displaying the list
+ of tasks for today and choosing which one to clock in on... That would
+ be fun to do, too. And then there's calculating velocity and doing
+ evidence-based scheduling... The list goes on!)
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: minibuffer-local-map -- Variable: Default keymap to
+use when reading from the minibuffer.

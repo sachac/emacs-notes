@@ -1,0 +1,19 @@
+#+TITLE: Warm and fuzzy feelings
+
+March 6th, 2004 -
+[[http://sachachua.com/blog/p/1843][http://sachachua.com/blog/p/1843]]
+
+#+BEGIN_EXAMPLE
+      Hi sachac :-)
+      i've been following your planner mode pages for a while, I must say it's a great project
+      dto: Awwwww, thanks! =)
+      dto: You can go thank johnw for that. My job is just to patch the bugs I accidentally introduce, and
+              occasionally make a bunch of people really happy by figuring out how to hack something cool into it. =)
+      sachac: I use nnrss/gnus to read your feed :-)
+      anyway I think you're doing great, i'd love to offer feedback
+      dto: Awwwwww... =)
+      i'm planning to use it for organizing my work, it's very hectic and i manage multiple
+           projects/tasks/contacts/emails etc
+      dto: Wow, neat! =)
+#+END_EXAMPLE
+

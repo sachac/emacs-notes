@@ -1,0 +1,70 @@
+#+TITLE: Emacs Chat: Magnar Sveen (Emacs Rocks)
+
+November 25th, 2013 -
+[[http://sachachua.com/blog/p/26474][http://sachachua.com/blog/p/26474]]
+
+UPDATE 2014-01-27:
+[[https://docs.google.com/document/d/1sJM7dZtJmMgLuhfOdR3NuJhUnqTla19JVTL2-gqBGJw/pub][Transcript
+posted!]]
+ UPDATE: Want just the audio?
+[[https://archive.org/download/201311EmacsChatMagnarSveenEmacsRocks/201311-Emacs-Chat-Magnar-Sveen-EmacsRocks.mp3][MP3]]
+/
+[[https://archive.org/download/201311EmacsChatMagnarSveenEmacsRocks/201311-Emacs-Chat-Magnar-Sveen-EmacsRocks.ogg][OGG]]
+
+Here are the notes from my chat with Magnar Sveen, the creator of the
+[[http://emacsrocks.com/][Emacs Rocks]] screencast series and a number
+of other great Emacs resources. Enjoy!
+
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=0m48s][0m48s]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=0m48s][Magnar has been using Emacs for two years]]               |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=2m30s][2m30s]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=2m30s][Moving from TextMate]]                                    |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=3m45s][3m45s]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=3m45s][World of Warcraft]]                                       |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=4m10s][4m10s]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=4m10s][Friend's influence]]                                      |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=5m10s][5m10s]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=5m10s][Learning as a game]]                                      |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=6m10s][6m10s]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=6m10s][Other ways of learning -- time outside work]]             |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=7m44s][7m44s]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=7m44s][Screencasting]]                                           |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=9m30s][9m30s]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=9m30s][Things Magnar wants to learn more about -- Org]]          |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=10m19s][10m19s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=10m19s][What else Magnar does with Emacs]]                       |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=11m17s][11m17s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=11m17s][Norwegian text adventure game]]                          |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=12m08s][12m08s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=12m08s][Outside Emacs: family, board games (120!)]]              |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=13m41s][13m41s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=13m41s][Managing a large hobby project]]                         |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=14m30s][14m30s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=14m30s][Learning through projects]]                              |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=14m48s][14m48s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=14m48s][Dealing with feeling overwhelmed by Emacs]]              |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=16m38s][16m38s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=16m38s][Hardware]]                                               |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=20m20s][20m20s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=20m20s][Emacs configuration]]                                    |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=20m40s][20m40s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=20m40s][Projects with perspective-mode]]                         |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=21m32s][21m32s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=21m32s][Find file in project, ido-vertical-mode, flx-ido]]       |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=23m45s][23m45s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=23m45s][Switching between projects]]                             |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=25m01s][25m01s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=25m01s][Guide-key]]                                              |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=25m56][25m56]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=25m56][Rebinding C-h]]                                           |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=26m36][26m36]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=26m36][paredit and smartparens]]                                 |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=29m20s][29m20s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=29m20s][visual-regexp]]                                          |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=30m35s][30m35s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=30m35s][annoying-arrows-mode]]                                   |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=32m45s][32m45s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=32m45s][project-archetype]]                                      |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=35m15s][35m15s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=35m15s][Wishlist: package management]]                           |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=35m55s][35m55s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=35m55s][Satisfied with configuration]]                           |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=35m25s][35m25s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=35m25s][Marks and regions]]                                      |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=37m20s][37m20s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=37m20s][Configuration is on github]]                             |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=37m40s][37m40s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=37m40s][evil-mode]]                                              |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=40m00s][40m00s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=40m00s][Feedback on Emacs Rocks]]                                |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=42m00s][42m00s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=42m00s][Growing to appreciate Emacs because of extensibility]]   |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=43m15s][43m15s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=43m15s][The giraffe book]]                                       |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=44m57s][44m57s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=44m57s][Getting code into core]]                                 |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=49m39][49m39]]     | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=49m39][Emacs koans?]]                                            |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=51m45s][51m45s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=51m45s][IRC bot]]                                                |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=52m50s][52m50s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=52m50s][Learning from other people in the office]]               |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=54m40s][54m40s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=54m40s][Other questions]]                                        |
+| [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=56m23s][56m23s]]   | [[http://www.youtube.com/watch?v=87tjF_mYvpE&t=56m23s][Board game recommendations]]                             |
+
+[[https://docs.google.com/document/d/1sJM7dZtJmMgLuhfOdR3NuJhUnqTla19JVTL2-gqBGJw/pub][Read
+or download the transcript]]
+
+Check out [[http://sachachua.com/blog/emacs-chat][Emacs Chat]] for more
+interviews like this. Got a story to tell about how you learned about or
+how you use Emacs? [[http://sachachua.com/blog/contact][Get in touch!]]
+
+[[http://archive.org/download/201311EmacsChatMagnarSveenEmacsRocks/201311-Emacs-Chat-Magnar-Sveen-EmacsRocks.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[http://archive.org/download/201311EmacsChatMagnarSveenEmacsRocks/201311-Emacs-Chat-Magnar-Sveen-EmacsRocks.mp3][Play
+in new window]] |
+[[http://archive.org/download/201311EmacsChatMagnarSveenEmacsRocks/201311-Emacs-Chat-Magnar-Sveen-EmacsRocks.mp3][Download]]

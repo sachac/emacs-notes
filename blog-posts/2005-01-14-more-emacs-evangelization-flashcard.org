@@ -1,0 +1,56 @@
+#+TITLE: More Emacs evangelization: flashcard
+
+January 14th, 2005 -
+[[http://sachachua.com/blog/p/2566][http://sachachua.com/blog/p/2566]]
+
+Aris and I are both struggling with far too much kanji. I used a
+ combination of *kdrill* to gain familiarity with kanji and
+
+[[http://sachachua.com/notebook/emacs/flashcard.el][../emacs/flashcard.el]]
+to drill the meaning into my brain, as
+ flashcard.el requires me to get a question right 5 times in a row
+ before considering it solved. Aris searched the Internet for flashcard
+ programs on Windows and played around with things like Kanji Gold and
+ King Kanji, but couldn't figure out how to import our wordlist into
+ them. Kanji Gold looked promising as it also used EDICT, but I
+ couldn't figure out the magic number at the end of the dictionary
+ entry. With over 200 words in our word list, there was no way we were
+ going to enter those things one by one!
+
+I told him to download Emacs and grab Jorgen Schaefer's flashcard.el
+ from my [[http://sachachua.com/notebook/emacs][../emacs]] directory. I
+then grabbed the dictionary file that
+ Kanji Gold couldn't recognized, replaced [ with : to get flashcard to
+ recognize it without problems, then set up a deck for him. I tweaked
+ the default faces a bit---they're horrible on light-colored displays. I
+ copied the suggested feedback config and explained the pigeonhole
+ method to him. I tweaked the checking function so that it checked for
+ substrings and treated empty input as a definitely incorrect answer.
+ He wanted the answers displayed all the time, so I coded that in as
+ well.
+
+The initial word list was too big, so I copied 9 words and put them
+ into a file, then imported them into a deck. Later, when he finishes
+ this deck, I'll show him how to create another colon file and import
+it.
+ I'll also ask him if he wants to tweak the number of compartments.
+
+He's asked me if I can get YM working in the text editor as well. I'm
+ currently tunneled through Richi's host, but I think I can open a
+ local tunnel for him as well, if he feels like using ERC. ‘course,
+ normal YM just might work, and chances are there's a YM-specific
+ client somewhere in Emacs.
+
+I've made no efforts to hide Emacs' complexity. I lean over and drop
+ into Lisp code in front of him because I want him to have a working
+ environment up and running as soon as possible. Who knows? Maybe he'll
+ use Emacs even after the internship. =)
+
+He looks like he's having fun, and certainly appreciates the fact that
+ I can hack the editor to fit how he wants to do things. He wants to
+ match the readings, too, which means I'll need to figure out how leim
+ works under Windows. I'll do that on Monday.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/opensource][opensource]],
+[[http://www.technorati.com/tag/japanese][japanese]]

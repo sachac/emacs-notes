@@ -1,0 +1,18 @@
+#+TITLE: Mirrored blogs
+
+December 19th, 2003 -
+[[http://sachachua.com/blog/p/1529][http://sachachua.com/blog/p/1529]]
+
+I'm thinking of making it easier for me to blog to my
+ [[http://www.advogato.org/diary/][http://www.advogato.org/diary/]] . I
+should look at the blogging Emacs
+ modules to see how (or if) they handle offline operation. I think I
+ can do it like e-mail -- queue unsent items in a file, then delete as
+ sent. If all else fails, I can write it as a normal e-mail module,
+ then have a Perl script on the other end upload the e-mailed stuff to
+ [[http://www.advogato.org][http://www.advogato.org]] .
+
+I guess this belongs more to remember.el than planner.el, as I want to
+ mirror upon remember. =)
+
+[[http://sachachua.com/notebook/wiki/RememberEl][RememberEl]]

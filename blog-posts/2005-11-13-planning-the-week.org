@@ -1,0 +1,65 @@
+#+TITLE: Planning the week
+
+November 13th, 2005 -
+[[http://sachachua.com/blog/p/3136][http://sachachua.com/blog/p/3136]]
+
+Last week's plans
+
+-  Lab report: Due Friday. Write up results tomorrow, sketch discussion
+
+We finished the lab report with some time to spare, although the
+ discussion part took us a while. Antony's great as a lab partner, and
+ working on a lab report in pairs is much more fun than writing parts
+ separately.
+
+-  DSS: Monday: prepare clustering lab for Weka, prepare new project
+
+I decided not to go into the clustering features of Weka, focusing
+ instead on decision trees. I posted the second project and tried it
+ out, so I know that it's pretty straightforward. I had an oops-my-bad
+ moment: forgot to tell them about the handouts, so they had a hard
+ time following along in the lab. How embarrassing.
+
+-  Research: collect tagging information in my wiki
+
+I'm getting into the hang of reading academic papers. I need to step
+ up the pace, though, as the end of the term is coming soon.
+
+-  Enggpsych: Get further sources for powergrid story, revise chapter 4
+
+I didn't get to work on this. I should concentrate on this paper
+ because the end of the term is coming soon, and I'll be very busy
+ marking DSS stuff.
+
+-  Social: Get started on my Christmas cards, make birthday present for
+   Michael
+
+Haven't started on the Christmas cards yet. Had fun at Michael's party,
+though.
+
+Last week's highlights: bonding
+
+Last week was all about having fun with people. Ubuntu talk on
+ Tuesday, breakfast on Wednesday, meeting Wednesday night, roommates
+ party Thursday night and Friday night, and Mike's party on Saturday
+ night---wow!
+
+It wasn't all play, though. ;) I got into the rhythm of reading
+ papers, and the bookmarklet I wrote for posting stuff to my research
+ wiki was useful. Labs for the decision support systems class were hard
+ to prepare, but I'm surviving somehow. I wrote a lot: a lab report, a
+ couple of quick reflections, Planner newbie guides, and two
+ [[http://sachachua.com/notebook/wiki/ShortStories][ShortStories]]. I'm
+getting there!
+
+Plans for next week
+
+-  DSS: Show very basic JESS demo, which I practiced already. Check
+   projects. (Argh.)
+-  Research: Read 10 more papers and then start drafting my reading
+   paper.
+-  Engg psych: Look up sources for the powergrid story and make an
+   outline for my paper.
+-  Social: Temporarily on hold. May get around to Christmas letter.
+-  Toastmasters: Speech #7 about becoming an expert
+

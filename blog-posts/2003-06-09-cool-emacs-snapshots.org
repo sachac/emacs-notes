@@ -1,0 +1,11 @@
+#+TITLE: Cool Emacs snapshots
+
+June 9th, 2003 -
+[[http://sachachua.com/blog/p/829][http://sachachua.com/blog/p/829]]
+
+I want to eventually fix my Emacs to look like
+ [[http://www.emacswiki.org/cgi-bin/wiki.pl?RichardKlinda][Richard
+Klinda]]‘s funky w3m customizations.
+
+[[http://emacs-w3m.namazu.org/ml/msg03995.html][http://emacs-w3m.namazu.org/ml/msg03995.html]]
+has the goods.

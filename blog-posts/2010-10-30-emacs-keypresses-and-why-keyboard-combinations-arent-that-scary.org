@@ -1,0 +1,51 @@
+#+TITLE: Emacs, keypresses, and why keyboard combinations aren't that scary
+
+October 30th, 2010 -
+[[http://sachachua.com/blog/p/21840][http://sachachua.com/blog/p/21840]]
+
+I came across
+[[http://blog.chrislowis.co.uk/2010/10/26/laptop-driven-development-with-emacs.html][this
+comment]] on Chris Lowis' blog post about small-screen development in
+Emacs:
+
+#+BEGIN_QUOTE
+  Alex: I can't be geek enough to use Emacs... it's not that I think the
+   editor is bad: it's the excessive number of keys to press to
+   accomplish anything.
+#+END_QUOTE
+
+It made me stop and think, because one of the things I love about Emacs
+is that I can press lots of keys to accomplish anything.
+
+What's the alternative? Mouse clicks? Eeew.
+
+My most-common keyboard shortcuts are one or two keys long. Yes, there
+are many of them, and I use a small subset depending on what I'm working
+on. If I forget the keyboard shortcut for something, or I want to run a
+command that doesn't have a keyboard shortcut, I use M-x (which is
+really Alt-x on my keyboard) to call the function by name (ex: M-x
+shell-command-on-region, which turns out to have M-| as a shortcut).
+
+I hardly ever type entire function names. =icomplete-mode= offers
+autocompletion for M-x. I also shows me the keyboard shortcuts for a
+command in order to help me work more efficiently.
+
+If I like something a lot, I can easily define a keyboard shortcut for
+it using global-set-key. I can set mode-specific keyboard shortcuts so
+that some shortcuts are active when I'm programming and inactive when
+I'm not. I can load sets of shortcuts depending on what I want to do.
+It's incredibly flexible. Yes, it requires some learning, but it's been
+well worth the investment for me.
+
+Because you only have so many keys on a keyboard, it's useful to be able
+to define multiple-key shortcuts. I'd rather type Ctrl-c r t than
+Ctrl-Alt-Shift-R or something like that. (Or worse: spend time looking
+for just the right toolbar button, and try to click on it with the
+mouse.) I think of it like super-fast selection through a menu that
+makes sense to me. In my case, Ctrl-c turned out to be easier to get to
+than F9 (which I'd previously been using for personal shortcuts), r
+means remember, and t means task.
+
+You might think that a keyboard-driven editor is slow, but it's fast
+enough to keep up with me, and I can probably code circles around you.
+;)

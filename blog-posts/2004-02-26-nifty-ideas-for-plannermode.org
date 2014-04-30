@@ -1,0 +1,29 @@
+#+TITLE: Nifty ideas for PlannerMode
+
+February 26th, 2004 -
+[[http://sachachua.com/blog/p/1780][http://sachachua.com/blog/p/1780]]
+
+- A list of all the notes related to a BBDB contact. I'd have to parse
+
+#+BEGIN_QUOTE
+  out all the bbdb links, covert them into canonical names and match
+   them against the records, but it would be fun.
+#+END_QUOTE
+
+- General emacs-wiki hyperlinks.
+
+- Recurring tasks.
+
+- Ongoing projects and the next task in them. Upon task completion,
+
+#+BEGIN_QUOTE
+  the next task in the project would be scheduled. Actually, this is
+   already handled by future tasks, but this flexibility might be fun.
+   Forces you to think of the next step.
+#+END_QUOTE
+
+- Monthly headlines in a calendar.
+
+- Notes index by month, by year.
+
+- timeclock integration into my Schedule.

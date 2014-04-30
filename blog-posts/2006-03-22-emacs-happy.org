@@ -1,0 +1,31 @@
+#+TITLE: Emacs-happy
+
+March 22nd, 2006 -
+[[http://sachachua.com/blog/p/3332][http://sachachua.com/blog/p/3332]]
+
+-  [[http://bc.tech.coop/blog/060304.html][Lisp is for Entrepreneurs --
+   Part 2 (Amazon)]]
+-  [[http://bc.tech.coop/blog/060302.html][Emacs learning curve]]
+
+There's something a bit off about the Emacs learning curve graph -
+ it's bounded, for one -- but yeah, Emacs really is a very different
+ experience.
+
+Evan Monroig said on the emacs-wiki-discuss mailing list:
+
+#+BEGIN_QUOTE
+  So after all my wishlist was already there and I didn't know it....
+  hehe
+#+END_QUOTE
+
+and Wei-Hao Lin replied:
+
+#+BEGIN_QUOTE
+  This is Emacs. There's no wish. Only how.
+#+END_QUOTE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Japanese sentence:
+Ã£Â?Â“Ã£Â?Â®Ã§ÂŒÂ«Ã£Â?Â¯Ã£ÂƒÂ?Ã£Â‚ÂºÃ£ÂƒÂŸÃ£Â‚Â'Ã¨Â¿Â½Ã£Â?Â„Ã£Â?Â‹Ã£Â?Â‘Ã£Â?ÂªÃ£Â?Â„Ã£Â€Â‚
+This cat doesn't chase rats.

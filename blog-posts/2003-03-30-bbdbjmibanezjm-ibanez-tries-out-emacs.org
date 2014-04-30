@@ -1,0 +1,7 @@
+#+TITLE: [[bbdb://jm.ibanez][JM Ibanez]] tries out Emacs
+
+March 30th, 2003 -
+[[http://sachachua.com/blog/p/620][http://sachachua.com/blog/p/620]]
+
+Looks like UA&P geek [[http://www.livejournal.com/~cyberlizard/][JM
+Ibanez]] has taken the plunge! =) Welcome to the Emacs world, JM.

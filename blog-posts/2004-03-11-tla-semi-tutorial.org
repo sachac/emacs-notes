@@ -1,0 +1,74 @@
+#+TITLE: TLA semi-tutorial
+
+March 11th, 2004 -
+[[http://sachachua.com/blog/p/1879][http://sachachua.com/blog/p/1879]]
+
+I used to really like CVS, but I found it hard to make my CVS stuff
+ available to other people. I didn't want to have to rely on an
+ external CVS server. For a while I used vc's double-backend support to
+ do RCS locally and CVS on savannah, but I found it hard to switch back
+ and forth.
+
+[[http://repose.cx/cgi-bin/blosxom.cgi/][Damien Elmes]] introduced me to
+tla. I really
+ like the way I can publish my repository online, over HTTP -- no need
+ for special server support. I also liked how I could easily pull in
+ patches from other people. It was a bit hard to learn, but I
+ eventually got a repository up and running. I like how the metadata is
+ kept locally, so I can develop even when I'm disconnected, and yet I
+ can synchronize it with my webserver so that other people can pull
+ updates.
+
+Are you sure you don't want to give it a try? =) Here's how to do it.
+ (Don't worry, I won't feel bad if you don't use this.)
+
+#+BEGIN_EXAMPLE
+    # Set up your own archive
+
+         tla my-id "Your Name "
+         tla make-archive -l you@example.com--04 ~/arch
+         tla my-default-archive you@example.com--04
+         tla archive-setup emacs-wiki--you--1.0
+
+    # Register my archive
+
+         tla register-archive sacha@free.net.ph--main http://sacha.free.net.ph/notebook/arch
+
+    # Mark this revision as the starting point for your own
+
+         tla tag sacha@free.net.ph--main/emacs-wiki--sacha--1.0 emacs-wiki--you--1.0
+         tla get emacs-wiki--you--1.0 emacs-wiki
+         cd emacs-wiki
+         tla cacherev
+
+    # To see my changelog
+
+         tla changelog sacha@free.net.ph--main/emacs-wiki--sacha--1.0
+
+    # To prepare a log for changes: this will create a ++ file in your
+    # directory. I usually use M-x add-change-log-entry, and then
+    # copy-and-paste the changelog entries into the log file with
+    # a short summary.
+
+         tla make-log
+
+    # To see changes
+
+         tla changes --diffs
+
+    # To commit
+
+         tla commit
+
+         (or tla commit -- file1 file2...)
+
+    # To get any revision, like, say, patch-81
+
+         tla get sacha@free.net.ph--main/emacs-wiki--sacha--1.0--patch-81
+
+    # To merge in changes from my tree
+
+         tla star-merge sacha@free.net.ph--main/emacs-wiki--sacha--1.0
+#+END_EXAMPLE
+
+[[http://sachachua.com/News/drafts/drafts/217][../../News/drafts/drafts/217]]

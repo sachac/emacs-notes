@@ -1,0 +1,107 @@
+#+TITLE: Emacs and w3m: Fake your user agent
+
+August 19th, 2008 -
+[[http://sachachua.com/blog/p/5076][http://sachachua.com/blog/p/5076]]
+
+In an ideal world, you would never need to make your browser pretend to
+be a different browser. In reality, a number of websites check for
+specific browsers such as Mozilla or Internet Explorer, or even specific
+versions of those browsers. Other websites check for popular search
+engine crawlers such as the Googlebot in order to display content
+optimized for that search engine. You may want to change your user agent
+to work around such limitations, or you might want to change your user
+agent string just for fun.
+
+The following code allows you to set your user agent
+(wicked/w3m-set-user-agent), reload the current page using a specified
+user agent (wicked/w3m-reload-this-page-with-user-agent), and define
+regular expression matches for URLs to control user agent strings
+(wicked/w3m-fake-user-agent-sites). To use this, add the following to
+your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+     (defvar wicked/w3m-fake-user-agents ;; (1)
+       `(("w3m" . ,(concat "Emacs-w3m/" emacs-w3m-version " " w3m-version))
+         ("ie6" . "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)")
+         ("ff3" . "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.1) Gecko/2008070206 Firefox/3.0.1")
+         ("ff2" . "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.13) Gecko/20080208 Firefox/2.0.0.13")
+         ("ie7" . "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; .NET CLR 2.0.50727)")
+         ("ie5.5" . "Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)")
+         ("iphone" . "Mozilla/5.0 (iPhone; U; CPU iPhone OS 2_0 like Mac OS X; en-us) AppleWebKit/525.18.1 (KHTML, like Gecko) Version/3.1.1 Mobile/5A347 Safari/525.20")
+         ("safari" . "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_2; en-us) AppleWebKit/525.13 (KHTML, like Gecko) Version/3.1 Safari/525.13")
+         ("google" . "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"))
+       "*Associative list of user agent names and strings.")
+
+     (defvar wicked/w3m-fake-user-agent-sites ;; (2)
+       '(("^https?://www\\.useragentstring\\.com" . "ff2"))
+       "*Associative list of regular expressions matching URLs and the agent keyword or value.
+     The first matching entry will be used.")
+
+     (defun wicked/w3m-set-user-agent (agent)
+       "Set the user agent to AGENT based on `wicked/w3m-fake-user-agents'.
+     If AGENT is not defined in `wicked/w3m-fake-user-agents', it is used as the user agent.
+     If AGENT is empty, the default w3m user agent will be used."
+       (interactive
+        (list
+         (completing-read "User-agent [w3m]: "
+                        (mapcar 'car wicked/w3m-fake-user-agents)
+                        nil nil nil nil "w3m"))) ;; (3)
+       (if agent
+           (progn
+            (setq w3m-user-agent
+                  (or
+                   (and (string= agent "") (assoc "w3m" wicked/w3m-fake-user-agents)) ;; (4)
+                   (cdr (assoc agent wicked/w3m-fake-user-agents)) ;; (5)
+                   agent)) ;; (6)
+            (setq w3m-add-user-agent t))
+         (setq w3m-add-user-agent nil)))
+
+     (defun wicked/w3m-reload-this-page-with-user-agent (agent)
+       "Browse this page using AGENT based on `wicked/w3m-fake-user-agents'.
+     If AGENT is not defined in `wicked/w3m-fake-user-agents', it is used as the user agent.
+     If AGENT is empty, the default w3m user agent will be used."
+       (interactive (list (completing-read "User-agent [w3m]: "
+                        (mapcar 'car wicked/w3m-fake-user-agents)
+                        nil nil nil nil "w3m")))
+       (let ((w3m-user-agent w3m-user-agent)
+           (w3m-add-user-agent w3m-add-user-agent))
+         (wicked/w3m-set-user-agent agent) ;; (7)
+         (w3m-reload-this-page)))
+
+     (defadvice w3m-header-arguments (around wicked activate) ;; (8)
+       "Check `wicked/w3m-fake-user-agent-sites' for fake user agent definitions."
+       (let ((w3m-user-agent w3m-user-agent)
+             (w3m-add-user-agent w3m-add-user-agent)
+             (sites wicked/w3m-fake-user-agent-sites))
+         (while sites
+           (if (string-match (caar sites) (ad-get-arg 1))
+             (progn
+               (wicked/w3m-set-user-agent (cdar sites))
+               (setq sites nil))
+           (setq sites (cdr sites))))
+         ad-do-it))
+#+END_EXAMPLE
+
+wicked/w3m-fake-user-agents sets up a number of common user agents(1)
+using examples from
+[[http://www.useragentstring.com][http://www.useragentstring.com]]. If
+you frequently use other user agents, add them to this associative list.
+wicked/w3m-fake-user-agent-sites sets up some rules for URLs so that you
+can work around specific websites(2). The first matching rule will be
+used.
+
+wicked/w3m-set-user-agent can be called from a w3m browser session to
+set the user agent for all new pages visited. By default, it uses the
+w3m user agent(3). It will also use the w3m user agent if the agent is
+blank(4). If the user agent is one of the frequently-used agents defined
+in wicked/w3m-fake-user-agents, then the corresponding user agent string
+will be used(5). If not, the string will be used as-is(6). If the agent
+is nil, the user agent string will be disabled.(7)
+
+You can check a single page using a different user agent by using M-x
+wicked/w3m-reload-this-page-with-user-agent. It temporarily sets the
+user agent and then reloads the current page.(7)
+
+The last segment of code modifies the behavior of
+w3m-header-arguments(8), matching wicked/w3m-fake-user-agents against
+the URL. This temporarily sets the user agent for matching sites.

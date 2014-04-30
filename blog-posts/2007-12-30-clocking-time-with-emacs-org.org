@@ -1,0 +1,198 @@
+#+TITLE: Clocking Time with Emacs Org
+
+December 30th, 2007 -
+[[http://sachachua.com/blog/p/4553][http://sachachua.com/blog/p/4553]]
+
+2Many professionals bill clients for their time. Even if you don't,
+keeping track of the time you actually spend on tasks can help you
+improve your time estimates and check if you're spending enough time on
+the things that are important to you. For example, keeping track of the
+time you spend on tasks might show you that you spend two and a half
+hours each day just responding to e-mail. If you can identify problem
+areas like that, then you can look for more effective ways to perform
+the tasks that take up a lot of your time.
+
+I love Org's timeclocking support, and I think you will too. Because
+it's integrated with your task list, you don't have to switch to
+separate application or reenter data. You can get more detailed time
+reports, too. All you have to do is remember to clock in before you
+start a task and clock out when you finish it.
+
+**** Starting and stopping the clock
+
+You can clock in by moving your cursor to the task headline in either
+your organizer.org file or the org agenda view, and then pressing C-c
+C-x C-i (org-agenda-clock-in or org-clock-in, depending on context).
+This adds the time stamp to the task. If you are already clocked into
+another task in that organizer file, you'll be clocked out of it to
+prevent you from accidentally double-billing.
+
+To clock out of a task, type C-c C-x C-o from the task headline. Marking
+a task as done will also automatically stop the clock, if that was the
+task with the active clock.
+
+Here's some code to make this even easier. The following code clocks in
+whenever you market task is started, and clocks out when you market a
+task as WAITING. It also automatically market task is started if you
+clock in. This takes advantage of the Org configuration previously
+suggested in the Setup section. Add this to your ~/.emacs and evaluate
+it:
+
+#+BEGIN_EXAMPLE
+    (eval-after-load 'org
+      '(progn
+         (defun wicked/org-clock-in-if-starting ()
+           "Clock in when the task is marked STARTED."
+           (when (and (string= state "STARTED")
+              (not (string= last-state state)))
+         (org-clock-in)))
+         (add-hook 'org-after-todo-state-change-hook
+               'wicked/org-clock-in-if-starting)
+         (defadvice org-clock-in (after wicked activate)
+          "Set this task's status to 'STARTED'."
+          (org-todo "STARTED"))
+        (defun wicked/org-clock-out-if-waiting ()
+          "Clock out when the task is marked WAITING."
+          (when (and (string= state "WAITING")
+                     (equal (marker-buffer org-clock-marker) (current-buffer))
+                     (< (point) org-clock-marker)
+                 (> (save-excursion (outline-next-heading) (point))
+                org-clock-marker)
+             (not (string= last-state state)))
+        (org-clock-out)))
+        (add-hook 'org-after-todo-state-change-hook
+              'wicked/org-clock-out-if-waiting)))
+#+END_EXAMPLE
+
+What if you forgot to clock into a task when you started? No problem.
+Simply clock in and out of it, then edit the starting timestamp for the
+task in your ~/organizer.org file. To find a starting timestamp, move
+your cursor to the task headline. If the task has been collapsed to a
+single line, press TAB to expand it. Look for a line that starts with
+CLOCK:, or a collapsed segment that starts with :CLOCK:. If you see a
+collapsed segment, he expanded by moving a cursor to it and pressing
+tab. Find the clock entry you want to change, and if the timestamp, and
+press C-c C-y (org-evaluate-time-range) to update the time total.
+
+**** Reporting time
+
+***** By project
+
+To see how much time you've spent on a project or task, open your
+~/organizer.org file and press C-c C-x C-d (org-clock-display). Total
+times will be added to each headline, summarizing the times for each
+subtree.
+
+You can also use one of Org's dynamic blocks. Open your ~/organizer.org
+file, move your cursor to where you want the report inserted, and type
+C-c C-x C-r (org-clock-report). By default, the reports will include all
+the second-level headings for all the days.
+
+What if you want to limit the report to just the time you clocked last
+week?
+
+***** Reporting time for a period
+
+To summarize it for a span of days, change the starting line from:
+
+#+BEGIN_EXAMPLE
+    #+BEGIN: clocktable :maxlevel 2 :emphasize nil
+#+END_EXAMPLE
+
+to something like:
+
+#+BEGIN_EXAMPLE
+    #+BEGIN: clocktable :maxlevel 2 :emphasize nil :tstart "<2007-12-25 Sun>" :tend "<2007-12-31 Mon>"
+#+END_EXAMPLE
+
+where tstart is the starting time/date and tend is the ending time/date.
+You can add the timestamps either manually or with C-c C-.
+(org-time-stamp). After you change the block definition, update the
+clock table by typing C-c C-x C-u (org-dblock-update).
+
+You can also use a definition like:
+
+#+BEGIN_EXAMPLE
+    #+BEGIN: clocktable :maxlevel 2 :emphasize nil :block today
+#+END_EXAMPLE
+
+to see today's entries. Other block keywords are ‘yesterday',
+‘thisweek', ‘lastweek', ‘thismonth', ‘lastmonth', ‘thisyear', or
+‘lastyear'.
+
+If you need more levels of headings, change the value of maxlevel. For
+example, to see a detailed clock table with up to 10 levels of headings,
+use
+
+#+BEGIN_EXAMPLE
+    #+BEGIN: clocktable :maxlevel 10 :emphasize nil :block today
+#+END_EXAMPLE
+
+clocktable summarizes the reported time. What if you want the time
+broken down by day?
+
+***** Reporting time by days
+
+The following code creates a custom dynamic block that breaks the
+reported time by date. Add the following code to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (defun org-dblock-write:rangereport (params)
+      "Display day-by-day time reports."
+      (let* ((ts (plist-get params :tstart))
+             (te (plist-get params :tend))
+             (start (time-to-seconds
+                     (apply 'encode-time (org-parse-time-string ts))))
+             (end (time-to-seconds
+                   (apply 'encode-time (org-parse-time-string te))))
+             day-numbers)
+        (setq params (plist-put params :tstart nil))
+        (setq params (plist-put params :end nil))
+        (while (<= start end)
+          (save-excursion
+            (insert "\n\n"
+                    (format-time-string (car org-time-stamp-formats)
+                                        (seconds-to-time start))
+                    "----------------\n")
+            (org-dblock-write:clocktable
+             (plist-put
+              (plist-put
+               params
+               :tstart
+               (format-time-string (car org-time-stamp-formats)
+                                   (seconds-to-time start)))
+              :tend
+              (format-time-string (car org-time-stamp-formats)
+                                  (seconds-to-time end))))
+            (setq start (+ 86400 start))))))
+#+END_EXAMPLE
+
+After you load that code, you'll be able to use a dynamic block of the
+form
+
+#+BEGIN_EXAMPLE
+    #+BEGIN: rangereport :maxlevel 2 :tstart "<2007-12-25 Tue>" :tend "<2007-12-30 Sun>"
+    ...
+    #+END:
+#+END_EXAMPLE
+
+to see your time reported by date. Fill it in by moving your cursor
+within the block and typing C-c C-x C-u (org-dblock-update).
+
+Org makes it easy to capture timeclock information by integrating the
+timeclock into your task list so that you don't even have to think about
+it, and it can report this time by project or by date. You can use this
+information to bill clients, improve your time estimates, or reflect on
+the way you do things. All you have to do is clock in by marking a task
+as STARTED, and clock out by marking a task as WAITING or DONE. Don't
+get discouraged if the time clock shows you do only a few hours of
+productive work each day. Use that to help you figure out how to do to
+things better!
+
+On Technorati:
+[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs605]],
+[[http://www.technorati.com/tag/org][org606]],
+[[http://www.technorati.com/tag/emacs][emacs607]]
+
+Random Emacs symbol: term-previous-matching-input-string -- Function:
+Return the string matching REGEXP ARG places along the input ring.

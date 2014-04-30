@@ -1,0 +1,9 @@
+#+TITLE: emacs-wiki and planner, but in other languages
+
+November 14th, 2004 -
+[[http://sachachua.com/blog/p/2388][http://sachachua.com/blog/p/2388]]
+
+Funky cool. Not that I can understand anything, but cool nonetheless.
+
+[[http://bbs.kldp.org/viewtopic.php?t=44639&highlight=emacs][KLDP%20BBS%20::%20ÃƒÂ¬Ã‚Â£Ã‚Â¼ÃƒÂ¬Ã‚Â
+Ã‚Âœ%20ÃƒÂ«Ã‚Â³Ã‚Â´ÃƒÂªÃ‚Â¸Ã‚Â°%20-%20Wiki%20ÃƒÂ¬Ã‚Â§Ã‚ÂˆÃƒÂ«Ã‚Â¬Ã‚Â¸(%201,%20ÃƒÂ¬Ã‚ÂœÃ‚ÂˆÃƒÂ«Ã‚Â?Ã‚Â„ÃƒÂ¬Ã‚ÂšÃ‚Â°ÃƒÂ¬Ã‚ÂšÃ‚Â©%20Standalone,%202.%20vi%20ÃƒÂ«Ã‚Â¡Ã‚Âœ%20ÃƒÂ­Ã‚ÂŽÃ‚Â¸ÃƒÂ¬Ã‚Â§Ã‚Â‘?)]]

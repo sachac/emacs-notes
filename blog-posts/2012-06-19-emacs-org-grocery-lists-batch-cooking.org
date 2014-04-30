@@ -1,0 +1,155 @@
+#+TITLE: Using Emacs Org for grocery lists and batch cooking
+
+June 19th, 2012 -
+[[http://sachachua.com/blog/p/23504][http://sachachua.com/blog/p/23504]]
+
+We like preparing our meals in bulk. Buying groceries and cooking up a
+storm on the weekends means that we can grab quick and healthy lunches
+from the fridge or freezer, enjoy a variety of dinners during the week,
+and focus on other things that we want to do in the evenings.
+
+I was looking for a menu planner and grocery list maker to help us plan
+and execute these batch cooking sessions more efficiently. In
+particular, I wanted something that could sort the ingredients for
+preparation, too. I like preparing ingredients for all the different
+recipes before I start cooking. If several recipes call for garlic, I
+might as well chop a lot of garlic in one session instead of breaking
+out the chopping board for each recipe.
+
+I tried several menu planning and grocery list apps, but I wasn't happy
+with any of the ones I came across. I like using Emacs for
+[[http://sachachua.com/blog/2012/06/things-that-ive-used-emacs-for/][as
+much as possible]], so I figured that I should give it a try. Here's
+what I did and how it worked out.
+
+I created an [[http://www.orgmode.org][Org]] file for my recipes. In
+this plain-text outline, I created sections for my plan, shopping list,
+preparation tasks, and recipes. Under recipes, I created TODO items and
+scheduled them. Here's an example entry:
+
+#+BEGIN_EXAMPLE
+    ** TODO Colorful bulgur salad
+       SCHEDULED: <2012-06-19 Tue>
+
+    http://allrecipes.com/recipe/colorful-bulgur-salad/
+
+    | 1/2 cup        | bulgur wheat     |                    | [[Colorful bulgur salad]] |
+    | 1/2 cup        | chicken broth    |                    | [[Colorful bulgur salad]] |
+    | 1 small        | cucumber         | seeded and chopped | [[Colorful bulgur salad]] |
+    | 1              | tomato           | chopped            | [[Colorful bulgur salad]] |
+    | 1              | carrot           | shredded           | [[Colorful bulgur salad]] |
+    | 3              | green onions     | thinly sliced      | [[Colorful bulgur salad]] |
+    | 3 tablespoons  | fresh lime juice |                    | [[Colorful bulgur salad]] |
+    | 3/4 tablespoon | chili powder     |                    | [[Colorful bulgur salad]] |
+    | 1 pinch        | garlic powder    |                    | [[Colorful bulgur salad]] |
+#+END_EXAMPLE
+
+I reformatted each recipe to fit this format, with columns for quantity,
+type, preparation, and recipe link. After I chose several recipes, I
+copied the ingredient lists into my preparation section and my shopping
+section. In the shopping section, I deleted the lines for ingredients I
+already had or could skip. I used =org-table-sort-lines= to sort the
+table by the second column, which gave me this list:
+
+#+BEGIN_EXAMPLE
+    | 1 bag              | chicken legs and thighs |                                                        | [[Arroz caldo]] |
+    | 2 small or 1 large | cucumber                | chopped                                                | [[Gazpacho]] |
+    | 1 small            | cucumber                | seeded and chopped                                     | [[Colorful bulgur salad]] |
+    | 3                  | green onions            | thinly sliced                                          | [[Colorful bulgur salad]] |
+    | 1                  | red onion               | cut into 1" pieces                                     | [[Shrimp kebabs]] |
+    | 1 pound            | shrimp                  | peeled and deveined                                    | [[Shrimp kebabs]] |
+    | 6 - 8              | tomatoes                | chopped (Roma or plum are best; Don't lose the juice!) | [[Gazpacho]] |
+    | 1                  | zucchini                | seeded and cut into 1" pieces                          | [[Shrimp kebabs]] |
+#+END_EXAMPLE
+
+It wasn't sorted by aisle, but that was easy to do when I copied the
+list onto a recycled envelope. If I find myself using this a lot, I
+might write an Emacs Lisp function to gather the tables and sort the
+rows by aisle.
+
+Anyway, shopping list in hand, we picked up our groceries in about ten
+minutes last Saturday. The next day, I looked at my prep list:
+
+#+BEGIN_EXAMPLE
+    |                    | basil                                  | chopped                                                | [[Gazpacho]]              |
+    | 1/2 cup            | bulgur wheat                           |                                                        | [[Colorful bulgur salad]] |
+    | 1 tbsp             | butter                                 |                                                        | [[Bubble and squeak]]     |
+    | 2 tbsp             | canola or peanut oil                   |                                                        | [[Teriyaki tofu]]         |
+    | 1                  | carrot                                 | shredded                                               | [[Colorful bulgur salad]] |
+    | 1/2 cup            | chicken broth                          |                                                        | [[Colorful bulgur salad]] |
+    | 1 bag              | chicken legs and thighs                | separated                                              | [[Arroz caldo]]           |
+    | 3/4 tablespoon     | chili powder                           |                                                        | [[Colorful bulgur salad]] |
+    | 1/4 cup            | cider vinegar                          |                                                        | [[Teriyaki tofu]]         |
+    | 1 can              | corned beef                            |                                                        | [[Bubble and squeak]]     |
+    | 3 tbsp             | cornstarch                             |                                                        | [[Teriyaki tofu]]         |
+    | 1 tbsp             | cornstarch                             |                                                        | [[Teriyaki tofu]]         |
+    | 1 small            | cucumber                               | seeded and chopped                                     | [[Colorful bulgur salad]] |
+    | 2 small or 1 large | cucumber                               | chopped                                                | [[Gazpacho]]              |
+    | 1 lb               | firm tofu                              | drained                                                | [[Teriyaki tofu]]         |
+    |                    | fresh ground black pepper              |                                                        | [[Gazpacho]]              |
+    | 3 tablespoons      | fresh lime juice                       |                                                        | [[Colorful bulgur salad]] |
+    | 3 cloves           | garlic                                 | chopped                                                | [[Arroz caldo]]           |
+    | 1 clove            | garlic                                 | minced                                                 | [[Teriyaki tofu]]         |
+    | 2 cloves           | garlic                                 | diced                                                  | [[Gazpacho]]              |
+    | 1 tablespoon       | garlic                                 | minced                                                 | [[Shrimp kebabs]]         |
+    | 1 pinch            | garlic powder                          |                                                        | [[Colorful bulgur salad]] |
+    |                    | glutinous rice                         |                                                        | [[Arroz caldo]]           |
+    | 1 tsp ginger       | grated or minced                       |                                                        | [[Teriyaki tofu]]         |
+    |                    | green onions                           | chopped                                                | [[Arroz caldo]]           |
+    | 3                  | green onions                           | thinly sliced                                          | [[Colorful bulgur salad]] |
+    |                    | leftover vegetables (cabbage, carrots) |                                                        | [[Bubble and squeak]]     |
+    | 1                  | lemon                                  | juice of                                               | [[Gazpacho]]              |
+    | 2 teaspoons        | lemon juice                            |                                                        | [[Shrimp kebabs]]         |
+    | 1/4 cup            | olive oil                              |                                                        | [[Shrimp kebabs]]         |
+    | 1                  | onion                                  | thinly sliced                                          | [[Bubble and squeak]]     |
+    | 1/2 large          | onion                                  | chopped finely       (red is a nice alternative)       | [[Gazpacho]]              |
+    | 1/2 large          | onion                                  | chopped in 1/4 inch chunks                             | [[Gazpacho]]              |
+    | pinch              | parsley                                | finely chopped                                         | [[Shrimp kebabs]]         |
+    | 1/4 tsp            | pepper                                 |                                                        | [[Teriyaki tofu]]         |
+    | 1/4 teaspoon       | pepper                                 |                                                        | [[Shrimp kebabs]]         |
+    | 3 cups             | potatoes                               | mashed                                                 | [[Bubble and squeak]]     |
+    | 1                  | red onion                              | cut into 1" pieces                                     | [[Shrimp kebabs]]         |
+    |                    | salt (preferably sea salt)             |                                                        | [[Gazpacho]]              |
+    | 1 tsp              | sesame oil                             |                                                        | [[Teriyaki tofu]]         |
+    | 1 pound            | shrimp                                 | peeled and deveined                                    | [[Shrimp kebabs]]         |
+    |                    | soy sauce                              |                                                        | [[Arroz caldo]]           |
+    | 1/2 cup            | soy sauce                              |                                                        | [[Teriyaki tofu]]         |
+    | 1                  | tomato                                 | chopped                                                | [[Colorful bulgur salad]] |
+    | 6 - 8              | tomatoes                               | chopped (Roma or plum are best; Don't lose the juice!) | [[Gazpacho]]              |
+    |                    | virgin olive oil                       |                                                        | [[Gazpacho]]              |
+    | 1/2 cup            | white sugar                            |                                                        | [[Teriyaki tofu]]         |
+    | 1                  | zucchini                               | seeded and cut into 1" pieces                          | [[Shrimp kebabs]]         |
+#+END_EXAMPLE
+
+Sorting the list by ingredient made it easy to go through the groups of
+ingredients and prepare them all, and the links to the recipes made it
+easy to look up next steps. I planned the order of doing them. First, I
+prepared the bulgur wheat because that needed an hour to soak. I saved
+the chicken legs for the end because they were messy, and I saved the
+onions for later as well because they always make me cry. I cut and
+chopped and food-processed my way through stacks of vegetables, covering
+the kitchen table with bowls.
+
+With all the ingredients prepared, I washed the utensils and put things
+away. That freed up counter space for cooking. I reordered the recipes
+so that it was easy to see what to work on next, and I started cooking.
+
+The entire cooking sprint took me 5 hours and 42 minutes, which was a
+lot of cooking but well worth it. With that and the meals we'd prepared
+over the past few weeks, our freezer's stuffed to capacity. Four tidy
+stacks of identical food containers, then odds and ends crammed into the
+spaces! By golly.
+
+I really liked planning this batch cooking session in Emacs. Org tables
+made things easy to sort, and the hyperlinks let me look up recipes and
+notes quickly.
+
+I could probably make this even better by:
+
+-  rigging up my foot pedal to scroll up and down through food.org
+-  copying in the recipe steps so that I can take advantage of that
+   scrolling
+-  figuring out how to use Org Babel to automatically compile the
+   ingredient tables for the named recipes
+
+Now if only someone would write =M-x wash-dishes=...

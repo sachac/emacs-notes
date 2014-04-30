@@ -1,0 +1,6 @@
+#+TITLE: Testing xref
+
+March 13th, 2004 -
+[[http://sachachua.com/blog/p/1888][http://sachachua.com/blog/p/1888]]
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/remember-planner.el][../../notebook/emacs/emacs-wiki/remember-planner.el]]

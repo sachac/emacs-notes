@@ -1,0 +1,8 @@
+#+TITLE: emacs-wiki oops
+
+May 12th, 2004 -
+[[http://sachachua.com/blog/p/2051][http://sachachua.com/blog/p/2051]]
+
+As a side-effect of handling tags first in order to deal with nasty
+ things like <example>, <contents> no longer lists notes.
+ We will have to find a better way to deal with that.

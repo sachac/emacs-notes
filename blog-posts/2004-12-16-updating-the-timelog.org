@@ -1,0 +1,55 @@
+#+TITLE: Updating the timelog
+
+December 16th, 2004 -
+[[http://sachachua.com/blog/p/2498][http://sachachua.com/blog/p/2498]]
+
+I often update my task descriptions. We haven't found a neat way to do
+ this in-buffer, so I use planner-edit-task-description. However, if I
+ update the task description or replan a task, my timelog data gets out
+ of date. This code snippet updates all matching tasks in the timelog,
+ and can serve as an example for code that updates things after a task
+ is edited.
+
+#+BEGIN_EXAMPLE
+    (defadvice planner-replan-task (around sacha/planner-timeclock activate)
+      "Update the timelog as well. Warning! Do not have duplicate tasks!"
+      (let ((info (planner-current-task-info)))
+        ad-do-it
+        (with-current-buffer (find-file-noselect timeclock-file)
+          (goto-char (point-min))
+          (while (re-search-forward
+                  (concat
+                   "^. [^ ]+ [^ ]+ "
+                   "\\("
+                   (regexp-quote (planner-task-plan info))
+                   "\\)"
+                   ": "
+                   (regexp-quote (planner-task-description info))
+                   "$")
+                  nil t)
+            (replace-match (ad-get-arg 0) t t nil 1))
+          (save-buffer)
+          (kill-buffer (current-buffer)))))
+
+    (defadvice planner-edit-task-description (around sacha/planner-timeclock activate)
+      "Update the timelog as well. Warning! Do not have duplicate tasks!"
+      (let ((info (planner-current-task-info)))
+        ad-do-it
+        (with-current-buffer (find-file-noselect timeclock-file)
+          (goto-char (point-min))
+          (while (re-search-forward
+                  (concat
+                   "^. [^ ]+ [^ ]+ "
+                   (regexp-quote (planner-task-plan info))
+                   ": "
+                   "\\("
+                   (regexp-quote (planner-task-description info))
+                   "\\)"
+                   "$")
+                  nil t)
+            (replace-match (ad-get-arg 0) t t nil 1))
+          (setq planner-timeclock-current-task (ad-get-arg 0))
+          (save-buffer)
+          (kill-buffer (current-buffer)))))
+#+END_EXAMPLE
+

@@ -1,0 +1,25 @@
+#+TITLE: emacs-wiki-link-url: return relative links
+
+April 20th, 2004 -
+[[http://sachachua.com/blog/p/1985][http://sachachua.com/blog/p/1985]]
+
+#+BEGIN_EXAMPLE
+    (defadvice emacs-wiki-link-url (around sacha activate)
+      "Return relative links if possible."
+      ad-do-it
+      (when ad-return-value
+        (unless (emacs-wiki-wiki-url-p ad-return-value)
+          (setq ad-return-value
+                (file-relative-name
+                 ad-return-value
+                 (if (string-match "public_html" ad-return-value)
+                     "../../public_html/notebook/plans"
+                   "../../notebook/plans")))
+          (when (and sacha/emacs-wiki-use-absolute-url-flag
+                     emacs-wiki-publishing-p)
+            (setq ad-return-value
+                  (w3m-expand-url
+                   ad-return-value
+                   "http://sacha.free.net.ph/notebook/wiki/"))))))
+#+END_EXAMPLE
+

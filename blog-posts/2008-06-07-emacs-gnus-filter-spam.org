@@ -1,0 +1,93 @@
+#+TITLE: Emacs Gnus: Filter Spam
+
+June 7th, 2008 -
+[[http://sachachua.com/blog/p/4913][http://sachachua.com/blog/p/4913]]
+
+(draft for an upcoming book called
+[[http://sachachua.com/wp/category/wickedcoolemacs][Wicked Cool Emacs]])
+
+Ah, spam, the bane of our Internet lives. There is no completely
+ reliable way to automatically filter spam. Spam messages that slip
+ through the filters and perfectly legitimate messages that get
+ labelled spam are all part of the occupational hazards of using the
+ Internet.
+
+The fastest way to filter spam is to use an external spam-filtering
+ program such as Spamassassin or Bogofilter, so your spam can be
+ filtered in the background and you don't have to spend time in Emacs
+ filtering it yourself. In an ideal world, this would be done on the
+ mail server so that you don't even need to download unwanted
+ messages. If your inbox isn't full of ads for medicine or stocks, your
+ mail server is probably doing a decent job of filtering the mail for
+ you.
+
+*** Server-based mail filtering
+
+As spam filtering isn't an exact science, you'll want to find out how
+ you can check your spam folder for misclassified mail. If you download
+ your mail through POP, find out if there's a webmail interface that
+ will allow you to check if any real mail has slipped into the junk
+ mail pile. If you're on IMAP, your mail server might automatically
+ file spam messages in a different group. Here's how to add the spam
+ group to your list of groups:
+
+1. Type M-x gnus to bring up the group buffer.
+2. Type \^ (gnus-group-enter-server-mode).
+3. Choose the nnimap: entry for your mail server and press RET
+   (gnus-server-read-server).
+4. Find the spam or junk mail group if it exists.
+5. Type u (gnus-browse-unsubscribe-current-group) to toggle the
+   subscription. Subscribed groups will appear in your M-x gnus screen
+   if they contain at least one unread message.
+
+Another alternative is to have all the mail (spam and non-spam)
+ delivered to your inbox, and then let Gnus be in charge of filing it
+ into your spam and non-spam groups. If other people manage your mail
+ server, ask them if you can have your mail processed by the spam
+ filter but still delivered to your inbox. If you're administering your
+ own mail server, set up a spam filtering system such as SpamAssassin
+ or BogoFilter, then read the documentation of your spam filtering
+ system to find out how to process the mail.
+
+Spam filtering systems typically add a header such as “X-Spam-Status”
+ or “X-Bogosity” to messages in order to indicate which messages are
+ spam or even how spammy they are. To check if your mail server tags
+ your messages as spam, open one of your messages in Gnus and type C-u
+ g (gnus-summary-show-article) to view the complete headers and
+ message. If you find a spam-related header such as X-Spam-Status, you
+ can use it to split your mail. Add the following to your ~/.gnus:
+
+#+BEGIN_EXAMPLE
+     (setq spam-use-regex-headers t) ;; (1)
+     (setq spam-regex-headers-spam "^X-Spam-Status: Yes")   ;; (2)
+     (require 'spam) ;; (3)
+     (spam-initialize) ;; (4)
+#+END_EXAMPLE
+
+This configures spam.el to detect spam based on message
+ headers(1). Set spam-regex-headers-spam to a regular expression
+ matching the header your mail server uses to indicate spam.(2) This
+ configuration should be done before the spam.el library is loaded(3)
+ and initialized(4), because spam.el uses the spam-use-* variables to
+ determine which parts of the spam library to load.
+
+In order to take advantage of this, you'll also need to add a rule
+ that splits spam messages into a different group. If you haven't set
+ up mail splitting yet, read qthe instructions on setting up fancy mail
+ splitting in “Project XXX: Organize mail into groups”. Add (:
+ spam-split) to either nnmail-split-fancy or nnimap-split-fancy,
+ depending on your configuration. For example, your ~/.gnus may look
+ like this:
+
+#+BEGIN_EXAMPLE
+    (setq nnmail-split-fancy
+    '(
+    ;; ... other split rules go here ...
+    (: spam-split)
+    ;; ... other split rules go here ...
+    "mail.misc")) ; default mailbox
+#+END_EXAMPLE
+
+(draft for an upcoming book called
+[[http://sachachua.com/wp/category/wickedcoolemacs][Wicked Cool Emacs]],
+more to come!)

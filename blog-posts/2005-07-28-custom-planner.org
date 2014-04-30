@@ -1,0 +1,25 @@
+#+TITLE: Custom planner =)
+
+July 28th, 2005 -
+[[http://sachachua.com/blog/p/2857][http://sachachua.com/blog/p/2857]]
+
+I went to a shop specializing in pens and organizers, but I couldn't
+ find anything that matched what I had in mind. So I made my own
+ planner templates using OpenOffice.org Calc and Inkscape. I made
+ a week planner with plenty of space for action items and notes, a
+ month list I can use to keep track of things like meals or whatever,
+ and a booknotes template.
+
+I'm going to test the templates over the next few days. If it works
+ for me, then I'll put the templates up on the Net. They're for
+ standard letter-size three-ring binders, so anyone can use them
+ easily. =)
+
+I'm a happy girl.
+
+ÃƒÂ§Ã‚Â§Ã‚Â?ÃƒÂ©Ã‚Â?Ã‚Â”ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¤Ã‚Â½Ã‚Â¿ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ¦Ã‚Â--Ã‚Â¹ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ§Ã‚ÂŸÃ‚Â¥ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ¤Ã‚ÂºÃ‚Â‹ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ©Ã‚Â‡Ã‚Â?ÃƒÂ¨Ã‚Â¦Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+It is becoming important for us to know how to use a computer.
+
+On Technorati: [[http://www.technorati.com/tag/planning][planning]],
+[[http://www.technorati.com/tag/productivity][productivity]],
+[[http://www.technorati.com/tag/organizer][organizer]]

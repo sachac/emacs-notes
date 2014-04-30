@@ -7,7 +7,7 @@
 	:CUSTOM_ID: Map
 	:END:
 
-#+CALL: path-from-tree[:file org_mode_map.png :cmdline "-Kdot -Tpng -Gdpi=100 -Gsize=10,10"](fill-column=20) :results silent :exports none :var completed=list
+#+CALL: path-from-tree[:file org_mode_map.png :cmdline "-Kdot -Tpng -Gdpi=100 -Gsize=10,10"](fill-column=20) :results silent :exports results :var completed=list
 
 #+ATTR_HTML: :usemap #G :style max-width: none
 [[file:org_mode_map.png]]

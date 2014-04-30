@@ -1,0 +1,46 @@
+#+TITLE: Emacs: BBDB rapid serial visualization
+
+September 28th, 2006 -
+[[http://sachachua.com/blog/p/3882][http://sachachua.com/blog/p/3882]]
+
+And because it's good to quickly flash through records once in a while
+ to refresh my memory...
+
+#+BEGIN_EXAMPLE
+    (defvar sacha/bbdb-rapid-serial-visualization-delay
+     1
+     "*Number of seconds to wait between records.
+    Set to 0 to wait for input.")
+
+    (defun sacha/bbdb-rapid-serial-visualization ()
+      "Breeze through everyone's name and notes."
+      (interactive)
+      (window-configuration-to-register ?a)
+      ;; Copy the currently visible records
+      (let ((records bbdb-records)
+            (default-size (face-attribute 'default :height))
+            (new-size 400)
+            (continue t))
+        (set-face-attribute 'default nil :height new-size)
+        (pop-to-buffer (get-buffer-create "BBDB-Serial"))
+        (delete-other-windows)
+        (while (and records continue)
+          (insert (bbdb-record-name (caar records))
+                  "\n\n"
+                  (or (car (bbdb-record-net (caar records))) "No e-mail")
+                  "\n\n"
+                  (or (bbdb-record-notes (caar records)) "")
+                  (make-string 50 ?\n))
+          (goto-char (point-min))
+          (sit-for sacha/bbdb-rapid-serial-visualization-delay)
+          (setq records (cdr records)))
+        (set-face-attribute 'default nil :height default-size)
+        (when continue
+          (jump-to-register ?a))))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/crm][crm]],
+[[http://www.technorati.com/tag/elisp][elisp]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

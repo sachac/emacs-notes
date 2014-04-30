@@ -1,4 +1,6 @@
 #+TODO: TODO(t) STARTED(s) | DONE(x)
+#+PROPERTY: QUANTIFIED Emacs
+
 * How to use this
 
 If you're starting on a task, tag it with your name and change the TODO to STARTED. Clocking in is nice. =)
@@ -11,6 +13,15 @@ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 ** TODO Organize Emacs resources into starting/improving/enjoying
 - https://github.com/sachac/sharing/blob/gh-pages/blog.org
+
+** DONE Create graphviz map for learning Org Mode for Emacs			:graph:sacha:
+	 CLOSED: [2014-04-28 Mon 18:33]
+	 :LOGBOOK:
+	 CLOCK: [2014-04-28 Mon 17:56]--[2014-04-28 Mon 18:33] =>  0:37
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   1:00
+	 :END:
 
 * Notes
 

@@ -1,0 +1,118 @@
+#+TITLE: Notable people who use Emacs
+
+November 30th, 2004 -
+[[http://sachachua.com/blog/p/2448][http://sachachua.com/blog/p/2448]]
+
+Shamelessly stolen off comp.emacs. You can see it at
+
+[[http://groups.google.com/groups?hl=en&lr=&frame=right&th=636e3d0f9a421166&seekm=87y8hn66rk.fsf%40heresy.ainola.jyu.fi#link1][http://groups.google.com/groups?hl=en&lr=&frame=right&th=636e3d0f9a421166&seekm=87y8hn66rk.fsf%40heresy.ainola.jyu.fi#link1]]
+
+- Richard Stallman (founder of Free Software Foundation) is an Emacs
+ user. Hint: He is the original author of Emacs, after all. :-)
+
+- Yukihiro Matsumoto (creator of the Ruby programming language) is an
+ Emacs user. Hint: He said so in a post to ruby-talk mailing list.
+ Quote from
+[[http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/108051][http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-talk/108051]]:
+ “I wrote ruby-mode.el; I live in Emacs; I program in Emacs; I debug in
+ Emacs; I read mails in Emacs; I wrote MUA for Emacs.”
+
+- Jeremy Zawodny (author of “High Performance MySQL”) is an Emacs
+ user. Hint: He wrote Emacs Beginners' Howto
+
+([[http://jeremy.zawodny.com/emacs/][http://jeremy.zawodny.com/emacs/]]).
+
+- Andrew S. Tanenbaum used elle. It is some clone of emacs. Then
+
+#+BEGIN_QUOTE
+  he moved to emacs. He said so in his homepage.
+
+  [[http://www.cs.vu.nl/~ast/home/faq.html][http://www.cs.vu.nl/~ast/home/faq.html]]
+  “Which editor do you use
+   for producing books? I used to use elle, a stripped down emacs
+   clone, but I finally decided to take the plunge and move up to
+   full emacs.”
+#+END_QUOTE
+
+- James Gosling, father of Java, currently CTO at Sun's Developer
+ Products Group, uses Emacs. Hint: He wrote a C-based Emacs
+ implementation in 1981 (the code portions of which became GNU
+ Emacs). ... Uh, no. He was one of the reasons that the GPL and
+ copyright assignments were invented. His code had to be removed
+ from Emacs and substantial portions rewritten by Stallman,
+ because he refused to let his stuff get distributed by the FSF.
+
+- Jamie Zawinski, one of the main coders for Netscape Navigator
+ and one the founders of the Mozilla Foundation, uses Emacs. Hint:
+ He wrote Lucid Emacs. There's an Emacs timeline document on his
+ website, [[http://www.jwz.org/][http://www.jwz.org/]] ... So you can
+bet your sweet ***
+ that he is not using Emacs, but rather XEmacs (which is the
+ successor of Lucid Emacs).
+
+- Guy Steele. Co-inventor of Scheme, author of “Common Lisp the
+
+#+BEGIN_QUOTE
+  Language”, co-author of the Java language specification, first
+   person to port TeX, served on the standards commitees for C,
+   Fortran, Common Lisp and Scheme. And finally designer of the
+   original Emacs command set.
+#+END_QUOTE
+
+- John McCarthy. Inventor of Lisp, one of the founders of AI
+
+#+BEGIN_QUOTE
+  research. (proof:
+  [[http://www-formal.stanford.edu/jmc/facts.txt][http://www-formal.stanford.edu/jmc/facts.txt]]).
+#+END_QUOTE
+
+- SF writer Neil Stephenson uses Emacs for some of his books
+
+#+BEGIN_QUOTE
+  [[http://www.cryptonomicon.com/beginning.html][http://www.cryptonomicon.com/beginning.html]]
+  “I use emacs, which
+   might be thought of as a thermonuclear word processor.”
+#+END_QUOTE
+
+- Donald Erwin Knuth (creator of TeX) is an Emacs user. Hint:
+
+#+BEGIN_QUOTE
+  [[http://www-cs-faculty.stanford.edu/~knuth/programs.html][http://www-cs-faculty.stanford.edu/~knuth/programs.html]]
+  See that
+   Fvwm2-config and its screenshot.
+#+END_QUOTE
+
+- Eric “ESR” Steven Raymond is an Emacs user. Hints: Author of “Learning
+
+#+BEGIN_QUOTE
+  GNU Emacs”. See also this:
+  [[http://www.catb.org/~esr/fvwm2/][http://www.catb.org/~esr/fvwm2/]]
+#+END_QUOTE
+
+Notable people who don't use Emacs
+
+- Larry Wall (creator of Perl) is NOT an Emacs user. Hint: His geek
+ code for Emacs
+([[http://www.wall.org/~larry/ungeek.html][http://www.wall.org/~larry/ungeek.html]])
+decodes as: “I
+ refuse to categorize myself on Emacs. Emacs? I don't even know what
+ that is...”
+
+- Tim O'Reilly is NOT emacs user. He uses vi:
+
+#+BEGIN_QUOTE
+  [[http://www.oreilly.com/pub/a/oreilly/ask_tim/1999/unix_editor.html][http://www.oreilly.com/pub/a/oreilly/ask\_tim/1999/unix\_editor.html]]
+#+END_QUOTE
+
+- W. Richard Stevens (RIP) was NOT Emacs user. He used vi. Hints:
+
+#+BEGIN_QUOTE
+  [[http://www.kohala.com/][http://www.kohala.com/]]
+   [[http://www.kohala.com/start/][http://www.kohala.com/start/]]
+#+END_QUOTE
+
+- Paul Graham, author of several Lisp books, designer of Arc, founder
+ of Viaweb (which became Yahoo! Store), ironically uses vi and NOT
+ Emacs according to
+[[http://developers.slashdot.org/comments.pl?sid=117761&cid=9966507][http://developers.slashdot.org/comments.pl?sid=117761&cid=9966507]]
+. More proofs needed.

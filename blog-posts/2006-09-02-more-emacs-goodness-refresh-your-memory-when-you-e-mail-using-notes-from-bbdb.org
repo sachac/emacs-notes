@@ -1,0 +1,82 @@
+#+TITLE: More Emacs goodness: Refresh your memory when you e-mail using notes
+from BBDB
+
+September 2nd, 2006 -
+[[http://sachachua.com/blog/p/3824][http://sachachua.com/blog/p/3824]]
+
+Inspired by an e-mail-based customer relationship management system
+briefly described by [[http://blog.digitalketchup.net/][Daniel Charles]]
+of [[http://www.digitalketchup.net][digital ketchup]] at Shoeless Joe's
+last Friday, I decided to hack together a system that would allow me to
+see the notes from my contact database (aptly named the Big Brother
+Database, or BBDB) when I write e-mail using the Gnus mail client in
+Emacs.
+
+The first thing I needed to build, of course, was something that
+ removed my notes from outgoing messages. People really don't need to
+ see the kinds of notes I keep on them. ;) Well, they're fairly
+ innocuous notes: how we met and what they're interested in, usually,
+ although sometimes I'll have notes on people's food preferences or
+ shoe sizes. I've recently started keeping track of the subjects of
+ e-mail I send them, too.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/gnus-remove-notes ()
+      "Remove everything from --- NOTES --- to the signature."
+      (goto-char (point-min))
+      (when (re-search-forward "^--- NOTES ---" nil t)
+        (let ((start (match-beginning 0))
+              (end (and (re-search-forward "^--- END NOTES ---") (match-end 0))))
+          (delete-region start end))))
+    (add-hook 'message-send-hook 'sacha/gnus-remove-notes)
+#+END_EXAMPLE
+
+Then it was easy to write another function that composed individual
+ messages to all the people currently displayed in the BBDB buffer,
+ adding notes to each message.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/gnus-send-message-to-all (subject)
+      "Compose message to everyone, with notes."
+      (interactive "MSubject: ")
+      (let ((records bbdb-records))
+        (while records
+          (when (bbdb-record-net (caar records))
+            (bbdb-send-mail (caar records) subject)
+            (when (bbdb-record-notes (caar records))
+              (save-excursion
+                (insert "\n--- NOTES ---\n"
+                        (bbdb-record-notes (caar records))
+                        "\n--- END NOTES ---\n"))))
+          (setq records (cdr records)))))
+#+END_EXAMPLE
+
+I use BBDB to display only the people I want to e-mail, then I call
+ M-x sacha/gnus-send-message-to-all and specify a message subject. This
+ creates a gazillion message buffers which I can then edit. If I feel
+ particularly paranoid, I can remove the notes section myself with C-c
+ C-z (message-kill-to-signature), but sacha/gnus-remove-notes does it
+ as long as it's in message-send-hook.
+
+This code works particularly well with these other customizations:
+
+-  [[http://sachachua.com/notebook/wiki/2006.07.20.php#anchor-1][Emacs
+   BBDB magic: Greeting people with nicknames]]
+-  [[http://sachachua.com/notebook/wiki/2006.09.01.php#anchor-2][Emacs:
+   Keep track of messages sent]]
+-  [[http://sachachua.com/notebook/wiki/2006.06.03.php#anchor-5][BBDB
+   pinging code]] -- for adding datestamped notes to people's entries;
+   can be rewritten without the use of Planner
+
+It supersedes
+[[http://sachachua.com/notebook/wiki/2006.09.01.php#anchor-4][More Emacs
+fun: Composing mail to everyone with notes]].
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/bbdb][bbdb]],
+[[http://www.technorati.com/tag/gnus][gnus]],
+[[http://www.technorati.com/tag/crm][crm]],
+[[http://www.technorati.com/tag/networking][networking]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+[[../emacs/dotgnus.el][../emacs/dotgnus.el]]

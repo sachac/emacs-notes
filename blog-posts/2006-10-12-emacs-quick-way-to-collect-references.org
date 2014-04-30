@@ -1,0 +1,26 @@
+#+TITLE: Emacs: Quick way to collect references
+
+October 12th, 2006 -
+[[http://sachachua.com/blog/p/3937][http://sachachua.com/blog/p/3937]]
+
+#+BEGIN_EXAMPLE
+    (defvar sacha/planner-collector-buffer nil "Buffer for collecting links.")
+    (defun sacha/planner-collect-reference ()
+      (interactive)
+      (let ((text (sacha/yank-blog-reference-for-summary)))
+        (with-current-buffer sacha/planner-collector-buffer
+          (insert text))))
+
+    (defun sacha/planner-collect-reference ()
+      (interactive)
+      (let ((text (buffer-substring (line-beginning-position)
+                                    (1+ (line-end-position)))))
+        (with-current-buffer sacha/planner-collector-buffer
+          (insert text))))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: sgml-tag -- Command: Prompt for a tag and insert
+it, optionally with attributes.

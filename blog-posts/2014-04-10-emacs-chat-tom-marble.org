@@ -1,0 +1,36 @@
+#+TITLE: Emacs Chat: Tom Marble
+
+April 10th, 2014 -
+[[http://sachachua.com/blog/p/27164][http://sachachua.com/blog/p/27164]]
+
+Emacs Chat: Tom Marble -- Invoicing with Org and LaTeX; Clojure
+
+Guest: [[https://plus.google.com/105460652849985930855][Tom Marble]]
+
+Tom Marble's doing this pretty nifty thing with Org Mode, time tracking,
+LaTeX, and invoice generation. Also, Clojure + Emacs, and other good
+things. Enjoy!
+
+For the event page, you may
+[[https://plus.google.com/events/capebtcf9ihf98adcj57rvbfcc8][click
+here]].
+
+For the transcript, you may
+[[https://docs.google.com/document/d/1yL5Iw84IUEFNPKYcnegB-QRgMriPUC2knkvVhLA-0e4/pub][click
+here]].
+
+Want just the audio?
+[[https://archive.org/details/EmacsChatTomMarble][Get it from
+archive.org]]:
+[[https://ia902502.us.archive.org/16/items/EmacsChatTomMarble/Emacs-Chat-Tom-Marble.mp3][MP3]]
+
+Check out [[http://sachachua.com/blog/emacs-chat][Emacs Chat]] for more
+interviews like this. Got a story to tell about how you learned about or
+how you use Emacs? [[http://sachachua.com/blog/contact][Get in touch!]]
+
+[[http://archive.org/download/EmacsChatTomMarble/Emacs-Chat-Tom-Marble.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[http://archive.org/download/EmacsChatTomMarble/Emacs-Chat-Tom-Marble.mp3][Play
+in new window]] |
+[[http://archive.org/download/EmacsChatTomMarble/Emacs-Chat-Tom-Marble.mp3][Download]]

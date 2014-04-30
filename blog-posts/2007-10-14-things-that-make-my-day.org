@@ -1,0 +1,29 @@
+#+TITLE: Things that make my day
+
+October 14th, 2007 -
+[[http://sachachua.com/blog/p/4408][http://sachachua.com/blog/p/4408]]
+
+This note from Mark A. Hershberger:
+[[http://hexmode.com/487848.html][http://hexmode.com/487848.html]] ,
+ and all the rest of the e-mail I've been getting from Emacs geeks...
+*glow!*
+
+Now even just *thinking* about the book makes me feel all warm and
+ fuzzy and eager to write. Who knows what cool hacks I'll come across
+ in the process? How wonderful can it be? =)
+
+I promise to finish the raw text for the first chapter (planning your
+ day in Emacs) by this week, and I'll get plain-text or formatted
+ drafts out to beta reviewers by next week. I can't wait to see how
+ much better it will be once other people get their hands on it.
+ Questions, clarifications, cool hacks, cheers... It'll be so much fun!
+
+I've always liked working on things that real people used. That was
+ one of the biggest reasons I *loved* maintaining Planner: hearing from
+ people how it helped them do something cool or made their day or helped
+them make someone else's day... I love making people
+ happy, and I'm looking forward to doing that with this book. =) To all
+ the people who've written or who'll write to me in the future---thank
+you for
+ stepping forward and letting me see *you* instead of just a nameless,
+faceless audience. Thank you for letting me write for you!

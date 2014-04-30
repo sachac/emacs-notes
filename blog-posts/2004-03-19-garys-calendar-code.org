@@ -1,0 +1,8 @@
+#+TITLE: Gary's calendar code
+
+March 19th, 2004 -
+[[http://sachachua.com/blog/p/1908][http://sachachua.com/blog/p/1908]]
+
+[[http://tkd.kicks-ass.net/dist/emacs-wiki-config.el][http://tkd.kicks-ass.net/dist/emacs-wiki-config.el]]
+
+E-Mail from Gary V. Vaughan

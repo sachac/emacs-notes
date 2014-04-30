@@ -1,0 +1,41 @@
+#+TITLE: Chapter 7: Managing Your Notes in Emacs -- done!
+
+February 3rd, 2008 -
+[[http://sachachua.com/blog/p/4742][http://sachachua.com/blog/p/4742]]
+
+By golly, it's starting to look like a book.
+
+I just finished putting together my third chapter, which is really
+chapter 7 in the book: managing your notes and Emacs. This chapter is
+about taking notes in Emacs, focusing on Remember, Org, Planner, and
+blogs. At 38 pages, it's a little over my planned 35 pages, and I
+haven't even covered all the things that I wanted to like random
+information management with Howm, blogging to Blosxom, and customizing
+Planner templates. Maybe after some really fierce copy-editing, I'll
+have some space.
+
+I sent a copy off to my editor, and I just finished uploading a
+[[http://sachachua.com/notebook/wickedcoolemacs/wc-emacs-07-managing-your-notes.pdf][PDF]]
+and
+[[http://sachachua.com/notebook/wickedcoolemacs/wc-emacs-07-managing-your-notes.doc][OpenOffice.org
+document]] that you can download and read. There's also an
+[[http://sachachua.com/notebook/wickedcoolemacs/wc-emacs-07-managing-your-notes.html][HTML
+version]], but the formatting is a little wonky. I hope you find this
+useful! I didn't blog as much of this as I did last time, so I missed
+out on all the wonderful feedback people could've given me. I'll do that
+next chapter.
+
+I formatted most of the chapter this afternoon, hanging out with Leigh
+Honeywell, Seth Hardy, and a few other geeks at the Linux Caffe. Leigh's
+working on a book proposal, and we're thinking of organizing a writing
+group for technical authors. We'll start by meeting this Thursday at
+Leigh's apartment. iI enjoyed chatting with them as I worked on my book,
+drifting in and out of conversations. I think it would be a good idea to
+work somewhere quieter, with plenty of table room for assorted gadgets,
+but this was a good start.
+
+Next chapter: contact management in Emacs. I've got a lot of fun hacks
+that I want to share here, so coming up with material shouldn't be hard.
+I'll keep you posted!
+
+(UPDATE: Fixed links. Thanks to Leschinsky Oleg for pointing that out!)

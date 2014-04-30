@@ -1,0 +1,30 @@
+#+TITLE: TODO lists in Emacs!
+
+January 18th, 2006 -
+[[http://sachachua.com/blog/p/3233][http://sachachua.com/blog/p/3233]]
+
+E-mail addresses removed. But it's the real Stephen J. Turnbull... =)
+
+#+BEGIN_EXAMPLE
+    From: "Stephen J. Turnbull"
+    Subject: Re: TODO extension for source code and Emacs
+    To: tlug (Tokyo Linux Users Group)
+    Date: Wed Jan 18 14:17:40 2006 +0800
+
+    >>>>> "Ian" == Ian Wells (ijw) writes:
+
+        Ian> Actually I was hoping for something that understood
+        Ian> todo-lists (i.e. allowed you to tick stuff off and add
+        Ian> unrelated items) but I think I may be fantasising.
+
+    (a) [the helpful answer] Find Sacha Chua (TLUG denizen), this is up
+    her alley.
+#+END_EXAMPLE
+
+Will write a good reply on the plane.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/goodkarma][goodkarma]],
+[[http://www.technorati.com/tag/planner][planner]]
+
+E-Mail from Stephen J. Turnbull

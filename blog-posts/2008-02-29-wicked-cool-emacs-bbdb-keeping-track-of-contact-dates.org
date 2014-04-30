@@ -1,0 +1,179 @@
+#+TITLE: Wicked Cool Emacs: BBDB: Keeping track of contact dates
+
+February 29th, 2008 -
+[[http://sachachua.com/blog/p/4792][http://sachachua.com/blog/p/4792]]
+
+I hadn't realized just how much I missed my Big Brother Database until
+today. Three networking events packed into one week meant that I hadn't
+set aside enough time for follow up, and I felt my memories of the
+conversations getting a little hazy. Fortunately I'd taken some notes on
+my Palm, but I knew I had to get it into some kind of contact management
+system quickly, and Gmail Contacts just wasn't compelling enough for me.
+So it's back to Emacs, plain text files, and a surprisingly
+sophisticated contact manager.
+
+I also promised to do some work on the book today, so everything
+dovetailed nicely.
+
+The following bit of code helps me filter displayed contacts to show
+only the people I haven't contacted since a certain date. This is handy
+for remembering to keep in touch with old friends, for example. Or at
+least it would be handy if I used it more often and if I actually sent
+the letters that pile up in my e-mail drafts and my snail mail outbox...
+but at least it's a step in the right direction.
+
+If you want to know who you have or haven't talked to in a while, you
+need to do two things. First, you need to keep track of when you talked
+to people. Second, you need to generate reports.
+
+To be able to quickly add contact notes to BBDB records, add the
+following to your /~/.emacs/:
+
+*** ch6-bbdb-ping.el:
+
+#+BEGIN_EXAMPLE
+    (define-key bbdb-mode-map "z" 'wicked/bbdb-ping-bbdb-record)
+    (defun wicked/bbdb-ping-bbdb-record (bbdb-record text &optional date regrind)
+      "Adds a note for today to the current BBDB record.
+    Call with a prefix to specify date.
+    BBDB-RECORD is the record to modify (default: current).
+    TEXT is the note to add for DATE.
+    If REGRIND is non-nil, redisplay the BBDB record."
+      (interactive (list (bbdb-current-record t)
+                         (read-string "Notes: ")
+                         ;; Reading date - more powerful with Planner, but we'll make do if necessary
+                         (if (featurep 'planner)
+                             (if current-prefix-arg (planner-read-date) (planner-today))
+                           (if current-prefix-arg
+                               (read-string "Date (YYYY.MM.DD): ")
+                             (format-time-string "%Y.%m.%d")))
+                         t))
+      (bbdb-record-putprop bbdb-record
+                           'contact
+                           (concat date ": " text "\n"
+                                   (or (bbdb-record-getprop bbdb-record 'contact))))
+      (if regrind
+          (save-excursion
+            (set-buffer bbdb-buffer-name)
+            (bbdb-redisplay-one-record bbdb-record)))
+      nil)
+#+END_EXAMPLE
+
+You can then use z in BBDB buffers to add a quick note to the “contact”
+field of the current record. The date is automatically noted. You can
+create a note for a specific date by calling {{C-u
+wicked/bbdb-ping-bbdb-record}} with a prefix argument. For convenience,
+the suggested configuration binds this to “z”, because it was one of the
+few unbound keys I could find. Use this after you meet, call, or e-mail
+people, and write down a short note about the conversation you had. You
+might find these notes useful later on.
+
+If you met a number of people at an event in the past and you have
+Planner installed and loaded, you can use {{planner-timewarp}} to set
+the effective date to another date. To return to today, use {{M-x
+planner-timewarp nil}}.
+
+To automatically add a datestamped copy of sent e-mail subjects to
+people's BBDB records, add the following to your /~/.gnus/:
+
+*** ch6-bbdb-message-add-subject.el:
+
+#+BEGIN_EXAMPLE
+    (defun wicked/message-add-subject-to-bbdb-record ()
+      "Add datestamped subject note for each person this message has been sent to."
+      (let* ((subject (concat (format-time-string "%Y.%m.%d")
+                              ": E-mail: " (message-fetch-field "Subject") "\n"))
+             (bbdb-get-addresses-headers
+              (list (assoc 'recipients bbdb-get-addresses-headers)))
+             records)
+        (setq records
+              (bbdb-update-records
+               (bbdb-get-addresses nil gnus-ignored-from-addresses 'gnus-fetch-field)
+               nil nil))
+        (mapc (lambda (rec)
+                (bbdb-record-putprop rec
+                                     'contact
+                                     (concat subject
+                                             (or
+                                              (bbdb-record-getprop rec 'contact)
+                                              ""))))
+              records)))
+    (add-hook 'message-send-hook 'wicked/message-add-subject-to-bbdb-record)
+#+END_EXAMPLE
+
+Now that you have the data, how can you use it to filter? Add the
+following to your /~/.emacs/:
+
+*** ch6-bbdb-show-only-no-contact-since.el:
+
+#+BEGIN_EXAMPLE
+    (defun wicked/bbdb-show-only-no-contact-since (date &optional reverse records)
+      "Show only people who haven't been pinged since DATE or at all.
+    If REVERSE is non-nil, show only the people you've contacted on or since DATE.
+    Call with a prefix argument to show only people you've contacted on or since DATE."
+      (interactive (list
+                    (if (featurep 'planner)
+                        (planner-read-date)
+                      (read-string "Date (YYYY.MM.DD): "))
+                    current-prefix-arg (or bbdb-records (bbdb-records))))
+      (let (new-records
+            last-match
+            timestamp
+            omit
+            notes)
+        (while records
+          ;; Find the latest date mentioned in the entry
+          (let ((timestamp (wicked/bbdb-last-date
+                            (if (vectorp (car records))
+                                (car records)
+                              (caar records)))))
+            (if (if reverse
+                    ;; Keep if contact is >= date
+                    (null (string< timestamp date))
+                  ;; Keep if date > contact
+                  (string> date timestamp))
+                (add-to-list 'new-records (if (vectorp (car records))
+                                (car records)
+                              (caar records)) t)))
+          (setq records (cdr records)))
+        (bbdb-display-records new-records)))
+
+    (defun wicked/bbdb-last-date (rec)
+      "Return the most recent date for REC or nil if none.
+    Dates should be in the form YYYY.MM.DD.  The first date in the
+    notes field and the first date in the contact field are used, so
+    dates should be in reverse chronological order."
+      (let* ((wicked/date-regexp
+              "\\<\\([1-9][0-9][0-9][0-9]\\)\\.\\([0-9][0-9]?\\)\\.\\([0-9][0-9]?\\)\\>")
+             ;; Get the first date mentioned in the notes field
+             (notes-date
+              (or (and (string-match wicked/date-regexp (or (bbdb-record-notes rec) ""))
+                       (match-string 0 (or (bbdb-record-notes rec) "")))
+                  "0000.00.00"))
+             ;; Get the first date mentioned in the contact field
+             (contact-date
+              (or (and (string-match wicked/date-regexp (or (bbdb-record-getprop rec 'contact) ""))
+                       (match-string 0 (or (bbdb-record-getprop rec 'contact) "")))
+                  "0000.00.00")))
+        ;; Compare the two dates
+        (or (if (string< notes-date contact-date) contact-date notes-date)
+            "0000.00.00")))
+#+END_EXAMPLE
+
+To generate a report, use {{M-x wicked/bbdb-show-only-no-contact-since}}
+and specify the date. These functions are much easier to use with
+Planner's date-handling functions. Planner can read dates like “-1″
+(yesterday), “-7fri” (seven Fridays ago), “2″ (the second of this
+month), “1.2″ (January 2 in this year), and “2007.01.02″ (January 2,
+2007).
+
+You can also flip the filter by using the universal prefix argument
+({{C-u M-x wicked/bbdb-show-only-no-contact-since}}) to show only the
+people you've contacted since a certain date. This is good for knowing
+the size of your active network. Because the filter works on displayed
+records, you can combine it to find all the people you talked to last
+year but not this year. You can also combine it with other filters to
+find all the people you've marked as friends, but who you haven't talked
+to in three months. Then you can send a personalized e-mail or make a
+phone list, and get back in touch. And that's how you keep track of your
+contact dates!

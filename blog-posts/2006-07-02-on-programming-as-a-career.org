@@ -1,0 +1,125 @@
+#+TITLE: On programming as a career
+
+July 2nd, 2006 -
+[[http://sachachua.com/blog/p/3643][http://sachachua.com/blog/p/3643]]
+
+[[http://rajshekhar.net/blog/][Raj Shekhar]] reminded me that software
+development is a career too, and that there are software companies that
+use exciting things like LISP.
+
+My background is in computer science, and I spent almost all my
+ summers in high school training for programming competitions. I was a
+ geek's geek, with algorithms and code coming out of my ears. I still
+ enjoy writing code to make things work. =) I'm much more comfortable
+ reading other people's code and making sense of it than other people I
+ know -- apparently, a rare thing. ;) I also enjoy writing
+ documentation. These two factors cause most people to doubt my
+ existence. What, a programmer who likes reading other people's code
+ \_and\_ writing documentation?! Right up there with unicorns and
+ dragons, mate. ;)
+
+But that's not all of who I am, and I get the sense that's not what
+ I'm best suited for.
+
+In yesterday's conversation about the meaning of life and other
+ things, [[http://www.simonrowland.com][Simon Rowland]] pointed out
+ that I'm more relationship-driven than technology-driven. When I
+ argued that I'm still a technologist at heart, he laughed and pointed
+ out that even my Emacs Lisp coding is motivated by contact with
+ people. The reason why I enjoyed working on Planner so much was
+ because I could make people really happy by writing code to fit their
+ editor and personal information manager to their particular needs. And
+ it wasn't people in abstract, people in general, but rather one person
+ at a time, with completely idiosyncratic code that I might never
+ reuse.
+
+I like working with technology on a human scale. I love personalizing
+ things. I love working one-on-one with people. I don't like being
+ abstracted away from users. I want them to be able to yell at me when
+ something goes wrong, and I want them to be able to express their
+ appreciation when things go right. I don't want to deal with market
+ studies and hypothetical users. I want names and faces and stories.
+
+I guess that's why software development or system administration don't
+ really appeal to me as careers. I know a lot of developers and sysads
+ who enjoy their work and are doing cool things, but their work doesn't
+ strike a chord in me. I love developing skills that aren't part of the
+ traditional developer profile. I love writing and public speaking, and
+ I want to do that as part of my day job instead of just something I do
+ on the side.
+
+Some people have advised me to take a code monkey job, just for the
+ heck of it. Just to gain experience and give myself more time here in
+ North America, you know. As tempting as it is, though, my instinct?
+ feeling? sense? tells me that there might be a better path. If it's at
+ all possible for me to follow my passion at each step, I'd rather do
+ that and be exceptional rather than be a mediocre programmer.
+
+When I ask myself what I'd do if I could work without thinking about
+ money, what I'd do even if no one paid me to, the answer that
+ consistently comes up is: spend the entire day reading, learning,
+ teaching, writing, speaking, meeting people. I don't see myself
+ building robust, featureful systems or crafting beautiful code. I see
+ myself drawing attention to other people's stories, connecting
+ different ideas, introducing people to people and things that could
+ change their lives. At the end of my life, I don't want people to
+ remember me for some program I wrote, but rather for the changes that
+ I helped them make in their lives, what I inspired them to do, who I
+ inspired them to be.
+
+So yes: although I can code, a job that involves only that aspect of
+ me will not be able to make the most of me.
+
+This probably disappoints some of my college teachers who'd rather I
+ were in “hard” computer science -- cryptography, graph theory, whatever
+ - but that's the way it is, and I want to explore that aspect of
+ myself.
+
+How does that translate into a career? It's not exactly the kind of
+ thing you'll find advertised on Monster.com. I'll probably spend the
+ rest of my master's thinking about enterprise social computing and how
+ people can make the most of blogs, wikis, social bookmarking,
+ podcasting, and related technologies. I would like to stay in North
+ America for at least a few more years because I'm learning so much
+ from the tech culture here, so I'll need to offer enough value to a
+ company to sponsor my work permit. I'd like to think that I can create
+ enough value to justify the paperwork. ;)
+
+In particular, I'd probably fit in well as someone who can support
+ consultants and other people whose job it is to know about technology
+ but who are too busy to learn about all these different things. I'm
+ good at reading about lots of different things and looking at the
+ connections. I'm also good at searching for supporting information and
+ recommending things that might be useful. I've been complimented on my
+ ability to get people enthused about something, and that extra boost
+ might help people close sales. If you know any company that would be a
+ good fit for me and that I would be a good fit for, I'd love to hear
+ about it!
+
+I'm also interested in writing, but that might be more of a
+ medium-term thing. =)
+
+If I can find a best-fit opportunity, all the better. If I'm not quite
+ qualified to do that yet and I can't find a company that will take a
+ chance on me and train me up, I'll consider other opportunities -- but
+ I definitely want something that engages not only my technological
+ skills but also my social ones. =)
+
+(Thanks for the comment, Raj! I love being prompted to reflect more
+ because that makes me clarify my thoughts.)
+
+On Technorati: [[http://www.technorati.com/tag/career][career]],
+[[http://www.technorati.com/tag/life][life]],
+[[http://www.technorati.com/tag/reflection][reflection]]
+
+Random Japanese sentence:
+ÃƒÂ§Ã‚Â§Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ§Ã‚ÂŠÃ‚Â¬ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¦Ã‚Â--Ã‚Â¹ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ§Ã‚ÂŒÃ‚Â«ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â‚Ã‚ÂŠÃƒÂ¥Ã‚Â¥Ã‚Â½ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â™ÃƒÂ£Ã‚Â€Ã‚Â‚ÃƒÂ¤Ã‚Â½Ã‚Â•ÃƒÂ¦Ã‚Â•Ã‚Â...ÃƒÂ£Ã‚Â?Ã‚ÂªÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ¥Ã‚Â‰Ã‚Â?ÃƒÂ¨Ã‚Â€Ã‚Â...ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ¦Ã‚Â--Ã‚Â¹ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ¥Ã‚Â¾Ã‚ÂŒÃƒÂ¨Ã‚Â€Ã‚Â...ÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â‚Ã‚ÂŠÃƒÂ¥Ã‚Â¿Ã‚Â
+ÃƒÂ¥Ã‚Â®Ã‚ÂŸÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â™ÃƒÂ£Ã‚Â?Ã‚Â‹ÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â€Ã‚Â‚
+I like dogs better than cats, because the former are more faithful than
+the latter.
+
+More:
+
+-  [[http://ludditegeek.blogspot.com/2006/07/ideal-career-path.html][Luddite
+   Geek also reflects or career path]]
+

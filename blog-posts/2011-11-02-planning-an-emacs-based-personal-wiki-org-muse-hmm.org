@@ -1,0 +1,48 @@
+#+TITLE: Planning an Emacs-based personal wiki -- Org? Muse? Hmm...
+
+November 2nd, 2011 -
+[[http://sachachua.com/blog/p/22593][http://sachachua.com/blog/p/22593]]
+
+I miss my Planner wiki! I think it's time to organize things into a
+personal wiki again. Blogs are great for chronological updates, but I
+need to be able to group ideas into more than just categories, and
+WordPress pages aren't as convenient as a proper wiki. Org-mode outlines
+are also good, but they can get unwieldy when large. I have an 1.7MB
+outline right now, all plain text, and I can't fit it into my head.
+
+What kind of tool should I use? I thought about whether I wanted a
+web-based wiki editing environment. I realized that editing and
+publishing the wiki from Emacs is probably the way to go for me, because
+that gives me offline access, synchronization, and all sorts of other
+goodies.
+
+Here's what I want to do:
+
+1. Provide a knowledge map that links to blog posts and other resources
+2. Flesh out that knowledge map with summaries
+3. Build a coherent personal wiki
+
+Here are other capabilities I care about:
+
+1. Link easily between concepts
+2. Keep tables and other forms of data
+3. Keep private and public notes, but publish only the public ones
+4. Publish parts of the tree
+5. Publish as separate files, for ease of browsing
+6. Use the same markup I use in Org Mode (or something that can be
+   easily transformed), so that I don't have to do anything fancy when
+   copying entries over
+
+I thought about using [[http://www.emacswiki.org/emacs/EmacsMuse][Muse]]
+because of its project-publishing support, and because of the good
+experience I had with Planner and Emacswiki (the predecessor to Muse).
+Muse supports Org-format tables, but it uses a different way to signify
+code blocks, examples, and other parts. For ease of implementation,
+then, I'll probably see if I can get [[http://orgmode.org][Org Mode]] to
+deal well with the case of either multiple small files, or narrowed
+portions of one large file. Anyway, the first step is to organize my
+resources, and that will be useful no matter which wiki system I end up
+using.
+
+Do you have an Emacs-based personal wiki? What do you use, and what do
+you think about it?

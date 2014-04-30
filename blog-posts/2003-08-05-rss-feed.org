@@ -1,0 +1,7 @@
+#+TITLE: RSS feed
+
+August 5th, 2003 -
+[[http://sachachua.com/blog/p/977][http://sachachua.com/blog/p/977]]
+
+I think it should be relatively easy to publish an RSS feed of the
+ links from my planner wiki...

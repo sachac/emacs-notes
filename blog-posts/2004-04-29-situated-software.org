@@ -1,0 +1,25 @@
+#+TITLE: Situated Software
+
+April 29th, 2004 -
+[[http://sachachua.com/blog/p/2020][http://sachachua.com/blog/p/2020]]
+
+Link from [[http://www.terryp.tk][TerryP's blog]]
+
+I think this is why I have so much fun working on
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]. I have
+ a clearly-defined set of users in mind (mostly the mailing list) and I
+ love threshing out interfaces and features with them. It's not a
+ large-scale application and it certainly doesn't appeal to the masses,
+ but it can be quite powerful when you get the hang of it.
+
+Hey, Emacs is like that too. =)
+
+Open source supports situated software very well, as you can tweak
+ something existing in order to fit your needs.
+
+By the way, the author taught a class called Social Software.
+
+Must forward to Dr. Rodrigo. This is her kind of thing.
+
+[[http://www.shirky.com/writings/situated_software.html][Shirky:
+Situated Software]]

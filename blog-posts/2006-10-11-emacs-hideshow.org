@@ -1,0 +1,45 @@
+#+TITLE: Emacs: Hideshow
+
+October 11th, 2006 -
+[[http://sachachua.com/blog/p/3931][http://sachachua.com/blog/p/3931]]
+
+One of the things I love about vising irc.freenode.net #emacs is that
+helping people with their questions lets me discover all sorts of cool
+things about Emacs. Today's nugget? hideshow.el, which allows you to
+automatically hide / show code. (Equivalent of vim folding).
+
+I've added the following code to my config:
+
+#+BEGIN_EXAMPLE
+    (load-library "hideshow")
+    (add-hook 'emacs-lisp-mode-hook
+              (lambda () (hs-minor-mode 1)
+                (hs-hide-all)
+                (set (make-variable-buffer-local 'my-hs-hide) t)))
+    (defvar my-hs-hide t "Current state of hideshow for toggling all.")
+    ;;;###autoload
+    (defun my-toggle-hideshow-all ()
+      "Toggle hideshow all."
+      (interactive)
+      (set (make-variable-buffer-local 'my-hs-hide) (not my-hs-hide))
+      (if my-hs-hide
+          (hs-hide-all)
+        (hs-show-all)))
+    (global-set-key (kbd "C-c @ @") 'my-toggle-hideshow-all)
+    (global-set-key (kbd "C-c @ h") 'hs-hide-block)
+    (global-set-key (kbd "C-c @ s") 'hs-show-block)
+    (global-set-key (kbd "C-c @ SPC") 'hs-show-block)
+#+END_EXAMPLE
+
+Sweet.
+
+... and then I find that I already have a
+ [[http://sachachua.com/notebook/emacs/hideshow-config.el][hideshow
+config]], of course, and that
+ I added it on 2003.11.21... <bonk>!
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: timezone-parse-date -- Function: Parse DATE and
+return a vector [YEAR MONTH DAY TIME TIMEZONE].

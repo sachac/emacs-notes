@@ -1,0 +1,32 @@
+#+TITLE: Waaaaaaaaaaaaaaaaaaahoooooooooooo! Published!
+
+September 2nd, 2005 -
+[[http://sachachua.com/blog/p/2949][http://sachachua.com/blog/p/2949]]
+
+Bob Erb wrote:
+
+#+BEGIN_QUOTE
+  Reading Linux Journal at work today, I get to the article
+   about todo lists, browsing through it, getting interested when it
+   started talking about plain text files, then excited when
+  planner-mode
+   was mentioned, then thinking, “I'll have to tell emacs-wiki-discuss
+   about this!” as the discussion of planner-mode continued, then, wow,
+   it's you!
+#+END_QUOTE
+
+Waaaaaaaaaaaaaaaaaahooooooooooooooooo! I've been published!
+ My article on [[http://www.linuxjournal.com/article/8378][Taming the
+TODO]] came out in
+ [[http://www.linuxjournal.com/issue/138][Linux Journal #138, October
+2005]]. Buy a copy!
+
+Thanks in no small part to Travis Hartwell (who poked me into actually
+ \_doing\_ something that had been on my TODO list for ages), Dominique
+ Cimafranca (who helped me fix my absolutely horrible first draft),
+ Jill Franklin and Don Marti of Linux Journal, and of course the
+ absolutely wonderful Planner community...
+
+Happy happy joy joy! Happy happy joy joy!
+
+E-Mail from Bob Erb

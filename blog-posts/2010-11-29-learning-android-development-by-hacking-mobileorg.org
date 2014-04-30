@@ -1,0 +1,80 @@
+#+TITLE: Learning Android development by hacking MobileOrg
+
+November 29th, 2010 -
+[[http://sachachua.com/blog/p/21928][http://sachachua.com/blog/p/21928]]
+
+I spent most of Saturday plunging into Android development, starting
+from the
+[[http://developer.android.com/guide/tutorials/hello-world.html][Hello
+World]] and
+[[http://developer.android.com/guide/tutorials/notepad/index.html][Notepad]]
+tutorials. It was lots of fun. I wanted to use MobileOrg on Android, but
+it lacked a lot of things that were in MobileOrg for iPhone, so I taught
+myself Android development by fixing little things that a newbie like me
+could do.
+
+First: I wanted the capture form to resize itself when the soft keyboard
+was displayed, instead of letting the virtual keyboard hide the Save
+button. Fortunately, I'd come across a solution while reading
+[[http://developer.android.com/resources/articles/index.html][the
+technical articles]] on developer.android.com: resize the
+[[http://developer.android.com/resources/articles/on-screen-inputs.html][activity
+based on the onscreen input method]]. I tested it on my system, then
+reported the issue and the fix through
+[[https://github.com/matburt/mobileorg-android][MobileOrg's github]].
+Within a few hours, the fix was included in the project. Yay! (It took
+me a while to figure out I could use the back button to hide the
+keyboard, but it was a productive while.)
+
+Second: The editing interface was functional but not convenient , so I
+dug into views and layouts and all sorts of niftiness. Before and after:
+
+[[http://sachachua.com/blog/wp-content/uploads/2010/11/editbefore.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/editbefore_thumb.png]]]]
+[[http://sachachua.com/blog/wp-content/uploads/2010/11/after.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/after_thumb.png]]]]
+
+(... and it's all wired up and working, at least for me!)
+
+Mwahaha! Along the way, I ended up learning about org-mobile.el and how
+to set up a somewhat finicky configuration so that I could synchronize
+my files over Dropbox onto my SD card and into MobileOrg, and then back
+over Dropbox and into my computer. It's not fully automatic, but the
+pieces are mostly connected now. The relevant parts of my experimental
+config:
+
+#+BEGIN_EXAMPLE
+    (setq org-mobile-directory "~/dropbox/mobile")
+    (setq org-mobile-inbox-for-pull "~/personal/mobileorg.org")
+    (setq default-buffer-file-coding-system 'utf-8)
+    (setq org-mobile-files '("~/personal/organizer.org" "~/personal/outline.org" "~/personal/test.org"))
+    (setq org-mobile-agendas '("a"))
+#+END_EXAMPLE
+
+Then I used M-x org-mobile-push to sync things up. There was a bit of a
+kerfluffle I had to sort out. I moved files around, so I needed to
+delete the /sdcard/mobileorg database on my Android, and I also needed
+to download the checksums and other files using Dropbox before loading
+them in MobileOrg. But things work reasonably well now, I think, and I
+can browse my Org files and capture some updates. Whee!
+
+[[http://sachachua.com/blog/wp-content/uploads/2010/11/main.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/main_thumb.png]]]]
+[[http://sachachua.com/blog/wp-content/uploads/2010/11/organizer.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/organizer_thumb.png]]]]
+[[http://sachachua.com/blog/wp-content/uploads/2010/11/outline2.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/outline2_thumb.png]]]]
+
+... and so on.
+
+Next step: Talk to my manager about open source approvals so that I can
+share my patches with the community. There's still plenty more to build
+on top of MobileOrg, but at least I've taken care of the two big things
+that were getting in my way.
+
+I'll have to decide whether I'm going to build my other app ideas as
+separate lightweight apps, or be evil and store as much data as I can
+into [[http://orgmode.org][Org]]... >:) Hmm. Org as grocery list, price
+tracker, inventory management, and recipe database? Org as sewing
+organizer for patterns, notions, fabric, measurements, and projects? Org
+as a hammer for an unbelievable variety of nails?
+
+Mwahahaha!
+
+(Okay, maybe I'll build things for SQLite first, but there'll probably
+be some kind of .org or CSV eventually...)

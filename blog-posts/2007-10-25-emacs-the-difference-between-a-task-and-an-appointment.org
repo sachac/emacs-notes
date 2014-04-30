@@ -1,0 +1,92 @@
+#+TITLE: Emacs: The difference between a task and an appointment
+
+October 25th, 2007 -
+[[http://sachachua.com/blog/p/4419][http://sachachua.com/blog/p/4419]]
+
+For the longest time, I was using my task list to manage my
+ appointments. It was really easy to do that with a custom Planner
+ task-sorting function. This is the function I used on day pages:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-sort-tasks-basic ()
+      "Sort tasks by time (@1030, etc), priority, and status (oP_>XC)."
+      (let* ((info (planner-current-task-info))
+             (status (aref (planner-task-status info) 0)))
+        (concat
+         (if (or (eq status ?X) (eq status ?C))
+             "Z" ; Completed and cancelled tasks go last
+           " ")
+         ;; Sort by time
+         (or (and (string-match "@[0-9][0-9]:[0-9][0-9]"
+                                (planner-task-description info))
+                  (match-string 0 (planner-task-description info)))
+             "@9999")
+         ;; Sort by status: in progress, postponed,
+         ;; open, delegated, completed, cancelled
+         (cond
+          ((eq status ?o) "1")
+          ((eq status ?P) "2")
+          ((eq status ?>) "4")
+          ((eq status ?X) "5")
+          ((eq status ?C) "6")
+          (t "3"))
+         ;; A, B, C
+         (planner-task-priority info))))
+    ;; Here's how to make that your task-sorting function, although
+    ;; mine actually changes function on plan pages
+    (setq planner-sort-tasks-key-function 'sacha/planner-sort-tasks-basic)
+#+END_EXAMPLE
+
+This worked because I generally had few appointments and I didn't use
+ M-x plan to carry unfinished tasks forward. If I did, then I'd
+ probably get hopelessly confused. =)
+
+That's because I was keeping track of several different things using
+ the same syntax. Appointments are typically scheduled for a specific
+ day and a specific time. It doesn't make sense to carry them over to
+ the next day if you don't mark them done. In fact, it makes very
+ little sense to mark them as “done” or not, as you just show up to
+ them. Granted, I used my task list to also keep track of (and
+ publish!) events that I'd meant to go to but decided not to, so
+ “cancelling” still made sense. But carrying stuff over to the next
+ day? Not really.
+
+I used my task list to keep track of people's birthdays, too. That
+ didn't really work out too well either, because I had to remember to
+ copy the task and date it for the next year. It was good for keeping
+ track of whose birthdays I'd remembered to recognize, though. Still,
+ setting up planner-cyclic would probably have been a good idea.
+
+And I also used my task list to keep track of tasks, of course. I very
+ much preferred thinking in terms of tasks rather than appointments.
+ The action orientation's better for me, I guess. So my task list for
+ each day would have plenty of tasks, some of which I *needed* to do
+ that day, and others which I thought it would be nice to do that day.
+
+I like reviewing my tasks during the night before, or over breakfast.
+ I go through my tasks and appointments and figure out what makes sense
+ to do when. Sometimes I estimate how long tasks will take. Then I
+ shuffle the tasks around with keyboard shortcuts until I've got
+ similar tasks grouped together. Yes, I know, I *could* just visually
+ scan the list to see what I can do next, but I like sorting all of
+ that beforehand and then methodically going through this list. This is
+ something I still haven't quite figured out how to do in Org or Lotus
+ Notes. Maybe it's a Planner quirk of mine.
+
+During this day-sorting, appointments are usually the only things with
+ timestamps on them. Sometimes I'll add timestamps to my tasks as well,
+ to give myself a clearer feeling about the time boundaries.
+
+So what my schedule looks like throughout the day is a mish-mash of
+ tasks and appointments and events (completed, in progress, blank,
+ cancelled), but it works for me because everything's in one place and
+ I don't even need to look to the side.
+
+I haven't been able to keep that up to date recently because I now
+ have a separate work computer, but once I set Emacs up on my work
+ computer, I might get back to that kind of comfortable arrangement.
+ It's either that or learn how to tweak Lotus Notes, which seems kinda
+ scary... =)
+
+Random Emacs symbol: c-mode -- Command: Major mode for editing K&R and
+ANSI C code.

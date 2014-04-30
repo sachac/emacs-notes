@@ -1,0 +1,8 @@
+#+TITLE: Slime -- an Emacs interface for Common LISP
+
+March 5th, 2004 -
+[[http://sachachua.com/blog/p/1838][http://sachachua.com/blog/p/1838]]
+
+[[http://www.common-lisp.net/project/slime/][http://www.common-lisp.net/project/slime/]]
+
+A CVS checkout worked out of the box. \_And\_ it's colored, too. Nifty.

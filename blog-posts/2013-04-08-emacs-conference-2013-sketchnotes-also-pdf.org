@@ -1,0 +1,15 @@
+#+TITLE: Emacs Conference 2013 Sketchnotes (also, PDF!)
+
+April 8th, 2013 -
+[[http://sachachua.com/blog/p/24660][http://sachachua.com/blog/p/24660]]
+
+I cleaned them up a little and packaged them as a PDF for your viewing
+convenience:
+
+[[http://j.mp/emacsconf2013sketches][http://j.mp/emacsconf2013sketches]]
+
+Here they are individually, too! Click on an image to view the
+full-sized version, and feel free to share them under the Creative
+Commons Attribution Licence. Enjoy!
+
+[nggallery id=10 template=caption]

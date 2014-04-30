@@ -1,0 +1,53 @@
+#+TITLE: Moving my book notes online
+
+January 6th, 2011 -
+[[http://sachachua.com/blog/p/22033][http://sachachua.com/blog/p/22033]]
+
+[[http://dl.dropbox.com/u/3968124/books.org.txt][I moved more of my book
+notes online]], reasoning that a braindump is better than occasional
+whining about the lack of a good system. ;) Fellow Emacs geeks who use
+Org will probably get the most out of this, as they can open it in Emacs
+and work with the hierarchy, but someday I may figure out a neat little
+hyperlinked solution that will make it easy for everyone else. Or I'll
+pull more and more of these posts into my blog, where they'll be
+individually linkable and commentable.
+
+Compare:
+[[http://sachachua.com/blog/category/book/][http://sachachua.com/blog/category/book/]]
+, which wins points for being graphical and highlighted and
+comment-friendly, but loses topical organization, overview, search, and
+offline access.
+
+It's a start. Here's what's working well:
+
+*CAPTURE:* Using Org + Remember to capture book notes uses the same
+process as my other notes. Diagrams can be scanned in and attached to
+files. I used to scan and OCR dogeared pages, but typing or dictating
+them in is okay, and it helps me review. The capture part of my process
+is fantastic.
+
+*ORGANIZATION:* org-refile or copying and pasting are easy, so this part
+of the process is fine.
+
+*REVIEW:* I might schedule times to refresh my memory of certain books.
+I can do that with Org agenda fairly easily.
+
+*SHARING:* Here's where the process breaks down a little.
+org2blog-post-subtree is great, and I've used that a number of times to
+post the relevant subtree of book notes. That adds the notes as entries
+in my blog, storing the post ID in my Org file so that I can get back to
+the post afterwards. org2blog also makes it easy to edit entries,
+hooray.
+
+Once it's in my blog, people can use the categories to find other
+entries. However, my current blog layout doesn't highlight the
+categories, and it's not easy to browse the different book-related
+categories. Maybe it's worth tweaking a “reading” or “book” category
+layout page.
+
+Aha! How's
+[[http://sachachua.com/blog/book-notes/][http://sachachua.com/blog/book-notes/]]
+? It's a manually-edited list at the top (thanks, Org!), followed by an
+automatically-generated index. I'll gradually move my other notes into
+this system -- text notes in my Org file and blog entries for
+linkability/commentability. Progress...

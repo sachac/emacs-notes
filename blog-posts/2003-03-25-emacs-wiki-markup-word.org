@@ -1,0 +1,7 @@
+#+TITLE: emacs-wiki-markup-word
+
+March 25th, 2003 -
+[[http://sachachua.com/blog/p/597][http://sachachua.com/blog/p/597]]
+
+I use =(defun emacs-wiki-markup-word ())= to squelch all the bad markup
+I'm getting lately.

@@ -1,0 +1,96 @@
+#+TITLE: Learn Emacs Lisp by reading Emacs Lisp
+
+March 13th, 2013 -
+[[http://sachachua.com/blog/p/24534][http://sachachua.com/blog/p/24534]]
+
+Learning Emacs Lisp can help you really tweak your Emacs environment to
+fit you, saving time, smoothening out frustrations, and making things
+easier. Reading code is an essential part of learning how to code. By
+reading other people's code, you'll not only discover interesting syntax
+and library features, but you'll also start absorbing the idioms -- the
+ways of doing things. (This is why it's important to read good,
+well-formatted code.)
+
+*** Where to find code
+
+You can use =C-h k= (=describe-key=) to explore the code behind
+keystrokes, menu items, and mouse actions. If the source code is
+installed, you should see a hyperlink in the information window that
+appears. It's a good idea to install the Emacs Lisp source code for
+Emacs.
+
+If you know the name of the function you're interested in, =C-h f=
+(=describe-function=) will link to the source code and describe the
+function.
+
+You can find lots of other Emacs code snippets on
+[[http://emacswiki.org][http://emacswiki.org]] and in blog posts on
+[[http://planet.emacsen.org][http://planet.emacsen.org]] .
+[[http://news.gmane.org/gmane.emacs.sources/][gnu.emacs.sources]] and
+other Emacs-related newsgroups or mailing lists are useful, too.
+
+*** How to understand code
+
+At first glance, Emacs Lisp looks like a mess of parentheses and strange
+incantations. =setq=? =defun=? =cdar=?
+
+This is true at second glance, too.
+
+Read through the
+[[http://www.gnu.org/software/emacs/emacs-lisp-intro/html_mono/emacs-lisp-intro.html][Emacs
+Lisp intro manual]] either online or in Emacs (C-h i m Emacs Lisp
+Intro). You'll probably understand very little the first few times
+through. This is okay. All you need to do is get a vague idea of what
+things are called so that you can look them up when you need to.
+
+Now read your code again. Slightly of it should make sense.
+
+Skim the [[http://www.emacswiki.org/emacs/EmacsLispReference][Emacs Lisp
+manual]], too. This is a reference, so you'll understand even less of it
+as an Emacs Lisp newbie, but it's good for picking up terms.
+
+You don't need to understand all of Emacs Lisp in order to take
+advantage of other people's configuration snippets. You'll learn things
+along the way.
+
+Make liberal use of =C-h f= to describe functions and =C-h v=
+(=describe-variable=) to investigate. You can jump to function
+definitions with =find-function=, which is worth binding to a keystroke.
+For example, to map F8 to =find-function= temporarily, use
+=M-x global-set-key RET F8 find-function=.
+
+*** How to step through code
+
+Edebug is an interactive debugger for Emacs so that you can step through
+the code instead of guessing what the code will do.
+([[http://www.gnu.org/software/emacs/manual/html_node/elisp/Using-Edebug.html][Edebug
+documentation]]) Use =M-x edebug-defun= to prepare the function you're
+interested in, then run the function. Press =SPC= to step through the
+code, =e= to evaluate expressions (you can use this to find the values
+of numbers), =h= to continue until the specified point, =b= to set a
+breakpont, =g= to execute until a breakpoint, and =q= to stop debugging.
+
+Super awesome.
+
+*** How to make code your own
+
+You can copy code to the =*scratch*= buffer or another file, tweak it a
+little, evaluate or edebug the code, and see what changed. If you like
+your changes, you can:
+
+-  rename the function and add it to your configuration file,
+-  use
+   [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html][advice]]
+   to modify the existing function, or
+-  redefine the function (keeping the name as-is) and adding it to your
+   configuration file. (This can lead to weird behaviour, so do this
+   carefully!)
+
+Enjoy!
+
+Other reading:
+
+[[http://emacswiki.org/emacs/LearnEmacsLisp][EmacsWiki: Learn Emacs
+Lisp]]
+
+/Thanks to bl3u for the nudge to write about this!/

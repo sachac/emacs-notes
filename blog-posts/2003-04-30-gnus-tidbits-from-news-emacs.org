@@ -1,0 +1,7 @@
+#+TITLE: Gnus tidbits from NEWS --- emacs
+
+April 30th, 2003 -
+[[http://sachachua.com/blog/p/729][http://sachachua.com/blog/p/729]]
+
+Gnus can display RSS newsfeeds as a newsgroup. To get started do `B
+ nnrss RET RET' in the Group buffer.

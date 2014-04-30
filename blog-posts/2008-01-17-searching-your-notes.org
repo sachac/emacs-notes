@@ -1,0 +1,26 @@
+#+TITLE: Emacs: Searching your notes
+
+January 17th, 2008 -
+[[http://sachachua.com/blog/p/4684][http://sachachua.com/blog/p/4684]]
+
+*C-s* (isearch-forward) and *C-r* (isearch-backward) are two of the most
+useful Emacs keyboard shortcuts you'll ever learn. To search forward
+interactively, type *C-s* (isearch-forward) and the first few characters
+of your search. Repeat *C-s* (isearch-forward) as necessary, or type in
+more characters to jump to the first instance that matches all those
+characters. Use these shortcuts to not only search your Org file, but
+also to quickly jump to sections. For example, I often search for
+headlines by typing *C-s* (isearch-forward) ***/start-of-my-headline/.
+Org searches collapsed sections, so you don't need to open everything
+before searching.
+
+To search using Org's outline structure, use *C-c / r* (org-sparse-tree,
+regexp), which will show only entries matching a regular expression. For
+more information about regular expressions, read the Emacs info manual
+entry on Regexps. Here are a few examples:
+
+| *To find*                                                                              | *Search for*   |
+| All entries containing "cat"                                                           | cat            |
+| All entries that contain "cat" as a word by itself (example: "cat," but not "catch")   | \<cat\>        |
+| All entries that contain 2006, 2007, or 2008                                           | 200[678]       |
+

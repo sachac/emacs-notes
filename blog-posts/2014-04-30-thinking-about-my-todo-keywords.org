@@ -1,0 +1,101 @@
+#+TITLE:  Thinking about my TODO keywords
+
+April 30th, 2014 -
+[[http://sachachua.com/blog/p/27184][http://sachachua.com/blog/p/27184]]
+
+It's been twelve years since David Allen published Getting Things Done,
+with its geek-friendly flowcharts and processes for handling tasks in an
+interrupt-driven life. The way I manage my tasks is heavily influenced
+by GTD. I think in terms of next actions, waiting, and someday, and I
+have weekly reviews. I modified the TODO states a little to reflect what
+I need. It's time to think about those states again to see what I can
+tweak and what reports I could use.
+
+I use Org Mode in Emacs to manage my tasks and my notes. I can customize
+it to give me different kinds of reports, such as showing me all of my
+unscheduled tasks, or all tasks with a specific category, or even
+projects that are “stuck” (no next actions defined). Thinking about my
+processes will help me figure out what reports I want and how I want to
+use them.
+
+Here are different types of tasks and how I track them:
+
+-  Things I can work on right now (next actions): =TODO=
+-  Things that I can work on after a different task is finished:
+   currently =WAITING=, but probably better to implement with org-depend
+-  Things I will revisit at a certain date, but I don't need to think
+   about them until then: =TODO=, scheduled (I used to use =POSTPONED=)
+-  Things that would be nice to do someday, but maybe are incompletely
+   specified or understood: =SOMEDAY=
+-  Things I have decided not to work on: =CANCELLED=
+-  Things I have asked someone else to do: =DELEGATED=
+-  Things I can ask someone else to do: =TODELEGATE=
+-  Things I am waiting for (usually not based on date) and that I need
+   to follow up on: =WAITING=
+-  Things I can write about: =TOBLOG=. These are pretty optional, so I
+   don't want them in my TODO list...
+-  If something is a duplicate of something else -- remove TODO keyword
+   and add link?
+
+I use the following code for an agenda view of unscheduled tasks:
+
+#+begin_src org
+    (defun sacha/org-agenda-skip-scheduled ()
+      (org-agenda-skip-entry-if 'scheduled 'deadline 'regexp "\n]+>"))
+
+    (add-to-list 'org-agenda-custom-commands
+       '("u" "Unscheduled tasks" alltodo ""
+         ((org-agenda-skip-function 'sacha/org-agenda-skip-scheduled)
+         (org-agenda-overriding-header "Unscheduled TODO entries: "))))
+#+end_src
+
+So the to-do process looks like this:
+
+-  Every week, review my [[http://sachachua.com/evil-plans][evil plans]]
+   and projects. Check my agenda without the routine tasks to see what
+   new things I'm working on. Schedule a few tasks to encourage me to
+   make regular progress.
+-  Every day, go through my Org agenda (=C-c a a=) and do all the tasks
+   that are scheduled.
+-  When I'm done or if I feel like working on something else:
+   -  What do I feel like doing? If there's a specific activity that I
+      feel like:
+
+      -  Go to the relevant project/section of my TODO list, or check
+         the TODOs by context (drawing, writing, etc.)
+      -  Clock in on that task.
+   -  If there's a specific task I feel like working on:
+
+      -  Find the task, maybe with =C-u C-c C-w= (=org-refile=) and work
+         on it.
+   -  If there's a new idea I want to work on:
+
+      -  Use =org-capture= to create the task, file it in the
+         appropriate project, and then clock in.
+-  If I have an idea for a task, use =org-capture= to create the task
+   and file it in the appropriate project.
+
+How do I want to improve this?
+
+-  *Maybe get more used to working with contexts?* I have all these Org
+   Agenda commands and I hardly ever use them. I tend to work with
+   projects instead. Actually, working with projects makes sense too,
+   because that minimizes the real context shift.
+-  *Get better at reviewing existing tasks.* I started tracking the
+   number of tasks in each state (DONE, TODO, etc.), which nudged me to
+   review the tasks and cross old tasks off. If I streamline my process
+   for capturing tasks, filing them, and reviewing them by
+   project/context/effort, then I can get better at choosing good tasks
+   to work on from my existing TODO list.
+-  *Estimate effort for more tasks, and use that more often* I have some
+   reports that can filter or sort by estimated effort. I don't use
+   effort that much, though. Does it makes sense to get into the habit
+   of choosing tasks by estimated time as an alternative approach? I
+   usually have fairly large, flexible blocks of time...
+-  *Tag things by level of energy required?*
+   [[http://sachachua.com/blog/2013/11/high-energy-and-low-energy-activities/][I want to take advantage of high-energy times.]] So, when I feel alert
+   and creative, I want to focus on coding and writing. I can save
+   things like paperwork for low-energy times. I can tag some tasks as
+   :lowenergy: and then filter my reports.
+
+Hmm...

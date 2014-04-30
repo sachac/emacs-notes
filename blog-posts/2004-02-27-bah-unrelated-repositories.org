@@ -1,0 +1,10 @@
+#+TITLE: Bah, unrelated repositories
+
+February 27th, 2004 -
+[[http://sachachua.com/blog/p/1787][http://sachachua.com/blog/p/1787]]
+
+#+BEGIN_EXAMPLE
+     * patching for this revision (mark@dishevelled.net--2003-mst/emacs-wiki--dev--1.0--patch-1)
+     star-merge: unable to merge unrelated trees.
+#+END_EXAMPLE
+

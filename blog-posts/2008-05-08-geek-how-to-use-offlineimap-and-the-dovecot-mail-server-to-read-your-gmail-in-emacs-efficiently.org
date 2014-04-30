@@ -1,0 +1,85 @@
+#+TITLE: Geek: How to use offlineimap and the dovecot mail server to read your
+Gmail in Emacs efficiently
+
+May 8th, 2008 -
+[[http://sachachua.com/blog/p/4858][http://sachachua.com/blog/p/4858]]
+
+2014-04-09: This post is from 2008. =) I think I used
+dovecot+offlineimap because Gnus and maildir weren't getting along
+properly and directly connecting with IMAP to Gmail's server was slow,
+but things have probably changed a fair bit since then. I eventually
+moved to using the Gmail web interface for most things, but I still miss
+my Gnus setup!
+
+#+BEGIN_QUOTE
+
+  1. Make sure you've set up Postfix or some other mail server that can
+     send mail. I'm not going to cover that because my configuration for
+     outgoing mail doesn't use Gmail.
+  2. Install dovecot (IMAP server) and offlineimap (IMAP
+     synchronization). You can probably find binaries for your
+     distribution.
+  3. Edit /etc/dovecot.conf and set the following:
+
+     #+BEGIN_EXAMPLE
+         default_mail_env = maildir:%h/Maildir
+     #+END_EXAMPLE
+
+  4. Put the following in ~/.offlineimaprc, changing
+     your\_local\_username, your\_username, and your\_gmail\_password:
+
+     #+BEGIN_EXAMPLE
+         [general]
+         accounts = Gmail 
+         maxsyncaccounts = 1
+
+         [Account Gmail]
+         localrepository = Local
+         remoterepository = Remote
+
+         [Repository Local]
+         type = IMAP 
+         remotehost = localhost
+         port = 143
+         remoteuser = your_local_username
+
+         [Repository Remote]
+         type = IMAP
+         remotehost = imap.gmail.com
+         remoteuser = your_username@gmail.com
+         remotepass = your_gmail_password
+         ssl = yes
+         maxconnections = 1
+         realdelete = no
+         folderfilter = lambda foldername: foldername in ['INBOX']
+     #+END_EXAMPLE
+
+     If you feel comfortable specifying your password for your local
+     account in your ~/.offlineimaprc, you can do so by adding a
+     remotepass line under the remoteuser line in the [Repository Local]
+     section.
+
+  5. chmod go-rwx ~/.offlineimaprc for a little bit of safety.
+  6. Type *offlineimap* to start synchronizing.
+  7. While that's synchronizing, use something like this as your
+     ~/.gnus:
+
+     #+BEGIN_EXAMPLE
+         (setq gnus-select-method
+               '(nnimap "Mail"
+                    (nnimap-address "localhost")
+                    (nnimap-stream network)
+                    (nnimap-authenticator login)))
+
+         (setq user-mail-address "youremail@example.com")
+         (setq gnus-ignored-from-addresses "youruser")
+     #+END_EXAMPLE
+
+  8. Start Emacs. Start Gnus with M-x gnus. If you don't see the INBOX
+     group, press \^ (gnus-group-enter-server-mode), open nnimap:Mail,
+     move your cursor to the INBOX, and either press RET to go into the
+     group or press u (gnus-browse-unsubscribe-current-group) to toggle
+     the subscription status until you're subscribed to the group. Then
+     it should show up on the group screen (M-x gnus).
+#+END_QUOTE
+

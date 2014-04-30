@@ -1,0 +1,27 @@
+#+TITLE: Things I can do to make progress on my book
+
+July 26th, 2008 -
+[[http://sachachua.com/blog/p/4987][http://sachachua.com/blog/p/4987]]
+
+-  Switch my development environment to Emacs
+-  Put together the existing book chapters I have so far
+-  Process the tech reviews I've gotten back
+-  Work on one outline item
+-  Work on a different chapter
+-  View and explain a random person's .emacs file
+-  Have regular release schedules
+-  Work on the outline
+-  Just write
+-  Hang out in #emacs
+-  Read Emacs-related blogs
+-  Read random wiki pages on emacswiki.org
+-  Post tidbits
+-  Dig through my old Emacs configuration
+-  Answer Emacs-related mail
+-  Monitor help.gnu.emacs and other Emacs-related newsgroups/mailing
+   lists
+-  Learn about a random Emacs symbol
+-  Write for 10 minutes
+-  Brainstorm ideas
+-  Upgrade my packages
+

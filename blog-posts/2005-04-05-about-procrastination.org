@@ -1,0 +1,70 @@
+#+TITLE: About procrastination
+
+April 5th, 2005 -
+[[http://sachachua.com/blog/p/2698][http://sachachua.com/blog/p/2698]]
+
+From [[http://www.dictionary.com][http://www.dictionary.com]] :
+
+pro-cras-ti-nate
+
+(v. intr.) To put off doing something, especially out of habitual
+carelessness or laziness.
+
+(v. tr.) To postpone or delay needlessly.
+
+*Procrastination* might not be the best word to advertise so
+ prominently on the wikiblog of *personal information management*
+ software maintainer, what with all its negative connotations. After
+ all, don't we want software to help us be more productive, not less?
+
+So what's with *planned procrastination*, anyway? I renamed my
+ blog from the informative-but-boring “sacha chua -- wiki” to the
+ huh?-and-slightly-less-boring “planned procrastination” on a whim. I
+ wanted to mention some kind of planning, but I didn't want to project
+ myself as some kind of productivity guru. At least, not yet.
+
+Besides, what's wrong with the word “procrastination”? I joke about
+ [[http://www.emacswiki.org/cgi-bin/wiki/PlannerMode][PlannerMode]]
+ being the best procrastination tool I've ever used. When I think about
+ it, though, *that's* why I like it so much. Planner doesn't force
+ a particular way of thinking on me. It doesn't bury me under a list of
+ urgent TODOs that must! be! done! today! Planner simply lets me get
+ things out of my head so that I can rest assured knowing that things I
+ plan to do someday won't slip through the cracks of my memory.
+
+Sure, a lot of self-help books tell you to *stop procrastinating and
+ do things now.* I might be one of the rare people *not*
+ bothered by the idea that I procrastinate. I keep ideas simmering on
+ the backburner, ready for lazy afternoons or moments of inspiration in
+ the bath. My procrastination is a gleeful exercise of power over my
+ life, making space for other unplanned things. I don't mind putting
+ things off until tomorrow if there are unexpectedly wonderful things
+ going on today. =)
+
+Note that this doesn't mean I'll put off doing things until the
+ absolute last minute. In fact, I enjoy doing things with time limits
+ as soon as I can, and I often submitted programming assignments soon
+ after they were given. I once majorly freaked out when one of my group
+ projects was delayed not because of my part (which I had finished
+ weeks before) but because the other group members hadn't even started
+ on their documentation until the day before (or something like
+ that)...
+
+For me, procrastination is simply the ability to choose what I'd like
+ to work on today, knowing that I can work on other things tomorrow or
+ the next day or the day after that. It's not perfect, but it does give
+ me a happy feeling about how much I accomplish each day and excitement
+ about what I'm going to do tomorrow.
+
+I'm looking for a stronger title. “productively procrastinating”?
+ “structured procrastination”? Something that doesn't mention
+ procrastinating but still manages to express this idea? =) Any
+ suggestions?
+
+Ã£Â?Â“Ã£Â?Â®Ã§ÂŒÂ«Ã£Â?Â¯Ã£ÂƒÂ?Ã£Â‚ÂºÃ£ÂƒÂŸÃ£Â‚Â'Ã¨Â¿Â½Ã£Â?Â„Ã£Â?Â‹Ã£Â?Â‘Ã£Â?ÂªÃ£Â?Â„Ã£Â€Â‚
+This cat doesn't chase rats.
+
+On Technorati:
+[[http://www.technorati.com/tag/procrastination][procrastination]],
+[[http://www.technorati.com/tag/productivity][productivity]],
+[[http://www.technorati.com/tag/best][best]]

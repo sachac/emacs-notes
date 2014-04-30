@@ -1,0 +1,10 @@
+#+TITLE: Better font-locking in emacs-wiki
+
+February 27th, 2004 -
+[[http://sachachua.com/blog/p/1791][http://sachachua.com/blog/p/1791]]
+
+If you're having problems with emacs-wiki not highlighting the first
+ time you view a buffer, you're probably set to use jit-lock or
+ lazy-lock. Don't. Use (setq font-lock-support-mode nil) instead, so
+ full font-locking will always be performed. You may want to use the
+ list so that this is only done for planner-mode and emacs-wiki-mode. =)

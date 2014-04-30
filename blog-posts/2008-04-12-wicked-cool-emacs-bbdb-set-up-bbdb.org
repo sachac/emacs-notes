@@ -1,0 +1,64 @@
+#+TITLE: Wicked Cool Emacs: BBDB: Set up BBDB
+
+April 12th, 2008 -
+[[http://sachachua.com/blog/p/4831][http://sachachua.com/blog/p/4831]]
+
+The main address book and contact management module for Emacs is the
+Insidious Big Brother Database (BBDB), which can be integrated into
+several mail clients and other modules within Emacs. If you use BBDB to
+keep track of contact information, you'll be able to look up phone
+numbers or add notes to people's records from your Emacs-based mail.
+Even if you don't do e-mail within Emacs, you'll find that BBDB's
+customizability makes it surprisingly powerful.
+
+In this project, you will learn how to set up BBDB as a basic address
+book. The BBDB homepage is at /http://bbdb.sourceforge.net//. The
+development version fixes a number of bugs, so I recommend you try it
+instead of the stable version. However, if you are on Microsoft Windows
+or you do not have development tools handy, you might find the stable
+version easier to install. As of this writing, the stable version (2.35)
+can be downloaded from http://bbdb.sourceforge.net/bbdb-2.35.tar.gz .
+Download and unpack it to ~/elisp/bbdb-2.35, and save the pre-built
+bbdb-autoloads.el from http://bbdb.sourceforge.net/bbdb-autoloads.el
+into ~/elisp/bbdb-2.35/lisp .
+
+To check out the development version, change to your /~/elisp/ directory
+and type in the following lines at the command prompt:
+
+#+BEGIN_EXAMPLE
+    cvs -d :pserver:anonymous@bbdb.cvs.sourceforge.net:/cvsroot/bbdb login
+    cvs -d :pserver:anonymous@bbdb.cvs.sourceforge.net:/cvsroot/bbdb checkout bbdb
+#+END_EXAMPLE
+
+You should now have a directory called /~/elisp/bbdb/. Change to that
+directory and run the following commands:
+
+#+BEGIN_EXAMPLE
+    autoconf
+    ./configure
+    make autoloads
+    make all
+#+END_EXAMPLE
+
+After installing either the stable or development version of BBDB,
+include it in your load-path by adding the appropriate line to your
+/~/.emacs/:
+
+#+BEGIN_EXAMPLE
+    (add-to-list 'load-path "~/elisp/bbdb-2.35/lisp")    ;; (1)
+    (add-to-list 'load-path "~/elisp/bbdb/lisp")         ;; (2)
+
+    (require 'bbdb) ;; (3)
+    (bbdb-initialize 'gnus 'message)   ;; (4)
+    (setq bbdb-north-american-phone-numbers-p nil)   ;; (5)
+#+END_EXAMPLE
+
+Use either /~/elisp/bbdb-2.35/lisp/(1) or /~/elisp/bbdb/lisp/(2)
+depending on the location of the installed BBDB Lisp files. Then load
+BBDB(3) and configure it for the Gnus mail client and the Message mode
+used to compose mail(4). It's also a good idea to configure BBDB to
+accept any kind of phone number(5), not just North American numbers with
+a particular syntax.
+
+After you evaluate this code or restart Emacs, BBDB should be part of
+your system. Next step: enter your address book!

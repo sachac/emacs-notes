@@ -1,0 +1,13 @@
+#+TITLE: New module: planner-notes-index.el
+
+March 8th, 2004 -
+[[http://sachachua.com/blog/p/1861][http://sachachua.com/blog/p/1861]]
+
+planner-notes-index allows you to view and publish an index of notes
+ in [[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]] day
+pages. The roadmap for this module can be found at
+
+[[http://sachachua.com/notebook/wiki/PlannerModeNotesIndex][PlannerModeNotesIndex]].
+Feel free to help out!
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/planner-notes-index.el][../../notebook/emacs/emacs-wiki/planner-notes-index.el]]

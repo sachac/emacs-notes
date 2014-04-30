@@ -1,0 +1,11 @@
+#+TITLE: E-mail indexing
+
+December 21st, 2004 -
+[[http://sachachua.com/blog/p/2513][http://sachachua.com/blog/p/2513]]
+
+I'm now using swish++ to index and search my mail. It's really handy,
+ particularly with the patched nnir.el and
+ doc/examples/email\_indexing/Email-Indexing-Mini-Howto.txt . I've set
+ it up to index my misc mail and my planner mail, as those are the
+ things I search rather often. Should set it up to incrementally index
+ things before I go to sleep.

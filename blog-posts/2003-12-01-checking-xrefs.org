@@ -1,0 +1,9 @@
+#+TITLE: Checking xrefs
+
+December 1st, 2003 -
+[[http://sachachua.com/blog/p/1446][http://sachachua.com/blog/p/1446]]
+
+If copy-on-xref is nil, then only a cross-reference link should show up
+on the day page.
+
+[[http://sachachua.com/usr/src/cvs/emacs-wiki/remember.el][/usr/src/cvs/emacs-wiki/remember.el]]

@@ -1,0 +1,21 @@
+#+TITLE: Tech goals
+
+July 8th, 2006 -
+[[http://sachachua.com/blog/p/3657][http://sachachua.com/blog/p/3657]]
+
+Every so often, I like setting myself tech goals. My first major open
+ source tech goal was to hack the iPaq, considering that undergrads
+ were expected to do Linux on the iPaq as part of their CS degree in
+ some university in the US. So I did, and I ended up
+
+The next thing I wanted to do was get into Emacs Lisp. I ended up
+ contributing to Emacs Relay Chat and helping out with Planner and
+ related modules.
+
+Now I think I want to be more into Ruby. And Perl 6, which looks
+ awesome. Maybe I can practice technical writing by filling in the
+ documentation and writing sample code...
+
+Random Japanese sentence:
+ÃƒÂ§Ã‚ÂŒÃ‚Â«ÃƒÂ£Ã‚Â?Ã‚ÂŒÃƒÂ£Ã‚ÂƒÃ‚Â?ÃƒÂ£Ã‚Â‚Ã‚ÂºÃƒÂ£Ã‚ÂƒÃ‚ÂŸÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ¥Ã‚Â---Ã‚Â...ÃƒÂ£Ã‚Â?Ã‚ÂŽÃƒÂ£Ã‚Â?Ã‚Â¤ÃƒÂ£Ã‚Â?Ã‚Â‘ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â™ÃƒÂ£Ã‚Â?Ã‚Â­ÃƒÂ£Ã‚Â€Ã‚Â‚
+Seems like the cat had the wind of a rat.

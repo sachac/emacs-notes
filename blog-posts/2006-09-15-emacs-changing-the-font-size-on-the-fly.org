@@ -1,0 +1,31 @@
+#+TITLE: Emacs: Changing the font size on the fly
+
+September 15th, 2006 -
+[[http://sachachua.com/blog/p/3859][http://sachachua.com/blog/p/3859]]
+
+I have a tiny laptop: 8.9″ diagonally. With a 1024×768 pixels screen
+ resolution, things can get *pretty* small. The following functions use
+ the gnome-terminal-style shortcuts (Ctrl-plus, Ctrl-minus) to change
+ the font size without the mouse:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/increase-font-size ()
+      (interactive)
+      (set-face-attribute 'default
+                          nil
+                          :height
+                          (ceiling (* 1.10
+                                      (face-attribute 'default :height)))))
+    (defun sacha/decrease-font-size ()
+      (interactive)
+      (set-face-attribute 'default
+                          nil
+                          :height
+                          (floor (* 0.9
+                                      (face-attribute 'default :height)))))
+    (global-set-key (kbd "C-+") 'sacha/increase-font-size)
+    (global-set-key (kbd "C--") 'sacha/decrease-font-size)
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

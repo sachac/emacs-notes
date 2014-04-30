@@ -1,0 +1,23 @@
+#+TITLE: Literate programming and my Emacs configuration file
+
+June 8th, 2012 -
+[[http://sachachua.com/blog/p/23472][http://sachachua.com/blog/p/23472]]
+
+/Update 2013-08-30: Changed Emacs Starter Kit link. Thanks, Thomas!/
+
+Inspired by the [[http://eschulte.github.io/emacs-starter-kit/][Emacs
+Starter Kit]] and the literate programming features in
+[[http://orgmode.org/worg/org-contrib/babel/][org-babel]], I reviewed
+and organized my
+[[http://dl.dropbox.com/u/3968124/sacha-emacs.html][Emacs
+configuration]]. I'm looking forward to adding more notes to my
+configuration as I explore!
+
+[[http://en.wikipedia.org/wiki/Literate_programming][Literate
+programming]] is the idea that you should write first and program
+second, and that you can interweave the program into your explanation.
+Nifty.
+
+[[http://dl.dropbox.com/u/3968124/sacha-emacs.html][Here's my Emacs
+configuration]] (you can also find it at
+[[http://sach.ac/dotemacs][sach.ac/dotemacs]]. Share yours! =)

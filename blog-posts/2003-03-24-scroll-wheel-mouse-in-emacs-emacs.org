@@ -1,0 +1,10 @@
+#+TITLE: scroll / wheel mouse in Emacs --- emacs
+
+March 24th, 2003 -
+[[http://sachachua.com/blog/p/574][http://sachachua.com/blog/p/574]]
+
+According to fsbot on freenode#emacs, =, wheel= is
+
+-
+[[http://koala.ilog.fr/colas/mouse-wheel-scroll/][http://koala.ilog.fr/colas/mouse-wheel-scroll/]]
+ - Put =(mwheel-install)= in .emacs

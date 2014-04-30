@@ -1,0 +1,9 @@
+#+TITLE: Python Emacs
+
+September 25th, 2003 -
+[[http://sachachua.com/blog/p/1168][http://sachachua.com/blog/p/1168]]
+
+I was going through my old wiki entries and I found a link to
+
+[[http://www.emacswiki.org/cgi-bin/wiki.pl?PyMacs][http://www.emacswiki.org/cgi-bin/wiki.pl?PyMacs]]
+on 2003.03.21. Cool.

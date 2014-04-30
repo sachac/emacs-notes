@@ -1,0 +1,6 @@
+#+TITLE: Tutorial: Writing a new Emacs mode
+
+December 7th, 2003 -
+[[http://sachachua.com/blog/p/1466][http://sachachua.com/blog/p/1466]]
+
+[[http://two-wugs.net/emacs/mode-tutorial.html][http://two-wugs.net/emacs/mode-tutorial.html]]

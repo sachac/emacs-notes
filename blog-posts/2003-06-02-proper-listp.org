@@ -1,0 +1,8 @@
+#+TITLE: proper-listp
+
+June 2nd, 2003 -
+[[http://sachachua.com/blog/p/813][http://sachachua.com/blog/p/813]]
+
+(defun proper-listp (l) (or (null l) (and (consp l)
+
+(proper-listp (cdr l)))))

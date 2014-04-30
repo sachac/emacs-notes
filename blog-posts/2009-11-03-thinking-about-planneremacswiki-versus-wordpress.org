@@ -1,0 +1,73 @@
+#+TITLE: Thinking about Planner/EmacsWiki versus WordPress
+
+November 3rd, 2009 -
+[[http://sachachua.com/blog/p/6706][http://sachachua.com/blog/p/6706]]
+
+Was it really only less than two years ago that I shifted from my
+venerable
+[[http://sachachua.com/notebook/wiki/2008.01.13.php][Planner-based
+wiki/blog]] to my [[http://sachachua.com/wp/][WordPress-powered one]]
+after experimenting with
+[[http://sachachua.com/wp/2007/11/27/okay-were-in-business-5-years-of-my-life-in-wordpress/][syndicating
+my entries]] into WordPress?
+
+I miss writing in wiki markup on Emacs and knowing that publishing would
+Just Work. I miss being able to dynamically expand entries from my
+address book in a way that automatically links to people's blogs. (Or
+Twitter accounts, if I were going to do this now.) ScribeFire is a pain
+on my Eee (needs more horizontal screen space), and I have a hard time
+marking up the occasional bit of HTML in weblogger.el. Windows Live
+Writer is pretty slick (particularly with the SnagIt Screen Capture
+plugin and the Amazon Book Linker), but I can live without it. Or maybe
+I can resurrect that WordPress Emacs client Ashish mentioned.
+
+Let me think about the differences in experiences.
+
+-  *I wanted to support comments, but I didn't want to spend a lot of
+   time hacking on some custom commenting system.* This was a big issue
+   for me. I found some commenting scripts, but dealing with spam was a
+   pain, so I switched to WordPress. If I switched back to Emacs for my
+   blog, I'd probably use something like [[http://disqus.com][Disqus]]
+   to handle the conversation, and just find some way of backing up the
+   comments regularly.
+-  *I wanted to make it easy to navigate posts.* I modified Planner to
+   generate a more
+   [[http://sachachua.com/notebook/wiki/WikiIndex.php][browsable blog
+   index]], but it's still not as slick as what you'd see with
+   WordPress. On this WordPress blog, I like offering people random blog
+   posts (good for me too -- great way to rediscover old posts and make
+   serendipitous connections!), related posts, and posts on the same
+   day. I can do posts on the same day in Planner with a custom hook,
+   but the others would require some hacking. Also, Planner is very much
+   day-based, while WordPress lists N posts per page and has good
+   category lists.
+-  *I wanted to make it easy to edit posts.* In my Emacs-based system, I
+   published to RSS when I saved a note in the Remember window. I had a
+   hack that made it possible to propagate changes from an
+   already-published post to my WordPress blog, but it wasn't completely
+   reliable.
+-  *Scheduling posts is handy, too.*I hadn't gotten around to figuring
+   out how to build a post scheduler for Emacs. I suppose if I wasn't
+   picky about the time it went out, I could simply write posts on
+   different days and then publish notes conditionally, plus have some
+   kind of hook to notice if any of the current page's posts should be
+   published in the RSS feed, plus some way to handle previous days,
+   plus maybe a server-friendly way to do this for the times when I'm
+   not going to be online every day. Right.
+
+That said, I miss automatically sharing some details of what I'm working
+on (with details deleted before publishing so that they're available
+offline), publicly crossing off tasks, and other cool things.
+
+Planner's model for task planning isn't quite compatible with Org's
+model, and I've been using Org + Toodledo more these days.
+
+What am I really looking for here?
+
+-  A quick, reliable way to post from a text editor, so that I can do it
+   from the Eee. *Hmm, the WP Postie plugin will probably do the trick.*
+-  Easy way to share/review tasks: Toodledo export of week's tasks?
+-  And maybe a custom plugin for weekly displays, org agendas, that sort
+   of thing.
+
+Hmm....

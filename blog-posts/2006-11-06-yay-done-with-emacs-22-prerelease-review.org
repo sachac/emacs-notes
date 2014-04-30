@@ -1,0 +1,29 @@
+#+TITLE: Yay, done with Emacs 22 prerelease review!
+
+November 6th, 2006 -
+[[http://sachachua.com/blog/p/4004][http://sachachua.com/blog/p/4004]]
+
+All sorts of goodies in the new Emacs 22. I've just sent a ZIP of the
+ article and some images off to Don Marti, and I
+ look forward to merciless editing. I won't be able to post it on my
+ blog until some time after it gets released, but that was fun to
+ write.
+
+I had to trim so much material from the individual sections.
+ Post-thesis, I should really start an Emacs column...
+
+Chatting on #emacs gave me an interesting idea. You know, that Livin'
+ la Vida Emacs talk I gave at DemoCamp would be great as a
+ polished talk that I could take on a tour. Post-thesis (or maybe
+ mostly-done-thesis), I should take to the road and go across US and
+ Canada talking about tech and meeting up with all sorts of cool
+ people. It'll be a great excuse to visit Google and Amazon, which must
+ have lots of incredibly cool Emacs users.
+
+Someday...
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: remember -- Command: Remember an arbitrary piece of
+data. -- Group: A mode to remember information.

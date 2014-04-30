@@ -1,0 +1,7 @@
+#+TITLE: DARN!
+
+March 8th, 2004 -
+[[http://sachachua.com/blog/p/1856][http://sachachua.com/blog/p/1856]]
+
+Just remembered why I had those planner compatibility functions in the
+ first place. Mumble mumble. That's it, I'm packaging a deb...

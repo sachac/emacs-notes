@@ -1,0 +1,49 @@
+#+TITLE: What's coming up in Emacs 24
+
+December 21st, 2010 -
+[[http://sachachua.com/blog/p/22004][http://sachachua.com/blog/p/22004]]
+
+*UPDATE: Emacs 24 has not yet been released. Developers can get it from
+the [[http://savannah.gnu.org/projects/emacs/#][version control system]]
+(git/master, for example). Alpha/nightly builds are available for
+[[http://alpha.gnu.org/gnu/emacs/windows/][Windows]] and
+[[http://emacsformacosx.com/builds][Mac OSX]]. This is still a
+bleeding-edge version. Expect much breakage, even from popular packages
+like BBDB.*
+
+See =C-h n= (=view-emacs-news=) for all the details. Some highlights:
+
+*** Emacs packages
+
+=M-x list-packages= to browse and install packages, which are enabled by
+default. If you've installed a number of packages but you don't want
+them to all load at startup, customize =package-load-list=. Not that
+many packages yet, but I'm sure people will add more.
+
+*** Emacs themes and user-interface changes
+
+=M-x customize-themes= lets you choose color themes or create your own.
+There have also been a number of user-interface cleanups (scrollbars on
+the right, smoother antialiasing, that sort of stuff), but nothing
+radical.
+
+*** Bidirectional support
+
+Big one for international support.
+
+*** Clipboards
+
+=x-select-enabled-clipboard= is now true by default, which means Emacs
+newbies in Linux won't get confused by an inability to copy and paste
+between applications.
+
+*** Version control
+
+With the increasing popularity of distributed version control systems
+such as bzr, we now have a way to pull updates using =M-x vc-update=
+(also known as =M-x vc-pull=). There's also a =M-x vc-merge= command.
+Looking forward to git support for both of these.
+
+*** Miscellaneous
+
+There is a =create-animated-image= function. Interesting.

@@ -1,0 +1,47 @@
+#+TITLE: Emacs Org Mode Customization Survey
+
+November 4th, 2013 -
+[[http://sachachua.com/blog/p/26381][http://sachachua.com/blog/p/26381]]
+
+[[http://www.orgmode.org][Org Mode]] is an outlining and TODO tool for
+Emacs. Except it's so much more than that, since people have written all
+sorts of code to make it do way more than an outliner (or even a text
+editor!) usually does. Seriously, it even has a Sudoku solver. (The code
+is optional, so you don't lose memory if you don't load it.)
+
+If you use Emacs and you haven't tried out Org Mode yet, check it out.
+
+If you've made Org Mode a part of your life, you've probably customized
+lots of little things about it. Please help the developers by submitting
+the customization survey to Mike McLean!
+
+#+BEGIN_QUOTE
+  As discussed a few days ago on this list, Carsten and the other
+  developers are interested in what and how us users are customizing Org
+  mode. This was first done in 2009, so a re-do of the survey is useful
+  as is for how people are using Org now, as well as a comparison to the
+  past.
+
+  Carsten provided the function that was used before to collect the raw
+  data and I am working on the data collection and summarization this
+  time around.
+
+  I have place the function on Github,
+  [[https://github.com/SkydiveMike/org-customization-survey][https://github.com/SkydiveMike/org-customization-survey]]
+  The raw elisp is at:
+  [[https://raw.github.com/SkydiveMike/org-customization-survey/master/org-customization-survey.el][https://raw.github.com/SkydiveMike/org-customization-survey/master/org-customization-survey.el]]
+
+  All you need to do is:
+  1. Load and eval the function
+  2. Execute (interactive) org-customization-survey
+  3. Review the buffer, cleanse for sensitive information if any
+  4. Email the buffer to
+  [[mailto:mike.mclean@pobox.com][mike.mclean@pobox.com]] (If your Emacs
+  is configured for email, C-c C-c will send)
+#+END_QUOTE
+
+I'm looking forward to the results, which will most likely be posted to
+the [[http://orgmode.org/community.html][Org Mode mailing list]].
+
+Curious about my Org configuration? Check out my
+[[http://sachachua.com/blog/dotemacs][annotated Emacs config]].

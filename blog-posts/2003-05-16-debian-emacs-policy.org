@@ -1,0 +1,17 @@
+#+TITLE: debian emacs policy
+
+May 16th, 2003 -
+[[http://sachachua.com/blog/p/761][http://sachachua.com/blog/p/761]]
+
+Peter S Galbraith suggests
+
+#+BEGIN_EXAMPLE
+    (if (not (file-exists-p "/usr/share/emacs/site-lisp/emacs-goodies-el"))
+        (message
+         "Package emacs-goodies-el is removed but not purged.  Setup not done.")
+      (debian-pkg-add-load-path-item
+       (concat
+        "/usr/share/" (symbol-name flavor) "/site-lisp/emacs-goodies-el"))
+      (require 'emacs-goodies-el))
+#+END_EXAMPLE
+

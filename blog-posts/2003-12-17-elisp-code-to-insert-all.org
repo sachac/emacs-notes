@@ -1,0 +1,29 @@
+#+TITLE: Elisp code to insert all
+
+December 17th, 2003 -
+[[http://sachachua.com/blog/p/1521][http://sachachua.com/blog/p/1521]]
+
+Data is of the form
+
+#+BEGIN_EXAMPLE
+    number|Name|e-mail|Expectations
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    (defun sacha/perl-training/suck-data-in ()
+      "Insert BBDB records for all the Perl trainees."
+      (interactive)
+      (goto-char (point-min))
+      (while (re-search-forward "^\\([[:digit:]]+\\)" nil t)
+        (let ((data (split-string (buffer-substring-no-properties (line-beginning-position) (line-end-position)) "|"))
+              record)
+          (bbdb-record-set-aka
+                (bbdb-create-internal (elt data 1) ; Name
+                                      "PLDT" ; Company
+                                      (elt data 2) ; E-mail
+                                      nil
+                                      nil
+                                      (concat "Perl training 2003.12.17 - 2003.12.19; " (elt data 3)))
+                (list (concat "pldt" (elt data 0)))))))
+#+END_EXAMPLE
+

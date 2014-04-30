@@ -1,0 +1,70 @@
+#+TITLE: A year in review: Emacs
+
+December 26th, 2006 -
+[[http://sachachua.com/blog/p/4090][http://sachachua.com/blog/p/4090]]
+
+Over the last five months, I've added all sorts of code to my Emacs to
+ make it a contact relationship management system that fills the
+ salespeople I know with envy. =)
+
+1.  [[http://sachachua.com/notebook/wiki/2006.07.20.php#anchor-1][2006.07.20#1:
+    Emacs BBDB magic: Greeting people with nicknames]]
+2.  [[http://sachachua.com/notebook/wiki/2006.07.24.php#anchor-1][2006.07.24#1:
+    Emacs: Automating the insertion of text]]
+3.  [[http://sachachua.com/notebook/wiki/2006.08.10.php#anchor-3][2006.08.10#3:
+    Sharing the link love]]
+4.  [[http://sachachua.com/notebook/wiki/2006.08.30.php#anchor-3][2006.08.30#3:
+    My Big Brother Database and social networking sites]]
+5.  [[http://sachachua.com/notebook/wiki/2006.09.01.php#anchor-2][2006.09.01#2:
+    Emacs: Keep track of messages sent]]
+6.  [[http://sachachua.com/notebook/wiki/2006.09.01.php#anchor-3][2006.09.01#3:
+    More Emacs coolness: List of contacts]]
+7.  [[http://sachachua.com/notebook/wiki/2006.09.01.php#anchor-4][2006.09.01#4:
+    More Emacs fun: Composing mail to everyone with notes]]
+8.  [[http://sachachua.com/notebook/wiki/2006.09.02.php#anchor-1][2006.09.02#1:
+    More Emacs goodness: Refresh your memory when you e-mail using notes
+    from BBDB]]
+9.  [[http://sachachua.com/notebook/wiki/2006.09.15.php#anchor-2][2006.09.15#2:
+    Emacs: Changing the font size on the fly]]
+10. [[http://sachachua.com/notebook/wiki/2006.09.15.php#anchor-3][2006.09.15#3:
+    Emacs clinic at the Linux Caffe]]
+11. [[http://sachachua.com/notebook/wiki/2006.09.28.php#anchor-2][2006.09.28#2:
+    Emacs + LinkedIn: Another totally idiosyncratic bit of code]]
+12. [[http://sachachua.com/notebook/wiki/2006.09.28.php#anchor-3][2006.09.28#3:
+    Emacs: Show only people whom I haven't pinged since...]]
+13. [[http://sachachua.com/notebook/wiki/2006.09.28.php#anchor-4][2006.09.28#4:
+    Emacs: BBDB rapid serial visualization]]
+14. [[http://sachachua.com/notebook/wiki/2006.09.28.php#anchor-5][2006.09.28#5:
+    Emacs: Animation in presentations]]
+15. [[http://sachachua.com/notebook/wiki/2006.09.29.php#anchor-2][2006.09.29#2:
+    Emacs BBDB: Filtering tags with the power of lambda expressions]]
+16. [[http://sachachua.com/notebook/wiki/2006.09.29.php#anchor-8][2006.09.29#8:
+    Emacs BBDB: Prioritize exact matches]]
+17. [[http://sachachua.com/notebook/wiki/2006.10.02.php#anchor-10][2006.10.02#10:
+    Crazy idea for Emacs: Random Emacs taglines]]
+18. [[http://sachachua.com/notebook/wiki/2006.10.02.php#anchor-11][2006.10.02#11:
+    Crazy Emacs: Personalized signatures with random taglines]]
+19. [[http://sachachua.com/notebook/wiki/2006.10.04.php#anchor-1][2006.10.04#1:
+    Developing a better sense of time]]
+20. [[http://sachachua.com/notebook/wiki/2006.10.04.php#anchor-2][2006.10.04#2:
+    Emacs Gnus hack: Prioritize based on the number of recipients]]
+21. [[http://sachachua.com/notebook/wiki/2006.10.11.php#anchor-4][2006.10.11#4:
+    Emacs: Hideshow]]
+22. [[http://sachachua.com/notebook/wiki/2006.10.12.php#anchor-3][2006.10.12#3:
+    Emacs: Quick way to collect references]]
+23. [[http://sachachua.com/notebook/wiki/2006.10.12.php#anchor-4][2006.10.12#4:
+    Emacs and a British voice]]
+24. [[http://sachachua.com/notebook/wiki/2006.10.23.php#anchor-1][2006.10.23#1:
+    Excited about my DemoCamp presentation!]]
+25. [[http://sachachua.com/notebook/wiki/2006.10.27.php#anchor-4][2006.10.27#4:
+    Keeping track of the age of messages]]
+26. [[http://sachachua.com/notebook/wiki/2006.11.02.php#anchor-2][2006.11.02#2:
+    Contact report]]
+27. [[http://sachachua.com/notebook/wiki/2006.12.12.php#anchor-2][2006.12.12#2:
+    Personal contact relationship management]]
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: browse-url-firefox-arguments -- Variable: *A list
+of strings to pass to Firefox as arguments.

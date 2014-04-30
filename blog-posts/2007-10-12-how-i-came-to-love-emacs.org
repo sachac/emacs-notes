@@ -1,0 +1,46 @@
+#+TITLE: How I came to love Emacs
+
+October 12th, 2007 -
+[[http://sachachua.com/blog/p/4399][http://sachachua.com/blog/p/4399]]
+
+Riffing off P.F. Hawkins' post on
+[[http://pfhawkins.com/2007/10/10/how-i-came-to-love-emacs/][how he came
+to love Emacs]], let me tell you my story. =)
+
+I wasn't always an Emacs geek. I remember giving it a shot and finding
+ out that I much preferred vim or even pico -w. I don't remember much
+ else of my pre-Emacs days, though. I do remember the turning point.
+
+While browsing in the library stacks at my university, I found a copy
+ of Unix Power Tools. It described Emacs, so I decided to give it
+ another try. I got hooked.
+
+The key thing for me was the exposure to Emacs Lisp. Unix Power Tools
+ gave all sorts of tips, often accompanied with Emacs Lisp code to put
+ in your ~/.emacs. So I thought, hey, this might be fun to learn.
+
+I read the Emacs Lisp intro manual. I read the Emacs Lisp manual. Then
+ I started reading all the source code I could find, frequently
+ referring to the help files in order to understand something. I
+ learned about C-h f (describe function) and the ability to jump to,
+ trace, and modify practically any bit of code in my text editor. My
+ universe blew wide open.
+
+Several years and several thousand lines of config later, I've got a
+ text editor that fits me like a glove. The people I've met, the things
+ I've learned, the crazy ideas I've tried... What would my life be
+ without Emacs? It's really kinda odd to say that about a piece of
+ software, but yes: Emacs has changed my life.
+
+What's next for me? Well, I'm working on that book. I hope it'll be as
+ mind-blowing as Unix Power Tools was for me. I hope it'll help people
+ discover more and get excited. I'm learning more about the things
+ people can do with it and I'm playing around with other crazy ideas,
+ particularly for contact management and personal information
+ management. I also want to bring this kind of customizability to other
+ applications. Maybe I'll try it with Lotus Notes, which I'll need to
+ use for work anyway. But Emacs, ah, Emacs... How do I love thee? Let
+ me M-x count-the-ways!
+
+Random Emacs symbol: eshell-login-script -- Variable: *If non-nil, a
+file to invoke when starting up Eshell interactively.

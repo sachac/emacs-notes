@@ -1,0 +1,18 @@
+#+TITLE: Switching back to chronological notes
+
+November 23rd, 2004 -
+[[http://sachachua.com/blog/p/2422][http://sachachua.com/blog/p/2422]]
+
+I guess most of my readers (Hi Mom!) check this site once a day, or
+ something like that. They read from top to bottom.
+
+So why am I using reverse-chronological order?
+
+Good thing it's easy to (setq planner-reverse-chronological-notes nil).
+
+(setq planner-reverse-chronological-notes t) is recommended for sites
+ that have lots of updates and people checking back every five minutes.
+ My site isn't like that, so we might as well make the site structure
+ follow the structure in our minds.
+
+Okay. Everyone, time flows forward again.

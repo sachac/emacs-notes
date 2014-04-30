@@ -1,0 +1,10 @@
+#+TITLE: Numbering on a per-page level
+
+December 7th, 2003 -
+[[http://sachachua.com/blog/p/1469][http://sachachua.com/blog/p/1469]]
+
+I wonder if setting planner-reverse-chronological-notes as a
+ file-local variable makes sense. I can't think of a reason to use it,
+ though...
+
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]

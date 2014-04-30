@@ -1,0 +1,6 @@
+#+TITLE: planner bug
+
+February 21st, 2003 -
+[[http://sachachua.com/blog/p/439][http://sachachua.com/blog/p/439]]
+
+Apparently, I definitely need to do a cd in the emacs-wiki-publish...

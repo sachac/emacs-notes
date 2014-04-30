@@ -1,0 +1,17 @@
+#+TITLE: emacs-wiki and automatic publishing
+
+March 20th, 2003 -
+[[http://sachachua.com/blog/p/546][http://sachachua.com/blog/p/546]]
+
+I use this nifty LISP snippet to automatically publish my pages whenever
+I save.
+
+= (add-hook 'emacs-wiki-mode-hook (lambda () (add-hook 'after-save-hook (lambda () (unless emacs-wiki-publishing-p (emacs-wiki-publish-this-page))) nil t)))=
+ This used to be a fairly big hassle back when emacs-wiki tried to do
+multiline parsing for =,
+ but now it's acceptably fast.
+ Next up: I wonder if
+[[http://lufs.sourceforge.net][http://lufs.sourceforge.net]] can help me
+publish to
+[[http://richip.dhs.org/~sachac/][http://richip.dhs.org/~sachac/]]
+automatically...

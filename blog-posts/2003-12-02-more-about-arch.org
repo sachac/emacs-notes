@@ -1,0 +1,11 @@
+#+TITLE: More about arch
+
+December 2nd, 2003 -
+[[http://sachachua.com/blog/p/1455][http://sachachua.com/blog/p/1455]]
+
+Okay, I've finally created and imported planner.el into an arch
+ repository. It certainly doesn't seem as handy as RCS, but I guess
+ it's supposed to be a Good Thing. That said, arch seems like overkill
+ for the kind of maintenance I'm doing right now.
+
+E-Mail from Damien Elmes

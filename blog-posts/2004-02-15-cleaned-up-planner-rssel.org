@@ -1,0 +1,19 @@
+#+TITLE: Cleaned up planner-rss.el
+
+February 15th, 2004 -
+[[http://sachachua.com/blog/p/1711][http://sachachua.com/blog/p/1711]]
+
+planner-rss.el should now be ready for (almost) general use. You can
+ get it from
+
+[[http://sacha.free.net.ph/notebook/emacs/emacs-wiki/planner-rss.el][http://sacha.free.net.ph/notebook/emacs/emacs-wiki/planner-rss.el]]
+. To use it, add
+
+#+BEGIN_EXAMPLE
+    (require 'planner-rss)
+    (add-to-list 'remember-append-to-planner-hook 'planner-rss-add-note t)
+#+END_EXAMPLE
+
+to your .emacs, and use M-x remember-to-planner.
+
+[[http://sachachua.com/notebook/emacs/planner-config.el][../../notebook/emacs/planner-config.el]]

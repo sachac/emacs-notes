@@ -1,0 +1,35 @@
+#+TITLE: sacha/try-expand-emacs-wiki-name
+
+April 22nd, 2004 -
+[[http://sachachua.com/blog/p/1989][http://sachachua.com/blog/p/1989]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/try-expand-emacs-wiki-name (old)
+      "Expand a wiki name."
+      (unless old
+        (he-init-string (he-dabbrev-beg) (point))
+        (setq he-expand-list
+              (if (derived-mode-p 'emacs-wiki-mode)
+                  (delq nil
+                        (mapcar
+                         (lambda (item)
+                           (when (string-match
+                                  (concat "^" (regexp-quote he-search-string))
+                                  (car item))
+                             (planner-make-link (car item))))
+                         (emacs-wiki-file-alist))))))
+      (while (and he-expand-list
+                  (or (not (car he-expand-list))
+                      (he-string-member (car he-expand-list) he-tried-table t)))
+        (setq he-expand-list (cdr he-expand-list)))
+      (if (null he-expand-list)
+          (progn
+            (if old (he-reset-string))
+            nil)
+        (progn
+          (he-substitute-string (car he-expand-list) t)
+          (setq he-expand-list (cdr he-expand-list))
+          t)))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/hippie-config.el][../../notebook/emacs/hippie-config.el]]

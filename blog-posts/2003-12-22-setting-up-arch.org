@@ -1,0 +1,12 @@
+#+TITLE: Setting up arch
+
+December 22nd, 2003 -
+[[http://sachachua.com/blog/p/1533][http://sachachua.com/blog/p/1533]]
+
+- Set up ID
+ - Set up branch of emacs-wiki
+ - Cache revision
+ - Add files
+ - Commit
+ - Set up local mirror for repository
+ - Sync

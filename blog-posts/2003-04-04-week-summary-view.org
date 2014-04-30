@@ -1,0 +1,7 @@
+#+TITLE: Week summary view
+
+April 4th, 2003 -
+[[http://sachachua.com/blog/p/642][http://sachachua.com/blog/p/642]]
+
+Cross-reference:
+[[http://sachachua.com/notebook/wiki/PlannerMode#4][PlannerMode#4]]

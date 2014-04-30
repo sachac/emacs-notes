@@ -1,0 +1,10 @@
+#+TITLE: Note guids
+
+December 7th, 2003 -
+[[http://sachachua.com/blog/p/1471][http://sachachua.com/blog/p/1471]]
+
+Notes should probably have GUIDs so that I can do update-notes as
+ well. However, note updating does not really make sense with
+ remember-planner-copy-on-xref set to nil...
+
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]

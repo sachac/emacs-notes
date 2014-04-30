@@ -1,0 +1,14 @@
+#+TITLE: Consolidating archives
+
+January 1st, 2004 -
+[[http://sachachua.com/blog/p/1566][http://sachachua.com/blog/p/1566]]
+
+#+BEGIN_EXAMPLE
+    tla make-archive -l sacha@free.net.ph--main ~/notebook/arch
+    tla my-default-archive sacha@free.net.ph--main
+    tla archive-setup emacs-wiki--sacha--1.0
+    tla tag arch@repose.cx--03/emacs-wiki--dev--1.0 emacs-wiki--sacha--1.0
+    tla cacherev emacs-wiki--sacha--1.0
+    tla get emacs-wiki--sacha--1.0 emacs-wiki
+#+END_EXAMPLE
+

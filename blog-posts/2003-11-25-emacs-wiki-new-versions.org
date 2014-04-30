@@ -1,0 +1,9 @@
+#+TITLE: emacs-wiki new versions
+
+November 25th, 2003 -
+[[http://sachachua.com/blog/p/1424][http://sachachua.com/blog/p/1424]]
+
+When [[http://repose.cx/cgi-bin/blosxom.cgi/][Damien Elmes]] said he was
+working on a
+ backlog of emacs-wiki stuff, he wasn't kidding! <laugh> Well,
+ this probably means I can trim some of my hacks... =)

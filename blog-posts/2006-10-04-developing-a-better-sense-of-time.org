@@ -1,0 +1,74 @@
+#+TITLE: Developing a better sense of time
+
+October 4th, 2006 -
+[[http://sachachua.com/blog/p/3921][http://sachachua.com/blog/p/3921]]
+
+One of the things I want to do is develop a good sense of how long it
+ takes me to do something. Better time estimates lead to better
+ scheduling, better sense of what I can commit to, and ultimately less
+ stress and more happiness. =)
+
+Fortunately, Planner makes it easy for me to do really detailed
+ time-tracking. When I mark a task as in progress, the clock starts
+ ticking. When I postpone or close a task, the system clocks out
+ automatically.
+
+I find that my attention occasionally strays. Sometime ago, I wrote a
+ function to help me keep track of what I'm supposed to be doing.
+ Today, I've decided to try estimating task completion times for more
+ of the tasks on my list. I modified my old function to tell me how
+ much time has elapsed since I started the task. This doesn't take into
+ account previous clock-in/clock-outs, but it will do for now.
+
+We'll see how well it works. =)
+
+#+BEGIN_EXAMPLE
+    ;; I've bound sacha/planner-what-am-i-supposed-to-be-doing to F9 F11. I
+    ;; start out by clocking into the task (use planner-timeclock.el and
+    ;; C-c TAB to mark a task as in progress). Then, when I find myself
+    ;; getting distracted, I hit F9 F9 to see my current task in the
+    ;; minibuffer. C-u F9 F9 jumps back to the task so that I can either
+    ;; mark it as postponed. M-x planner-task-pending (bound to C-c C-p in
+    ;; my local config) and M-x planner-task-done (C-c C-x) both clock out
+    ;; of the task. If I want to jump back to the previous window
+    ;; configuration from that planner page, I can just hit F9 F9 again.
+
+    (defvar sacha/window-register "w"
+      "Register for jumping back and forth between planner and wherever I am.")
+    (defvar sacha/planner-current-task nil
+      "Current task info.")
+    (defadvice planner-task-in-progress (after sacha activate)
+      "Keep track of the task info."
+      (setq sacha/planner-current-task (planner-current-task-info)))
+
+    (defun sacha/planner-what-am-i-supposed-to-be-doing (&optional prefix)
+      "Make it easy to keep track of what I'm supposed to be working on.
+    If PREFIX is non-nil, jump to the current task, else display it
+    in a message. If called from the plan page, jump back to whatever
+    I was looking at."
+      (interactive "P")
+      (if planner-timeclock-current-task
+          (if (string= (planner-task-page sacha/planner-current-task)
+                       (planner-page-name))
+              (jump-to-register sacha/window-register)
+            (if (null prefix)
+                (message "%s %s"
+                         ;; Minutes so far
+                         (timeclock-seconds-to-string (timeclock-last-period))
+                         planner-timeclock-current-task)
+              (frame-configuration-to-register sacha/window-register)
+              (planner-find-file (planner-task-page sacha/planner-current-task))
+              (planner-find-task sacha/planner-current-task)))
+        (if prefix
+            (planner-goto-today)
+          (message "No current task. HEY!"))))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]],
+[[http://www.technorati.com/tag/planner][planner]],
+[[http://www.technorati.com/tag/productivity][productivity]]
+
+Random Emacs symbol: cal-tex-mouse-filofax-week -- Command: Two page
+Filofax calendar for week indicated by cursor. /(Hey, I didn't know we
+could print Filofax calendars from Emacs cal...)/

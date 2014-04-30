@@ -1,0 +1,6 @@
+#+TITLE: Running word count in Emacs buffers
+
+November 23rd, 2003 -
+[[http://sachachua.com/blog/p/1407][http://sachachua.com/blog/p/1407]]
+
+[[http://gnufans.net/~deego/emacspub/site-lisp-not/wcount.el][http://gnufans.net/~deego/emacspub/site-lisp-not/wcount.el]]

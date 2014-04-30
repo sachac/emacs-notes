@@ -1,0 +1,12 @@
+#+TITLE: Emacs channel chat logs
+
+January 4th, 2005 -
+[[http://sachachua.com/blog/p/2547][http://sachachua.com/blog/p/2547]]
+
+Also, if someone can help me set up logging (split into text files by
+ day, please) for irc://irc.freenode.net/#emacs, I volunteer to
+ summarize and anonymize interesting tidbits from #emacs every day.
+ That way, people don't have to worry about missing interesting tips or
+ code snippets. ;)
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

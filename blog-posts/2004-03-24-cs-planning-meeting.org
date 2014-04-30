@@ -1,0 +1,80 @@
+#+TITLE: CS planning meeting
+
+March 24th, 2004 -
+[[http://sachachua.com/blog/p/1923][http://sachachua.com/blog/p/1923]]
+
+Dr. Sarmenta: research. Thinking of research programs. On the positive
+ side, CS197 this year went particularly well. Lot of good projects.
+ One of the things that helped out: more groups (groups of two), also,
+ started early. August, start writing proposals. One of the things that
+ I think it's a good sign of is that we can do a lot in terms of
+ research. Our students are pretty capable. The upcoming two batches
+ are also pretty good. We can look forward to being able to tap them.
+ The other thing that helped this year--- Jon and I tried to help focus
+ everybody. Those who had research ideas, we encouraged. We also had a
+ pool of projects in mind and some people took them. There was still a
+ significant part of the batch that did database/web stuff, but we
+ tried to spread it out some more. ~1/3. Those ones we screened also.
+ Pretty good batch. Start even earlier, maybe summer. If we have ideas
+ already, it would be nice. For example, for the wireless, we had lots
+ of ideas. Students also have their own ideas, and sometimes they just
+ needed encouragement. I'd like us to have personal research agendas.
+ We should all be working on at least one research project. Think of it
+ as part of our teaching job. Common interests? Real output.
+
+(Information retrieval from semi-structured text; open source
+ development; social network analysis and the Semantic Web. Named
+ entity extraction from hypertext.)
+
+In preparation for the planner meeting, Eric:
+
+- Compile a list of publications
+ - Active research projects we're doing right now
+ - Publications: start with the PAASCU list
+ - Opportunities for people to publish (goal), deadlines
+ - Resources
+
+map of where we are. If we can list projects we want to work on this
+ coming year...
+
+Doc Mana: Can we move defenses earlier so that we can hold a
+ conference?
+
+That would be a good idea.
+
+(Time-ordered information streams; continuous implicit queries)
+
+After we have this, maybe we can have research groups.
+ How MIT worked: each professor has his own project, and there's an
+ umbrella group. There's a theme.
+
+Pretend you're a student and you're looking for a project to do. What
+ would you like to do?
+
+Junior faculty point from Dr. Rodrigo. Research output is one of the
+ criteria for permanency.
+
+CS side. Harder science side. Stuff that's more technical rather than
+ social. Ex: Reality miner. (Hey, that's pretty cool)
+
+Looking for help with the Japanese grid thing. C, mathematical. MRI.
+ Bandwidth minimization, etc. You get to play around with a PHP 4M
+ cluster...
+
+Hey, we have a Simputer! I will borrow one!
+
+Also, the digital video thing Darla did. Jeff volunteered.
+
+Symbian phones.
+
+On to the important stuff --- planning logistics.
+
+Subic is traffic, but we'll go for White Rock anyway.
+
+Can we prepare a project proposal?
+
+Dr. Michael Morales of PMA is joining us part-time for first sem. MIS
+131. He's
+ into discrete events simulation.
+
+Faculty load discussion. Maybe I can swap my CS152 for CS110.

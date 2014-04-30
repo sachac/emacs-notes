@@ -1,0 +1,43 @@
+#+TITLE: More Emacs drawings: Dired, moving around
+
+April 3rd, 2014 -
+[[http://sachachua.com/blog/p/27045][http://sachachua.com/blog/p/27045]]
+
+This entry is part 4 of 4 in the series
+[[http://sachachua.com/blog/series/a-visual-guide-to-emacs/][A Visual
+Guide to Emacs]]
+
+Dired is the Emacs directory editor. You can get to it with C-x C-f
+(=find-file=) if you specify a directory. C-x d (=dired=) works too.
+Dired makes it easy to do batch operations on files. One of the niftiest
+features that you might not even think of looking for, though, is the
+ability to make a Dired buffer editable using C-x C-q
+(=dired-toggle-read-only=). Then you can use =replace-regexp=, keyboard
+macros, and all sorts of other ways to change filenames. When you switch
+back out of editing mode with C-x C-q, the files will be updated.
+
+Here's a cheat sheet for working with Dired.
+
+[[file:uploads/2014/03/2014-02-24-Emacs-tips-use-Dired-to-manage-files-dired-emacs.png][file:uploads/2014/03/2014-02-24-Emacs-tips-use-Dired-to-manage-files-dired-emacs-640x484.png]]
+
+2014-02-24 Emacs tips -- use Dired to manage files #dired #emacs
+
+Also, bjonnh suggested making a cheat sheet for movement commands. I use
+the M-b, M-f, C-M-b, and C-M-f shortcuts a lot when working with Emacs
+Lisp. C-a and C-e are great too.
+
+[[file:uploads/2014/03/2014-02-27-Map-for-getting-the-hang-of-Emacs-movement-emacs-map-guide.png][file:uploads/2014/03/2014-02-27-Map-for-getting-the-hang-of-Emacs-movement-emacs-map-guide-640x485.png]]
+
+2014-02-27 Map for getting the hang of Emacs movement #emacs #map #guide
+
+If you use =evil-mode= because you're used to Vim shortcuts, this cheat
+sheet won't be useful to you, but maybe I can make an evil-mode cheat
+sheet someday.
+
+In other news, I'm slowly becoming the kind of person who can understand
+SmartParens. I'm getting the hang of slurp and barf, but the rest of it
+still boggles me. Someday!
+
+Series
+Navigation[[http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/][«
+Some tips for learning Org Mode for Emacs]]

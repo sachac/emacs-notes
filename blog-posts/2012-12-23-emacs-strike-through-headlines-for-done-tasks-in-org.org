@@ -1,0 +1,28 @@
+#+TITLE: Emacs: Strike through headlines for DONE tasks in Org
+
+December 23rd, 2012 -
+[[http://sachachua.com/blog/p/24270][http://sachachua.com/blog/p/24270]]
+
+I wanted a quick way to visually distinguish DONE tasks from tasks I
+still need to do. This
+[[http://lists.gnu.org/archive/html/emacs-orgmode/2007-03/msg00179.html][handy
+snippet from the Emacs Org-mode mailing list]] does the trick by
+striking through the headlines for DONE tasks.
+
+[[http://sachachua.com/blog/wp-content/uploads/2012/12/image15.png][[[http://sachachua.com/blog/wp-content/uploads/2012/12/image_thumb14.png]]]]
+
+Here's the code:
+
+#+BEGIN_EXAMPLE
+    (setq org-fontify-done-headline t)
+    (custom-set-faces
+     '(org-done ((t (:foreground "PaleGreen"   
+                     :weight normal
+                     :strike-through t))))
+     '(org-headline-done 
+                ((((class color) (min-colors 16) (background dark)) 
+                   (:foreground "LightSalmon" :strike-through t)))))
+#+END_EXAMPLE
+
+[[http://dl.dropbox.com/u/3968124/sacha-emacs.html][View my Emacs
+configuration]]

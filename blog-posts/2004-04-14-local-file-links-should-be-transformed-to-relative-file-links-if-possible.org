@@ -1,0 +1,52 @@
+#+TITLE: Local file links should be transformed to relative file links if
+possible
+
+April 14th, 2004 -
+[[http://sachachua.com/blog/p/1963][http://sachachua.com/blog/p/1963]]
+
+#+BEGIN_EXAMPLE
+    (defadvice emacs-wiki-markup-link (around sacha activate)
+      "Resolve the matched wiki-link into its ultimate  form.
+    Images used the  tag."
+      ;; avoid marking up urls that appear to be inside existing HTML
+      (when (and (not (eq (char-after (point)) ?\"))
+                 (not (eq (char-after (point)) ?\>)))
+        (let* (string
+               (wiki-link (match-string 0))
+               (url (emacs-wiki-link-url wiki-link))
+               (name (emacs-wiki-escape-html-string
+                      (emacs-wiki-wiki-visible-name wiki-link))))
+          (when url
+            (unless (emacs-wiki-wiki-url-p url)
+              (setq url
+                    (file-relative-name
+                     url
+                     (if (string-match "public_html" url)
+                         "../../public_html/notebook/plans"
+                       "../../notebook/plans")))))
+          (setq string
+                (if (null url)
+                    (if (and emacs-wiki-serving-p
+                             (emacs-wiki-editable-p
+                              (emacs-wiki-wiki-base wiki-link)))
+                        (format
+                         "%s"
+                         (emacs-wiki-wiki-base wiki-link) name)
+                      (format "%s"
+                               emacs-wiki-maintainer name))
+                  (if (save-match-data
+                        (string-match emacs-wiki-image-regexp url))
+                      (if (string-equal url name)
+                          (format "" url)
+                        (format "" url name))
+                    (if (save-match-data
+                          (string-match emacs-wiki-image-regexp name))
+                        (format "" url name)
+                      (format "%s" url name)))))
+          (add-text-properties 0 (1- (length string))
+                               '(rear-nonsticky (read-only) read-only
+                                                t) string)
+          (setq ad-return-value string))))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki-config.el][../../notebook/emacs/emacs-wiki-config.el]]

@@ -1,0 +1,10 @@
+#+TITLE: Finding out which files are shadowing Debian emacs packages
+
+November 27th, 2003 -
+[[http://sachachua.com/blog/p/1433][http://sachachua.com/blog/p/1433]]
+
+#+BEGIN_EXAMPLE
+    ls *.el*|sed 's@^@/@;s/\.elc$/.el/'|xargs dlocate
+#+END_EXAMPLE
+
+E-Mail from Dan Jacobson

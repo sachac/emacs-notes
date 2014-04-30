@@ -1,0 +1,96 @@
+#+TITLE: Clocking work time under Planner
+
+October 28th, 2007 -
+[[http://sachachua.com/blog/p/4426][http://sachachua.com/blog/p/4426]]
+
+Planner uses timeclock.el, which is part of GNU Emacs. To make sure that
+all
+ of the relevant libraries are loaded when you start Emacs, add the
+following
+ to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+       (require 'planner-autoloads)
+       (require 'planner-timeclock)
+#+END_EXAMPLE
+
+To start the clock on a task, type C-c C-i (planner-task-in-progress).
+ The task will be marked as “in progress” and the timer will start. To
+ clock out, mark the task as done (C-c C-x, planner-task-done) or clock
+ out manually with C-c C-o (timeclock-out).
+
+To see a summary of your time use for any day, call M-x
+ planner-timeclock-summary. To see a summary of your time use for a
+ range of days, call M-x planner-timeclock-summary-show-range. The
+ range function is particularly useful for weekly time reports, which I
+ find myself now doing.
+
+For even more fun, call M-x
+ planner-timeclock-summary-show-range-filter, which filters plan pages
+ and descriptions using the specified regular expression. For example,
+ to show only the time entries from the last seven days that included
+ the keyword “@work”, call M-x
+ planner-timeclock-summary-show-range-filter and specify “@work” as the
+ filter, “-7″ as the start date, and “.” for the end date. You'll get a
+ quick view of all your work-related time-clock entries.
+
+If you use this often, you might want to create a shortcut to show the
+ timeclock summary for the current file. The following code defines a
+ function that displays the timeclock summary for the current page (day
+ or plan), and binds this function to C-c C-s in Planner mode files.
+
+#+BEGIN_EXAMPLE
+    (require 'planner-timeclock-summary)
+    (require 'planner-timeclock-summary-proj)
+    (defun sacha/planner-timeclock-summary-show (page)
+      "Show the timeclock summary for PAGE (defaults to the current page)."
+      (interactive (list (planner-page-name)))
+      (if (string-match planner-date-regexp page)
+          ;; Day page
+          (planner-timeclock-summary-show page)
+        ;; Plan page
+        (let ((data (planner-timeclock-proj-make-alist page)))
+          (switch-to-buffer (get-buffer-create planner-timeclock-summary-buffer))
+          (erase-buffer)
+          (insert (planner-timeclock-proj-build-report data)))))
+    (define-key planner-mode-map (kbd "C-c C-s" 'sacha/planner-timeclock-summary-show))
+#+END_EXAMPLE
+
+This allows you to see how much time you've spent for the current day
+ or project.
+
+If you like seeing this, you might want the timeclock information
+ automatically inserted into your Planner pages. To do so, add the
+following to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (planner-timeclock-summary-proj-insinuate) ; For plan pages
+    (planner-timeclock-summary-insinuate)  ; For day pages
+    ;; It's easier when both of them overwrite the same report
+    (setq planner-timeclock-summary-section
+          "Timeclock"
+
+          planner-timeclock-summary-proj-section
+          "Timeclock"
+
+          ;; Modify this to include your other template sections
+          planner-day-page-template
+          "* Tasks\n\n\n* Schedule\n\n\n* Timeclock\n\n\n* Notes\n\n\n"
+
+          planner-plan-page-template
+          planner-day-page-template)
+#+END_EXAMPLE
+
+The sections are updated only if they exist, so you can remove the
+ sections or add them to your Planner files any time you want.
+
+CAUTION: Because the time information is stored in a separate file,
+ Planner gets confused if you edit the task details. Make sure you use
+ the built-in functions for editing the task description
+ (planner-edit-task-description) or changing the project associated
+ with a task (planner-replan-task).
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: planner-expand-name -- Function: Expand the given
+NAME to its fullest form.

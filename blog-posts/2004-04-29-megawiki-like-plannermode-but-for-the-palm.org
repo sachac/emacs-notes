@@ -1,0 +1,15 @@
+#+TITLE: MegaWiki: Like PlannerMode, but for the Palm
+
+April 29th, 2004 -
+[[http://sachachua.com/blog/p/2025][http://sachachua.com/blog/p/2025]]
+
+MegaWiki seems to be the Palm equivalent of
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]], except
+with
+ better stylus interface. It seems to be free and open source software,
+ too!
+
+Time to borrow a Palm...
+
+[[http://www.freewarepalm.com/utilities/megawiki.shtml][FreewarePalm:
+MegaWiki v5.4]]

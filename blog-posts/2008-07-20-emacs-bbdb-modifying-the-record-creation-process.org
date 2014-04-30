@@ -1,0 +1,20 @@
+#+TITLE: Emacs: BBDB: Modifying the record creation process
+
+July 20th, 2008 -
+[[http://sachachua.com/blog/p/4968][http://sachachua.com/blog/p/4968]]
+
+You might want to add fields to the record creation process in M-x
+bbdb-create. In addition to asking for name, company, e-mail address,
+addresses, phone numbers, and notes, you may want to make sure you
+remember to put in birthdates or other information. If you want to
+prompt for custom fields after the regular BBDB creation form, modify
+this simple example to suit your needs:
+
+#+BEGIN_EXAMPLE
+    (defadvice bbdb-read-new-record (after wicked activate)
+      "Prompt for the birthdate as well."
+      (bbdb-record-putprop ad-return-value 'birthdate
+                   (bbdb-read-string "Birthdate (YYYY.MM.DD): ")))
+#+END_EXAMPLE
+
+Thanks to Kaleb Yilma for the question!

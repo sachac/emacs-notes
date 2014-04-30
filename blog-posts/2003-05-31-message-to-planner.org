@@ -1,0 +1,24 @@
+#+TITLE: Message to planner
+
+May 31st, 2003 -
+[[http://sachachua.com/blog/p/796][http://sachachua.com/blog/p/796]]
+
+#+BEGIN_EXAMPLE
+    (defun message-to-planner ()
+      "Logs this message to the News and Mail section of today's planner file."
+      (save-window-excursion
+        (let ((string (concat
+                 (format-time-string "%R")
+                 " | " (if (message-fetch-field "newsgroups")
+                           (concat " News " (message-fetch-field "newsgroups"))
+                         (concat " Mail " (message-fetch-field "to")))
+                 " | Subject: \"" (message-fetch-field "subject") "\""
+                 " | Message-ID: " (message-fetch-field "message-id")
+                 "\n")))22
+          (planner-goto-today)
+          (planner-seek-to-first "News and Mail")
+          (insert string))))
+
+    (add-hook 'message-sent-hook 'message-to-planner)
+#+END_EXAMPLE
+

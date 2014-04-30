@@ -1,0 +1,7 @@
+#+TITLE: Info-goto-emacs-command-mode --- emacs
+
+March 24th, 2003 -
+[[http://sachachua.com/blog/p/575][http://sachachua.com/blog/p/575]]
+
+Useful Emacs documentation thing. See Info-goto-emacs-command-mode,
+normally bound to C-h F in CVS Emacs.

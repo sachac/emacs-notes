@@ -1,0 +1,41 @@
+#+TITLE: Chapter 6: Being Big Brother (plan)
+
+February 13th, 2008 -
+[[http://sachachua.com/blog/p/4760][http://sachachua.com/blog/p/4760]]
+
+I haven't been writing about Emacs lately. Here's my outline so that you
+can help keep me honest. =) My next chapter is about the Big Brother
+Database (BBDB) and contact management in Emacs, which is one of the
+things that made people laugh when I showed my Emacs configuration at
+DemoCamp in Toronto. Anyway, here's what I'm planning to write about:
+
+*Chapter 6: Being Big Brother* (30 pages)
+
+-  Why use Emacs to manage your contacts?
+    What is BBDB?
+-  Project xxx: Set up BBDB
+    Project xxx: Import contacts: CSV, card
+    Project xxx: Create a record
+    Project xxx: Search records
+-  Mail
+    Project xxx: Integrate BBDB with Mail
+    Project xxx: Notice e-mail changes
+    Project xxx: Filter mail according to record
+    Project xxx: Categorize contacts with mail aliases
+    Project xxx: Personalize greetings
+    Project xxx: Personalize signatures
+    Project xxx: Mail merge
+    Project xxx: Track last contact
+-  Filtering records
+    Project xxx: Show a phone list
+    Project xxx: Show an address list
+    Project xxx: Show no contact since
+    Project xxx: Show tag queries
+    Project xxx: Remember birthdays
+-  More data
+    Project xxx: Snarf records
+    Project xxx: Add pictures
+    Project xxx: Export contacts
+    Project xxx: Synchronize contacts
+    Project xxx: Synchronize with LinkedIn
+

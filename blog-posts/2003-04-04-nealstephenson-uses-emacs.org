@@ -1,0 +1,14 @@
+#+TITLE: NealStephenson uses Emacs!
+
+April 4th, 2003 -
+[[http://sachachua.com/blog/p/641][http://sachachua.com/blog/p/641]]
+
+Alan Shutko on
+[[mailto:debian-user@lists.debian.org][debian-user@lists.debian.org]]
+links to
+
+[[http://hobbes.ncsa.uiuc.edu/nealstephensonOS.html][http://hobbes.ncsa.uiuc.edu/nealstephensonOS.html]]
+. Coooool. Well, as
+ if the OrdoEmacs reference in Cryptonomicon wasn't a giveaway...
+
+NealStephenson is cool.

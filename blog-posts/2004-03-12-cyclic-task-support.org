@@ -1,0 +1,10 @@
+#+TITLE: Cyclic task support
+
+March 12th, 2004 -
+[[http://sachachua.com/blog/p/1885][http://sachachua.com/blog/p/1885]]
+
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]] now
+supports cyclic tasks through planner-cyclic.el .
+ Not bad for an hour of hacking. Comments welcome!
+
+[[http://sachachua.com/notebook/emacs/remember-config.el][../../notebook/emacs/remember-config.el]]

@@ -1,0 +1,8 @@
+#+TITLE: planner-el publishing
+
+February 19th, 2003 -
+[[http://sachachua.com/blog/p/422][http://sachachua.com/blog/p/422]]
+
+planner-el actually gets published in a very different manner. I should
+come up with another way to do it, maybe a template to give me an
+idea...

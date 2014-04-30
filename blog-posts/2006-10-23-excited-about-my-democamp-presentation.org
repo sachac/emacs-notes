@@ -1,0 +1,58 @@
+#+TITLE: Excited about my DemoCamp presentation!
+
+October 23rd, 2006 -
+[[http://sachachua.com/blog/p/3962][http://sachachua.com/blog/p/3962]]
+
+I've written a totally small-time presentation thingy that cues me
+thanks to Emacspeak. ;) Here's the setup code:
+
+#+BEGIN_EXAMPLE
+    (progn ;; Setup
+      (defvar democamp/presentation-file "~/democamp.el")
+      (defvar democamp/cue-buffer "*DemoCamp*")
+      (defun democamp/next ()
+        (interactive)
+        (let (start sexp)
+          (with-current-buffer (find-file-noselect democamp/presentation-file)
+            (setq start (point))
+            (forward-sexp)
+            (setq sexp (buffer-substring-no-properties start (point))))
+          (eval (read sexp))))
+
+      (defun democamp/previous ()
+        (interactive)
+        (let (start sexp)
+          (with-current-buffer (find-file-noselect democamp/presentation-file)
+            (setq start (point))
+            (backward-sexp)
+            (setq sexp (buffer-substring-no-properties (point) start)))
+          (eval (read sexp))))
+
+      (defun democamp/repeat ()
+        (interactive)
+        (let (start sexp)
+          (with-current-buffer (find-file-noselect democamp/presentation-file)
+            (setq start (point))
+            (backward-sexp)
+            (setq sexp (buffer-substring (point) start))
+            (forward-sexp))
+          (eval (read sexp))))
+
+      (defun democamp/say (text)
+        (with-current-buffer (get-buffer-create democamp/cue-buffer)
+          (erase-buffer)
+          (insert text)
+          (goto-char (point-min))
+          (call-interactively 'emacspeak-speak-buffer)))
+      (global-set-key (kbd "") 'democamp/next)
+      (global-set-key (kbd "S-") 'democamp/previous)
+      (global-set-key (kbd "C-") 'democamp/repeat)
+    )
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]],
+[[http://www.technorati.com/tag/democamp][democamp]]
+
+Random Emacs symbol: gnus-multiple-choice -- Function: Ask user a
+multiple choice question.

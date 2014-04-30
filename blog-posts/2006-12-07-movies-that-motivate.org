@@ -1,0 +1,20 @@
+#+TITLE: Movies That Motivate
+
+December 7th, 2006 -
+[[http://sachachua.com/blog/p/4056][http://sachachua.com/blog/p/4056]]
+
+Kevin McIntosh just linked me up with an interesting
+ motivational speaker named Emmanuel Lopez who's starting a movie /
+networking series at the Royal Ontario Museum this January. =) Check out
+[[http://motivatorman.blogspot.com/][Emmanuel Lopez's blog]] to find out
+more about the series and the guy!
+
+You know what I *really* want? A weekly / monthly feel-good
+ conversation salon at which we talk about inspiring things and what's
+ going *well*... A gratitude group, a happiness hangout, a joyful
+jubilee! =)
+
+E-Mail from Emmanuel Lopez
+
+Random Emacs symbol: planner-gnus-get-address -- Function: Return the
+address of the sender of the current message.

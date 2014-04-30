@@ -1,0 +1,6 @@
+#+TITLE: as rendered by devel
+
+February 19th, 2003 -
+[[http://sachachua.com/blog/p/420][http://sachachua.com/blog/p/420]]
+
+This is the development emacs-wiki version. I think.

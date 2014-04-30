@@ -1,0 +1,121 @@
+#+TITLE: Things that I've used Emacs for
+
+June 14th, 2012 -
+[[http://sachachua.com/blog/p/23471][http://sachachua.com/blog/p/23471]]
+
+Emacs can do a ton thanks to the code that people have contributed over
+the decades. Here's a list of things I've used Emacs for, although I'm
+sure I've still missed a few!
+
+-  Taking notes
+
+   -  Storing reference information
+   -  Publishing blog posts
+
+-  Programming / coding
+
+   -  Rails
+   -  PHP / Drupal
+   -  Java
+   -  Javascript
+   -  HTML / HAML / ERB
+   -  CSS / Sass
+   -  Emacs Lisp
+   -  Ruby
+   -  Perl
+   -  SQL
+   -  Bash scripts
+
+-  Managing my to-do list
+-  Timing tasks
+-  Managing my finances
+-  Studying
+
+   -  Dictionary (Japanese)
+   -  Flashcards
+
+      -  With random fortunes displayed for correct answers
+      -  With random images displayed for correct answers (cute
+         kittens!)
+
+   -  Example sentences lookup (Japanese)
+   -  Random example sentence added to blog posts (Japanese)
+
+-  Brainstorming, outlining, and mindmapping
+-  Handling my mail
+
+   -  Doing mail merges or file merges
+   -  Tracking correspondence
+   -  Personalizing greetings and signatures
+
+-  Managing contacts
+-  Writing research papers
+-  Managing my bibliography
+-  Making presentations
+
+   -  Planning presentations
+   -  Delivering dynamic presentations (with executable code!)
+   -  Using speech synthesis to remind myself about what's coming in the
+      next “slide”
+
+-  Reading documentation
+-  Analyzing my blog and my writing
+-  Running a shell
+-  Searching files
+-  Cleaning up, filtering, or transforming text
+
+   -  String and regexp replacement
+   -  Keyboard macros
+   -  Custom Emacs Lisp functions
+
+-  Editing files on a remote server
+-  Editing files inside an archive
+-  Reviowing and making text notes about images and other files
+-  Chatting on IRC
+-  Chatting on instant messengers
+-  Checking the calendar
+-  Playing Nethack
+-  Playing dunnet and snake
+-  Browsing the Web
+-  Posting to Twitter and other status update sites
+
+   -  Rigging up my to-do list to automatically publish task data to an
+      internal status update site
+
+-  Calculating expressions
+-  Using a spreadsheet
+-  Exploring directories
+-  Renaming, deleting, or moving files
+-  Drawing ASCII art
+-  Reading news
+-  Comparing files or revisions
+-  Typing in Japanese or Latin
+-  Reviewing similar files
+-  Synthesizing speech -- “reading” books, technical manual, mail, etc.
+-  Learning more about Emacs
+
+   -  Random symbols and commands
+   -  Documentation
+   -  Source code
+
+-  ROT13 and Morse code encryption/decryption
+-  Editing GPG-encrypted files
+-  Practising typing
+-  Opening spreadsheets and other files downloaded from the Web
+-  Taking screenshots (mostly of Nethack games)
+-  Analyzing web logs and other files
+-  Calculating days between two dates
+-  Sending text messages
+-  Analyzing source code
+-  Interacting with APIs
+-  Doing weekly, monthly, and yearly reviews
+-  Versioning my files
+-  Expanding text snippets
+-  Drafting a book
+
+   -  Tracking my progress
+
+-  Editing files as root
+-  Compiling and running programs
+-  Editing text from the browser
+

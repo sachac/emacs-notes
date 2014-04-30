@@ -1,0 +1,13 @@
+#+TITLE: Curing Mail Madness with GNU Emacs
+
+May 17th, 2007 -
+[[http://sachachua.com/blog/p/4570][http://sachachua.com/blog/p/4570]]
+
+My article on managing mail with GNU Emacs is up at
+[[http://www.linuxworld.com/news/2007/051607-linuxworld-mail-madness.html][http://www.linuxworld.com/news/2007/051607-linuxworld-mail-madness.html]]
+. Yay! Check it out!
+
+I think I'll spend some of my vacation writing more stuff...
+
+Random Emacs symbol: mailcap-mime-info -- Function: Get the MIME viewer
+command for STRING, return nil if none found.

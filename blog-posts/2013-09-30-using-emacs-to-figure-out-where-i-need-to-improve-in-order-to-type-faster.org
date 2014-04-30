@@ -1,0 +1,505 @@
+#+TITLE: Using Emacs to figure out where I need to improve in order to type
+faster
+
+September 30th, 2013 -
+[[http://sachachua.com/blog/p/26050][http://sachachua.com/blog/p/26050]]
+
+I've been thinking about
+[[http://sachachua.com/blog/2013/08/thinking-about-how-to-type-faster/][how
+to type faster than 110wpm]], and digging into the specific factors that
+I could improve. In particular, I wanted to get a sense of:
+
+-  my theoretical top speed
+-  whether alternates or rolls are better for me
+-  how quickly I can twitch, measured by single-key repeats or two-key
+   alternations
+
+[[http://sachachua.com/blog/wp-content/uploads/2013/09/shutterstock_145785482.jpg][[[http://sachachua.com/blog/wp-content/uploads/2013/09/shutterstock_145785482_thumb.jpg]]]]
+
+By using totally artificial typing tests (ex: type “thththth...”)
+instead of word-based ones, I can explore the relationships between
+character combinations and speed without worrying about hitting SPC,
+sounding out words, correcting errors, and so on. Since I can do the
+tests in short sprints, I can rest enough in between to minimize my risk
+of RSI.
+
+*** Using Emacs to test my raw typing speed
+
+I haven't come across an online typing test that gives the kind of stats
+I want, or even a per-character or digram breakdown. I thought about
+writing a Javascript-based typing timer, but I figured it would be less
+work to cajole Emacs into measuring what I wanted. Here's the code:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/timer-go ()
+      "Quick keyboard timer."
+      (interactive)
+      (insert "GO\n")
+      (run-with-timer 3 nil (lambda () (insert "\n")))  ; for warmup
+      (run-with-timer 15 nil (lambda () ; 12 seconds + the 3-second warmup
+                               (let ((col (- (point) (line-beginning-position))))
+                                 (insert (format " | %d | \n" col)))
+                               )))
+    (local-set-key (kbd "<f7>") 'sacha/timer-go)
+#+END_EXAMPLE
+
+This prints “GO” to show you that it's running. You have three seconds
+to warm up, so you don't have to worry about wasting any milliseconds
+after =M-x sacha/timer-go= (or =F7=, the keyboard shortcut I bound mine
+to). After the warmup, Emacs adds a newline and the “race” is on.
+There's a 12 second period of actual typing, and then Emacs adds the
+number of characters you typed. When you see that, you can stop.
+
+Twelve seconds is a useful number for estimating typing speed because
+the conversion from characters per minute (CPM) to words per minute
+(WPM) usually uses a factor of 5: CPM / 5 = WPM. So the number of
+characters you can type in =60 seconds / 5= is probably the number of
+“words” you could type in a minute.
+
+Note: L and R refer to left and right hand. I've also numbered the
+fingers with 1 being the thumb and 5 being the pinky. The patterns I
+used are based on a Dvorak keyboard, but that doesn't matter as much.
+You can probably figure out what the equivalent patterns are on your
+preferred keyboard layout.
+
+Limitations: I didn't do any special calculations to deal with errors
+(there were many doubling or transposition errors multi-character
+sequences), so the actual CPM will be lower. Also, repeated character
+sequences are definitely not normal and have quirks of their own. It's
+interesting to establish the range and see the kinds of errors that show
+up when I go faster than I'm comfortable with, though.
+
+*** Pure speed
+
+Key description
+
+Pattern
+
+Estimated WPM based on CPM/5
+
+keyboard mashing
+
+-none- (mashing)
+
+379
+
+keyboard mashing
+
+-none- (mashing)
+
+379
+
+keyboard mashing
+
+-none- (mashing)
+
+354
+
+R side mashing
+
+-none- (mashing)
+
+245
+
+L side mashing
+
+-none- (mashing)
+
+217
+
+If you don't care what you're typing, it's easy to type quickly. This is
+just about how fast my hands go if I don't have to think about which
+finger to activate. This mostly ended up as alternating left- and
+right-hand rolls (ex: aoeusntoahuesnto). Because I didn't have to
+precisely alternate, two-handed mashing resulted in more characters than
+one-handed mashing. Interestingly, my right hand is slightly faster than
+my left.
+
+*** Alternates versus rolls
+
+4-key combinations
+
+Key description
+
+Pattern
+
+Estimated WPM based on CPM/5
+
+R-side 4-key roll
+
+snthsnth
+
+232
+
+L-side 4-key roll
+
+aoeuaoue
+
+201
+
+L 3 & 2, R 3 & 2
+
+eutheuth
+
+164
+
+3-key combinations
+
+Key description
+
+Pattern
+
+Estimated WPM based on CPM/5
+
+R 3 & 2, L 3
+
+thethe
+
+187
+
+L 5, R 4 & 2
+
+andand
+
+184
+
+R 3 & 2, L 3
+
+thethe
+
+182
+
+roll R 3
+
+nthnth
+
+176
+
+R 3 & 2, L 3
+
+thethe
+
+170
+
+roll L 3
+
+oeuoue
+
+166
+
+roll L 3
+
+oeuoeu
+
+164
+
+R 3 & 2, L 3
+
+thethe
+
+159
+
+roll R 3
+
+nthnth
+
+152
+
+R 3, L 4 & 3
+
+toetoe
+
+140
+
+I expected rolls to be faster than alternates, but it turns out that
+alternating works out fine too (“the” and “and” on a Dvorak keyboard).
+Same-hand rolls had fewer errors than alternates, though -- timing can
+be tricky when doing high-speed repeats. That can be partially handled
+by autocorrecting “teh” to “the” and similar transpositions. I use an
+AutoHotkey-based autocorrect script, but it screws up the typing tests I
+like, so I can't take advantage of it then.
+
+A roll-optimized keyboard layout might be more effective. 3- and
+4-character rolls like the ones I tested aren't that common in actual
+typing, but it might be possible to find keyboard layouts that are
+better-optimized for the languages I use. I've read that Arensito,
+Capewell, and Colemak focus more on rolls and alternating rolls, so they
+might be worth a look.
+
+*** Two-character pairs
+
+Key description
+
+Pattern
+
+Estimated WPM based on CPM/5
+
+alt L and R 1
+
+uhuh
+
+139
+
+L 5, R 5
+
+asas
+
+137
+
+R 2 & 3
+
+chch
+
+135
+
+R 2 & 3
+
+thth
+
+134
+
+L 2, R 3
+
+tutu
+
+130
+
+R 3, L 4
+
+toto
+
+129
+
+L 2, R 2
+
+uhuh
+
+128
+
+R 1 & 5
+
+xsxs
+
+126
+
+L 2 & 3
+
+eueu
+
+124
+
+R 2 and 5
+
+shsh
+
+115
+
+Two-character patterns are slower than three-character patterns,
+probably indicating that there's a small delay as I think about
+repeating things. Alternates and same-hand two-character pairs seem to
+work okay. Even for same-hand two-character pairs, I get the occasional
+doubling or transposition error.
+
+*** Single-finger twitching
+
+Key description
+
+Pattern
+
+Estimated WPM based on CPM/5
+
+R 2
+
+hhhh
+
+79
+
+R 3
+
+tttt
+
+76
+
+R 1
+
+mmmm
+
+75
+
+R 4
+
+nnnn
+
+74
+
+L 2
+
+uuuu
+
+73
+
+R 5
+
+ssss
+
+71
+
+L 3
+
+eeee
+
+71
+
+L 4
+
+oooo
+
+65
+
+L 1
+
+kkkk
+
+64
+
+L 5
+
+aaaa
+
+61
+
+Single-finger keypresses (no automatic repeats) are slow. Good thing I
+don't have to do them that often. If this represents the speed at which
+I can send an impulse to my finger and have it do something, this might
+be a limiting factor for my typing speed, which is compensated for by
+alternates and rolls.
+
+*** Three characters with repositioning
+
+Key description
+
+Pattern
+
+Estimated WPM based on CPM/5
+
+R 3, L 2, L 2
+
+cupcup
+
+67
+
+R 3, L 5, R 3
+
+catcat
+
+66
+
+R 2, L 4, R 2
+
+dogdog
+
+64
+
+Moving my fingers takes time too. Also, did you know that there are
+typing equivalents of tongue-twisters? I can't type “ranranranran...” a
+long time without it turning into rna and other permutations. Maybe my
+brain gets hiccups.
+
+*** Interrupted combinations
+
+Key description
+
+Pattern
+
+Estimated WPM based on CPM/5
+
+R 4, L 4, R 3
+
+notnot
+
+63
+
+L 4, R 4, L 3
+
+oneone
+
+57
+
+L 5, R 4, L 3
+
+areare
+
+55
+
+Alternating hands is actually pretty tough if you have to care about
+timing. Oddly, this is slower than repositioning. Maybe it's because the
+repositioning helps me remember where I am in the word when I'm
+repeating it, so natural typing will be a different case.
+
+*** Wrap-up
+
+Chunking seems to make a big difference for me. 4-character combinations
+tend to beat 3-character combinations and those tend to beat 2-character
+combinations, unless there's some timing involved. Common combinations
+(the, and) are easier to type. If I can get better at chunking words
+into syllables, that might help. The most common digraphs are TH, HE,
+AN, IN, ER, ON, RE, ED, ND, HA, AT, EN, ES, OF, NT, EA, TI, TO, IO, LE,
+IS, OU, AR, AS, DE, RT, and VE
+([[http://scottbryce.com/cryptograms/stats.htm][source]]), so that might
+be good to look at next.
+
+Twitching or moving individual fingers are slow operations, so being
+able to “look ahead” and move my fingers to the right spots while I'm
+typing the first few characters helps. Muscle memory also helps minimize
+errors. Also, maybe finger dexterity and agility exercises?
+
+I'm probably in the region of Diminishing Returns here. I could spend
+hours inching up my typing speed... or I could spend that time doing
+other things. Now that I've identified specific areas to look into,
+though, I might be able to set up exercises to take advantage of
+interstitial time. For example, while I'm reading a book, I could do
+finger dexterity exercises (pausing, of course, if I feel any hint of
+strain -- I'd like to avoid RSI if I can).
+
+On another note, testing my theoretical speed in this way reminded me a
+little of how we used to play Decathlon on the computer as kids. (Was it
+[[http://www.mobygames.com/game/microsoft-decathlon/screenshots][Microsoft
+Decathlon]]? The screenshots look familiar...) Somehow our keyboard
+survived the rampage back then. =)
+
+*** Next steps
+
+Because alternation can lead to typing errors or slowness for me, I
+might look into Colemak, which optimizes for single-hand rolls. Still,
+I'm pretty happy with Dvorak, and the
+[[http://colemak.com/wiki/index.php?title=FAQ#Is_it_worth_switching_from_Dvorak_to_Colemak.3F][Colemak
+FAQ]] warns that the switch might not be worth it. Another thing I'm
+looking into is [[http://plover.stenoknight.com][Plover]], which lets
+you do stenography using a regular keyboard. My laptop keyboard can't
+easily do some of the combinations and I'm more visual than phonetic
+when it comes to words, so it might be a challenge to learn.
+
+The easiest win will probably come from training my speech recognition
+software to recognize my words more accurately. I've been dictating book
+notes to my computer. This is great because it reinforces the key points
+of the book in my memory, trains the computer, and helps me practice
+clear diction. I've gotten to the point of using speech recognition to
+take notes during my first pass through a book, editing after each
+paragraph. I feel that the accuracy is gradually improving. I make fewer
+edits as I learn how to speak the way the computer wants me to and I
+teach the computer to understand the way I speak.
+
+Besides, an average of 107 wpm on Dvorak is fast enough to let me get
+words out of my head and onto my computer, and I can focus on what I
+want to say instead of how to type. There's plenty more to learn about
+how to write /efficiently./Time to go back to David Fryxell's /How to
+Write Fast (While Writing Well)/! So it's interesting to dig into what
+my rate-limiting factors are when it comes to typing faster, but it's
+even better to focus on how I can think faster (although speech
+recognition will still be useful for the benefits mentioned above).
+
+Have you analyzed your typing? What did you learn?
+
+Image credits:
+[[http://www.shutterstock.com/cat.mhtml?lang=en&search_source=search_form&search_tracking_id=UJurJ-EjV-g4OeA_smwhzw&version=llv1&anyorall=all&safesearch=1&searchterm=stopwatch+keyboard&search_group=&orient=&search_cat=&searchtermx=&photographer_name=&people_gender=&people_age=&people_ethnicity=&people_number=&commercial_ok=&color=&show_color_wheel=1#id=145785482&src=PMdrBv_xVaDBStpCZ3W0Rg-1-31][Keyboard
+with time (Cienpies Design, Shutterstock)]]

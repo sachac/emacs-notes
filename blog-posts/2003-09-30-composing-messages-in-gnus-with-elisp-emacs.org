@@ -1,0 +1,14 @@
+#+TITLE: Composing messages in Gnus with elisp --- emacs
+
+September 30th, 2003 -
+[[http://sachachua.com/blog/p/1189][http://sachachua.com/blog/p/1189]]
+
+#+BEGIN_EXAMPLE
+    (require 'gnus-msg)
+    (defun dxr-group-mail (To Subject)
+      "Start composing a mail."
+      (interactive)
+      (gnus-setup-message 'message
+      (message-mail To Subject)))
+#+END_EXAMPLE
+

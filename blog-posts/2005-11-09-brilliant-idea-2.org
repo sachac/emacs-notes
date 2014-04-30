@@ -1,0 +1,14 @@
+#+TITLE: Brilliant idea!
+
+November 9th, 2005 -
+[[http://sachachua.com/blog/p/3130][http://sachachua.com/blog/p/3130]]
+
+I'm going to make this weekend Planner Documenting weekend. Kinda like
+ the [[http://www.nanowrimo.org][National Novel Writing Month]]‘s goal
+ of just getting stuff out there. I'll put it on the wiki so that
+ people can bang on it. =)
+
+I need to block off Saturday evening for Michael's party, but I'll
+ keep the rest of my weekend free. What do I need to do? I need to sit
+ down and write a from-scratch guide for Emacs and everything. And a
+ Why Use Planner thing. And something about Planner philosophies.

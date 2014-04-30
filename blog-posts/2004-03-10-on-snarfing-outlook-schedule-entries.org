@@ -1,0 +1,14 @@
+#+TITLE: On snarfing Outlook schedule entries
+
+March 10th, 2004 -
+[[http://sachachua.com/blog/p/1868][http://sachachua.com/blog/p/1868]]
+
+As we now mostly use ~/.diary for our schedule entries, Outlook
+ schedule import is not
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]‘s
+problem any more. ;) It would be
+ kinda nice for
+[[http://sachachua.com/notebook/wiki/RememberMode][RememberMode]],
+though.
+
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]

@@ -1,0 +1,7 @@
+#+TITLE: emacs-wiki-contents tag
+
+March 13th, 2003 -
+[[http://sachachua.com/blog/p/496][http://sachachua.com/blog/p/496]]
+
+emacs-wiki-contents tag cannot be put in the header, because it gets
+evaluated after the headers have been expanded.

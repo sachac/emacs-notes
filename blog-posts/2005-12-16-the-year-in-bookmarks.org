@@ -1,0 +1,68 @@
+#+TITLE: The Year in Bookmarks
+
+December 16th, 2005 -
+[[http://sachachua.com/blog/p/3205][http://sachachua.com/blog/p/3205]]
+
+| Top 10 tags for 2005   | [[http://del.icio.us/sachac/productivity][productivity]](104) [[http://del.icio.us/sachac/web2.0][web2.0]](88) [[http://del.icio.us/sachac/digitalpinay][digitalpinay]](88) [[http://del.icio.us/sachac/social][social]](84) [[http://del.icio.us/sachac/useful][useful]](83) [[http://del.icio.us/sachac/business][business]](80) [[http://del.icio.us/sachac/blogs][blogs]](70) [[http://del.icio.us/sachac/research][research]](69) [[http://del.icio.us/sachac/lifehacks][lifehacks]](68) [[http://del.icio.us/sachac/blogging][blogging]](60)   |
+
+Check out [[http://sacha.free.net.ph/notebook/wiki/2005.12.16.php][my
+year in bookmarks]] for more detail. =) If you want me to analyze yours,
+just save
+[[http://del.icio.us/api/posts/all][http://del.icio.us/api/posts/all]]
+to all.xml and run this Ruby script. You can also e-mail me
+([[mailto:sacha@plannerlove.com][sacha@plannerlove.com]]) your all.xml
+if you don't want to go through the hassle yourself.
+
+Much fun!
+
+#+BEGIN_EXAMPLE
+    #!/usr/bin/ruby
+
+    require 'rexml/document'
+    require 'date'
+
+    include REXML
+
+    YEAR = 2005
+    USER = "sachac"
+    doc = Document::new(File::new('all.xml'))
+
+    month_hash = {}
+    month_total = {}
+    tag_total = {}
+    doc.elements[1].elements.each {
+      |x|
+      date = DateTime::parse(x.attributes['time'])
+      if (date.year == YEAR)
+        x.attributes['tag'].split(' ').each {
+          |tag|
+          month_hash[date.month] ||= {}
+          month_hash[date.month][tag] ||= 0
+          month_hash[date.month][tag] += 1
+          tag_total[tag] ||= 0
+          tag_total[tag] += 1
+        }
+        month_total[date.month] ||= 0
+        month_total[date.month] += 1
+      end
+    }
+
+    s = "Top 10 tags for " + YEAR.to_s + " |"
+    tag_total.sort_by { |tag,total| -total }.slice(0, 10).each { |tag,total|
+      s += ' " + tag + "(" + total.to_s + ")"
+    }
+    puts s
+
+    month_hash.sort.each { |month,tags|
+      s = Date::MONTHNAMES[month] + "(" + month_total[month].to_s + " bookmarks) |"
+      tags.sort_by { |tag,total| -total }.each {
+        |tag,total|
+        s += ' " + tag + "(" + total.to_s + ")"
+      }
+      puts s
+    }
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/ruby][ruby]],
+[[http://www.technorati.com/tag/code][code]],
+[[http://www.technorati.com/tag/del.icio.us][del.icio.us]]

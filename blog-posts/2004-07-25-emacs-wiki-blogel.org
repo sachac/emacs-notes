@@ -1,0 +1,14 @@
+#+TITLE: emacs-wiki-blog.el
+
+July 25th, 2004 -
+[[http://sachachua.com/blog/p/2200][http://sachachua.com/blog/p/2200]]
+
+Will wonders never cease... Just ran across another
+ emacs-wiki-related module today. This produces RSS feeds and seems to
+ be a superset of planner-rss.el, focusing more on plain emacs-wiki
+ projects. It seems to use planner-style names, though.
+
+Hmm. This syndicates entire pages. planner-rss.el syndicates items.
+ Interesting...
+
+[[http://www.sfu.ca/~gswamina/code/emacs-wiki-blog.el][http://www.sfu.ca/~gswamina/code/emacs-wiki-blog.el]]

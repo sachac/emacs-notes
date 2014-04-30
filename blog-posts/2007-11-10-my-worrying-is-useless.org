@@ -1,0 +1,25 @@
+#+TITLE: My worrying is useless
+
+November 10th, 2007 -
+[[http://sachachua.com/blog/p/4440][http://sachachua.com/blog/p/4440]]
+
+I came across this beautiful quote from Anne Patchett's memoir “Truth
+ and Beauty” on the
+[[http://www.happiness-project.com/happiness_projerct/2007/11/this-saturday-1.html][Happiness
+Project blog]]:
+
+#+BEGIN_QUOTE
+  “I knew then it was just too enormous for me to manage and that
+   worrying about her would swamp me. If I was swamped by worry, I would
+   be useless to her. It was even possible that I would desert her, and
+   that was the thing that could never happen. I decided that night I
+   would take all the hourts of my life that could so easily be spent
+   worrying and instead I would try to help her.”
+#+END_QUOTE
+
+That's it. That makes sense. I can't afford to feel all down about
+ myself, boohoo, I'm living in two worlds and all of that. Not when I
+ can take that time and that energy and do something *wonderful.*
+
+Random Emacs symbol: planner-multi-read-name-multiple-prompts --
+Function: Read multiple pages, completing based on FILE-ALIST.

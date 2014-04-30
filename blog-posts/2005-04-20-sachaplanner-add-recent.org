@@ -1,0 +1,40 @@
+#+TITLE: sacha/planner-add-recent
+
+April 20th, 2005 -
+[[http://sachachua.com/blog/p/2728][http://sachachua.com/blog/p/2728]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-add-recent ()
+      "Add the current note to the list of recent entries, trimmed at 10."
+      (interactive)
+      (let* ((info (planner-current-note-info))
+             (url (concat
+                   "http://sacha.free.net.ph/notebook/wiki/"
+                   (emacs-wiki-published-name (planner-note-page info))
+                   "#" (planner-note-anchor info))))
+        (when info
+          (with-current-buffer
+              (find-file-noselect "/home/sacha/notebook/wiki/include/footer.inc.php")
+            (goto-char (point-min))
+            (when (re-search-forward "--recent--" nil t)
+              (save-restriction
+                (narrow-to-region (1+ (line-end-position))
+                                  (progn
+                                    (re-search-forward "--end of recent--" nil t)
+                                    (line-beginning-position)))
+                (goto-char (point-min))
+                (insert ""
+                        (planner-note-title info)
+                        "\n")
+                (forward-line 10)
+                (delete-region (point) (point-max))
+                (save-buffer)))))))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/planner-config.el][../emacs/planner-config.el]]
+
+Ã£Â?Â?Ã£Â?Â®Ã£Â?Â‹Ã£Â‚Â?Ã£Â?Â„Ã£Â?Â?Ã£Â?Â†Ã£Â?ÂªÃ£ÂƒÂ?Ã£Â‚Â³Ã£Â?Â¯Ã£ÂƒÂˆÃ£ÂƒÂ©Ã£ÂƒÂƒÃ£Â‚Â¯Ã£Â?Â«Ã£Â?Â²Ã£Â?Â‹Ã£Â‚ÂŒÃ£Â?ÂŸÃ£Â€Â‚
+The poor cat was run over by a truck.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/code][code]]

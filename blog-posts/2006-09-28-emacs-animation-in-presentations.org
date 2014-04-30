@@ -1,0 +1,32 @@
+#+TITLE: Emacs: Animation in presentations
+
+September 28th, 2006 -
+[[http://sachachua.com/blog/p/3881][http://sachachua.com/blog/p/3881]]
+
+... and because this is just so endearingly old-school and crazily
+ Emacs, here's what's going to be my title “slide” for DemoCamp10.
+
+#+BEGIN_EXAMPLE
+    (progn
+      (set-face-attribute 'default nil :height 700)
+      (delete-other-windows)
+      (sit-for 1)
+      (animate-sequence (list "Livin' la Vida Emacs" "DemoCamp10" "Sacha Chua") 1))
+#+END_EXAMPLE
+
+I may end up writing a presentation mode if there isn't one yet. I've
+ seen one before, but I don't know if it accepts arbitrary Lisp
+ expressions. Maybe I can mess around with eev, too..
+
+Comment from pll:
+
+#+BEGIN_QUOTE
+  OMG!!!!!!!!!!!!!! That's just SOOOOOO cool, and hysterical. I've got
+   to steal\^H\^H\^H\^H\^Hborrow this hack. I've been toying with the
+  idea
+   for a while of doing a “Life with Emacs” talk for my LUG. What a
+   perfect opening :)
+#+END_QUOTE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/democamp][democamp]]

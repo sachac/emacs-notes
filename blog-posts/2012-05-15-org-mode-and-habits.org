@@ -1,0 +1,69 @@
+#+TITLE: Org-mode and habits
+
+May 15th, 2012 -
+[[http://sachachua.com/blog/p/23381][http://sachachua.com/blog/p/23381]]
+
+[[http://orgmode.org][Org Mode]] is a personal information manager for
+the Emacs text editor. People have contributed a ton of useful features
+to it over the years, and the development shows no sign of slowing down.
+One of the features I've been playing around with is the ability to
+track habits.
+
+Org habits are recurring tasks. For example, everyday, I want to:
+
+-  take my vitamins
+-  capture a quick note about the day, and
+-  plan the next day
+
+Every week, I want to:
+
+-  talk to my mom
+-  check the org-mode mailing list
+-  write a weekly review and plan the next week
+-  clear and reorganize my belt bag
+-  clear my inbox
+-  write a bunch of blog posts
+-  back up my computer
+
+Once a month, I want to:
+
+-  update the topical index for my blog
+-  review and uninstall programs
+-  balance my books and update my budget
+-  review the past month and plan the next
+-  check the library for new books
+
+Org habits let me manage my task list without cluttering future days
+with tasks. The Org agenda view displays habits that are due today,
+indicating consistency with colour. In particular, it shows overdue days
+in red, so you can get the Seinfeld-esque pleasure/commitment-device of
+[[http://lifehacker.com/281626/jerry-seinfelds-productivity-secret][not
+breaking the chain]].
+
+Here's a view from Sunday:
+
+#+BEGIN_EXAMPLE
+    2 days-agenda (W19-W20):
+    Sunday     13 May 2012
+                   8:00...... ----------------
+                  10:00...... ----------------
+                  12:00...... ----------------
+                  14:00...... ----------------
+                  15:57...... now - - - - - - - - - - - - - - - - - - - - - - - - -
+                  16:00...... ----------------
+                  18:00...... ----------------
+      organizer:  22:00...... TODO Capture a one-sentence note                                           !       
+      organizer:  22:00...... TODO Plan the next day                                    ** ***** ** *****!       
+      organizer:  Scheduled:  TODO Make a list of recipes I want to learn
+      organizer:  Scheduled:  TODO Write a bunch of blog posts             :writing:
+      organizer:  Scheduled:  TODO Set up WordPress as my backup system
+    Monday     14 May 2012 W20
+      organizer:  Scheduled:  TODO Build Emacs interface so that I can have Org automatically switch my tasks
+#+END_EXAMPLE
+
+To use Org habits, customize =org-modules= and enable the habit module.
+To set something as a habit, use =C-c C-x p= (=org-set-property=) to set
+the =STYLE= property to =habit=. For more information, you should
+definitely check out the Org manual's section on habits.
+
+Yay Emacs and the people who contribute to it!

@@ -1,0 +1,24 @@
+#+TITLE: Code for Nethack screenshots in Emacs
+
+February 20th, 2004 -
+[[http://sachachua.com/blog/p/1738][http://sachachua.com/blog/p/1738]]
+
+#+BEGIN_EXAMPLE
+    (defvar nethack-screenshot-file "~/.nethack-notes" "Filename to store Nethack data in.")
+    (defun sacha/nethack-take-screenshot (caption)
+      (interactive "MCaption: ")
+      (save-window-excursion
+        (save-excursion
+          (find-file nethack-screenshot-file)
+          (goto-char (point-min))
+          (insert
+           ".#1 " caption "\n\n"
+           (with-current-buffer (get-buffer "*nethack map*")
+             (buffer-substring-no-properties (point-min) (point-max)))
+           "\n\n"
+           (with-current-buffer (get-buffer "*nethack status*")
+             (buffer-substring-no-properties (point-min) (point-max)))
+           "\n\n")
+           (save-buffer))))
+#+END_EXAMPLE
+

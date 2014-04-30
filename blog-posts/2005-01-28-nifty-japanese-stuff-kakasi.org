@@ -1,0 +1,21 @@
+#+TITLE: Nifty Japanese stuff: Kakasi
+
+January 28th, 2005 -
+[[http://sachachua.com/blog/p/2602][http://sachachua.com/blog/p/2602]]
+
+[[http://kakasi.namazu.org/][Kakasi]] is an external utility for
+ converting Japanese text between coding systems. It can also add
+ furigana after kanji or convert a text file to romaji.
+
+Debian users can =apt-get install kakasi kakasi-dic=.
+ There's an [[http://komatsu.webmasters.gr.jp/elisp/kakasi/][Emacs
+interface]],
+ a [[http://search.cpan.org/dist/Text-Kakasi/Kakasi.pm][Perl module
+(Text::Kakasi)]],
+ and a [[http://raa.ruby-lang.org/list.rhtml?name=Ruby%2FKAKASI][Ruby
+library]].
+
+On Technorati: [[http://www.technorati.com/tag/japanese][japanese]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/linux][linux]],
+[[http://www.technorati.com/tag/ruby][ruby]]

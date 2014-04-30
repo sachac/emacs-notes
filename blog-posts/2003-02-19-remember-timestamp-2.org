@@ -1,0 +1,6 @@
+#+TITLE: remember timestamp
+
+February 19th, 2003 -
+[[http://sachachua.com/blog/p/424][http://sachachua.com/blog/p/424]]
+
+I really hope the remember timestamp works now.

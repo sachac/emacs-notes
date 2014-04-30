@@ -1,0 +1,13 @@
+#+TITLE: Major website revamp
+
+April 2nd, 2005 -
+[[http://sachachua.com/blog/p/2694][http://sachachua.com/blog/p/2694]]
+
+I changed my website layout and added blurbs about Planner and some of
+ my other pages. =) It's rather cute now. It should read better than
+ the previous design did in non-CSS browsers like w3m, links and lynx.
+
+Ã¥Â½Â¼Ã£Â?Â¯Ã£Â?Â¨Ã£Â?Â¦Ã£Â‚Â‚Ã¦ÂºÂ€Ã¨Â¶Â³Ã£Â?Â?Ã£Â?Â†Ã£Â?Â«Ã¨Â¦Â‹Ã£Â?ÂˆÃ£Â‚Â‹Ã£Â€Â‚
+He looks like a cat that ate the canary.
+
+On Technorati: [[http://www.technorati.com/tag/website][website]]

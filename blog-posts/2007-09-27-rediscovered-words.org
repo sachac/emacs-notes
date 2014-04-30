@@ -1,0 +1,19 @@
+#+TITLE: Rediscovered words
+
+September 27th, 2007 -
+[[http://sachachua.com/blog/p/4364][http://sachachua.com/blog/p/4364]]
+
+I haven't read my own
+[[http://sachachua.com/notebook/wiki/ShortStories][ShortStories]] in a
+while. I hardly recognize
+ myself. I don't remember writing some things or what I was planning to
+ do with the bits and pieces of my drafts.
+
+Is it normal to look back two years later and wonder how I managed to
+ forget to write? I can still somewhat remember the fun of creative
+ writing, of trying on different phrases and voices and roles. Maybe
+ I'll pick that up again. From where am I going to take the time to do
+ that? I wonder...
+
+Random Emacs symbol: planner-multi-tasks-equal-p -- Function: Return t
+if TASK-A and TASK-B are equivalent.

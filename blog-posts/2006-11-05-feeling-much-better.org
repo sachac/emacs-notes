@@ -1,0 +1,15 @@
+#+TITLE: Feeling much better
+
+November 5th, 2006 -
+[[http://sachachua.com/blog/p/4000][http://sachachua.com/blog/p/4000]]
+
+I was in bed all day yesterday thanks to a very annoying fever and the
+ beginning of a sore throat. It was very nice of Simon to come over
+ with chicken soup, a salad, and the best medicine available. =) I
+ didn't really feel like eating, but he watched over me and made sure I
+ finished everything.
+
+Now I feel much better. Good, because there's much work to be done!
+
+Random Emacs symbol: planner-multi-task-link-as-list -- Function: Return
+the page links of INFO as a list.

@@ -1,0 +1,7 @@
+#+TITLE: Emacs test suite
+
+March 25th, 2003 -
+[[http://sachachua.com/blog/p/590][http://sachachua.com/blog/p/590]]
+
+Robert Anderson has some testing scripts at
+[[http://rwa.homelinux.net/emacs][http://rwa.homelinux.net/emacs]]

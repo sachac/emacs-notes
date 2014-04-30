@@ -1,0 +1,9 @@
+#+TITLE: Emacs-wiki and RSS feeds
+
+January 2nd, 2004 -
+[[http://sachachua.com/blog/p/1569][http://sachachua.com/blog/p/1569]]
+
+[[http://www.sfu.ca/~gswamina/EmacsWikiPatches.html][http://www.sfu.ca/~gswamina/EmacsWikiPatches.html]]
+. Check this out
+ sometime and steal all the cool ideas (with appropriate credit, of
+course). ;)

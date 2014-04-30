@@ -1,0 +1,40 @@
+#+TITLE: Blackberries and such
+
+June 3rd, 2006 -
+[[http://sachachua.com/blog/p/3572][http://sachachua.com/blog/p/3572]]
+
+[[http://mysite.verizon.net/johnsu01/][John Sullivan]] said:
+
+#+BEGIN_QUOTE
+  You've really got to get a comment system working on your blog :)
+
+  There are a lot of new interesting devices that are better and less
+  locked down than the Blackberry. I'm writing this email from one right
+  now, a Nokia E61. It has wifi and can make SIP calls in addition to
+  regular phone calls! Also, it runs Python. It's expensive, but only
+  about the same as a new new Blackberry.
+
+  I've just yesterday started a backpack page about my working with it,
+  at
+  [[http://johnsu01.backpackit.com/pub/613005][http://johnsu01.backpackit.com/pub/613005]].
+
+  Nokia also appears to be heading rapidly down the FLOSS path, and I
+  \_know\_ you'll be wanting to hack your device. :)
+#+END_QUOTE
+
+Well, if someone wants to hack together Planner + a nice non-spammy
+comment system, I'd love to test it. I used to use blogKomm, but I
+needed to modify it at some point and the code was in German. Not quite
+fu.
+
+Ooooh, wifi is good.
+
+I've been doing okay with my laptop so far. It's actually more
+ portable than I thought. Might try the Vaio for even more fun and
+ profit. =) And yes, I'd rather have a hackable device than something
+ that Just Works for everyone but me... ;)
+
+Random Japanese sentence:
+ÃƒÂ£Ã‚Â?Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â°ÃƒÂ£Ã‚Â?Ã‚Â‚ÃƒÂ£Ã‚Â?Ã‚Â•ÃƒÂ£Ã‚Â‚Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â---ÃƒÂ£Ã‚Â?Ã‚Â°ÃƒÂ£Ã‚Â‚Ã‚Â‰ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ¨Ã‚Â€Ã‚ÂƒÃƒÂ£Ã‚Â?Ã‚ÂˆÃƒÂ£Ã‚Â?Ã‚Â¾ÃƒÂ£Ã‚Â?Ã‚Â---ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â€Ã‚Â‚ÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â---ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ¨Ã‚Â¨Ã‚Â€ÃƒÂ£Ã‚Â?Ã‚Â„ÃƒÂ£Ã‚Â?Ã‚Â¾ÃƒÂ£Ã‚Â?Ã‚Â---ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â€Ã‚Â‚ÃƒÂ£Ã‚Â€Ã‚ÂŒÃƒÂ£Ã‚Â‚Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â‹ÃƒÂ£Ã‚Â‚Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â¾ÃƒÂ£Ã‚Â?Ã‚Â---ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â‚Ã‚ÂˆÃƒÂ¯Ã‚Â¼Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â©ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ£Ã‚Â?Ã‚Â­ÃƒÂ£Ã‚Â?Ã‚Â“ÃƒÂ£Ã‚Â‚Ã‚Â'ÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â?Ã‚Â¡ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ£Ã‚Â?Ã‚ÂŠÃƒÂ£Ã‚Â?Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â­ÃƒÂ£Ã‚Â?Ã‚Â“ÃƒÂ£Ã‚Â?Ã‚ÂŸÃƒÂ£Ã‚Â?Ã‚Â¡ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ¦Ã‚Â±Ã‚ÂºÃƒÂ£Ã‚Â‚Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â•ÃƒÂ£Ã‚Â?Ã‚Â›ÃƒÂ£Ã‚Â?Ã‚Â¾ÃƒÂ£Ã‚Â?Ã‚Â---ÃƒÂ£Ã‚Â‚Ã‚Â‡ÃƒÂ£Ã‚Â?Ã‚Â†ÃƒÂ£Ã‚Â€Ã‚Â?
+The very old woman thought for a while and then she said, I know! We
+will let the cats decide which one we should keep.

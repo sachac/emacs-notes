@@ -1,0 +1,15 @@
+#+TITLE: This is a test post from org2blog
+
+July 19th, 2010 -
+[[http://sachachua.com/blog/p/7255][http://sachachua.com/blog/p/7255]]
+
+After I moved from Emacs Planner to Org-mode, I missed the ability to
+quickly publish my notes from my personal information manager. A
+[[http://punchagan.wordpress.com/2010/07/17/im-back/][backlink on my
+blog]] led me to punchagan's
+[[http://github.com/punchagan/org2blog][org2blog]], which I'm using to
+create this test post.
+
+I'd like to eventually be able to publish subtrees instead of starting
+new posts or publishing the entire page. This is a pretty good start,
+though.

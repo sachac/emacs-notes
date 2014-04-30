@@ -1,0 +1,7 @@
+#+TITLE: Gnus and duplicates --- emacs
+
+March 30th, 2003 -
+[[http://sachachua.com/blog/p/628][http://sachachua.com/blog/p/628]]
+
+I am very, very glad that Gnus can automatically delete duplicates with
+=(setq nnmail-treat-duplicates 'delete)= .

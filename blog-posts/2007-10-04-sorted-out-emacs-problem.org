@@ -1,0 +1,34 @@
+#+TITLE: Sorted out Emacs problem
+
+October 4th, 2007 -
+[[http://sachachua.com/blog/p/4383][http://sachachua.com/blog/p/4383]]
+
+I compiled Emacs from CVS yesterday, badly breaking it in X11. It would
+die horribly in a segmentation fault whenever I started it in graphical
+mode, even if I specified -q ---no-site-file to make it skip all the
+configuration files. It worked just fine in console mode (-nw), but I
+happen to like being able to see images and different fonts in my Emacs,
+so that was a no go.
+
+For a moment, I was worried that Emacs had finally outgrown my
+computer's memory capacity. A little searching and some help on #emacs
+suggested that the problem might lie with fontconfig. I had removed a
+number of font packages in order to free up enough space for a system
+upgrade. Maybe that was the reason why Emacs was crashing on me! I
+tested it with this command:
+
+#+BEGIN_EXAMPLE
+    emacs -q --no-site-file -fn '-misc-fixed-*-*-*-*-*-*-*-*-*-*-*-*'
+#+END_EXAMPLE
+
+and Emacs loaded. Whee! I added the following to my ~/.Xdefaults to
+ make this happen automatically whenever I start Emacs.
+
+#+BEGIN_EXAMPLE
+    Emacs*font: -misc-fixed-*-*-*-*-*-*-*-*-*-*-*-*
+#+END_EXAMPLE
+
+Life is back to normal.
+
+Random Emacs symbol: planner-low-priority-task-face -- Face: Face for
+low-priority tasks.

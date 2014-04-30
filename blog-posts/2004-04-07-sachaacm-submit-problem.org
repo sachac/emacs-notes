@@ -1,0 +1,18 @@
+#+TITLE: sacha/acm-submit-problem
+
+April 7th, 2004 -
+[[http://sachachua.com/blog/p/1955][http://sachachua.com/blog/p/1955]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/submit-acm-problem ()
+      (interactive)
+      (let ((buffer (current-buffer)))
+        (gnus-fetch-group "mail.judge-acm")
+        (gnus-summary-post-news)
+        (save-excursion
+          (when (re-search-forward "--text follows this line--" nil t)
+            (forward-line)
+            (insert-buffer-substring buffer)))))
+#+END_EXAMPLE
+
+[[http://sachachua.com/.emacs][../../.emacs]]

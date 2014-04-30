@@ -1,0 +1,45 @@
+#+TITLE: Scheduling tasks in the diary
+
+April 16th, 2004 -
+[[http://sachachua.com/blog/p/1974][http://sachachua.com/blog/p/1974]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-diary-schedule-task (time)
+      "Add a diary entry for the current task at TIME."
+      (interactive "MTime: ")
+      (save-window-excursion
+        (save-excursion
+          (save-restriction
+            (let ((info (planner-current-task-info)))
+              (sacha/planner-diary-add-entry
+               (planner-task-date info)
+               (concat time " | " (planner-task-description info) "")))))))
+
+    (defun sacha/planner-diary-add-entry (date text &optional annotation)
+      "Prompt for a diary entry to add to `diary-file'."
+      (interactive
+       (list
+        (if (or current-prefix-arg
+                (not (string-match planner-date-regexp (planner-page-name))))
+            (planner-read-date)
+          (planner-page-name))
+        (read-string
+         "Diary entry: ")))
+      (save-excursion
+        (save-window-excursion
+          (make-diary-entry
+           (concat
+            (let ((cal-date (planner-filename-to-calendar-date date)))
+              (calendar-date-string cal-date t t))
+            " " text
+            (or annotation
+                (let ((annotation (run-hook-with-args-until-success
+                                   'planner-annotation-functions)))
+                  (if annotation
+                      (concat " " annotation)
+                    "")))))
+          (planner-goto date)
+          (planner-diary-insert-diary-maybe))))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/planner-config.el][../../notebook/emacs/planner-config.el]]

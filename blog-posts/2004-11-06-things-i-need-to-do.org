@@ -1,0 +1,29 @@
+#+TITLE: Things I need to do
+
+November 6th, 2004 -
+[[http://sachachua.com/blog/p/2359][http://sachachua.com/blog/p/2359]]
+
+I will not have access to a web-based training terminal next week, so
+ I have only today, tomorrow, and next Sunday to finish the next seven
+ lessons in the Chuukyuu course.
+
+I also need to prepare a presentation for the 2004.11.13 technical
+ meeting of [[http://www.tlug.jp][Tokyo Linux Users Group]]. I plan to
+ talk about advantages, disadvantages, and implementation tips for
+ personal information management under Linux. TODO, plain text files,
+ wikis, request trackers, vim outliners, and of course planner.el
+ plugging...
+
+There's that long-standing assignment to write about courage for Mrs.
+ Castillo.
+
+I also need to pack all my clothes and put away all my things by
+ Monday night.
+
+I also need to send the tea video.
+
+I will finish the rest of my laundry, then work on my Japanese
+ studies. I will also transfer the files then. After I finish three or
+ four chapters, I will outline my talk and the story for Mrs. Castillo.
+ I should make arrangements to meet Arlyne Santos. How embarrassing;
+ it's been a few months already...

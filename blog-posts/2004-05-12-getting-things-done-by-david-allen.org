@@ -1,0 +1,231 @@
+#+TITLE: Getting Things Done, by David Allen
+
+May 12th, 2004 -
+[[http://sachachua.com/blog/p/2045][http://sachachua.com/blog/p/2045]]
+
+[[http://www.davidco.com/][http://www.davidco.com/]]
+
+Niklas Morberg sent me an e-mail about planner.el support for Dave
+ Allen's “Getting Things Done” method. This is the first time I've
+ heard of it, but it'd be nice to see if we can hack planner to support
+it.
+
+The [[http://www.davidco.com/coaches_corner/][Coach's Corner]] on the
+ linked site has well-thought articles.
+
+-
+[[http://www.davidco.com/coaches_corner/Julie_Daniel/article9.html][Keeping
+Your Inbox “Real”]]
+
+I archive as much of my mail as possible because it's easy to search
+ through information. Creating tasks from e-mail messages allows me to
+ quickly deal with e-mail associated with actions. I can create vague
+ tasks and refine them as necessary, although the associated task is
+ usually clear. Gnus hides old messages, so my Inbox view shows me only
+ unread messages unless I specifically ask for archives.
+
+I prefer to archive everything instead of making keep/no-keep
+ decisions for my e-mail. I have false positives (mail that I thought
+ might be important but which I never referred to again) and false
+ negatives (mail I hardly looked at, but needed to find afterwards). I
+ rely on search and filtering tools to quickly pull relevant messages
+ out of my archive. I think that this is more effective than frequent
+ review and selection of messages to be kept.
+
+I remember reading a paper about e-mail archiving strategies. I ran a
+ full-text search for a phrase I remembered from the mail, and I turned
+ up the PDF that the author sent me. You can look up Richard Boardman's
+ paper on “‘Stuff goes into the computer and doesn't come out': A
+ Cross-tool Study of Personal Information Management”---it's an
+ informative survey of different e-mail filing techniques.
+
+The GTD method suggests determining what the successful outcomes are
+ (“projects”), what my next action is and what I am waiting for.
+ planner.el supports “next action” and “waiting for” with unfinished
+ and pending tasks. I specify desired outcome in the task description.
+ I don't have a concept of “Project” yet, unless you count the plan
+ pages.
+
+-
+[[http://www.davidco.com/coaches_corner/Meg_Gott/article42.html][Moving
+through procrastination easily]]
+
+Visualizing the expected outcome makes it easier to plan tasks and
+ overcome procrastination. planner.el has no explicit support for
+ reminding the user of the positive outcome associated with the task,
+ but it can be included in the task description or on the linked
+ project page. A better approach, however, might be to have the
+ expected outcome show as a tooltip or minibuffer message in order to
+ provide better positive reinforcement.
+
+John Wiegley's essay on planning uses top-down stepwise refinement to
+ break general tasks down into smaller and smaller tasks until they can
+ be scheduled. This overcomes procrastination by making planning a
+ semi-mechanical process and simplifying the tasks until they are no
+ longer intimidatingly complex.
+
+In contrast, the GTD method suggests starting with the immediate next
+ step---a bottom-up approach. This is similar to the way I use
+ planner.el, planning one or two tasks in advance. Occasionally,
+ however, I find it useful to create overview tasks. This gives me an
+ overview of the entire project and allows me to get a handle on my
+ timeframe.
+
+-
+[[http://www.davidco.com/coaches_corner/Jason_Womack/article43.html][Doing
+‘this' for everything]]
+
+I've used other personal information managers before, but
+ Emacs+planner+remember makes it easy for me to keep track of my work.
+ If I think of something to be done, a few keystrokes will put it on my
+ TODO list.
+
+I capture a lot of information. remember.el makes it easy for me to
+ create short blog entries linked to the current context and associated
+ with a date and planner page.
+
+So yes, I do ‘this' for everything. Being able to reschedule tasks for
+ future dates means I don't have to worry about things until then. Of
+ course, I tend to procrastinate a fair bit (specifying tomorrow with
+ +1 comes in handy!), but it's nice to know that I'll eventually run
+ into those tasks again. If planner.el reminded me of the benefits of
+ completing the task, I'll probably be more motivated to finish them.
+ (More description text?)
+
+-
+[[http://www.davidco.com/coaches_corner/Anne_Gennett/article40.html][The
+“I'll do it later” Conundrum]]
+
+Oy, here we go with that procrastination thing. Guilty! Being able to
+ reschedule tasks does make it all too easy to push things onto a pile
+ of things to be done later. However, having all these actions floating
+ around does mean I have no excuse to slack off (unless scheduled in).
+ This particular essay is a bit on the fluffy side, though.
+
+-
+[[http://www.davidco.com/coaches_corner/Marian_Bateman/article31.html][What
+is Organized?]]
+
+This article points out the need to examine how we work, not just make
+ superficial changes to our space.
+
+-
+[[http://www.davidco.com/coaches_corner/Ana_Maria_Gonz%E1lez/article32.html][Having
+a Complete Inventory of Your Projects]]
+
+Ah. “Projects” are like plan pages in that they are collections of
+ tasks. However, plan pages can also be roles or contexts.
+
+planner.el needs a good way to review active projects. Right now,
+ people can manually maintain a list. However, one needs to visit all
+ the individual project pages in order to visualize the end results or
+ see how far one has gotten based on the tasks.
+
+A graph would be nice. It could show only active projects (projects
+ with at least one unfinished task) or all projects (possibly limited
+ by date or regexp.) Progress could be measured by ratio of unfinished
+ tasks to all tasks, or manually indicated by a #progress directive or
+ some kind of progress marker in each task.
+
+I review tasks every day, but maybe I could also review the end
+ results every week as part of an accomplishment report. The
+ accomplishment report could list statistics for tasks finished
+ (grouped by project) and allow easy viewing of current projects (all
+ projects mentioned in tasks/notes this week). How can we modify
+ planner.el to support that?
+
+-
+[[http://www.davidco.com/coaches_corner/Leslie_Boyer/article37.html][The
+GTD Methodology for Emotionally Charged Relationships]]
+
+Hmm. Maybe we should phrase our tasks and notes in a positive manner.
+ =)
+
+- From the
+[[http://www.davidco.com/faq.php?detail=22&category=2#question22][FAQ]]
+
+#+BEGIN_QUOTE
+  How can I can remember things that are on my calendar but aren't
+  time-specific?
+#+END_QUOTE
+
+Sounds like the problem I have with un-dated tasks. GTD gets around
+ this by having people review pages based on their context. After going
+ through all of your day-specific tasks, you can then go through your
+ context-based action lists to find out what to do next.
+
+Context-based action lists is probably more efficient if most of your
+ work is guided by context. It can be simulated in planner.el by
+ associating the tasks with plan pages for each context. However, since
+ most of my work centers on the computer, I like seeing a list of all
+ my tasks. I prefer to sit down and plan my day beforehand, rearranging
+ tasks so that I put similar tasks together. If the opportunity arises,
+ I can do tasks out of sequence.
+
+I can also use planner.el to see other tasks in the same context. For
+ example, when I want to do more
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]] work, I
+can just look at
+ my [[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]] page
+to see... a heck of a lot of tasks.
+
+In GTD, day-specifics are tasks that MUST be done on that day. I
+ prefer having my low-priority tasks still visible, using high-priority
+ tasks and deadlines in task descriptions to mark the things I should
+ do by today. Some people plan their tasks the GTD way, though.
+ Specifying ‘nil' for a task date allows you to associate it with a
+ plan page but no date page. Scheduling only day-specific tasks makes
+ sure you don't ignore your task list, so I guess that's a good thing.
+
+*How do you handle weekly tasks that are not specific to a particular
+day of the week?*
+
+I assign weekly tasks to a particular day. Makes it easier to get into
+the rhythm of things.
+
+*Most of the day I am dealing with actions I am expected to do. Most of
+them have a due date. Where should I place my reminder?*
+
+Okay, I'm starting to get the hang of the next-action thing. To
+ support GTD, I'd need a way to get a quick overview of the next-step
+ tasks as part of the list of active projects. I'd also need to be able
+ to look at today's schedule and today's day-specific task list.
+
+Tech note: It looks like planner.el can be extended to do this by
+ adding a tag that gets replaced by project outcome and the first task.
+ The main problem we need to solve is that tasks can appear on more
+ than two pages. I think this can almost be done with existing tools.
+ However, planner-copy-or-move-region shouldn't mess with these tasks.
+ It's probably better to create new markup rules for them...
+
+*Is it true that David Allen uses the generic Palm Desktop and handheld
+software, and doesn't particularly recommend any add-on programs?*
+
+I find remember.el an excellent way of tracking events, as it gives me
+ a historical log as well as a topic-tracked one. I need to find a way
+ to reassign topics and add multiple topics to a note. This depends on
+ getting note IDs to work.
+
+*Areas of focus vs. someday/maybe*
+
+Tech note: Hmm. This sounds like a good candidate for automatic
+ rewriting. People can manually maintain a list of projects, and have
+ outcomes and next tasks automatically filled in.
+
+*How do you recommend keeping project notes and/or support material?*
+
+Ooh, planner hyperlinking is great for that. I keep most of my support
+ materials in my planner wiki and hyperlink out when I need to refer to
+ external sources or files on my hard disk.
+
+- [[http://www.davidco.com/tips_tools/tip43.html][How David Allen uses
+his Palm]]
+
+Hey, this agenda idea is interesting.
+
+- [[http://www.davidco.com/tips_tools/tip16.html][Weekly Review]]
+
+Sounds like a good idea too. Hmm. I can page through the week easily,
+ but it would be nice to have an accomplishment report.
+
+- [[http://david.davidco.com/][His personal blog]]

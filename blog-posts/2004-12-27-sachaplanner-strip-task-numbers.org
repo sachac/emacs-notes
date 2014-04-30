@@ -1,0 +1,14 @@
+#+TITLE: sacha/planner-strip-task-numbers
+
+December 27th, 2004 -
+[[http://sachachua.com/blog/p/2519][http://sachachua.com/blog/p/2519]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-strip-task-numbers ()
+      (interactive)
+      (while (re-search-forward "^#.\\([0-9]+\\)\\s-+.\\s-+" nil t)
+        (replace-match "" t t nil 1))
+      (planner-align-tasks))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/planner-config.el][../emacs/planner-config.el]]

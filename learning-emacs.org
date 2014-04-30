@@ -1,0 +1,9 @@
+
+- [[http://www.gnu.org/software/emacs/tour/][A Guided Tour of Emacs]]
+
+One-page visual guides
+[[http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large.png][http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large-640x416.png]]
+[[http://sachachua.com/blog/2013/05/how-to-learn-emacs-a-hand-drawn-one-pager-for-beginners/][post]]
+
+[[http://sachachua.com/blog/wp-content/uploads/2013/08/20130830-Emacs-Newbie-How-to-Learn-Emacs-Keyboard-Shortcuts.png][http://sachachua.com/blog/wp-content/uploads/2013/08/20130830-Emacs-Newbie-How-to-Learn-Emacs-Keyboard-Shortcuts_thumb.png]]
+[[http://sachachua.com/blog/2013/09/how-to-learn-emacs-keyboard-shortcuts-a-visual-tutorial-for-newbies/][post]]

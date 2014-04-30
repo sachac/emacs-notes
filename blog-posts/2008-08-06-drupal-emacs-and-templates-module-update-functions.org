@@ -1,0 +1,56 @@
+#+TITLE: Drupal, Emacs, and templates: Module update functions
+
+August 6th, 2008 -
+[[http://sachachua.com/blog/p/5044][http://sachachua.com/blog/p/5044]]
+
+Drupal's coding conventions make it easier to hook into system behavior,
+but they also result in a lot of repetitive typing. For example, you can
+run code when upgrading a module by putting the code in a function named
+/modulename/\_update\_/N/() in your module's install file. I found
+myself scrolling up and copy-pasting stuff too many times, so I decided
+to automate it instead.
+
+I've been using
+[[http://sachachua.com/wp/2008/07/26/yet-another-snippet-mode-for-emacs/][yasnippet]]
+for my Emacs templates. All I needed to do to automate that little
+update bit was to write some code that figured out what the next update
+number should be. Here's the snippet file I've just added
+(~/elisp/snippets/php-mode/drupal-mode/\_update):
+
+#+BEGIN_EXAMPLE
+    function `(sacha/drupal-module-name)`_update_`(sacha/drupal-module-update-number)`() {
+      $ret = array();
+      $0
+      $ret[] = array(
+        'success' => true,
+        'query' => '$1',
+      );
+      return $ret;
+    }
+#+END_EXAMPLE
+
+The relevant functions from my ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/drupal-module-update-number ()
+      "Return the number of the next module update function.
+    This is one more than the highest number used so far.
+    This function should be called in a module's .install file."
+      (save-excursion
+        (save-restriction
+          (widen)
+          (goto-char (point-min))
+          (let ((module-name (sacha/drupal-module-name))
+            (max 0))
+        (while (re-search-forward
+            (concat "function[ \t\n]+" module-name "_update_\\([0-9]+\\)") nil t)
+          (setq max (max (string-to-number (match-string 1)) max)))
+        (number-to-string (1+ max))))))
+
+    (defun sacha/drupal-module-name ()
+      "Return the Drupal module name for .module and .install files."
+      (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))
+#+END_EXAMPLE
+
+I can't think of how I'd do that in Eclipse. =) Don't get me wrong--I
+still like Eclipse--but I heart being able to hack my editor on the fly.

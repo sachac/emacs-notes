@@ -1,0 +1,7 @@
+#+TITLE: More elegantly fixed the whitespace problem
+
+November 22nd, 2003 -
+[[http://sachachua.com/blog/p/1402][http://sachachua.com/blog/p/1402]]
+
+Now allowing planner-annotation-functions to return t which means no
+annotation.

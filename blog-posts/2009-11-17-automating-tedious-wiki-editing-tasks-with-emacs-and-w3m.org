@@ -1,0 +1,129 @@
+#+TITLE: Automating tedious wiki editing tasks with Emacs and w3m
+
+November 17th, 2009 -
+[[http://sachachua.com/blog/p/6849][http://sachachua.com/blog/p/6849]]
+
+I needed to update many of the links in our wiki because a team member
+left, so I had to reupload all of her files to a shared service and
+change all the URLs to point to the new files. Unfortunately, the file
+service didn't send me the former URLs of the files, so that was going
+to be a manual process. Our wiki had 149 pages in it. Not fun.
+
+After a few pages of editing (and correcting the occasional typo that
+crept in as I changed URLs), I decided to partially automate the
+process. Using a smidgen of Emacs Lisp, I created a function that pasted
+text into a temporary buffer, performed whatever automatic fixes it
+could make, prompted me for any URLs it didn't recognize, remembered the
+old URL -- new URL mapping I defined, and copied the text back.
+
+The function looked somewhat like this:
+
+#+BEGIN_EXAMPLE
+    (defvar sacha/wiki-links nil "Associative list of (old-url . new-url).")
+    (defun sacha/wiki-fix ()
+      (interactive)
+      (with-temp-buffer
+        ;; Insert text from clipboard
+        (yank)
+        (goto-char (point-min))
+        ;; Look for all the links 
+        (while (re-search-forward
+                "\\[\\([^|]+\\)|\\([^\]]+\\)\\]" nil t)
+          ;; Check if it's one of the links I want to replace
+          (if (or (string-match-p "viewpage" (match-string 2))
+                  (string-match-p "lsoohoo" (match-string 2)))
+              (replace-match
+               (save-match-data
+                 ;; Prompt and the entry to the map if it does not yet exist
+                 (unless (assoc (match-string 2) sacha/wiki-links)
+                   (add-to-list 'sacha/wiki-links
+                                (cons (match-string 2)
+                                      (read-string (concat (match-string 1)
+                                                           "? ")))))
+                 ;; pick up the corresponding URL
+                 (cdr (assoc (match-string 2) sacha/wiki-links)))
+               t t nil 2)))
+        ;; Copy the text into the clipboard
+        (kill-new (buffer-string))))
+                       
+#+END_EXAMPLE
+
+I used =M-x global-set-key= to bind a convenient function key to it
+(F12, I think), and then it was just a matter of clicking on each page,
+clicking on Edit, typing Ctrl-C to copy the text, switching to Emacs,
+pressing F12, switching back to my browser, typing Ctrl-V, and saving
+the wiki page. I also added some lines (not shown here) to convert the
+previous wiki gardener's full links to intrawiki links, change server
+URLs, and do other fun things.
+
+I thought about fully automating it (somehow hooking into w3, perhaps?),
+but that seemed to be more trouble than needed. Besides, it was good to
+review all the pages.
+
+As a result of this Emacs wizardry, processing all 149 wiki pages took
+me a few hours instead of a few days. Yay!
+
+Of course, I finished the last wiki page, I found out that I needed to
+change the servers in the URL. I decided to go ahead and fully automate
+the darn thing.
+
+I extracted a list of URLs for the wiki by viewing the tree version of
+the wiki index. It used Javascript, so I couldn't just pull the URLs out
+of the source code. Fortunately, the Firebug plugin for Firefox lets me
+copy the rendered HTML, so I used that instead. Some judicious
+text-editing later (=replace-regexp= rocks), I had a list of URLs to the
+different pages. I knew I needed to put in some kind of delay when
+loading web pages. =sleep-for= let me spread out my requests so I didn't
+hammer the server too badly. Reading the w3m.el source code turned up
+=w3m-async-exec=. Once I set that to nil, requesting web pages and
+running code on the results turned out to be straightforward. Selecting
+the right widgets was a bit of a hack (=re-search-forward= here,
+=w3m-previous-anchor= there), but hey, it worked. After confirming it by
+manually running it on a few pages, I left it merrily running in the
+background.
+
+Here it is (some tweaking required):
+
+#+BEGIN_EXAMPLE
+    (defun sacha/edit-wiki-page ()
+      (interactive)
+      (let ((buffer (current-buffer))
+            (w3m-async-exec nil)
+            (delay 5)) ;; number of seconds
+        ;; While not at the end of the buffer
+        (while (not (eobp))
+          ;; Load the URL on the current line
+          (w3m-browse-url
+           (buffer-substring
+            (line-beginning-position)
+            (line-end-position)))
+          ;; Look for the edit button
+          (goto-char (point-min))
+          (when (search-forward "Edit" nil t)
+            ;; Click it
+            (w3m-view-this-url)
+            ;; Look for the Minor change checkbox
+            (goto-char (point-min))
+            (when (search-forward "Minor change" nil t)
+              ;; The text area is the second widget back
+              (w3m-previous-anchor 2)
+              ;; Open the text area in a temporary buffer for editing
+              (w3m-view-this-url)
+              ;; Do the changes
+              (while (re-search-forward "https?://example.com/path" nil t)
+                (replace-match "http://path.example.com" t t nil 0))
+              ;; Save the value
+              (w3m-form-input-textarea-set)
+              (when (search-backward "Save" nil t)
+                (w3m-view-this-url))))
+          (switch-to-buffer buffer)
+          (forward-line)
+          (sleep-for delay))))
+#+END_EXAMPLE
+
+I'm sure this kind of automation might be possible with lots of hacking
+in Mozilla Firefox, and I've seen great scripts for the Mac, too. But I
+know Emacs, I'm comfortable digging into source code, and I can make
+things work.
+
+Awesome. =D

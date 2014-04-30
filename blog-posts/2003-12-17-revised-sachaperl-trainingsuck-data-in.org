@@ -1,0 +1,24 @@
+#+TITLE: Revised sacha/perl-training/suck-data-in
+
+December 17th, 2003 -
+[[http://sachachua.com/blog/p/1522][http://sachachua.com/blog/p/1522]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/perl-training/suck-data-in ()
+      "Insert BBDB records for all the Perl trainees."
+      (interactive)
+      (goto-char (point-min))
+      (while (re-search-forward "^\\([[:digit:]]+\\)" nil t)
+        (let ((data (split-string (buffer-substring-no-properties (line-beginning-position) (line-end-position)) "|"))
+              record)
+          (setq record
+                (bbdb-create-internal (elt data 1) ; Name
+                                      "PLDT" ; Company
+                                      (elt data 2) ; E-mail
+                                      nil
+                                      nil
+                                      (concat "Perl training 2003.12.17 - 2003.12.19; " (elt data 3))))
+          (bbdb-record-set-aka record (list (concat "pldt" (elt data 0))))
+          (bbdb-change-record record nil))))
+#+END_EXAMPLE
+

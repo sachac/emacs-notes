@@ -1,0 +1,42 @@
+#+TITLE: Emacs: Recording ledger entries with org-capture-templates
+
+November 23rd, 2010 -
+[[http://sachachua.com/blog/p/21878][http://sachachua.com/blog/p/21878]]
+
+I use [[https://github.com/jwiegley/ledger/wiki][John Wiegley's ledger
+program]] to keep track of my personal finances. It's quick, it's light,
+and it lets me slice-and-dice my data however I want. I enjoy opening my
+ledger file and adding transactions to it. (Particularly if it involves
+income!) Yes, I'm that kind of weird.
+
+I wanted to make it even easier to add entries. Instead of using C-x C-f
+to find the file, using ESC > to go to the end of the buffer, and typing
+in the transactions, I decided to add some of my common transactions to
+=org-capture-templates=. Here's the relevant snippet:
+
+#+BEGIN_EXAMPLE
+    (setq org-capture-templates
+          (append '(("l" "Ledger entries")
+                    ("lm" "MBNA" plain
+                     (file "~/personal/ledger")
+                     "%(org-read-date) %^{Payee}
+      Liabilities:MBNA  
+      Expenses:%^{Account}  %^{Amount}
+    ")
+                    ("lc" "Cash" plain
+                    (file "~/personal/ledger")
+                "%(org-read-date) * %^{Payee}
+      Expenses:Cash 
+      Expenses:%^{Account}  %^{Amount}
+    "))
+           org-capture-templates))
+#+END_EXAMPLE
+
+I've bound =org-capture= to =C-c r= using
+=(global-set-key (kbd "C-c r") 'org-capture)=, so now I can use
+=C-c r l m= to create an entry for my MBNA Mastercard. This keyboard
+shortcut might not seem short to you, but if you think about it as C-c
+remember ledger Mastercard, it makes perfect sense. =) (Besides,
+org-capture prompts me just in case I forget.)
+
+Hooray for =org-capture!=

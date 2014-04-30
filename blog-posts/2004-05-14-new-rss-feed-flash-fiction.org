@@ -1,0 +1,14 @@
+#+TITLE: New RSS feed: Flash fiction
+
+May 14th, 2004 -
+[[http://sachachua.com/blog/p/2053][http://sachachua.com/blog/p/2053]]
+
+My 55-word short stories are now available as an RSS feed at
+
+[[http://sacha.free.net.ph/notebook/wiki/flash.rdf][http://sacha.free.net.ph/notebook/wiki/flash.rdf]]
+. If you run across
+ anyone else blogging 55-word fiction, please drop me a note!
+
+| *RSS feeds:*   | [[http://sachachua.com/notebook/wiki/blog.rdf][Blog]] -- [[http://sachachua.com/notebook/wiki/planner.rdf][Planner]] -- [[http://sachachua.com/notebook/wiki/education.rdf][Education]] -- [[http://sachachua.com/notebook/wiki/flash.rdf][Flash fiction]]   |
+
+[[http://sachachua.com/notebook/wiki/WelcomePage][WelcomePage]]

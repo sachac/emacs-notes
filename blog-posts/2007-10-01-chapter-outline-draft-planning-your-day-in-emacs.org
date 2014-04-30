@@ -1,0 +1,44 @@
+#+TITLE: Chapter outline draft: Planning your day in Emacs
+
+October 1st, 2007 -
+[[http://sachachua.com/blog/p/4374][http://sachachua.com/blog/p/4374]]
+
+The first chapter I'm working on is about planning your schedule in
+ Emacs. Here's my draft outline. I'm targetting 20 pages. The chapter
+ before this is about managing tasks (35 pages). The Org and Planner
+ sections in this chapter will build on the previous chapter, which I
+ haven't written yet.
+
+#+BEGIN_EXAMPLE
+    Audience:
+      - do not keep track of schedule at all
+      - track schedule using Outlook, Notes, or some other program
+      - track schedule using PDA
+      - track schedule using Filofax or other paper planner
+      - already use Emacs and want to learn more tips
+
+    Why run your life in Emacs
+    Overview of methods
+    The basics
+       Setting up Diary
+       Getting reminders for appointments
+       Importing an event
+       Importing a calendar
+       Exporting your calendar
+       Publishing your calendar
+       Synchronizing
+    Using Org
+    Using Planner
+       Including Diary events
+       Using tasks as appointments
+          Sorting tasks by time
+          Automatically updating a Diary section
+          Keeping private Notes
+       Publishing your schedule
+    Tracking Time
+#+END_EXAMPLE
+
+Can you think of anything else that should go into it?
+
+Random Emacs symbol: eshell-script-load-hook -- Variable: *A list of
+functions to call when loading `eshell-script'.

@@ -1,0 +1,15 @@
+#+TITLE: Checking planner-rss autocategories
+
+February 19th, 2004 -
+[[http://sachachua.com/blog/p/1727][http://sachachua.com/blog/p/1727]]
+
+I've added `planner-rss-category-feeds' to planner-rss. This examines
+ the text of the note and copies it to different RSS feeds depending on
+ the regular expression match. In the future, I might actually just run
+ a lot of hooks on the thing.
+
+If this works, I should have a new entry in
+
+[[http://sacha.free.net.ph/notebook/wiki/planner.rdf][http://sacha.free.net.ph/notebook/wiki/planner.rdf]]
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/planner-rss.el][../../notebook/emacs/emacs-wiki/planner-rss.el]]

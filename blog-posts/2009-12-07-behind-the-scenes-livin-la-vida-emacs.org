@@ -1,0 +1,243 @@
+#+TITLE: Behind the scenes: Livin' la Vida Emacs
+
+December 7th, 2009 -
+[[http://sachachua.com/blog/p/6871][http://sachachua.com/blog/p/6871]]
+
+In October 2006, I gave a short presentation on Livin' la Vida Emacs (or
+the Emacs editor as a way of life). It was well-received---in fact, so
+well-received that folks in the audience anticipated my punchlines and I
+ended up shifting parts of my talk around. ;)
+
+People said:
+
+#+BEGIN_QUOTE
+  Last, and certainly not least was Sacha Chua. If we could harness it
+  I'm pretty sure we could power a few small cities of the energy that's
+  contained in this one, tiny person -- especially when you get her
+  talking about Emacs. Sacha's demo, entitled, “Livin' la vida Emacs”
+  was hands down the most entertaining of the evening. Sacha has
+  basically taken this simple, extendable text editor and pushed it
+  about as far as it can go -- at DemoCamp10 she pulled back the curtain
+  and showed us all her little systems and apps she's created in it. I
+  like my GUI/Windows so the whole text-based thing isn't for me but it
+  certainly was interesting to see just how strung out she's got that
+  machine.
+#+END_QUOTE
+
+Ryan Coleman
+
+#+BEGIN_QUOTE
+  Sacha Chua showed off what can be done in the scriptable environment,
+  in this case emacs, as she went from Text editor, to a.i. doctor, to
+  game engine to task / email organizer and beyond. Sacha was six feet
+  tall on that stage, even though she did not actual levitate at anytime
+  (although she came close, as always). A Tour de force of the Emacs, a
+  text editing tool built in a interpreted lisp language environment,
+  bascially a personalized productivity platform which allows for
+  massive customization. Sacha had the crowd entertained and enthralled.
+  (Sacha blogged her own impressions and mentions that Emacs was
+  speaking to her!)
+#+END_QUOTE
+
+Ian Irving
+
+#+BEGIN_QUOTE
+  Within Toronto's Web community, Sacha Chua has become one of the
+  leading “personalities”. Armed with infectious enthusiasm, charm and
+  smarts, she would be an excellent person to hire once she graduates
+  from UoT. The key question is how best to use her talents. It would
+  probably be as a customer service rep, who can come into a bad
+  situation and get everyone happy by the time she leaves. If I was an
+  HR person from Microsoft, IBM, etc. I'd be knocking on Sacha's door
+  ASAP.
+#+END_QUOTE
+
+Mark Evans, consultant
+
+Why? Probably because in addition to my natural sugar high, I was also
+presenting something that was awesomely, arcanely geeky. =)
+
+I hadn't figured out how to make a screencast on Linux, so the actual
+display on my screen is lost to time. I do, however, have the source
+code that I used to step through my speech--including speaking cues, as
+I didn't want to mess up the presentation in front of Toronto's
+technorati! So here's the
+[[http://sachachua.com/notebook/emacs/democamp.el][source code]], for
+your amusement. I set up two of my function keys to go forward and
+backward, executing the parenthesized expressions. I also set up a
+hidden window that could handle my speaking cues so that Emacs could
+remind me what the next “slide” was before I transitioned to it, for
+smoother flow. =emacspeak-speak-buffer= is a function that reads the
+current window's text using the Emacspeak speech interface with the
+Festival synthesizer I'd configured. At some point, I switched to a more
+interactive demo, but I still had the speaking cues remind me of the
+sequence. So yes, Emacs really was telling me what to say. ;)
+
+#+BEGIN_EXAMPLE
+    ;; Emacs as a text editor
+
+    (progn ;; Setup
+      (defvar democamp/presentation-file "~/democamp.el")
+      (defvar democamp/cue-buffer "*DemoCamp*")
+      (defun democamp/next ()
+        (interactive)
+        (let (start sexp)
+          (with-current-buffer (find-file-noselect democamp/presentation-file)
+            (setq start (point))
+            (forward-sexp)
+            (setq sexp (buffer-substring-no-properties start (point))))
+          (eval (read sexp))))
+      
+      (defun democamp/previous ()
+        (interactive)
+        (let (start sexp)
+          (with-current-buffer (find-file-noselect democamp/presentation-file)
+            (setq start (point))
+            (backward-sexp)
+            (setq sexp (buffer-substring-no-properties (point) start)))
+          (eval (read sexp))))
+
+      (defun democamp/repeat ()
+        (interactive)
+        (let (start sexp)
+          (with-current-buffer (find-file-noselect democamp/presentation-file)
+            (setq start (point))
+            (backward-sexp)
+            (setq sexp (buffer-substring (point) start))
+            (forward-sexp))
+          (eval (read sexp))))
+      
+      (defun democamp/say (text)
+        (with-current-buffer (get-buffer-create democamp/cue-buffer)
+          (erase-buffer)
+          (insert text)
+          (goto-char (point-min))
+          (call-interactively 'emacspeak-speak-buffer)))
+      (global-set-key (kbd "<f12>") 'democamp/next)
+      (global-set-key (kbd "S-<f12>") 'democamp/previous)
+      (global-set-key (kbd "C-<f12>") 'democamp/repeat)  
+    )
+
+    ;; Window register a
+    (progn
+      (menu-bar-mode 1)
+      (tool-bar-mode 1)
+      (set-face-attribute 'default nil :height 200)
+      (find-file "~/hello.txt")
+      (democamp/say "I don't know why people are so intimidated by Emacs. It's a text editor. It has menus and toolbars and everything.")
+      (frame-configuration-to-register ?a)) 
+
+    (progn
+      (democamp/say "Spell-check, too.")
+      (load-library "flyspell")
+      (load-library "emacspeak-flyspell")
+      (setq emacspeak-flyspell-highlight-personality nil)
+      (flyspell-mode 1))
+
+
+    ;; Emacs learning curve
+    ;; Frame configuration b
+    (progn
+      (find-file "~/tmp/learningcurves.jpg")
+      (democamp/say "So why are people terrified of Emacs?"))
+
+    (progn
+      (set-face-attribute 'default nil :height 700)
+      (delete-other-windows)
+      (sit-for 1)
+      (animate-sequence (list "Livin' la Vida Emacs" "DemoCamp10" "Sacha Chua" "Oct 23, 2006") 1))
+
+    (progn
+      (set-face-attribute 'default nil :height 200)
+      (democamp/say "Emacs comes with a psychotherapist.")
+      (doctor))
+    (progn
+      (democamp/say "an adventure game")
+      (dunnet))
+    (progn
+      (democamp/say "random geek stuff")
+      (hanoi 3))
+    (progn
+      (democamp/say "even Snake")
+      (delete-other-windows)
+      (snake))
+    (progn
+      (democamp/say "And of course, my favorite game, Nethack.")
+      (load-library "nethack-config")
+      (nethack))
+    (democamp/say "Some of it is useful")
+    ;; Flashcard
+    (progn
+      (democamp/say "Flashcards")
+      (load-library "flashcard-config")
+      (find-file "~/notebook/japan/japanese.deck")
+      (goto-char (point-max)))
+    ;; With fortunes
+    (progn
+      (democamp/say "And you can mash things together")
+      (load-library "fortune")
+      (setq fortune-file "/usr/share/games/fortunes/computers")
+      (fortune)
+      (delete-other-windows))
+    (progn
+      (find-file-other-window "~/notebook/japan/japanese.deck")
+      (goto-char (point-max)))
+
+    ;; Planner
+    (democamp/say "Now the wild stuff starts.")
+    (progn
+      (planner-goto-today)
+      (delete-other-windows)
+      (democamp/say "Emacs: more than just an editor. It's a way of life."))
+
+    ;; - Show tasks
+    (democamp/say "I use Emacs to manage my tasks with Planner.")
+    (democamp/say "I can even keep detailed time logs!")
+    (progn
+      (load-library "/usr/src/planner-el/planner-timeclock-summary.el")
+      (planner-timeclock-summary-show (planner-today)))
+
+    ;; - Show notes
+    (democamp/say "... blog...")
+    ;; - Jump to URL in w3m
+    (democamp/say "... surf the Web (with tabbed browsing and a custom keymap!)")
+    33;; - Jump to URL in Firefox
+    (democamp/say "Although sometimes you really want Firefox.")
+    ;; - Jump to task from mail message
+    (democamp/say "I can hyperlink to pretty much anything.")
+    (democamp/say "People's contact information")
+    (democamp/say "E-mail, etc.")
+    (democamp/say "Which comes in handy when I need to create tasks from mail messages.")
+    ;; Add note to BBDB from mail message
+    (progn
+      (democamp/say "Keeping track of the number of recipients")
+      (planner-visit-link "pos://~/.gnus#19820"))
+    (democamp/say "BBDB indicators")
+
+    ;; Reply to message with nickname,
+    (progn
+      (democamp/say "CRM in e-mail: Nicknames...")
+      (planner-visit-link "pos://~/.gnus#16025"))
+
+    ;; and show how it shows up in BBDB record and ping code
+    (progn
+      (democamp/say "... notes...")
+      (planner-visit-link "pos://~/.gnus#18804"))
+
+    (progn
+      (democamp/say "... pings...")
+      (planner-visit-link "pos://~/.gnus#16932"))
+
+    (democamp/say "... filters...")
+    (democamp/say "So those are just a few examples of the crazy stuff you can do if you have an infinitely tweakable environment.")
+    (democamp/say "Sacha, remember to plug in the speakers.")
+    (democamp/say "Demo Campers, welcome to Emacs. What else do you want it to do?")
+#+END_EXAMPLE
+
+I love pushing the envelope. I love getting to know my tools inside and
+out (I enjoy reading source code!) and then making them do things other
+people can't imagine. I love tweaking processes in real life, too,
+making them better and better every time. That's just part of the way I
++work+ have fun. =)
+
+How can you rock your next technical demo?

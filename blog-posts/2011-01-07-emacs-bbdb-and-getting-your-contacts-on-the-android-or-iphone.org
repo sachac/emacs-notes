@@ -1,0 +1,38 @@
+#+TITLE: Emacs, BBDB, and getting your contacts on the Android or iPhone
+
+January 7th, 2011 -
+[[http://sachachua.com/blog/p/22034][http://sachachua.com/blog/p/22034]]
+
+Want your Emacs BBDB contacts on your Android or iPhone?
+
+The easiest way I've found is to export your contacts to CSV, then
+import them into something like Google Contacts. You can export your
+BBDB contacts using =bbdb-to-outlook.el=, which is available in the BBDB
+package in the =bits/= directory.
+[[http://bbdb.cvs.sourceforge.net/viewvc/bbdb/bbdb/bits/bbdb-to-outlook.el][Download
+bbdb-to-outlook.el from Sourceforge]] if you can't find it in your BBDB
+directory. To use:
+
+1. Load bbdb-to-outlook.el and use =M-x eval-buffer= to load the code.
+2. Use =M-x bbdb= to open your BBDB records, and search for =.= to show
+   all the records. Alternatively, search for a subset of your records.
+3. Type =O= to run =bbdb-to-outlook= and choose the file.
+
+Tada! Step one done. Review the file and delete anything you don't want
+to include.
+
+To import the contacts into Google Contacts, go to Google Mail and click
+on Contacts. Click on =Import= and choose your file. After some time and
+some fiddling, you can get that synchronized onto your Android or
+iPhone.
+
+I haven't thought about syncing, but I'm trying to keep my BBDB as The
+Master File for Contacts anyway, as it's so much more flexible than any
+other contact database I've tried. (Although gist.com is pretty cool and
+I do like the Android's merging of photos, contact info, and updates...)
+
+There was some work on
+[[http://www.emacswiki.org/emacs/BbdbExportImportSync][synchronizing
+BBDB with the Palm]], so that might be a possibility.
+
+Enjoy!

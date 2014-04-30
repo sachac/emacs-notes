@@ -1,0 +1,9 @@
+#+TITLE: Cute calendar
+
+February 24th, 2004 -
+[[http://sachachua.com/blog/p/1767][http://sachachua.com/blog/p/1767]]
+
+[[http://blog.outer-court.com/calendar/][http://blog.outer-court.com/calendar/]]
+
+I wonder if it might not be worth implementing this for
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]...

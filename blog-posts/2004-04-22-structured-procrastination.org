@@ -1,0 +1,13 @@
+#+TITLE: Structured procrastination
+
+April 22nd, 2004 -
+[[http://sachachua.com/blog/p/2001][http://sachachua.com/blog/p/2001]]
+
+John Perry's 1995 essay entitled “Structured Procrastination” is a
+ particularly good read for the procrastinator in all of us.
+ Considering the way that planner-el works, I think it's a good fit. ;)
+ Check it out!
+
+The essay is available at:
+
+[[http://www-csli.stanford.edu/~john/procrastination.html][http://www-csli.stanford.edu/~john/procrastination.html]]

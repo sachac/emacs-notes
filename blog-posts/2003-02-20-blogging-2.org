@@ -1,0 +1,22 @@
+#+TITLE: blogging
+
+February 20th, 2003 -
+[[http://sachachua.com/blog/p/6783][http://sachachua.com/blog/p/6783]]
+
+I've been reading up on blogging, since I want to get a firm
+ grip on the kind of software I'd like. Yes, I'm not supposed to be
+ thinking about it right now, but I am. So, what am I looking for?
+
+I seem to be looking for a strange mix between wiki and blog -- a
+[[http://www.ourpla.net/cgi-bin/pikie.cgi?WikiWeblogs][WikiBlog]]. I
+want
+ it to be easy for people to jump to today's entry, and I want it to be
+ easy for them to look at all the pages I'd edited for the day. I want
+ to make it easy for people to subscribe to pages they're interested in
+ and to have the day's work delivered to them in their mailbox at, say,
+ midnight the next day.
+
+Bah. Forget them. ;) I want something that can organize information
+ for myself. For the most part, planner mode and emacs-wiki
+ suffice. But I also want to be able to make this information usable to
+ other people, and that means formatting it nicely.

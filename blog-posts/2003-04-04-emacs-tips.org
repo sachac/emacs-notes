@@ -1,0 +1,9 @@
+#+TITLE: Emacs tips
+
+April 4th, 2003 -
+[[http://sachachua.com/blog/p/650][http://sachachua.com/blog/p/650]]
+
+[[http://emacswiki.org/cgi-bin/wiki.pl?ProgrammingEffectivelyWithEmacs][EmacsWiki:ProgrammingEffectivelyWithEmacs]]
+has a lot of productivity-boosting tips. In particular, it links to
+[[http://www.kuro5hin.org/story/2003/4/1/21741/10470][a Kuro5hin article
+about making Emacs stand up to Microsoft Visual Studyio 7]].

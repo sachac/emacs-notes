@@ -1,0 +1,7 @@
+#+TITLE: Xemacs text menus?
+
+May 31st, 2003 -
+[[http://sachachua.com/blog/p/789][http://sachachua.com/blog/p/789]]
+
+Does XEmacs even have text menu support? I'm looking for something like
+tmm.

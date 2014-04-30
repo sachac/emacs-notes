@@ -1,0 +1,28 @@
+#+TITLE: Bookmarking
+
+February 14th, 2004 -
+[[http://sachachua.com/blog/p/1707][http://sachachua.com/blog/p/1707]]
+
+#+BEGIN_EXAMPLE
+     forcer: If I run across an interesting URL, I file it right away with some context clues.
+     forcer: If I need to refer to it again, I use a small elisp function that searches my notes.
+     forcer: It's a bit more context-sensitive than bookmarks, and it allows me to share the data with other people.
+     ah
+     forcer: If I feel diligent, I put it into my BBDB. Then I can hippie-expand from it in my mail and in chat.
+     forcer: For example, tldpM-/ is
+     so to say, you have a list of URLs and associated text :)
+     forcer: The Linux Documentation Project (http://www.tldp.org) is an excellent resource for newbies and
+             experienced users alike. Check out its HOWTOs and guides for tons of information. There's a Linux Cookbook in
+             there too, I think...
+     :)
+     forcer: Not really. I have random blog notes which occasionally have URLs. I can search on that and on the text
+             around it.
+     forcer: I can also figure out when I visited a site...
+     ah
+     forcer: ... and since planner.el captures all sorts of annotations, I can usually even tell you how I found out
+             about the page - it gets linked to an e-mail or to another planner page...
+     forcer: The e-mail links take me directly to the article, if it hasn't been expired yet.
+     forcer: If not, well, it's a message ID and it has the author's name, so I guess I can just search. 
+     forcer: Pretty useful system, a bit more flexible than bookmarks (at least for me.)
+#+END_EXAMPLE
+

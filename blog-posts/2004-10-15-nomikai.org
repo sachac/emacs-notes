@@ -1,0 +1,33 @@
+#+TITLE: Nomikai
+
+October 15th, 2004 -
+[[http://sachachua.com/blog/p/2288][http://sachachua.com/blog/p/2288]]
+
+The nomikai was tons of fun! I'm looking forward to the next one. I
+ met lots of interesting people. Michael Moyle is into Linux
+ administration and programming, and is looking for a part-time job
+ while he studies Japanese. [[http://mr.uue.org][Michael Reinsch]] is
+into component systems research, a higher-level version
+ of aspect-oriented programming. He likes strongly-typed languages.
+ [[http://www.monotec.com][Jeffrey Keays]] is a Java non-fan and likes
+PHP and Perl, and is fairly
+ interested in aspect-oriented programming but hasn't really gotten
+ into it beyond reading a few papers, as the main implementations use
+ Java. He likes loosely-typed languages and thinks Ruby is delicious.
+ [[http://www.monotec.com][Thomas GiuffrÃƒÂƒÃ‚ÂƒÃƒÂ‚Ã‚Â©]] is his boss.
+ Ken'ichi-san thinks Planner is a bit difficult to use, and is of the
+ opinion that no Emacs-based PIM has quite hit the mark yet. He laughed
+ when he saw his website on my task list. Uekawa-san
+ (dancer,dancerj(IRC)) is a DD who's also going to
+[[http://www.k-of.jp][Kansai Open Source 2004]]. We swapped GPG
+fingerprints, so all I have to do now is study
+ for the interview. Moon Ki Cho is Ernest's friend and is interested in
+ Linux, but hasn't really tried it out yet. There was one other girl. I
+ think I was the youngest there.
+
+I particularly enjoyed practicing my Japanese, although I'm still bad
+ at it. =)
+
+I made it back barely in time. I managed to catch a train going all
+ the way to Sangyo Shinko Center, and I even made it before curfew.
+ Whee! I will certainly attend the next one.

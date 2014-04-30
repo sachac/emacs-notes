@@ -1,0 +1,11 @@
+#+TITLE: Savannah's down
+
+December 6th, 2003 -
+[[http://sachachua.com/blog/p/1464][http://sachachua.com/blog/p/1464]]
+
+So that's why I haven't been able to upload my CVS stuff lately. You can
+still get planner from
+[[http://sacha.free.net.ph/notebook/emacs/planner/planner.el][http://sacha.free.net.ph/notebook/emacs/planner/planner.el]]
+. All of the files in the CVS repository are available at
+[[http://sacha.free.net.ph/notebook/emacs/emacs-wiki/][http://sacha.free.net.ph/notebook/emacs/emacs-wiki/]]
+.

@@ -1,0 +1,45 @@
+#+TITLE: bbdb: prefix for sacha/try-expand-factoid-from-bbdb
+
+April 15th, 2004 -
+[[http://sachachua.com/blog/p/1965][http://sachachua.com/blog/p/1965]]
+
+To control expansion further, I've made a bbdb: prefix required. This
+ will allow me to still properly use dabbrev expansion.
+
+#+BEGIN_EXAMPLE
+    ;; Particularly fun with ERC. I am now a bot!
+    (defun sacha/try-expand-factoid-from-bbdb (old)
+      "Try to expand from BBDB. If OLD is non-nil, cycle through other possibilites."
+      (unless old
+          ;; First time, so search through the BBDB records for the factoid.
+        (progn
+          (he-init-string (he-dabbrev-beg) (point))
+          (setq he-expand-list nil)
+          (when (string-match "bbdb:\\(.+\\)" he-search-string)
+            (setq he-search-string (match-string 1 he-search-string))
+            (mapc
+             (lambda (item)
+               (setq he-expand-list (append he-expand-list (list (bbdb-record-getprop item 'blog))))
+               (setq he-expand-list (append he-expand-list (list (bbdb-record-getprop item 'web))))
+               (setq he-expand-list (append he-expand-list (list (car (bbdb-record-net item)))))
+               (setq he-expand-list (append he-expand-list (list (bbdb-record-getprop item 'notes)))))
+             (let ((notes (cons '* he-search-string)))
+               (bbdb-search (bbdb-records)
+                            he-search-string he-search-string he-search-string
+                            notes nil)))
+            (setq he-expand-list (delq nil he-expand-list)))))
+      (while (and he-expand-list
+                  (or (not (car he-expand-list))
+                      (he-string-member (car he-expand-list) he-tried-table t)))
+        (setq he-expand-list (cdr he-expand-list)))
+      (if (null he-expand-list)
+          (progn
+            (if old (he-reset-string))
+            nil)
+        (progn
+          (he-substitute-string (car he-expand-list) t)
+          (setq he-expand-list (cdr he-expand-list))
+          t)))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/hippie-config.el][../../notebook/emacs/hippie-config.el]]

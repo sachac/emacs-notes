@@ -1,0 +1,52 @@
+#+TITLE: Weekly review
+
+October 13th, 2007 -
+[[http://sachachua.com/blog/p/4403][http://sachachua.com/blog/p/4403]]
+
+I had *awesome* conversations again this week. I greatly enjoyed meeting
+Jennifer Dodd, [[http://www.scimatic.com][Jamie McQuay]], and Hartwell
+Fong at Farcoast last Wednesday. We talked about so much: science
+outreach, Second Life, quantum computing... Then there's yesterday's
+conversation with [[http://www.falsepositives.com][Ian Irving]] about
+tech evangelism and consulting. This is amazing stuff. I want more
+people to enjoy these great conversations! =)
+
+I've been getting ready for my job at IBM, which starts on Monday. I
+ checked the public transit route to 3600 Steeles, and
+ Stephen Perelgut is right: it's not
+ complicated. I'm getting used to wearing grownup clothes, too! ;)
+Yesterday, W- complimented my pairing of a gray cashmere turtleneck with
+a gray dress. I'm finding myself drawn to neutral bases (white and gray
+for the most part, with a bit of black), and I'm now looking for a few
+accessories to add color and whats-it.
+
+I made more progress on my book. I spent some time learning how to use
+ Org, and feel comfortable enough with it to write the section on
+ planning my day. I think I understand it now. I'm also comfortable
+ with planner-appt, and I'm going to recommend that over the little
+ hack I put together before.
+
+This has also been a great week for exercise. I went to trapeze
+ classes twice thanks to W-'s encouragement, and have successfully been
+ able to hook my knees over the bar or hold my legs extended over my
+ head without assistance. Whee!
+
+My goals for next week are:
+
+-  Finish the raw text for the first chapter in my book.
+-  Get on board smoothly: find out my manager's expectations, help him
+   figure out a great way to use and develop me, finish the onboarding
+   paperwork, and set up direct deposit
+-  Make it smoothly onto the bar in trapeze classes
+-  Attend the Toronto Public Library board meeting to see if I'll make
+   it my primary charity this year
+-  Contact the U of T Career Centre; also, see if I can access the
+   contact directory
+-  Connect with Mohan and see what I can do to help, or what holes there
+   are in my Web 2.0 network
+-  And if there's time, I want to figure out how to blog using Org, too.
+
+On Technorati: [[http://www.technorati.com/tag/weekly][weekly]]
+
+Random Emacs symbol: backward-delete-char -- Command: Delete the
+previous N characters (following if N is negative).

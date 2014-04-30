@@ -1,0 +1,14 @@
+#+TITLE: Overlay handling
+
+July 24th, 2004 -
+[[http://sachachua.com/blog/p/2199][http://sachachua.com/blog/p/2199]]
+
+I finally figured out what was zapping my Japanese input on Planner
+ pages: an overzealous extents+overlays zap in emacs-wiki. I read
+ through a lot of the font-locking code and I think I'm beginning to
+ understand how Emacs does it. Cool!
+
+I've fixed it in emacs-wiki---dev and planner---dev. It seems to work
+ over here. Hope no one else has problems!
+
+[[http://sachachua.com/notebook/wiki/PlannerModeMaintenance][PlannerModeMaintenance]]

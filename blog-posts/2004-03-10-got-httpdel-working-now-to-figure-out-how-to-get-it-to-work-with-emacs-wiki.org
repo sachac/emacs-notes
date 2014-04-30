@@ -1,0 +1,7 @@
+#+TITLE: Got httpd.el working. Now to figure out how to get it to work with
+emacs-wiki...
+
+March 10th, 2004 -
+[[http://sachachua.com/blog/p/1871][http://sachachua.com/blog/p/1871]]
+
+[[http://sachachua.com/notebook/emacs/httpd.el][../../notebook/emacs/httpd.el]]

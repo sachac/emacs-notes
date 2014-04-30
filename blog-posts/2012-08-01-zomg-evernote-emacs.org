@@ -1,0 +1,59 @@
+#+TITLE: zomg, Evernote and Emacs
+
+August 1st, 2012 -
+[[http://sachachua.com/blog/p/23622][http://sachachua.com/blog/p/23622]]
+
+Update 2013-10-19: Check out
+[[https://github.com/pymander/evernote-mode][https://github.com/pymander/evernote-mode]]
+for a possibly better way to do things. =)
+
+This is totally raw and needs a lot of hacking, but look, I can dump
+subtrees from my Org notes into Evernote using
+[[http://code.google.com/p/emacs-evernote-mode/][Emacs Evernote Mode]].
+The desktop app handles these perfectly, although the Android app does
+funny things to the whitespace if you edit the note. Still, great as a
+reference!
+
+Mwahahahaha!
+
+#+BEGIN_EXAMPLE
+    (defun sacha/org-get-subtree-region ()
+      "Return the start and end of the current subtree."
+      (save-excursion
+        (let (beg end folded (beg0 (point)))
+          (if (org-called-interactively-p 'any)
+              (org-back-to-heading nil) ; take what looks like a subtree
+            (org-back-to-heading t)) ; take what is really there
+          (org-back-over-empty-lines)
+          (setq beg (point))
+          (skip-chars-forward " \t\r\n")
+          (save-match-data
+            (save-excursion (outline-end-of-heading)
+                            (setq folded (outline-invisible-p)))
+            (condition-case nil
+                (org-forward-same-level (1- n) t)
+              (error nil))
+            (org-end-of-subtree t t))
+          (org-back-over-empty-lines)
+          (setq end (point))
+          (list beg end))))
+
+    (defun sacha/org-post-subtree-to-evernote (&optional notebook)
+      "Post the current subtree to Evernote."
+      (interactive)
+      (let ((title (nth 4 (org-heading-components)))
+            (body (apply 'buffer-substring-no-properties (sacha/org-get-subtree-region))))
+        (with-temp-buffer
+          (insert body)
+          (enh-command-with-auth
+           (let (note-attr)
+             (setq note-attr
+                   (enh-command-create-note (current-buffer)
+                                            title
+                                            notebook
+                                            nil "TEXT"))
+             (enh-update-note-and-new-tag-attrs note-attr))))))       
+#+END_EXAMPLE
+
+In other news, I now have book notes from 156 books in my Evernote
+notebook. Mwahahaha! Time to add more.

@@ -1,0 +1,136 @@
+#+TITLE: Wicked Cool Emacs: BBDB: Work with Records
+
+April 12th, 2008 -
+[[http://sachachua.com/blog/p/4833][http://sachachua.com/blog/p/4833]]
+
+** Creating Records
+
+Creating a record in BBDB is not like creating a record in graphical
+address book programs. You will be prompted for each field through the
+minibuffer, one field at a time. Don't worry about making mistakes while
+entering data, as you can always edit the records afterwards.
+
+To create a record, use the command M-x bbdb-create. Here are the
+prompts you'll encounter:
+
+Prompt
+
+Notes
+
+Example
+
+Name
+
+Full name
+
+John Doe
+
+Company
+
+Company or organization
+
+ACME
+
+Network Address
+
+E-mail address (comma-separated list)
+
+john@example.com
+
+Address Description
+
+Short identifier for address (Home, Office, etc.) -- tab completion
+available. Leave blank if you have no address information, or if you are
+done.
+
+Home
+
+Street, line 1
+
+Street address, line 1 (not including city, state, postal code or
+country)
+
+1 Acme Road
+
+Street, line ...
+
+Street address, more lines -- press RET to indicate the end of the
+street address
+
+City
+
+Acme City
+
+State
+
+Abbreviations are okay. Consistency helps.
+
+AC
+
+Country
+
+Acme Country
+
+Phone Location
+
+Short identifier for phone number (Home, Office, etc.) -- tab completion
+available. Leave blank if you have no phone information, or if you are
+done.
+
+Home
+
+Phone
+
+Phone number. I tend to specify the full number, using spaces to break
+it into readable chunks.
+
++1 111 111 1111 x1111
+
+Additional Comments
+
+Notes about the person, such as interests, how you met, and so on
+
+Likes rockets
+
+Press RET to skip any fields for which you don't have information. To
+ cancel the entry process, type C-g (keyboard-quit).
+
+After you create the record, Emacs will display the record in another
+ window. You can then switch to the record and edit it. See Project XXX:
+Edit a BBDB record.
+
+** Searching Records
+
+To search for a specific record, type M-x bbdb, or press b
+ (bbdb) while in the *BBDB* buffer. This prompts for a regular
+ expression and searches the name, company, network address, and notes
+ fields of all the records for a match against the regular expression
+ supplied. M-x bbdb-name, M-x bbdb-company, M-x bbdb-net, M-x
+ bbdb-notes, and M-x bbdb-phones search the corresponding fields only.
+
+** Updating Records
+
+After creating or searching for a record, you can switch to the *BBDB*
+ window to edit it. Press C-o (bbdb-insert-field) to insert
+ custom fields. You can use tab completion on existing field names, and
+ you can also define your own fields by typing any field name. For
+ example, you may want to store people's job titles in a field called
+ “job”.
+
+To edit the value of a field, move your cursor to the field and press
+ e (bbdb-edit-current-field) to change the value. To delete
+ a field, move your cursor to the field and press C-k
+ (bbdb-delete-current-field-or-record).
+
+** Deleting Records
+
+To delete an entire record, move the text cursor to the name and press
+C-k (bbdb-delete-current-field-or-record). You will be prompted for
+confirmation. Be careful! If you mistakenly delete a record, there's no
+easy way to get it back. Fortunately, BBDB stores its data in a plain
+text file (~/.bbdb). Back up that file regularly and you'll be able to
+recover from mistakes. You can also set up automatic file backups in
+Emacs (see Project XXX: Make Automatic Backups).
+
+Now you know how to work with individual records. How can you import
+your address book information from other programs?

@@ -1,0 +1,26 @@
+#+TITLE: sacha/emacs-wiki-markup-string
+
+April 20th, 2005 -
+[[http://sachachua.com/blog/p/2727][http://sachachua.com/blog/p/2727]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/emacs-wiki-markup-string (string)
+      "Mark up STRING according to `emacs-wiki-publishing-rules'.
+    No header or footer is added."
+      (let ((emacs-wiki-project emacs-wiki-current-project))
+        (with-temp-buffer
+          (emacs-wiki-mode)
+          (insert string)
+          (let ((emacs-wiki-publishing-header "")
+                (emacs-wiki-publishing-footer ""))
+            (emacs-wiki-replace-markup))
+          (buffer-string))))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki-config.el][../emacs/emacs-wiki-config.el]]
+
+Ã£Â?Â†Ã£Â?Â¡Ã£Â?Â®Ã§ÂŒÂ«Ã£Â?Â¯Ã¥Â?Â°Ã¦Â‰Â€Ã£Â?Â«Ã£Â?Â„Ã£Â?Â¾Ã£Â?Â™Ã£Â€Â‚
+Our cat is in the kitchen.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/code][code]]

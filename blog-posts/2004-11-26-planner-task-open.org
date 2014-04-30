@@ -1,0 +1,26 @@
+#+TITLE: planner-task-open
+
+November 26th, 2004 -
+[[http://sachachua.com/blog/p/2428][http://sachachua.com/blog/p/2428]]
+
+Starting patch from krid
+
+#+BEGIN_EXAMPLE
+    (defsubst planner-task-open ()
+      "Mark the current task as open."
+      (interactive)
+      (planner-mark-task "_"))
+      (let ((map planner-mode-map))
+       (define-key map "\C-c\C-t\C-_" 'planner-task-open))
+
+    Paste contents: Raw Source | XML
+    @item planner-task-open @samp{_}
+    @defun planner-task-open
+    Mark the current task as open.
+    @end defun
+    @item
+    @code{planner-task-open}
+    @item
+    @kbd{C-c C-t C-_}: @code{planner-task-open}.
+#+END_EXAMPLE
+

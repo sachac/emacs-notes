@@ -1,0 +1,118 @@
+#+TITLE: Emacs Basics: Customizing Emacs
+
+April 7th, 2014 -
+[[http://sachachua.com/blog/p/27098][http://sachachua.com/blog/p/27098]]
+
+This entry is part 3 of 3 in the series [[http://sachachua.com/blog/series/emacs-basics-2/][Emacs Basics]]
+
+Hello, I'm Sacha Chua, and this is an Emacs Basics video on customizing
+Emacs. Emacs is incredibly flexible. You can tweak it to do much more
+than you might expect from a text editor. This week, we're going to
+focus on learning how to tweak Emacs with M-x customize and by editing
+=~/.emacs.d/init.el=.
+
+#+begin_html
+<iframe width="640" height="480" src="//www.youtube-nocookie.com/embed/tEhW5YxwzJ8" frameborder="0" allowfullscreen></iframe>
+#+end_html
+
+[[http://archive.org/download/20140324EmacsBasicsCustomizingEmacs/2014-03-24-Emacs-Basics-Customizing-Emacs.mp3][You can download the MP3 from Archive.org]]
+
+*** Customize
+
+You can change tons of options through the built-in customization
+interface. Explore the options by typing M-x customize. Remember, that's
+Alt-x if you're using a PC keyboard and Option-x if you're on a Mac. So
+for me, that's Alt-x customize <Enter>. In the future, I'll just refer
+to this as the Meta key, so remember which key is equivalent to Meta on
+your keyboard.
+([[http://sachachua.com/blog/2014/03/emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm/][Review -- Emacs Basics: Call commands by name with M-x]])
+
+After you run =M-x customize=, you'll see different groups of options.
+Click on the links to explore a group.
+
+For example, people often want to change the backup directory setting.
+This is the setting that controls where the backup files (the files
+ending in =~=) are created. You've probably noticed that they clutter
+your current directory by default. To change this setting, select the
+*Files > Backup* group. Look for the entry that says *Backup Directory
+Alist.* Click on the arrow, or move your point to the arrow and press
+<Enter>. Click on *INS*, or move your point to *INS* and press <Enter>.
+Fill it in as follows:
+
+-  Regexp matching filename: .
+-  Backup directory name: ~/.emacs.d/backups
+
+Click on *State* and choose *Save for future sessions*. This will save
+your changes to =~/.emacs.d/init.el=. When you're done, type q to close
+the screen.
+
+You can also jump straight to customizing a specific variable. For
+example, if you want to change the way Emacs handles case-sensitive
+search, you can use M-x customize-variable to set the case-fold-search
+variable. By default, case fold search is on, which means that searching
+for a lower-case “hello” will match an upper-case “HELLO” as well. If
+you would like to change this so that lowercase only matches lowercase
+and uppercase matches only uppercase, you can toggle this variable. I
+like leaving case fold search on because it's more convenient for me. If
+you make lots of changes, you can use the *Apply and Save* button to
+save all the changes on your current screen.
+
+Not sure what to customize? You can learn about options by browsing
+through M-x customize or reading the manual (*Help > Read the Emacs
+Manual* or M-x info-emacs-manual). You can also search for keywords
+using M-x customize-apropos.
+
+*** ~/.emacs.d/init.el
+
+The Customize interface lets you change lots of options, but not
+everything can be changed through Customize. That's where your Emacs
+configuration file comes in. This used to be a file called =~/.emacs= in
+your home directory, and you'll still come across lots of pages that
+refer to a =.emacs= file (or “dot emacs”). The new standard is to put
+configuration code in your =~/.emacs.d/init.el= file, which you can
+create if it does not yet exist.
+
+What goes into your =~/.emacs.d/init.el= file? If you open it now,
+you'll probably find the settings you saved using =M-x customize=. You
+can also call functions, set variables, and even override the way Emacs
+works. As you learn more about Emacs, you'll probably find Emacs Lisp
+snippets on web pages and in manuals. For example, the Org manual
+includes the following lines:
+
+#+BEGIN_EXAMPLE
+    (global-set-key "\C-cl" 'org-store-link)
+    (global-set-key "\C-cc" 'org-capture)
+    (global-set-key "\C-ca" 'org-agenda)
+    (global-set-key "\C-cb" 'org-iswitchb)
+#+END_EXAMPLE
+
+This code sets C-c l (that's Control-c l) to run =org-store-link=, C-c c
+to run =org-capture=, C-c a to run =org-agenda=, and C-c b to run
+=org-iswitchb=. You can add those to the end of your
+=~/.emacs.d/init.el= file. They'll be loaded the next time you start
+Emacs. If you want to reload your =~/.emacs.d/init.el= without
+restarting, use M-x eval-buffer.
+
+Emacs Lisp may look strange. Don't worry, you can get the hang of it
+even if you don't think of yourself as a programmer. You can start by
+copying interesting snippets from other people's configuration files.
+Start with small chunks instead of large ones, so you can test if things
+work the way you want them to. If you need help,
+[[http://stackoverflow.com/tags/emacs/info][StackOverflow]] and other
+Q&A resources may be useful.
+
+As you experiment with configuring Emacs, you may run into mistakes or
+errors. You can find out whether it's a problem with Emacs or with your
+configuration by loading Emacs with emacs -Q, which skips your
+configuration. If Emacs works fine with your configuration, check your
+=~/.emacs.d/init.el= to see which code messed things up. You can comment
+out regions by selecting them and using M-x comment-region. That way,
+they won't be evaluated when you start Emacs. You can uncomment them
+with M-x uncomment-region.
+
+Emacs gets even awesomer when you tailor it to the way you want to work.
+Enjoy customizing it!
+
+[[http://sachachua.com/blog/2014/03/emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm/][« Emacs Basics: Call commands by name with M-x (with tips for better
+completion using ido or helm)]]
+

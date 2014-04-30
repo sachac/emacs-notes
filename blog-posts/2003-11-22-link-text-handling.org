@@ -1,0 +1,10 @@
+#+TITLE: link text handling
+
+November 22nd, 2003 -
+[[http://sachachua.com/blog/p/1390][http://sachachua.com/blog/p/1390]]
+
+Oh, blast. I think there's no easy way to handle tasks created from
+ notes, at least not if it's in the parens. A better way would be to
+ make it a separate annotation.
+
+[[http://sachachua.com/notebook/emacs/planner/planner.el][../../notebook/emacs/planner/planner.el]]

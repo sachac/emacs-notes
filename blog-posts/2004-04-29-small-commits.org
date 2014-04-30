@@ -1,0 +1,20 @@
+#+TITLE: Small commits
+
+April 29th, 2004 -
+[[http://sachachua.com/blog/p/2024][http://sachachua.com/blog/p/2024]]
+
+This is almost exactly what I do with planner. I try to keep commits
+ as small and self-contained as possible. Not only does it make it
+ easier to roll back (although I still have to figure out how to mark
+ certain changesets as do-not-use, aside from deleting them from the
+ revision library), but it also makes it possible for people to
+ cherry-pick changes.
+
+This works to my advantage as well, as other people are encouraged to
+ make their patches nice and small. I still have to hand-tweak some
+ changes. For example, Gary Vaughan uses a different tree structure.
+ However, I can review the patch logs and merge the changes in
+ manually.
+
+[[http://today.java.net/pub/a/today/2004/04/27/smallchanges.html][java.net:
+Keep Changes Small: A Happy Jack Story [Apr. 27, 2004]]]

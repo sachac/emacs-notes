@@ -1,0 +1,4 @@
+#+TITLE: Fixed the whitespace problem with planner links.
+
+November 22nd, 2003 -
+[[http://sachachua.com/blog/p/1401][http://sachachua.com/blog/p/1401]]

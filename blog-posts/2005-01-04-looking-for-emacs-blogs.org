@@ -1,0 +1,21 @@
+#+TITLE: Looking for Emacs blogs
+
+January 4th, 2005 -
+[[http://sachachua.com/blog/p/2546][http://sachachua.com/blog/p/2546]]
+
+I'd love to read more about the wonderful editor/way-of-life that is
+ Emacs. Know of any Emacs-related blogs? (Occasional off-topics are
+ fine.) Please e-mail the URL to me at
+[[mailto:sacha@free.net.ph][sacha@free.net.ph]] or use the
+ comment form.
+
+You can check out
+[[http://del.icio.us/sachac/emacs+blogs][http://del.icio.us/sachac/emacs+blogs]]
+for a list of
+ blogs so far.
+
+I plan to aggregate blogs into a general blog feed and an
+ Emacs-specific blog feed.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/blogs][blogs]]

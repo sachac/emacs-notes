@@ -1,0 +1,13 @@
+#+TITLE: locked out of the dorm
+
+February 21st, 2003 -
+[[http://sachachua.com/blog/p/425][http://sachachua.com/blog/p/425]]
+
+Pfft. Got locked out of the dorm. The guard doesn't seem to be in the
+ lobby, so I guess she's walking around inspecting the room. That's
+ what I get for stubbornly trying to track down that pesky
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]
+ and [[http://www.emacswiki.org/cgi-bin/wiki/][EmacsWiki]] interaction
+problem. For some reason, my
+ emacs-publish-batch isn't doing the right thing. I'll worry about that
+ over the weekend. But I'm only a minute late...

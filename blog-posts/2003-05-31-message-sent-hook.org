@@ -1,0 +1,7 @@
+#+TITLE: message-sent-hook
+
+May 31st, 2003 -
+[[http://sachachua.com/blog/p/794][http://sachachua.com/blog/p/794]]
+
+Strange, the hook is locally set to (gnus-agent-possibly-do-gcc t), but
+message-to-planner gets called.

@@ -1,0 +1,76 @@
+#+TITLE: Emacs: Keyboard shortcuts for navigating code
+
+July 27th, 2008 -
+[[http://sachachua.com/blog/p/4994][http://sachachua.com/blog/p/4994]]
+
+UPDATE 2014-01-21: Add regexp-quote around current-word.
+
+One of the lines on my list of things I can do in order to make progress
+on my book is to move my Drupal development environment from Eclipse to
+Emacs, as immersion would no doubt give me plenty of things to tweak and
+describe. When you use something every day, you notice the rough edges.
+With Emacs, you can sand those edges down. I already use Emacs every
+day, but I had been doing most of my development work in Eclipse because
+Eclipse packaged a number of useful features I wanted. If I can move my
+environment to Emacs, though, I'll be able to customize it a lot more
+freely.
+
+Take something as simple as navigation, for example. In Eclipse, I can
+hit Ctrl+K to search for the next instance of the current word, which is
+a handy way to look for function calls or definitions in the same file.
+How would you do that in Emacs? The built-in search functions allow me
+to take text from the buffer, but I wanted something even faster. Here
+are some of the ways you can tweak navigation, too.
+
+If you haven't tried it yet, you'll probably like interactive search
+(C-s) because you can modify the search and see the results as you type.
+All you need to do to make it better than Eclipse's Ctrl+K is to add a
+function to grab the current word, even if the point in the middle of
+the word. Add the following code to your ~/.emacs:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/isearch-yank-current-word ()
+      "Pull current word from buffer into search string."
+      (interactive)
+      (save-excursion
+        (skip-syntax-backward "w_")
+        (isearch-yank-internal
+         (lambda ()
+           (skip-syntax-forward "w_")
+           (point)))))
+    (define-key isearch-mode-map (kbd "C-x") 'sacha/isearch-yank-current-word)
+#+END_EXAMPLE
+
+Type C-s (isearch-forward) to start interactively searching forward, and
+type C-x to get the current word. Use C-s and C-r to search forward and
+backward. You can modify your search, too.
+
+Want to make it even faster? Use these functions to bind similar
+searches to shortcut keys:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/search-word-backward ()
+      "Find the previous occurrence of the current word."
+      (interactive)
+      (let ((cur (point)))
+        (skip-syntax-backward "w_")
+        (goto-char
+         (if (re-search-backward (concat "\\_<" (regexp-quote (current-word)) "\\_>") nil t)
+         (match-beginning 0)
+           cur))))
+
+    (defun sacha/search-word-forward ()
+      "Find the next occurrance of the current word."
+      (interactive)
+      (let ((cur (point)))
+        (skip-syntax-forward "w_")
+        (goto-char
+         (if (re-search-forward (concat "\\_<" (regexp-quote (current-word)) "\\_>") nil t)
+         (match-beginning 0)
+           cur))))
+    (global-set-key '[M-up] 'sacha/search-word-backward)
+    (global-set-key '[M-down] 'sacha/search-word-forward)
+#+END_EXAMPLE
+
+Feel free to change the keybindings or otherwise improve the code. =)
+Good luck and have fun!

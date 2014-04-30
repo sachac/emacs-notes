@@ -1,0 +1,10 @@
+#+TITLE: Debian packaging
+
+April 16th, 2003 -
+[[http://sachachua.com/blog/p/702][http://sachachua.com/blog/p/702]]
+
+Okay,
+
+[[http://sachachua.com/notebook/emacs/planner/planner-el_1.90-1_all.deb][planner-el\_1.90-1\_all.deb]]
+ passes lintian checks and builds with debbuild. Yay! Now to figure out
+what to do next..

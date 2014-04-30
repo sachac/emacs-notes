@@ -1,0 +1,16 @@
+#+TITLE: Emacs and PHP: There's more than one way to do it, of course
+
+July 30th, 2008 -
+[[http://sachachua.com/blog/p/5012][http://sachachua.com/blog/p/5012]]
+
+The [[http://www.emacswiki.org/cgi-bin/wiki/PhpMode][PhpMode]] page on
+EmacsWiki lists five options for developing PHP in Emacs. I'm currently
+using the [[http://sourceforge.net/projects/php-mode/][php-mode
+maintained by Aaron Hawley]], and I'm quite happy with it. I'm curious
+about the [[http://mewde.googlecode.com/files/php-mode.el][php-mode
+maintained by Ahmet Usal]], though, as it has extensive templating
+support and electric behavior. It seems to have abbreviations and
+argument lists for every PHP function, and I might borrow the code and
+convert it to a yasnippet file if I don't end up using this. I'll switch
+to Ahmet Usal's php-mode today, see what it feels like, and post my
+notes. Has anyone else tried both?

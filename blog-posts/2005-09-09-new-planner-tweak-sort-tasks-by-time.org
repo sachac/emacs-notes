@@ -1,0 +1,39 @@
+#+TITLE: New planner tweak: sort tasks by time
+
+September 9th, 2005 -
+[[http://sachachua.com/blog/p/2969][http://sachachua.com/blog/p/2969]]
+
+I've taken to tagging my tasks with times, and here's some code to
+ automatically sort tasks by time, status, and priority. I use it on
+ day pages. My plan pages are sorted differently. =)
+
+I could go on and on about how powerful customizable task sorting
+ functions are. Kudos to Jody Klymak and John Sullivan for suggesting
+ this last December! It's one of the things I love about
+[[http://sachachua.com/notebook/wiki/planner][planner]]. =)
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-sort-tasks-basic ()
+      "Sort tasks by time (@1030, etc), status (_P>XC) and priority (ABC)."
+      (let* ((info (planner-current-task-info))
+             (status (aref (planner-task-status info) 0)))
+        (concat
+         ;; time
+         (or (and (string-match "@[0-9][0-9][0-9][0-9]" (planner-task-description info))
+                  (match-string 0 (planner-task-description info)))
+             "@9999")
+         ;; status
+         (cond
+          ((eq status ?o) "1")
+          ((eq status ?P) "2")
+          ((eq status ?>) "3")
+          ((eq status ?X) "4")
+          ((eq status ?C) "5")
+          (t "9"))
+         (planner-task-priority info))))
+#+END_EXAMPLE
+
+See my
+[[http://sachachua.com/notebook/emacs/planner-config.el][planner-config.el]]
+for my
+ complete task sorting code and lots of other config stuff. =)

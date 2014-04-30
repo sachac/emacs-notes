@@ -1,0 +1,6 @@
+#+TITLE: remember timestamp
+
+February 19th, 2003 -
+[[http://sachachua.com/blog/p/423][http://sachachua.com/blog/p/423]]
+
+Moved the timestamp to the other side.

@@ -1,0 +1,39 @@
+#+TITLE: Gnus multi-pane tricks, or I heart Planet Emacsen
+
+December 16th, 2007 -
+[[http://sachachua.com/blog/p/4525][http://sachachua.com/blog/p/4525]]
+
+The tips Joseph Miklojcik shared for
+[[http://jfm3-repl.blogspot.com/2007/12/emacs-tricks-7-use-gnus-for-email.html][reading
+e-mail in Gnus]] included this \_really\_ nifty thing that I hadn't come
+across when I set up my Gnus before: *multi-pane reading*.
+
+You know how modern news readers have a folder pane, a summary pane
+ and a preview pane?
+
+Well, you can have that too.
+
+#+BEGIN_EXAMPLE
+    (gnus-add-configuration
+     '(article
+       (horizontal 1.0
+            (vertical 60 (group 1.0))
+            (vertical 1.0
+        (summary 0.20 point)
+        (article 1.0)))))
+
+    (gnus-add-configuration
+     '(summary
+       (horizontal 1.0
+            (vertical 60 (group 1.0))
+            (vertical 1.0 (summary 1.0 point)))))
+#+END_EXAMPLE
+
+This is good stuff. =)
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/gnus][gnus]]
+
+Random Emacs symbol: sacha/gnus-add-subject-to-bbdb-record -- Function:
+Add datestamped subject note for each person this message has been sent
+to.

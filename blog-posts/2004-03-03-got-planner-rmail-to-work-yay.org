@@ -1,0 +1,6 @@
+#+TITLE: Got planner-rmail to work. Yay!
+
+March 3rd, 2004 -
+[[http://sachachua.com/blog/p/1816][http://sachachua.com/blog/p/1816]]
+
+[[http://sachachua.com/notebook/emacs/emacs-wiki/planner-rmail.el][../../notebook/emacs/emacs-wiki/planner-rmail.el]]

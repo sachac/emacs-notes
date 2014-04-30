@@ -1,0 +1,17 @@
+#+TITLE: Monthly hacks: vc-arch.el
+
+January 2nd, 2004 -
+[[http://sachachua.com/blog/p/1575][http://sachachua.com/blog/p/1575]]
+
+I will finish at least one major hack per month. This month's special
+ is vc-arch.el, which for some reason does not seem available on the
+ Net. I have sketches of it up at
+[[http://sachachua.com/notebook/emacs/emacs-wiki/vc-arch.el][../emacs/emacs-wiki/vc-arch.el]].
+I
+ feel that if nothing else, at least I'll have a mode that makes it
+ easier for me to manage my planner work.
+
+Getting a diff through C-x v = already works. I want to be able to
+ commit my changes with a quick C-x v v. If more than one file has been
+ modified, I want a dired-like buffer displayed so that I can select
+ which files to commit.

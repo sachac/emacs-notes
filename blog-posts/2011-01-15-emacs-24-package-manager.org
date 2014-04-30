@@ -1,0 +1,46 @@
+#+TITLE: Emacs 24 and the package manager
+
+January 15th, 2011 -
+[[http://sachachua.com/blog/p/22045][http://sachachua.com/blog/p/22045]]
+
+Update: Added (require ‘package) -- thanks, Ryan!
+
+By default, the Emacs 24 package manager (=M-x package-list-packages=)
+points to a small repository of Emacs packages. Want more?
+[[http://technomancy.us/144][Phil Hagelberg]] added support for multiple
+repositories to package.el. There's the original ELPA at
+[[http://tromey.com/elpa][http://tromey.com/elpa]], and there's a
+community package source called Marmalade that anyone can upload
+packages to. Add this to your =~/.emacs= and evaluate it:
+
+#+BEGIN_EXAMPLE
+    (require 'package)
+    ;; Add the original Emacs Lisp Package Archive
+    (add-to-list 'package-archives
+                 '("elpa" . "http://tromey.com/elpa/"))
+    ;; Add the user-contributed repository
+    (add-to-list 'package-archives
+                 '("marmalade" . "http://marmalade-repo.org/packages/"))
+#+END_EXAMPLE
+
+You should then be able to call =M-x package-list-packages= to browse
+and install Emacs packages.
+
+If you don't have
+[[http://sachachua.com/blog/2010/12/whats-new-in-emacs-24/][Emacs 24]]
+yet (and you might want to wait for the official release if you use
+things like BBDB), Phil suggests downloading
+[[http://bit.ly/pkg-el][package.el]] from the Emacs development tree.
+This version includes support for multiple repositories.
+
+For even more Emacs goodness outside the package system, check out
+[[https://github.com/emacsmirror][the Emacs mirror]], which lists more
+than 2,900 packages available through Git.
+
+Thanks to:
+
+-  [[http://technomancy.us/144][Phil Hagelberg for the post about ELPA]]
+-  [[http://blog.emacsmirror.org/announcing-the-emacsmirror][Jonas
+   Bernoulli for the post about emacsmirror]]
+
+2011-01-15 Sat 10:31

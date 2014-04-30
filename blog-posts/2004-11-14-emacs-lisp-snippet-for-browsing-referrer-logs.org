@@ -1,0 +1,16 @@
+#+TITLE: Emacs lisp snippet for browsing referrer logs
+
+November 14th, 2004 -
+[[http://sachachua.com/blog/p/2386][http://sachachua.com/blog/p/2386]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/ffap-quick ()
+      (interactive)
+      (save-window-excursion
+        (save-excursion
+          (ffap))))
+#+END_EXAMPLE
+
+This makes browsing the output of ref.pl (previously blogged; it just
+ extracts the referrer) much easier. I local-set-key it to RET. Hitting
+ RET twice opens the URL as a w3m tab in the background.

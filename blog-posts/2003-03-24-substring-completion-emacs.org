@@ -1,0 +1,11 @@
+#+TITLE: substring completion --- emacs
+
+March 24th, 2003 -
+[[http://sachachua.com/blog/p/577][http://sachachua.com/blog/p/577]]
+
+Le Wang mentions icomplete and mcomplete in reference to substring
+ completion in a March 4 post on the
+[[mailto:help-gnu-emacs@gnu.org][help-gnu-emacs@gnu.org]] mailing
+ list. Hmmmm. mcomplete doesn't seem to be built-in, but icomplete's
+ there, and it's nifty. It's like ido handling of buffers and files. I
+ like.

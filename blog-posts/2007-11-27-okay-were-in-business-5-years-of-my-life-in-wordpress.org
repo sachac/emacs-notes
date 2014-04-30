@@ -1,0 +1,20 @@
+#+TITLE: Okay, we're in business -- 5 years of my life in WordPress
+
+November 27th, 2007 -
+[[http://sachachua.com/blog/p/4466][http://sachachua.com/blog/p/4466]]
+
+After a fair bit of Emacs hacking to export all my blog entries from
+Planner into RSS and then import that into WordPress using
+Feedwordpress, I'm happy to present this
+[[http://sachachua.com/wp/][WordPress view]] of my blog. It should stay
+relatively in-sync with my Emacs blog. Emacs still gives me a friendlier
+and more powerful interface for blogging, but at least this way you get
+to use all the fancy stuff for reading blog entries. =)
+
+On Technorati: [[http://sachachua.com/wp/category/blogging][blogging]],
+[[http://sachachua.com/wp/category/emacs][emacs]],
+[[http://sachachua.com/wp/category/planner][planner]]
+
+Random Emacs symbol: internal-set-alternative-font-registry-alist --
+Function: Define alternative font registries to try in face font
+selection.

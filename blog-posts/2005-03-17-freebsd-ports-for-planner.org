@@ -1,0 +1,24 @@
+#+TITLE: FreeBSD ports for planner
+
+March 17th, 2005 -
+[[http://sachachua.com/blog/p/2664][http://sachachua.com/blog/p/2664]]
+
+From Dryice:
+
+#+BEGIN_QUOTE
+  I've got emacs-wiki, planner, and remember in the FreeBSD ports
+   tree. Now FreeBSD users can install these all by
+
+  #+BEGIN_EXAMPLE
+      cd /usr/ports/deskutils/remember.el
+      make install clean
+  #+END_EXAMPLE
+
+  And turn on the “planner support” in the menu.
+
+  Thank you all for making this great software!
+#+END_QUOTE
+
+E-Mail from Dryice Dong Liu
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]]

@@ -1,0 +1,16 @@
+#+TITLE: xtla goodness ([[EmacsTips#note19][EmacsTips:19]]”[[emacs]])
+
+January 4th, 2005 -
+[[http://sachachua.com/blog/p/2543][http://sachachua.com/blog/p/2543]]
+
+I used xtla to browse my TLA archives today. xtla's bookmarks and
+ missing patch summary made merging missing patches much easier. I used
+ m to mark interesting patches and . r to replay
+ the marked patches. Great stuff.
+
+In related news, I'll really need to migrate the archive. At 98414
+ characters, our ChangeLog is now 1/5 of the size of the source code
+ (457478 bytes). Dev's changelog is much bigger---147672 bytes.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/planner][planner]]

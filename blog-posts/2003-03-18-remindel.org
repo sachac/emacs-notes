@@ -1,0 +1,8 @@
+#+TITLE: remind.el
+
+March 18th, 2003 -
+[[http://sachachua.com/blog/p/531][http://sachachua.com/blog/p/531]]
+
+zeDek from #emacs needs info on
+[[http://sachachua.com/notebook/wiki/PlannerAndRemind][PlannerAndRemind]],
+so I guess it's time to make a wikinode about it.

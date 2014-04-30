@@ -1,0 +1,160 @@
+#+TITLE: Emacs: How I organize my Org files
+
+August 27th, 2013 -
+[[http://sachachua.com/blog/p/25635][http://sachachua.com/blog/p/25635]]
+
+/Michael Jones wanted to know how I organized my Org Mode files. Here's
+how I do things!/
+
+[[http://orgmode.org][Org Mode for Emacs]] is an outliner that lets you
+add a little structure to plain text files. Not only can you use it to
+move around, hide, and show sections of your outline, but you can also:
+
+-  schedule tasks and mark them as complete,
+-  add hyperlinks and formatting,
+-  estimate effort and track time,
+-  export to HTML and other formats,
+-  and even include code that you can run in-line.
+
+I started with a single Org Mode file (appropriately called
+organizer.org), but I've gradually fleshed this out into a number of
+files. My goals for organizing my files this way are to be able to:
+
+[[http://sachachua.com/blog/wp-content/uploads/2013/08/image1.png][[[http://sachachua.com/blog/wp-content/uploads/2013/08/image_thumb1.png]]]]
+
+-  Publish some files while keeping other files private,
+-  Add or remove groups of tasks from my agenda, or focus my
+   agenda/search on the current file,
+-  Simplify processing my weekly review (categorizing
+   accomplishments/tasks),
+-  Get a quick overview of important things, and
+-  Have file-specific options, like columns.
+
+I often use [[http://sachachua.com/blog/dotemacs#agenda_commands][Org
+agenda custom commands]] to jump around. For example, one agenda command
+lists projects, and pressing RET on an agenda line will take me to that
+project. I also use =org-capture= to take a note from anywhere, and I
+use =org-goto= to navigate my files. For jumping to a specific file, I
+use =ido-find-file=.
+
+I use several Org Mode files. The six files below have a little more
+than 1.3MB of text in total -- tiny! -- but they help me tremendously. I
+also have lots of other Org files like my
+[[http://sachachua.com/blog/dotemacs][Emacs configuration]] and
+[[http://dl.dropboxusercontent.com/u/3968124/blog.html][my blog index]]
+(I often use Org for publishing), but these are my main files.
+
+*Personal tasks and notes: organizer.org*
+
+This is the catch-all for any tasks or notes that don't belong to the
+files below. Here's the rough structure:
+
+-  *Quick notes:* Tidbits that might not make it into their own blog
+   posts, but which can be included in weekly reviews
+-  *Reference:* Hours, license keys, etc.
+-  *Open loops:* Anything I need to check on every so often
+-  *Projects:* High-level things I'm focusing on
+-  *Financial goals:* Things to save up for
+-  *Someday/maybe:* Projects to do someday
+-  *Weekly review:* Divided by year
+-  *Monthly review:* More summaries
+-  *Plans:* Personal plans
+-  *2011, 2012, 2013...*: I use org-capture to quickly jot down notes.
+   The datetree option automatically files them by day, which makes
+   older ones easier to archive.
+-  *Tasks:* A bucket for miscellaneous tasks
+
+*Anything to do with business: business.org*
+
+I organize these by the types of tasks I focus on and the notes I want
+to keep.
+
+-  Earn
+
+   -  Clients
+   -  Leads
+
+-  Build
+
+   -  Projects
+   -  Research
+   -  Business ideas
+   -  Blog
+   -  Delegation
+   -  Planning
+   -  Business hygiene (accounting, etc.)
+   -  Learning
+
+-  Connect
+
+   -  Meetups
+   -  Hangouts
+   -  Other
+
+-  Reference
+-  Tasks
+
+*Relationships: people.org*
+
+I organize these by relationships so that I can remember who's out
+there.
+
+-  Family
+-  Extended family
+-  Canada friends
+-  Hacklab
+-  Barkada
+-  Letters
+-  Meetups
+-  Bloggers
+-  Family friends
+-  Other tasks
+
+*Regular tasks: routines.org*
+
+I organize these by frequency and omit the tasks from my weekly review.
+This also contains my “In case of...” scenarios and my backup
+documentation.
+
+-  Every day
+-  Once a week
+-  Once a month
+-  Once a quarter
+-  Once a year
+-  When...
+
+*Outline for future blog posts:*
+[[http://sach.ac/outline][sharing/index.org]]
+
+I organize this by topic. See
+[[http://sach.ac/outline][http://sach.ac/outline]] for the published
+version
+
+*Decision review: decisions.org*
+
+I organize these by status. I also use org-choose markers (ex: CHOSEN,
+MAYBE) inside the categories, but the headings make it easier to review.
+
+-  Pending
+-  Current
+-  For review
+-  Someday / maybe
+-  Archive
+
+*Personal finance: ledger.org*
+
+I use [[http://www.ledger-cli.org/][John Wiegley's command-line Ledger
+program]] to manage my finances. My financial data is in separate
+ledger-mode files, and I use an Org file with org-babel to make it
+easier for me to answer some questions about my finances. For example:
+
+-  Given my average monthly expenses and the amount of money I've set
+   aside, how long can I sustain my early-retirement experiment?
+-  Am I ahead or behind in terms of household contributions?
+-  What did I spend on last month?
+-  Are my virtual envelopes balanced?
+
+*How do you organize your Org files or outlines?*
+
+Everyone's got different ways of organizing outlines, and people also
+also change over time. How do you organize yours?

@@ -1,0 +1,33 @@
+#+TITLE: Emacs and Google Calendar; writing for a moving target
+
+October 2nd, 2007 -
+[[http://sachachua.com/blog/p/4378][http://sachachua.com/blog/p/4378]]
+
+While searching for Emacs calendar sync, I came across Bill Clementson's
+post on [[http://bc.tech.coop/blog/070306.html][Emacs and Google
+Calendars]]. He showed how to use the Emacs Client for Google Services
+to add items to the Google calendar and to the local diary file at the
+same time. I might look into that.
+
+The
+[[http://sachachua.com/notebook/wiki/WickedCoolEmacs][WickedCoolEmacs]]
+book may take a little more work than expected. I
+ want to include not only what's already out there, but what logically
+ makes sense to include---and that might take some hacking on my part as
+ well. With a little over a year to go before my deadline, I'm sure
+ that Emacs will also move quite a bit. I think the best thing to do is
+ to divide my outline into:
+
+-  Built-in packages that I have personal experience with
+-  External packages I have personal experience with
+-  Built-in packages I need to learn about
+-  External packages I need to learn about
+-  Built-in packages I need to tinker with
+-  External packages I need to tinker with
+-  Stuff I have to write from scratch
+
+If I can get all the low-hanging fruit during my first pass, then I
+ can go back and re-edit the chapters to include more.
+
+Random Emacs symbol: ebnf-print-directory -- Command: Generate and print
+a PostScript syntactic chart image of DIRECTORY.

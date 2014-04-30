@@ -1,0 +1,91 @@
+#+TITLE: Deliberate practice, typing faster, and Emacs
+
+September 13th, 2011 -
+[[http://sachachua.com/blog/p/22486][http://sachachua.com/blog/p/22486]]
+
+I type at about 90-95 wpm. I wonder: Would it be worth getting even
+faster? How would I go about doing it without increasing my risks of
+RSI? I'm thinking about this because of something I read in
+[[http://books.google.ca/books?id=-Ac81W-ZQDEC&dq=moonwalking+with+einstein&hl=en&ei=OK1qTuLyCuPo0QHXvJCHBQ&sa=X&oi=book_result&ct=result&resnum=1&ved=0CC4Q6AEwAA][Moonwalking
+with Einstein: The Art and Science of Remembering Everything]]. On page
+172, Joshua Foer writes this about deliberate practice:
+
+#+BEGIN_QUOTE
+  The secret to improving at a skill is to retain some degree of
+   conscious control over it while practicing--to force oneself to stay
+   out of autopilot. With typing, it's relatively easy to get past the
+  OK
+   plateau. Psychologists have discovered that the most efficient method
+   is to force yourself to type faster than feels comfortable, and to
+   allow yourself to make mistakes. In one noted experiment, typists
+  were
+   repeatedly flashed words 10 to 15 percent faster than their fingers
+   were able to translate them onto the keyboard. At first they were'nt
+   able to keep up, but over a period of days they figured out the
+   obstacles that were slowing them down, and overcame them, and then
+   continued to type at the faster speed. By bringing typing out of the
+   autonomous stage and back under their conscious control, they had
+   conquered the OK plateau.
+#+END_QUOTE
+
+If I were to invest time into typing better, it would be for these
+reasons:
+
+-  to lower the risk of RSI by making correct movements, like the way
+   shifting to Dvorak helped me tweak my brain to type more effectively
+   (I type at about the same rate on QWERTY and Dvorak, but Dvorak feels
+   better)
+-  to reduce the friction between thought and writing even more
+-  to transcribe things more efficiently
+-  to explore just how fast I can go
+
+My brain's more of a bottleneck than my fingers are, so typing isn't
+getting in the way of much. It's still something to be curious about,
+though!
+
+[[http://stenoknight.com/plover/][The open-source Plover stenography
+program]] looks really interesting. I'm going to be on a
+Windows-host-Linux-VM system for a while, so I'll need to wait for the
+Windows port (or shift back to Linux as my host OS).
+
+Most typing tutors / speed measurements I've come across aren't quite
+what I'm looking for because they display lots of text and scroll
+through it, which is good for buffering things in your head and not so
+good for training past the point of failure. Typing games tend to kill
+you once you miss too many words.
+
+Enter Emacs. Among many many things, Emacs has at least one typing game.
+It's not built in, but you can get it from the Emacs Wiki:
+[[http://www.emacswiki.org/emacs/TypingOfEmacs][The Typing of Emacs]]. A
+few quick modifications later (which I'll post next week if I get
+permission), and I've:
+
+-  added a “zombie mode” that will keep the game going even after you
+   hit your threshold of failure
+-  added the question-and-answer mode that the code hinted at
+
+Zombie-mode Typing of Emacs lets me stay in the “this is going way too
+fast for me” zone, sometimes repeating a single word until I've gotten
+the hang of it or I've given up. For example, I haven't figured out how
+to type CreativeCommons in 2 seconds. The closest I got in 10 tries was
+the one time I typed “CreativeComomns”, which was sooo close. Usually,
+the timeout kicked in on the last few characters.
+
+Maybe it's because I also have to hit Enter to submit what I've typed.
+Hmm, I wonder if I can redefine some keys...
+
+Successfully typing CreativeCommons in 2 seconds still gets me around
+95wpm, though, and reading + typing + pressing Enter makes it difficult
+to get down to 1-second time limits (darn those reaction times!). Maybe
+I'll use my new Q&A support to play around with typing sentences.
+
+If I spend more time typing in autocorrecting environments or shifting
+to editing after typing (it's good to review anyway), then I might be
+able to loosen up enough to type faster. =)
+
+There are plenty of sites and apps to help people get from 30wpm to
+60wpm or whatever, but not really YouTube videos have mostly people
+banging away on keyboards. Are you the fastest typist among your
+friends? Have you worked on getting even faster? Do share!
+
+2011-09-09 Fri 20:08

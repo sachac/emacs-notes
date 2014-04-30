@@ -1,0 +1,19 @@
+#+TITLE: Emacs Lisp mentioned in job ad
+
+December 18th, 2004 -
+[[http://sachachua.com/blog/p/2509][http://sachachua.com/blog/p/2509]]
+
+#+BEGIN_EXAMPLE
+     job --> "SDE, Tech Assessment Team Amazon.com - US-WA-Seattle
+              equivalent, proficiency with at least one functional language (such
+              as Lisp, ML, or Haskell), strong Java 2... modeling, and emacs-lisp
+              programming are strong plusses. External/Internal Candidates
+              .Location: Seattle"
+     Oooooooooooooooooh.
+     Damn.
+     "emacs-lisp programming strong plus". when will you ever see that
+              again?
+#+END_EXAMPLE
+
+Details:
+[[http://variety.careercast.com/texis/jobsearch/details.html?id=41ab6c0a6d6490][http://variety.careercast.com/texis/jobsearch/details.html?id=41ab6c0a6d6490]]

@@ -1,0 +1,90 @@
+#+TITLE: Planner support for action-lock.el
+
+June 18th, 2005 -
+[[http://sachachua.com/blog/p/2780][http://sachachua.com/blog/p/2780]]
+
+[[http://sachachua.com/notebook/emacs/howm-1.1.1.1/action-lock.el][action-lock.el]]
+is part
+ of HOWM. The following code enables Planner-style links
+ \_anywhere\_. Add it to your ~/.emacs and use M-x action-lock-mode
+ to turn action locking on.
+
+#+BEGIN_EXAMPLE
+    (add-to-list 'action-lock-default-rules
+                 (list (with-planner emacs-wiki-url-or-name-regexp)
+                       'planner-action-lock-follow-name-at-point))
+    (setq action-lock-rules action-lock-default-rules)
+    (defvar planner-action-lock-default-directory planner-directory "Expand files relative to this directory.")
+    (defun planner-action-lock-follow-name-at-point (&optional other-window)
+      (let ((link-name (match-string 0))
+            (base-buffer (current-buffer))
+            ;; the name of the buffer that contains the link.  check
+            ;; whether buffer-name is a WikiName, else make it one
+            (parent-name (or (emacs-wiki-page-name)
+                             (concat "[[" (buffer-name) "]]")))
+            (refresh-buffer nil))
+        (with-planner
+          (let ((link (emacs-wiki-wiki-link-target link-name)))
+            (if (emacs-wiki-wiki-url-p link)
+                (emacs-wiki-browse-url link other-window)
+              ;; The name list is current since the last time the buffer was
+              ;; highlighted
+              (let* ((base (emacs-wiki-wiki-base link-name))
+                     (file (emacs-wiki-page-file base))
+                     (tag  (and (not (emacs-wiki-wiki-url-p link))
+                                (emacs-wiki-wiki-tag link)))
+                     (find-file-function (if other-window
+                                             'find-file-other-window
+                                           'find-file))
+                     (parent-allowed-backlink-p
+                      (not (string-match
+                            emacs-wiki-exclude-backlink-parent-regexp
+                            parent-name)))
+                     (parent-backlink (and parent-allowed-backlink-p
+                       (emacs-wiki-get-current-backlink)))
+                     (newbuf
+                      (funcall find-file-function
+                               (or file
+                                   (expand-file-name
+                                           base
+                                           (or planner-action-lock-default-directory
+                                               (and (buffer-file-name)
+                                                    (file-name-directory
+                                                     (buffer-file-name)))
+                                               default-directory)))))
+                     (emacs-wiki-create-backlinks
+                      (and emacs-wiki-create-backlinks parent-allowed-backlink-p))
+                     (make-link-p (and emacs-wiki-create-backlinks
+                                       ;; insert backlink only in new files
+                                       (null file)
+                                       (not (string-match
+                                             emacs-wiki-exclude-backlink-regexp
+                                             (emacs-wiki-page-name
+                                              (buffer-file-name newbuf)))))))
+                (when tag
+                  (goto-char (point-min))
+                  (re-search-forward (concat "^\\.?#" tag) nil t))
+                (when refresh-buffer
+                  (when make-link-p
+                    (emacs-wiki-insert-backlink parent-name parent-backlink))
+                  ;; todo: is with-current-buffer necessary here?
+                  (with-current-buffer newbuf
+                    (add-hook 'after-save-hook
+                              'emacs-wiki-refresh-buffers-once t t)
+                    ;; save the new file to avoid another backlink if the
+                    ;; buffer is visited again before being saved
+                    (when (or make-link-p
+                              (and (null file)
+                                   (not parent-allowed-backlink-p)))
+                      ;; set modified status to t: pages with excluded
+                      ;; parents may not be modified, but we want to save
+                      ;; anyway
+                      (set-buffer-modified-p t)
+                      (save-buffer))))))))))
+#+END_EXAMPLE
+
+ÃƒÂ£Ã‚Â‚Ã‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â³ÃƒÂ£Ã‚ÂƒÃ‚Â”ÃƒÂ£Ã‚ÂƒÃ‚Â¥ÃƒÂ£Ã‚ÂƒÃ‚Â¼ÃƒÂ£Ã‚Â‚Ã‚Â¿ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ§Ã‚ÂŸÃ‚Â¥ÃƒÂ¨Ã‚Â­Ã‚Â˜ÃƒÂ£Ã‚Â?Ã‚Â¯ÃƒÂ£Ã‚Â?Ã‚Â™ÃƒÂ£Ã‚Â?Ã‚Â¹ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ£Ã‚Â?Ã‚Â®ÃƒÂ§Ã‚Â§Ã‚Â‘ÃƒÂ¥Ã‚Â­Ã‚Â¦ÃƒÂ£Ã‚Â€Ã‚Â?ÃƒÂ£Ã‚Â?Ã‚Â«ÃƒÂ£Ã‚Â?Ã‚Â¨ÃƒÂ£Ã‚Â?Ã‚Â£ÃƒÂ£Ã‚Â?Ã‚Â¦ÃƒÂ¥Ã‚ÂŸÃ‚ÂºÃƒÂ¦Ã‚ÂœÃ‚Â¬ÃƒÂ£Ã‚Â?Ã‚Â§ÃƒÂ£Ã‚Â?Ã‚Â‚ÃƒÂ£Ã‚Â‚Ã‚Â‹ÃƒÂ£Ã‚Â€Ã‚Â‚
+Knowledge of computers is basic to all sciences.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/code][code]]

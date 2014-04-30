@@ -1,0 +1,63 @@
+#+TITLE: Where I am in terms of Emacs
+
+May 29th, 2012 -
+[[http://sachachua.com/blog/p/23348][http://sachachua.com/blog/p/23348]]
+
+Now that I have more control over the tools I use, I use Emacs for more
+of my planning. I'm back to using Org Mode to manage my task list
+(hooray!), and it has grown by leaps and bounds. I'm looking forward to
+getting even deeper into it.
+
+*Here's where I am in terms of Emacs*
+
+I'm still on Microsoft Windows 7 because I like some of the drawing
+programs that I can't get to run on Linux, so my Emacs experience is
+less than ideal but still okay. It's one of the first applications I
+start after a reboot, and I keep Emacs open almost all the time. I've
+pinned Emacs to my task bar (right-click on the icon and pin it) and
+moved it to the first slot, so Win+1 gets me back to Emacs.
+
+When I'm at my client site, I use the laptop they provided to do work,
+and I use a wiki page to manage and publish my task list. I use Emacs
+during the early morning, the evening, weekends, and personal days.
+
+I use =org-capture= to quickly capture tasks and notes. Here are some of
+the templates I use:
+
+#+BEGIN_EXAMPLE
+    (setq org-capture-templates
+          '(("t" "Tasks" entry
+             (file+headline "~/personal/organizer.org" "Tasks")
+             "* TODO %?
+    SCHEDULED: %^t")
+            ("q" "Quick task" entry
+             (file+headline "~/personal/organizer.org" "Tasks")
+             "* TODO %^{Task}
+    SCHEDULED: %^t"
+             :immediate-finish t)
+            ;; other entries go here
+            ("r" "Notes" entry
+             (file+datetree "~/personal/organizer.org" "Inbox")
+             "* %?\n\n%i\n"
+             :clock-in :clock-resume)))
+#+END_EXAMPLE
+
+The Org agenda helps me check what I need to do. I have it set up to
+display the time grid so that I get a relative sense of where things
+are. I use a 2-day view so that tomorrow is in my peripheral vision.
+
+*Here are some things I want to explore:*
+
+-  Improve the integration of Org and my self-tracking system at
+   [[http://quantifiedawesome.com][quantifiedawesome.com]]
+-  Use Org for blog posts with images (I don't quite trust it yet,
+   although I've used it before)
+-  Take notes in Org Contacts instead of stuffing notes into BBDB
+-  Read the [[http://news.gmane.org/gmane.emacs.orgmode][Org Mode
+   mailing list]] and [[http://planet.emacsen.org][Planet Emacsen]] more
+   often to get inspiration, maybe contribute patches
+-  Get MobileOrg working for me smoothly on my Android -- need to get
+   the hang of the workflow
+-  Use Org's literate programming support to annotate my Emacs
+   configuration
+

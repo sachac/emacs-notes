@@ -1,0 +1,27 @@
+#+TITLE: planner-el is now apt-gettable!
+
+May 7th, 2003 -
+[[http://sachachua.com/blog/p/749][http://sachachua.com/blog/p/749]]
+
+After I ran
+
+#+BEGIN_EXAMPLE
+    dpkg-scanpackages . /dev/null | gzip -9c > Packages.gz
+    dpkg-scansources . /dev/null | gzip -9c > Sources.gz
+#+END_EXAMPLE
+
+in my ~/notebook/emacs/planner directory and added the following entries
+to `/etc/apt/sources.list':
+
+#+BEGIN_EXAMPLE
+    deb http://richip.dhs.org/~sachac/notebook/emacs/planner ./
+    deb-src http://richip.dhs.org/~sachac/notebook/emacs/planner ./
+#+END_EXAMPLE
+
+this worked:
+
+#+BEGIN_EXAMPLE
+    apt-get update
+    apt-get install planner-el
+#+END_EXAMPLE
+

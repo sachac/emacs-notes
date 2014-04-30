@@ -1,0 +1,9 @@
+#+TITLE: Emacs-wiki and httpd problem
+
+April 11th, 2003 -
+[[http://sachachua.com/blog/p/677][http://sachachua.com/blog/p/677]]
+
+yvonne on freenode#emacs reports a problem using emacs-wiki.el and
+ httpd.el; I thought I had reproduced it earlier, but it
+ disappeared. No idea what's wrong with yvonne's setup since mine
+ works, and have been trying to figure out what's wrong. No clue.

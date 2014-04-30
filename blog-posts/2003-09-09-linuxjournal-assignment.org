@@ -1,0 +1,7 @@
+#+TITLE: Linuxjournal assignment
+
+September 9th, 2003 -
+[[http://sachachua.com/blog/p/1060][http://sachachua.com/blog/p/1060]]
+
+Take a look at the Linuxjournal assignment and maybe think of writing
+about planner

@@ -1,0 +1,16 @@
+#+TITLE: InterestingLinks
+
+April 7th, 2004 -
+[[http://sachachua.com/blog/p/1952][http://sachachua.com/blog/p/1952]]
+
+Flutterby! : Email clients and integrated tools
+
+([[http://www.flutterby.com/archives/comments/6943.html][http://www.flutterby.com/archives/comments/6943.html]])
+ Dan Lyke's comment
+
+LIU Jing's personal wiki
+([[http://hep.pku.cn/liujing/WebWiki/Emacs.html][http://hep.pku.cn/liujing/WebWiki/Emacs.html]]),
+nice clean design
+
+Emacs-wiki, Japanese
+([[http://hpcgi3.nifty.com/shunuhs/index.cgi?Emacs%2Femacs-wiki][http://hpcgi3.nifty.com/shunuhs/index.cgi?Emacs%2Femacs-wiki]])

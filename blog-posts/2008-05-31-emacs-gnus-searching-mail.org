@@ -1,0 +1,184 @@
+#+TITLE: Emacs Gnus: Searching Mail
+
+May 31st, 2008 -
+[[http://sachachua.com/blog/p/4902][http://sachachua.com/blog/p/4902]]
+
+There are several ways to find messages in Emacs. From the summary
+ buffer, you can use / o (gnus-summary-insert-old-articles) to display
+ all or some old messages. You can then scan through the headers in the
+ summary buffer by using C-s (isearch-forward), or you can limit the
+ displayed messages with these commands:
+
+Messages from a given author
+
+/ a
+
+gnus-summary-limit-to-author
+
+Messages whose subjects matching a given regular expression
+
+/ /
+
+gnus-summary-limit-to-subject
+
+Messages that match a given extra header
+
+/ x
+
+gnus-summary-limit-to-extra-headers
+
+Messages at least N days old
+
+/ t
+
+gnus-summary-limit-to-age
+
+Limits work on the messages that are currently displayed, so you can
+ apply multiple limits. If you make a mistake, use / w
+ (gnus-summary-pop-limit) to remove the previous limit. You can repeat
+ / w (gnus-summary-pop-limit) until satisfied. To remove all the
+ limits, type C-u / w (gnus-summary-popl-limit).
+
+If you specify a prefix, the limit's meaning is reversed. For
+ example, C-u / a (gnus-summary-limit-to-author) will remove the
+ messages from the matching author or authors.
+
+You can use Gnus to search the currently-displayed messages by using
+ M-s (gnus-summary-search-article-forward) and M-r
+ (gnus-summary-search-article-backward).
+
+If you want to search a lot of mail, you'll find NNIR handy. NNIR is a
+ front-end to mail search engines which can index your mail and return
+ search results quickly. If you want to use NNIR with a local or remote
+ IMAP server, you will need to use nnir.el and imap.el. If you download
+ your mail using fetchmail or connect to a POP3 server and use an nnml
+ backend, you can use NNIR with a search engine such as swish-e to
+ search your ~/Mail directory efficiently.
+
+***** 1.6.7.1 Setting up IMAP and NNIR
+
+If you use IMAP, then your mail is stored on the mail server and
+ you'll need to use the IMAP search interface to search through
+ it. Download nnir.el from
+
+[[http://www.emacswiki.org/cgi-bin/wiki/download/nnir.el][http://www.emacswiki.org/cgi-bin/wiki/download/nnir.el]]
+and save it to
+ your ~/elisp directory. You will also need an imap.el that is newer
+ than the one that comes with Emacs 22. Download imap.el from
+
+[[http://www.emacswiki.org/cgi-bin/wiki/download/imap.el][http://www.emacswiki.org/cgi-bin/wiki/download/imap.el]]
+and save it to
+ your ~/elisp directory as well. Because Gnus comes with an older
+ version of imap.el, you will need to make sure that the new version of
+ imap.el is loaded. Add the following to your ~/.gnus:
+
+#+BEGIN_EXAMPLE
+    (add-to-list 'load-path "~/elisp")
+    (load-file "~/elisp/imap.el")
+    (require 'nnir)
+#+END_EXAMPLE
+
+Restart your Emacs. You can check if the correct version of imap.el
+ has been loaded by typing M-x locate-library and specifying
+ imap.el. If Emacs reports “~/elisp/imap.el”, then Gnus is configured
+ to use the updated imap.el.
+
+***** 1.6.7.2 Setting up POP3 and NNIR
+
+If you use the configuration for POP3 that is suggested in this
+ chapter, then your mail is stored in the nnml backend, which uses one
+ file per message. To search this using NNIR, to install nnir.el and an
+ external search mail engine. The Namazu search engine runs on Linux,
+ UNIX, and Microsoft Windows, so that's what we'll talk about here. To
+ find and configure other mail search engines supported by NNIR, check
+ out the comments in nnir.el.
+
+First, you'll need to download and install Namazu. If Namazu is
+ available as a package for your distribution, install it that way, as
+ it depends on a number of other programs. An installer for Microsoft
+ Windows can be found at
+[[http://www.namazu.org/windows/][http://www.namazu.org/windows/]] . If
+you need
+ to build Namazu from source, you can get the source code and
+instructions
+ from [[http://www.namazu.org][http://www.namazu.org]] .
+
+After you've installed Namazu, create a directory for Namazu's index
+ files, such as ~/.namazu-mail. Then index your mail by typing this at
+ the command-line:
+
+#+BEGIN_EXAMPLE
+    mknmz --mailnews -O ~/.namazu-mail ~/Mail
+#+END_EXAMPLE
+
+and add the following to your ~/.gnus:
+
+#+BEGIN_EXAMPLE
+    (add-to-list 'load-path "~/elisp")
+    (require 'nnir)
+    (setq nnir-search-engine 'namazu)
+    (setq nnir-namazu-index-directory (expand-file-name "~/.namazu-mail"))
+    (setq nnir-namazu-remove-prefix (expand-file-name "~/Mail"))
+    (setq nnir-mail-backend gnus-select-method)
+#+END_EXAMPLE
+
+***** 1.6.7.3 Searching your mail with NNIR
+
+From the group buffer displayed by M-x gnus, you can type G G
+ (gnus-group-make-nnir-group) to search your mail for a keyword.
+
+If you're using the Namazu search engine, then you can use more
+ sophisticated search queries such as:
+
+Linux Emacs
+
+messages that contain both “Linux” and “Emacs”
+
+Linux or Emacs
+
+messages that contain either “Linux” or “Emacs”
+
+Emacs not Linux
+
+messages that contain “Emacs” but not “Linux”
+
+Emacs and (Linux or Windows)
+
+messages that contain “Emacs” and either “Linux” or “Windows”
+
+“apple pie”
+
+messages that contain the phrase “apple pie”
+
+{apple pie}
+
+messages that contain the phrase “apple pie”
+
++from:example@example.com
+
+messages with example@example.com in the From: header
+
++subject:”apple pie”
+
+messages with the phrase “apple pie” in the Subject: header
+
++subject:apple +subject:pie
+
+messages whose Subject: headers contain both “apple” and “pie”
+
+If
+ matching messages are found, then you will see a temporary group with
+ the results. Although you can't delete messages from this view,
+ reading and replying to these messages is the same as reading and
+ replying to regular messages.
+
+To see a message in its original context, type G T
+ (gnus-summary-nnir-goto-thread) from the summary buffer. This opens
+ the message's original group. If Gnus asks you how many articles to
+ load, press RET to accept the default of all the articles.
+
+--------------
+
+This is a draft for the
+[[http://sachachua.com/wp/category/wickedcoolemacs][Wicked Cool Emacs]]
+book I'm working on. =) Hope it helps!

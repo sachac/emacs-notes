@@ -1,0 +1,18 @@
+#+TITLE: Planner tip: What day is it?
+
+August 25th, 2005 -
+[[http://sachachua.com/blog/p/2930][http://sachachua.com/blog/p/2930]]
+
+I sometimes forget what day it is, so I changed my planner template to
+ something that fills in the day, too.
+
+#+BEGIN_EXAMPLE
+    (defun sacha/planner-day-page-template ()
+      "Day page template for Sacha."
+      (let ((date (planner-filename-to-calendar-date (planner-page-name))))
+        (insert "Headlines for "
+                (calendar-day-name date)
+                ":\n\n\n\n* Tasks\n\n\n* Notes\n\n")))
+    (setq planner-day-page-template 'sacha/planner-day-page-template)
+#+END_EXAMPLE
+

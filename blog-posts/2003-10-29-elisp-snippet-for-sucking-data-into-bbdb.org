@@ -1,0 +1,21 @@
+#+TITLE: Elisp snippet for sucking data into BBDB
+
+October 29th, 2003 -
+[[http://sachachua.com/blog/p/1285][http://sachachua.com/blog/p/1285]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/suck-data-into-bbdb (notes)
+      "Create BBDB data given NOTES.
+    The region should contain data of the form:
+    name | company | e-mail"
+      (interactive "MEnter notes string: ")
+      (while (re-search-forward "^\\(.*?\\)\s*|\s*\\(.*?\\)\s*|\s*\\(.*?\\)\s*$" nil t)
+        (let* ((name (match-string 1))
+               (company (match-string 2))
+               (net (match-string 3))
+               (record (bbdb-search-simple nil net)))
+          (if record
+              (bbdb-record-set-notes record (concat (bbdb-record-notes record) "\n" notes))
+            (bbdb-create-internal name company net nil nil notes)))))
+#+END_EXAMPLE
+

@@ -1,0 +1,24 @@
+#+TITLE: ri-mode bug when there is no current word
+
+February 4th, 2005 -
+[[http://sachachua.com/blog/p/2615][http://sachachua.com/blog/p/2615]]
+
+I replaced the stock implementation of ruby-default-ri-entry with the
+ following code so that I could use it even if I didn't have a current
+ word.
+
+#+BEGIN_EXAMPLE
+    (defun ruby-default-ri-entry ()
+      (let (word)
+        (save-excursion
+          (setq word (or (current-word) ""))
+          (if (string-match "[._]+$" word)
+          (setq word (substring word 0 (match-beginning 0))))
+          (format "%s%s"
+              word
+              ""))))
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/ruby-config.el][../emacs/ruby-config.el]]
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]

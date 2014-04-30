@@ -1,0 +1,37 @@
+#+TITLE: Setting priorities
+
+October 12th, 2007 -
+[[http://sachachua.com/blog/p/4407][http://sachachua.com/blog/p/4407]]
+
+For once, my random Emacs symbol is strangely apropos. There will
+ never be enough time in the day, and it's easier for me to say no to
+ low-value tasks if I have other things to do. Here are my best-value
+ tasks over the next few days:
+
+-  Prepare for the start of my new job by reflecting on what's worked
+   for me before and what hasn't, and figure out what I want. If I can
+   help my manager learn about my strengths and weaknesses, then he'll
+   be able to manage me more effectively.
+-  Work on my book. I should be able to complete the Org section if I
+   just sit down and write. The Planner section can follow a similar
+   structure. It pays to complete a rough draft of the chapter as early
+   as possible, because I can get more feedback from beta readers. I
+   need to give myself permission to skip the parts that I \_really\_
+   want to include but for which the code needs to be written
+   practically from scratch. My job is to show people interesting hacks,
+   not fill in all the holes or fix all the bugs.
+-  Connect with my family and catch up on stuff from last week.
+-  Braindump what I learned from my chat with Ian Irving. Plenty of
+   nuggets there, and sharing is the best way of thanking him for his
+   time.
+-  Do my weekly review. I feel uncomfortable if I don't have time to
+   reflect and share.
+-  Build in some quiet time and some relationship time. I don't want
+   that to get lost in a long list of TODOs clamoring for my attention.
+
+These are my essentials for this weekend. It's like the way you manage
+money: plan for the important stuff first before you spend on luxuries.
+=)
+
+Random Emacs symbol: schedule-day-remainder -- Variable: The number of
+seconds remaining today.

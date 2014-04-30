@@ -1,0 +1,20 @@
+#+TITLE: February in review
+
+December 30th, 2004 -
+[[http://sachachua.com/blog/p/2528][http://sachachua.com/blog/p/2528]]
+
+- [[http://sachachua.com/notebook/wiki/2004.02.04#1][2/4: Wrote “A Fairy
+Tale”. Many repercussions.]]
+ - [[http://sachachua.com/notebook/wiki/2004.02.10#2][2/10: My students
+found this exchange hilarious.]]
+[[http://sachachua.com/notebook/wiki/2004.02.11][Continued here.]]
+ - [[http://sachachua.com/notebook/wiki/2004.02.15#2][2/15:
+planner-rss.el; yay!]]
+ - [[http://sachachua.com/notebook/wiki/2004.02.17#4][2/17: Reflected on
+tests]]
+ - [[http://sachachua.com/notebook/wiki/2004.02.20#1][2/20: Lecture
+notes on file systems]]
+ - [[http://sachachua.com/notebook/wiki/2004.02.23#2][2/23: The Great
+Planner Split: divided planner.el into lots of little files.]]
+ - [[http://sachachua.com/notebook/wiki/2004.02.26#5][2/26: Interesting
+ideas for planner. 5 out of 7 -- way cool!]]

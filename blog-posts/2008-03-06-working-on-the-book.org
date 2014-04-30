@@ -1,0 +1,14 @@
+#+TITLE: Working on the book
+
+March 6th, 2008 -
+[[http://sachachua.com/blog/p/4799][http://sachachua.com/blog/p/4799]]
+
+Now that I have an idea of what a good Wicked Cool Emacs book chapter
+looks like, I find it much easier to write and edit chapters. I've just
+finished revising my first three chapters based on my editor's feedback,
+and they will be finding their way to my technical reviewer soon. Bursty
+productivity indeed.
+
+Oh, that and productive application of
+[[http://www.structuredprocrastination.com/][structured
+procrastination]]... =)

@@ -1,0 +1,64 @@
+#+TITLE: Upgrade yourself! =)
+
+February 4th, 2005 -
+[[http://sachachua.com/blog/p/2614][http://sachachua.com/blog/p/2614]]
+
+[[http://headrush.typepad.com/creating_passionate_users/][Creating
+Passionate Users]]
+ is a great blog just full of insights. The latest gem is about
+upgrading users.
+
+Right, that's you. (If you don't use Planner, read on; maybe I can
+ convince you to try it out.)
+
+Planner probably isn't interesting in itself. \_You\_ make Planner way
+ cool. You aren't just an anonymous person who uses Planner. You are a
+ bundle of unique ways of doing things and maybe I can come up with
+ things that fit you better. I want to know how you think. What makes
+ you tick. How you keep yourself from going crazy even though you have
+ to keep track of so many things.
+
+(If this is starting to freak you out, don't worry; you can pretend
+ I'm just like any other maintainer out there. ;) Ignore that large
+ BBDB in the corner.)
+
+I don't think of myself as hacking just Emacs Lisp. I'm hacking your
+ process. Your way of doing things. \_Real\_ planner development happens
+ inside \_your\_ head when you come up with a nifty idea or something
+ you'd like improved. Real planner development happens when you take a
+ look at the way you do things and wonder if you can do them better. My
+ job is to keep track of all these little things people want to do and
+ see if someone else has already done it, I can help you do it, or I
+ can hack it in myself. The Japanese have a word for continuous
+ improvement---kaizen. Process optimization.
+
+We make a lot of progress in small steps. Take that +tue feature. It's
+ not a big thing, but it brings Planner \_juuust\_ a little closer to
+the
+ way a lot of people think. Who knows what kind of hacks it just made
+ easier? John Sullivan has plans for that feature, mainly for his
+ template hacks.
+
+The end result is that Planner is this strange, almost bewildering
+ personal information manager that just keeps growing and growing.
+ Sure, the quickstart introduces the essential parts of the system, but
+ there's much more to it. I'm here to guide you through it. I'd love to
+ ask questions to help you figure out how you plan. I'd love to suggest
+ ways of doing things. =) Whether you're a Franklin/Covey or GTD geek
+ or you're using a funky home-brew kind of planning method that changes
+ all the time (I'm like that!), I'd like to think we can get Planner or
+ some other Emacs-based PIM to dance to your tune.
+
+(Of course, there's the danger of spending too much time hacking your
+ process and too little time actually doing things, but I think we can
+ keep ourselves from going overboard.)
+
+So there. Sure, the mailing list is usually where software updates are
+ announced, but think of it as meant for user upgrading.
+
+Keep the suggestions coming. Share your thoughts!
+
+[[http://headrush.typepad.com/creating_passionate_users/2005/02/upgrade_your_us.html][Creating
+Passionate Users: Upgrade your users, not just your product]]
+
+On Technorati: [[http://www.technorati.com/tag/planner][planner]]

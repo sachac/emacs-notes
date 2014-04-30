@@ -1,0 +1,95 @@
+#+TITLE: Rediscovering Emacs features, or what to do after you get carried
+away installing packages
+
+February 28th, 2013 -
+[[http://sachachua.com/blog/p/24527][http://sachachua.com/blog/p/24527]]
+
+A kid in a candy store -- that's me with M-x list-packages,
+[[http://emacswiki.org][*EmacsWiki pages*]],
+[[http://planet.emacsen.org][*Planet Emacsen*]], and other sources of
+Emacs goodness. Because Emacs has so much functionality and people keep
+adding stuff to it, it's easy to forget about the cool goodies in
+configuration files and the Emacs codeverse. It's important to practise
+and review, though, because there are all sorts of great keyboard
+shortcuts and commands that could make Emacs even better if I could just
+drill them into my brain.
+
+[[http://en.wikipedia.org/wiki/Spaced_repetition][Spaced repetition]] is
+a great technique for prioritizing and learning things. Emacs Org has an
+*[[http://orgmode.org/worg/org-contrib/org-drill.html][org-drill]]*module**that
+implements flashcards for Org headings that are tagged with *:drill:*.
+I've been using this to prepare for the Canadian citizenship exam, and
+that's been working out well. So I started creating an emacs-drill.org
+file with headings for the things I'm interested in learning, such as
+multiple-cursor-mode and ace-jump-mode...
+
+... And then I remembered, hey,
+[[http://dl.dropbox.com/u/3968124/sacha-emacs.html][my Emacs
+configuration is one big Org file]] (thanks to the joys of literate
+programming) so why don't I just stick the :drill: tag onto the relevant
+snippets and run M-x org-drill there?
+
+This might actually work out. =)
+
+I was thinking of doing some kind of idle-timer hook, but I actually
+don't mind manually triggering it. Besides, I'm experimenting with John
+Wiegley's
+[[http://lists.gnu.org/archive/html/emacs-orgmode/2010-03/msg00367.html][org-agenda
+display]] paired with winner-mode to save my window configuration.
+
+Come to think of it, it might be good to add a random Emacs keybinding
+to the org-agenda display. I've installed keywiz, so I can reuse some of
+the code from that:
+
+#+BEGIN_EXAMPLE
+    (use-package keywiz)
+    (defun sacha/load-keybindings ()
+      "Since we don't want to have to pass through a keywiz game each time..."
+      (setq keywiz-cached-commands nil)
+      (do-all-symbols (sym)
+        (when (and (commandp sym)
+                   (not (memq sym '(self-insert-command
+                                    digit-argument undefined))))
+          (let ((keys (apply 'nconc (mapcar
+                                     (lambda (key)
+                                       (when (keywiz-key-press-event-p key)
+                                         (list key)))
+                                     (where-is-internal sym)))))
+            ;;  Politically incorrect, but clearer version of the above:
+            ;;    (let ((keys (delete-if-not 'keywiz-key-press-event-p
+            ;;                               (where-is-internal sym))))
+            (and keys
+                 (push (list sym keys) keywiz-cached-commands)))))))
+      (sacha/load-keybindings)
+      ;; Might be good to use this in org-agenda...
+      (defun sacha/random-keybinding ()
+        "Describe a random keybinding."
+        (let* ((command (keywiz-random keywiz-cached-commands))
+             (doc (and command (documentation (car command)))))
+          (if command
+              (concat (symbol-name (car command)) " "
+                      "(" (mapconcat 'key-description (cadr command) ", ") ")"
+                      (if doc
+                          (concat ": " (substring doc 0 (string-match "\n" doc)))
+                        ""))
+    "")))
+#+END_EXAMPLE
+
+... and a minor adjustment to org-agenda-custom-commands...
+
+(defun sacha/org-agenda-with-tip (arg) (org-agenda-list arg) (let
+((inhibit-read-only t)) (insert (sacha/random-keybinding) “\n”))) (setq
+org-agenda-custom-commands `((“a” “Agenda” sacha/org-agenda-with-tip)
+(“T” todo-tree “TODO”)
+ ;; more here; see my config file
+ )))
+
+... and now I see a random Emacs keybinding every time I review my to-do
+list.
+
+[[http://sachachua.com/blog/wp-content/uploads/2013/02/agenda-tip1.png][[[http://sachachua.com/blog/wp-content/uploads/2013/02/agenda-tip_thumb.png]]]]
+
+*If you find yourself forgetting to revisit the nifty Emacs snippets
+you've added to your configuration, add reminders for yourself.*Make
+yourself some flashcards with org-drill.el or flashcard.el and give that
+a try, or integrate reminders into your workflow. Have fun!

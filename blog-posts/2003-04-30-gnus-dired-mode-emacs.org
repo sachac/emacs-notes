@@ -1,0 +1,11 @@
+#+TITLE: gnus-dired-mode --- emacs
+
+April 30th, 2003 -
+[[http://sachachua.com/blog/p/728][http://sachachua.com/blog/p/728]]
+
+Dired integration `gnus-dired-minor-mode' installs key bindings in
+ dired buffers to send a file as an attachment (`C-c C-a'), open a file
+ using the approriate mailcap entry (`C-c C-f'), and print a file using
+ the mailcap entry (`C-c P'). It is enabled with
+
+(add-hook ‘dired-mode-hook ‘turn-on-gnus-dired-mode)

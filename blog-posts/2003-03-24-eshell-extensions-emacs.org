@@ -1,0 +1,12 @@
+#+TITLE: eshell extensions --- emacs
+
+March 24th, 2003 -
+[[http://sachachua.com/blog/p/580][http://sachachua.com/blog/p/580]]
+
+In a March 6 post to the
+[[mailto:help-gnu-emacs@gnu.org][help-gnu-emacs@gnu.org]] mailing list,
+Romain Francoise mentions
+ em-last.el, an eshell module that lets you cycle backwards through the
+argument list.
+
+[[http://orebokech.com/tmp/em-last.el][http://orebokech.com/tmp/em-last.el]]

@@ -1,0 +1,30 @@
+#+TITLE: Chapter is taking shape
+
+October 12th, 2007 -
+[[http://sachachua.com/blog/p/4398][http://sachachua.com/blog/p/4398]]
+
+After a little bit of
+
+[[[[http://sachachua.com/notebook/wiki/2007.10.12.php#anchor-2][http://sachachua.com/notebook/wiki/2007.10.12.php#anchor-2]]][thinking
+ about Org and Planner]], I'm starting to feel more comfortable with
+ the chapter that I'm writing. I pasted my draft into OpenOffice and
+ found to my surprise that I have about 13 pages of content, with 7
+ more to go.
+
+I'm comfortable working with the book as an org outline, and I really
+ love how it lets me navigate the outline and mark segments as TODO or
+ DRAFT. I think I'd rather draft it in Emacs than in OpenOffice.org,
+ where I'll be tempted to fiddle with formatting and editing. I'll use
+ longlines-mode to draft my book so that I can paste it into OpenOffice
+ for a rough idea of the page count, but that'll be my only concession.
+=)
+
+I'll put the chapter together before sending it to beta readers, which
+ would basically be the people who've e-mailed me or commented on my
+ book-related blog entries. If you want to be a beta reader, now's a
+ good time to volunteer! It involves reading rough drafts and going,
+ “Ooh, that \_is\_ cool,” or even better, “Hey, you missed this totally
+ awesome Emacs trick...” =) Encouragement will help keep me going, too!
+
+Random Emacs symbol: w3m-encoding-type-alist -- Variable: *Alist of
+ file suffixes and content encoding types.

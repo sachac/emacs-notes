@@ -1,0 +1,72 @@
+#+TITLE: Evolution as a Planner user
+
+December 11th, 2004 -
+[[http://sachachua.com/blog/p/2482][http://sachachua.com/blog/p/2482]]
+
+(Posted to emacs-wiki-discuss some time back.)
+
+Me, I started by using Planner+Remember to scribble down random
+ thoughts and put them somewhere publishable. It's kinda funny. Here's
+ the very first entry I have on 2001.11.02:
+
+--------------
+
+#+BEGIN_EXAMPLE
+     .#1 Playing with planner (linux, emacs)
+
+     Today's been a busy day. I don't suppose I can get planner to nicely
+     work with all the rest of emacs, can it? I rather like emacswiki...
+
+     Alright, seems to be fine. Planner's actually pretty nifty. I'll pop
+     the description into my remembrance agent index on the next scan, I
+     suppose; maybe it'll be useful.
+
+     I wonder if I can get the wiki to recognize non-wiki words. That would
+     be pretty nice.
+
+     Off to dinner with me now.
+#+END_EXAMPLE
+
+--------------
+
+Used it for a week, then stopped using it. Resumed on 2002.06.20,
+ having discovered remember-mode and the joys of blogging. For two
+ months, used planner as a blog.
+
+Then my 2002.08.17 epiphany note:
+
+--------------
+
+#+BEGIN_EXAMPLE
+     .#1 Planner is actually quite useful. So is emacs-wiki.
+#+END_EXAMPLE
+
+--------------
+
+That was when I started really using tasks. They were linked to
+ project pages, but I didn't have Gnus integration then. The first time
+ I created a task based on an e-mail message seems to have been
+ 2003.07.31. Almost a year of using Planner as just a blog, and that
+ was before planner-rss.el!
+
+It took me another 8 months to realize that it would be a good idea if
+ I could make a task from an e-mail message \_and\_ assign it to a plan
+ page. My first such task is on my 2004.03.12 entry. (That's this year!)
+
+Somewhere along the way, we added a few modules for integrating with
+ other parts of Emacs, so we moved to more flexible URL handling. The
+ number of modules increased even more. People add stuff to link to
+ whatever they use frequently. For example, I added the planner-erc
+ module so that I could keep track of who asked for what planner
+ feature on #emacs... \^\_\^
+
+So don't worry, you don't have to start with a really funky Planner
+ config. Use whatever you feel like using. Feel free to ask questions.
+ If something is missing, we'll try to see if we can hack it in. =)
+
+By the way, you don't need to remember the history of planner. I
+ didn't realize I took \_that\_ long to come up with obvious tweaks
+until
+ I, err, reviewed my planner files in the course of writing this
+ message. That's why this community is such a wonderful, wonderful
+ resource. People come up with all the coolest things... =)

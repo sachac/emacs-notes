@@ -1,0 +1,19 @@
+#+TITLE: More MobileOrg hacking on the Android
+
+December 16th, 2010 -
+[[http://sachachua.com/blog/p/21973][http://sachachua.com/blog/p/21973]]
+
+I've gotten IBM's permission to contribute my changes back to the
+MobileOrg project, yay! (Disclaimer: I'm doing this as myself and not as
+an employee of IBM, and all the usual disclaimers apply.) Code and
+issue-tracking at
+[[https://github.com/sachac/mobileorg-android][https://github.com/sachac/mobileorg-android]].
+
+Before and after:
+
+[[http://sachachua.com/blog/wp-content/uploads/2010/12/editbefore1.png][[[http://sachachua.com/blog/wp-content/uploads/2010/12/editbefore1_thumb.png]]]]
+[[http://sachachua.com/blog/wp-content/uploads/2010/12/image5.png][[[http://sachachua.com/blog/wp-content/uploads/2010/12/image_thumb5.png]]]]
+
+There are still
+[[https://github.com/sachac/mobileorg-android/issues][bugs to work
+out]], but whee!

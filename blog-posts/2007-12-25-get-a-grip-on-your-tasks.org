@@ -1,0 +1,66 @@
+#+TITLE: Get a grip on your tasks
+
+December 25th, 2007 -
+[[http://sachachua.com/blog/p/4535][http://sachachua.com/blog/p/4535]]
+
+Most time management books will tell you to think of your three- to
+ five-year goals, come up with projects, and then make tasks based on
+ those projects.
+
+You know that life doesn't happen as neatly as that. Instead, tasks
+ come at you from all sides: the bugs you discover while you read code,
+ the e-mails you get from coworkers, the milk that you need to pick up
+ on the way home. The task list just keeps getting bigger.
+
+I want to help you set up Emacs so that it will:
+
+-  capture all those tasks so that you don't worry about forgetting
+   anything,
+-  show you what you need to do so that you can work effectively,
+-  help you organize your day, your week, your life,
+-  show you what you've accomplished so that you have a feeling of
+   progress,
+-  help you plan the things that \_you\_ want to do, and
+-  fit the way \_you\_ want to work, whether that's Franklin-Covey, GTD,
+   or a home-brew system for keeping sane.
+
+If you've been keeping your task list in your head, you'll find it
+ immensely helpful to get it out and into your computer. If you swear
+ by your day planner or index cards, you might find that Emacs is not
+ only a good backup, but it can also give you an overview of where
+ you're going and where you've been. If you need to bill for your time,
+ you'll love how time tracking is integrated into your task list. And
+ even if you've never written a line of Emacs Lisp before, you might
+ find that customizing Emacs to fit the way you think will *transform*
+ the way you think.
+
+Give it a try. Use Emacs to manage your tasks for a month. Write
+ everything down in it. Use it to run your life. At the end of the
+ month, if it doesn't feel natural to you, at least you can say that
+ Emacs really isn't just an editor, it's a way of life. It might not be
+ \_your\_ way of life, but you'll have learned something from it,
+ guaranteed.
+
+In this chapter, you will learn how to:
+
+-  Plan from your projects (top-down)
+-  Plan from your task list (bottom-up)
+-  Schedule the tasks
+-  View your schedule and tasks
+-  Organize the tasks into projects
+-  Track your time
+-  Review your accomplishments
+
+Let's get started!
+
+(This is a draft for my book, “Wicked Cool Emacs”. See other
+[[http://sachachua.com/wp/category/wickedcoolemacs][Wicked Cool Emacs]]
+blog entries.)
+
+On Technorati:
+[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs]],
+[[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/book][book]]
+
+Random Emacs symbol: gnus-summary-number-of-articles-in-thread -
+ Function: Return the number of articles in THREAD.

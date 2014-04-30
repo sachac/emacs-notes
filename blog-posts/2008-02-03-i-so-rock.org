@@ -1,0 +1,52 @@
+#+TITLE: I so rock =)
+
+February 3rd, 2008 -
+[[http://sachachua.com/blog/p/4737][http://sachachua.com/blog/p/4737]]
+
+I have about 41 pages for my current chapter on taking notes in Emacs,
+and I still have to write the introduction and wrap-up sections. This
+means that I'll need to do some more editing. It's clearly time to apply
+another piece of advice from the wonderful book
+[[http://www.amazon.com/gp/redirect.html%3FASIN=0898795141%26tag=ws%26lcode=sp1%26cID=2025%26ccmID=165953%26location=/o/ASIN/0898795141%253FSubscriptionId=0525E2PQ81DD7ZTWTK82][How
+to Write Fast (While Writing Well),]] by David Fryxell: don't
+over-write, because the time you waste writing more than necessary and
+then editing down to the required length could be spent writing about
+something else!
+
+I also rock because I'm getting the hang of writing macros for
+OpenOffice.org. Basic is not my favorite language and OpenOffice.org
+macro programming is sufficiently obscure that it's hard to find
+examples of what I want to do.
+[[http://www.ooomacros.org/dev.php][OOoMacros.org]] helped me learn
+enough to write a few more functions to make my writing life better. I
+wrote two new functions today: one to mark up wingdings in my code, and
+another to mark up the source code examples. Both save me lots of
+tedious work. The wingding function replaced all instances of (1), ;;
+(1), (2), ;; (2), until (9) and ;; (9) with the corresponding wingding.
+The example function marked up everything enclosed in
+<example>..</example> tags, formatting the first and last lines in a
+different style and using a single-line code style for short examples.
+Between that and the two functions I'd previously written to format
+about 80% of my command and keyboard shortcuts, editing is just so much
+better.
+
+It seems that most people don't tinker with their tools. I like doing
+so. I like getting to know what I can do with a tool and how far I can
+push it. This can be frustrating sometimes (I spent all afternoon trying
+to get Emacs to play nicely with other weblogs!), but most of the time,
+it's both fun and useful. Not only am I saving myself time, I'm also
+exercising my brain and opening opportunities for other hacks down the
+line. This is good.
+
+Oh! And W- is giving
+[[http://www.newartisans.com/software/ledger.html][Ledger]] a try. The
+tool he'd been using to keep track of finances dropped some more of his
+data recently. Because it's all magic inside, he couldn't figure out
+what happened. I'd been going on about how awesome Ledger is, this
+command-line double-entry accounting tool that provides no bells or
+whistles but with which I can do all sorts of crazy things. He described
+how he wanted to budget, and I showed him how to do it. No screencast,
+but I do plan to review the audio and create some supporting materials
+for my upcoming article on Ledger and Gnuplot.
+
+Life is good. =)

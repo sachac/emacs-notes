@@ -1,0 +1,41 @@
+#+TITLE: Responding to notetaking entry on Sim Gamboa III's blog
+
+November 26th, 2004 -
+[[http://sachachua.com/blog/p/2429][http://sachachua.com/blog/p/2429]]
+
+[[http://simgamboaiii.blogspot.com/2004/11/note-taking.html][http://simgamboaiii.blogspot.com/2004/11/note-taking.html]]
+
+The best system is the one you grow yourself. How do you take notes?
+
+I mindmap a lot. Although mindmapping on paper is a lot of fun,
+ [[http://freemind.sourceforge.net][Freemind]]‘s keyword shortcuts lets
+ me mindmap nearly as quickly.
+
+I haven't opened Freemind in a while, though. Can't be bothered to
+ switch out of Emacs. My talks usually start out as text outlines. I
+ don't write it all in one swoop. I type random keywords, backtrack,
+ fill in, rewrite... Sometimes I pull out a sheet of paper and redo my
+ mindmap there, reorganizing it in the process. When I'm happy with the
+ sequence, it gets turned into OpenOffice.org slides.
+
+For random snippets, I use Planner because it's so easy to blog text
+ from my current window. People who use web browsers a lot might want
+ to check out [[http://www.bloglines.com][Bloglines]],
+ [[http://del.icio.us][del.icio.us]],
+ [[http://quicknote.mozdev.org][QuickNote]], and other Web annotation
+tools.
+
+I think that making it easier to get stuff out of your head is the
+ first thing you have to do. You can worry about the quality of said
+ stuff later. ;)
+
+As for the note about extreme programming: you might want to check out
+ David Allen's Getting Things Done method. It emphasizes focusing small
+ accomplishments and reflecting. =)
+
+- Freemind:
+[[http://freemind.sourceforge.net][http://freemind.sourceforge.net]]
+ - Bloglines: [[http://www.bloglines.com][http://www.bloglines.com]]
+ - del.icio.us: [[http://del.icio.us][http://del.icio.us]]
+ - QuickNote:
+[[http://quicknote.mozdev.org][http://quicknote.mozdev.org]]

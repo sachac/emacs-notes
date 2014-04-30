@@ -1,0 +1,12 @@
+#+TITLE: Evangelizing for the Church of Emacs
+
+March 17th, 2004 -
+[[http://sachachua.com/blog/p/1899][http://sachachua.com/blog/p/1899]]
+
+#+BEGIN_QUOTE
+  I just wanted to thank you for your Emacs enthusiasm. It is very
+   infectuous and helps me past some of the little cycles of fear I get
+   when I approach Emacs.
+#+END_QUOTE
+
+E-Mail from V. W. Marshall

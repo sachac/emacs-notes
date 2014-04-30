@@ -1,0 +1,82 @@
+#+TITLE: Why I use Emacs to manage my tasks
+
+December 20th, 2007 -
+[[http://sachachua.com/blog/p/4524][http://sachachua.com/blog/p/4524]]
+
+I'm writing a chapter on how to use Emacs to manage your tasks. I find
+it hard to explain why Emacs is so compelling.
+
+I've tried all sorts of other task manager before. I used Lotus
+Organizer, Microsoft Outlook, and Lotus Notes. I've tried iPaqs and
+Palms. I've tried Tada List and Remember the Milk (which has an
+interesting Gmail plugin). I've seen people use Life Balance. Heck, I've
+even done the Hipster PDA, index cards, Moleskine hacks, and bits of
+paper (which I always ended up losing).
+
+I keep coming back to my Emacs.
+
+Day after day, year after year, it's the only system I'd trust with my
+plans. (Yes, I trust Emacs with my life. Meep! I've really gone off the
+deep end, haven't I?)
+
+Why? I spent some time talking things through last night, trying to get
+to the bottom of the reason why Emacs works for me and why it might work
+for other people. (Well, I was talking to myself and using a voice
+recorder, as my significant other is a fan of the Other Editor.)
+
+Why Emacs?
+
+-  *For the ease of working with text files?* I hate using the mouse,
+   and I've loved being able to quickly review, reorganize, and check
+   off tasks with keyboard shortcuts. I can back up the text files and
+   not worry about anything getting corrupted. I can put in practically
+   anything I want.
+-  *For the ability to automatically pick up information, such as a
+   hyperlink back to the source?* I can create tasks that are
+   automatically hyperlinked to e-mail, contact records, web pages,
+   files... whatever I'm looking at. This was \_really\_ handy back when
+   I did my work-related e-mail in Emacs as well, because I could jump
+   back to the original message quickly.
+-  *For the customizability?* It still boggles me that you can't just
+   redefine the keyboard shortcuts for all applications. I love
+   customizing things to fit my idiosyncrasies.
+-  *For the interoperability?* I love how I can pull together different
+   modules. For example, I had the crazy idea of hooking my task manager
+   to [[http://www.twitter.com/sachactasks][Twitter]], just for fun. I
+   wrote a little code to combine twit.el and org.el, and it jus worked.
+
+Hmm. Those last two things there are interesting, because they're \_so\_
+difficult to demonstrate when people are looking at my computer. Or when
+I'm writing a book, for that matter.
+
+It's not just about the freedom to customize it. Many programmers'
+ development environments are customizable. What's great---no,
+ *transformational*---about task management in Emacs is that each
+ customization encourages you to explore even more. Here's how that
+works:
+
+-  Think of a better way to do things.
+-  (Look for people who have done that before. Discover several similar
+   things. Write about your idea on the mailing list. Get other ideas
+   from people.)
+-  Make it happen in code. This frees up your brain and inspires you to
+   think of other crazy ideas.
+
+I think what's really amazing is that you get \_used\_ to this process.
+ You get a crazy idea, you build it in, you're happy about the hack,
+ and you're free to think of other crazy ideas. More than that, you
+ give your brain permission to think of crazy ideas, because you can
+ actually make it happen. And you get used to thinking about how you do
+ things, looking for ways to do things better. And you get used to
+ talking about things with other people who are also looking for ways
+ to do things better.
+
+How do I make this process clearer for people? How do I show people
+ how amazing it is to consciously work on being more effective,
+ together with other geeks who are doing similar things?
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/wickedcoolemacs][wickedcoolemacs]]
+
+Random Emacs symbol: w3m-list-buffers -- Function: Return a list of
+buffers in which emacs-w3m sessions are open.

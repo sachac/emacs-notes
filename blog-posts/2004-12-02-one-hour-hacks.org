@@ -1,0 +1,31 @@
+#+TITLE: One-hour hacks
+
+December 2nd, 2004 -
+[[http://sachachua.com/blog/p/2460][http://sachachua.com/blog/p/2460]]
+
+Do tell me what happened with your web development company. At the
+ moment, I'm wondering what caused you to initiate your one-hour hack.
+
+Just Because I Can. <impish grin> Never underestimate an annoyed
+ geekette with a block of free time.
+
+Seriously, keeping track of how much time it takes me to actually
+ implement things... Wow. Thanks to
+
+[[http://sachachua.com/notebook/emacs/dev/planner/planner-timeclock.el][../emacs/dev/planner/planner-timeclock.el]],
+I can tell you how long
+ something took to implement. That's given me a newfound appreciation
+ for lunch hour and (formerly) free time. Lunch hour is another new
+ planner feature, or a new website look, or a few new discoveries on
+ the Net.
+
+I don't think we'll be needing the web dev company any more. I think
+ that at this point we aren't likely to see significant improvements
+ with professional design, given that the company isn't into
+ copywriting. I would've greatly appreciated the services of a real
+ copywriter who can, say, review our documents and write for the web,
+ but the web firms in the Philippines don't offer this as a service. I
+ suppose I'll just have to trust my senses when it comes to the Net.
+ The current [[http://www.adphoto.com.ph][Adphoto website]] is still
+ too marketing-fluffy for my tastes, but I can tweak that when I get
+ better ideas.

@@ -1,0 +1,57 @@
+#+TITLE: Emacs clinic at the Linux Caffe
+
+September 15th, 2006 -
+[[http://sachachua.com/blog/p/3858][http://sachachua.com/blog/p/3858]]
+
+Quinn Fung needed some help with Muse and RDF so that she could easily
+generate RSS feeds from Emacs, so we declared today to be Emacs Clinic
+day at the [[http://www.linuxcaffe.ca][Linux Caffe]].
+
+We started by getting publishing to work. We then figured out how to get
+RDF to publish, and that was pretty okay too.
+
+Quinn needed multiple authors, and muse-journal didn't support it yet,
+ so we hacked it in. I told her to pick a syntax, and I added code to
+ make it happen. It took us a while to track things down, but it turned
+ out to be a reasonably easy addition. (I need to refactor that code
+ sometime... that's a really long function!)
+
+Along the way, we found a bug in muse-journal. Muse-journal summarizes
+entries by taking the first two sentences, but dies when the post
+doesn't contain at least two periods. I spent a fair bit of time tracing
+through the different changes we made before realizing that it wasn't my
+bug. I probably would've found it earlier, but debug-on-error wasn't
+getting honored. Odd. Anyway, here's the patch, which I'll submit to GNA
+when I get back into the swing of things:
+
+#+BEGIN_EXAMPLE
+    --- orig/lisp/muse-journal.el
+    +++ mod/lisp/muse-journal.el
+    @@ -570,7 +570,9 @@
+               (let ((beg (point)))
+                 (if (muse-style-element :summarize)
+                     (progn
+    -                  (forward-sentence 2)
+    +                  (condition-case err
+    +                      (forward-sentence 2)
+    +                    (error (goto-char (point-min))))
+                       (setq desc (concat (buffer-substring beg (point)) "...")))
+                   (save-restriction
+                     (muse-publish-markup-buffer "rss-entry" "html")
+#+END_EXAMPLE
+
+Now Quinn's jumping feet-first into Lisp development by doing the Atom
+ implementation. muse-atom does single-entry Atom files, but she can
+ model it on muse-journal's RSS implementation.
+
+I also helped Ian set up a very very basic Planner. It reminded me
+ that I *really* need to package planner-bundle again, and either
+ retire or update plannerlove. In fact, I need to set up scripts so
+ that it's ridiculously easy to keep up to date...
+
+I miss hacking on Emacs! This is fun. I'll reconfigure my kernel and
+ get VPN working. Then I'll set up my Emacs development environment
+ again...
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]

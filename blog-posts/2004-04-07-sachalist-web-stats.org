@@ -1,0 +1,32 @@
+#+TITLE: sacha/list-web-stats
+
+April 7th, 2004 -
+[[http://sachachua.com/blog/p/1953][http://sachachua.com/blog/p/1953]]
+
+Foo bar baz qux ba
+
+#+BEGIN_EXAMPLE
+    (defun sacha/list-web-stats (prefix)
+      (interactive (list current-prefix-arg))
+      (goto-char (point-min))
+      (let ((results) referrer page)
+        (while (re-search-forward "GET \\([^ ]+\\) [^\"]+\"[^\"]+\"\\([^\"]+\\)" nil t)
+          (setq page (match-string 1))
+          (setq referrer (match-string 2))
+          (when (string-match "\\(google\\.[^/]+\\)/search.+?q=\\([^&]+\\)"
+                              referrer)
+            (setq referrer (concat (match-string 1 referrer) "://" (match-string 2 referrer))))
+          (add-to-list
+           'results
+           (if prefix
+               (concat page " " referrer)
+             (concat referrer " " page))))
+        (setq results (sort results 'string<))
+        (with-current-buffer (get-buffer-create "*Web stats*")
+          (erase-buffer)
+          (while results
+            (insert (car results) "\n")
+            (setq results (cdr results)))
+          (pop-to-buffer (current-buffer)))))
+#+END_EXAMPLE
+

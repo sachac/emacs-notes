@@ -1,0 +1,16 @@
+#+TITLE: Nifty! The quick start's sorta readable!
+
+November 5th, 2004 -
+[[http://sachachua.com/blog/p/2356][http://sachachua.com/blog/p/2356]]
+
+[[http://www.livejournal.com/users/eclair/][Clair]] has
+ started playing around with Emacs and Planner. She found the
+ [[http://www.emacswiki.org/cgi-bin/wiki/PlannerModeQuickStart][quick
+start]]
+ useful. Yaaaaaaaaaaaaaaaaaaaaaaaaaay!
+
+Clair: A basic Planner should automatically pick up filenames from the
+ current buffer unless you're on a date page. Try using
+ planner-create-task-from-buffer from another plan page or from a file
+ on your hard disk. If that doesn't do something interesting, please
+ e-mail me. =) Have fun!

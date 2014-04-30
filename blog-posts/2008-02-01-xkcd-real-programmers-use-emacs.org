@@ -1,0 +1,10 @@
+#+TITLE: xkcd: Real programmers use Emacs
+
+February 1st, 2008 -
+[[http://sachachua.com/blog/p/4725][http://sachachua.com/blog/p/4725]]
+
+[[http://xkcd.com/378/][[[http://imgs.xkcd.com/comics/real_programmers.png]]]]
+
+From [[http://xkcd.com/378/][xkcd]]
+
+Thanks to [[http://arseneault.ca/][Jean-Francois Arsenault]]!

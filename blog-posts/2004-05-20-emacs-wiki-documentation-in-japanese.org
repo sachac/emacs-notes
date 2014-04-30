@@ -1,0 +1,6 @@
+#+TITLE: Emacs-wiki documentation in Japanese
+
+May 20th, 2004 -
+[[http://sachachua.com/blog/p/2064][http://sachachua.com/blog/p/2064]]
+
+[[http://www-aos.eps.s.u-tokyo.ac.jp/~takagi/EmacsWiki.html][http://www-aos.eps.s.u-tokyo.ac.jp/~takagi/EmacsWiki.html]]

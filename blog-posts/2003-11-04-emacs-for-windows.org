@@ -1,0 +1,7 @@
+#+TITLE: Emacs for Windows
+
+November 4th, 2003 -
+[[http://sachachua.com/blog/p/1305][http://sachachua.com/blog/p/1305]]
+
+There is a CVS-version (21.3.50.1) available at
+[[http://www.crasseux.com/emacs/][http://www.crasseux.com/emacs/]] .

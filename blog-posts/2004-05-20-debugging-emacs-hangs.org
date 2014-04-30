@@ -1,0 +1,34 @@
+#+TITLE: Debugging Emacs hangs
+
+May 20th, 2004 -
+[[http://sachachua.com/blog/p/2066][http://sachachua.com/blog/p/2066]]
+
+#+BEGIN_QUOTE
+  Run emacs in gdb, preferably from the src directory where you compiled
+  emacs:
+
+  #+BEGIN_EXAMPLE
+         $ cd ~/emacs-build/src
+         $ gdb ./emacs
+  #+END_EXAMPLE
+
+  [There's a special .gdbinit file in that directory that defines handy
+  emacs
+   debugging commands.]
+
+  When it hangs, hit C-z or something to exit to the debugger (you can't
+  use
+   C-c like usual when debugging emacs, because emacs' standard .gdbinit
+  file
+   changes gdb's SIGINT handling to make C-g work properly on ttys).
+
+  Then look at a C backtrace (“backtrace”) and lisp backtrace
+  (“xbacktrace”)
+   to see what's up.
+
+  For more fun, do the above from another emacs session using emacs'
+  `M-x gdb'
+   command.
+#+END_QUOTE
+
+E-Mail from Miles Bader

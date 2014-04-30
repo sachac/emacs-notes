@@ -1,0 +1,43 @@
+#+TITLE: Eshell redirection
+
+October 21st, 2007 -
+[[http://sachachua.com/blog/p/4415][http://sachachua.com/blog/p/4415]]
+
+Mike Mattie has this awesome Emacs tip for
+ Eshell: redirecting to buffers and Lisp symbols!
+
+To overwrite buffer “foo”:
+
+#+BEGIN_EXAMPLE
+    ls > #<buffer foo>
+#+END_EXAMPLE
+
+To append to buffer “foo”:
+
+#+BEGIN_EXAMPLE
+    ls >> #<buffer foo>
+#+END_EXAMPLE
+
+To insert at point in buffer “foo”:
+
+#+BEGIN_EXAMPLE
+    ls >>> #<buffer foo>
+#+END_EXAMPLE
+
+To redirect to a Lisp symbol:
+
+#+BEGIN_EXAMPLE
+    ls >#'some-variable
+#+END_EXAMPLE
+
+I had no idea Emacs could do that. Cool!
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+E-Mail from Mike Mattie
+
+Random Emacs symbol: ps-extend-face-list -- Function: Extend face in
+ALIST-SYM.
+
+Thanks to David Ongaro for catching that!

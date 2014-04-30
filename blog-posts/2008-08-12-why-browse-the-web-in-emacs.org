@@ -1,0 +1,76 @@
+#+TITLE: Why browse the Web in Emacs?
+
+August 12th, 2008 -
+[[http://sachachua.com/blog/p/5064][http://sachachua.com/blog/p/5064]]
+
+“Are you browsing Slashdot in Emacs?”, W- asked me after he glanced at
+my screen.
+
+With Emacs' reputation for including everything \_and\_ the kitchen
+sink, you probably won't be surprised to hear that there's more than one
+way to surf the Internet using your text editor. With today's
+Javascript- and image-heavy websites, it can be hard to believe that
+anyone would use a text-based browser with limited support for many of
+the things we take for granted. Still, a Web browser in your text editor
+can be surprisingly useful. Here are some of the reasons why you might
+like it:
+
+-  *Browsing is faster and less distracting.* Forget flashing ads,
+   garish colors, and large images. When you surf the Web in Emacs, you
+   can focus on reading, and you can use all the typical Emacs shortcuts
+   for navigating around. You can view images when you want to.
+    If you need to see something that Emacs doesn't support, you can
+   easily open the current page in an external Web browser.
+-  *You can integrate it into your work.* With a little bit of Emacs
+   Lisp, you can qucikly look up information on the Web based on what
+   you're currently working on. For example, PHP mode comes with a
+   shortcut that lets you look up the current function's documentation
+   in the PHP manual. You can look up bug report details, dictionary
+   definitions, and Wikipedia pages with minimal typing, too. If you use
+   Emacspeak, you can set up the web browser to speech-synthesize more
+   than what's displayed on screen. The more you use Emacs, the more
+   benefits you get from the integration.
+-  *You can customize everything.* You can customize your Emacs
+   experience quickly and easily, and if you spend a lot of time on the
+   Net, you'll appreciate having your own shortcuts and functions. For
+   example, I've completely remapped my keyboard shortcuts to support
+   tabbed browsing on a Dvorak keyboard, and I've defined a few
+   functions to make frequently-used commands much easier. You can even
+   use functions to process Web pages and either summarize the
+   information you're interested in or make pages more navigable. It's
+   all just Emacs Lisp.
+-  *You're safe from browser exploits.* No Javascript pop-ups, no image
+   bugs, no browser-based malware that can take over your comuter or
+   steal data. Just content.
+-  *You need less memory.* Why open up a memory-intensive graphical
+   Web-based browser when you've got Emacs open anyway?
+
+There's more than one way to browse the Web in Emacs, of course.
+Browse-url is a package that makes it easy to open URLs in your
+preferred browser or browsers. For example, you can use it to browse the
+Web in Mozilla Firefox, and (of course) you can use it to browse the Web
+within Emacs itself. For browsing within Emacs, you can use w3m.el, an
+interface to the external W3M browser, or w3, a Web browser written
+entirely in Emacs Lisp. Of the two, I prefer w3m.el, which is much
+faster and more featureful than w3. Both can display graphics, tables,
+and frames, and w3 supports stylesheets.
+
+More about Emacs and browsing the Web soon! Planned projects for this
+chapter of [[http://sachachua.com/category/wp/wickedcoolemacs][Wicked
+Cool Emacs]]:
+
+#+BEGIN_EXAMPLE
+    *** Project XXX: Browse the Web
+    *** Project XXX: Open the current webpage in an external browser
+    *** Project XXX: Different browsers for different pages
+    *** Project XXX: Toggle between Web and work
+    *** Project XXX: Quick search
+    *** Project XXX: Customize your keymap
+    *** Project XXX: Download files
+    *** Project XXX: Add access keys
+    *** Project XXX: Use social bookmarking
+    *** Project XXX: Typeahead
+    *** Project XXX: Preview HTML
+    *** Project XXX: Read Web pages as news
+#+END_EXAMPLE
+

@@ -1,0 +1,7 @@
+#+TITLE: planner day links
+
+February 21st, 2003 -
+[[http://sachachua.com/blog/p/428][http://sachachua.com/blog/p/428]]
+
+I'd like to add planner day links for previous day entry (might not be
+yesterday) and next day entry (might not be today).

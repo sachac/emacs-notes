@@ -1,0 +1,56 @@
+#+TITLE: Remembering to Org and Planner
+
+October 5th, 2007 -
+[[http://sachachua.com/blog/p/4384][http://sachachua.com/blog/p/4384]]
+
+Most of my notes are in Emacs Planner. Handy commands like M-x
+ remember help me quickly take notes and write down ideas, saving the
+ text to my blog.
+
+While reading the manual for Org, another PIM for Emacs (yes, another
+ one!), I decided to give it a try. Org uses Remember, the same quick
+ note-taking module that Planner does. I wanted to set up Emacs so that
+ I could remember a note and have it go either to my Planner-based blog
+ or to my notes file.
+
+M-x remember is a two-step procedure. First, Remember sets up the
+ buffer and inserts the annotation. After you write the note and press
+ C-c C-c, Remember passes the note's contents to a handler function.
+ Because Planner and Org have incompatible annotation functions and
+ destinations, I needed to override both.
+
+Here's how I did that:
+
+#+BEGIN_EXAMPLE
+    (defun sacha/remember-to-org ()
+      (interactive)
+      (let ((org-directory "~/path/to/my/orgfiles/")
+            (org-default-notes-file "~/.notes")
+            (remember-annotation-functions '(org-remember-annotation))
+            (remember-mode-hook (cons 'org-remember-apply-template
+                                      remember-mode-hook)))
+        (remember)
+        (set (make-variable-buffer-local 'remember-handler-functions)
+             '(org-remember-handler))))
+    (global-unset-key [f9 ?o])
+    (global-set-key [f9 ?o ?r] 'sacha/remember-to-org)
+    (global-set-key [f9 ?r ?o] 'sacha/remember-to-org)
+#+END_EXAMPLE
+
+I've set up Remember to work with Planner by default:
+
+#+BEGIN_EXAMPLE
+    (setq remember-handler-functions '(remember-planner-append))
+    (setq remember-annotation-functions planner-annotation-functions)
+    (global-set-key [f9 ?r ?p] 'remember)
+    (global-set-key [f9 ?p ?r] 'remember)
+    (global-set-key (kbd " r SPC") 'remember)
+#+END_EXAMPLE
+
+I've added plenty of keyboard shortcuts to see which ones feel the most
+natural.
+
+I'm looking forward to playing around with this and seeing what works!
+
+Random Emacs symbol: tty-color-define -- Function: Specify a tty color
+by its NAME, terminal INDEX and RGB values.

@@ -1,0 +1,21 @@
+#+TITLE: Emacs and Gnus: zomg, new chapter out the door!
+
+August 4th, 2008 -
+[[http://sachachua.com/blog/p/5036][http://sachachua.com/blog/p/5036]]
+
+So I \_finally\_ pulled everything together and got my Gnus chapter out
+the door. Hooray, hooray, hooray!
+
+-  [[http://sachachua.com/notebook/wickedcool/wc-emacs-05-gnus.pdf][Reading
+   Mail with Gnus (PDF)]]
+-  [[http://sachachua.com/notebook/wickedcool/wc-emacs-05-gnus.html][Reading
+   Mail with Gnus (HTML)]], produced by Org
+
+Disclaimers: It's rough, it probably makes a few assumptions about
+whatever version of Emacs I'm running, it's probably missing your
+favorite tips (and I'd love to add them!), and it probably has typos.
+Meep. But it's out there!
+
+Hooray, hooray, hooray!
+
+Next step: write about web-browsing in Emacs...

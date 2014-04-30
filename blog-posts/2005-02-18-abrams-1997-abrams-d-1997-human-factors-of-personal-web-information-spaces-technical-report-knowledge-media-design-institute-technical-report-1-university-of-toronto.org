@@ -1,0 +1,43 @@
+#+TITLE: [Abrams, 1997] Abrams, D. (1997). Human factors of personal web
+information spaces. Technical report, Knowledge Media Design Institute
+Technical Report 1, University of Toronto.
+
+February 18th, 2005 -
+[[http://sachachua.com/blog/p/2629][http://sachachua.com/blog/p/2629]]
+
+[[http://www.dabrams.com/research/bookmarks/thesis/thesis.pdf][http://www.dabrams.com/research/bookmarks/thesis/thesis.pdf]]
+
+“Human factors of personal web information spaces” is a detailed
+ statistical study of how people use bookmarks, including observations
+ on filing and navigation patterns.
+
+Many of the issues raised in the paper have been addressed by recent
+ innovations in bookmarking. For example, browser-based bookmarks allow
+ you to automatically check if pages have changed or disappeared. The
+ flat tag-based organization of services such as
+[[http://del.icio.us][http://del.icio.us]]
+ reduce much of the cognitive load of organizing projects.
+ [[http://del.icio.us][http://del.icio.us]] also offers a chronological
+view of bookmarks.
+
+This paper made me think about organizational strategies for
+ categorized tasks. Tasks in Planner and other PIMs that allow you to
+ directly hyperlink to resources (Microsoft Entourage, Microsoft
+ Outlook) act as bookmarks, creating a personal information space
+ annotated by the things you need to do.
+
+Task- and schedule-related personal information suffers from many of
+ the same problems as the World Wide Web. Information overload comes in
+ the form of e-mail about tasks and appointments. The inbox is polluted
+ by irrelevant messages. Task- and schedule-related information tends
+ to be less chaotic than the Web because the former is personal by
+ nature, but it still lacks aggregate structure and a global view.
+
+This paper makes me want to look into the organizational strategies of
+ PIM users. For example, how do people categorize their tasks?
+ Creation-time filing or sporadic filing? How do they choose
+ categories? How do they deal with long task lists? Do they really
+ reorder tasks for priorities, or just scan through them and pick
+ items? Can I characterize PIM users by scale, like the way Abrams
+ describes light to heavy bookmark users, citing characteristic
+ strategies?

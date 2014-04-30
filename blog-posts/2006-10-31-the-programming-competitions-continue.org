@@ -1,0 +1,13 @@
+#+TITLE: The programming competitions continue...
+
+October 31st, 2006 -
+[[http://sachachua.com/blog/p/3988][http://sachachua.com/blog/p/3988]]
+
+Didith Rodrigo's blog post about
+[[http://thespoke.net/blogs/didith/archive/2006/10/30/972151.aspx][Ateneo's
+performance in the ACM Intercollegiate Programming Competition]]
+reminded me that the first-years I taught are in their fourth year now,
+and will soon face the Real World. I miss teaching...
+
+Random Emacs symbol: planner-page-name -- Function: Return the canonical
+form of a Muse page name.

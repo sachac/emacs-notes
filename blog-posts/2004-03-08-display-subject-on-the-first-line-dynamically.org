@@ -1,0 +1,64 @@
+#+TITLE: Display subject on the first line, dynamically
+
+March 8th, 2004 -
+[[http://sachachua.com/blog/p/1859][http://sachachua.com/blog/p/1859]]
+
+#+BEGIN_EXAMPLE
+    ;;; gnus-summary-update-subject.el --- Display subject on the first line, dynamically
+
+    ;;; Time-stamp: <2004-03-07 18:02:03 bojohan>
+    ;; 
+
+    ;; Modified by Sacha to work with subjects anywhere in the summary line.
+
+    ;;; Code:
+
+    (defvar gnus-summary-update-subject-overlay nil)
+    (defvar gnus-summary-update-subject-hide-overlay nil)
+    (setq gnus-summary-same-subject (propertize " " 'gnus-summary-same-subject t))
+
+    (defvar gnus-summary-update-subject-thread-marker ">")
+
+    (defun gnus-summary-update-subject (&optional window start)
+      (when gnus-summary-update-subject-overlay
+        (save-excursion
+          (goto-char (or start (window-start)))
+          (when (re-search-forward gnus-summary-update-subject-thread-marker (line-end-position) t)
+            (if (not (text-property-any (line-beginning-position)
+                                        (line-end-position)
+                                        'gnus-summary-same-subject t))
+                (progn
+                  (delete-overlay gnus-summary-update-subject-overlay)
+                  (delete-overlay gnus-summary-update-subject-hide-overlay))
+              (let ((subject (gnus-summary-subject-string
+                              (gnus-summary-article-number))))
+                (move-overlay gnus-summary-update-subject-hide-overlay
+                              (+ (point) 2) (+ (point) 2 (length subject)))
+                (move-overlay gnus-summary-update-subject-overlay
+                              (point) (1+ (point)))
+              ;;(overlay-put gnus-summary-subject-overlay 'window (selected-window))
+                (overlay-put gnus-summary-update-subject-hide-overlay
+                             'invisible t)
+                (overlay-put gnus-summary-update-subject-hide-overlay
+                             'intangible t)
+                (overlay-put gnus-summary-update-subject-overlay
+                             'after-string subject)))))))
+
+
+    (defun gnus-summary-update-subject-setup ()
+      (add-hook 'window-scroll-functions 'gnus-summary-update-subject nil t)
+      (set (make-local-variable 'gnus-summary-update-subject-overlay)
+           (make-overlay 0 0))
+      (set (make-local-variable 'gnus-summary-update-subject-hide-overlay)
+           (make-overlay 0 0)))
+    (add-hook 'gnus-summary-prepared-hook 'gnus-summary-update-subject-setup)
+
+    (defadvice gnus-summary-position-point (after summary-update-subject activate)
+      (gnus-summary-update-subject))
+
+    (provide 'gnus-summary-update-subject)
+
+    ;;; gnus-summary-update-subject.el ends here
+#+END_EXAMPLE
+
+[[http://sachachua.com/notebook/emacs/gnus-summary-update-subject.el][../../notebook/emacs/gnus-summary-update-subject.el]]

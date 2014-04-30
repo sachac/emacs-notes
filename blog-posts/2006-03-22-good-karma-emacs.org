@@ -1,0 +1,26 @@
+#+TITLE: Good karma: Emacs
+
+March 22nd, 2006 -
+[[http://sachachua.com/blog/p/3330][http://sachachua.com/blog/p/3330]]
+
+From Paul Lussier:
+
+#+BEGIN_QUOTE
+  One day, about 2 years ago now (Holy Cow! Sacha, has it been *that*
+   long? :) I stumbled upon this thing called emacs-wiki and
+   planner-mode. I fired off an e-mail to the maintainer asking a couple
+   of questions. Someone named Sacha answered back and had such
+   enthusiasm for my e-mail and my questions that i immediately joined
+   the list and started playing with planner and emacs-wiki.
+#+END_QUOTE
+
+Awwwwwwwwwwwwwwwwww! =) Melt, melt, melt.
+
+On Technorati: [[http://www.technorati.com/tag/goodkarma][goodkarma]],
+[[http://www.technorati.com/tag/emacs][emacs]]
+
+E-Mail from Paul Lussier
+
+Random Japanese sentence:
+Ã£Â?Â„Ã£Â?Â™Ã£Â?Â®Ã¤Â¸ÂŠÃ£Â?Â«Ã£Â?Â­Ã£Â?Â“Ã£Â?ÂŒÃ£Â?Â„Ã£Â?Â¾Ã£Â?Â™Ã£Â€Â‚
+There is a cat on the chair. Isu no ue ni neko ga imasu.

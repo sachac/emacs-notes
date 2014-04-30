@@ -1,0 +1,17 @@
+#+TITLE: total-difference
+
+March 22nd, 2004 -
+[[http://sachachua.com/blog/p/1913][http://sachachua.com/blog/p/1913]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/total-difference (list)
+      "Computes the sum of the differences between successive items in LIST."
+      (let ((distance 0))
+        (while (cdr list)
+          (setq distance (+ (abs (- (car list) (car (cdr list)))) distance))
+          (setq list (cdr list)))
+        distance))
+#+END_EXAMPLE
+
+I used this to calculate the total distance travelled by a read/write
+ head given the list of tracks.

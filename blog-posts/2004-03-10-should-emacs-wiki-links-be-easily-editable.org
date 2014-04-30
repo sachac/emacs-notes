@@ -1,0 +1,14 @@
+#+TITLE: Should emacs-wiki links be easily editable?
+
+March 10th, 2004 -
+[[http://sachachua.com/blog/p/1866][http://sachachua.com/blog/p/1866]]
+
+With the recent addition of `emacs-wiki-link-escape' and
+ `emacs-wiki-link-unescape', links are now unescaped before displaying.
+ This makes them uneditable. People probably shouldn't be editing the
+ links manually as this can screw up planner links (among others), but
+ I should provide an easy way to edit the link at point. I have a
+ function in my emacs-wiki-config.el to do that. I'll probably bind to
+ C-c C-e, which makes sense.
+
+[[http://sachachua.com/notebook/wiki/EmacsWikiMode][EmacsWikiMode]]

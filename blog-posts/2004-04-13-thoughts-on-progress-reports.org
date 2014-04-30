@@ -1,0 +1,36 @@
+#+TITLE: Thoughts on progress reports
+
+April 13th, 2004 -
+[[http://sachachua.com/blog/p/1960][http://sachachua.com/blog/p/1960]]
+
+[[http://3w-agility.blogspot.com][Dean Michael Berris]] blogged:
+
+#+BEGIN_QUOTE
+  I personally despise the need to write progress reports in human
+   terms --- mainly I want to show that progress is being made in terms
+   of code and functionality. I don't want to put down into writing
+   things that I feel about my groupmates, but rather I would like to
+   commend them just for their accomplishments. I've just submitted
+   one progress report, and I never really liked it. My grade may be
+   in jeopardy because of that, but anyway that's how I personally
+   feel.
+#+END_QUOTE
+
+I find I \_like\_ making progress reports, if only in terms of e-mail to
+ the emacs-wiki-discuss mailing list or entries in blog. I like
+ summarizing my changes in a changelog and telling people about my
+ future plans. Not everyone can glance at code and understand it. Even
+ I'd get lost if I had to stare at my diffs to find out what I changed
+ when. I think progress reports are a Good Thing.
+
+In fact, I think they're such a good thing that I want my students to
+ do them, even the first year students. I want them to get into the
+ habit of reflecting on what they've done, what they've learned, and
+ what they still need to learn. I want them to get into the habit of
+ mapping out what they want to do and marking out what they've
+ accomplished. I want them to explore not only their accomplishments in
+ terms of code but their growth in so many other areas, like working
+ with groupmates. I want to hear about problems not just at the end but
+ throughout the duration of the project.
+
+[[http://sachachua.com/notebook/wiki/PersonalityQuizzes][PersonalityQuizzes]]

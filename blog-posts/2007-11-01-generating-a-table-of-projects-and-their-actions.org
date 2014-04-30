@@ -1,0 +1,52 @@
+#+TITLE: Generating a table of projects and their actions
+
+November 1st, 2007 -
+[[http://sachachua.com/blog/p/4429][http://sachachua.com/blog/p/4429]]
+
+Here's how I generated my list of
+[[http://sachachua.com/101goals.html][101 short-term goals]].
+
+First, I brainstormed the list of goals in an org-mode file. Each goal
+ is represented by a level-2 outline heading. Current projects are
+ tagged :PROJECT:. The goals are grouped under level-1 outline
+ headings, like this:
+
+#+BEGIN_EXAMPLE
+     * Reading, Writing, and Sharing
+     ** 30. Write and publish a 350-page book about Emacs :PROJECT:
+#+END_EXAMPLE
+
+Then I went through all of the goals and added next actions to each of
+them.
+
+#+BEGIN_EXAMPLE
+     * Reading, Writing, and Sharing
+     ** 30. Write and publish a 350-page book about Emacs :PROJECT:
+     *** TODO 30min Write another blog post about Emacs.
+#+END_EXAMPLE
+
+This made it easy to keep track of my finished tasks. Whenever I
+ finished a next action, I'd mark a task as DONE and create another
+ task in the same project. (Hey, I can automate that bit...)
+
+To generate the list of next actions for projects without including
+ the finished tasks, I used C-c C-v (org-show-todo-tree). I found that
+ command by typing M-x org-show- and letting icomplete-mode show me the
+ possible functions.
+
+Then I exported the visible tree to a temporary buffer with C-c C-e v
+ SPC (org-export, visible, keep buffer). I used re-builder to test a
+ regular expression that combined the project headline with the task
+ headline. I then copied the regular expression into a short Lisp
+ program that replaced all the matching lines with the table row. I
+ then exported this with C-c C-e H (org-export, HTML to buffer) and
+ edited the page a little before saving it to a file.
+
+This ability to quickly parse and massage the data into the form I
+ want is one of the things that I love about Emacs. =)
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/org][org]]
+
+Random Emacs symbol: debugger-setup-buffer -- Function: Initialize the
+`*Backtrace*' buffer for entry to the debugger.

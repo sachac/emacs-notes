@@ -1,0 +1,31 @@
+#+TITLE: Emacs: Telling external processes about terminal capabilities, and
+watching over other people's shoulders
+
+January 18th, 2012 -
+[[http://sachachua.com/blog/p/23114][http://sachachua.com/blog/p/23114]]
+
+Justin Giancola
+([[https://twitter.com/#!/elucid/status/159767393428705280][@elucid]])
+wanted to use
+[[https://github.com/nschum/full-ack/blob/master/full-ack.el][full-ack.el]]
+to search through his project files using the Ack tool, but Ack refused
+to run because it didn't think his terminal had enough capabilities. A
+simple fix was to set the TERM variable with
+
+#+BEGIN_EXAMPLE
+    (setenv "TERM" "xterm")
+#+END_EXAMPLE
+
+which told Ack that Emacs was fine with its output.
+
+(Speaking of Ack integration -- This being the Emacs world, there's more
+than one way to do things. You might also want to check out
+[[http://technosorcery.net/blog/2011/04/02/a-better-emacs-front-end-to-ack/][ack-and-a-half.el]],
+which is midway between ack.el and full-ack.el.)
+
+It was interesting hanging out with someone else who used Emacs, and
+being able to share tips. I don't run into many other Emacs geeks, but I
+sporadically hang out in the #emacs channel or browse Planet Emacsen to
+be inspired. It's funny how many of the meetups I go to end up involving
+Emacs conversations. It's like I have a big M-x banner hovering over my
+head. =) It's awesome, actually!

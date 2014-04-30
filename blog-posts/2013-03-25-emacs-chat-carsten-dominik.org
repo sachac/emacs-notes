@@ -1,0 +1,25 @@
+#+TITLE: Emacs Chat: Carsten Dominik
+
+March 25th, 2013 -
+[[http://sachachua.com/blog/p/24609][http://sachachua.com/blog/p/24609]]
+
+In which Carsten shares how he got started with Emacs, the joys of Calc,
+and other cool things. =)
+
+[[http://vimeo.com/62629506][Carsten Dominik]] from
+[[http://vimeo.com/user1851927][Sacha Chua]] on
+[[http://vimeo.com][Vimeo]].
+
+Want just the audio? [[http://archive.org/details/CarstenDominik][Get it
+from archive.org]]:
+[[http://archive.org/download/CarstenDominik/Carsten%20Dominik.mp3][MP3]],
+[[http://archive.org/download/CarstenDominik/Carsten%20Dominik.ogg][Ogg
+Vorbis]] (gosh, archive.org has been automatically converting to Ogg all
+this time? That'll simplify my post-production... )
+
+[[http://archive.org/download/CarstenDominik/Carsten%20Dominik.mp3][[[http://sachachua.com/blog/wp-content/plugins/powerpress/play_audio.png]]]]
+
+Podcast:
+[[http://archive.org/download/CarstenDominik/Carsten%20Dominik.mp3][Play
+in new window]] |
+[[http://archive.org/download/CarstenDominik/Carsten%20Dominik.mp3][Download]]

@@ -1,0 +1,35 @@
+#+TITLE: Emacs: 15 times multiplication table
+
+February 19th, 2007 -
+[[http://sachachua.com/blog/p/4217][http://sachachua.com/blog/p/4217]]
+
+Wayne will get a kick out of the fact that I wrote a function to help
+ me set up Emacs to do a little of what his Nintendo DS does...
+
+(Just you wait until I get speech recognition, sir!)
+
+#+BEGIN_EXAMPLE
+    ;; Create a flashcard-type file for the multiplication table until 15
+    (insert
+     (mapconcat
+      'identity
+      (shuffle-vector
+       (apply
+        'vector
+        (apply
+         'append
+         (let ((list '(1 2 3 4 5 6 7 8 9 10 11 12 13 14 15)))
+           (mapcar
+            (lambda (a)
+              (mapcar
+               (lambda (b)
+                 (format "%d x %d = : %d" a b (* a b)))
+               list))
+            list)))))
+      "\n"))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: mm-insert-part -- Function: Insert the contents of
+HANDLE in the current buffer.

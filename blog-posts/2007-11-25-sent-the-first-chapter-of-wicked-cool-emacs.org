@@ -1,0 +1,35 @@
+#+TITLE: Sent the first chapter of Wicked Cool Emacs
+
+November 25th, 2007 -
+[[http://sachachua.com/blog/p/4471][http://sachachua.com/blog/p/4471]]
+
+Operating on the principle that it's better to have a terrible first
+ draft than none at all, I've sent 21 pages to my editor at No Starch
+ Press. =)
+
+The past two weeks were incredibly packed, but I survived them and and
+ seem to be getting the hang of working on the book. It's incredibly
+ fun. Emacs is such a crazy subject to write about. I mean, come on...
+ Mayan date conversions? Emacs geeks! I'm sure that if I dug a little
+ deeper, I'd figure out how to help W- keep track of his parents'
+ Chinese birthdays. Now that would be useful! <laugh> Writing
+ about Emacs gave me an excuse to explore. There's a lot in here that I
+ haven't tried before, and you know what? It's pretty darn cool.
+
+I was surprised to find that I had lots of material already. It didn't
+ seem like it when I was writing, but the page count just kept growing
+ and growing as I assembled the chapter. I'm not too happy with the way
+ I wrote it, because it felt a little drier than I'm used to. I should
+ probably browse through No Starch Press books and see which books in
+ that line have been written really well so that I have role models.
+
+I'll tweak the draft a little bit more and send it out to beta readers
+ tomorrow. =)
+
+On Technorati:
+[[http://www.technorati.com/tag/WickedCoolEmacs][]][[http://sachachua.com/notebook/wiki/WickedCoolEmacs][WickedCoolEmacs]],
+[[http://www.technorati.com/tag/book][book]],
+[[http://www.technorati.com/tag/emacs][emacs]]
+
+Random Emacs symbol: narrow-to-region -- Command: Restrict editing in
+this buffer to the current region.

@@ -1,0 +1,37 @@
+#+TITLE: Playing with planner (linux, emacs)
+
+November 2nd, 2001 -
+[[http://sachachua.com/blog/p/6738][http://sachachua.com/blog/p/6738]]
+
+Today's been a busy day. I don't suppose I can get planner to nicely
+work with all the rest of emacs, can it? I rather like emacswiki...
+
+Alright, seems to be fine. Planner's actually pretty nifty. I'll pop the
+description into my remembrance agent index on the next scan, I suppose;
+maybe it'll be useful.
+
+I wonder if I can get the wiki to recognize non-wiki words. That would
+be pretty nice.
+
+Off to dinner with me now.
+
+May 8, 2012
+
+This was my very first post. I was trying out the note-taking
+capabilities of Emacs Planner. In the beginning, it didn't support
+blogging. I built that feature afterwards, and eventually migrated my
+posts over to WordPress when I decided to move blogging systems.
+
+Planner was a personal information manager for the Emacs text editor. I
+had picked up Emacs again after rereading Unix Power Tools, and I was
+curious about some of the packages that were available for it. Planner
+looked like a great way to keep track of my tasks and notes. The
+Remembrance Agent mentioned here was another bit of software available
+for Emacs. It continuously looked at a few hundred words around your
+cursor and suggested relevant files, which was a really cool way to find
+out that you'd written about something similar and had completely
+forgotten about it. I've since then moved on to using
+[[http://orgmode.org][Emacs Org Mode]] to manage my tasks, although I
+haven't quite replaced the “Here are other things similar to this”
+functionality provided by Remembrance Agent. I just write about things
+again and again.

@@ -1,0 +1,13 @@
+#+TITLE: Smarter indexing
+
+December 30th, 2003 -
+[[http://sachachua.com/blog/p/1543][http://sachachua.com/blog/p/1543]]
+
+Check out
+[[http://sachachua.com/notebook/emacs/emacs-wiki/planner-experimental.el][../emacs/emacs-wiki/planner-experimental.el]]‘s
+advice for
+ emacs-wiki-generate-index and the new function planner-generate-index
+ for smarter indexing of day pages. To see the results, check out the
+ [[http://sachachua.com/notebook/wiki/WikiIndex][WikiIndex]].
+
+[[http://sachachua.com/notebook/wiki/PlannerMode][PlannerMode]]

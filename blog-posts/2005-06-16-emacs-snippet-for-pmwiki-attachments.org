@@ -1,0 +1,18 @@
+#+TITLE: Emacs snippet for pmwiki attachments
+
+June 16th, 2005 -
+[[http://sachachua.com/blog/p/2778][http://sachachua.com/blog/p/2778]]
+
+#+BEGIN_EXAMPLE
+    (defun sacha/dired-marked-images-as-attach ()
+      "Return a list of images ready to be inserted into a pmwiki page."
+      (interactive)
+      (kill-new (mapconcat
+                 (lambda (item)
+                   (concat "Attach:" (file-name-nondirectory item)))
+                 (dired-get-marked-files)
+                 "\n")))
+#+END_EXAMPLE
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/code][code]]

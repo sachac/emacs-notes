@@ -1,0 +1,84 @@
+#+TITLE: Weekly review
+
+September 30th, 2007 -
+[[http://sachachua.com/blog/p/4369][http://sachachua.com/blog/p/4369]]
+
+Slow and steady progress on my Emacs book -- 2351 words so far. I
+ should find a way to accelerate. Maybe putting together a detailed
+ outline for \_three\_ chapters, so I can work on one script each. It's
+a
+ little difficult organizing so many different ways to do things,
+ though... Waah! Next week: Finish a detailed outline and get to 5000
+ words.
+
+My transcript arrived, so the only thing I'm waiting for now is my
+ work permit. I hope to get it by the end of the week. I'll also need
+ to renew my SIN. Speaking of paperwork, it turns out that I have to
+ get a medical exam and register at some overseas employment thing in
+ the Philippines before they'll let me leave again, so I've added a
+ reminder about POEA to my March planner.
+
+I made significant progress on the interviewbot I'm making in Second
+ Life for Stephen Perelgut. It can read questions from a notecard,
+ interview people who click on it using either a special channel or a
+ general chat prefix, save the answers in-world, report the answers
+ in-world, and e-mail one person's answers offword to a specified
+ address. Next week, we need to check if it works, and to load-test it.
+
+As part of my plan to give back to and be part of the community, I
+ attended the Toronto Public Library public consultation meeting for
+ their budget cut. Watching the meeting facilitator tactfully draw out
+ neutral points from attendees' political rants was instructive. A
+ recurring comment was that the provincial government should give more
+ to Toronto. I felt some participants were a little resentful of new
+ immigrants, or at least they felt that the library shouldn't have
+ programs to help people learn English as a second language (or third
+ or fourth). Some people also questioned the public computer access
+ that the library offers. It was a learning experience, and I learned
+ some interesting things from the library's presentation. I'm not sure
+ if I'm going to go to one of those public consultation meetings again,
+ though: lots of people just like complaining about politicians. I'll
+ observe the next board meeting on Oct 15 to see if that's worth it for
+ me.
+
+W- and I practiced photography this week. We tried taking a picture of
+ the cityscape from the bridge at Front and Bathurst. The CN Tower and
+ the moon weren't very remarkable, but we did have fun taking long
+ exposures of incoming trains. We have also decided never to shoot in
+ ISO 1600 if we can help it, and are learning how to use the flash more
+ effectively. We practiced using the fill-flash in bright sunsight
+ technique described on Strobist (link at the end of this message).
+ We'd have good results if I weren't so self-conscious about the
+ current state of my skin. I'll go to a dermatologist as soon as my
+ health plan kicks in. Next week, I'm going to start carrying powder.
+
+Took another driving lesson. Next one's still in November. I'll be
+ taking up emergency maneouvers in winter---oh joy. *terrified!*
+
+Went for another library run. Most of the productivity books are
+ alike, but I found some nuggets worth keeping. I'm still trying to
+ figure out a good booknotes workflow. Any tips? Next week, my goal is
+ to take notes from at least three books.
+
+Tea today was good. Ian and Joe shared a lot of insights about
+ large-business sales. I'm glad to hear that our get-togethers are
+ helpful for them, too. Intellectual conversation is apparently a rare
+ thing in this world. <wry grin> Let's have more of it, then!
+ Next week, my goal is to organize my tea workflow.
+
+Little revisions to my website here and there. I browsed through my
+ past entries and realized that I write a lot about my life in the
+ process of thinking through things, but probably little that's more
+ relevant to other people's lives. My goal for this week is to pick a
+ few topics, outline a few areas I want to explore and write about, and
+ plan my reading. That will let me develop more depth and be more
+ useful. Recurring topics include networking, contact relationship
+ management, personal productivity, personal finance, and Web 2.0. Next
+ week, I want to have a personal editorial calendar. ;)
+
+Life is good.
+
+-  [[http://strobist.blogspot.com/2007/09/lighting-102-31-balance-flashsun.html][Strobist:
+   Flash/Sun Crosslighting]]
+
+Random Emacs symbol: w3m-scroll-right -- Command: Scroll to the right.

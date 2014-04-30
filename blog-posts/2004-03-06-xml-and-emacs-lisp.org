@@ -1,0 +1,6 @@
+#+TITLE: XML and Emacs Lisp
+
+March 6th, 2004 -
+[[http://sachachua.com/blog/p/1849][http://sachachua.com/blog/p/1849]]
+
+[[http://elisp.info/][http://elisp.info/]]

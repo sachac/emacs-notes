@@ -1,0 +1,20 @@
+#+TITLE: Emacs multi-tty is sweet
+
+October 5th, 2007 -
+[[http://sachachua.com/blog/p/4385][http://sachachua.com/blog/p/4385]]
+
+The multiple-terminal support in Emacs 23 (CVS) means that I can leave
+ my main Emacs session running on my laptop, connect to it from the
+ desktop using SSH, get a graphical display on a big screen, and still
+ be able to use my laptop if I decide to go off wireless. It also
+ allows me to fake having a dual-screen Emacs setup. =) Very happy.
+ This will be good for when I'm writing
+[[http://sachachua.com/notebook/wiki/WickedCoolEmacs][WickedCoolEmacs]],
+too.
+
+I used the great scripts from
+[[http://www.enigmacurry.com/2007/05/24/multi-tty-emacs-on-gentoo-and-ubuntu/][Enigma
+Curry: Multi-tty Emacs on Gentoo and Ubuntu]] to make it painless.
+
+Random Emacs symbol: pcomplete/eshell-mode/eshell-debug -- Function:
+Completion for the `debug' command.

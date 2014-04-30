@@ -1,0 +1,9 @@
+#+TITLE: emacspeak and IRC --- linux
+
+February 23rd, 2003 -
+[[http://sachachua.com/blog/p/455][http://sachachua.com/blog/p/455]]
+
+I am beginning to realize just how wonderful speech is. I've added
+ dtk-speak to erc-insert-pre-hook, and I can listen to #linuxhelp while
+ browsing through Arendt. Maybe I shouldn't be doing it, but it's so
+ much fun...

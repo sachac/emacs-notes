@@ -1,0 +1,18 @@
+#+TITLE: Emacs menu accelerators --- emacs
+
+March 24th, 2003 -
+[[http://sachachua.com/blog/p/576][http://sachachua.com/blog/p/576]]
+
+Jeffery B. Rancier's March 12 post on
+[[mailto:help-gnu-emacs@gnu.org][help-gnu-emacs@gnu.org]] has
+ this useful LISP snippet for Windows Emacs users:
+
+#+BEGIN_EXAMPLE
+    (defun jbr-w32-simulate-Alt-tap ()
+
+    (interactive)
+    (w32-send-sys-command 61696))
+    (global-set-key [C-tab] 'jbr-w32-simulate-Alt-tap)
+#+END_EXAMPLE
+
+I wonder if there's a similar way to do that under GTK...

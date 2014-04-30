@@ -1,0 +1,89 @@
+#+TITLE: How I got hooked
+
+January 12th, 2008 -
+[[http://sachachua.com/blog/p/4672][http://sachachua.com/blog/p/4672]]
+
+I fell in love with Emacs because of Planner and Remember. I got hooked.
+By that, I mean that I discovered the joys of modifying the behavior of
+other people's code through hooks. Well-written Emacs code has plenty of
+entry points so that you can change things without rewriting everything,
+and both Planner and Remember were well-written. The flexibility that
+John Wiegley had built into Planner and Remember (in his spare time!)
+convinced me that I absolutely needed to learn Emacs Lisp. I e-mailed
+John, singing high praises about Planner and volunteering to help track
+down any bug reports so that I could learn in the process of helping
+others.
+
+What did he do? He made me the maintainer for Planner, the go-to person,
+the buck-stops-here person. Was I terrified? My first time being in
+charge of an open source project, a language that I had just begun to
+learn, and schoolwork to do on top of all of that... Of course I was
+scared. I found a way to make working on Planner part of my final-year
+project (might as well get academic credit for hacking on it!), made the
+Emacs Lisp Intro and the Emacs Lisp manuals my weekend, bedtime, and
+mealtime reading. Back then, Planner.el was one file, which made it a
+little less intimidating.
+
+At first, I found it hard to think of a way to improve Planner, which
+was already a great way to track my tasks. Remember was also a good way
+to jot down short notes that were automatically added to my Planner day
+page. Both Planner and Remember had some support for picking up
+hyperlinks to whatever I was looking at when I created the task or note.
+What was missing? Timestamps so that I could tell when I wrote a note;
+more link support so that I could automatically link to a file or a mail
+message or a contact record; private, perhaps even encrypted segments;
+copying a note to another page; publishing a blog as RSS... For the next
+few years, I worked with incredible people who had thought
+ long and hard about how they managed their tasks and their notes, and
+ who taught me how they did things through their feature requests and
+ their code. I became more comfortable in Emacs Lisp than in any other
+computer language I knew (eventually maintaining Remember as well), I
+had formed a thriving community of about 200 people around the world who
+also contributed ideas and code, and I was hooked.
+
+Because I could change so much about Emacs, I had so much /fun/
+ coming up with creative applications. When a friend and I
+ were studying Japanese, she wanted to know if I could set up Emacs with
+ flashcards and example sentences so that we could learn words in
+ context. I knew that Jim Breen had a huge database of example Japanese
+ sentences with their English translations and that this was freely
+ available on the Net. I downloaded the database and--one crazy idea
+ fueled by another in that natural sugar high that can happen when two
+ geeks start brainstorming--I made our learning /fun/ by
+ extracting all the cat- and kitten-related sentences. This is how I
+ learned about such wonderfully onomatopeic words as “fuwafuwashita”,
+ which means “fluffy”. We both adored cute little kitties, and reading
+ example sentences about these furballs would make our studies
+ delightful. Now, where could we put these sentences so that we'd run
+ into them often? Aha! Remember! Every time we wrote a blog post or
+ needed a scratch pad to store some information, we would be rewarded by
+a
+ short sentence in Japanese about cute little kittens, and we could look
+ up the meaning and pronunciation with custom keyboard shortcuts. And
+ hey, it worked for me--I found myself writing because I wanted to see
+ what sentence would come up, and I found myself learning because I'd
+ run into all these cool words. For variety, I switched to sentences
+ about computers and other topics that I wanted to be able to discuss.
+ Try getting /your/ blog editor or note manager to reward you each time
+you share a story or write down a tidbit of information. There is
+incredible power in customizing your note-taking system to just the way
+you think, and when you combine that with the delight of a surprise, you
+have something that is difficult to do with any other
+system--paper-based or electronic, text-based or graphical, commercial
+or free.
+
+I turned the projects over to other maintainers when I started with
+graduate school, but as you can see, I still love working with Emacs. My
+mind does this little somersault of joy when I pull off a particularly
+nifty tweak or when I run across a beautiful piece of code. And yes, one
+of the reasons why I'm writing this book about Emacs is because I'd love
+to have an opportunity to explore all the nooks and crevices of this
+piece of software--well, not all, because by the time the book hits
+press, people will have added even more.
+
+In this chapter on notetaking, I hope to be able to show you the
+mechanics of note-taking in Emacs--but more than that, I hope to show
+the sheer /joy/ of having a system that you can play with, of not just
+filing notes in a database but M-x remember-ing in a system that will
+make you smile or laugh, of shaping and reshaping things until they fit
+you like clay fits your hand. Come and have fun.

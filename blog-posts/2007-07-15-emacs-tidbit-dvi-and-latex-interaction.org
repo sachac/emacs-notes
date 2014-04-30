@@ -1,0 +1,37 @@
+#+TITLE: Emacs tidbit: DVI and LaTeX interaction
+
+July 15th, 2007 -
+[[http://sachachua.com/blog/p/4292][http://sachachua.com/blog/p/4292]]
+
+Skimming the help.gnu.emacs newsgroup can turn up all sorts of amazing
+ tidbits. For example, I occasionally write papers using the LaTeX
+ markup language for scientific documents. This allows me to produce
+ professional-quality typeset papers, particularly when equations are
+ involved. (I used that *so* many times in university!)
+
+I just found out that you can click on the typeset document (the DVI)
+ and jump to the source code. Here's what David wrote on help.gnu.emacs:
+
+#+BEGIN_QUOTE
+  That's easy. This feature is called forward and inverse search. It's
+   explained in the AucTeX manual. If you use auctex just hit C-c C-t
+  C-s
+   (I don't know if this also works within the build-in tex mode). This
+   enables the TeX-source-specials. With the source-specials on, Emacs
+   will start xdvi with further options. xdvi will start displaying the
+   page where the point is set in Emacs (forward search). When you click
+   any line in xdvi simultaneously pressing Ctrl you return to Emacs
+  with
+   the point on the corresponding paragraph. This works also with other
+   dvi viewers, but you have to configure them to use emacs server for
+   inverse search.
+#+END_QUOTE
+
+Wow.
+
+On Technorati: [[http://www.technorati.com/tag/emacs][emacs]],
+[[http://www.technorati.com/tag/pimpmyemacs][pimpmyemacs]]
+
+Random Emacs symbol: default-fringes-outside-margins -- Variable:
+Default value of `fringes-outside-margins' for buffers that don't
+override it.
