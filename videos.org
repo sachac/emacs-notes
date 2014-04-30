@@ -1,0 +1,160 @@
+#+TITLE: Some Emacs videos
+#+OPTIONS: toc:t
+
+Text taken from video descriptions
+
+* Introductory tutorials/demos
+** Emacs: Introductory Tutorial (gaylerdaniel)
+https://www.youtube.com/watch?v=PldhTEu1VRo
+
+An simple introductory tutorial on how to open and close Emacs, open and save files, open multiple buffers in a single window, search within files, open a shell in Emacs, and open a Man page in Emacs
+
+** Emacs in 10 minutes! (zaychenok)
+https://www.youtube.com/watch?v=K3_SFerNIeI
+
+A basic introduction to one of the more popular programming editors. Yes, I know I went fast - sorry. I'll make a longer tutorial at some point. This was more of a feature-overview type style. And I only had time for the basic features.
+
+** Short Demo of Emacs / Aquamacs (Rob Rohan)
+https://www.youtube.com/watch?v=k1dKFpGwKZ4	
+
+Short movie to show some of my favorite features of emacs and aquamacs (A Mac port of emacs). This doesn't show how to do anything specific in emacs, just a few modes and techniques that I find very helpful and unique to emacs
+
+** Programming Tutorials (1 of 4): Setting up Emacs (snietfeld)
+https://www.youtube.com/watch?v=yvSCIl0Jh5A
+
+A quick tutorial on getting emacs installed and a few user preferences set.
+
+** Working with OS X and Emacs by Ryan McGeary (Ryan McGeary·)
+https://www.youtube.com/watch?v=a
+
+Ryan McGeary demonstrates how he works with Mac OS X and his editor of choice, Emacs. Ryan runs his own software consultancy called McGeary Consulting Group. He
+ specializes in web application development and offers a wide range of services including development, mentoring, and business advice.
+
+** RT 2011: Screencast 01 - emacs keyboard introduction (Kurt Schwehr)
+https://www.youtube.com/watch?v=16Rd46SE
+
+The first video for the 2011 Research Tools (ESCI 895-03) at the University of New Hampshire in the Center for Coastal and Ocean Mapping (CCOM). The goal of this
+ video is introduce you to using just the keyboard for working inside the GNU Emacs text editor. This video goes along with lectures 7 and 8.
+** Using emacs (more) efficiently (than vim). (Paul Ozog)
+https://www.youtube.com/watch?v=lHshNewGrY4
+
+I've always liked seeing other people's workflow - so maybe this video will inspire some pimple-faced German kid out there to more effectively use emacs.
+
+** Emacs Tutorial Lesson 1 (AlexW573)
+https://www.youtube.com/watch?v=G7Mxka1ej0A
+
+Covers C-x C-f, C-x C-s, C-x C-c, C-g (load file, save file, quit, cancel command). Meant to be a very short lesson to teach the essentials of Emacs.
+
+** Hack Emacs
+*** Hack Emacs - Introduction to Hack Emacs (Rick Dillon)
+https://www.youtube.com/watch?v=VpFK6abGCOg
+
+This is a brief introduction to GNU Emacs and a description of some topics I'd like to cover in the "Hack Emacs" series. 
+
+*** Hack Emacs - A Technical Introduction to GNU Emacs (Rick Dillon)
+https://www.youtube.com/watch?v=BwTMzYo84Ao
+
+We do a brief analysis on the source code of Emacs, and look at some of the basic mechanisms to navigate to Emacs functions and variables from within the editor
+ itself.
+*** Hack Emacs - Working with Windows and Frames (Rick Dillon)
+https://www.youtube.com/watch?v=aIMECr7K35Q
+
+Understanding and working with windows and frames in GNU Emacs.
+
+*** Hack Emacs - Working with Buffers (Rick Dillon)
+https://www.youtube.com/watch?v=YAIZvpSOlAs
+
+Understanding and working with buffers in GNU Emacs.
+
+* Feature demonstrations
+** Auto Complete Mode for GNU Emacs (m2ym)	
+https://www.youtube.com/watch?v=rGVVnDxwJYE
+
+A demo movie for auto-complete-mode v1.2 (aka auto-complete.el).
+
+http://cx4a.org/software/auto-complete/
+
+** Emacs as a Python IDE (justafoo42)
+https://www.youtube.com/watch?v=OMi-uN-6O1Q	
+
+using rope
+
+** YASnippet screencast (sqrtkid)
+https://www.youtube.com/watch?v=vOj7btx3ATg
+
+YASnippet(Yet Another Snippet for Emacs) is a snippet extension for Emacs. 
+
+** Flymake in GNU Emacs 22 (BitToByte)
+https://www.youtube.com/watch?v=F5Cc2W6PbL8
+
+demonstaration of flymake-mode, a new feature of GNU Emacs 22. It's a on-the-fly syntax checker."
+
+** Org
+*** Hack Emacs - An Overview of Org Mode (Rick Dillon)
+https://www.youtube.com/watch?v=6W82EdwQhxU
+
+I take a high level look at Org Mode, an entire application written for Emacs that deals with data capture and organization through structural editing.
+
+*** Emacs Org-mode - a system for note-taking and project planning (GoogleTechTalks)
+https://www.youtube.com/watch?v=oJTwQvgfgMM	
+
+Org-mode is a large Emacs sub-systems that has been integrated into Emacs with the version 22.1 release. From its original intention,
+Org-mode is a system for structured note-taking and project planning. It uses strictly plain text files, making it a truly portable, system-independent solution. The project-planning features are implemented using a fairly simple outlining paradigm, upon which meta-data concepts like due dates, priorities, TODO states and tags are overlayed in a non-intrusive way. Besides outlining the system and its basic concepts, I will give background information into the history of Org-mode and discuss the properties of such an evolved system compared to a top-down designed one. Finally, I will also briefly touch on some technical aspects that may be interesting for Emacs wizards and developers.
+
+*** Writing PPT with org-mode and beamer in Emacs (dimilarzhu)
+https://www.youtube.com/watch?v=Ho6nMWGtepY
+
+Writing PPT with org-mode and beamer in Emacs.
+*** Emacs Power: Can your editor do THIS!	(mina86)
+https://www.youtube.com/watch?v=EQAd41VAXWo	
+
+Emacs with orgtbl mode used to create a HTML table. Creating HTML tables by hand can be painful, however thanks to orgtbl mode (which comes with org mode) Emacs users can edit tables in friendly way and later "send" (as org mode calls it) the data into a HTML source code. Inserting new columns and rearranging them is a single key binding!
+
+** Using gdb within emacs (Aditya Bankar)
+https://www.youtube.com/watch?v=vHOzMOzzxDA
+
+This video explains how to use gdb within emacs. So you can debug your code using graphical tools instead of character commands. (This video has been made on Ubuntu
+ 8.04 using recordmydesktop.)
+** GNEVE - GNU Emacs Video Editor mode demo (arnmatyasi)
+https://www.youtube.com/watch?v=0vumR5Hcz7s
+
+"GNEVE - GNU Emacs Video Editor mode demo
+
+Demonstration video on GNEVE in action.
+"
+** emacs text editor (Maciej Kaminski)
+https://www.youtube.com/watch?v=C0qblk1BQrI
+
+c++ mode for emacs text editor
+
+** Emacs with HTML, Zencoding and YASnippet (Christopher Done)
+https://www.youtube.com/watch?v=u2r8JfJJgy8
+
+Just a cruddy demonstration. I may get some real code to demonstrate it in action. 
+
+** Emacs Rocks
+*** Emacs Rocks! Episode 01: From var to this (emacsrocks)
+https://www.youtube.com/watch?v=O0UgY
+
+http://emacsrocks.com - Rocking emacs tricks and tips screencast.
+
+*** Emacs Rocks! Episode 14: Paredit (emacsrocks)
+https://www.youtube.com/watch?v=D6h5dFyyUX0
+
+http://emacsrocks.com - Rocking emacs tricks and tips screencast.
+
+*** Emacs Rocks! Episode 11: swank-js (emacsrocks)
+https://www.youtube.com/watch?v=qwtVtcQQfqc
+
+http://emacsrocks.com - Rocking emacs tricks and tips screencast.
+
+*** Emacs Rocks! Episode 13: multiple-cursors (emacsrocks)
+https://www.youtube.com/watch?v=jNa3axo40qM
+
+http://emacsrocks.com - Rocking emacs tricks and tips screencast.
+* Other
+** XKCD@MIT: On Emacs vs Vi (Laura Boylan)
+https://www.youtube.com/watch?v=k9RsByTnHFQ
+
+Emacs vs. Vi, and making changes to comics once they have been posted.
+
