@@ -15,3 +15,11 @@
 }
 
 .top-menu .top-bar .links li.right { margin-left: 1rem }
+
+a:visited{
+	color:#090;
+}
+a:link {
+	color:#009;
+}
+
