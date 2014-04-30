@@ -12,12 +12,12 @@ This entry is part 1 of 4 in the series
 *Here's version 2 (September 2013).* You can print this at 16.5″x10.75″
 at 300dpi. Have an ordinary printer? Check out [[http://sourceforge.net/projects/posterazor][PosteRazor]]!
 
-[[http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large.png][http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large-640x416.png]]
+[[file:uploads/2013/05/How-to-Learn-Emacs-v2-Large.png][http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large-640x416.png]]
 
 --------------
 
 Original post from May 2013:
-[[http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8.png][
+[[file:uploads/2013/05/How-to-Learn-Emacs8.png][
 ]]I thought I'd draw a one-page guide for some of the things that people
 often ask me about or that would help people learn Emacs (and enjoy it).
 You can click on the image for a larger version that you can scroll
@@ -25,7 +25,7 @@ through or download. It should print all right on 8.5×11″ paper
 (landscape) if you want to keep it around as a reminder. Might even work
 at 11×17″. =)
 
-[[http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8.png][http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8-640x480.png]]
+[[file:uploads/2013/05/How-to-Learn-Emacs8.png][http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8-640x480.png]]
 
 You can find the image on [[http://imgur.com/m0WsEvH][Imgur]] and [[http://www.flickr.com/photos/sachac/8748351168/sizes/o/in/photostream/][Flickr]] too.
 

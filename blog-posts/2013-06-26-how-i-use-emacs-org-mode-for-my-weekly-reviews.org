@@ -33,7 +33,7 @@ sacha/org-prepare-weekly-review*]], which:
 
 Here's what the raw output looks like:
 
-[[http://sachachua.com/blog/wp-content/uploads/2013/06/image5.png][[[http://sachachua.com/blog/wp-content/uploads/2013/06/image_thumb6.png]]]]
+[[file:uploads/2013/06/image5.png][file:uploads/2013/06/image_thumb6.png]]
 
 I like including a list of blog posts so that people can click on them
 if they missed something during the week. Besides, my blog posts often

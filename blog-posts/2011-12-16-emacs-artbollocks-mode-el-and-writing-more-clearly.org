@@ -22,7 +22,7 @@ it, turning it an ugly orange-on-white and underlining it for emphasis.
 You can still go ahead and write it, but at least the words jump out.
 Like this: it's really pretty obvious...
 
-[[http://sachachua.com/blog/wp-content/uploads/2011/12/image3.png][[[http://sachachua.com/blog/wp-content/uploads/2011/12/image_thumb3.png]]]]
+[[file:uploads/2011/12/image3.png][file:uploads/2011/12/image_thumb3.png]]
 
 I want to use it to write clearer notes and blog posts, so here's how
 I've tweaked my configuration. Many of the items below are words and

@@ -11,7 +11,13 @@ If you're starting on a task, tag it with your name and change the TODO to START
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 ** TODO Transcribe Carsten Dominik's chat 											 :transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
-** TODO Organize Emacs resources into starting/improving/enjoying
+** STARTED Organize Emacs resources into starting/improving/enjoying
+	 :LOGBOOK:
+	 CLOCK: [2014-04-30 Wed 16:24]
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   2:00
+	 :END:
 - https://github.com/sachac/sharing/blob/gh-pages/blog.org
 
 ** DONE Create graphviz map for learning Org Mode for Emacs			:graph:sacha:

@@ -19,7 +19,6 @@
 <script src=\"./js/emacs-notes.js\"></script>")
 
 (defvar sacha/emacs-notes-postamble "<div class=\"back-to-top\"><a href=\"#top\">Back to top</a> | <a href=\"mailto:sacha@sachachua.com\">E-mail me</a></div>")
-(defvar sacha/emacs-notes-postamble-alternative "<div class='footer'>Copyright 2013-2014 %a (%v HTML) - Creative Commons Attribution License / GNU Free Documentation License unless otherwise indicated.<br>Last updated %C. <br>Built with %c.</div>")
 
 (defvar sacha/emacs-notes-directory (file-name-directory (or load-file-name buffer-file-name))
 	"Location of files.")
@@ -63,6 +62,9 @@
          :sitemap-title "Sitemap"         ; With title 'Sitemap'.
          :makeindex t
          :with-timestamp t
+				 :section-numbers nil
+				 :html-preamble "" 
+				 :html-postamble ,sacha/emacs-notes-postamble
          :htmlized-source t
          ))
 (add-to-list 'org-publish-project-alist
@@ -78,6 +80,9 @@
          :auto-sitemap t                  ; Generate sitemap.org automagically...
          :sitemap-filename "sitemap.org"  ; Call it sitemap.org (it's the default)...
          :sitemap-title "Sitemap"         ; With title 'Sitemap'.
+				 :section-numbers nil
+				 :html-preamble ""
+				 :html-postamble ,sacha/emacs-notes-postamble
          :makeindex t
          :with-timestamp t
          :htmlized-source))

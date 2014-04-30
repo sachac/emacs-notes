@@ -11,8 +11,8 @@ issue-tracking at
 
 Before and after:
 
-[[http://sachachua.com/blog/wp-content/uploads/2010/12/editbefore1.png][[[http://sachachua.com/blog/wp-content/uploads/2010/12/editbefore1_thumb.png]]]]
-[[http://sachachua.com/blog/wp-content/uploads/2010/12/image5.png][[[http://sachachua.com/blog/wp-content/uploads/2010/12/image_thumb5.png]]]]
+[[file:uploads/2010/12/editbefore1.png][file:uploads/2010/12/editbefore1_thumb.png]]
+[[file:uploads/2010/12/image5.png][file:uploads/2010/12/image_thumb5.png]]
 
 There are still
 [[https://github.com/sachac/mobileorg-android/issues][bugs to work

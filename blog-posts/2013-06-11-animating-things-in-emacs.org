@@ -25,4 +25,4 @@ Animations]].
 
 Next: Maybe someone can make an onion-skin animation mode to go on top
 of artist-mode so that we can make Emacs flipbooks?
-[[http://sachachua.com/blog/wp-content/uploads/2013/06/wlEmoticon-winkingsmile.png]]
+[[file:uploads/2013/06/wlEmoticon-winkingsmile.png]]

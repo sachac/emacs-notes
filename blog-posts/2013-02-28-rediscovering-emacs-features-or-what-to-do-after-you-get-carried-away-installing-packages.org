@@ -87,7 +87,7 @@ org-agenda-custom-commands `((“a” “Agenda” sacha/org-agenda-with-tip)
 ... and now I see a random Emacs keybinding every time I review my to-do
 list.
 
-[[http://sachachua.com/blog/wp-content/uploads/2013/02/agenda-tip1.png][[[http://sachachua.com/blog/wp-content/uploads/2013/02/agenda-tip_thumb.png]]]]
+[[file:uploads/2013/02/agenda-tip1.png][file:uploads/2013/02/agenda-tip_thumb.png]]
 
 *If you find yourself forgetting to revisit the nifty Emacs snippets
 you've added to your configuration, add reminders for yourself.*Make

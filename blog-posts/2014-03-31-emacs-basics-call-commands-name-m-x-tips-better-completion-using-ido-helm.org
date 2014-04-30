@@ -53,7 +53,7 @@ This is what completion with Helm looks like:
 
 #+CAPTION: 2014-03-17 13\_06\_54-c\_\_sacha\_personal\_organizer.org.png
 
-[[http://sachachua.com/blog/wp-content/uploads/2014/03/wpid-2014-03-17-13_06_54-c__sacha_personal_organizer.org_.png]]
+[[file:uploads/2014/03/wpid-2014-03-17-13_06_54-c__sacha_personal_organizer.org_.png]]
 Figure 2: Helm
 
 Use M-x package-install to install the =helm= package. Then you can try
@@ -83,7 +83,7 @@ combination will get you:
 
 #+CAPTION: 2014-03-17 12\_40\_40-MELPA.png
 
-[[http://sachachua.com/blog/wp-content/uploads/2014/03/wpid-2014-03-17-12_40_40-MELPA.png]]
+[[file:uploads/2014/03/wpid-2014-03-17-12_40_40-MELPA.png]]
 Figure 1: ido, smex, ido-vertical-mode, and flx-ido
 
 If you want to give this a try, remove or comment out =(helm-mode 1)=
@@ -135,7 +135,7 @@ M-x.
 Make your own cheat sheet with frequently-used keyboard shortcuts and
 commands to help you learn more about Emacs. Good luck!
 
-[[http://sachachua.com/blog/wp-content/uploads/2014/03/emacs-basics-meta-x.png][[[http://sachachua.com/blog/wp-content/uploads/2014/03/emacs-basics-meta-x-640x448.png]]]]
+[[file:uploads/2014/03/emacs-basics-meta-x.png][file:uploads/2014/03/emacs-basics-meta-x-640x448.png]]
 
 Emacs Basics: M-x
 

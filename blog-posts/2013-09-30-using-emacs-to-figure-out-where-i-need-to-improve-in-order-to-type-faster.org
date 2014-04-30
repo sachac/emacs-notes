@@ -14,7 +14,7 @@ I could improve. In particular, I wanted to get a sense of:
 -  how quickly I can twitch, measured by single-key repeats or two-key
    alternations
 
-[[http://sachachua.com/blog/wp-content/uploads/2013/09/shutterstock_145785482.jpg][[[http://sachachua.com/blog/wp-content/uploads/2013/09/shutterstock_145785482_thumb.jpg]]]]
+[[file:uploads/2013/09/shutterstock_145785482.jpg][file:uploads/2013/09/shutterstock_145785482_thumb.jpg]]
 
 By using totally artificial typing tests (ex: type “thththth...”)
 instead of word-based ones, I can explore the relationships between

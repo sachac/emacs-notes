@@ -1,37 +1,83 @@
 #+TITLE: Emacs Life
+#+OPTIONS: toc:nil
 
-#+begin_html
-<table><tr><td>
-#+end_html
 * Start with Emacs
 
-- [[file:blog-posts/2014-04-14-emacs-beginner-resources.org][Emacs beginner resources]]
-- [[file:blog-posts/2013-05-17-how-to-learn-emacs-a-hand-drawn-one-pager-for-beginners.org][How to learn Emacs]] - a hand-drawn one-page guide for beginners
-- [[file:blog-posts/2013-09-02-how-to-learn-emacs-keyboard-shortcuts-a-visual-tutorial-for-newbies.org][How to learn Emacs keyboard shortcuts]] - another visual guide
-- [[file:blog-posts/2014-03-24-emacs-basics-using-mouse.org][Emacs Basics: Using the mouse]]
-- [[file:blog-posts/2014-03-31-emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm.org][Emacs Basics: Calling commands by name]]
-- [[file:blog-posts/2014-04-07-emacs-basics-customizing-emacs.org][Emacs Basics: Customizing Emacs]]
+# - [[file:blog-posts/2014-04-14-emacs-beginner-resources.org][Emacs beginner resources]]
+# - [[file:blog-posts/2013-05-17-how-to-learn-emacs-a-hand-drawn-one-pager-for-beginners.org][How to learn Emacs]] - a hand-drawn one-page guide for beginners
+# - [[file:blog-posts/2013-09-02-how-to-learn-emacs-keyboard-shortcuts-a-visual-tutorial-for-newbies.org][How to learn Emacs keyboard shortcuts]] - another visual guide
+# - [[file:blog-posts/2014-03-24-emacs-basics-using-mouse.org][Emacs Basics: Using the mouse]]
+# - [[file:blog-posts/2014-03-31-emacs-basics-call-commands-name-m-x-tips-better-completion-using-ido-helm.org][Emacs Basics: Calling commands by name]]
+# - [[file:blog-posts/2014-04-07-emacs-basics-customizing-emacs.org][Emacs Basics: Customizing Emacs]]
+- [[http://sachachua.com/blog/p/27144][Emacs beginner resources]]
+- [[http://sachachua.com/blog/p/24836][How to learn Emacs]] - a hand-drawn one-page guide for beginners
+- [[http://sachachua.com/blog/p/26006][How to learn Emacs keyboard shortcuts]] - another visual guide
+- [[http://sachachua.com/blog/p/27075][Emacs Basics: Using the mouse]]
+- [[http://sachachua.com/blog/p/27062][Emacs Basics: Calling commands by name]]
+- [[http://sachachua.com/blog/p/27098][Emacs Basics: Customizing Emacs]]
 - [[file:baby-steps-org.org][A baby steps guide to managing your tasks with Org]]
 - [[file:how-to-read-emacs-lisp.org][How to read Emacs Lisp so that you can customize Emacs]]
+- [[http://sachachua.com/blog/2011/01/emacs-24-package-manager/][Emacs 24 and the package manager]]
 
-#+begin_html
-</td><td>
-#+end_html
-* Improve your Emacs setup
+* Improve your Emacs setup/workflow
 
 - [[file:blog-posts/2014-01-13-tips-learning-org-mode-emacs.org][Tips for learning Org Mode for Emacs]]
-
-#+begin_html
-</td><td>
-#+end_html
+- [[http://sachachua.com/blog/2013/03/emacs-use-function-keys-for-custom-keyboard-shortcuts/][Use function keys for custom keyboard shortcuts]]
+- [[http://sachachua.com/blog/2014/03/emacs-evernote-enscript-exe-org-links/][Emacs, Evernote (through enscript.exe), and Org links]]
+- [[http://sachachua.com/blog/2012/06/making-gnu-emacs-play-well-on-microsoft-windows-7/][Making GNU Emacs play well on Microsoft Windows 7]]
+- [[http://sachachua.com/blog/2008/07/yet-another-snippet-mode-for-emacs/][Yet another snippet mode for Emacs]]
+- [[http://sachachua.com/blog/2008/07/emacs-keyboard-shortcuts-for-navigating-code/][Keyboard shortcuts for navigating code]]
+- [[http://sachachua.com/blog/2011/12/emacs-artbollocks-mode-el-and-writing-more-clearly/][Emacs artbollocks-mode.el, and writing more clearly]]
+- [[http://sachachua.com/blog/2012/06/literate-programming-emacs-configuration-file/][Literate programming and my Emacs configuration file]]
 
 * Enjoy Emacs
 
 - [[file:blog-posts/2014-04-28-reflecting-10-episodes-emacs-chats.org][Emacs Chats]]: hour-long conversations with various people about Emacs
+- [[http://sachachua.com/blog/2013/04/emacs-conference-2013-videos/][Emacs Conference 2013 videos]]
+- [[http://sachachua.com/blog/2012/06/things-that-ive-used-emacs-for/][Things that I've used Emacs for]]
 
-#+begin_html
-</td></table>
-#+end_html
+* Org Mode
+
+- [[http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/][Some tips for learning Org Mode for Emacs]]
+- Workflow
+    - [[http://sachachua.com/blog/2007/12/a-day-in-a-life-with-org/][A day in a life with Org]]
+    - [[http://sachachua.com/blog/2013/08/emacs-how-i-organize-my-org-files/][Emacs: How I organize my Org files]]
+    - [[http://sachachua.com/blog/2013/06/how-i-use-emacs-org-mode-for-my-weekly-reviews/][How I use Emacs Org Mode for my weekly reviews]]
+    - [[http://sachachua.com/blog/2010/09/emacs-org-mode-and-publishing-a-weekly-review/][Emacs Org mode and publishing a weekly review]]
+    - [[http://sachachua.com/blog/2010/09/new-note-taking-workflow-with-emacs-org-mode/][New note-taking workflow with Emacs Org-mode]]
+- Managing your notes
+    - [[http://sachachua.com/blog/2008/01/searching-your-notes/][Searching Your Notes]]
+    - [[http://sachachua.com/blog/2008/01/outlining-your-notes-with-org/][Outlining Your Notes with Org]]
+    - [[http://sachachua.com/blog/2008/01/january-chapter-7-taking-notes/][January - Chapter 7: Taking Notes]]
+    - [[http://sachachua.com/blog/2008/01/note-taking-random-notes-journal-entries-outlines-and-hyperlinks/][Note-taking: Random notes, journal entries, outlines, and hyperlinks]]
+- Managing your tasks
+    - [[http://sachachua.com/blog/2007/12/how-to-use-emacs-org-as-a-basic-day-planner/][How to use Emacs Org as a Basic Day Planner]]
+    - [[http://sachachua.com/blog/2008/01/projects-in-emacs-org/][Projects in Emacs Org]]
+    - [[http://sachachua.com/blog/2007/12/emacs-getting-things-done-with-org-basic/][Emacs: Getting Things Done with Org - Basic]]
+    - [[http://sachachua.com/blog/2008/01/tagging-in-org-plus-bonus-code-for-timeclocks-and-tags/][Tagging in Org - plus bonus code for timeclocks and tags!]]
+    - [[http://sachachua.com/blog/2007/12/clocking-time-with-emacs-org/][Clocking Time with Emacs Org]]
+- Agenda
+    - [[http://sachachua.com/blog/2013/01/emacs-org-display-projects-with-a-few-subtasks-in-the-agenda-view/][Emacs Org: Display projects with a few subtasks in the agenda view]]
+    - [[http://sachachua.com/blog/2013/01/emacs-org-task-related-keyboard-shortcuts-agenda/][Emacs Org: Task-related keyboard shortcuts for the agenda]]
+    - [[http://sachachua.com/blog/2012/12/emacs-org-display-subset-tasks-context/][Emacs Org: Display a subset of tasks by context]]
+    - [[http://sachachua.com/blog/2012/05/org-mode-and-habits/][Org-mode and habits]]
+- Publishing
+    - [[http://sachachua.com/blog/2013/08/helping-someone-get-started-with-emacs-and-org-mode-through-org2blog-troubleshooting-steps/][Helping someone get started with Emacs and Org Mode through Org2Blog and LaTeX; troubleshooting steps]]
+    - [[http://sachachua.com/blog/2011/08/mailing-non-emacs-users-your-org-notes/][Mailing non-Emacs users your Org notes]]
+    - [[http://sachachua.com/blog/2010/07/using-org2blog-to-publish-org-mode-subtrees/][Using org2blog to publish Org-mode subtrees]]
+    - [[http://sachachua.com/blog/2013/04/how-to-present-using-org-mode-in-emacs/][How to present using Org-mode in Emacs]]
+    - [[http://sachachua.com/blog/2007/12/publishing-my-org-agenda-to-my-blog/][Publishing my Org agenda to my blog]]
+- [[http://sachachua.com/blog/2013/02/rediscovering-emacs-features-or-what-to-do-after-you-get-carried-away-installing-packages/][Rediscovering Emacs features, or what to do after you get carried away installing packages]] - org drill
+- [[http://sachachua.com/blog/2012/12/emacs-strike-through-headlines-for-done-tasks-in-org/][Emacs: Strike through headlines for DONE tasks in Org]]
+- [[http://sachachua.com/blog/2011/03/quick-notes-from-emacs-org-mode-talk-at-gtalug/][Quick notes from Emacs Org-mode talk at GTALUG]]
+- [[http://sachachua.com/blog/2010/05/org-toodledo/][Org-toodledo]]
+- [[http://sachachua.com/blog/2010/11/emacs-recording-ledger-entries-with-org-capture-templates/][Emacs: Recording ledger entries with org-capture-templates]]
+- [[http://sachachua.com/blog/2009/04/nothing-quite-like-org-for-emacs/][Nothing quite like Org for Emacs]]
+- [[http://sachachua.com/blog/2009/06/thoughts-on-toodledo-versus-emacs-org/][Thoughts on Toodledo versus Emacs Org]]
+- [[http://sachachua.com/blog/2013/11/emacs-org-mode-customization-survey/][Emacs Org Mode Customization Survey]]
+- [[http://sachachua.com/blog/2008/02/chapter-7-managing-your-notes-in-emacs-done/][Chapter 7: Managing Your Notes in Emacs - done!]]
+- [[http://sachachua.com/blog/2008/07/emacs-org-google-tech-talk/][Emacs Org Google Tech Talk]]
+- [[http://sachachua.com/blog/2008/12/emacs-org-and-bbdb-hyperlinking-names-to-blogs/][Emacs Org and BBDB: Hyperlinking names to blogs]]
 
 
 Source: http://github.com/sachac/emacs-notes

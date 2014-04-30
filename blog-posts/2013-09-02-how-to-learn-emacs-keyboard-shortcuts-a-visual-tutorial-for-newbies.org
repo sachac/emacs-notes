@@ -4,8 +4,7 @@ September 2nd, 2013 -
 [[http://sachachua.com/blog/p/26006][http://sachachua.com/blog/p/26006]]
 
 This entry is part 2 of 4 in the series
-[[http://sachachua.com/blog/series/a-visual-guide-to-emacs/][A Visual
-Guide to Emacs]]
+[[http://sachachua.com/blog/series/a-visual-guide-to-emacs/][A Visual Guide to Emacs]]
 
 Emacs keyboard shortcuts often mystify beginners because they're not the
 same as the shortcuts for other applications (C-w instead of C-x for
@@ -18,14 +17,14 @@ Click on the image to view or save a larger version. It should print out
 fine on 8.5×11 paper in landscape mode, and you might even be able to go
 up to 11×17.
 
-[[http://sachachua.com/blog/wp-content/uploads/2013/08/20130830-Emacs-Newbie-How-to-Learn-Emacs-Keyboard-Shortcuts.png][[[http://sachachua.com/blog/wp-content/uploads/2013/08/20130830-Emacs-Newbie-How-to-Learn-Emacs-Keyboard-Shortcuts_thumb.png]]]]
+[[file:uploads/2013/08/20130830-Emacs-Newbie-How-to-Learn-Emacs-Keyboard-Shortcuts.png][file:uploads/2013/08/20130830-Emacs-Newbie-How-to-Learn-Emacs-Keyboard-Shortcuts_thumb.png]]
 
 This is actually my second version of the guide. In the first one, I got
 a little sidetracked because I wanted to address common frustrations
 that get in people's way. Here's the *Grumpy Guide to Learning Emacs
 Keyboard Shortcuts*:
 
-[[http://sachachua.com/blog/wp-content/uploads/2013/08/20130830-The-Grumpy-Guide-How-to-Learn-Emacs-Keyboard-Shortcuts1.png][[[http://sachachua.com/blog/wp-content/uploads/2013/08/20130830-The-Grumpy-Guide-How-to-Learn-Emacs-Keyboard-Shortcuts_thumb1.png]]]]
+[[file:uploads/2013/08/20130830-The-Grumpy-Guide-How-to-Learn-Emacs-Keyboard-Shortcuts1.png][file:uploads/2013/08/20130830-The-Grumpy-Guide-How-to-Learn-Emacs-Keyboard-Shortcuts_thumb1.png]]
 
 The #emacs channel on Freenode was totally awesome in terms of feedback
 and encouragement. Special thanks go to agumonkey, aidalgol, Fuco, ijp,

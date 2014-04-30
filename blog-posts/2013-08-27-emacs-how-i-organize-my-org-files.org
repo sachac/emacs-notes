@@ -20,7 +20,7 @@ I started with a single Org Mode file (appropriately called
 organizer.org), but I've gradually fleshed this out into a number of
 files. My goals for organizing my files this way are to be able to:
 
-[[http://sachachua.com/blog/wp-content/uploads/2013/08/image1.png][[[http://sachachua.com/blog/wp-content/uploads/2013/08/image_thumb1.png]]]]
+[[file:uploads/2013/08/image1.png][file:uploads/2013/08/image_thumb1.png]]
 
 -  Publish some files while keeping other files private,
 -  Add or remove groups of tasks from my agenda, or focus my

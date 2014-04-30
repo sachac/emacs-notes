@@ -9,7 +9,7 @@ still need to do. This
 snippet from the Emacs Org-mode mailing list]] does the trick by
 striking through the headlines for DONE tasks.
 
-[[http://sachachua.com/blog/wp-content/uploads/2012/12/image15.png][[[http://sachachua.com/blog/wp-content/uploads/2012/12/image_thumb14.png]]]]
+[[file:uploads/2012/12/image15.png][file:uploads/2012/12/image_thumb14.png]]
 
 Here's the code:
 

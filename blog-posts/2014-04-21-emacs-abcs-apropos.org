@@ -13,7 +13,7 @@ saying the letters and helping kids learn to read, you can silently (or
 not-so-silently!) read the notes, and pick one command to try later. In
 this case: M-x apropos?
 
-[[http://sachachua.com/blog/wp-content/uploads/2014/04/emacs-a-is-for-apropos.png][[[http://sachachua.com/blog/wp-content/uploads/2014/04/emacs-a-is-for-apropos-640x640.png]]]]
+[[file:uploads/2014/04/emacs-a-is-for-apropos.png][file:uploads/2014/04/emacs-a-is-for-apropos-640x640.png]]
 
 A is for apropos
 

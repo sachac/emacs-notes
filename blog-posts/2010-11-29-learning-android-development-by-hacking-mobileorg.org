@@ -29,8 +29,8 @@ keyboard, but it was a productive while.)
 Second: The editing interface was functional but not convenient , so I
 dug into views and layouts and all sorts of niftiness. Before and after:
 
-[[http://sachachua.com/blog/wp-content/uploads/2010/11/editbefore.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/editbefore_thumb.png]]]]
-[[http://sachachua.com/blog/wp-content/uploads/2010/11/after.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/after_thumb.png]]]]
+[[file:uploads/2010/11/editbefore.png][file:uploads/2010/11/editbefore_thumb.png]]
+[[file:uploads/2010/11/after.png][file:uploads/2010/11/after_thumb.png]]
 
 (... and it's all wired up and working, at least for me!)
 
@@ -56,9 +56,9 @@ to download the checksums and other files using Dropbox before loading
 them in MobileOrg. But things work reasonably well now, I think, and I
 can browse my Org files and capture some updates. Whee!
 
-[[http://sachachua.com/blog/wp-content/uploads/2010/11/main.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/main_thumb.png]]]]
-[[http://sachachua.com/blog/wp-content/uploads/2010/11/organizer.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/organizer_thumb.png]]]]
-[[http://sachachua.com/blog/wp-content/uploads/2010/11/outline2.png][[[http://sachachua.com/blog/wp-content/uploads/2010/11/outline2_thumb.png]]]]
+[[file:uploads/2010/11/main.png][file:uploads/2010/11/main_thumb.png]]
+[[file:uploads/2010/11/organizer.png][file:uploads/2010/11/organizer_thumb.png]]
+[[file:uploads/2010/11/outline2.png][file:uploads/2010/11/outline2_thumb.png]]
 
 ... and so on.
 
