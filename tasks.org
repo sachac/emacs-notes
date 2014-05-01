@@ -21,10 +21,25 @@ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 	:END:
 ** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp][Link]]
-*** TODO Write about keybinding
+*** STARTED Write about keybinding  :sacha:
+		:LOGBOOK:
+		CLOCK: [2014-05-01 Thu 18:29]--[2014-05-01 Thu 18:29] =>  0:00
+		:END:
+		:PROPERTIES:
+		:Effort:   1:00
+		:END:
 *** TODO Write about defuns
+		:PROPERTIES:
+		:Effort:   1:00
+		:END:
 *** TODO Write about lambda
+		:PROPERTIES:
+		:Effort:   1:00
+		:END:
 *** TODO Add more examples
+		:PROPERTIES:
+		:Effort:   1:00
+		:END:
 *** DONE Incorporate @philandstuff's feedback
 	 CLOSED: [2014-05-01 Thu 18:17]
 	 :LOGBOOK:
@@ -45,6 +60,12 @@ https://twitter.com/philandstuff/status/461969774227247104
 	 	:PROPERTIES:
 	 	:Effort:   2:00
 	 	:END:
+** A map for customizing Org
+- Common options you may want to change
+- Advanced options and why, plus examples of what you can do with them
+
+Difference compared to M-x customize-group org - highlights specific things you may want to tweak, and provides screenshots/examples.
+*** TODO Find a way to easily make a list of all the customization options by group
 ** TODO Add support page to emacs-notes
 	 :PROPERTIES:
 	 :Effort:   0:30
