@@ -19,17 +19,32 @@ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 	:PROPERTIES:
 	:QUANTIFIED: Emacs
 	:END:
-** Reading Emacs Lisp
-[[../code/emacs-notes/how-to-read-emacs-lisp.org]]
+** How to Read Emacs Lisp
+[[file:how-to-read-emacs-lisp][Link]]
+*** TODO Write about keybinding
+*** TODO Write about defuns
+*** TODO Write about lambda
+*** TODO Add more examples
+*** DONE Incorporate @philandstuff's feedback
+	 CLOSED: [2014-05-01 Thu 18:17]
+	 :LOGBOOK:
+	 CLOCK: [2014-05-01 Thu 18:08]--[2014-05-01 Thu 18:17] =>  0:09
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   0:30
+	 :END:
+https://twitter.com/philandstuff/status/461969774227247104
+- typo
+- remove scroll
 *** DONE Add more details to reading Emacs Lisp tutorial
 		 CLOSED: [2014-04-28 Mon 11:54]
-		:LOGBOOK:
-		- State "DONE"       from "STARTED"    [2014-04-28 Mon 11:54]
-		CLOCK: [2014-04-28 Mon 10:58]--[2014-04-28 Mon 11:54] =>  0:56
-		:END:
-		:PROPERTIES:
-		:Effort:   2:00
-		:END:
+	 	:LOGBOOK:
+	 	- State "DONE"       from "STARTED"    [2014-04-28 Mon 11:54]
+	 	CLOCK: [2014-04-28 Mon 10:58]--[2014-04-28 Mon 11:54] =>  0:56
+	 	:END:
+	 	:PROPERTIES:
+	 	:Effort:   2:00
+	 	:END:
 ** TODO Add support page to emacs-notes
 	 :PROPERTIES:
 	 :Effort:   0:30
@@ -55,16 +70,6 @@ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 	 :PROPERTIES:
 	 :Effort:   0:30
 	 :END:
-** STARTED Incorporate @philandstuff's feedback
-	 :LOGBOOK:
-	 CLOCK: [2014-05-01 Thu 18:08]
-	 :END:
-	 :PROPERTIES:
-	 :Effort:   0:30
-	 :END:
-https://twitter.com/philandstuff/status/461969774227247104
-- typo
-- remove scroll
 ** TODO Prepare a financial report of how much I'm investing in the Emacs community
 - Emacs chat transcripts
 - Hosting, domain names
