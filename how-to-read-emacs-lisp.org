@@ -262,18 +262,24 @@ not getting loaded, make sure you have either =~/.emacs= or
 In math, operators like + and * go between the numbers they will work on.
 In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
 
-#+begin_example
-( ( 1 + 2 ) * 3 )  Math expression
-( * ( + 1 2 ) )    Emacs Lisp expression
-#+end_example	 	 	
-
-file:images/math-to-emacs-lisp.png
-
 Here's how to calculate (1 + 2) * 3 in Emacs Lisp. Note that the multiplication is surrounded by parentheses, even if we usually leave out the parentheses in math. That's because in Emacs Lisp, all function calls have their own set of parentheses.
 
 #+begin_src emacs-lisp
 (* (+ 1 2) 3)
 #+end_src
+
+Let's take a closer look:
+
+#+begin_example
+( ( 1 + 2 ) * 3 )    Math expression
+( * ( + 1 2 ) 3 )    Emacs Lisp expression
+#+end_example	 	 	
+
+file:images/math-to-emacs-lisp.png
+
+See how the operators are at the beginning of whatever they're working
+on, and the parentheses enclose everything that's related to that
+operator? 
 
 Understanding this will let you read code like:
 
@@ -687,22 +693,4 @@ Patches and pull requests welcome!
   - edebug-defun
 
 - Thanks
-  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco
-
-#+BEGIN_HTML
-<script type="text/javascript">
-$(document).bind('scroll',function(e){
-    $('div.outline-2').each(function(){
-        if (
-           $(this).offset().top < window.pageYOffset + 10
-//begins before top
-        && $(this).offset().top + $(this).height() > window.pageYOffset + 10
-//but ends in visible area
-//+ 10 allows you to change hash before it hits the top border
-        ) {
-            window.location.hash = $(this).attr('id');
-        }
-    });
-});
-</script>
-#+END_HTML
+  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-04-30 Wed 19:08 -->
+<!-- 2014-05-01 Thu 18:16 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -501,17 +501,6 @@ In math, operators like + and * go between the numbers they will work on.
 In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
 </p>
 
-<pre class="example">
-( ( 1 + 2 ) * 3 )  Math expression
-( * ( + 1 2 ) )    Emacs Lisp expression
-</pre>
-
-
-<div class="figure">
-<p><img src="images/math-to-emacs-lisp.png" alt="math-to-emacs-lisp.png" />
-</p>
-</div>
-
 <p>
 Here's how to calculate (1 + 2) * 3 in Emacs Lisp. Note that the multiplication is surrounded by parentheses, even if we usually leave out the parentheses in math. That's because in Emacs Lisp, all function calls have their own set of parentheses.
 </p>
@@ -521,6 +510,27 @@ Here's how to calculate (1 + 2) * 3 in Emacs Lisp. Note that the multiplication 
 <pre class="src src-emacs-lisp">(* (+ 1 2) 3)
 </pre>
 </div>
+
+<p>
+Let's take a closer look:
+</p>
+
+<pre class="example">
+( ( 1 + 2 ) * 3 )    Math expression
+( * ( + 1 2 ) 3 )    Emacs Lisp expression
+</pre>
+
+
+<div class="figure">
+<p><img src="images/math-to-emacs-lisp.png" alt="math-to-emacs-lisp.png" />
+</p>
+</div>
+
+<p>
+See how the operators are at the beginning of whatever they're working
+on, and the parentheses enclose everything that's related to that
+operator? 
+</p>
 
 <p>
 Understanding this will let you read code like:
@@ -1297,27 +1307,11 @@ Patches and pull requests welcome!
 
 <li>Thanks
 <ul class="org-ul">
-<li>aidalgol, rryoumaa, shergill, taus, tali713, Fuco
+<li>aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff
 </li>
 </ul>
 </li>
 </ul>
-
-<script type="text/javascript">
-$(document).bind('scroll',function(e){
-    $('div.outline-2').each(function(){
-        if (
-           $(this).offset().top < window.pageYOffset + 10
-//begins before top
-        && $(this).offset().top + $(this).height() > window.pageYOffset + 10
-//but ends in visible area
-//+ 10 allows you to change hash before it hits the top border
-        ) {
-            window.location.hash = $(this).attr('id');
-        }
-    });
-});
-</script>
 </div>
 </div>
 <div id="footnotes">

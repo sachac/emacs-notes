@@ -1,16 +1,82 @@
-#+TODO: TODO(t) STARTED(s) | DONE(x)
+#+TODO: TODO(t) STARTED(s) DELEGATED(d) SOMEDAY(.) | DONE(x) CANCELLED(c) 
 #+PROPERTY: QUANTIFIED Emacs
 
 * How to use this
 
-If you're starting on a task, tag it with your name and change the TODO to STARTED. Clocking in is nice. =)
+Before you start working on a task, do a git pull to see if anyone else has started working on it.
+If you're starting on a task, tag it with your name and change the TODO to STARTED. Clocking in and out is nice. =)
+You can start with the tasks ready for delegation, but also feel free to take a look at the other tasks in the file and suggest/volunteer. =)
+When discussing, add your initials followed by a colon and your notes (or create a subtree).
 
-* Tasks
+* Tasks ready for delegation
 
 ** TODO Transcribe Avdi Grimm's chat   :transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 ** TODO Transcribe Carsten Dominik's chat 											 :transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
+
+* Publishing Emacs
+	:PROPERTIES:
+	:QUANTIFIED: Emacs
+	:END:
+** Reading Emacs Lisp
+[[../code/emacs-notes/how-to-read-emacs-lisp.org]]
+*** DONE Add more details to reading Emacs Lisp tutorial
+		 CLOSED: [2014-04-28 Mon 11:54]
+		:LOGBOOK:
+		- State "DONE"       from "STARTED"    [2014-04-28 Mon 11:54]
+		CLOCK: [2014-04-28 Mon 10:58]--[2014-04-28 Mon 11:54] =>  0:56
+		:END:
+		:PROPERTIES:
+		:Effort:   2:00
+		:END:
+** TODO Add support page to emacs-notes
+	 :PROPERTIES:
+	 :Effort:   0:30
+	 :END:
+** TODO Sketch out Org Mode coaching
+
+** TODO Write a tutorial from installing Emacs to getting Org 8 updated    
+
+:PROPERTIES:
+:Effort: 2:00
+:END:
+** TODO Announce guide for learning Emacs Lisp
+** TODO Announce EmacsLife.com
+** TODO Write about load path shadowing
+	 :PROPERTIES:
+	 :Effort:   0:30
+	 :END:
+** TODO Write about windows
+	 :PROPERTIES:
+	 :Effort:   0:30
+	 :END:
+** TODO Write about undo
+	 :PROPERTIES:
+	 :Effort:   0:30
+	 :END:
+** STARTED Incorporate @philandstuff's feedback
+	 :LOGBOOK:
+	 CLOCK: [2014-05-01 Thu 18:08]
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   0:30
+	 :END:
+https://twitter.com/philandstuff/status/461969774227247104
+- typo
+- remove scroll
+** TODO Prepare a financial report of how much I'm investing in the Emacs community
+- Emacs chat transcripts
+- Hosting, domain names
+- Other delegation experiments
+** CANCELLED Make it easier to bookmark sections of guide
+	 CLOSED: [2014-05-01 Thu 18:05]
+	 :LOGBOOK:
+	 CLOCK: [2014-04-30 Wed 18:55]--[2014-04-30 Wed 19:15] =>  0:20
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   1:00
+	 :END:
 ** DONE Organize Emacs resources into starting/improving/enjoying
 	 CLOSED: [2014-04-30 Wed 17:14]
 	 :LOGBOOK:
@@ -29,6 +95,284 @@ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 	 :PROPERTIES:
 	 :Effort:   1:00
 	 :END:
+
+** DONE Make blog posts available offline
+	 CLOSED: [2014-04-30 Wed 18:51]
+	 :LOGBOOK:
+	 - State "DONE"       from "TODO"       [2014-04-30 Wed 18:51]
+	 :END:
+** DONE Build a directory of Emacs-related videos - maybe everything with at least 1000 views.
+	 CLOSED: [2014-04-30 Wed 18:52]
+	 :LOGBOOK:
+	 - State "DONE"       from "TODO"       [2014-04-30 Wed 18:52]
+	 :END:
+	 :PROPERTIES:
+	 :Effort:   3:00
+	 :END:
+** DONE Contemplate git or blog posts
+		 CLOSED: [2014-04-26 Sat 14:41]
+		 :LOGBOOK:
+		 - State "DONE"       from "STARTED"    [2014-04-26 Sat 14:41]
+		 CLOCK: [2014-04-25 Fri 14:18]--[2014-04-25 Fri 14:47] =>  0:29
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   0:30
+		 :END:
+
+Blog posts 
++ comments and discussions
++ subscriptions
++ search
+
+Separate static pages
++ easier to add TODOs to agenda
++ other people can add/update
++ can see updates through Github notifications
++ excuse to learn Jekyll?
+Yes, patch requests!
+
+** DONE Move Emacs Chat transcripts to Github?
+	 CLOSED: [2014-04-26 Sat 14:41]
+	 :LOGBOOK:
+	 - State "DONE"       from "TODO"       [2014-04-26 Sat 14:41]
+	 :END:
+** DONE Annotate my Emacs configuration    
+     CLOSED: [2014-04-09 Wed 13:32] SCHEDULED: <2014-04-09 Wed>
+:LOGBOOK:
+- State "DONE"       from "STARTED"    [2014-04-09 Wed 13:32]
+CLOCK: [2014-04-09 Wed 12:44]--[2014-04-09 Wed 13:32] =>  0:48
+CLOCK: [2014-04-09 Wed 11:50]--[2014-04-09 Wed 12:19] =>  0:29
+:END:
+
+:PROPERTIES:
+:Effort: 1:00
+:END:
+** DONE Draft guide to getting started with Emacs Lisp
+     CLOSED: [2014-04-09 Wed 15:51] SCHEDULED: <2014-04-09 Wed>
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2014-04-09 Wed 15:51]
+     CLOCK: [2014-04-09 Wed 13:33]--[2014-04-09 Wed 15:51] =>  2:18
+     CLOCK: [2014-04-09 Wed 11:28]--[2014-04-09 Wed 11:50] =>  0:22
+     :END:
+     :PROPERTIES:
+     :Effort:   2:00
+     :END:
+
+
+- Existing resources
+  - http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
+  - [[https://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]: A bit abstract
+  - http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/: Starts with ielm, focuses on data structures; other parts?
+  - http://ergoemacs.org/emacs/elisp.html: Good collection of idioms and common uses.
+- Differences
+  - I want to write a friendly guide to Emacs Lisp programming, focusing on it as a way to customize Emacs. We'd start off with =(setq ...)=, maybe move on to simple hooks, and then define interactive commands, then interactive prompts.
+
+** DONE Get Emacs to show me a month of completed tasks, organized by project    
+     CLOSED: [2014-04-11 Fri 14:56] SCHEDULED: <2014-04-11 Fri>
+:LOGBOOK:
+- State "DONE"       from "STARTED"    [2014-04-11 Fri 14:56]
+CLOCK: [2014-04-11 Fri 13:50]--[2014-04-11 Fri 14:56] =>  1:06
+:END:
+
+My goal is to be able to see what I've done in a month.
+An easy way to do that is to look at log mode for a month of tasks.
+Ooh. I had no idea there's a C-c a L org timeline... That's kinda nifty, combined with log mode. Maybe agenda?
+
+Okay. That's a start. That shows me by date. But do I really want it by project instead? 
+
+Oooh, maybe R would be helpful. It adds the clock table...
+
+TADA!
+
+#+begin_src emacs-lisp
+  (defun sacha/org-review-month (start-date)
+    "Review the month's clocked tasks and time."
+    (interactive (list (org-read-date)))
+    ;; Set to the beginning of the month
+    (setq start-date (concat (substring start-date 0 8) "01"))
+    (let ((org-agenda-show-log t)
+          (org-agenda-start-with-log-mode t)
+          (org-agenda-start-with-clockreport-mode t)
+          (org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3)))
+      (org-agenda-list nil start-date 'month)))
+#+end_src
+
+
+
+:PROPERTIES:
+:Effort: 2:00
+:END:
+** DONE Make it easier to cross-link Org    
+     CLOSED: [2014-04-06 Sun 16:06] SCHEDULED: <2014-04-06 Sun>
+:LOGBOOK:
+- State "DONE"       from "STARTED"    [2014-04-06 Sun 16:06]
+CLOCK: [2014-04-06 Sun 15:29]--[2014-04-06 Sun 16:06] =>  0:37
+:END:
+
+:PROPERTIES:
+:Effort: 0:30
+:END:
+
+** DONE Build - Emacs: Prettify baby steps guide to Org Mode
+	 CLOSED: [2014-03-05 Wed 16:56] SCHEDULED: <2014-03-05 Wed>
+	 :LOGBOOK:
+	 - State "DONE"       from "TODO"       [2014-03-05 Wed 16:56]
+	 :END:
+** DONE Build - Emacs: Make a guide to Dired
+	 CLOSED: [2014-03-05 Wed 16:34] SCHEDULED: <2014-03-05 Wed>
+	 :LOGBOOK:
+	 - State "DONE"       from "TODO"       [2014-03-05 Wed 16:34]
+	 :END:
+** DONE Build - Emacs: Record Emacs Basics video for calling commands by name
+   CLOSED: [2014-03-17 Mon 19:52] SCHEDULED: <2014-03-17 Mon>
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2014-03-17 Mon 19:52]
+   :END:
+
+:PROPERTIES:
+:Effort: 1:00
+:END:
+** DONE Build - Emacs: Record Emacs Basics video on Emacs
+     CLOSED: [2014-03-24 Mon 13:40] SCHEDULED: <2014-03-24 Mon>
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2014-03-24 Mon 13:40]
+     CLOCK: [2014-03-24 Mon 13:40]--[2014-03-24 Mon 13:40] =>  0:00
+     :END:
+     :PROPERTIES:
+     :Effort:   2:00
+     :END:
+
+Hello, I'm Sacha Chua, and this is an Emacs Basics video on customizing Emacs. Emacs is incredibly flexible. You can tweak it to do much more than you might expect from a text editor. Here's how you can get started.
+
+You can change tons of options through the built-in customization interface. Explore the options by typing =M-x customize=. Remember, that's =Alt-x= if you're using a PC keyboard and =Option-x= if you're on a Mac. So for me, that's =Alt-x= =customize= =<Enter>=. In the future, I'll just refer to this as the =Meta= key, so remember which key is equivalent to =Meta= on your keyboard.
+
+After you run =M-x customize=, you'll see different groups of options. Click on the links to explore a group. 
+
+For example, people often want to change the backup directory setting.
+This is the setting that controls where the backup files (the files
+ending in ~) are created. You've probably noticed that they clutter
+your current directory by default.
+
+To change this setting, select the *Files > Backup* group. Look for the entry that says *Backup Directory Alist.* Click on the arrow, or move your point to the arrow and press =<Enter>=. You'll see that the value is =nil=. Click on *INS* or move your point to *INS* and press =<Enter>=. Fill it in as follows:
+- Regexp matching filename: =.=
+- Backup directory name: =~/.emacs.d/backups=
+
+Click on *State* and choose *Save for future sessions*. This will save your changes to =~/.emacs.d/init.el=. When you're done, type =q= to close the screen.
+
+You can also jump straight to customizing a specific variable. For example, if you want to change the way Emacs handles case-sensitive search, you can use =M-x customize-variable= to set the =case-fold-search= variable. By default, case fold search is on, which means that searching for a lower-case "hello" will match an upper-case "HELLO" as well. If you would like to change this so that lowercase only matches lowercase and uppercase matches only uppercase, you can toggle this variable. I like leaving case fold search on because it's more convenient for me. If you make lots of changes, you can use the *Apply and Save* button to save all the changes on your current screen.
+
+The Customize interface lets you change lots of options, but not everything can be changed through Customize. That's where your Emacs configuration file comes in. This used to be a file called =~/.emacs= in your home directory, and you'll still come across lots of pages that refer to a =.emacs= file (or "dot emacs"). The new standard is to put configuration code in your =~/.emacs.d/init.el= file, which you can create if it does not yet exist.
+
+What goes into your =~/.emacs.d/init.el= file? If you open it now, you'll probably find the settings you saved using =M-x customize=. You can also call functions, set variables, and even override the way Emacs works. As you learn more about Emacs, you'll probably find Emacs Lisp snippets on web pages and in manuals. For example, the Org manual includes the following lines:
+
+#+begin_src emacs-lisp
+     (global-set-key "\C-cl" 'org-store-link)
+     (global-set-key "\C-cc" 'org-capture)
+     (global-set-key "\C-ca" 'org-agenda)
+     (global-set-key "\C-cb" 'org-iswitchb)
+#+end_src
+
+This code sets =C-c l= (that's =Control-c l=) to run =org-store-link=, =C-c c= to run =org-capture=, =C-c a= to run =org-agenda=, and =C-c b= to run =org-iswitchb=. You can add those to the end of your =~/.emacs.d/init.el= file. They'll be loaded the next time you start Emacs. If you want to reload your =~/.emacs.d/init.el= without restarting, use =M-x eval-buffer=.
+
+As you experiment with configuring Emacs, you may run into mistakes or errors. You can find out whether it's a problem with Emacs or with your configuration by loading Emacs with =emacs -Q=, which skips your configuration. If Emacs works fine with your configuration, check your =~/.emacs.d/init.el= to see which code messed things up. You can comment out regions by selecting them and using =M-x comment-region=. That way, they won't be evaluated when you start Emacs. You can uncomment them with =M-x uncomment-region=. 
+
+Emacs gets even awesomer when you tailor it to the way you want to work. Enjoy customizing it!
+
+** DONE Reach out regarding Emacs Google Hangout?
+	 CLOSED: [2014-03-30 Sun 14:20] SCHEDULED: <2014-03-31 Mon>
+	 :LOGBOOK:
+	 - State "DONE"       from "TODO"       [2014-03-30 Sun 14:20]
+	 :END:
+** DONE Get a list of Emacs videos
+	 CLOSED: [2014-05-01 Thu 18:06]
+			:PROPERTIES:
+			:Effort:   1:00
+			:END:
+Considered YouTube Data API, but will try with humans first
+** Beeminder.el
+[[~/code/beeminder.el/beeminder.el]]
+*** DONE Fix keymap in beeminder.el
+			 CLOSED: [2014-04-16 Wed 16:41]
+			:LOGBOOK:
+			- State "DONE"       from "STARTED"    [2014-04-16 Wed 16:41]
+			CLOCK: [2014-04-16 Wed 16:38]--[2014-04-16 Wed 16:41] =>  0:03
+			:END:
+			:PROPERTIES:
+			:Effort:   0:10
+			:END:
+Oh! Already fixed, yay.
+*** DONE Hook Beeminder into Gnus to track sent messages
+			 CLOSED: [2014-04-16 Wed 17:13]
+			:LOGBOOK:
+			- State "DONE"       from "STARTED"    [2014-04-16 Wed 17:13]
+			CLOCK: [2014-04-16 Wed 16:42]--[2014-04-16 Wed 17:13] =>  0:31
+			:END:
+			:PROPERTIES:
+			:Effort:   0:30
+			:END:
+
+(defun sacha/beeminder-track-message ()
+	(save-excursion
+		(goto-char (point-min))
+		(when (re-search-forward "Newsgroups: .*emacs")
+			(goto-char (point-min))
+			(when (re-search-forward "Subject: \\(.*\\)" nil t)
+				(beeminder-add-data "orgml" "1" (match-string 1))))))
+(add-hook 'message-send-news-hook 'sacha/beeminder-track-message)
+
+
+*** DONE Improve Emacs Beeminder    
+     CLOSED: [2014-04-08 Tue 18:08] SCHEDULED: <2014-04-08 Tue>
+:LOGBOOK:
+- State "DONE"       from "STARTED"    [2014-04-08 Tue 18:08]
+CLOCK: [2014-04-08 Tue 17:00]--[2014-04-08 Tue 18:08] =>  1:08
+:END:
+http://www.philnewton.net/code/beeminder-el/    
+
+- fix README mispelling
+- Remove user bindings
+- Fiddle with how it stores data
+- Cache things properly 
+
+:PROPERTIES:
+:Effort: 1:00
+:END:
+** Emacs ABCs
+	 :PROPERTIES:
+	 :LINK:     [[file:~/Dropbox/Public/evil-plans.org::*make%20ABCs%20of%20Emacs][make ABCs of Emacs]]
+	 :END:
+*** DONE Draw "A" page for Emacs ABCs															 :@drawing:
+		CLOSED: [2014-04-11 Fri 15:38] SCHEDULED: <2014-04-11 Fri>
+		:LOGBOOK:
+		- State "DONE"       from "STARTED"    [2014-04-11 Fri 15:38]
+		CLOCK: [2014-04-11 Fri 14:57]--[2014-04-11 Fri 15:38] =>  0:41
+		:END:
+		:PROPERTIES:
+		:Effort:   2:00
+		:END:
+** Emacs Basics																											:project:
+	 :PROPERTIES:
+	 :LINK:     [[file:~/sachac.github.io/evil-plans/index.org::*create%20a%2010-week%20Emacs%20Basics%20course][create a 10-week Emacs Basics course]]
+	 :END:
+*** DONE Add more sections to Emacs Lisp tutorial
+		 CLOSED: [2014-04-23 Wed 15:23] SCHEDULED: <2014-04-23 Wed>
+		 :LOGBOOK:
+		 - State "DONE"       from "TODO"       [2014-04-23 Wed 15:23]
+		 :END:
+*** TODO Make video on extending Emacs 
+		 :PROPERTIES:
+		 :Effort:   2:00
+		 :END:
+https://twitter.com/gozes/status/446397063194894337
+*** TODO Build - Emacs: Record Emacs Basics video on themes and faces
+		:PROPERTIES:
+		:Effort:   2:00
+		:END:
+*** TODO Record session on learning keyboard shortcuts
+		SCHEDULED: <2014-05-05 Mon>
+		:PROPERTIES:
+		:CREATED:  [2014-04-16 Wed 12:20]
+		:END:
 
 * Notes
 
