@@ -523,7 +523,7 @@ or
 (global-set-key [?\M-/] 'hippie-expand)
 #+end_src
 
-You can use =^= to mean Control=
+You can use =^= to mean =Control=, so
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 #+end_src
