@@ -1,5 +1,7 @@
 #+TITLE: Making my Emacs-related blog posts available for offline reading :emacs:packaging:
 
+Online: http://sachachua.com/blog/?p=27218&shareadraft=baba27218_5361a5b7db2e2
+
 Deepak Tripathi wanted to know how to download all of my Emacs-related
 posts for offline reading. It makes sense to put together something
 like that. [[http://ergoemacs.org/emacs/buy_xah_emacs_tutorial.html][Xah Lee]] even charges for an organized ZIP copy of his site
