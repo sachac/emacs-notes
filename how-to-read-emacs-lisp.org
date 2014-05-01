@@ -668,7 +668,7 @@ run. You can start that initialization earlier by adding
 use =(require 'feature-name)=, where the feature name is usually the
 name of the package. See [[void-function][Lisp error: (void-function ...)]] or [[void-variable][Symbol's value as variable is void: ___]] for some more details.
 
-**** Downloaded Emacs Lisp files
+** Downloading Emacs Lisp files
 <<unpackaged>>
 
 Some files are not yet available as packages. If you search for the
@@ -679,7 +679,7 @@ save those to your computer and load them with:
 (load "/path/to/file.el")
 #+end_src
 
-You can also use the =require= syntax, but first you'll need to add your downloaded Emacs lisp file to the =load-path= with something like this.
+You can also use the =require= syntax, but first you'll need to add your downloaded Emacs Lisp file to the =load-path= with something like this.
 
 #+begin_src emacs-lisp
 (add-to-list 'load-path "/path/to/dir/with/el/files")
@@ -738,7 +738,7 @@ See [[Loading libraries]] for more information.
 The code calls a function that has not been defined. 
 
 - Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use =M-x list-packages= to see the available packages. You may need to add other sources to your =package-archives= to see a wider range of packages. See [[load][Adding more features to Emacs]].
-- If you downloaded the library manually, =load= or =require= it. See [[unpackaged][Downloaded Emacs Lisp files]].
+- If you downloaded the library manually, =load= or =require= it. See [[unpackaged][Downloading Emacs Lisp files]].
 - If you're copying some code that isn't packaged in a library, check if there are any =defun= (define function) expressions that you forgot to copy. Make sure to include and evaluate those.
 
 ** Symbol's value as variable is void: ___
