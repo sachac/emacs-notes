@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Making my Emacs-related blog posts available for offline reading :emacs:packaging:</title>
+<!-- 2014-04-30 Wed 21:37 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sacha Chua" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Making my Emacs-related blog posts available for offline reading :emacs:packaging:</h1>
+<p>
+Deepak Tripathi wanted to know how to download all of my Emacs-related
+posts for offline reading. It makes sense to put together something
+like that. <a href="http://ergoemacs.org/emacs/buy_xah_emacs_tutorial.html">Xah Lee</a> even charges for an organized ZIP copy of his site
+(and he's put together a <i>lot</i> of resources). I like putting together
+free/pay-what-you-want things, so I figured I'd add my blog posts to
+my <a href="https://github.com/sachac/emacs-notes/">git repository of Emacs notes</a>.
+</p>
+
+<p>
+My <a href="http://sachachua.com">blog</a> runs on Wordpress. It has a whole bunch of other posts in it,
+so a straightforward Jekyll import wouldn't do the trick. I had
+previously modified my Wordpress theme to add a special <code>?dump=1</code>
+parameter for single post pages so that I could use it to archive
+pages. The first thing I needed to do was to come up with a list of Emacs-related blog posts. 
+</p>
+
+<p>
+Fortunately, <a href="http://sachachua.com/blog/emacs">http://sachachua.com/blog/emacs</a> already lists all the
+pages in the Emacs category. I copied the HTML source for the list and
+started tinkering with the text. It was a good excuse to try the
+<code>visual-regexp</code> package - the <code>vr/replace</code> command made working with
+match groups much easier. Eventually I ended up with a list that looked like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">wget -p http://sachachua.com/blog/2014/04/thinking-todo-keywords/?<span class="org-variable-name">dump</span>=1
+wget -p http://sachachua.com/blog/2014/04/reflecting-10-episodes-emacs-chats/?<span class="org-variable-name">dump</span>=1
+wget -p http://sachachua.com/blog/2014/04/org-mode-helps-deal-ever-growing-backlog/?<span class="org-variable-name">dump</span>=1
+wget -p http://sachachua.com/blog/2014/04/reinvesting-time-and-money-into-emacs/?<span class="org-variable-name">dump</span>=1
+...
+</pre>
+</div>
+
+<p>
+This downloaded the posts and included images. Next, I wanted to process the downloaded HTML pages and turn them into Org files, since I'm more familiar with Org than with Markdown. <a href="http://johnmacfarlane.net/pandoc/">Pandoc</a> to the rescue! I took the output of <code>find -name \*.html\*</code> and processed it with lots more <code>vr/replace</code>&#x2026;
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh">dos2unix ./sachachua.com/blog/2003/07/emacspeak-creator/index.html?<span class="org-variable-name">dump</span>=1; (<span class="org-builtin">echo</span> <span class="org-string">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/emacspeak-creator/index.html?<span class="org-variable-name">dump</span>=1; <span class="org-builtin">echo</span> <span class="org-string">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-emacspeak-creator.org
+dos2unix ./sachachua.com/blog/2003/07/instructionalsoftwaredesign/index.html?<span class="org-variable-name">dump</span>=1; (<span class="org-builtin">echo</span> <span class="org-string">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/instructionalsoftwaredesign/index.html?<span class="org-variable-name">dump</span>=1; <span class="org-builtin">echo</span> <span class="org-string">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-instructionalsoftwaredesign.org
+dos2unix ./sachachua.com/blog/2003/07/interesting-mail-stats/index.html?<span class="org-variable-name">dump</span>=1; (<span class="org-builtin">echo</span> <span class="org-string">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/interesting-mail-stats/index.html?<span class="org-variable-name">dump</span>=1; <span class="org-builtin">echo</span> <span class="org-string">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-interesting-mail-stats.org
+dos2unix ./sachachua.com/blog/2003/08/emacs-macros/index.html?<span class="org-variable-name">dump</span>=1; (<span class="org-builtin">echo</span> <span class="org-string">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/08/emacs-macros/index.html?<span class="org-variable-name">dump</span>=1; <span class="org-builtin">echo</span> <span class="org-string">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-08-emacs-macros.org
+</pre>
+</div>
+
+<p>
+This is a pretty long command line because I didn't bother with writing a shell script to process files. When I tried running <code>pandoc</code> on the HTML snippets, it choked because the file didn't have <code>html</code> or <code>body</code> tags, so I ended up adding them with <code>echo</code> before processing them with <code>pandoc</code>.
+</p>
+
+<p>
+Anyway, now I had a lot of Org files. I wanted to rename them and clean up the titles. I used this totally hackish bit of code to process all the files in the directory, changing the header to a title and adding the day to the filename (just in case I want to move to Jekyll someday).
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">sacha/process-blog-posts</span> ()
+  (interactive)
+  (mapcar (<span class="org-keyword">lambda</span> (x)
+            (find-file x)
+            <span class="org-comment-delimiter">;; </span><span class="org-comment">Set the title</span>
+            (goto-char (point-min))
+            (<span class="org-keyword">when</span> (looking-at <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\*\\*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>)
+              (replace-match <span class="org-string">"#+TITLE:"</span>))
+            (save-buffer)
+            <span class="org-comment-delimiter">;; </span><span class="org-comment">Rename the file</span>
+            (<span class="org-keyword">when</span> (re-search-forward <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">th</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">nd</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">st</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">rd</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">, </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>)
+              (<span class="org-keyword">let</span> ((day (match-string 1)))
+                (rename-file
+                 (buffer-file-name)
+                 (replace-regexp-in-string
+                  <span class="org-string">"/</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">-</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">-"</span>
+                  (concat <span class="org-string">"/processed\\&amp;"</span> day <span class="org-string">"-"</span>)
+                  (buffer-file-name)))))
+            (kill-buffer))
+          (directory-files <span class="org-string">"."</span> nil <span class="org-string">".org$"</span>)))
+</pre>
+</div>
+
+<p>
+I also wanted to change the image references to use the images that <code>wget</code> had downloaded into my <code>uploads</code> directory. This time I used <code>wgrep</code>, which is awesome. The <code>wgrep</code> package makes grep results editable if you use <code>wgrep-change-to-wgrep-mode</code> (bound to <code>C-c C-p</code> by default, but you can change <code>wgrep-enable-key</code>). If you combine that with <code>vr/replace</code> from <code>visual-regexp</code> or some keyboard macros, you can edit a whole lot of things quickly. Save the changes with <code>C-x C-s</code> (<code>wgrep-finish-edit</code>), and you're done!
+</p>
+
+<p>
+So now I had a bunch of Org files that were in reasonable shape. I wanted to regenerate the HTML pages so that people could browse them even if they weren't familiar with Org. I set up the relevant <code>org-publish-project-alist</code> entries in a <a href="https://github.com/sachac/emacs-notes/blob/gh-pages/build-site.el">build-site.el</a> that a <a href="https://github.com/sachac/emacs-notes/blob/gh-pages/Makefile">Makefile</a> could use, and I published the project. 
+</p>
+
+<p>
+Going from HTML to Org to HTML meant losing some information and lots of my blog posts need reviewing, but it's a good start. Since I draft many of my Emacs-related blog posts in Org anyway, I can copy the Org source into my emacs-notes repository going forward.
+</p>
+
+<p>
+Anyway, there you have it for your grepping pleasure! <a href="https://github.com/sachac/emacs-notes/">https://github.com/sachac/emacs-notes/</a>
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

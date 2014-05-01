@@ -1,0 +1,72 @@
+#+TITLE: Making my Emacs-related blog posts available for offline reading :emacs:packaging:
+
+Deepak Tripathi wanted to know how to download all of my Emacs-related
+posts for offline reading. It makes sense to put together something
+like that. [[http://ergoemacs.org/emacs/buy_xah_emacs_tutorial.html][Xah Lee]] even charges for an organized ZIP copy of his site
+(and he's put together a /lot/ of resources). I like putting together
+free/pay-what-you-want things, so I figured I'd add my blog posts to
+my [[https://github.com/sachac/emacs-notes/][git repository of Emacs notes]].
+
+My [[http://sachachua.com][blog]] runs on Wordpress. It has a whole bunch of other posts in it,
+so a straightforward Jekyll import wouldn't do the trick. I had
+previously modified my Wordpress theme to add a special =?dump=1=
+parameter for single post pages so that I could use it to archive
+pages. The first thing I needed to do was to come up with a list of Emacs-related blog posts. 
+
+Fortunately, http://sachachua.com/blog/emacs already lists all the
+pages in the Emacs category. I copied the HTML source for the list and
+started tinkering with the text. It was a good excuse to try the
+=visual-regexp= package - the =vr/replace= command made working with
+match groups much easier. Eventually I ended up with a list that looked like this:
+
+#+begin_src sh
+wget -p http://sachachua.com/blog/2014/04/thinking-todo-keywords/?dump=1
+wget -p http://sachachua.com/blog/2014/04/reflecting-10-episodes-emacs-chats/?dump=1
+wget -p http://sachachua.com/blog/2014/04/org-mode-helps-deal-ever-growing-backlog/?dump=1
+wget -p http://sachachua.com/blog/2014/04/reinvesting-time-and-money-into-emacs/?dump=1
+...
+#+end_src
+
+This downloaded the posts and included images. Next, I wanted to process the downloaded HTML pages and turn them into Org files, since I'm more familiar with Org than with Markdown. [[http://johnmacfarlane.net/pandoc/][Pandoc]] to the rescue! I took the output of =find -name \*.html\*= and processed it with lots more =vr/replace=...
+
+#+begin_src sh
+dos2unix ./sachachua.com/blog/2003/07/emacspeak-creator/index.html?dump=1; (echo "<html><body>"; cat ./sachachua.com/blog/2003/07/emacspeak-creator/index.html?dump=1; echo "</body></html>") > test.html; pandoc test.html -o 2003-07-emacspeak-creator.org
+dos2unix ./sachachua.com/blog/2003/07/instructionalsoftwaredesign/index.html?dump=1; (echo "<html><body>"; cat ./sachachua.com/blog/2003/07/instructionalsoftwaredesign/index.html?dump=1; echo "</body></html>") > test.html; pandoc test.html -o 2003-07-instructionalsoftwaredesign.org
+dos2unix ./sachachua.com/blog/2003/07/interesting-mail-stats/index.html?dump=1; (echo "<html><body>"; cat ./sachachua.com/blog/2003/07/interesting-mail-stats/index.html?dump=1; echo "</body></html>") > test.html; pandoc test.html -o 2003-07-interesting-mail-stats.org
+dos2unix ./sachachua.com/blog/2003/08/emacs-macros/index.html?dump=1; (echo "<html><body>"; cat ./sachachua.com/blog/2003/08/emacs-macros/index.html?dump=1; echo "</body></html>") > test.html; pandoc test.html -o 2003-08-emacs-macros.org
+#+end_src
+
+This is a pretty long command line because I didn't bother with writing a shell script to process files. When I tried running =pandoc= on the HTML snippets, it choked because the file didn't have =html= or =body= tags, so I ended up adding them with =echo= before processing them with =pandoc=.
+
+Anyway, now I had a lot of Org files. I wanted to rename them and clean up the titles. I used this totally hackish bit of code to process all the files in the directory, changing the header to a title and adding the day to the filename (just in case I want to move to Jekyll someday).
+
+#+begin_src emacs-lisp
+(defun sacha/process-blog-posts ()
+  (interactive)
+	(mapcar (lambda (x)
+						(find-file x)
+						;; Set the title
+						(goto-char (point-min))
+						(when (looking-at "\\(\\*\\*\\)")
+							(replace-match "#+TITLE:"))
+						(save-buffer)
+						;; Rename the file
+						(when (re-search-forward "\\([0-9]+\\)\\(th\\|nd\\|st\\|rd\\), \\([0-9]+\\)")
+							(let ((day (match-string 1)))
+								(rename-file
+								 (buffer-file-name)
+								 (replace-regexp-in-string
+									"/\\([0-9]+\\)-\\([0-9]+\\)-"
+									(concat "/processed\\&" day "-")
+									(buffer-file-name)))))
+						(kill-buffer))
+					(directory-files "." nil ".org$")))
+#+end_src
+
+I also wanted to change the image references to use the images that =wget= had downloaded into my =uploads= directory. This time I used =wgrep=, which is awesome. The =wgrep= package makes grep results editable if you use =wgrep-change-to-wgrep-mode= (bound to =C-c C-p= by default, but you can change =wgrep-enable-key=). If you combine that with =vr/replace= from =visual-regexp= or some keyboard macros, you can edit a whole lot of things quickly. Save the changes with =C-x C-s= (=wgrep-finish-edit=), and you're done!
+
+So now I had a bunch of Org files that were in reasonable shape. I wanted to regenerate the HTML pages so that people could browse them even if they weren't familiar with Org. I set up the relevant =org-publish-project-alist= entries in a [[https://github.com/sachac/emacs-notes/blob/gh-pages/build-site.el][build-site.el]] that a [[https://github.com/sachac/emacs-notes/blob/gh-pages/Makefile][Makefile]] could use, and I published the project. 
+
+Going from HTML to Org to HTML meant losing some information and lots of my blog posts need reviewing, but it's a good start. Since I draft many of my Emacs-related blog posts in Org anyway, I can copy the Org source into my emacs-notes repository going forward.
+
+Anyway, there you have it for your grepping pleasure! https://github.com/sachac/emacs-notes/
