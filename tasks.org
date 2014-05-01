@@ -20,9 +20,11 @@ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 	:QUANTIFIED: Emacs
 	:END:
 ** How to Read Emacs Lisp
-[[file:how-to-read-emacs-lisp][Link]]
-*** STARTED Write about keybinding  :sacha:
+[[file:how-to-read-emacs-lisp.org][Link]]
+*** DONE Write about keybinding																				:sacha:
+		 CLOSED: [2014-05-01 Thu 19:36]
 		:LOGBOOK:
+		CLOCK: [2014-05-01 Thu 18:41]--[2014-05-01 Thu 19:36] =>  0:55
 		CLOCK: [2014-05-01 Thu 18:29]--[2014-05-01 Thu 18:29] =>  0:00
 		:END:
 		:PROPERTIES:

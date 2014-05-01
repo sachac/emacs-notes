@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-01 Thu 18:16 -->
+<!-- 2014-05-01 Thu 19:36 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -53,15 +53,29 @@
 <li><a href="#sec-5-3">"How can I learn more about variables?"</a></li>
 <li><a href="#sec-5-4">When something is quoted, it's taken literally</a></li>
 <li><a href="#sec-5-5">Lists and lists and lists of lists</a></li>
+<li><a href="#sec-5-6">Keyboard shortcuts</a>
+<ul>
+<li><a href="#sec-5-6-1">Setting keybindings in all buffers</a></li>
+<li><a href="#sec-5-6-2">What does <code>kbd</code> do? How can I figure out which key it sets?</a></li>
+<li><a href="#sec-5-6-3">Multi-key shortcuts</a></li>
+<li><a href="#sec-5-6-4">"Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</a></li>
+<li><a href="#sec-5-6-5">Setting keybindings in a particular mode</a></li>
+<li><a href="#sec-5-6-6">Other ways people bind keys</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">Loading libraries</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Adding more features to Emacs</a>
+<ul>
+<li><a href="#sec-6-1">Installing packages</a></li>
+</ul>
+</li>
 <li><a href="#sec-7">"Oh no! I have an error!"</a>
 <ul>
 <li><a href="#sec-7-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</a></li>
 <li><a href="#sec-7-2">Cannot open load file: &#x2026;</a></li>
 <li><a href="#sec-7-3">Lisp error: (void-function &#x2026;)</a></li>
-<li><a href="#sec-7-4">Symbol's value as variable is void: &#x2026;</a></li>
+<li><a href="#sec-7-4">Symbol's value as variable is void: <span class="underline">_</span></a></li>
 <li><a href="#sec-7-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</a></li>
 </ul>
 </li>
@@ -307,6 +321,10 @@ Here are some packages that might be interesting:
 <div id="outline-container-sec-3-3" class="outline-3">
 <h3 id="sec-3-3">Webpages, blog posts, and the Emacs Wiki</h3>
 <div class="outline-text-3" id="text-3-3">
+<p>
+<a id="melpa"></a>
+</p>
+
 <p>
 While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. For example, the instructions for adding the MELPA repository can be found at <a href="http://melpa.milkbox.net/#/getting-started">http://melpa.milkbox.net/#/getting-started</a> . It has the following code:
 </p>
@@ -794,11 +812,7 @@ Some lists use the dot notation. This depends on what's expected by the function
 </div>
 
 <p>
-This calls the <code>add-to-list</code> function with two arguments. The first argument ('<code>package-archives</code>) specifies the list to add an item to, and
-</p>
-
-<p>
-the second argument ('<code>("melpa" . "http://melpa.milkbox.net/packages/")</code>) is the data to add. The dot notation <code>(a . b)</code> shows that this is a <b>cons cell</b>, which always has two parts: the <b>car</b> and the <b>cdr</b>. To understand the difference between cons cells and other lists, you need to know how lists are constructed.
+This calls the <code>add-to-list</code> function with two arguments. The first argument ('<code>package-archives</code>) specifies the list to add an item to, and the second argument ('<code>("melpa" . "http://melpa.milkbox.net/packages/")</code>) is the data to add. The dot notation <code>(a . b)</code> shows that this is a <b>cons cell</b>, which always has two parts: the <b>car</b> and the <b>cdr</b>. To understand the difference between cons cells and other lists, you need to know how lists are constructed.
 </p>
 
 <p>
@@ -870,27 +884,229 @@ Advanced: Backquotes (`) are special. They quote the expression that follows the
 </p>
 </div>
 </div>
+<div id="outline-container-sec-5-6" class="outline-3">
+<h3 id="sec-5-6">Keyboard shortcuts</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+The default keyboard shortcuts (or "keybindings") can be difficult to
+remember, and many useful functions don't have any keyboard shortcuts
+at all. People often reassign keys to other functions in their
+configuration files. There are different ways to assign keys depending
+on where you want the keybinding to be available.
+</p>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">Loading libraries</h2>
-<div class="outline-text-2" id="text-6">
+
+<div id="outline-container-sec-5-6-1" class="outline-4">
+<h4 id="sec-5-6-1">Setting keybindings in all buffers</h4>
+<div class="outline-text-4" id="text-5-6-1">
 <p>
-Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. If you would like to add more functionality to your Emacs, you will need to install packages or load libraries. When you read other people's Emacs configurations, you might come across other interesting packages to try out.
+You can assign a key to a function globally, which means that it will be available if there are no mode maps or local keybindings that override it. Mode maps are set by major modes like <code>emacs-lisp-mode</code> or minor modes like <code>auto-fill-mode</code>. This is usually done with <code>global-set-key</code>, although sometimes you'll see it done with <code>define-key</code> and <code>global-map</code>. 
 </p>
 
 <p>
-Sometimes people don't indicate which packages they use, so you have to guess the package name based on the function. For example, <code>(global-auto-complete-mode)</code> turns on a completion mode called <code>auto-complete-mode</code> in all buffers. Before you can use this, you will need to install the <code>auto-complete</code> buffer. In general, you can find package names by looking at functions that include <code>mode</code> in their name, removing <code>global</code>, <code>turn-on</code>, and other prefixes as needed.
-</p>
-
-<p>
-Some files are not yet available as packages. If you search for the function, you'll probably find a webpage with an <code>.el</code> file. You can save those to your computer and load them with:
+Here are some examples.
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(load <span class="org-string">"/path/to/file.el"</span>)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"RET"</span>) 'newline-and-indent)
 </pre>
 </div>
+
+<p>
+This redefines the Return key (or the Enter key) so that it calls the <code>newline-and-indent</code> function by default. 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-+"</span>) 'text-scale-increase)
+(global-set-key (kbd <span class="org-string">"C--"</span>) 'text-scale-decrease)
+</pre>
+</div>
+
+<p>
+These set <code>C-+</code> (<code>Ctrl</code> and <code>&lt;plus&gt;</code>) and <code>C--</code> (<code>Ctrl</code> and <code>&lt;minus&gt;</code>) to increase and decrease the font size.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-6-2" class="outline-4">
+<h4 id="sec-5-6-2">What does <code>kbd</code> do? How can I figure out which key it sets?</h4>
+<div class="outline-text-4" id="text-5-6-2">
+<p>
+If you've gone through the Emacs Tutorial (<b>Help - Emacs Tutorial</b> or <code>F1 t</code>), you'll be familiar with many of the conventions used for writing keyboard shortcuts. <code>C-</code> stands for the <code>Ctrl</code> key, <code>M-</code> stands for the <code>Meta</code> key (which is probably <code>Alt</code> or <code>Option</code> on your keyboard). There are other prefixes as well. <code>S-</code> is for Shift, <code>H-</code> is for <code>Hyper</code>, and <code>s-</code> is for <code>Super</code>. Some people use operating system tools (such as <code>setxkbmap</code> for Linux) to change keys on their keyboard to <code>Super</code> or <code>Hyper</code> in order to enable even more keyboard shortcuts.
+</p>
+
+<p>
+Uppercase or lowercase depends on the character in the shortcut. <code>C-x</code> means <code>Control</code> + <code>x</code>, while <code>C-X</code> is actually <code>Control</code> + <code>Shift</code> + <code>X</code>. You can also specify shift by adding <code>S-</code>, so <code>C-X</code> and <code>C-S-x</code> are the same.
+</p>
+
+<p>
+In addition, there are some special characters: <code>RET</code>, <code>SPC</code>, <code>TAB</code>, and <code>ESC</code> must be written in uppercase to mean the special keys they refer to. (There's also <code>LFD</code> and <code>NUL</code>, but you're probably not going to encounter those as often.) You can use angle brackets to refer to some other keys, like <code>&lt;return&gt;</code>, <code>&lt;up&gt;</code>, <code>&lt;down&gt;</code>, <code>&lt;left&gt;</code>, <code>&lt;right&gt;</code>. Function keys are written like this: <code>&lt;f1&gt;</code>. 
+</p>
+
+<p>
+There are different ways to specify the key. Many people use <code>(kbd ...)</code> because it makes bindings easy to read.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-/"</span>) 'hippie-expand)
+</pre>
+</div>
+
+<p>
+This is the same as 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key <span class="org-string">"\M-/"</span> 'hippie-expand)
+</pre>
+</div>
+<p>
+or
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key [?\M-/] 'hippie-expand)
+</pre>
+</div>
+
+<p>
+You can use <code>^</code> to mean Control=
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-s"</span>) 'isearch-forward-regexp)
+</pre>
+</div>
+<p>
+is the same as 
+</p>
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"^s"</span>) 'isearch-forward-regexp)
+</pre>
+</div>
+<p>
+but <code>C-</code> is probably easier to read.
+</p>
+
+<p>
+When using <code>kbd</code>, whitespace doesn't usually matter, but it's easier to read if you use space to separate the keys to type. For more information about the syntax used by <code>kbd</code>, see <code>F1 f</code> (<code>describe-function</code>) for <code>kbd</code>, then follow the link to the documentation for <code>edmacro-mode</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-6-3" class="outline-4">
+<h4 id="sec-5-6-3">Multi-key shortcuts</h4>
+<div class="outline-text-4" id="text-5-6-3">
+<p>
+You can set up keybindings that use more than one key combination. This is a popular technique since you can only have so many short keybindings. For example, the following code changes <code>C-x C-b</code> to call <code>ibuffer</code>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x C-b"</span>) 'ibuffer)
+</pre>
+</div>
+
+<p>
+You don't have to start with <code>C-c</code> or <code>C-x</code>. Consider using one of your function keys like <code>&lt;f9&gt;</code> as the start of your keyboard shortcuts. Then you can create shortcuts that don't involve using <code>Ctrl</code>, <code>Alt</code>, or other modifier keys.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f9&gt; b"</span>) 'ibuffer)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-6-4" class="outline-4">
+<h4 id="sec-5-6-4">"Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</h4>
+<div class="outline-text-4" id="text-5-6-4">
+<p>
+If you want to create a multi-key shortcut, the preceding keys must not be assigned to functions. That is, if you want <code>M-t l</code> to call <code>transpose-lines</code>, you'll need to get rid of <code>M-t</code>'s default binding to <code>transpose-words</code> first. To unset a key, bind it to <code>nil</code>. Here's an example that also includes a few handy shortcuts:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-t"</span>) nil) <span class="org-comment-delimiter">;; </span><span class="org-comment">Remove the old keybinding</span>
+(global-set-key (kbd <span class="org-string">"M-t l"</span>) 'transpose-lines)
+(global-set-key (kbd <span class="org-string">"M-t w"</span>) 'transpose-words)
+(global-set-key (kbd <span class="org-string">"M-t t"</span>) 'transpose-words)
+(global-set-key (kbd <span class="org-string">"M-t M-t"</span>) 'transpose-words)
+(global-set-key (kbd <span class="org-string">"M-t s"</span>) 'transpose-sexps)
+</pre>
+</div>
+
+<p>
+The example above has three bindings for <code>transpose-words</code>. <code>M-t w</code> uses the mnemonic of *t*ranspose *w*ords. <code>M-t t</code> is similar to the original binding for <code>transpose-words</code>, which was <code>M-t</code>. <code>M-t M-t</code> just makes it a little easier. This may seem like overkill, but sometimes you'll find it easier to hold the <code>Meta</code> key down and hit <code>t</code> twice quickly instead of typing <code>M-t</code>, releasing <code>Meta</code>, and then typing <code>t</code>. As you read other people's keybindings, you'll get a sense of how people have configured their keyboard shortcuts to speed up typing and minimize thinking.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-6-5" class="outline-4">
+<h4 id="sec-5-6-5">Setting keybindings in a particular mode</h4>
+<div class="outline-text-4" id="text-5-6-5">
+<p>
+Sometimes you want keys to do different things in different types of files. You can assign a key in a mode map, which means it will override global keybindings in buffers with that mode. You can do this with <code>define-key</code> if you know the name of the keymap you want to change, which is generally the name of the mode + <code>-map</code>. For example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(define-key c-mode-map (kbd <span class="org-string">"C-c o"</span>) 'ff-find-other-file)
+</pre>
+</div>
+
+<p>
+changes the <code>C-c o</code> keyboard shortcut to <code>ff-find-other-file</code>, but only in C buffers.
+</p>
+
+<p>
+Note that if you use <code>define-key</code> with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a <code>require</code> (which loads the code) or inside an <code>eval-after-load</code> (which postpones the code until after the mode is loaded). See <a href="#load">Adding more features to Emacs</a> for more information.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5-6-6" class="outline-4">
+<h4 id="sec-5-6-6">Other ways people bind keys</h4>
+<div class="outline-text-4" id="text-5-6-6">
+<p>
+The <code>bind-key</code> package provides a function that makes it easier to see your personal keybindings, but <code>bind-key</code> is not part of Emacs by default. I use <code>bind-key</code> a lot in <a href="http://sachachua.com/dotemacs">my configuration</a>. The syntax is similar to <code>global-set-key</code>, except it automatically wraps the keyboard shortcut string in <code>kbd</code>. It also keeps track of which keyboard shortcuts you've overridden so that you can use <code>M-x describe-personal-keybindings</code> to review them.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(bind-key <span class="org-string">"C-+"</span> 'text-scale-increase)
+(bind-key <span class="org-string">"C--"</span> 'text-scale-decrease)
+</pre>
+</div>
+
+<p>
+You'll need to install and use the <code>bind-key</code> package before you can use that code.
+</p>
+
+<p>
+Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use <code>F1 f</code> (<code>describe-function</code>) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Adding more features to Emacs</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<a id="load"></a>
+</p>
+
+<p>
+Most Emacs libraries are not loaded automatically. This saves memory
+and keeps things simpler. You can load built-in code by using <code>require</code>, like this:
+</p>
 
 <p>
 Another way to load libraries is to use <code>require</code>, which loads them only if they haven't already been loaded. You'll often see code like this in people's configuration:
@@ -898,8 +1114,7 @@ Another way to load libraries is to use <code>require</code>, which loads them o
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"/path/to/dir/with/el/files"</span>)
-(<span class="org-keyword">require</span> '<span class="org-constant">package-name-goes-here</span>)
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">package-name-goes-here</span>)
 </pre>
 </div>
 
@@ -947,6 +1162,96 @@ does not automatically load <code>dash</code>. You'll see this when people have
 configuration that they want to run only if something is loaded, which
 can make sense for performance reasons.
 </p>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">Installing packages</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Emacs comes with a lot of code, but there are even more packages out
+there. When you read other people's Emacs configurations, you might
+come across other interesting packages to try out.
+</p>
+
+<p>
+Sometimes people don't indicate which packages they use, so you have
+to guess the package name based on the function. For example,
+<code>(global-auto-complete-mode)</code> turns on a completion mode called
+<code>auto-complete-mode</code> in all buffers. Before you can use this, you will
+need to install the <code>auto-complete</code> buffer. In general, you can find
+package names by looking at functions that include <code>mode</code> in their
+name, removing <code>global</code>, <code>turn-on</code>, and other prefixes as needed.
+</p>
+
+<p>
+The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as MELPA<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup> or Marmalade<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup> Here's the code that you would run in order to add these repositories to your Emacs:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">package</span>)
+(add-to-list 'package-archives
+  '(<span class="org-string">"melpa"</span> . <span class="org-string">"http://melpa.milkbox.net/packages/"</span>))
+(add-to-list 'package-archives 
+  '(<span class="org-string">"marmalade"</span> . <span class="org-string">"http://marmalade-repo.org/packages/"</span>))
+</pre>
+</div>
+
+<p>
+After you run this code, use <code>M-x package-refresh-contents</code> to update
+the list of packages, and use <code>M-x package-list-packages</code> to list the
+available packages. <code>i</code> marks the current package for installation,
+and <code>x</code> actually performs the operations.
+</p>
+
+<p>
+Installed packages aren't automatically loaded, although a lightweight
+list of the functions they define is loaded after your <code>init.el</code> is
+run. You can start that initialization earlier by adding
+<code>(package-initialize)</code>. If this still doesn't get your code to work,
+use <code>(require 'feature-name)</code>, where the feature name is usually the
+name of the package. See <a href="#void-function">Lisp error: (void-function &#x2026;)</a> or <a href="#void-variable">Symbol's value as variable is void: <span class="underline">_</span></a> for some more details.
+</p>
+</div>
+
+<ul class="org-ul"><li>Downloaded Emacs Lisp files<br  /><div class="outline-text-5" id="text-6-1-0-1">
+<p>
+<a id="unpackaged"></a>
+</p>
+
+<p>
+Some files are not yet available as packages. If you search for the
+function, you'll probably find a webpage with an <code>.el</code> file. You can
+save those to your computer and load them with:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(load <span class="org-string">"/path/to/file.el"</span>)
+</pre>
+</div>
+
+<p>
+You can also use the <code>require</code> syntax, but first you'll need to add your downloaded Emacs lisp file to the <code>load-path</code> with something like this.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"/path/to/dir/with/el/files"</span>)
+</pre>
+</div>
+
+<p>
+Then you can use <code>require</code> to load the Emacs Lisp code if it exists. See <a href="#load">Adding more features to Emacs</a> for details.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">feature-name</span>)
+</pre>
+</div>
+</div>
+</li></ul>
 </div>
 </div>
 
@@ -1016,7 +1321,7 @@ The code is trying to require or load a file that Emacs can't find.
 </ul>
 
 <p>
-See <a href="#sec-6">Loading libraries</a> for more information.
+See <i>Loading libraries</i> for more information.
 </p>
 </div>
 </div>
@@ -1025,13 +1330,17 @@ See <a href="#sec-6">Loading libraries</a> for more information.
 <h3 id="sec-7-3">Lisp error: (void-function &#x2026;)</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
+<a id="void-function"></a>
+</p>
+
+<p>
 The code calls a function that has not been defined. 
 </p>
 
 <ul class="org-ul">
-<li>Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use <code>M-x list-packages</code> to see the available packages. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages. See: <a href="#package-archives">Package Archives</a>
+<li>Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use <code>M-x list-packages</code> to see the available packages. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages. See <a href="#load">Adding more features to Emacs</a>.
 </li>
-<li>If you downloaded the library manually, add it to your <code>load-path</code> (<a href="#load-path">Load path</a>) and <code>require</code> it (<i>Require</i>).
+<li>If you downloaded the library manually, <code>load</code> or <code>require</code> it. See <a href="#unpackaged">Downloaded Emacs Lisp files</a>.
 </li>
 <li>If you're copying some code that isn't packaged in a library, check if there are any <code>defun</code> (define function) expressions that you forgot to copy. Make sure to include and evaluate those.
 </li>
@@ -1040,10 +1349,14 @@ The code calls a function that has not been defined.
 </div>
 
 <div id="outline-container-sec-7-4" class="outline-3">
-<h3 id="sec-7-4">Symbol's value as variable is void: &#x2026;</h3>
+<h3 id="sec-7-4">Symbol's value as variable is void: <span class="underline">_</span></h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
-The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves <code>add-to-list</code> or <code>add-hook</code>, you may need to use <code>require</code> to load the library that defines that list or hook first (see <a href="#sec-6">Loading libraries</a>). 
+<a id="void-variable"></a>
+</p>
+
+<p>
+The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves <code>add-to-list</code> or <code>add-hook</code>, you may need to use <code>require</code> to load the library that defines that list or hook first (see <a href="#load">Adding more features to Emacs</a>). 
 </p>
 
 <p>
@@ -1081,11 +1394,11 @@ It might be easier to select the region and use <code>M-x eval-region</code>, or
 <h2 id="sec-8">Want to learn more?</h2>
 <div class="outline-text-2" id="text-8">
 <p>
-Check out An Introduction to Programming in Emacs Lisp<sup><a id="fnr.11" class="footref" href="#fn.11">11</a></sup>, and delve into the Emacs Lisp Reference Manual<sup><a id="fnr.12" class="footref" href="#fn.12">12</a></sup> for more details.
+Check out An Introduction to Programming in Emacs Lisp<sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup>, and delve into the Emacs Lisp Reference Manual<sup><a id="fnr.14" class="footref" href="#fn.14">14</a></sup> for more details.
 </p>
 
 <p>
-If you liked this, please let me know at <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to customizing your Emacs with Emacs Lisp<sup><a id="fnr.13" class="footref" href="#fn.13">13</a></sup>, which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
+If you liked this, please let me know at <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to customizing your Emacs with Emacs Lisp<sup><a id="fnr.15" class="footref" href="#fn.15">15</a></sup>, which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
 </p>
 
 <p>
@@ -1339,11 +1652,15 @@ Patches and pull requests welcome!
 
 <div class="footdef"><sup><a id="fn.10" class="footnum" href="#fnr.10">10</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html">http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html</a></p></div>
 
-<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11">11</a></sup> <p><a href="https://www.gnu.org/software/emacs/manual/eintr.html">https://www.gnu.org/software/emacs/manual/eintr.html</a></p></div>
+<div class="footdef"><sup><a id="fn.11" class="footnum" href="#fnr.11">11</a></sup> <p><a href="http://melpa.milkbox.net">http://melpa.milkbox.net</a></p></div>
 
-<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12">12</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/elisp.html">http://www.gnu.org/software/emacs/manual/elisp.html</a></p></div>
+<div class="footdef"><sup><a id="fn.12" class="footnum" href="#fnr.12">12</a></sup> <p><a href="http://marmalade-repo.org/">http://marmalade-repo.org/</a></p></div>
 
-<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13">13</a></sup> <p><a href="http://sachachua.com/baby-steps-elisp">http://sachachua.com/baby-steps-elisp</a></p></div>
+<div class="footdef"><sup><a id="fn.13" class="footnum" href="#fnr.13">13</a></sup> <p><a href="https://www.gnu.org/software/emacs/manual/eintr.html">https://www.gnu.org/software/emacs/manual/eintr.html</a></p></div>
+
+<div class="footdef"><sup><a id="fn.14" class="footnum" href="#fnr.14">14</a></sup> <p><a href="http://www.gnu.org/software/emacs/manual/elisp.html">http://www.gnu.org/software/emacs/manual/elisp.html</a></p></div>
+
+<div class="footdef"><sup><a id="fn.15" class="footnum" href="#fnr.15">15</a></sup> <p><a href="http://sachachua.com/baby-steps-elisp">http://sachachua.com/baby-steps-elisp</a></p></div>
 
 
 </div>
