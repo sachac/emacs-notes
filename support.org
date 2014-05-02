@@ -1,0 +1,25 @@
+#+TITLE: Like what we're doing here?
+
+I want to put together more resources to help people learn about Emacs. The biggest challenges are:
+
+- Figuring out what needs to be explained: Please ask questions!
+- Organizing things in a reasonable order: Please make suggestions!
+- Sharing tips: Please write!
+
+Want to help with any of these? You can reach me at
+[[mailto:sacha@sachachua.com][sacha@sachachua.com]].
+
+I like working on a free/pay-what-you-want basis so that everyone can
+use these resources without being limited by money or access to
+payment methods. If you would like to support this by sending money,
+please contact me at [[mailto:sacha@sachachua.com][sacha@sachachua.com]] and we'll sort something out.
+You can also donate anonymously by sending to
+=1EVJgwMAuAYkgPEJCMvki2vbkLyPKGUvKb= (but I'd love to know who you are
+anyway so that I can thank you!) =) Here's a rough idea of what
+different donations translate to:
+
+| $10 | That's, like, a week of lunches. =)                                     |
+| $15 | A domain name for a year                                                |
+| $30 | A month of VPS hosting (I use Linode)                                   |
+| $50 | A transcript of an hour-long Emacs Chat episode or something similar do |
+
