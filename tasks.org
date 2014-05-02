@@ -405,12 +405,20 @@ https://twitter.com/gozes/status/446397063194894337
 		:CREATED:  [2014-04-16 Wed 12:20]
 		:END:
 * Emacs chats
-** DONE Set up chat with Xah Lee
-	 CLOSED: [2014-05-01 Thu 22:08]
+** Xah Lee
+*** DONE Set up chat with Xah Lee
+	 	CLOSED: [2014-05-01 Thu 22:08]
+*** TODO Record session with Xah Lee
+		 SCHEDULED: <2014-05-02 Fri>
 ** DONE Set up chat with Christopher Wellons
 	 CLOSED: [2014-05-01 Thu 22:08]
 ** DONE Set up chat with masteringemacs
 	 CLOSED: [2014-05-01 Thu 22:08]
+* Connecting
+** International Lisp Conference 2014 (August)
+Contact: Dave Cooper
+*** TODO Start planning talk for International Lisp Conference
+		 SCHEDULED: <2014-05-09 Fri>
 * Notes
 
 - What am I looking for?
