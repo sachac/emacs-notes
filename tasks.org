@@ -68,6 +68,9 @@ https://twitter.com/philandstuff/status/461969774227247104
 
 Difference compared to M-x customize-group org - highlights specific things you may want to tweak, and provides screenshots/examples.
 *** TODO Find a way to easily make a list of all the customization options by group
+** TODO Share reading Emacs config video  :blog:
+https://www.youtube.com/watch?v=uP9qmhcI9IQ
+** TODO Record another Emacs config video
 ** TODO Add support page to emacs-notes
 	 :PROPERTIES:
 	 :Effort:   0:30
@@ -401,7 +404,13 @@ https://twitter.com/gozes/status/446397063194894337
 		:PROPERTIES:
 		:CREATED:  [2014-04-16 Wed 12:20]
 		:END:
-
+* Emacs chats
+** DONE Set up chat with Xah Lee
+	 CLOSED: [2014-05-01 Thu 22:08]
+** DONE Set up chat with Christopher Wellons
+	 CLOSED: [2014-05-01 Thu 22:08]
+** DONE Set up chat with masteringemacs
+	 CLOSED: [2014-05-01 Thu 22:08]
 * Notes
 
 - What am I looking for?
