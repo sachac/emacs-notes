@@ -1,4 +1,4 @@
-#+TODO: TODO(t) STARTED(s) DELEGATED(d) SOMEDAY(.) | DONE(x) CANCELLED(c) 
+#+TODO: TODO(t) STARTED(s) DELEGATED(d) SOMEDAY(.) WAITING(w) | DONE(x) CANCELLED(c) 
 #+PROPERTY: QUANTIFIED Emacs
 
 * How to use this
@@ -11,13 +11,15 @@ When discussing, add your initials followed by a colon and your notes (or create
 * Tasks ready for delegation
 ** DELEGATED Transcribe Avdi Grimm's chat												 :alex:transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
-** TODO Transcribe Xah Lee's chat
-Video available at 
-https://plus.google.com/events/c5e0anjpg4v7n1jtjuor4mromos
-
-You can use vidtomp3.com to convert the video to an MP3, or wait for the show notes blog post
 ** TODO Transcribe Carsten Dominik's chat 											 :transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
+
+** WAITING Transcribe Xah Lee's chat
+Video available at 
+https://plus.google.com/events/c5e0anjpg4v7n1jtjuor4mromos - oops, made this private temporarily because we might need to edit it
+
+You can use vidtomp3.com to convert the video to an MP3, or wait for the show notes blog post
+
 
 * Publishing Emacs
 	:PROPERTIES:
