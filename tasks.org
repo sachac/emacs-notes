@@ -391,7 +391,7 @@ http://www.philnewton.net/code/beeminder-el/
 		:PROPERTIES:
 		:Effort:   2:00
 		:END:
-** Emacs Basics																											:project:
+** [#C] Emacs Basics																								:project:
 	 :PROPERTIES:
 	 :LINK:     [[file:~/sachac.github.io/evil-plans/index.org::*create%20a%2010-week%20Emacs%20Basics%20course][create a 10-week Emacs Basics course]]
 	 :END:
@@ -414,18 +414,40 @@ https://twitter.com/gozes/status/446397063194894337
 		:PROPERTIES:
 		:CREATED:  [2014-04-16 Wed 12:20]
 		:END:
-* Emacs chats
+** [#A] Emacs Life																									:project:
+*** TODO Sketch out personas
+*** TODO Set up mailing list
+* [#A] Emacs chats																									:project:
 ** Xah Lee
 *** DONE Set up chat with Xah Lee
 	 	CLOSED: [2014-05-01 Thu 22:08]
 *** DONE Record session with Xah Lee
 		 CLOSED: [2014-05-02 Fri 21:15] SCHEDULED: <2014-05-02 Fri>
+*** DONE Review new video and post it
+		 CLOSED: [2014-05-03 Sat 15:59] SCHEDULED: <2014-05-03 Sat>
+		:PROPERTIES:
+		:Effort:   0:30
+		:END:
 *** DELEGATED Post show notes
 https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
-** DONE Set up chat with Christopher Wellons
-	 CLOSED: [2014-05-01 Thu 22:08]
-** DONE Set up chat with masteringemacs
-	 CLOSED: [2014-05-01 Thu 22:08]
+** Iannis Zannos
+*** DONE Post transcript of Iannis Zannos' chat
+		 CLOSED: [2014-05-04 Sun 14:19] SCHEDULED: <2014-05-04 Sun>
+		 :LOGBOOK:
+		 CLOCK: [2014-05-04 Sun 14:13]--[2014-05-04 Sun 14:19] =>  0:06
+		 :END:
+		:PROPERTIES:
+		:Effort:   0:15
+		:END:
+** Phil Hagelberg
+*** TODO Record session with technomancy
+		 SCHEDULED: <2014-05-09 Fri>
+** Christopher Wellons
+*** DONE Set up chat with Christopher Wellons
+	 	CLOSED: [2014-05-01 Thu 22:08]
+** Mickey Petersen
+*** DONE Set up chat with masteringemacs
+	 	CLOSED: [2014-05-01 Thu 22:08]
 * Connecting
 ** International Lisp Conference 2014 (August)
 Contact: Dave Cooper
