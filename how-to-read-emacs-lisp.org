@@ -588,6 +588,46 @@ The =bind-key= package provides a function that makes it easier to see your pers
 You'll need to install and use the =bind-key= package before you can use that code.
 
 Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use =F1 f= (=describe-function=) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
+** Defuns - function definitions
+
+In addition to the functions built into Emacs or available in
+packages, many people define their own with the =defun= function.
+
+People often distinguish custom functions by starting them with =my/=
+or their initials. This makes it easier to tell which functions
+they've customized and which ones are part of a package. You can
+change the name of a function as long as you make sure you change the
+name wherever it's called, such as in keyboard shortcuts, hooks, or
+other functions.
+
+For example, here's a custom function from Jorgan Schaefer's config[fn::https://github.com/jorgenschaefer/Config/blob/master/emacs.el#L184]:
+
+#+begin_src emacs-lisp
+(defun fc/kill-to-beginning-of-line ()
+  "Kill from the beginning of the line to point."
+  (interactive)
+  (kill-region (point-at-bol) (point)))
+#+end_src
+
+This creates a function called =fc/kill-to-beginning-of-line=. =()= means that this function does not take arguments. "=Kill from the beginning of the line to point.=" is a documentation string (or docstring) that describes what the function does. Docstrings are optional, but highly recommended. =(interactive)= means that this can be called with =M-x= or bound to a keyboard shortcut. The code below binds this function to =C-c C-u=:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c C-u") 'fc/kill-to-beginning-of-line)
+#+end_src
+
+** Lambdas - anonymous functions
+
+Sometimes people just want to create a keyboard binding or process some data without defining a new function. =lambda= creates an anonymous function. Here's an example:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c E") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+#+end_src
+
+This binds =C-c E= to an anonymous function. The =()= means it doesn't
+take any arguments. =(interactive)= means it can be called through a
+keyboard shortcut, although since it's anonymous, it can't be called
+with =M-x=. The function opens the =~/.emacs.d/init.el= file, which is
+a handy way to edit your configuration.
 
 * Adding more features to Emacs
 <<load>>
@@ -862,4 +902,4 @@ Patches and pull requests welcome!
   - edebug-defun
 
 - Thanks
-  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff
+  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer

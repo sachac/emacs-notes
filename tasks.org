@@ -39,6 +39,7 @@ http://sachachua.com/blog/2014/05/emacs-chat-xah-lee-ergoemacs/
 		:END:
 *** STARTED Write about defuns
 		:LOGBOOK:
+		CLOCK: [2014-05-05 Mon 11:09]
 		CLOCK: [2014-05-05 Mon 09:02]--[2014-05-05 Mon 09:37] =>  0:35
 		:END:
 		:PROPERTIES:
