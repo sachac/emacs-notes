@@ -3,10 +3,13 @@
 
 * How to use this
 
-Before you start working on a task, do a git pull to see if anyone else has started working on it.
-If you're starting on a task, tag it with your name and change the TODO to STARTED. Clocking in and out is nice. =)
-You can start with the tasks ready for delegation, but also feel free to take a look at the other tasks in the file and suggest/volunteer. =)
-When discussing, add your initials followed by a colon and your notes (or create a subtree).
+Before you start working on a task, do a git pull to see if anyone
+else has started working on it. If you're starting on a task, tag it
+with your name and change the TODO to STARTED. Clocking in and out is
+nice. =) You can start with the tasks ready for delegation, but also
+feel free to take a look at the other tasks in the file and
+suggest/volunteer. =) When discussing, add your initials followed by a
+colon and your notes (or create a subtree).
 
 * Tasks ready for delegation
 ** DELEGATED Transcribe Avdi Grimm's chat												 :alex:transcript:
@@ -14,12 +17,10 @@ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 ** TODO Transcribe Carsten Dominik's chat 											 :transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 
-** WAITING Transcribe Xah Lee's chat
-Video available at 
-https://plus.google.com/events/c5e0anjpg4v7n1jtjuor4mromos - oops, made this private temporarily because we might need to edit it
+** DELEGATED Transcribe Xah Lee's chat   :oli:transcript:
+Delegated to Oli on 2014-05-05
 
-You can use vidtomp3.com to convert the video to an MP3, or wait for the show notes blog post
-
+http://sachachua.com/blog/2014/05/emacs-chat-xah-lee-ergoemacs/
 
 * Publishing Emacs
 	:PROPERTIES:
@@ -36,7 +37,10 @@ You can use vidtomp3.com to convert the video to an MP3, or wait for the show no
 		:PROPERTIES:
 		:Effort:   1:00
 		:END:
-*** TODO Write about defuns
+*** STARTED Write about defuns
+		:LOGBOOK:
+		CLOCK: [2014-05-05 Mon 09:02]--[2014-05-05 Mon 09:37] =>  0:35
+		:END:
 		:PROPERTIES:
 		:Effort:   1:00
 		:END:
@@ -409,7 +413,7 @@ https://twitter.com/gozes/status/446397063194894337
 		:PROPERTIES:
 		:Effort:   2:00
 		:END:
-*** TODO Record session on learning keyboard shortcuts
+*** TODO [#A] Record session on learning keyboard shortcuts
 		SCHEDULED: <2014-05-05 Mon>
 		:PROPERTIES:
 		:CREATED:  [2014-04-16 Wed 12:20]
@@ -448,6 +452,8 @@ https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
 ** Mickey Petersen
 *** DONE Set up chat with masteringemacs
 	 	CLOSED: [2014-05-01 Thu 22:08]
+** Possible guests
+- Tikhon Jelvis?
 * Connecting
 ** International Lisp Conference 2014 (August)
 Contact: Dave Cooper
