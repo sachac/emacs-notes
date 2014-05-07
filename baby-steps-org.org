@@ -56,12 +56,23 @@ If you're done with a task, change =TODO= to =DONE=. If you get tired
 of doing this manually, jump ahead to the section [[#define-shortcuts][Define shortcuts
 for managing TODO states]]. 
 
-You can visually look through your tasks to see what you still need to do. Use =C-c v= (=org-show-todo-tree=) if you don't want to see any of the DONE tasks, and =S-Tab= (=org-shifttab=) to go through different levels of visibility.
+You can visually look through your tasks to see what you still need to
+do. If you want to see your unfinished tasks in the context of your
+outline, use =C-c / t= (=org-sparse-tree= with the "=t=" option). Use
+=S-Tab= (=org-shifttab=) to go through different levels of visibility.
 
-You can use =M-down= (=org-metadown=) to move DONE tasks downwards, or you can move them to an archive file with =C-c $= (=org-archive-subtree=). If you get tired of moving DONE tasks downwards manually, you can use =M-x org-sort-entries= on your =* Tasks= heading to sort tasks by todo order (type *o* to select that one).
+You can use =M-down= (=org-metadown=) to move DONE tasks downwards, or
+you can move them to an archive file with =C-c $=
+(=org-archive-subtree=). If you get tired of moving DONE tasks
+downwards manually, you can use =M-x org-sort-entries= on your =*
+Tasks= heading to sort tasks by todo order (type *o* to select that
+one).
 
-Remember, Org Mode is just plain text. If you don't remember how to do something but you know what the text should look like, you can typically just edit it.
-You can also use the standard Emacs navigation commands like =C-s= (=isearch-forward=) and =C-r= (=isearch-backward=) to look for stuff.
+Remember, Org Mode is just plain text. If you don't remember how to do
+something but you know what the text should look like, you can
+typically just edit it. You can also use the standard Emacs navigation
+commands like =C-s= (=isearch-forward=) and =C-r= (=isearch-backward=)
+to look for stuff.
 
 * Automatically open your todo.org every time you start Emacs
 
@@ -248,3 +259,5 @@ coming eventually. =)
 
 E-mail me at [[mailto:sacha@sachachua.com][sacha@sachachua.com]] with questions or suggestions!
 See [[http://sachachua.com/blog/emacs][my Emacs page]] for more resources.
+
+Acknowledgements: DaveP 
