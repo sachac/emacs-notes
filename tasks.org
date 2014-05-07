@@ -48,6 +48,10 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 **** TODO Set up mailing list
 **** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp.org][Link]]
+***** TODO Incorporate DanP's second round of feedback
+			:PROPERTIES:
+			:Effort:   2:00
+			:END:
 ***** TODO Add more examples
 		 	:PROPERTIES:
 		 	:Effort:   1:00
@@ -481,9 +485,95 @@ https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
 	 	 CLOSED: [2014-05-01 Thu 22:08]
 *** Possible guests
 - Tikhon Jelvis?
+- Follow up with Xah Lee's list
 ** Connecting
 *** International Lisp Conference 2014 (August)
 Contact: Dave Cooper
+**** STARTED Draft title, abstract, bio
+		 :LOGBOOK:
+		 CLOCK: [2014-05-07 Wed 11:18]--[2014-05-07 Wed 11:40] =>  0:22
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   1:00
+		 :END:
+		 https://mail.google.com/mail/u/0/?pli=1#inbox/145be629a212ac1d
+
+Draft outline: https://gist.github.com/sachac/0eb152c9ffe74cd2fe23
+
+Possible titles:		 
+- Build You a Community for Great Lisp
+  (Heh, can I get away with calling it this? Maybe I can ask the Haskell guide author =) )
+- Paren by Paren: Build Lisp Communities
+ 	
+Goals:
+- Inspire people to work on building up their communities by showing them concrete things they can do and the effects of this on the community
+- Get more people hooked on Org Mode for literate programming and publishing ;)
+
+Topics
+- Growing community
+	- Might not be easy to get numbers
+		- Could be depressing anyway! =)
+	- Anecdotally, feels that way
+	- Virtual community is important too, so that you don't feel isolated
+	- Selfish reason
+	  - The more people learn and share, the more you can take advantage of
+- Preaching to the choir
+	- We tend to get settled in our ways
+	- New things that you can do 
+		- Google Hangout, podcasting, etc.
+	- Ways you can encourage _other_ people to share
+- Emacs, specifically
+	
+	- I get a kick out of blog posts
+- Fill in the gaps
+- Key ideas
+	- Share the code
+	  - Snippets? Anonymized?
+	- Share the process
+	- Share the attitude
+		- Code as conversation
+	- Share the spotlight
+	  - Help other people gain confidence and become part of the community
+- Tactics
+	1. Blog posts, articles, mini-guides, e-books
+		 1. Literate programming
+		 2. Emacs configuration
+		 3. Workflow demo?
+	2. Blog planets
+		 - If you have a blog, make sure you're listed
+		 - You don't have to blog exclusively about the topic; see about category-specific feeds
+		 - Framing
+		   - Inspiration
+			 - Discovery
+	3. Newsgroups, mailing lists, blogs
+		 - Gmane, Gwene
+	4. IRC: don't forget to bring in the newbies =)
+		 - Also: gist, lisppaste
+	5. Screencasts
+		 - Code walkthroughs
+		 - Live coding
+	6. Quora, StackOverflow, other Q&A sites	
+	7. Video chats: Google Hangout on Air, Skype, etc.
+	8. Pairing (screen-sharing, tmux or screen)
+		 1. Ask for notes/posts from the people you help
+	9. Meetups
+	10. Sharing source
+- Keeping yourself enthused
+	- Working on obscure things; can feel isolated
+	- Virtual
+- Call to action
+	- Outreach
+	  - Preaching to the choir (conference!) - but also, the rest of the year
+	- Share what you're learning (don't wait to be an expert) _and_ your enthusiasm
+  - Write about the _process_, too
+	- Shine the spotlight on other people; build connections
+- Growing popularity of Emacs (meetups, etc.)
+	- Why?
+	- What can we learn?
+- Why me? (Bio notes)
+	- Blogging
+	- Emacs chats
+	 
 **** TODO Start planning talk for International Lisp Conference
 		 	SCHEDULED: <2014-05-09 Fri>
 * Notes
