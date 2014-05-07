@@ -9,7 +9,7 @@ following code to colorize it. Haven't tested the higher numbers yet,
 but they're easy enough to tweak if the colours disagree with your
 theme. =)
 
-[[file:wp-content/uploads/2014/05/2014-04-16-23_27_25-emacs@SACHA-X220.png]]
+[[file:uploads/2014/05/2014-04-16-23_27_25-emacs@SACHA-X220-640x636.png]]
 
 #+begin_src emacs-lisp
     (defface 2048-2-face '((t (:foreground "red"))) "Face used for 2" :group '2048-game)
