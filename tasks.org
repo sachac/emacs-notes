@@ -43,36 +43,44 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 	 :PROPERTIES:
 	 :QUANTIFIED: Emacs
 	 :END:
-*** How to Read Emacs Lisp
+*** [#A] Emacs Life																									:project:
+**** TODO Sketch out personas
+**** TODO Set up mailing list
+**** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp.org][Link]]
-**** TODO Add more examples
-		 :PROPERTIES:
-		 :Effort:   1:00
-		 :END:
-**** DONE Write about keybinding																			:sacha:
-		 	CLOSED: [2014-05-01 Thu 19:36]
-		 :LOGBOOK:
-		 CLOCK: [2014-05-01 Thu 18:41]--[2014-05-01 Thu 19:36] =>  0:55
-		 CLOCK: [2014-05-01 Thu 18:29]--[2014-05-01 Thu 18:29] =>  0:00
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   1:00
-		 :END:
-**** DONE Write about defuns
-		 	CLOSED: [2014-05-05 Mon 11:16]
-		 :LOGBOOK:
-		 CLOCK: [2014-05-05 Mon 11:09]--[2014-05-05 Mon 11:16] =>  0:07
-		 CLOCK: [2014-05-05 Mon 09:02]--[2014-05-05 Mon 09:37] =>  0:35
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   1:00
-		 :END:
-**** DONE Write about lambda
-		 	CLOSED: [2014-05-05 Mon 11:16]
-		 :PROPERTIES:
-		 :Effort:   1:00
-		 :END:
-**** DONE Incorporate @philandstuff's feedback
+***** TODO Add more examples
+		 	:PROPERTIES:
+		 	:Effort:   1:00
+		 	:END:
+***** TODO Convert to nicely-formatted EPUB
+		 	:PROPERTIES:
+		 	:Effort:   2:00
+		 	:END:
+
+***** DONE Write about keybinding																			:sacha:
+		 	 CLOSED: [2014-05-01 Thu 19:36]
+		 	:LOGBOOK:
+		 	CLOCK: [2014-05-01 Thu 18:41]--[2014-05-01 Thu 19:36] =>  0:55
+		 	CLOCK: [2014-05-01 Thu 18:29]--[2014-05-01 Thu 18:29] =>  0:00
+		 	:END:
+		 	:PROPERTIES:
+		 	:Effort:   1:00
+		 	:END:
+***** DONE Write about defuns
+		 	 CLOSED: [2014-05-05 Mon 11:16]
+		 	:LOGBOOK:
+		 	CLOCK: [2014-05-05 Mon 11:09]--[2014-05-05 Mon 11:16] =>  0:07
+		 	CLOCK: [2014-05-05 Mon 09:02]--[2014-05-05 Mon 09:37] =>  0:35
+		 	:END:
+		 	:PROPERTIES:
+		 	:Effort:   1:00
+		 	:END:
+***** DONE Write about lambda
+		 	 CLOSED: [2014-05-05 Mon 11:16]
+		 	:PROPERTIES:
+		 	:Effort:   1:00
+		 	:END:
+***** DONE Incorporate @philandstuff's feedback
 	 CLOSED: [2014-05-01 Thu 18:17]
 	 :LOGBOOK:
 	 CLOCK: [2014-05-01 Thu 18:08]--[2014-05-01 Thu 18:17] =>  0:09
@@ -83,15 +91,37 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 https://twitter.com/philandstuff/status/461969774227247104
 - typo
 - remove scroll
-**** DONE Add more details to reading Emacs Lisp tutorial
-		 	CLOSED: [2014-04-28 Mon 11:54]
-	 	 :LOGBOOK:
-	 	 - State "DONE"       from "STARTED"    [2014-04-28 Mon 11:54]
-	 	 CLOCK: [2014-04-28 Mon 10:58]--[2014-04-28 Mon 11:54] =>  0:56
-	 	 :END:
-	 	 :PROPERTIES:
-	 	 :Effort:   2:00
-	 	 :END:
+***** DONE Add more details to reading Emacs Lisp tutorial
+		 	 CLOSED: [2014-04-28 Mon 11:54]
+	 	 	:LOGBOOK:
+	 	 	- State "DONE"       from "STARTED"    [2014-04-28 Mon 11:54]
+	 	 	CLOCK: [2014-04-28 Mon 10:58]--[2014-04-28 Mon 11:54] =>  0:56
+	 	 	:END:
+	 	 	:PROPERTIES:
+	 	 	:Effort:   2:00
+	 	 	:END:
+*** [#C] Emacs Basics 																				:project:someday:
+	 	:PROPERTIES:
+	 	:LINK:     [[file:~/sachac.github.io/evil-plans/index.org::*create%20a%2010-week%20Emacs%20Basics%20course][create a 10-week Emacs Basics course]]
+	 	:END:
+**** DONE Add more sections to Emacs Lisp tutorial
+		 	CLOSED: [2014-04-23 Wed 15:23] SCHEDULED: <2014-04-23 Wed>
+		 	:LOGBOOK:
+		 	- State "DONE"       from "TODO"       [2014-04-23 Wed 15:23]
+		 	:END:
+**** TODO Make video on extending Emacs 
+		 :PROPERTIES:
+		 :Effort:   2:00
+		 :END:
+https://twitter.com/gozes/status/446397063194894337
+**** TODO Build - Emacs: Record Emacs Basics video on themes and faces
+		 :PROPERTIES:
+		 :Effort:   2:00
+		 :END:
+**** TODO [#A] Record session on learning keyboard shortcuts
+		 :PROPERTIES:
+		 :CREATED:  [2014-04-16 Wed 12:20]
+		 :END:
 *** A map for customizing Org
 - Common options you may want to change
 - Advanced options and why, plus examples of what you can do with them
@@ -130,6 +160,9 @@ https://www.youtube.com/watch?v=uP9qmhcI9IQ
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
+
+http://emacs-fu.blogspot.ca/2010/11/undo.html
+
 *** TODO Prepare a financial report of how much I'm investing in the Emacs community
 - Emacs chat transcripts
 - Hosting, domain names
@@ -415,32 +448,6 @@ http://www.philnewton.net/code/beeminder-el/
 		 :PROPERTIES:
 		 :Effort:   2:00
 		 :END:
-*** [#C] Emacs Basics																								:project:
-	 	:PROPERTIES:
-	 	:LINK:     [[file:~/sachac.github.io/evil-plans/index.org::*create%20a%2010-week%20Emacs%20Basics%20course][create a 10-week Emacs Basics course]]
-	 	:END:
-**** DONE Add more sections to Emacs Lisp tutorial
-		 	CLOSED: [2014-04-23 Wed 15:23] SCHEDULED: <2014-04-23 Wed>
-		 	:LOGBOOK:
-		 	- State "DONE"       from "TODO"       [2014-04-23 Wed 15:23]
-		 	:END:
-**** TODO Make video on extending Emacs 
-		 :PROPERTIES:
-		 :Effort:   2:00
-		 :END:
-https://twitter.com/gozes/status/446397063194894337
-**** TODO Build - Emacs: Record Emacs Basics video on themes and faces
-		 :PROPERTIES:
-		 :Effort:   2:00
-		 :END:
-**** TODO [#A] Record session on learning keyboard shortcuts
-		 SCHEDULED: <2014-05-05 Mon>
-		 :PROPERTIES:
-		 :CREATED:  [2014-04-16 Wed 12:20]
-		 :END:
-*** [#A] Emacs Life																									:project:
-**** TODO Sketch out personas
-**** TODO Set up mailing list
 ** [#A] Emacs chats																									:project:
 *** Xah Lee
 **** DONE Set up chat with Xah Lee

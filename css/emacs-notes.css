@@ -23,3 +23,5 @@ a:link {
 	color:#009;
 }
 
+code { font-size: large; color: darkgray }
+pre.src { font-family: Courier, monospace; }

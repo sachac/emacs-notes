@@ -14,11 +14,11 @@ through comint.el to figure out what's going on with command
 interpretation, you probably already know your way around.
 
 We'll assume that you already have Emacs installed and that you've
-gone through the built-in tutorial (*Help - Emacs Tutorial*). I'll
-also assume you have a little programming background or can deal with
-the concepts of variables and functions. Feel free to ask questions if
-you get stuck on something or if you want to clarify your
-understanding.
+gone through the built-in tutorial (*Help - Emacs Tutorial*, =<f1> t=,
+=C-h t=, or =M-x help-with-tutorial=). I'll also assume you have a
+little programming background or can deal with the concepts of
+variables and functions. Feel free to ask questions if you get stuck
+on something or if you want to clarify your understanding.
 
 Please e-mail questions, comments, and suggestions to
 [[mailto:sacha@sachachua.com][sacha@sachachua.com]]. I want to make this guide better, and I'd love to
@@ -63,10 +63,11 @@ Or something slightly more useful:
 Reasonable defaults make sense for specific people. Other people might
 have completely different ideas for how they want a tool to work.
 Many people use Emacs and have (occasionally quite strong)
-opinions about how they want it to work. It's difficult to change the defaults for everyone
-[fn:: https://xkcd.com/1172/], and since Emacs is so customizable, people tend to just fix things for themselves.
+opinions about how they want it to work. It's difficult to change the defaults for everyone[fn:: https://xkcd.com/1172/], and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
 
-There are some initiatives to put together common settings that people may like.
+There are some initiatives to put together common settings or "starter
+kits" that people may like. You can check them out for inspiration or
+use them as a starting point. Here are a few popular ones:
 - https://github.com/bbatsov/prelude
 - https://github.com/technomancy/better-defaults
 
@@ -98,9 +99,8 @@ tools like Dropbox. You can set up Emacs to check for hostname or
 other system variables before loading system-specific configuration.
 
 You might think it's not worth customizing Emacs if you spend most of
-your time ssh-ed into other servers. With Emacs, you can use
-TRAMP[fn:: http://www.gnu.org/software/tramp/] to edit files through SSH
-and sudo in your local Emacs.
+your time ssh-ed into other servers. With Emacs, you can use [[http://www.gnu.org/software/tramp/][TRAMP]] to
+edit files through SSH and sudo in your local Emacs.
 
 ** "I don't have the time to fiddle around with this."
 
@@ -127,7 +127,7 @@ Here are some useful sources:
 
 ** Emacs documentation
 
-Manuals and FAQs for Emacs-related tools often include code snippets. For example, the Emacs FAQ[fn::https://www.gnu.org/software/emacs/manual/efaq.html] includes an entry like this:
+Manuals and FAQs for Emacs-related tools often include code snippets. For example, the [[https://www.gnu.org/software/emacs/manual/efaq.html][Emacs FAQ]] has an entry like this:
 
 #+begin_example
 5.47 How can I tell Emacs to fill paragraphs with a single space after each period?
@@ -143,8 +143,10 @@ Add the following line to your `.emacs' file:
 Emacs has lots of packages in different repositories, many of which
 require a little extra code in order to be used to full effect. You
 can use =M-x package-list-packages= to list the packages that Emacs
-knows about by default. You can add more package repositories to
-Emacs, and I'll show you how to do that later in this guide.
+knows about by default. There are a lot of packages, so you might want
+to look for recommendations or ask people which ones you should start
+with. You can add more package repositories to Emacs, and I'll show
+you how to do that later in this guide.
 
 Check out the README, description, documentation, or source code
 comments for interesting packages to find suggested code to add to
@@ -156,21 +158,12 @@ Here are some packages that might be interesting:
 - undo-tree: visualize your undo/redo history
 
 ** Webpages, blog posts, and the Emacs Wiki
-<<melpa>>
 
-While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. For example, the instructions for adding the MELPA repository can be found at http://melpa.milkbox.net/#/getting-started . It has the following code:
-
-#+begin_src emacs-lisp
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-#+end_src
-
-The EmacsWiki[fn::http://www.emacswiki.org/] has lots of snippets. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see [[errors]["Oh no! I have an error!"]]
+While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. The [[http://www.emacswiki.org/][EmacsWiki]] has lots of code, too. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see [[errors]["Oh no! I have an error!"]]
 
 ** Mailing lists, newsgroups, and Q&A sites
 
-There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a mailing list[fn:: https://lists.gnu.org/mailman/listinfo/help-gnu-emacs] or as a newsgroup - check your favourite Usenet server or use Gmane[fn:: http://dir.gmane.org/gmane.emacs.help]. StackOverflow[fn:: http://stackoverflow.com/questions/tagged/emacs] and Quora[fn:: http://www.quora.com/Emacs] are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
+There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a [[https://lists.gnu.org/mailman/listinfo/help-gnu-emacs][mailing list]] or as a newsgroup - check your favourite Usenet server or use [[http://dir.gmane.org/gmane.emacs.help][Gmane]]. [[http://stackoverflow.com/questions/tagged/emacs][StackOverflow]] and [[http://www.quora.com/Emacs][Quora]] are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
 
 Find a snippet of Emacs Lisp code you want to understand more deeply, or look at the examples in the sections below.
 
@@ -180,17 +173,16 @@ It's easier to understand code if you can experiment with it. There are several 
 
 Note: As you experiment with Emacs Lisp, you might run into errors. Check out [[errors]["Oh no! I have an error!"]] for some common errors and what to do about them.
 
-Here are some ways you can run Emacs Lisp code:
-- =M-x ielm=
-- =*scratch*= buffer and Emacs Lisp files
-- =C-x C-e= (=eval-last-sexp=)
+Here are some ways you can run Emacs Lisp code. I'll explain them in more detail below.
+- =M-x ielm= (Inferior Emacs Lisp Mode)
+- The =*scratch*= buffer and Emacs Lisp files
 - =M-:= (=eval-expression=)
 
 ** M-x ielm (Inferior Emacs Lisp Mode)
 
-IELM gives you a prompt where you can type or paste in Emacs Lisp code. Start it with =M-x ielm=. Press =RET= after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press RET to evaluate it again.
+The Inferior Emacs Lisp Mode gives you a prompt where you can type or paste in Emacs Lisp code. Start it with =M-x ielm=. Press =RET= after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press =RET= to run (or "evaluate") it again.
 
-If you're copying or typing code, make sure your parentheses are all matched - every ( should have a ). IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
+If you're copying or typing code, make sure your parentheses are all matched - every =(= should have a =)=. IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
 
 #+begin_src emacs-lisp :eval no
 (message "Hello
@@ -234,12 +226,18 @@ In the =*scratch*= buffer, you can also press =C-j= (=eval-print-last-sexp=) aft
 
 The =*scratch*= buffer is not automatically saved. If you would like to save your code for future use, you can create a file with an =.el= ending. =el= stands for Emacs Lisp, and Emacs will open these files in Emacs Lisp mode.
 
-=C-x C-e= (=eval-last-sexp=) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
-
 ** M-: (eval-expression)
 
 If you want to quickly try an expression, you can use =M-:= (=eval-expression=). To see any results it displayed, you can switch to the =*Messages*= buffer.
-** Once you know you like it...
+** C-x C-e (eval-last-sexp)
+
+=C-x C-e= (=eval-last-sexp=) runs the expression (S-expression, or
+sexp) before the cursor. NOTE: Your cursor should be after the closing
+parenthesis, not on it. =C-x C-e= (=eval-last-sexp=) works in lots of
+buffers, not just in Emacs Lisp ones. You can use it to quickly try
+expressions while reading manual pages or other documentation.
+
+** If you want that code to run every time you start Emacs...
 
 ... *then* add it to your =~/.emacs.d/init.el= file. You can generally
 add new code at the end. If the code has something to do with
@@ -258,7 +256,7 @@ not getting loaded, make sure you have either =~/.emacs= or
 * "How can I understand what Emacs Lisp code does?"
 <<understanding-lisp>>
 
-** Functions are at the beginning of the expression, and expressions are enclosed in parentheses
+** The important part is at the beginning
 
 In math, operators like + and * go between the numbers they will work on.
 In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
@@ -306,7 +304,7 @@ This calls the =blink-cursor-mode= function with =-1= as the argument, which tur
 (find-file "~/todo.org")
 #+end_src
 
-This opens the =todo.org= file in your home directory, creating it if it doesn't exist yet.
+This calls the =find-file= function with =todo.org= file in your home directory. It opens the file, creating it if it doesn't exist yet.
 
 #+begin_src emacs-lisp
 (turn-on-eldoc-mode)
@@ -350,9 +348,9 @@ more about arguments that you can pass to change its behavior. If it
 mentions a prefix argument, that means that you can change its
 behaviour by typing =C-u= before you call the function.
 
-Use =<f1> f= to learn more about the following functions:
+Use =<f1> f= (=describe-function=) to learn more about the following functions:
 | =describe-function= | Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as =C-h f=. |
-| =find-file=         | You can use this to open specific files                                                                       |
+| =find-file=         | You can use this to open specific files. See the function description to learn how to use this with remote files. |
 
 ** "How can I learn more about variables?"
 
@@ -360,7 +358,7 @@ Like the way you can use =<f1> f= (=describe-function=) to learn more about a fu
 
 To make it easier for you to customize Emacs without writing Emacs Lisp code, many variables give you an interface for setting the variable. If you use =describe-variable= to look up the definition, you'll often see a line like "You can *customize* this variable." Click on the *customize* link in the documentation or move your point to it and press RET. You can change the value there and try it temporarily, or you can save it to your configuration. The Customize interface is good for exploring, but because the code that it generates can difficult to read or share, many people skip it and use Emacs Lisp code instead.
 
-** When something is quoted, it's taken literally
+** Some things are taken literally
 <<quoting>>
 
 One of the examples from the section on [[Functions are at the beginning of the expression, and expressions are enclosed in parentheses][functions]] was this:
@@ -371,7 +369,7 @@ One of the examples from the section on [[Functions are at the beginning of the 
 
 =add-hook= is a function. '=emacs-lisp-mode-hook= and '=turn-on-eldoc-mode= are symbols. =emacs-lisp-mode-hook= is a variable that contains a list of functions to run, and =turn-on-eldoc-mode= is a function that we're adding to that list.
 
-The single quote means "treat this as the name of something." If you remove the quote from =emacs-lisp-mode-hook=, Emacs will look up the value in that variable and use that as the name of the variable to actually set, and you'll probably get an error.
+The single quote means take it literally - treat it as the name of something. If you remove the quote from =emacs-lisp-mode-hook=, Emacs will look up the value in that variable and use that as the name of the variable to actually set, and you'll probably get an error.
 
 Here's another example:
 
@@ -389,6 +387,8 @@ Not everything is quoted. You'll often see lines like this in Emacs configuratio
 
 =setq= stands for "set quoted". This is actually the same code as =(set 'delete-old-versions -1)= or =(set (quote delete-old-versions) -1)=, but 
 =setq= is shorter, so it's more common.
+
+This can be confusing. When you're starting out, copy code carefully. If there's a single quote, make sure there's a single quote in your copy. If there isn't, skip it.
 
 ** Lists and lists and lists of lists
 
@@ -472,7 +472,10 @@ This is how the second argument breaks down:
 )
 #+end_example
 
-Advanced: Backquotes (`) are special. They quote the expression that follows them, but they also allow you to substitute values or evaluate expressions. Backquotes are useful for more complex structures or when you're working with macros. They do basically the same thing as ' for lists, but anything preceded by a comma (,) is evaluated. They're less common, but if you do come across them, note that ` is not the same as '. See the Emacs Lisp Reference for more information.[fn:: http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html]
+If you want to learn more about cons cells, see the [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Box-Diagrams.html#Box-Diagrams][Emacs Lisp Reference]].
+
+Advanced: Backquotes or backticks (=`=) are special. They quote the expression that follows them, but they also allow you to substitute values or evaluate expressions. Backquotes are useful for more complex structures or when you're working with macros. They do basically the same thing as ' for lists, but anything preceded by a comma (,) is evaluated. They're less common, but if you do come across them, note that =`= is not the same as '. See the [[http://www.gnu.org/software/emacs/manual/html_node/elisp/Backquote.html][Emacs Lisp Reference]] for more information.
+
 ** Keyboard shortcuts
 
 The default keyboard shortcuts (or "keybindings") can be difficult to
@@ -499,6 +502,8 @@ This redefines the Return key (or the Enter key) so that it calls the =newline-a
 #+end_src
 
 These set =C-+= (=Ctrl= and =<plus>=) and =C--= (=Ctrl= and =<minus>=) to increase and decrease the font size.
+
+If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to [[mode-keys][Setting keybindings in a particular mode]].
 
 *** What does =kbd= do? How can I figure out which key it sets?
 
@@ -565,8 +570,16 @@ If you want to create a multi-key shortcut, the preceding keys must not be assig
 The example above has three bindings for =transpose-words=. =M-t w= uses the mnemonic of *t*ranspose *w*ords. =M-t t= is similar to the original binding for =transpose-words=, which was =M-t=. =M-t M-t= just makes it a little easier. This may seem like overkill, but sometimes you'll find it easier to hold the =Meta= key down and hit =t= twice quickly instead of typing =M-t=, releasing =Meta=, and then typing =t=. As you read other people's keybindings, you'll get a sense of how people have configured their keyboard shortcuts to speed up typing and minimize thinking.
 
 *** Setting keybindings in a particular mode
+<<mode-keys>>
 
-Sometimes you want keys to do different things in different types of files. You can assign a key in a mode map, which means it will override global keybindings in buffers with that mode. You can do this with =define-key= if you know the name of the keymap you want to change, which is generally the name of the mode + =-map=. For example:
+Sometimes you want keys to do different things in different types of
+files. Modes are how Emacs changes behaviour based on context. For
+example, Java files use java-mode, Org files use org-mode, and so
+forth. Each mode has a keybinding map (or a "keymap"). You can assign
+a key in a mode map, which means it will override global keybindings
+in buffers with that mode. You can do this with =define-key= if you
+know the name of the keymap you want to change, which is generally the
+name of the mode + =-map=. For example:
 
 #+begin_src emacs-lisp
 (define-key c-mode-map (kbd "C-c o") 'ff-find-other-file)
@@ -600,7 +613,7 @@ change the name of a function as long as you make sure you change the
 name wherever it's called, such as in keyboard shortcuts, hooks, or
 other functions.
 
-For example, here's a custom function from Jorgan Schaefer's config[fn::https://github.com/jorgenschaefer/Config/blob/master/emacs.el#L184]:
+For example, here's a custom function from [[https://github.com/jorgenschaefer/Config/blob/master/emacs.el#L184][Jorgan Schaefer's config]]:
 
 #+begin_src emacs-lisp
 (defun fc/kill-to-beginning-of-line ()
@@ -633,44 +646,18 @@ a handy way to edit your configuration.
 <<load>>
 
 Most Emacs libraries are not loaded automatically. This saves memory
-and keeps things simpler. You can load built-in code by using =require=, like this:
-
-Another way to load libraries is to use =require=, which loads them only if they haven't already been loaded. You'll often see code like this in people's configuration:
-
-#+begin_src emacs-lisp
-(require 'package-name-goes-here)
-#+end_src
-
-This adds the directory to the load path (see [[load-path][Load path]] for details) and then loads the package. =require= looks for a file named after the package name provided to it, loads it, and double-checks that the library includes =(provide 'package-name-goes-here)=. It throws an error if the library is not found or if it doesn't provide that symbol. 
-
-Sometimes you'll see something like this:
+and keeps things simpler. You can load built-in code by using
+=require=, like this:
 
 #+begin_src emacs-lisp
-(when (require 'package-name-goes-here nil t)
-   (do-something)
-   (do-something-else))
+(require 'hl-line)
 #+end_src
 
-If you use =F1 f= (=describe-function=) on =require=, you'll see that
-it has one required argument (feature) and two optional arguments
-(filename, noerror). The function call above specifies
-=package-name-goes-here= as the feature name, does not specify the
-filename, and sets =noerror= to =t= so that =require= doesn't report
-an error even if the file does not exist. =require= returns non-nil
-(or true) if the library was loaded, so if the library exists, then
-the rest of the code inside the =when= expression gets called.
-
-Along those lines, you may come across code that looks like this:
-
-#+begin_src emacs-lisp
-  (eval-after-load "dash" 
-    '(dash-enable-font-lock))
-#+end_src
-
-This runs =(dash-enable-font-lock)= only after =dash= is loaded. It
-does not automatically load =dash=. You'll see this when people have
-configuration that they want to run only if something is loaded, which
-can make sense for performance reasons.
+This loads the =hl-line= library. =require= looks for a file named
+after the name provided to it, loads it, and double-checks that the
+library includes =(provide 'feature-name-goes-here)=. It throws an
+error if the library is not found or if it doesn't provide that
+symbol.
 
 ** Installing packages
 
@@ -686,7 +673,7 @@ need to install the =auto-complete= buffer. In general, you can find
 package names by looking at functions that include =mode= in their
 name, removing =global=, =turn-on=, and other prefixes as needed.
 
-The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as MELPA[fn:: http://melpa.milkbox.net] or Marmalade[fn:: http://marmalade-repo.org/] Here's the code that you would run in order to add these repositories to your Emacs:
+The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as [[http://melpa.milkbox.net][MELPA]] or [[http://marmalade-repo.org/][Marmalade]] Here's the code that you would run in order to add these repositories to your Emacs:
 
 #+begin_src emacs-lisp
 (require 'package)
@@ -696,9 +683,9 @@ The default package repository in Emacs 24 has a limited number of packages. For
   '("marmalade" . "http://marmalade-repo.org/packages/"))
 #+end_src
 
-After you run this code, use =M-x package-refresh-contents= to update
-the list of packages, and use =M-x package-list-packages= to list the
-available packages. =i= marks the current package for installation,
+If you're connected to the Internet, use =M-x package-refresh-contents=
+to update the list of packages. Use =M-x package-list-packages= to list
+the available packages. =i= marks the current package for installation,
 and =x= actually performs the operations.
 
 Installed packages aren't automatically loaded, although a lightweight
@@ -708,7 +695,36 @@ run. You can start that initialization earlier by adding
 use =(require 'feature-name)=, where the feature name is usually the
 name of the package. See [[void-function][Lisp error: (void-function ...)]] or [[void-variable][Symbol's value as variable is void: ___]] for some more details.
 
-** Downloading Emacs Lisp files
+Sometimes people want to install some packages on one computer but not
+on another. Here's example code that runs some configuration if the
+=helm= package can be loaded, but silently continues if the package
+has not been installed.
+
+#+begin_src emacs-lisp
+(when (require 'helm-config nil t)
+   (setq helm-quick-update t)
+   (helm-mode))
+#+end_src
+
+If you use =F1 f= (=describe-function=) on =require=, you'll see that
+it has one required argument (feature) and two optional arguments
+(filename, noerror). =require= returns non-nil (or true) if the
+library was loaded, so if the library exists, then the rest of the
+code inside the =when= expression gets called.
+
+Along those lines, you may come across code that looks like this:
+
+#+begin_src emacs-lisp
+  (eval-after-load "dash" 
+    '(dash-enable-font-lock))
+#+end_src
+
+This runs =(dash-enable-font-lock)= only after =dash= is loaded. It
+does not automatically load =dash=. You'll see this when people have
+configuration that they want to run only if something is loaded, which
+can make sense for performance reasons.
+
+** Other Emacs Lisp files
 <<unpackaged>>
 
 Some files are not yet available as packages. If you search for the
@@ -760,7 +776,7 @@ here, please e-mail me the code and the error you're running into:
 
 ** Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"
 
-You may have pasted in something that has a =(= but no matching =)=, which results in unbalanced parentheses. Alternatively, you may have pasted in something that has =)= but no =(=, which results in a premature end. Try reading the code carefully in order to find the mismatched pair. You can also use =C-M-f= (=forward-sexp=) and =C-M-b= (=backward-sexp=) to navigate by complete expressions until you find the specific one that causes the error.
+You may have pasted in something that has a "=(=" but no matching "=)=", which results in unbalanced parentheses. Alternatively, you may have pasted in something that has "=)=" but no "=(=", which results in a premature end. Try reading the code carefully in order to find the mismatched pair. You can also use =C-M-f= (=forward-sexp=) and =C-M-b= (=backward-sexp=) to navigate by complete expressions until you find the specific one that causes the error.
 
 ** Cannot open load file: ...
 
@@ -805,11 +821,11 @@ Make sure you call =C-x C-e= *after* the outermost =)= for the expression you wa
 If the code you're looking at has multiple expressions, you'll need to call =C-x C-e= after each of them.
 It might be easier to select the region and use =M-x eval-region=, or load the entire buffer with =M-x eval-buffer=. Alternatively, use =M-x ielm= to evaluate the code instead.
 
-* Want to learn more?
+* Want to learn more about Emacs Lisp?
 
-Check out An Introduction to Programming in Emacs Lisp[fn:: https://www.gnu.org/software/emacs/manual/eintr.html], and delve into the Emacs Lisp Reference Manual[fn:: http://www.gnu.org/software/emacs/manual/elisp.html] for more details.
+Check out [[https://www.gnu.org/software/emacs/manual/eintr.html][An Introduction to Programming in Emacs Lisp]], and delve into the [[http://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp Reference Manual]] for more details.
 
-If you liked this, please let me know at [[mailto:sacha@sachachua.com][sacha@sachachua.com]]! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to customizing your Emacs with Emacs Lisp[fn:: http://sachachua.com/baby-steps-elisp], which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
+If you liked this, please let me know at [[mailto:sacha@sachachua.com][sacha@sachachua.com]]! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to [[http://sachachua.com/baby-steps-elisp][customizing your Emacs with Emacs Lisp]], which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
 
 More links:
 - http://bzg.fr/learn-emacs-lisp-in-15-minutes.html
@@ -902,4 +918,5 @@ Patches and pull requests welcome!
   - edebug-defun
 
 - Thanks
-  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer
+  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, Dave Pawson (detailed feedback, thanks!)
+		
