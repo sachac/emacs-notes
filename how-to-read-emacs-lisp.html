@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-06 Tue 19:59 -->
+<!-- 2014-05-07 Wed 12:42 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -49,7 +49,7 @@
 </li>
 <li><a href="#sec-5">"How can I understand what Emacs Lisp code does?"</a>
 <ul>
-<li><a href="#sec-5-1">The important part is at the beginning</a></li>
+<li><a href="#sec-5-1">The function name is after the opening parenthesis</a></li>
 <li><a href="#sec-5-2">"How can I learn more about functions?"</a></li>
 <li><a href="#sec-5-3">"How can I learn more about variables?"</a></li>
 <li><a href="#sec-5-4">Some things are taken literally</a></li>
@@ -171,6 +171,10 @@ Or something slightly more useful:
 <pre class="src src-emacs-lisp">(setq delete-old-versions -1)
 </pre>
 </div>
+
+<p>
+If you want to start playing around with Emacs Lisp code right away, jump ahead to the section on <a href="#try">"How can I try Emacs Lisp code?"</a>.
+</p>
 </div>
 
 <div id="outline-container-sec-2-1" class="outline-3">
@@ -288,6 +292,12 @@ Add the following line to your `.emacs' file:
 
      (setq sentence-end-double-space nil)
 </pre>
+
+<p>
+You can read the Emacs manual by typing <code>F1 i</code> (<code>info</code>) and choosing
+the <b>Emacs</b> item. You can also find the Emacs Manual at
+<a href="http://www.gnu.org/software/emacs/manual/emacs.html">http://www.gnu.org/software/emacs/manual/emacs.html</a> .
+</p>
 </div>
 </div>
 
@@ -298,16 +308,29 @@ Add the following line to your `.emacs' file:
 Emacs has lots of packages in different repositories, many of which
 require a little extra code in order to be used to full effect. You
 can use <code>M-x package-list-packages</code> to list the packages that Emacs
-knows about by default. There are a lot of packages, so you might want
-to look for recommendations or ask people which ones you should start
-with. You can add more package repositories to Emacs, and I'll show
-you how to do that later in this guide.
+knows about by default. You will need an Internet connection for
+that.
 </p>
 
 <p>
-Check out the README, description, documentation, or source code
-comments for interesting packages to find suggested code to add to
-your Emacs configuration.
+If you're new to Emacs, try getting used to Emacs without packages
+first. There's plenty of functionality already built in. When you come
+across a gap, chances are that someone has written a package to make
+Emacs behave the way you want it to. Since there are lots of packages
+that do similar things, you might want to look for recommendations or
+ask people which ones you should start with.
+</p>
+
+<p>
+In addition to the default package repository, there are other
+community-supported repositories. See <a href="#installing-packages">Installing packages</a> if you would
+like to install a package from a different repository.
+</p>
+
+<p>
+If you install a package, check out the README, description,
+documentation, or source code comments for interesting packages to
+find suggested code to add to your Emacs configuration.
 </p>
 
 <p>
@@ -321,6 +344,12 @@ Here are some packages that might be interesting:
 <li>undo-tree: visualize your undo/redo history
 </li>
 </ul>
+
+<p>
+You will need to be connected to the Internet in order to view and
+install packages. You can use <code>M-x package-list-packages</code> to show the
+available packages and read the descriptions for the packages above. 
+</p>
 </div>
 </div>
 
@@ -351,6 +380,10 @@ Find a snippet of Emacs Lisp code you want to understand more deeply, or look at
 <h2 id="sec-4">"How can I try Emacs Lisp code?"</h2>
 <div class="outline-text-2" id="text-4">
 <p>
+<a id="try"></a>
+</p>
+
+<p>
 It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
 </p>
 
@@ -379,7 +412,7 @@ The Inferior Emacs Lisp Mode gives you a prompt where you can type or paste in E
 </p>
 
 <p>
-If you're copying or typing code, make sure your parentheses are all matched - every <code>(</code> should have a <code>)</code>. IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
+If you're copying or typing code, make sure your parentheses are all matched - every "<code>(</code>" should have a "<code>)</code>". IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
 </p>
 
 <div class="org-src-container">
@@ -509,7 +542,7 @@ not getting loaded, make sure you have either <code>~/.emacs</code> or
 </div>
 
 <div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1">The important part is at the beginning</h3>
+<h3 id="sec-5-1">The function name is after the opening parenthesis</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 In math, operators like + and * go between the numbers they will work on.
@@ -558,7 +591,8 @@ Understanding this will let you read code like:
 </div>
 
 <p>
-This calls the <code>global-hl-line-mode</code> function, which highlights the current line. 
+This calls the <code>global-hl-line-mode</code> function, which highlights the
+current line.
 </p>
 
 <div class="org-src-container">
@@ -568,7 +602,8 @@ This calls the <code>global-hl-line-mode</code> function, which highlights the c
 </div>
 
 <p>
-This calls the <code>show-paren-mode</code> function, which shows matching parentheses when your cursor is after them.
+This calls the <code>show-paren-mode</code> function, which shows matching
+parentheses when your cursor is after them.
 </p>
 
 <div class="org-src-container">
@@ -578,7 +613,8 @@ This calls the <code>show-paren-mode</code> function, which shows matching paren
 </div>
 
 <p>
-This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as the argument, which turns blinking cursors off.
+This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as the argument,
+which turns blinking cursors off.
 </p>
 
 <div class="org-src-container">
@@ -588,7 +624,8 @@ This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as t
 </div>
 
 <p>
-This calls the <code>find-file</code> function with <code>todo.org</code> file in your home directory. It opens the file, creating it if it doesn't exist yet.
+This calls the <code>find-file</code> function with <code>todo.org</code> file in your home
+directory. It opens the file, creating it if it doesn't exist yet.
 </p>
 
 <div class="org-src-container">
@@ -598,7 +635,9 @@ This calls the <code>find-file</code> function with <code>todo.org</code> file i
 </div>
 
 <p>
-This turns on <code>eldoc-mode</code>, which displays the argument list for the current function. You can move your point around to see documentation for other functions.
+This turns on <code>eldoc-mode</code>, which displays the argument list for the
+current function. You can move your point around to see documentation
+for other functions.
 </p>
 
 <div class="org-src-container">
@@ -608,7 +647,8 @@ This turns on <code>eldoc-mode</code>, which displays the argument list for the 
 </div>
 
 <p>
-This turns off beeping. Instead, when Emacs runs into an error, it will flash the title bar or screen.
+This turns off beeping. Instead, when Emacs runs into an error, it
+will flash the title bar or screen.
 </p>
 
 <div class="org-src-container">
@@ -628,7 +668,9 @@ This turns on the display of the column number in the modeline.
 </div>
 
 <p>
-This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section on <a href="#quoting">When something is quoted, it's taken literally</a>.
+This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp
+mode. You'll learn more about why some things have ' and some don't in
+the section on <a href="#quoting">When something is quoted, it's taken literally</a>.
 </p>
 </div>
 </div>
@@ -656,6 +698,10 @@ be called with <code>M-x</code>. Read the description of the function to learn
 more about arguments that you can pass to change its behavior. If it
 mentions a prefix argument, that means that you can change its
 behaviour by typing <code>C-u</code> before you call the function.
+</p>
+
+<p>
+<b>Exercise:</b>
 </p>
 
 <p>
@@ -688,11 +734,29 @@ Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more abo
 <h3 id="sec-5-3">"How can I learn more about variables?"</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
-Like the way you can use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about a function, you can use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about a variable by name. For example, use <code>&lt;f1&gt; v</code> to look up <code>visible-bell</code>. 
+Variables are containers that can hold different values. In Emacs
+Lisp, you can change the value of a variable as many times as you
+want, and you can change it to different types of data as needed.
 </p>
 
 <p>
-To make it easier for you to customize Emacs without writing Emacs Lisp code, many variables give you an interface for setting the variable. If you use <code>describe-variable</code> to look up the definition, you'll often see a line like "You can <b>customize</b> this variable." Click on the <b>customize</b> link in the documentation or move your point to it and press RET. You can change the value there and try it temporarily, or you can save it to your configuration. The Customize interface is good for exploring, but because the code that it generates can difficult to read or share, many people skip it and use Emacs Lisp code instead.
+Like the way you can use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more
+about a function, you can use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn
+more about a variable by name. For example, use <code>&lt;f1&gt; v</code> to look up
+<code>visible-bell</code>.
+</p>
+
+<p>
+To make it easier for you to customize Emacs without writing Emacs
+Lisp code, many variables give you an interface for setting the
+variable. If you use <code>describe-variable</code> to look up the definition,
+you'll often see a line like "You can <b>customize</b> this variable."
+Click on the <b>customize</b> link in the documentation or move your point
+to it and press RET. You can change the value there and try it
+temporarily, or you can save it to your configuration. The Customize
+interface is good for exploring, but because the code that it
+generates can difficult to read or share, many people skip it and use
+Emacs Lisp code instead.
 </p>
 </div>
 </div>
@@ -1146,7 +1210,28 @@ For example, here's a custom function from <a href="https://github.com/jorgensch
 </div>
 
 <p>
-This creates a function called <code>fc/kill-to-beginning-of-line</code>. <code>()</code> means that this function does not take arguments. "<code>Kill from the beginning of the line to point.</code>" is a documentation string (or docstring) that describes what the function does. Docstrings are optional, but highly recommended. <code>(interactive)</code> means that this can be called with <code>M-x</code> or bound to a keyboard shortcut. The code below binds this function to <code>C-c C-u</code>:
+This creates a function called <code>fc/kill-to-beginning-of-line</code>. <code>()</code> is
+the argument list. Since it doesn't contain anything, that means this
+function does not take arguments. "<code>Kill from the beginning of the
+line to point.</code>" is a documentation string (or docstring) that
+describes what the function does. Docstrings are optional, but highly
+recommended. <code>(interactive)</code> means that this can be called with <code>M-x</code> (<code>execute-extended-command</code>)
+or bound to a keyboard shortcut.
+</p>
+
+<p>
+If a function does not have the <code>(interactive)</code> keyword, you won't be
+able to call it with <code>M-x</code> or assign it to a keyboard shortcut, but
+you will still be able to write Emacs Lisp code that calls the
+function. This means <code>M-x</code> (<code>execute-extended-command</code>) lists only the
+commands that people will probably find useful while working directly
+with Emacs, skipping internal functions used by code.
+</p>
+
+<p>
+Once you've defined a custom function, you can bind it to a keyboard
+shortcut if you want. The code below binds the
+<code>fc/kill-to-beginning-of-line</code> function to <code>C-c C-u</code>:
 </p>
 
 <div class="org-src-container">
@@ -1161,7 +1246,9 @@ This creates a function called <code>fc/kill-to-beginning-of-line</code>. <code>
 <h3 id="sec-5-8">Lambdas - anonymous functions</h3>
 <div class="outline-text-3" id="text-5-8">
 <p>
-Sometimes people just want to create a keyboard binding or process some data without defining a new function. <code>lambda</code> creates an anonymous function. Here's an example:
+Sometimes people just want to create a keyboard binding or process
+some data without defining a new function. <code>lambda</code> creates an
+anonymous function. Here's an example:
 </p>
 
 <div class="org-src-container">
@@ -1213,6 +1300,10 @@ symbol.
 <h3 id="sec-6-1">Installing packages</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
+<a id="installing-packages"></a>
+</p>
+
+<p>
 Emacs comes with a lot of code, but there are even more packages out
 there. When you read other people's Emacs configurations, you might
 come across other interesting packages to try out.
@@ -1229,7 +1320,10 @@ name, removing <code>global</code>, <code>turn-on</code>, and other prefixes as 
 </p>
 
 <p>
-The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as <a href="http://melpa.milkbox.net">MELPA</a> or <a href="http://marmalade-repo.org/">Marmalade</a> Here's the code that you would run in order to add these repositories to your Emacs:
+The default package repository in Emacs 24 has a limited number of
+packages. For more choices, you may want to add another repository
+such as <a href="http://melpa.milkbox.net">MELPA</a> or <a href="http://marmalade-repo.org/">Marmalade</a> Here's the code that you would run in order
+to add these repositories to your Emacs:
 </p>
 
 <div class="org-src-container">
@@ -1255,7 +1349,8 @@ list of the functions they define is loaded after your <code>init.el</code> is
 run. You can start that initialization earlier by adding
 <code>(package-initialize)</code>. If this still doesn't get your code to work,
 use <code>(require 'feature-name)</code>, where the feature name is usually the
-name of the package. See <a href="#void-function">Lisp error: (void-function &#x2026;)</a> or <a href="#void-variable">Symbol's value as variable is void: <span class="underline">_</span></a> for some more details.
+name of the package. See <a href="#void-function">Lisp error: (void-function &#x2026;)</a> or <a href="#void-variable">Symbol's
+value as variable is void: <span class="underline">_</span></a> for some more details.
 </p>
 
 <p>

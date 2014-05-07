@@ -58,6 +58,8 @@ Or something slightly more useful:
 (setq delete-old-versions -1)
 #+end_src
 
+If you want to start playing around with Emacs Lisp code right away, jump ahead to the section on [[try]["How can I try Emacs Lisp code?"]].
+
 ** "Why do I have to learn Emacs Lisp in order to get Emacs to do what I want? Shouldn't Emacs just come with reasonable defaults?"
 
 Reasonable defaults make sense for specific people. Other people might
@@ -138,24 +140,41 @@ Add the following line to your `.emacs' file:
      (setq sentence-end-double-space nil)
 #+end_example
 
+You can read the Emacs manual by typing =F1 i= (=info=) and choosing
+the *Emacs* item. You can also find the Emacs Manual at
+http://www.gnu.org/software/emacs/manual/emacs.html .
+
 ** Packages
 
 Emacs has lots of packages in different repositories, many of which
 require a little extra code in order to be used to full effect. You
 can use =M-x package-list-packages= to list the packages that Emacs
-knows about by default. There are a lot of packages, so you might want
-to look for recommendations or ask people which ones you should start
-with. You can add more package repositories to Emacs, and I'll show
-you how to do that later in this guide.
+knows about by default. You will need an Internet connection for
+that.
 
-Check out the README, description, documentation, or source code
-comments for interesting packages to find suggested code to add to
-your Emacs configuration.
+If you're new to Emacs, try getting used to Emacs without packages
+first. There's plenty of functionality already built in. When you come
+across a gap, chances are that someone has written a package to make
+Emacs behave the way you want it to. Since there are lots of packages
+that do similar things, you might want to look for recommendations or
+ask people which ones you should start with.
+
+In addition to the default package repository, there are other
+community-supported repositories. See [[installing-packages][Installing packages]] if you would
+like to install a package from a different repository.
+
+If you install a package, check out the README, description,
+documentation, or source code comments for interesting packages to
+find suggested code to add to your Emacs configuration.
 
 Here are some packages that might be interesting:
 - company: adds text completion
 - yasnippet: snippets and templates
 - undo-tree: visualize your undo/redo history
+
+You will need to be connected to the Internet in order to view and
+install packages. You can use =M-x package-list-packages= to show the
+available packages and read the descriptions for the packages above. 
 
 ** Webpages, blog posts, and the Emacs Wiki
 
@@ -168,6 +187,7 @@ There are many places where you can ask for help with Emacs. gnu.emacs.help is a
 Find a snippet of Emacs Lisp code you want to understand more deeply, or look at the examples in the sections below.
 
 * "How can I try Emacs Lisp code?"
+<<try>>
 
 It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
 
@@ -182,7 +202,7 @@ Here are some ways you can run Emacs Lisp code. I'll explain them in more detail
 
 The Inferior Emacs Lisp Mode gives you a prompt where you can type or paste in Emacs Lisp code. Start it with =M-x ielm=. Press =RET= after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press =RET= to run (or "evaluate") it again.
 
-If you're copying or typing code, make sure your parentheses are all matched - every =(= should have a =)=. IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
+If you're copying or typing code, make sure your parentheses are all matched - every "=(=" should have a "=)=". IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
 
 #+begin_src emacs-lisp :eval no
 (message "Hello
@@ -256,7 +276,7 @@ not getting loaded, make sure you have either =~/.emacs= or
 * "How can I understand what Emacs Lisp code does?"
 <<understanding-lisp>>
 
-** The important part is at the beginning
+** The function name is after the opening parenthesis
 
 In math, operators like + and * go between the numbers they will work on.
 In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
@@ -286,37 +306,44 @@ Understanding this will let you read code like:
 (global-hl-line-mode)  
 #+end_src
 
-This calls the =global-hl-line-mode= function, which highlights the current line. 
+This calls the =global-hl-line-mode= function, which highlights the
+current line.
 
 #+begin_src emacs-lisp
 (show-paren-mode)
 #+end_src
 
-This calls the =show-paren-mode= function, which shows matching parentheses when your cursor is after them.
+This calls the =show-paren-mode= function, which shows matching
+parentheses when your cursor is after them.
 
 #+begin_src emacs-lisp
 (blink-cursor-mode -1)
 #+end_src
 
-This calls the =blink-cursor-mode= function with =-1= as the argument, which turns blinking cursors off.
+This calls the =blink-cursor-mode= function with =-1= as the argument,
+which turns blinking cursors off.
 
 #+begin_src emacs-lisp
 (find-file "~/todo.org")
 #+end_src
 
-This calls the =find-file= function with =todo.org= file in your home directory. It opens the file, creating it if it doesn't exist yet.
+This calls the =find-file= function with =todo.org= file in your home
+directory. It opens the file, creating it if it doesn't exist yet.
 
 #+begin_src emacs-lisp
 (turn-on-eldoc-mode)
 #+end_src
 
-This turns on =eldoc-mode=, which displays the argument list for the current function. You can move your point around to see documentation for other functions.
+This turns on =eldoc-mode=, which displays the argument list for the
+current function. You can move your point around to see documentation
+for other functions.
 
 #+begin_src emacs-lisp
 (setq visible-bell t)
 #+end_src
 
-This turns off beeping. Instead, when Emacs runs into an error, it will flash the title bar or screen.
+This turns off beeping. Instead, when Emacs runs into an error, it
+will flash the title bar or screen.
 
 #+begin_src emacs-lisp
 (setq column-number-mode t)
@@ -328,7 +355,9 @@ This turns on the display of the column number in the modeline.
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 #+end_src
 
-This turns on =eldoc-mode= when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section on [[quoting][When something is quoted, it's taken literally]].
+This turns on =eldoc-mode= when a buffer is switched to Emacs Lisp
+mode. You'll learn more about why some things have ' and some don't in
+the section on [[quoting][When something is quoted, it's taken literally]].
 
 ** "How can I learn more about functions?"
 
@@ -348,15 +377,33 @@ more about arguments that you can pass to change its behavior. If it
 mentions a prefix argument, that means that you can change its
 behaviour by typing =C-u= before you call the function.
 
+*Exercise:*
+
 Use =<f1> f= (=describe-function=) to learn more about the following functions:
 | =describe-function= | Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as =C-h f=. |
 | =find-file=         | You can use this to open specific files. See the function description to learn how to use this with remote files. |
 
 ** "How can I learn more about variables?"
 
-Like the way you can use =<f1> f= (=describe-function=) to learn more about a function, you can use =<f1> v= (=describe-variable=) to learn more about a variable by name. For example, use =<f1> v= to look up =visible-bell=. 
+Variables are containers that can hold different values. In Emacs
+Lisp, you can change the value of a variable as many times as you
+want, and you can change it to different types of data as needed.
 
-To make it easier for you to customize Emacs without writing Emacs Lisp code, many variables give you an interface for setting the variable. If you use =describe-variable= to look up the definition, you'll often see a line like "You can *customize* this variable." Click on the *customize* link in the documentation or move your point to it and press RET. You can change the value there and try it temporarily, or you can save it to your configuration. The Customize interface is good for exploring, but because the code that it generates can difficult to read or share, many people skip it and use Emacs Lisp code instead.
+Like the way you can use =<f1> f= (=describe-function=) to learn more
+about a function, you can use =<f1> v= (=describe-variable=) to learn
+more about a variable by name. For example, use =<f1> v= to look up
+=visible-bell=.
+
+To make it easier for you to customize Emacs without writing Emacs
+Lisp code, many variables give you an interface for setting the
+variable. If you use =describe-variable= to look up the definition,
+you'll often see a line like "You can *customize* this variable."
+Click on the *customize* link in the documentation or move your point
+to it and press RET. You can change the value there and try it
+temporarily, or you can save it to your configuration. The Customize
+interface is good for exploring, but because the code that it
+generates can difficult to read or share, many people skip it and use
+Emacs Lisp code instead.
 
 ** Some things are taken literally
 <<quoting>>
@@ -622,7 +669,24 @@ For example, here's a custom function from [[https://github.com/jorgenschaefer/C
   (kill-region (point-at-bol) (point)))
 #+end_src
 
-This creates a function called =fc/kill-to-beginning-of-line=. =()= means that this function does not take arguments. "=Kill from the beginning of the line to point.=" is a documentation string (or docstring) that describes what the function does. Docstrings are optional, but highly recommended. =(interactive)= means that this can be called with =M-x= or bound to a keyboard shortcut. The code below binds this function to =C-c C-u=:
+This creates a function called =fc/kill-to-beginning-of-line=. =()= is
+the argument list. Since it doesn't contain anything, that means this
+function does not take arguments. "=Kill from the beginning of the
+line to point.=" is a documentation string (or docstring) that
+describes what the function does. Docstrings are optional, but highly
+recommended. =(interactive)= means that this can be called with =M-x= (=execute-extended-command=)
+or bound to a keyboard shortcut.
+
+If a function does not have the =(interactive)= keyword, you won't be
+able to call it with =M-x= or assign it to a keyboard shortcut, but
+you will still be able to write Emacs Lisp code that calls the
+function. This means =M-x= (=execute-extended-command=) lists only the
+commands that people will probably find useful while working directly
+with Emacs, skipping internal functions used by code.
+
+Once you've defined a custom function, you can bind it to a keyboard
+shortcut if you want. The code below binds the
+=fc/kill-to-beginning-of-line= function to =C-c C-u=:
 
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-c C-u") 'fc/kill-to-beginning-of-line)
@@ -630,7 +694,9 @@ This creates a function called =fc/kill-to-beginning-of-line=. =()= means that t
 
 ** Lambdas - anonymous functions
 
-Sometimes people just want to create a keyboard binding or process some data without defining a new function. =lambda= creates an anonymous function. Here's an example:
+Sometimes people just want to create a keyboard binding or process
+some data without defining a new function. =lambda= creates an
+anonymous function. Here's an example:
 
 #+begin_src emacs-lisp
 (global-set-key (kbd "C-c E") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
@@ -660,6 +726,7 @@ error if the library is not found or if it doesn't provide that
 symbol.
 
 ** Installing packages
+<<installing-packages>>
 
 Emacs comes with a lot of code, but there are even more packages out
 there. When you read other people's Emacs configurations, you might
@@ -673,7 +740,10 @@ need to install the =auto-complete= buffer. In general, you can find
 package names by looking at functions that include =mode= in their
 name, removing =global=, =turn-on=, and other prefixes as needed.
 
-The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as [[http://melpa.milkbox.net][MELPA]] or [[http://marmalade-repo.org/][Marmalade]] Here's the code that you would run in order to add these repositories to your Emacs:
+The default package repository in Emacs 24 has a limited number of
+packages. For more choices, you may want to add another repository
+such as [[http://melpa.milkbox.net][MELPA]] or [[http://marmalade-repo.org/][Marmalade]] Here's the code that you would run in order
+to add these repositories to your Emacs:
 
 #+begin_src emacs-lisp
 (require 'package)
@@ -693,7 +763,8 @@ list of the functions they define is loaded after your =init.el= is
 run. You can start that initialization earlier by adding
 =(package-initialize)=. If this still doesn't get your code to work,
 use =(require 'feature-name)=, where the feature name is usually the
-name of the package. See [[void-function][Lisp error: (void-function ...)]] or [[void-variable][Symbol's value as variable is void: ___]] for some more details.
+name of the package. See [[void-function][Lisp error: (void-function ...)]] or [[void-variable][Symbol's
+value as variable is void: ___]] for some more details.
 
 Sometimes people want to install some packages on one computer but not
 on another. Here's example code that runs some configuration if the
