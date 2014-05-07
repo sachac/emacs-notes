@@ -56,7 +56,7 @@ If you're done with a task, change =TODO= to =DONE=. If you get tired
 of doing this manually, jump ahead to the section [[#define-shortcuts][Define shortcuts
 for managing TODO states]]. 
 
-You can visually look through your tasks to see what you still need to
+You can look through your tasks to see what you still need to
 do. If you want to see your unfinished tasks in the context of your
 outline, use =C-c / t= (=org-sparse-tree= with the "=t=" option). Use
 =S-Tab= (=org-shifttab=) to go through different levels of visibility.
