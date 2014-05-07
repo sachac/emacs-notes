@@ -49,26 +49,28 @@
 				(org-html-publish-to-html plist filename pub-dir)
 			(error (message "Error publishing %s" filename)))))
 
-(add-to-list 'org-publish-project-alist
-      `("emacs-notes-base"
-         :base-directory ,sacha/emacs-notes-directory
-         :base-extension "org"
-         :exclude "tasks.org"       ; regexp
-         :publishing-directory ,sacha/emacs-notes-directory
-         :publishing-function sacha/emacs-notes-org-html-publish-to-html
-         :html-head-include-default-style nil
-         :html-head-include-scripts nil
-         :html-head ,sacha/emacs-notes-html-head
-         :auto-sitemap t                  ; Generate sitemap.org automagically...
-         :sitemap-filename "sitemap.org"  ; Call it sitemap.org (it's the default)...
-         :sitemap-title "Sitemap"         ; With title 'Sitemap'.
-         :makeindex t
-         :with-timestamp t
-				 :section-numbers nil
-				 :html-preamble "" 
-				 :html-postamble ,sacha/emacs-notes-postamble
-         :htmlized-source t
-         ))
+(unless (assoc "emacs-notes-base" org-publish-project-alist)
+	(add-to-list 'org-publish-project-alist
+							 `("emacs-notes-base"
+								 :base-directory ,sacha/emacs-notes-directory
+								 :base-extension "org"
+								 :exclude "tasks.org"       ; regexp
+								 :publishing-directory ,sacha/emacs-notes-directory
+								 :publishing-function sacha/emacs-notes-org-html-publish-to-html
+								 :html-head-include-default-style nil
+								 :html-head-include-scripts nil
+								 :html-head ,sacha/emacs-notes-html-head
+								 :auto-sitemap t                  ; Generate sitemap.org automagically...
+								 :sitemap-filename "sitemap.org"  ; Call it sitemap.org (it's the default)...
+								 :sitemap-title "Sitemap"         ; With title 'Sitemap'.
+								 :makeindex t
+								 :with-timestamp t
+								 :section-numbers nil
+								 :html-preamble "" 
+								 :html-postamble ,sacha/emacs-notes-postamble
+								 :htmlized-source t
+								 )))
+(unless (assoc "emacs-notes-blog-posts" org-publish-project-alist)
 (add-to-list 'org-publish-project-alist
       `("emacs-notes-blog-posts"
          :base-directory ,(expand-file-name "blog-posts" sacha/emacs-notes-directory)
@@ -87,6 +89,8 @@
 				 :html-postamble ,sacha/emacs-notes-postamble
          :makeindex t
          :with-timestamp t
-         :htmlized-source))
-(add-to-list 'org-publish-project-alist '("sacha/emacs-notes" :components ("emacs-notes-base" "emacs-notes-blog-posts")))
+         :htmlized-source)))
+(unless (assoc "sacha/emacs-notes" org-publish-project-alist)
+				(add-to-list 'org-publish-project-alist '("sacha/emacs-notes"
+																									:components ("emacs-notes-base" "emacs-notes-blog-posts"))))
 
