@@ -152,10 +152,69 @@ https://www.youtube.com/watch?v=uP9qmhcI9IQ
 *** TODO Sketch out Org Mode coaching
 
 *** TODO Write a tutorial from installing Emacs to getting Org 8 updated    
-
 :PROPERTIES:
 :Effort: 2:00
 :END:
+*** DONE How to update the Org 7 that comes with Emacs to Org 8 (more configuration! better exports!)
+		 CLOSED: [2014-05-09 Fri 11:28]
+		:LOGBOOK:
+		CLOCK: [2014-05-09 Fri 11:03]--[2014-05-09 Fri 11:28] =>  0:25
+		:END:
+:PROPERTIES:
+:Effort: 2:00
+:ID:       o2b:1d2bbf88-93b3-449e-8129-45dfb568f8a7
+:POST_DATE: [2014-05-09 Fri 11:16]
+:POSTID:   27231
+:BLOG:     sacha
+:END:
+
+The Org Mode included in Emacs 24 is version 7. Version 8 has lots of
+new configuration variables and the exporting mechanism has been
+rewritten. However, it needs to be installed in an Emacs that has not
+yet loaded any Org code or files. Here's how you can upgrade your Org:
+
+1. Start Emacs with =emacs -q=. This skips your personal configuration.
+
+2. Switch to the =*scratch*= buffer by typing =C-x b=
+   (=switch-buffer=). =*scratch*= is usually the default, so you
+   should be able to just press =RET= to select it.
+
+3. Copy the following code. Paste it in with =C-y= (=yank=):
+	 #+begin_src emacs-lisp
+	 (require 'package)
+	 (add-to-list 'package-archives
+		 '("melpa" . "http://melpa.milkbox.net/packages/"))
+	 (package-refresh-contents)
+	 (package-install 'org)
+	 #+end_src
+
+4. You will need an Internet connection for this step. Type =M-x
+   eval-buffer=. This runs the code in the current buffer. It will
+   load the package library, add MELPA to your package sources, update
+   the list of packages, and install the latest version of Org.
+
+5. Edit your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that
+   instead). Add the following code to the beginning of the file:
+	 #+begin_src emacs-lisp
+	 (package-initialize)
+	 #+end_src
+   Advanced note: If you've downloaded Emacs Lisp code that should
+   override code already installed through packages, you need to
+   change this to =(package-initialize nil)= instead, and add
+   =(package-initialize t)= after your =load-path= settings.
+
+6. Check your configuration for references to the older version of
+   Org. In particular, look for any configuration related to exporting
+   (ex: =(require 'org-html)=). You can change those lines to their
+   Org 8 equivalents (ex: =(require 'ox-html)=), but it's probably
+   easier to just comment them out for now. You can comment out lines by adding =;= to the beginning.
+ 
+6. Save your =init.el= and restart Emacs (this time, without the =-q= option). =M-x org-version= should now start with =Org-mode version 8=.
+
+7. Review your Emacs configuration for any changes that you will need to make. You can ask the [[http://orgmode.org/community.html][Org Mode mailing list]] for help if you get stuck. 
+
+Good luck!
+
 *** TODO Announce guide for learning Emacs Lisp
 *** TODO Announce EmacsLife.com
 *** TODO Write about load path shadowing
@@ -490,8 +549,23 @@ https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
 		 :Effort:   0:15
 		 :END:
 *** Phil Hagelberg
+**** STARTED Prepare for session with technomancy
+		 :LOGBOOK:
+		 CLOCK: [2014-05-09 Fri 11:35]--[2014-05-09 Fri 11:37] =>  0:02
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   0:30
+		 :END:
 **** TODO Record session with technomancy
-		 	SCHEDULED: <2014-05-09 Fri>
+		 	 SCHEDULED: <2014-05-09 Fri 20:00>
+
+Clojure 
+
+http://technomancy.us/167
+This really resonated with me because it emphasizes that people are more important than programs. For me sharing is the thing that makes programming even worth doing in the first place. So it got me thinking about different technologies and what kind of people they're good for helping.
+
+5-year-old kid, sons
+
 *** Christopher Wellons
 **** DONE Set up chat with Christopher Wellons
 	 	 CLOSED: [2014-05-01 Thu 22:08]
@@ -501,7 +575,8 @@ https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
 *** Possible guests
 - Tikhon Jelvis?
 - Follow up with Xah Lee's list
-** Connecting
+
+** Connecting - Emacs
 *** International Lisp Conference 2014 (August)
 Contact: Dave Cooper
 **** STARTED Draft title, abstract, bio
@@ -591,6 +666,39 @@ Topics
 	 
 **** TODO Start planning talk for International Lisp Conference
 		 	SCHEDULED: <2014-05-09 Fri>
+
+** Other Emacs tasks
+*** STARTED Get mplayer working with emms on Windows
+		:LOGBOOK:
+		CLOCK: [2014-05-09 Fri 14:19]--[2014-05-09 Fri 14:32] =>  0:13
+		:END:
+		:PROPERTIES:
+		:Effort:   0:30
+		:END:
+
+(require 'emms)
+(require 'emms-setup)
+(require 'emms-player-mplayer)
+(require 'emms-source-file)
+(require 'emms-source-playlist)
+(emms-default-players)
+(emms-play-file "~/Downloads/IRC with ERC.mp3")
+
+Okay, this is starting to shape up. I need a quick command to pause/play, and another one to skip back a little bit. 
+
+#+begin_src emacs-lisp
+(require 'emms)
+(require 'emms-setup)
+(require 'emms-player-mplayer)
+(require 'emms-source-file)
+(require 'emms-source-playlist)
+(emms-default-players)
+
+(bind-key "<apps> p" 'emms-pause)
+(bind-key "<apps> <apps>" 'emms-pause)
+(bind-key "<apps> b" 'emms-seek-backward)
+#+end_src
+
 * Notes
 
 - What am I looking for?

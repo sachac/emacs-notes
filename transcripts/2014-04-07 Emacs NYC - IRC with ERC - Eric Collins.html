@@ -1,31 +1,59 @@
-#+TITLE: IRC with ERC - Eric Collins
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>IRC with ERC - Eric Collins</title>
+<!-- 2014-05-09 Fri 15:30 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sacha Chua" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">IRC with ERC - Eric Collins</h1>
+<p>
+You can find the video and other details at <a href="http://emacsnyc.org/videos.html">http://emacsnyc.org/videos.html</a>
+</p>
 
-You can find the video and other details at http://emacsnyc.org/videos.html
-
-#+begin_html
 <iframe width="640" height="360" src="//www.youtube.com/embed/l5u-907zUB0" frameborder="0" allowfullscreen></iframe>
-#+end_html
 
-[[https://s3-us-west-2.amazonaws.com/emacsnyc/irc-with-erc.mp4][Download MP4 (255 MB)]]
+<p>
+<a href="https://s3-us-west-2.amazonaws.com/emacsnyc/irc-with-erc.mp4">Download MP4 (255 MB)</a>
+</p>
 
-#+INDEX: ERC
+<p>
 Eric: Today, we are going to talk about IRC with ERC and Emacs. Let’s
 get started. 
+</p>
 
+<p>
 Audience: Is this an open standard? 
+</p>
 
+<p>
 Eric: Yes, it's built into Emacs. We'll get to that later. IRC and
 Emacs with ERC. My name is Eric Collins. Thank you for coming. That is
 my email that you can get me at.
+</p>
 
-Our agenda today--I am sorry if the screen is a little blurry, I
-apologize for that--we are going to talk about IRC. The introduction
+<p>
+Our agenda today&#x2013;I am sorry if the screen is a little blurry, I
+apologize for that&#x2013;we are going to talk about IRC. The introduction
 to it. The basics for ERC, overview, some of the commands and a little
 bit of a configuration library to get yourself going. This is going to
 be very non-technical. I do not know very much about Emacs Lisp aside
 from what Harry just taught me right now, though I did quite a bit of
 Scheme in school.
+</p>
 
+<p>
 A brief introduction about Internet Relay Chat. It was started in 1988
 by Jarkko Oikarinen. It was used to replace something called
 multi-user-task on [inaudible] which was a BBS way back in the day. It
@@ -34,7 +62,9 @@ itself was inspired by bitnet relay on Bitnet which was a
 node point-to-point protocol, which was way beyond my time. That is not
 necessarily not important for this, but just know that was inspired
 from that.
+</p>
 
+<p>
 IRC has done a lot of important things throughout history. Very
 important things. It was the Twitter before Twitter. Back in 1991,
 during a Soviet Union media blackout where the Soviet Union was trying a
@@ -43,20 +73,26 @@ Union from Gorbachev, they actually blacked out all the media in
 all of the Soviet Union. IRC was used as a communication tool to
 actually talk to all of the people there to figure out what was
 happening. Similarly, it was used in the Gulf War.
+</p>
 
+<p>
 Amazingly enough, because all of this was done in IRC, you can
 actually get logs of all this and read all of them on [inaudible], I
 think that’s how you say that. This web address gets you to the right
 place, and again this will all be available for consumption later. 
+</p>
 
+<p>
 IRC also did so much more. It was social before social, the ability to
 go to channels and talk to like-minded people about things you are
 interested in. It was file sharing before there was file sharing.
 Napster before Napster, you know that kind of thing. You could
 actually do direct communications with people and actually share your
-file. It did so many things--much like Emacs. I also know it was used
+file. It did so many things&#x2013;much like Emacs. I also know it was used
 recently to play massive cooperative Pokemon games.
+</p>
 
+<p>
 Let’s go a little bit into what it means to use IRC. How many people
 here actually use IRC right now? There are going to too many people.
 How many people have used it once before and have some clue as to what
@@ -65,33 +101,47 @@ actually started at this in effort to talk to everybody else.
 My company uses Campfire. Unfortunately, all of the clients on
 Linux are terrible, involve incredible installations, are very
 janky and don’t do very good job of dealing with multiple rooms.
+</p>
 
+<p>
 My solution to this instead to move towards IRC. There is actually a
 way to pipe all of the IRC things to something called Campervan. I’ve
 been using it basically since then. It’s really fun way to get into
 broader IRC from that. Because I use Emacs, I figured: Why not? I can
 use Emacs for all my IRC stuff.
+</p>
 
+<p>
 What do you need to be on IRC? You need a server. Very important part.
 You need to actually have something that everybody can essentially
 connect to so you all can talk. If you notice, for example,
 DALnet, fnet, all examples. 
+</p>
 
+<p>
 You need a nick, or a nickname.
+</p>
 
+<p>
 Man: [something about virtual currencies and blockchains]
+</p>
 
+<p>
 Eric: Really? That is interesting. I did not know that. That is really
 cool. I’d like to hear more about that, honestly. 
+</p>
 
+<p>
 The other thing you might need is an identity. Not every server
 actually requires you to have that. Your identity, by the way is not the
 actual who you are, but it is the way to identify who you are.
 Identify the nickname that you have. It’s more or less your password,
 essentially. It’s recommended, but at least in the case of Freenode,
-it is not required--though that does mean that anybody else can use
+it is not required&#x2013;though that does mean that anybody else can use
 your identity if you want to have a particular name. 
+</p>
 
+<p>
 In the case of actual identity, if you want to identify yourself in
 Freenode, you ca ndo something like message Nickserv, register your
 passwords, send in your email. You get sent a nice little email so
@@ -102,53 +152,75 @@ DALnet, I don't know if that's exactly what is. That’s more or less
 the same thing. There is a server or a bot that sort of registers
 nicks and gives the ability to work with those nicknames on Freenode,
 DALnet, and any other IRC server.
+</p>
 
+<p>
 Man: [inaudible]
+</p>
 
+<p>
 Eric: Yes, it uses your current nick. We'll get into that in a second.
 It’s going to be a part of the actual ERC thing.
+</p>
 
+<p>
 You would go on to, say, Freenode. You would say, I want to connect to
 Freenode. It will ask you what nick you want to have to that. You will
 connect using that nick, and then it will say either somebody already
 has that nick, either you identify yourself, or you have to pick
-another one. Because if someone else were to use that... I believe it
+another one. Because if someone else were to use that&#x2026; I believe it
 will kick you off. It will change this to something else. My intent is
 to get rid of just one letter if it thinks I'm already logged in
 somewhere else.
+</p>
 
-Some common commands when doing this is the =/message= NickServ to
+<p>
+Some common commands when doing this is the <code>/message</code> NickServ to
 identify yourself. The identity to identify who you are. You can join
 channels. Channels are the places that you actually go to have all of
 the to do things like talk to people in the Emacs channel to talk
-about Emacsy things. You can enter =/names= to list all the names in
+about Emacsy things. You can enter <code>/names</code> to list all the names in
 that channel. You can list all of the channels that are there so you
-can figure out what channel you want to join. You can say =/part=.
+can figure out what channel you want to join. You can say <code>/part</code>.
 These are all commands. The slash denotes the command beforehand.
 The command itself has something to dob.
+</p>
 
+<p>
 Man: [inaudible]
+</p>
 
+<p>
 Eric: It is certainly a problem. I don’t know a better way to deal
 with that other than to see that and be able to search through it. Can
 you narrow that down?
+</p>
 
+<p>
 Man: Yes. You can actually enter like search commands you could use
 slash [inaudible] space [inaudible] Emacs. [inaudible].
+</p>
 
+<p>
 Eric: I need to get into the Emacs Spanish one. I don't know Spanish.
+</p>
 
+<p>
 We know some of the basic idea of what IRC is and there are lot of
 ways to get onto IRC servers with a lot of non-Emacs IRCs. We could
 use something wonderful like XChat. Yeah, GUIs, great. Something that
 isn’t at all what Emacs is. We can use Chatzilla which is in the
 browser and is attached in Mozilla. We could use something like a text
 editor. I don’t know to say it, but I am going to go with IRC or ERC. IRSSI?
+</p>
 
+<p>
 I also want you to notice that all of this is to emphasize the point
 that we should never be using them. All of this happened to me in
 Windows. This is a Putty symbol over there.
+</p>
 
+<p>
 Let’s bring on the ERC. According to the actual docs, ERC is a
 powerful, modular, and extensible IRC client. First developed by
 Alexander L. Belikoff and Sergey Berezin. It’s a pure Emacs Lisp
@@ -157,10 +229,12 @@ Emacs buffers (which means, no tabs, thank God). It’s non-intrusive,
 very much non-intrusive. You can add a couple of things to sort of
 annoy you more, but for the most part it’s on the background that you
 can tab to anytime you want to. It doesn't mess up your flow.
+</p>
 
+<p>
 Let's talk a bit about how to use ERC? This is going to be very quick
 tutorial. How to be on ERC. How to be IRC. How to be on Freenode. So,
-first--follow along if you can-- =M-x erc=, then enter server port and
+first&#x2013;follow along if you can&#x2013; <code>M-x erc</code>, then enter server port and
 nickname. All of these have defaults, by the way. The servers are
 default to irc.freenode.net. The port is going to be 6667. The
 nickname is going to be your username on your computer. You can put in
@@ -168,57 +242,82 @@ whatever you want, if you tend to be me where your username is just
 your first name. I have a feeling that a lot of people try to go for
 Eric. It will also ask you for a password. Not something that's needed
 on Freenode right away. This is just the password to get into the
-server itself. Do =C-c C-j #vim=. Then you are done, and you can troll
+server itself. Do <code>C-c C-j #vim</code>. Then you are done, and you can troll
 away on that. You can also go to the Emacs group and tell
 everybody how awesome it is to be on Emacs and how awesome it is to be
 on IRC. That’s really it.
+</p>
 
-The =C-c C-j= thing by the way is the Emacs way or the ERC way to join
-channels. You can say =/join= in the REPL that they have there, but why
+<p>
+The <code>C-c C-j</code> thing by the way is the Emacs way or the ERC way to join
+channels. You can say <code>/join</code> in the REPL that they have there, but why
 do that when you can do key combinations. It’s really simple and
 really straightforward. 
+</p>
 
+<p>
 There are couple of minor tweaks that you can do here and there. This
 is very simple. ERC is been around since Emacs 22.3. It has many
 libraries installed and enabled by default. It’s incredibly
 extensible. It is Elisp, after all. There are ton of libraries that are
 supporting it right now as well. To give you some sense of the key
 bindings that we talk about:
-- =C-c C-j= to join the channels
-- =C-c C-n= to get all the nicknames
-- =C-m= to send the message or just return, but return's kinda far away from the pinky, so =C-m=
-- You could kill input with =C-c C-u= which is the exact same as =C-a C-k=, but that one kills the buffer and doesn't yank it into your kill ring
-- =C-c C-SPC= is one where you can go [inaudible] channels. We can talk about it
+</p>
+<ul class="org-ul">
+<li><code>C-c C-j</code> to join the channels
+</li>
+<li><code>C-c C-n</code> to get all the nicknames
+</li>
+<li><code>C-m</code> to send the message or just return, but return's kinda far away from the pinky, so <code>C-m</code>
+</li>
+<li>You could kill input with <code>C-c C-u</code> which is the exact same as <code>C-a C-k</code>, but that one kills the buffer and doesn't yank it into your kill ring
+</li>
+<li><code>C-c C-SPC</code> is one where you can go [inaudible] channels. We can talk about it
+</li>
+</ul>
+<p>
 later. 
-- As Harry was reminding us beforehand, we have =C-h m= to
+</p>
+<ul class="org-ul">
+<li>As Harry was reminding us beforehand, we have <code>C-h m</code> to
+</li>
+</ul>
+<p>
 do a describe mode. This will give you chance to see all of the
 different key combination that you can have that all interact with
 IRC.
+</p>
 
+<p>
 There are going to be something aren’t going to be covered by ERC.
 Some that you actually have to do specifically as IRC type things.
 They're somewhat rare, but you can definitely find commands online for
 all of these. I actually have a link over here that can give you all
 commands that you can use in IRC. 
+</p>
 
+<p>
 Living with ERC or dealing with ERC. Harry may have said it just like
 begrudgingly taking on ERC. Apparently the way I wrote it sounded like
 it’s a terrible thing. Having ERC on the backdrop of your Emacs
 workflow.
+</p>
 
+<p>
 Let’s say you are on Emacs. The typical way to login on the servers,
 sort of how we discussed beforehand. Standard way can be done using
-=M-x erc=. Then you can type in your server name and you can type in
+<code>M-x erc</code>. Then you can type in your server name and you can type in
 your nickname. You can type in your port and your password. You are
 done. Or, you can auto-login. You can either through an ERC command at
-start, where you can just sort of have it... You can have the ERC
+start, where you can just sort of have it&#x2026; You can have the ERC
 command that gives you all the user information beforehand, all of the
 things that you need to have including your password, and allows you
 to login right there. I will show you in just a second some of the
 things that you might need to do for that. Something that can auto
 identify you as well.
+</p>
 
-#+INDEX: nickserv
+<p>
 Nickserv is one thing that can be included in order to auto
 identify you. It is an included module says that you can store
 password on it or you can reference information about whenever you get
@@ -226,43 +325,57 @@ onto a particular server. It will automatically say "Oh, I see that
 you are on the server. Let me identify you as whatever username you
 supposed to be, and now you are good to go. Don't worry about anything
 else."
+</p>
 
+<p>
 As we talked about before, with what Harry is talking about with setq,
 you can set, really quickly, to say, "I don’t want you to ever ask me
 about a password ever again." You have this long nice screen here
 where you're setting a list of passwords. This is going to be for
 whenever I login to Freenode. This is going to be for the nick that I
 have. This Freenode password stored in my authinfo thing that I'm
-loading beforehand. That ERC command that I use beforehand... you say,
+loading beforehand. That ERC command that I use beforehand&#x2026; you say,
 you can set the server that you want to login and the port you want to
 login to. Any time we use it, will automatically do that for you.
+</p>
 
+<p>
 Man: [inaudible]
+</p>
 
+<p>
 Eric: That’s right. Actually, Harry was just explaining that to me
 that today when I asked "Why is it that I have to use a backtick
 instead of just a quote?" It’s for substitution. Basically, just says,
 see this comma, see this Freenode thing, if I had to define it here,
 that I should substitute it automatically over here. In this case,
 what’s going to happen is this, as soon as I start Emacs, is going to
-log me in Freenode. This right here, the =setq erc-nickserv-passwords=,
+log me in Freenode. This right here, the <code>setq erc-nickserv-passwords</code>,
 the Nickserv ERC module is going to store that, and see it’s
 associated to Freenode. See that and it will see that I am also logged
 in with the same nick and it will use that password to identify me
 with the Nickserve in Freenode.
+</p>
 
+<p>
 Man: [inaudible]
+</p>
 
+<p>
 Eric: Yes, this is actually a real substitution. There was also a
 comma before this. Very important. I was pulling my hair in one point
 saying, “Why the hell is this not working? I see this single quote. It
 looks like it should work.” 
+</p>
 
-All right, joining a channel. This is one of the ones where I showed you how to =C-c C-j #vim= to troll away. This is one way to do it. You can
-do that. You can do the typical IRC command =/join= in the REPL and then say
+<p>
+All right, joining a channel. This is one of the ones where I showed you how to <code>C-c C-j #vim</code> to troll away. This is one way to do it. You can
+do that. You can do the typical IRC command <code>/join</code> in the REPL and then say
 channel name. Or you can do even more. You can do the keystrokes of
-=C-c C-j= then typing your channel name, because Emacs, why not. 
+<code>C-c C-j</code> then typing your channel name, because Emacs, why not. 
+</p>
 
+<p>
 The problem is any time you join ERC, you have to do this manually.
 Why do something manually when you can do it automatically? Let’s go
 to auto-join. Auto-join gives us the ability to automatically join
@@ -277,15 +390,16 @@ will automatically have me join the channel for thoughtbot and the
 channel for Emacs. Very simple, very much makes your life easy so you
 don’t have to join any of these things, and you just have to be there.
 It supposed to be channel chat but apparently not.
+</p>
 
-#+INDEX: erc-track
+<p>
 Any time you are on a channel, any time you join a new channel, it
 creates a new buffer. As in Emacs, anything that's in a buffer that
 you can navigate to, you have a buffer command, you can have a
 thousand of them open. It’s going to be a little bit difficult to
 actually go to any single one of those buffers when you want to go to
 something very specific, or you only want to go to the last one that
-you think was running. There is a great library called =erc-track.el=,
+you think was running. There is a great library called <code>erc-track.el</code>,
 I believe, also enabled by default, also included already, where
 basically any time you are working, any time you join the channel, any
 activity that may happen in that, it will let you know in the bottom
@@ -296,13 +410,14 @@ last happened on that channel so I can know the level of importance.
 Just a quick glance, non-intrusive, very easy. Anything like that may
 have something active on it. (This will not show if nothing has
 happened.) Anytime I want to go to any of this channels and cycle
-through anything that has content actively produced on it, I hit =C-c
-C-SPC= and that will automatically get me to that channel. That will
+through anything that has content actively produced on it, I hit <code>C-c
+C-SPC</code> and that will automatically get me to that channel. That will
 get me to one of these channels and I can cycle through them to see
 what's happened. I will be doing that demonstration by the way with
 all of this.
+</p>
 
-#+INDEX: erc-fill
+<p>
 Filling, this can be confusing and ugly to work with. Despite the fact
 that it's in Emacs, you do sort of want to have the ability to work
 with it such a way that there’s a good flow. There is a fill module
@@ -314,31 +429,48 @@ it like I have. You can actually do some nice stuff where you sort of
 offset all of the nicks and other information so that it has its own
 column and everything else goes through the sides so you can easily
 parse what everybody else has said. That kind of stuff to beautify is
-incredibly simple. This might be included by default. =(setq
-erc-fill-function erc-fill-static)=. I just basically say twenty-two
+incredibly simple. This might be included by default. <code>(setq
+erc-fill-function erc-fill-static)</code>. I just basically say twenty-two
 characters set, that way everything is one column, twenty-two
 characters in one column, and everything else is in the other column. Super simple.
+</p>
 
-#+INDEX: erc-image
+<p>
 Image support is pretty easy. There’s a library that you can get
-through a package manager called =erc-image= or you can get it on
+through a package manager called <code>erc-image</code> or you can get it on
 ELPA, MELPA. Just install it and then all you have to do is just say,
-=(require 'erc)=, =(add-to-list 'erc-modules ...)= and then update
-=erc-modules=. Automatically, when anybody says some link to any
+<code>(require 'erc)</code>, <code>(add-to-list 'erc-modules ...)</code> and then update
+<code>erc-modules</code>. Automatically, when anybody says some link to any
 image, it will try to figure out what that image is and display
 immediately inline in Emacs or ERC.
+</p>
 
+<p>
 Man: [inaudible]
+</p>
 
+<p>
 Eric: That’s a great question. It does it. I don’t know actually.
+</p>
 
+<p>
 Man: [inaudible]
+</p>
 
-Eric: That’s good to know. =erc-chess=... There's a bunch of other
+<p>
+Eric: That’s good to know. <code>erc-chess</code>&#x2026; There's a bunch of other
 libraries you can install. There's one where you can actually play a
 game of chess with somebody over IRC and it's just as simple as saying
-=/chess= nick. You do have to install the library beforehand. Direct
+<code>/chess</code> nick. You do have to install the library beforehand. Direct
 content and that’s it. I did want to make this actually kind of quick.
+</p>
 
+<p>
 Everybody: [Applause]
-
+</p>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -11,7 +11,7 @@
 (setq-default buffer-file-coding-system 'utf-8)
 
 (defvar sacha/emacs-notes-html-head
-"<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/foundation.min.css\"></link>
+	"<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/foundation.min.css\"></link>
 <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/org-export.css\"></link>
 <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.css\"></link>
 <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/emacs-notes.css\"></link>
@@ -28,15 +28,15 @@
   (interactive
    (list
     (assoc (org-icompleting-read
-	    "Publish project: "
-	    org-publish-project-alist nil t)
-	   org-publish-project-alist)
+						"Publish project: "
+						org-publish-project-alist nil t)
+					 org-publish-project-alist)
     current-prefix-arg))
   (let ((buffer-file-coding-system 'utf-8)
-	(select-safe-coding-system-accept-default-p t)
-	org-confirm-babel-evaluate
-	make-backup-files
-	org-html-validation-link)
+				(select-safe-coding-system-accept-default-p t)
+				org-confirm-babel-evaluate
+				make-backup-files
+				org-html-validation-link)
     (org-publish-project project force async)))
 
 (defun sacha/emacs-notes-org-html-publish-to-html (plist filename pub-dir)
@@ -71,26 +71,44 @@
 								 :htmlized-source t
 								 )))
 (unless (assoc "emacs-notes-blog-posts" org-publish-project-alist)
-(add-to-list 'org-publish-project-alist
-      `("emacs-notes-blog-posts"
-         :base-directory ,(expand-file-name "blog-posts" sacha/emacs-notes-directory)
-         :base-extension "org"
-         :exclude "tasks.org"       ; regexp
-         :publishing-directory ,(expand-file-name "blog-posts" sacha/emacs-notes-directory)
-         :publishing-function sacha/emacs-notes-org-html-publish-to-html
-         :html-head-include-default-style nil
-         :html-head-include-scripts nil
-         :html-head ,(replace-regexp-in-string "\\./" "../" sacha/emacs-notes-html-head)
-         :auto-sitemap t                  ; Generate sitemap.org automagically...
-         :sitemap-filename "sitemap.org"  ; Call it sitemap.org (it's the default)...
-         :sitemap-title "Sitemap"         ; With title 'Sitemap'.
-				 :section-numbers nil
-				 :html-preamble ""
-				 :html-postamble ,sacha/emacs-notes-postamble
-         :makeindex t
-         :with-timestamp t
-         :htmlized-source)))
+	(add-to-list 'org-publish-project-alist
+							 `("emacs-notes-blog-posts"
+								 :base-directory ,(expand-file-name "blog-posts" sacha/emacs-notes-directory)
+								 :base-extension "org"
+								 :exclude "tasks.org"       ; regexp
+								 :publishing-directory ,(expand-file-name "blog-posts" sacha/emacs-notes-directory)
+								 :publishing-function sacha/emacs-notes-org-html-publish-to-html
+								 :html-head-include-default-style nil
+								 :html-head-include-scripts nil
+								 :html-head ,(replace-regexp-in-string "\\./" "../" sacha/emacs-notes-html-head)
+								 :auto-sitemap t                  ; Generate sitemap.org automagically...
+								 :sitemap-filename "sitemap.org"  ; Call it sitemap.org (it's the default)...
+								 :sitemap-title "Sitemap"         ; With title 'Sitemap'.
+								 :section-numbers nil
+								 :html-preamble ""
+								 :html-postamble ,sacha/emacs-notes-postamble
+								 :makeindex t
+								 :with-timestamp t
+								 :htmlized-source)))
+(unless (assoc "emacs-notes-transcripts" org-publish-project-alist)
+	(add-to-list 'org-publish-project-alist
+							 `("emacs-notes-transcripts"
+								 :base-directory ,(expand-file-name "transcripts" sacha/emacs-notes-directory)
+								 :publishing-directory ,(expand-file-name "transcripts" sacha/emacs-notes-directory)
+								 :publishing-function sacha/emacs-notes-org-html-publish-to-html
+								 :html-head-include-default-style nil
+								 :html-head-include-scripts nil
+								 :html-head ,(replace-regexp-in-string "\\./" "../" sacha/emacs-notes-html-head)
+								 :auto-sitemap t                  ; Generate sitemap.org automagically...
+								 :sitemap-filename "sitemap.org"  ; Call it sitemap.org (it's the default)...
+								 :sitemap-title "Sitemap"         ; With title 'Sitemap'.
+								 :section-numbers nil
+								 :html-preamble ""
+								 :html-postamble ,sacha/emacs-notes-postamble
+								 :makeindex t
+								 :with-timestamp t
+								 :htmlized-source)))
 (unless (assoc "sacha/emacs-notes" org-publish-project-alist)
-				(add-to-list 'org-publish-project-alist '("sacha/emacs-notes"
-																									:components ("emacs-notes-base" "emacs-notes-blog-posts"))))
+	(add-to-list 'org-publish-project-alist '("sacha/emacs-notes"
+																						:components ("emacs-notes-base" "emacs-notes-blog-posts" "emacs-notes-transcripts"))))
 
