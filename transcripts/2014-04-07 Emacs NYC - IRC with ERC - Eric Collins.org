@@ -188,12 +188,8 @@ bindings that we talk about:
 - =C-c C-n= to get all the nicknames
 - =C-m= to send the message or just return, but return's kinda far away from the pinky, so =C-m=
 - You could kill input with =C-c C-u= which is the exact same as =C-a C-k=, but that one kills the buffer and doesn't yank it into your kill ring
-- =C-c C-SPC= is one where you can go [inaudible] channels. We can talk about it
-later. 
-- As Harry was reminding us beforehand, we have =C-h m= to
-do a describe mode. This will give you chance to see all of the
-different key combination that you can have that all interact with
-IRC.
+- =C-c C-SPC= is one where you can go [inaudible] channels. We can talk about it later. 
+- As Harry was reminding us beforehand, we have =C-h m= to do a describe mode. This will give you chance to see all of the different key combination that you can have that all interact with IRC.
 
 There are going to be something aren’t going to be covered by ERC.
 Some that you actually have to do specifically as IRC type things.
