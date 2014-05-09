@@ -311,7 +311,7 @@ offset all of the nicks and other information so that it has its own
 column and everything else goes through the sides so you can easily
 parse what everybody else has said. That kind of stuff to beautify is
 incredibly simple. This might be included by default. =(setq
-erc-fill-function erc-fill-static)=. I just basically say twenty-two
+erc-fill-function 'erc-fill-static)=. I just basically say twenty-two
 characters set, that way everything is one column, twenty-two
 characters in one column, and everything else is in the other column. Super simple.
 
