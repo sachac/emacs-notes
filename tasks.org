@@ -48,10 +48,16 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 **** TODO Set up mailing list
 **** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp.org][Link]]
-***** TODO Incorporate DanP's second round of feedback
+
+***** DONE Incorporate DanP's second round of feedback
+			 CLOSED: [2014-05-07 Wed 19:58]
 			:PROPERTIES:
 			:Effort:   2:00
 			:END:
+***** TODO Write objectives for each section
+***** TODO Pick chunk size for sections
+***** TODO Break guide up into parts that can be focused on for 15-60 minutes
+***** TODO Add more exercises
 ***** TODO Add more examples
 		 	:PROPERTIES:
 		 	:Effort:   1:00
@@ -460,6 +466,15 @@ http://www.philnewton.net/code/beeminder-el/
 		 	CLOSED: [2014-05-02 Fri 21:15] SCHEDULED: <2014-05-02 Fri>
 **** DONE Review new video and post it
 		 	CLOSED: [2014-05-03 Sat 15:59] SCHEDULED: <2014-05-03 Sat>
+		 :PROPERTIES:
+		 :Effort:   0:30
+		 :END:
+**** DONE Give feedback on show notes for Xah Lee
+		 CLOSED: [2014-05-07 Wed 19:07]
+		 :LOGBOOK:
+		 CLOCK: [2014-05-07 Wed 18:35]--[2014-05-07 Wed 19:07] =>  0:32
+		 CLOCK: [2014-05-07 Wed 17:02]--[2014-05-07 Wed 17:08] =>  0:06
+		 :END:
 		 :PROPERTIES:
 		 :Effort:   0:30
 		 :END:
