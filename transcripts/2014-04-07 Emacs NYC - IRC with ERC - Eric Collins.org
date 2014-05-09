@@ -1,0 +1,298 @@
+Eric: Today, we are going to talk about IRC with ERC and Emacs. Let’s
+get started. 
+
+Audience: Is this an open standard? 
+
+Eric: Yes, it's built into Emacs. We'll get to that later. IRC and
+Emacs with ERC. My name is Eric Collins. Thank you for coming. That is
+my email that you can get me at.
+
+Our agenda today--I am sorry if the screen is a little blurry, I
+apologize for that--we are going to talk about IRC. The introduction
+to it. The basics for ERC, overview, some of the commands and a little
+bit of a configuration library to get yourself going. This is going to
+be very non-technical. I do not know very much about Emacs Lisp aside
+from what Harry just taught me right now, though I did quite a bit of
+Scheme in school.
+
+A brief introduction about internet relay chat. It was started in 1998
+by Jarkko Oikarinen. It was used to replace something called
+multi-user-task on [inaudible] which was a BBS way back in the day. It
+was a way to actually talk to people between that BBS. The actual IRC
+itself was inspired by [inaudible] relay on [inaudible] which was a
+non-point-to-point-protocol. That was way beyond my time. That is not
+necessarily not important for this, but just know that was inspired
+from that.
+
+IRC has done a lot of important things in our history. Very important
+things. It was the Twitter before Twitter. Back in 1991, during a
+Soviet Union media blackout where Soviet Union was trying a
+[inaudible] and trying to take over control Soviet Union from
+[inaudible], it was actually blackout of all the media in all of the
+Soviet Union. IRC was used as a communication tool to actually talk to
+all of the people there to figure out what was happening.
+
+Amazingly enough, because all of this was done in IRC, you can
+actually get logs of all this and read all of them on [inaudible]. I
+think that’s how you say that. This web address gets you to the right
+place, and again this would be available to something. IRC also did so
+much more. It was social before social, the ability to go to channels
+and talk to people about things you are interested in. It was file
+sharing before there was file sharing. Napster before Napster, you
+know that kind of thing. You could actually do direct communication to
+people and actually share your file. It did so many things much like
+Emacs. I also recently used it extensively to play massive cooperative
+Pokemon games.
+
+Let’s go a little bit into what it means to use IRC. How many people
+here actually use IRC right now? There are going to be many people.
+How many people have used it once before and have some clues to what
+IRC actually is? I am going to be honest. I am somewhat new to IRC. I
+actually started at this in effort to sort of talk to everybody else.
+My company uses Campfire. Unfortunately, all of the clients on
+[inaudible] are terrible. Involve incredible installations and very
+[inaudible] and don’t do very good job of dealing with multiple rooms.
+
+My solution to this instead to move towards IRC. There is actually a
+way to [inaudible] all of the IRC things to something called
+Campervan. I’ve been using it basically since then. It’s really fun
+way to get into broader IRC. Because I use Emacs, I think: Why not? I
+can use Emacs from my IRC stuff.
+
+What do you need to be on IRC? You need a server. Very important part.
+You need to actually have something that everybody can essentially
+connect to so you all can talk. If you notice, for example,
+[inaudible], [inaudible]. You need a nickname.
+
+Man: [inaudible]
+
+Eric: Really? That is interesting. I did not know that. That is really
+cool. I’d like to hear more about that, honestly. The other thing you
+might need is an identity. Not every server actually requires you to
+have that. Your identity, by the way is not actually like who you are,
+but it is the way to identify who you are. Identify the nickname that
+you have. It’s more or less your password, essentially. It’s
+recommended, but at least in the case of Freenode, it is not
+required--though, that does mean that anybody else can use your
+identity if you want to have a particular name. In the case of actual
+identity, if you want to identify yourself in Freenode. If you want
+something like massive [inaudible], register your passwords,
+[inaudible] your email. You get [inaudible] email so that you can
+confirm that action and now you have a password to that user and that
+nickname. You have that similar thing going with [inaudible] according
+a [inaudible] according to what they say. I have actually don’t use
+that. That’s more or less the same thing. There is a server that sort
+of registers nicks of nicknames and gives the ability to work with
+those nicknames on Freenode and the other IRC.
+
+Man: Are you going to use your current nick?
+
+Eric: Yes, use your current nick.
+
+It’s going to be a part of the actual ERC thing. You would go on to
+say Freenode. You would... Say you want to connect to Freenode. It
+will ask you what nick you want to have to that. You will connect
+using that nick and it will say if somebody already has that nick
+either you identify yourself or you have to pick another one. I
+believe it will kick you off. It will changes to something else. My
+intends to get rid of just one letter for [inaudible] somewhere else.
+
+Some common commands when doing this is the massive [inaudible] to
+identify yourself. The identity to identify who you are. You can enjoy
+channels. Channels are the places that you actually go to have all of
+the to do things like talk to people in the Emac channel to talk about
+Emacs. You can enter slash names to install the names in that channel.
+You can list all of the channels that are there so you can figure out
+what channel you want to join. You can say slash part. These are all
+commands. The slash, notes and the command [inaudible]. The commands
+itself have something to do.
+
+Man: [inaudible]
+
+Eric: It may a problem. I don’t know better way to deal with that
+other than to see that and be able to search through it. Can you
+narrow that one?
+
+Man: Yes. You can actually enter like search commands you could use
+slash [inaudible] space [inaudible] Emacs. [inaudible].
+
+Eric: I need to get into Emacs Spanish room.
+
+We know some of the basic idea of what IRC is and there are lot of
+ways to get into IRC servers with a lot of non-Emacs IRC. We could use
+something wonderful like X-Chat. Something that isn’t [inaudible] what
+Emacs is. We can use Chatzilla which is in the browser that attached
+in Mozilla. We could use something like a text editor. I don’t know to
+say it but I am going to go with IRC or ERC.
+
+I also want you to notice that all of this is to emphasize the point
+that we should never be using them. All of this happen to me in
+Windows.
+
+Let’s bring on the ERC. According to the actual [inaudible] ERC is the
+powerful modular and extensible IRC client. First develop by Alexander
+L. Belikoff and Sergey Berezin. It’s a pure Emacs Lisp implementation
+of IRC that takes advantage of wonderful things like Emacs buffers.
+It’s non intrusive. You can add a couple of things to sort of annoy
+you more but for the most part it’s on the background that you can
+grab anytime you want to.
+
+How to use ERC? This is going to be very quick tutorial. How to be on
+ERC? How to be on Freenode? First, follow when you can. Meta-X ERC
+then enter server port and nickname. All of these have defaults by the
+way. The servers are default to ERC-dot-Freenode-dot-net or org. The
+port is going to be 667. The nickname is going to be your username on
+your computer. You can put in whatever you want if you tend to be me
+where your username is just your first name. I have a feeling that a
+lot of people try to go for Eric. It will also ask you for a password.
+You can ignore this, this is the server password. This is not
+something needed in Freenode right away. Do Ctrl+c and Ctrl+j hatch
+them. Then you are done then control away from that. You can also go
+through the Emacs group and tell everybody how awesome it is to be on
+Emacs and how awesome it is to be on ERC. That’s really it.
+
+The Ctrl+c and Ctrl+j by the way is the Emacs way or ERC way to join
+channels. You can say slash-join in the [inaudible] that they have
+there, but why do that when you can do key combinations. It’s really
+simple and really straightforward. There are couple of minor tweaks
+that you can do here and there. This is very simple. Emacs is been
+around. ERC is been around since Emacs twenty two point three. It has
+many libraries installed and enable it by default. It’s incredibly
+extensible. It is E-lisp after all. There are ton of libraries that’s
+supporting it right now as well. To give you some sense of the key
+bindings that we talk about. Ctrl+c and Ctrl+j to join the channels.
+Ctrl+c and Ctrl+n to get all the nicknames. Ctrl+n to send the message
+or return. You could kill input Ctrl+c and Ctrl+u which is the exact
+same as Ctrl+a and Ctrl+k. That one kills the buffer. Ctrl+c and
+Ctrl+space is one where you can unreg channels. We can talk about it
+later. Harry was reminding us beforehand we have Ctrl+h [inaudible] to
+do a describe mode. This will give you chance to see all of the
+different key combination that you can have that all interact with
+IRC. There are going to be something aren’t going to be covered by
+ERC. Some that you actually have to do specifically as IRC type things
+which is very somewhat rare, but you can definitely find commands
+online for all of these. I actually have a link over here that can
+give you all commands that you can use in IRC. Living with the ERC or
+dealing with ERC. Harry may have said it just like for grudgingly for
+taking on ERC. Plan it the way I wrote it sounded like it’s a terrible
+thing. Having ERC on the back drop of your Emacs. Let’s say you are on
+Emacs. The typical way to login on the servers sort of how we discuss
+it. Standard way can be done using Meta-X ERC then you can type in
+your server name and you can type in your nickname. You can type in
+your port and your password. You are done. I would say this is more
+the ERC command [inaudible] where you can have auto login.
+
+You can have the ERC commands that gives you all the user information.
+Beforehand, All of things that you need to have inputting your
+password and allows you to login right there. I will show you in just
+a second. Some of the things that you might need to do for that.
+Something that can auto identify you as well. [inaudible] is one thing
+that can be included in auto identifying. It is included module says
+that you can store password on it or you can reference information
+about whenever you get into a [inaudible] server. It will
+automatically say “Oh, I see that you are on the server. Let me
+identify you as whatever username you supposed to be and now you are
+good to go.”
+
+As we talked about before what Harry is talking about [inaudible]. You
+can set really quick [inaudible] to say, I don’t want you to ever ask
+me about a password ever again. You have this long nice screen here
+where you setting a list of password. This is going to be for whenever
+I login to Freenode. This is going for the nick that I have. This
+Freenode password stored in my [inaudible] beforehand. That ERC
+command that I use beforehand can you say, “You can set the server
+that you want to login on the port you want to login to. Anytime we
+use it will automatically do that for you.
+
+Man: [inaudible]
+
+Eric: That’s right. Actually, Harry was just explaining that to me
+that day when I ask--Why is it that I can’t just do a back [inaudible]
+instead of just a quote. It’s for substitution. Basically just says
+see this comma, see this Freenode thing if I had to define it here
+that I should substitute it automatically. In this case, what’s going
+to happen is this [inaudible] of Emacs is going to log me in Freenode.
+This Nickserve ERC module is going to store that and see this if it’s
+associated to Freenode. See that and it will see that I am also login
+with the same nick and I used that password that identify me with the
+Nickserve in Freenode.
+
+Man: [inaudible]
+
+Eric: Yes, this is actually a mere substitution. There was also comma
+before this. Very important. I was pulling my hair in one point
+saying, “Why the hell is this not working? I see this single quote. It
+looks like it should work.” Alright, joining a channel. This is one of
+the most once what I’ve shared you to how to do Ctrl+c and Ctrl+j.
+This is one way to do it. You can do that. You can do the typical IRC
+command slash-join and then say channel name or you can do either
+more. You can do the keystrokes of Ctrl+c and Ctrl+j then typing your
+channel name. The problem is anytime you join in ERC, you have to do
+this manual. Why do sending manually when you can do it automatically?
+Let’s go to auto-join. Auto-join has the ability to automatically join
+things. They said [inaudible] is actually an auto-join module and also
+enabled by default. If you set a list of strings so the first one
+being the server that your on and the channel that you want to go to.
+You can do a list of lists. IRC sort of string sort of look for and
+Freenode that noticed it by the way and I see that Freenode does
+matching rather than equivalence. In this case, anytime I log in to
+Freenode-dot-net this will automatically have join me channel in
+Emacs. Very simple, very much makes your life easy so you don’t have
+to join any of these things and you just have to be there. It supposed
+to be channel chat but apparently not.
+
+Anytime you are on the channel, anytime you join a new channel it
+creates a new buffer. As an Emacs and anything in Emacs and anything
+in a buffer you can navigate to it you have buffer command. You can
+have a thousand of them open. It’s going to be a little bit difficult
+to actually go to any single one of those buffer when you want to go
+to something very specific or you want to go to something very
+specific or you only want to go to the last one that you think
+running. There is a great library called ERC dash [inaudible] I
+believe also enabled by default. It also included already where
+basically anytime you are working, anytime you join on the channel,
+any activity may happen on that, it will let you know in the bottom
+down here. Right here, this is showing that something is going on this
+channel, this channel and this channel. Basically, a different color
+code to a kind of information that last happen on that channel so I
+will know the level of importance. Anything like that may have
+something active on it. Anytime I want to go to any of this channels
+and cycles through anything that has content actively produce on it. I
+hit Ctrl+c and Ctrl+space that will automatically get me to that
+channel. I will be doing that demonstration by the way with all of
+this.
+
+Filming, this can be confusing and ugly to work with. In Emacs, you do
+sort of have the ability to work with such a way that there’s a good
+flow. There is a film module that is not included in default. You have
+to run a package manager, get hub or downloading the actual E-Lisp
+file. It gives you a chance to [inaudible] this up. Like, this would
+be confusing, this name and it’s hard to [inaudible] through.
+Especially if you haven’t color it like I have. You can actually do
+some nice stuff where you sort of offset all of the nicks and other
+information so that it has its own column and everything else sort of
+go through the sides so you can easily parse what everybody else is
+set. That kind of stuff could beautify is incredibly simple. This
+might be included by default. [inaudible] ERC film functions
+[inaudible] though static. I just basically say twenty-two characters
+set, that way everything is one column twenty-two characters and
+everything else is in the other column.
+
+Image support is pretty easy. There’s a library that you can go
+through a package manager called ERC Image or you can get it on
+[inaudible]. Automatically, when anybody says some link to any image,
+it will try to figure out what that image is and display immediately
+in Emacs or ERC.
+
+Man: [inaudible]
+
+Eric: That’s a great question. It does it. I don’t know actually.
+
+Man: [inaudible]
+
+Eric: That’s good to know. Bunch of other library you can get. You can
+even play a game chess. Somebody over IRC and just as simple saying
+slash-chess-nick. You have to install the library beforehand. Direct
+content and that’s it. I did want to make this actually kind of quick.
+
+Everybody: [Applause].
