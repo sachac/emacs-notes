@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>"How can I try Emacs Lisp code?"</title>
+<!-- 2014-05-14 Wed 16:27 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sacha Chua" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">"How can I try Emacs Lisp code?"</h1>
+<div class="objectives">
+<p>
+After this section, you should be able to
+</p>
+<ul class="org-ul">
+<li>try Emacs Lisp code before saving it to your configuration (that way, you don't have to keep restarting Emacs)
+</li>
+<li>add code to your configuration so that it runs whenever Emacs starts
+</li>
+</ul>
+
+</div>
+
+<p>
+It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
+</p>
+
+<p>
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out <a href="http://emacslife.com/how-to-read-emacs-lisp.html#errors">"Oh no! I have an error!"</a> (<a href="http://emacslife.com/how-to-read-emacs-lisp.html#errors">http://emacslife.com/how-to-read-emacs-lisp.html#errors</a>) for some common errors and what to do about them.
+</p>
+
+<p>
+Here are some ways you can run Emacs Lisp code. I'll explain them in more detail below.
+</p>
+<ul class="org-ul">
+<li><code>M-x ielm</code> (Inferior Emacs Lisp Mode)
+</li>
+<li>The <code>*scratch*</code> buffer and Emacs Lisp files
+</li>
+<li><code>M-:</code> (<code>eval-expression</code>)
+</li>
+<li><code>C-x C-e</code> (<code>eval-last-sexp</code>)
+</li>
+</ul>
+
+<div class="note">
+<p>
+Some conventions we'll use:
+</p>
+<ul class="org-ul">
+<li>Inline code will be <code>green and monospace</code> in the HTML version and generally surrounded by <code>equal signs</code> in Org Mode 
+</li>
+<li>Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
+</pre>
+</div>
+</li>
+</ul>
+
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">M-x ielm (Inferior Emacs Lisp Mode)</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+The Inferior Emacs Lisp Mode gives you a prompt where you can type or paste in Emacs Lisp code. Start it with <code>M-x ielm</code>. Press <code>RET</code> after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press <code>RET</code> to run (or "evaluate") it again.
+</p>
+
+<p>
+If you're copying or typing code, make sure your parentheses are all matched - every "<code>(</code>" should have a "<code>)</code>". IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello</span>
+</pre>
+</div>
+
+<p>
+but this will work:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
+</pre>
+</div>
+
+<p>
+Tip: When you're trying out an unfamiliar mode, use <code>F1 m</code> (<code>describe-mode</code>) to learn more about the commands that are available in that mode.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">The <code>*scratch*</code> buffer and Emacs Lisp <code>.el</code> files</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+When Emacs starts, it creates a buffer called <code>*scratch*</code> with the following contents:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This buffer is for notes you don't want to save, and for Lisp evaluation.</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">If you want to create a file, visit that file with C-x C-f,</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">then enter the text in that file's own buffer.</span>
+</pre>
+</div>
+
+<p>
+You can add code to the end.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This buffer is for notes you don't want to save, and for Lisp evaluation.</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">If you want to create a file, visit that file with C-x C-f,</span>
+<span class="org-comment-delimiter">;; </span><span class="org-comment">then enter the text in that file's own buffer.</span>
+
+(message <span class="org-string">"Hello world"</span>)
+</pre>
+</div>
+
+<p>
+Note: <code>;</code> is the comment character. Anything after the comment character is considered part of the comment. Make sure you add your code on a new line, not in the comment.
+</p>
+
+<p>
+To run code ("evaluate" it, in Emacs terms), you can use the following commands based on what you want to run:
+</p>
+<ul class="org-ul">
+<li><code>M-x eval-buffer</code> runs all the code in the current file or buffer.
+</li>
+<li><code>M-x eval-region</code> runs the selected code. You can select code by using the mouse or by typing <code>C-SPC</code> to mark the start of the region and moving to the next.
+</li>
+<li><code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
+</li>
+</ul>
+
+<p>
+In the <code>*scratch*</code> buffer, you can also press <code>C-j</code> (<code>eval-print-last-sexp</code>) after an expression in order to evaluate it and display the results in the buffer.
+</p>
+
+<p>
+The <code>*scratch*</code> buffer is not automatically saved. If you would like to save your code for future use, you can create a file with an <code>.el</code> ending. <code>el</code> stands for Emacs Lisp, and Emacs will open these files in Emacs Lisp mode. The commands listed above work in Emacs Lisp files.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">M-: (eval-expression)</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+If you want to quickly try an expression, you can use <code>M-:</code> (<code>eval-expression</code>). To see any results it displayed, you can switch to the <code>*Messages*</code> buffer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">C-x C-e (eval-last-sexp)</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it. <code>C-x C-e</code> (<code>eval-last-sexp</code>) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">If you want that code to run every time you start Emacs&#x2026;</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+&#x2026; <b>then</b> add it to your <code>~/.emacs.d/init.el</code> file. You can generally add new code at the end. If the code has something to do with <code>add-to-list</code> and <code>load-path</code>, it might be good to add it to the beginning instead.
+</p>
+
+<p>
+Note: The Emacs configuration file used to be <code>~/.emacs</code>, and most webpages refer to that. <code>~/.emacs</code> still works - in fact, if you have that, it may stop Emacs from loading <code>~/.emacs.d/init.el</code>. On the other hand, if you use <code>~/.emacs.d/init.el</code> (and move your <code>~/.emacs</code> code to that file instead), then you have one less hidden file in your home directory (<code>~</code>). If you're adding code to your config and it's not getting loaded, make sure you have either <code>~/.emacs</code> or <code>~/.emacs.d/init.el</code>, but not both.
+</p>
+
+<p>
+When you're starting out, it's a good idea to keep your configuration in one file. Later on, you can split it up into multiple files if you want.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Practice</h2>
+<div class="outline-text-2" id="text-6">
+<div class="practice">
+<p>
+Try this out:
+</p>
+
+<ol class="org-ol">
+<li>Use <code>M-x ielm</code> to evaluate this expression interactively:
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">system-type
+</pre>
+</div>
+</li>
+
+<li>Use <code>M-:</code> (<code>eval-expression</code>) buffer to evaluate the following expression:
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(* 21 2)
+</pre>
+</div>
+<p>
+<code>M-:</code> is handy for quick calculations. In fact, you can use it with
+<code>C-u</code> (that is, <code>C-u M-:</code>) to <b>insert</b> the result into the buffer.
+Try it now: <code>C-u M-: (* 21 2)</code>
+</p>
+</li>
+
+<li>Add <code>(message "Hello, world!")</code> to the end of your <code>~/.emacs.d/init.el</code>. Use <code>M-x eval-buffer</code> to load your config. It should display the message. If you restart Emacs, you should also see that message.
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,116 @@
+# -*- mode: org -*-
+#+TITLE: "How can I try Emacs Lisp code?"
+#+STARTUP: showall
+
+#+BEGIN_OBJECTIVES
+After this section, you should be able to
+- try Emacs Lisp code before saving it to your configuration (that way, you don't have to keep restarting Emacs)
+- add code to your configuration so that it runs whenever Emacs starts
+#+END_OBJECTIVES
+
+It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
+
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out [[http://emacslife.com/how-to-read-emacs-lisp.html#errors]["Oh no! I have an error!"]] (http://emacslife.com/how-to-read-emacs-lisp.html#errors) for some common errors and what to do about them.
+
+Here are some ways you can run Emacs Lisp code. I'll explain them in more detail below.
+- =M-x ielm= (Inferior Emacs Lisp Mode)
+- The =*scratch*= buffer and Emacs Lisp files
+- =M-:= (=eval-expression=)
+- =C-x C-e= (=eval-last-sexp=)
+
+#+BEGIN_NOTE
+Some conventions we'll use:
+- Inline code will be =green and monospace= in the HTML version and generally surrounded by =equal signs= in Org Mode 
+- Code samples will be monospace and in boxes in the HTML version, and enclosed in =#+begin_src= ... =#+end_src= in plain text. Example:
+  #+begin_src emacs-lisp
+  (message "Hello world")
+  #+end_src
+#+END_NOTE
+	
+** M-x ielm (Inferior Emacs Lisp Mode)
+
+The Inferior Emacs Lisp Mode gives you a prompt where you can type or paste in Emacs Lisp code. Start it with =M-x ielm=. Press =RET= after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press =RET= to run (or "evaluate") it again.
+
+If you're copying or typing code, make sure your parentheses are all matched - every "=(=" should have a "=)=". IELM won't run the code unless it sees the closing parenthesis. So the following code is incomplete:
+
+#+begin_src emacs-lisp :eval no
+(message "Hello
+#+end_src
+
+but this will work:
+
+#+begin_src emacs-lisp
+(message "Hello world")
+#+end_src
+
+Tip: When you're trying out an unfamiliar mode, use =F1 m= (=describe-mode=) to learn more about the commands that are available in that mode.
+
+** The =*scratch*= buffer and Emacs Lisp =.el= files
+
+When Emacs starts, it creates a buffer called =*scratch*= with the following contents:
+
+#+begin_src emacs-lisp
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+#+end_src
+
+You can add code to the end.
+
+#+begin_src emacs-lisp
+;; This buffer is for notes you don't want to save, and for Lisp evaluation.
+;; If you want to create a file, visit that file with C-x C-f,
+;; then enter the text in that file's own buffer.
+
+(message "Hello world")
+#+end_src
+
+Note: =;= is the comment character. Anything after the comment character is considered part of the comment. Make sure you add your code on a new line, not in the comment.
+
+To run code ("evaluate" it, in Emacs terms), you can use the following commands based on what you want to run:
+- =M-x eval-buffer= runs all the code in the current file or buffer.
+- =M-x eval-region= runs the selected code. You can select code by using the mouse or by typing =C-SPC= to mark the start of the region and moving to the next.
+- =C-x C-e= (=eval-last-sexp=) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
+
+In the =*scratch*= buffer, you can also press =C-j= (=eval-print-last-sexp=) after an expression in order to evaluate it and display the results in the buffer.
+
+The =*scratch*= buffer is not automatically saved. If you would like to save your code for future use, you can create a file with an =.el= ending. =el= stands for Emacs Lisp, and Emacs will open these files in Emacs Lisp mode. The commands listed above work in Emacs Lisp files.
+
+** M-: (eval-expression)
+
+If you want to quickly try an expression, you can use =M-:= (=eval-expression=). To see any results it displayed, you can switch to the =*Messages*= buffer.
+
+** C-x C-e (eval-last-sexp)
+
+=C-x C-e= (=eval-last-sexp=) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it. =C-x C-e= (=eval-last-sexp=) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
+
+** If you want that code to run every time you start Emacs...
+
+... *then* add it to your =~/.emacs.d/init.el= file. You can generally add new code at the end. If the code has something to do with =add-to-list= and =load-path=, it might be good to add it to the beginning instead.
+
+Note: The Emacs configuration file used to be =~/.emacs=, and most webpages refer to that. =~/.emacs= still works - in fact, if you have that, it may stop Emacs from loading =~/.emacs.d/init.el=. On the other hand, if you use =~/.emacs.d/init.el= (and move your =~/.emacs= code to that file instead), then you have one less hidden file in your home directory (=~=). If you're adding code to your config and it's not getting loaded, make sure you have either =~/.emacs= or =~/.emacs.d/init.el=, but not both.
+
+When you're starting out, it's a good idea to keep your configuration in one file. Later on, you can split it up into multiple files if you want.
+
+** Practice
+
+#+BEGIN_PRACTICE
+Try this out:
+
+1. Use =M-x ielm= to evaluate this expression interactively:
+   #+begin_src emacs-lisp
+   system-type
+   #+end_src
+
+2. Use =M-:= (=eval-expression=) buffer to evaluate the following expression:
+   #+begin_src emacs-lisp
+   (* 21 2)
+   #+end_src
+   =M-:= is handy for quick calculations. In fact, you can use it with
+   =C-u= (that is, =C-u M-:=) to *insert* the result into the buffer.
+   Try it now: =C-u M-: (* 21 2)=
+
+3. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el=. Use =M-x eval-buffer= to load your config. It should display the message. If you restart Emacs, you should also see that message.
+#+END_PRACTICE
+

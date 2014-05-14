@@ -90,6 +90,25 @@
 								 :makeindex t
 								 :with-timestamp t
 								 :htmlized-source)))
+(unless (assoc "read-lisp-tweak-emacs" org-publish-project-alist)
+	(add-to-list 'org-publish-project-alist
+							 `("read-lisp-tweak-emacs"
+								 :base-directory ,(expand-file-name "read-lisp-tweak-emacs" sacha/emacs-notes-directory)
+								 :base-extension "txt"
+								 :publishing-directory ,(expand-file-name "read-lisp-tweak-emacs" sacha/emacs-notes-directory)
+								 :publishing-function sacha/emacs-notes-org-html-publish-to-html
+								 :html-head-include-default-style nil
+								 :html-head-include-scripts nil
+								 :html-head ,(replace-regexp-in-string "\\./" "../" sacha/emacs-notes-html-head)
+								 :auto-sitemap t                  ; Generate sitemap.org automagically...
+								 :sitemap-filename "sitemap.org"  ; Call it sitemap.org (it's the default)...
+								 :sitemap-title "Sitemap"         ; With title 'Sitemap'.
+								 :section-numbers nil
+								 :html-preamble ""
+								 :html-postamble ,sacha/emacs-notes-postamble
+								 :makeindex t
+								 :with-timestamp t
+								 :htmlized-source)))
 (unless (assoc "emacs-notes-transcripts" org-publish-project-alist)
 	(add-to-list 'org-publish-project-alist
 							 `("emacs-notes-transcripts"
