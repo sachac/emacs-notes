@@ -17,11 +17,14 @@
 .top-menu .top-bar .links li.right { margin-left: 1rem }
 
 a:visited{
-	color:#090;
-}
-a:link {
 	color:#009;
 }
+a:link {
+	color:#006;
+}
 
-code { font-size: large; color: darkgray }
+code { font-size: 1.1rem; color: darkgreen }
 pre.src { font-family: Courier, monospace; }
+
+.objectives { border: 1px dotted yellow; background: rgba(255, 255, 200, 0.3); padding-left: 1rem; padding-right: 1rem; }
+.practice { border: 1px dotted green; background: rgba(200, 255, 200, 0.3); padding-left: 1rem; padding-right: 1rem }
