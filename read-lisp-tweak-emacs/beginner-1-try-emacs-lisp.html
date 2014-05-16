@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I try Emacs Lisp code?"</title>
-<!-- 2014-05-14 Wed 16:27 -->
+<!-- 2014-05-16 Fri 20:04 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -32,7 +32,7 @@ After this section, you should be able to
 </div>
 
 <p>
-It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
+It's easier to understand code if you can experiment with it. Emacs Lisp code is made up of <b>symbolic expressions</b> (known as S-expressions, expressions, or sexp for short). Expressions are usually enclosed in pairs of parentheses. There are several ways you can try Emacs Lisp expressions before saving them in your configuration.
 </p>
 
 <p>
@@ -43,13 +43,13 @@ Note: As you experiment with Emacs Lisp, you might run into errors. Check out <a
 Here are some ways you can run Emacs Lisp code. I'll explain them in more detail below.
 </p>
 <ul class="org-ul">
-<li><code>M-x ielm</code> (Inferior Emacs Lisp Mode)
+<li><code>M-x ielm</code> (Inferior Emacs Lisp Mode) - evaluates expressions after you press <code>RET</code>, which is handy for pasting in code
 </li>
-<li>The <code>*scratch*</code> buffer and Emacs Lisp files
+<li>The <code>*scratch*</code> buffer and Emacs Lisp files - makes it easy to edit and re-evaluate expressions
 </li>
-<li><code>M-:</code> (<code>eval-expression</code>)
+<li><code>M-:</code> (<code>eval-expression</code>) - good for quickly evaluating Emacs Lisp code while you're doing something else
 </li>
-<li><code>C-x C-e</code> (<code>eval-last-sexp</code>)
+<li><code>C-x C-e</code> (<code>eval-last-sexp</code>) - handy when reading expressions in manuals or other text
 </li>
 </ul>
 
@@ -99,6 +99,10 @@ but this will work:
 </div>
 
 <p>
+You can use <code>M-p</code> (<code>comint-previous-input</code>) to go through the previously-typed expressions. <code>M-n</code> (<code>comint-next-input</code>) goes forward.
+</p>
+
+<p>
 Tip: When you're trying out an unfamiliar mode, use <code>F1 m</code> (<code>describe-mode</code>) to learn more about the commands that are available in that mode.
 </p>
 </div>
@@ -134,7 +138,7 @@ You can add code to the end.
 </div>
 
 <p>
-Note: <code>;</code> is the comment character. Anything after the comment character is considered part of the comment. Make sure you add your code on a new line, not in the comment.
+Note: <code>;</code> is the comment character. Anything after the comment character is considered part of the comment. Make sure you add your code on a new line, not in the comment. <code>;;</code> above is how we usually start comments that take up the entire line.
 </p>
 
 <p>
