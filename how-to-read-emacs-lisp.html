@@ -3,8 +3,8 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs "How can I try Emacs Lisp code?"</title>
-<!-- 2014-05-16 Fri 20:05 -->
+<title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
+<!-- 2014-05-16 Fri 22:07 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -17,7 +17,7 @@
 </head>
 <body>
 <div id="content">
-<h1 class="title">Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs "How can I try Emacs Lisp code?"</h1>
+<h1 class="title">Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -203,7 +203,7 @@ If you want to start playing around with Emacs Lisp code right away, jump ahead 
 Reasonable defaults make sense for specific people. Other people might
 have completely different ideas for how they want a tool to work.
 Many people use Emacs and have (occasionally quite strong)
-opinions about how they want it to work. It's difficult to change the defaults for everyone<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
+opinions about how they want it to work. It's difficult to change the defaults for everyone<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
 </p>
 
 <p>
@@ -279,7 +279,7 @@ you're trying to customize is really worth it. One of the occupational
 hazards of using Emacs is that tweaking your Emacs configuration can
 be fun, almost addictive. If you catch yourself spending four hours
 fiddling with something minor, it might be time to put that aside and
-focus on getting stuff done first.<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>
+focus on getting stuff done first.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
 </p>
 </div>
 </div>
@@ -399,7 +399,7 @@ Find a snippet of Emacs Lisp code you want to understand more deeply, or look at
 <h2 id="sec-4">"How can I try Emacs Lisp code?"</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-<a id="try" name="try"></a>
+<a id="try"></a>
 </p>
 
 <div class="objectives">
@@ -626,7 +626,7 @@ Try it now: <code>C-u M-: (* 21 2)</code>
 <h2 id="sec-5">"How can I understand what Emacs Lisp code does?"</h2>
 <div class="outline-text-2" id="text-5">
 <p>
-<a id="understanding-lisp" name="understanding-lisp"></a>
+<a id="understanding-lisp"></a>
 </p>
 </div>
 
@@ -854,7 +854,7 @@ Emacs Lisp code instead.
 <h3 id="sec-5-4">Some things are taken literally</h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
-<a id="quoting" name="quoting"></a>
+<a id="quoting"></a>
 </p>
 
 <p>
@@ -938,7 +938,7 @@ The code above sets the value of the variable to a list, ignoring any previous v
 </p>
 
 <p>
-<a id="load-path" name="load-path"></a>
+<a id="load-path"></a>
 Most of the time, though, you want to add to a list instead of
 completely replacing it. You'll often see something like this in
 people's configuration files:
@@ -955,7 +955,7 @@ This adds the <code>~/elisp</code> directory to the beginning of the list of dir
 </p>
 
 <p>
-<a id="package-archives" name="package-archives"></a>
+<a id="package-archives"></a>
 Some lists use the dot notation. This depends on what's expected by the function that uses the list. For example:
 </p>
 
@@ -1214,7 +1214,7 @@ The example above has three bindings for <code>transpose-words</code>. <code>M-t
 <h4 id="sec-5-6-5">Setting keybindings in a particular mode</h4>
 <div class="outline-text-4" id="text-5-6-5">
 <p>
-<a id="mode-keys" name="mode-keys"></a>
+<a id="mode-keys"></a>
 </p>
 
 <p>
@@ -1361,7 +1361,7 @@ a handy way to edit your configuration.
 <h2 id="sec-6">Adding more features to Emacs</h2>
 <div class="outline-text-2" id="text-6">
 <p>
-<a id="load" name="load"></a>
+<a id="load"></a>
 </p>
 
 <p>
@@ -1389,7 +1389,7 @@ symbol.
 <h3 id="sec-6-1">Installing packages</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
-<a id="installing-packages" name="installing-packages"></a>
+<a id="installing-packages"></a>
 </p>
 
 <p>
@@ -1471,7 +1471,7 @@ Along those lines, you may come across code that looks like this:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(eval-after-load <span class="org-string">"dash"</span> 
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> <span class="org-string">"dash"</span> 
   '(dash-enable-font-lock))
 </pre>
 </div>
@@ -1489,7 +1489,7 @@ can make sense for performance reasons.
 <h3 id="sec-6-2">Other Emacs Lisp files</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
-<a id="unpackaged" name="unpackaged"></a>
+<a id="unpackaged"></a>
 </p>
 
 <p>
@@ -1531,7 +1531,7 @@ Then you can use <code>require</code> to load the Emacs Lisp code if it exists. 
 <h2 id="sec-7">"Oh no! I have an error!"</h2>
 <div class="outline-text-2" id="text-7">
 <p>
-<a id="errors" name="errors"></a>
+<a id="errors"></a>
 </p>
 
 <p>
@@ -1602,7 +1602,7 @@ See <i>Loading libraries</i> for more information.
 <h3 id="sec-7-3">Lisp error: (void-function &#x2026;)</h3>
 <div class="outline-text-3" id="text-7-3">
 <p>
-<a id="void-function" name="void-function"></a>
+<a id="void-function"></a>
 </p>
 
 <p>
@@ -1624,7 +1624,7 @@ The code calls a function that has not been defined.
 <h3 id="sec-7-4">Symbol's value as variable is void: <span class="underline">_</span></h3>
 <div class="outline-text-3" id="text-7-4">
 <p>
-<a id="void-variable" name="void-variable"></a>
+<a id="void-variable"></a>
 </p>
 
 <p>
@@ -1717,7 +1717,7 @@ Patches and pull requests welcome!
 </ul>
 </li>
 
-<li><code>[X]</code> This document: beginner-level
+<li class="on"> This document: beginner-level
 <ul class="org-ul">
 <li>For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
 <ul class="org-ul">
@@ -1733,7 +1733,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> Where can I find short Emacs Lisp code to learn from?
+<li class="on"> Where can I find short Emacs Lisp code to learn from?
 <ul class="org-ul">
 <li>README for packages
 </li>
@@ -1747,7 +1747,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I understand what Emacs Lisp code does?
+<li class="on"> How can I understand what Emacs Lisp code does?
 <ul class="org-ul">
 <li>Ex: (global-hl-line-mode)
 </li>
@@ -1757,13 +1757,13 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I copy Emacs Lisp code from other people's configuration?
+<li class="on"> How can I copy Emacs Lisp code from other people's configuration?
 <ul class="org-ul">
 <li>Try a little before you add things
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I try things a little at a time?
+<li class="on"> How can I try things a little at a time?
 <ul class="org-ul">
 <li>ielm
 </li>
@@ -1785,7 +1785,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> What are some of the common errors I might run into?
+<li class="on"> What are some of the common errors I might run into?
 <ul class="org-ul">
 <li>Evaluating at the wrong point
 </li>
@@ -1803,7 +1803,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> Okay, I like this. How can I make it part of my Emacs?
+<li class="on"> Okay, I like this. How can I make it part of my Emacs?
 <ul class="org-ul">
 <li>.emacs.d/init.el (also note about ~/.emacs)
 </li>
@@ -1903,9 +1903,9 @@ Patches and pull requests welcome!
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>Is it worth the time -
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>Is it worth the time -
 <a href="http://xkcd.com/1205/">http://xkcd.com/1205/</a></p></div>
 
 
