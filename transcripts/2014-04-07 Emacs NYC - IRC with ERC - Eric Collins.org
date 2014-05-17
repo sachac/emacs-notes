@@ -8,6 +8,8 @@ You can find the video and other details at http://emacsnyc.org/videos.html
 
 [[https://s3-us-west-2.amazonaws.com/emacsnyc/irc-with-erc.mp4][Download MP4 (255 MB)]]
 
+This transcript is under the Creative Commons Attribution-ShareAlike 4.0 International License.
+
 #+INDEX: ERC
 Eric: Today, we are going to talk about IRC with ERC and Emacs. Let’s
 get started. 

@@ -8,15 +8,15 @@ After this section, you should be able to
 - add code to your configuration so that it runs whenever Emacs starts
 #+END_OBJECTIVES
 
-It's easier to understand code if you can experiment with it. There are several ways you can try Emacs Lisp code before saving it in your configuration.
+It's easier to understand code if you can experiment with it. Emacs Lisp code is made up of *symbolic expressions* (known as S-expressions, expressions, or sexp for short). Expressions are usually enclosed in pairs of parentheses. There are several ways you can try Emacs Lisp expressions before saving them in your configuration.
 
 Note: As you experiment with Emacs Lisp, you might run into errors. Check out [[http://emacslife.com/how-to-read-emacs-lisp.html#errors]["Oh no! I have an error!"]] (http://emacslife.com/how-to-read-emacs-lisp.html#errors) for some common errors and what to do about them.
 
 Here are some ways you can run Emacs Lisp code. I'll explain them in more detail below.
-- =M-x ielm= (Inferior Emacs Lisp Mode)
-- The =*scratch*= buffer and Emacs Lisp files
-- =M-:= (=eval-expression=)
-- =C-x C-e= (=eval-last-sexp=)
+- =M-x ielm= (Inferior Emacs Lisp Mode) - evaluates expressions after you press =RET=, which is handy for pasting in code
+- The =*scratch*= buffer and Emacs Lisp files - makes it easy to edit and re-evaluate expressions
+- =M-:= (=eval-expression=) - good for quickly evaluating Emacs Lisp code while you're doing something else
+- =C-x C-e= (=eval-last-sexp=) - handy when reading expressions in manuals or other text
 
 #+BEGIN_NOTE
 Some conventions we'll use:
@@ -43,6 +43,8 @@ but this will work:
 (message "Hello world")
 #+end_src
 
+You can use =M-p= (=comint-previous-input=) to go through the previously-typed expressions. =M-n= (=comint-next-input=) goes forward.
+
 Tip: When you're trying out an unfamiliar mode, use =F1 m= (=describe-mode=) to learn more about the commands that are available in that mode.
 
 ** The =*scratch*= buffer and Emacs Lisp =.el= files
@@ -66,7 +68,7 @@ You can add code to the end.
 (message "Hello world")
 #+end_src
 
-Note: =;= is the comment character. Anything after the comment character is considered part of the comment. Make sure you add your code on a new line, not in the comment.
+Note: =;= is the comment character. Anything after the comment character is considered part of the comment. Make sure you add your code on a new line, not in the comment. =;;= above is how we usually start comments that take up the entire line.
 
 To run code ("evaluate" it, in Emacs terms), you can use the following commands based on what you want to run:
 - =M-x eval-buffer= runs all the code in the current file or buffer.
