@@ -111,8 +111,8 @@ Try this out:
    #+end_src
    =M-:= is handy for quick calculations. In fact, you can use it with
    =C-u= (that is, =C-u M-:=) to *insert* the result into the buffer.
-   Try it now: =C-u M-: (* 21 2)=
+   Try it now: =C-u M-: (* 21 2)=   
 
-3. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el=. Use =M-x eval-buffer= to load your config. It should display the message. If you restart Emacs, you should also see that message.
+3. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that file instead). Use =M-x eval-buffer= to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
 #+END_PRACTICE
 

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I try Emacs Lisp code?"</title>
-<!-- 2014-05-19 Mon 09:22 -->
+<!-- 2014-05-19 Mon 10:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -53,7 +53,7 @@ Here are some ways you can run Emacs Lisp code. I'll explain them in more detail
 </li>
 </ul>
 
-<div class="note">
+<div class="conventions">
 <p>
 Some conventions we'll use:
 </p>
@@ -224,11 +224,11 @@ Try this out:
 <p>
 <code>M-:</code> is handy for quick calculations. In fact, you can use it with
 <code>C-u</code> (that is, <code>C-u M-:</code>) to <b>insert</b> the result into the buffer.
-Try it now: <code>C-u M-: (* 21 2)</code>
+Try it now: <code>C-u M-: (* 21 2)</code>   
 </p>
 </li>
 
-<li>Add <code>(message "Hello, world!")</code> to the end of your <code>~/.emacs.d/init.el</code>. Use <code>M-x eval-buffer</code> to load your config. It should display the message. If you restart Emacs, you should also see that message.
+<li>Add <code>(message "Hello, world!")</code> to the end of your <code>~/.emacs.d/init.el</code> (or <code>~/.emacs</code>, if you're using that file instead). Use <code>M-x eval-buffer</code> to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
 </li>
 </ol>
 
