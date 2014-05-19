@@ -14,7 +14,8 @@ colon and your notes (or create a subtree).
 * Tasks ready for delegation
 ** DELEGATED Transcribe Avdi Grimm's chat												 :alex:transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
-** TODO Transcribe Carsten Dominik's chat 											 :transcript:
+** DONE Transcribe Carsten Dominik's chat												 :transcript:
+	 CLOSED: [2014-05-18 Sun 23:59]
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 
 ** DELEGATED Transcribe Xah Lee's chat   :oli:transcript:
@@ -518,6 +519,15 @@ http://www.philnewton.net/code/beeminder-el/
 		 :Effort:   2:00
 		 :END:
 ** [#A] Emacs chats																									:project:
+*** Bozhidar Batsov
+- Emacs Redux
+  - animated GIFs
+  - publishing workflow? Octopress, Jekyll, git; https://github.com/bbatsov/bbatsov.github.com
+http://batsov.com/about/
+- Projectile
+- CIDER maintenance
+Technical lead, Tradeo: Rails, NoedJS
+
 *** Xah Lee
 **** DONE Set up chat with Xah Lee
 	 	 CLOSED: [2014-05-01 Thu 22:08]

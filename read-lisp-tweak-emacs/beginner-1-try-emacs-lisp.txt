@@ -18,14 +18,14 @@ Here are some ways you can run Emacs Lisp code. I'll explain them in more detail
 - =M-:= (=eval-expression=) - good for quickly evaluating Emacs Lisp code while you're doing something else
 - =C-x C-e= (=eval-last-sexp=) - handy when reading expressions in manuals or other text
 
-#+BEGIN_NOTE
+#+BEGIN_CONVENTIONS
 Some conventions we'll use:
-- Inline code will be =green and monospace= in the HTML version and generally surrounded by =equal signs= in Org Mode 
+- Inline code will be =boxed and monospace= in the HTML version and generally surrounded by =equal signs= in Org Mode 
 - Code samples will be monospace and in boxes in the HTML version, and enclosed in =#+begin_src= ... =#+end_src= in plain text. Example:
   #+begin_src emacs-lisp
   (message "Hello world")
   #+end_src
-#+END_NOTE
+#+END_CONVENTIONS
 	
 ** M-x ielm (Inferior Emacs Lisp Mode)
 
