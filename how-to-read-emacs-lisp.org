@@ -193,6 +193,7 @@ Here are some sites you may want to check out:
 - [[http://emacsredux.com][Emacs Redux]]
 - [[http://whattheemacsd.com/][What the Emacs.d?!]]
 - [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org][Mastering Emacs in One Year]]
+- [[http://www.dotemacs.de/localfiles.html][The very unofficial .emacs home]]
 
 ** Mailing lists, newsgroups, and Q&A sites
 
