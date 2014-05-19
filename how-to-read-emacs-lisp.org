@@ -670,7 +670,7 @@ Sometimes people don't indicate which packages they use, so you have
 to guess the package name based on the function. For example,
 =(global-auto-complete-mode)= turns on a completion mode called
 =auto-complete-mode= in all buffers. Before you can use this, you will
-need to install the =auto-complete= buffer. In general, you can find
+need to install the =auto-complete= package. In general, you can find
 package names by looking at functions that include =mode= in their
 name, removing =global=, =turn-on=, and other prefixes as needed.
 
