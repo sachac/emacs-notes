@@ -204,7 +204,7 @@ Find a snippet of Emacs Lisp code you want to understand more deeply, or look at
 * "How can I try Emacs Lisp code?"
 <<try>>
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "3-"
 
 * "How can I understand what Emacs Lisp code does?"
 <<understanding-lisp>>

@@ -18,11 +18,12 @@ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 	 CLOSED: [2014-05-18 Sun 23:59]
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
 
-** DELEGATED Transcribe Xah Lee's chat   :oli:transcript:
+** DONE Transcribe Xah Lee's chat 													 :oli:transcript:
 Delegated to Oli on 2014-05-05
 
 http://sachachua.com/blog/2014/05/emacs-chat-xah-lee-ergoemacs/
-
+*** DONE Pay invoice for Xah Lee's chat
+		 CLOSED: [2014-05-12 Mon 20:20]
 * Other delegation notes
 ** Ideas for tasks to delegate
 - Transcribe Emacs Chats, screencasts, other people’s videos
@@ -47,14 +48,56 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 *** [#A] Emacs Life																									:project:
 **** TODO Sketch out personas
 **** TODO Set up mailing list
+**** How to Read Emacs Lisp e-mail course 													:project:
+[[file:~/personal/elisp-course.org]]
+***** DONE Get e-mail sending to work from virtual machine
+			 CLOSED: [2014-05-14 Wed 16:17]
+			:LOGBOOK:
+			CLOCK: [2014-05-14 Wed 16:07]--[2014-05-14 Wed 16:17] =>  0:10
+			:END:
+			:PROPERTIES:
+			:Effort:   0:30
+			:END:
+***** DONE Send first section to myself and others
+			 CLOSED: [2014-05-14 Wed 16:50]
+			:LOGBOOK:
+			CLOCK: [2014-05-14 Wed 16:17]--[2014-05-14 Wed 16:50] =>  0:33
+			:END:
+			:PROPERTIES:
+			:Effort:   0:30
+			:END:
+***** DONE Break Emacs Lisp guide up into an e-mail course
+			 CLOSED: [2014-05-14 Wed 16:06] SCHEDULED: <2014-05-14 Wed>
+***** TODO Take notes on people who are interested in taking course, process course steps
+			 SCHEDULED: <2014-05-18 Sun .+2d>
+			 :LOGBOOK:
+			 - State "DONE"       from "STARTED"    [2014-05-16 Fri 15:01]
+			 CLOCK: [2014-05-16 Fri 14:19]--[2014-05-16 Fri 15:01] =>  0:42
+			 CLOCK: [2014-05-16 Fri 13:39]--[2014-05-16 Fri 14:06] =>  0:27
+			 CLOCK: [2014-05-14 Wed 16:50]--[2014-05-14 Wed 17:25] =>  0:35
+			 CLOCK: [2014-05-13 Tue 17:50]--[2014-05-13 Tue 18:20] =>  0:30
+			 CLOCK: [2014-05-12 Mon 21:00]--[2014-05-12 Mon 22:04] =>  1:04
+			 CLOCK: [2014-05-12 Mon 20:28]--[2014-05-12 Mon 20:47] =>  0:19
+			 :END:
+			:PROPERTIES:
+			:Effort:   1:00
+      :CLOCK_MODELINE_TOTAL: today
+			:LAST_REPEAT: [2014-05-16 Fri 15:01]
+			:END:
+***** DONE Package beginner1 as a lesson
+			 CLOSED: [2014-05-13 Tue 21:05]
+			 SCHEDULED: <2014-05-13 Tue>
+			 :LOGBOOK:
+			 CLOCK: [2014-05-13 Tue 19:53]--[2014-05-13 Tue 21:05] =>  1:12
+			 :END:
+			:PROPERTIES:
+			:Effort:   0:30
+			:END:
+***** TODO Package beginner2 as a lesson
+***** DONE Make checklist of topics, figure out where people are
+			 CLOSED: [2014-05-12 Mon 22:04]
 **** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp.org][Link]]
-
-***** DONE Incorporate DanP's second round of feedback
-			 CLOSED: [2014-05-07 Wed 19:58]
-			:PROPERTIES:
-			:Effort:   2:00
-			:END:
 ***** TODO Write objectives for each section
 ***** TODO Pick chunk size for sections
 ***** TODO Break guide up into parts that can be focused on for 15-60 minutes
@@ -68,6 +111,11 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 		 	:Effort:   2:00
 		 	:END:
 
+***** DONE Incorporate DanP's second round of feedback
+			 CLOSED: [2014-05-07 Wed 19:58]
+			:PROPERTIES:
+			:Effort:   2:00
+			:END:
 ***** DONE Write about keybinding																			:sacha:
 		 	 CLOSED: [2014-05-01 Thu 19:36]
 		 	:LOGBOOK:
@@ -133,6 +181,7 @@ https://twitter.com/gozes/status/446397063194894337
 		 :PROPERTIES:
 		 :CREATED:  [2014-04-16 Wed 12:20]
 		 :END:
+**** TODO Write about how to scroll
 *** A map for customizing Org
 - Common options you may want to change
 - Advanced options and why, plus examples of what you can do with them
@@ -169,50 +218,31 @@ https://www.youtube.com/watch?v=uP9qmhcI9IQ
 :BLOG:     sacha
 :END:
 
-The Org Mode included in Emacs 24 is version 7. Version 8 has lots of
-new configuration variables and the exporting mechanism has been
-rewritten. However, it needs to be installed in an Emacs that has not
-yet loaded any Org code or files. Here's how you can upgrade your Org:
+#+begin_html
+<div class="update">Update 2014-05-12: Simplified thanks to Sebastian's note that Org 8 is available in the built-in package repository, yay!</div>
+#+end_html
+
+The Org Mode included in Emacs 24 is version 7. Version 8 has lots of new configuration variables and the exporting mechanism has been rewritten. However, it needs to be installed in an Emacs that has not yet loaded any Org code or files. Here's how you can upgrade your Org:
 
 1. Start Emacs with =emacs -q=. This skips your personal configuration.
 
-2. Switch to the =*scratch*= buffer by typing =C-x b=
-   (=switch-buffer=). =*scratch*= is usually the default, so you
-   should be able to just press =RET= to select it.
+2. You will need an Internet connection for this step. Type =M-x package-install=, and type in =org=. This will install the latest version of Org from the built-in package repository.
 
-3. Copy the following code. Paste it in with =C-y= (=yank=):
-	 #+begin_src emacs-lisp
-	 (require 'package)
-	 (add-to-list 'package-archives
-		 '("melpa" . "http://melpa.milkbox.net/packages/"))
-	 (package-refresh-contents)
-	 (package-install 'org)
-	 #+end_src
-
-4. You will need an Internet connection for this step. Type =M-x
-   eval-buffer=. This runs the code in the current buffer. It will
-   load the package library, add MELPA to your package sources, update
-   the list of packages, and install the latest version of Org.
-
-5. Edit your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that
-   instead). Add the following code to the beginning of the file:
+3. Edit your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that instead). Add the following code to the beginning of the file:
 	 #+begin_src emacs-lisp
 	 (package-initialize)
+   (setq package-enable-at-startup nil)
 	 #+end_src
-   Advanced note: If you've downloaded Emacs Lisp code that should
-   override code already installed through packages, you need to
-   change this to =(package-initialize nil)= instead, and add
-   =(package-initialize t)= after your =load-path= settings.
 
-6. Check your configuration for references to the older version of
-   Org. In particular, look for any configuration related to exporting
-   (ex: =(require 'org-html)=). You can change those lines to their
-   Org 8 equivalents (ex: =(require 'ox-html)=), but it's probably
-   easier to just comment them out for now. You can comment out lines by adding =;= to the beginning.
+   This will load the installed packages when you start Emacs, overriding the buit-in Org 7 with the Org 8 version that you installed.
+
+   Advanced note: If you've downloaded Emacs Lisp code that should override code already installed through packages, you need to change this to =(package-initialize nil)= instead, and add =(package-initialize t)= after your =load-path= settings.
+
+4. Check your configuration for references to the older version of Org. In particular, look for any configuration related to exporting (ex: =(require 'org-html)=). You can change those lines to their Org 8 equivalents (ex: =(require 'ox-html)=), but it's probably easier to just comment them out for now. You can comment out lines by adding =;= to the beginning.
  
-6. Save your =init.el= and restart Emacs (this time, without the =-q= option). =M-x org-version= should now start with =Org-mode version 8=.
+5. Save your =init.el= and restart Emacs (this time, without the =-q= option). =M-x org-version= should now start with =Org-mode version 8=.
 
-7. Review your Emacs configuration for any changes that you will need to make. You can ask the [[http://orgmode.org/community.html][Org Mode mailing list]] for help if you get stuck. 
+6. Review your Emacs configuration for any changes that you will need to make. You can ask the [[http://orgmode.org/community.html][Org Mode mailing list]] for help if you get stuck. 
 
 Good luck!
 
@@ -547,8 +577,20 @@ Technical lead, Tradeo: Rails, NoedJS
 		 :PROPERTIES:
 		 :Effort:   0:30
 		 :END:
-**** DELEGATED Post show notes
+**** DONE Post show notes
+		 CLOSED: [2014-05-11 Sun 21:44]
 https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
+**** DONE Incorporate and revise transcript
+		 CLOSED: [2014-05-12 Mon 13:18] SCHEDULED: <2014-05-12 Mon>
+		 :LOGBOOK:
+		 CLOCK: [2014-05-12 Mon 12:40]--[2014-05-12 Mon 13:00] =>  0:20
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   2:00
+		 :END:
+**** TODO Follow up on Xah Lee's suggestions
+- [[http://ergoemacs.org/emacs/blog.html][Who Do You Like to See in Sacha Chua&apos;s Emacs Chat?]]: 
+
 *** Iannis Zannos
 **** DONE Post transcript of Iannis Zannos' chat
 		 	CLOSED: [2014-05-04 Sun 14:19] SCHEDULED: <2014-05-04 Sun>
@@ -559,15 +601,19 @@ https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
 		 :Effort:   0:15
 		 :END:
 *** Phil Hagelberg
-**** STARTED Prepare for session with technomancy
+**** DONE Prepare for session with technomancy
+		 CLOSED: [2014-05-11 Sun 21:45]
 		 :LOGBOOK:
 		 CLOCK: [2014-05-09 Fri 11:35]--[2014-05-09 Fri 11:37] =>  0:02
 		 :END:
 		 :PROPERTIES:
 		 :Effort:   0:30
 		 :END:
-**** TODO Record session with technomancy
-		 	 SCHEDULED: <2014-05-09 Fri 20:00>
+**** DONE Record session with technomancy
+		 CLOSED: [2014-05-09 Fri 23:07] SCHEDULED: <2014-05-09 Fri 22:00>
+		 :LOGBOOK:
+		 CLOCK: [2014-05-09 Fri 22:00]--[2014-05-09 Fri 23:07] =>  0:27
+		 :END:
 
 Clojure 
 
@@ -576,6 +622,20 @@ This really resonated with me because it emphasizes that people are more importa
 
 5-year-old kid, sons
 
+Swarm coding? http://technomancy.us/162, http://technomancy.us/146
+
+sile-limit
+
+Starter kit? http://technomancy.us/153
+**** DONE Prep for call with technomancy
+		 CLOSED: [2014-05-09 Fri 23:07]
+		 :LOGBOOK:
+		 CLOCK: [2014-05-09 Fri 21:33]--[2014-05-09 Fri 22:00] =>  0:27
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   0:30
+		 :END:
+**** TODO Transcribe this myself
 *** Christopher Wellons
 **** DONE Set up chat with Christopher Wellons
 	 	 CLOSED: [2014-05-01 Thu 22:08]
@@ -586,6 +646,8 @@ This really resonated with me because it emphasizes that people are more importa
 - Tikhon Jelvis?
 - Follow up with Xah Lee's list
 
+***** DONE Get Gnus send mail working again
+			 CLOSED: [2014-05-14 Wed 18:49] SCHEDULED: <2014-05-16 Fri>
 ** Connecting - Emacs
 *** International Lisp Conference 2014 (August)
 Contact: Dave Cooper
@@ -600,31 +662,58 @@ Contact: Dave Cooper
 
 Draft outline: https://gist.github.com/sachac/0eb152c9ffe74cd2fe23
 
+
+Title: Evil Plans for Taking Over the World
+
+"A man's reach should exceed his grasp, or what's a paren for?" Come
+to this session for practical tips on applied selfishness and
+community-building, and join in the conspiracy to take over the world
+(or a reasonable portion thereof).
+
+Bio: Sacha Chua loves getting Emacs to do all sorts of things that
+boggle casual passers-by. She's working on more resources for Emacs
+beginners and enthusiasts, including doodled cheat sheets and
+interviews with people who are even more into Emacs Lisp than she is
+(emacslife.com). You can check out her blog at LivingAnAwesomeLife.com
+or follow her on Twitter (@sachac).
+
 Possible titles:		 
+- For Great Community
 - Build You a Community for Great Lisp
   (Heh, can I get away with calling it this? Maybe I can ask the Haskell guide author =) )
 - Paren by Paren: Build Lisp Communities
- 	
+- Evil Plans for Taking Over the World
+
 Goals:
 - Inspire people to work on building up their communities by showing them concrete things they can do and the effects of this on the community
 - Get more people hooked on Org Mode for literate programming and publishing ;)
 
 Topics
+- Selfish reasons for taking over the world
+	- The more people learn and share, the more you can take advantage of
+	- Other people writing code
+  - Other people doing work
+  - Other people connecting
+  - Encouragement, inspiration, fun
+- Niche
+  - Parentheses are scary?
+  - Terms
+  - Old, obscure
+    - Clojure  
+  - But hey, things seem to be looking up
+- Keeping yourself enthused
+	- Working on obscure things; can feel isolated
+	- Virtual
 - Growing community
 	- Might not be easy to get numbers
-		- Could be depressing anyway! =)
-	- Anecdotally, feels that way
+		- Frame of reference
+	- Anecdotally, feels like things are growing
 	- Virtual community is important too, so that you don't feel isolated
-	- Selfish reason
-	  - The more people learn and share, the more you can take advantage of
 - Preaching to the choir
 	- We tend to get settled in our ways
 	- New things that you can do 
 		- Google Hangout, podcasting, etc.
 	- Ways you can encourage _other_ people to share
-- Emacs, specifically
-	
-	- I get a kick out of blog posts
 - Fill in the gaps
 - Key ideas
 	- Share the code
@@ -639,44 +728,55 @@ Topics
 		 1. Literate programming
 		 2. Emacs configuration
 		 3. Workflow demo?
-	2. Blog planets
-		 - If you have a blog, make sure you're listed
-		 - You don't have to blog exclusively about the topic; see about category-specific feeds
-		 - Framing
-		   - Inspiration
-			 - Discovery
-	3. Newsgroups, mailing lists, blogs
+		 4. Blog planets
+				- If you have a blog, make sure you're listed
+				- You don't have to blog exclusively about the topic; see about category-specific feeds
+				- Framing
+					- Inspiration
+					- Discovery
+	2. Newsgroups, mailing lists
 		 - Gmane, Gwene
-	4. IRC: don't forget to bring in the newbies =)
+	3. IRC: don't forget to bring in the newbies =)
 		 - Also: gist, lisppaste
+	4. Quora, StackOverflow, other Q&A sites	
+     - Check on these once in a while
 	5. Screencasts
 		 - Code walkthroughs
 		 - Live coding
-	6. Quora, StackOverflow, other Q&A sites	
+	6. Pairing (screen-sharing, tmux or screen)
+     - Swarms
+		 - Ask for notes/posts from the people you help
 	7. Video chats: Google Hangout on Air, Skype, etc.
-	8. Pairing (screen-sharing, tmux or screen)
-		 1. Ask for notes/posts from the people you help
-	9. Meetups
-	10. Sharing source
-- Keeping yourself enthused
-	- Working on obscure things; can feel isolated
-	- Virtual
+	8. Meetups, conferences, virtual communities?
+	9. Sharing source, packages, etc.
+	10. Way of life - Talk about practical applications and goofy curiosities
+			- Break out of the toy box
+			- Stretch the concept
 - Call to action
 	- Outreach
 	  - Preaching to the choir (conference!) - but also, the rest of the year
 	- Share what you're learning (don't wait to be an expert) _and_ your enthusiasm
   - Write about the _process_, too
 	- Shine the spotlight on other people; build connections
+
+
+
 - Growing popularity of Emacs (meetups, etc.)
 	- Why?
 	- What can we learn?
+
 - Why me? (Bio notes)
 	- Blogging
 	- Emacs chats
 	 
-**** TODO Start planning talk for International Lisp Conference
-		 	SCHEDULED: <2014-05-09 Fri>
-
+**** DONE Start planning talk for International Lisp Conference
+		 CLOSED: [2014-05-09 Fri 20:25] SCHEDULED: <2014-05-10 Sat>
+			:LOGBOOK:
+			CLOCK: [2014-05-09 Fri 20:01]--[2014-05-09 Fri 20:25] =>  0:24
+			:END:
+		 :PROPERTIES:
+		 :Effort:   0:30
+		 :END:
 ** Other Emacs tasks
 *** STARTED Get mplayer working with emms on Windows
 		:LOGBOOK:
