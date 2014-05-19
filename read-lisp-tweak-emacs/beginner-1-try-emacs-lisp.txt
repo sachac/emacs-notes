@@ -2,22 +2,6 @@
 #+TITLE: "How can I try Emacs Lisp code?"
 #+STARTUP: showall
 
-#+BEGIN_OBJECTIVES
-After this section, you should be able to
-- try Emacs Lisp code before saving it to your configuration (that way, you don't have to keep restarting Emacs)
-- add code to your configuration so that it runs whenever Emacs starts
-#+END_OBJECTIVES
-
-It's easier to understand code if you can experiment with it. Emacs Lisp code is made up of *symbolic expressions* (known as S-expressions, expressions, or sexp for short). Expressions are usually enclosed in pairs of parentheses. There are several ways you can try Emacs Lisp expressions before saving them in your configuration.
-
-Note: As you experiment with Emacs Lisp, you might run into errors. Check out [[http://emacslife.com/how-to-read-emacs-lisp.html#errors]["Oh no! I have an error!"]] (http://emacslife.com/how-to-read-emacs-lisp.html#errors) for some common errors and what to do about them.
-
-Here are some ways you can run Emacs Lisp code. I'll explain them in more detail below.
-- =M-x ielm= (Inferior Emacs Lisp Mode) - evaluates expressions after you press =RET=, which is handy for pasting in code
-- The =*scratch*= buffer and Emacs Lisp files - makes it easy to edit and re-evaluate expressions
-- =M-:= (=eval-expression=) - good for quickly evaluating Emacs Lisp code while you're doing something else
-- =C-x C-e= (=eval-last-sexp=) - handy when reading expressions in manuals or other text
-
 #+BEGIN_CONVENTIONS
 Some conventions we'll use:
 - Inline code will be =boxed and monospace= in the HTML version and generally surrounded by =equal signs= in Org Mode 
@@ -26,7 +10,82 @@ Some conventions we'll use:
   (message "Hello world")
   #+end_src
 #+END_CONVENTIONS
-	
+
+#+BEGIN_OBJECTIVES
+After this section, you should be able to
+- find Emacs Lisp code to study and use
+- try Emacs Lisp code before saving it to your configuration (that way, you don't have to keep restarting Emacs)
+- add code to your configuration so that it runs whenever Emacs starts
+#+END_OBJECTIVES
+
+
+* Finding Emacs Lisp code
+
+It's easier to learn how to read Emacs Lisp when you start with simple examples that will help you use Emacs more effectively. Here are some useful sources:
+
+** Emacs documentation
+
+Manuals and FAQs for Emacs-related tools often include code snippets. For example, the [[https://www.gnu.org/software/emacs/manual/efaq.html][Emacs FAQ]] has an entry like this:
+
+#+begin_example
+5.47 How can I tell Emacs to fill paragraphs with a single space after each period?
+===================================================================================
+
+Add the following line to your `.emacs' file:
+
+     (setq sentence-end-double-space nil)
+#+end_example
+
+You can read the Emacs manual by typing =F1 i= (=info=) and choosing
+the *Emacs* item. You can also find the Emacs Manual at
+http://www.gnu.org/software/emacs/manual/emacs.html .
+
+** Packages
+
+Emacs has lots of packages in different repositories, many of which require a little extra code in order to be used to full effect. You can use =M-x package-list-packages= to list the packages that Emacs knows about by default. You will need an Internet connection for that.
+
+If you're new to Emacs, try getting used to Emacs without packages first. There's plenty of functionality already built in. When you come across a gap, chances are that someone has written a package to make Emacs behave the way you want it to. Since there are lots of packages that do similar things, you might want to look for recommendations or ask people which ones you should start with.
+
+In addition to the default package repository, there are other community-supported repositories. See [[http://emacslife.com/how-to-read-emacs-lisp.html#installing-packages][Installing packages]] if you would like to install a package from a different repository.
+
+If you install a package, check out the README, description, documentation, or source code comments for interesting packages to find suggested code to add to your Emacs configuration.
+
+Here are some packages that might be interesting:
+- company: adds text completion
+- yasnippet: snippets and templates
+- undo-tree: visualize your undo/redo history
+
+You will need to be connected to the Internet in order to view and install packages. You can use =M-x package-list-packages= to show the available packages and read the descriptions for the packages above.
+
+** Webpages, blog posts, and the Emacs Wiki
+
+While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. The [[http://www.emacswiki.org/][EmacsWiki]] has lots of code, too. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see [[http://emacslife.com/how-to-read-emacs-lisp.html#errors]["Oh no! I have an error!"]]
+
+Here are some sites you may want to check out:
+- EmacsWiki: CategoryDotEmacs - http://www.emacswiki.org/emacs/CategoryDotEmacs
+- Emacs Redux - http://emacsredux.com
+- What the Emacs.d?! - http://whattheemacsd.com/
+- Mastering Emacs in One Year - https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org
+- The very unofficial .emacs home - http://www.dotemacs.de/localfiles.html
+
+** Mailing lists, newsgroups, and Q&A sites
+
+There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a [[https://lists.gnu.org/mailman/listinfo/help-gnu-emacs][mailing list]] or as a newsgroup - check your favourite Usenet server or use [[http://dir.gmane.org/gmane.emacs.help][Gmane]]. [[http://stackoverflow.com/questions/tagged/emacs][StackOverflow]] and [[http://www.quora.com/Emacs][Quora]] are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
+
+Find a snippet of Emacs Lisp code you want to understand more deeply, or look at the examples in the sections below.
+
+* Trying out code
+
+It's easier to understand code if you can experiment with it. Emacs Lisp code is made up of *symbolic expressions* (known as S-expressions, expressions, or sexp for short). Expressions are usually enclosed in pairs of parentheses. There are several ways you can try Emacs Lisp expressions before saving them in your configuration.
+
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out [[http://emacslife.com/how-to-read-emacs-lisp.html#errors]["Oh no! I have an error!"]] for some common errors and what to do about them.
+
+Here are some ways you can run Emacs Lisp code. I'll explain them in more detail below.
+- =M-x ielm= (Inferior Emacs Lisp Mode) - evaluates expressions after you press =RET=, which is handy for pasting in code
+- The =*scratch*= buffer and Emacs Lisp files - makes it easy to edit and re-evaluate expressions
+- =M-:= (=eval-expression=) - good for quickly evaluating Emacs Lisp code while you're doing something else
+- =C-x C-e= (=eval-last-sexp=) - handy when reading expressions in manuals or other text
+
 ** M-x ielm (Inferior Emacs Lisp Mode)
 
 The Inferior Emacs Lisp Mode gives you a prompt where you can type or paste in Emacs Lisp code. Start it with =M-x ielm=. Press =RET= after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press =RET= to run (or "evaluate") it again.
@@ -100,12 +159,14 @@ When you're starting out, it's a good idea to keep your configuration in one fil
 #+BEGIN_PRACTICE
 Try this out:
 
-1. Use =M-x ielm= to evaluate this expression interactively:
+1. Browse through http://www.emacswiki.org/emacs/CategoryDotEmacs for some code that looks like it will make Emacs work more like the way you want it to. Send me a copy of the code (sacha@sachachua.com).
+
+2. Use =M-x ielm= to evaluate this expression interactively:
    #+begin_src emacs-lisp
    system-type
    #+end_src
 
-2. Use =M-:= (=eval-expression=) buffer to evaluate the following expression:
+3. Use =M-:= (=eval-expression=) buffer to evaluate the following expression:
    #+begin_src emacs-lisp
    (* 21 2)
    #+end_src
@@ -113,6 +174,6 @@ Try this out:
    =C-u= (that is, =C-u M-:=) to *insert* the result into the buffer.
    Try it now: =C-u M-: (* 21 2)=   
 
-3. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that file instead). Use =M-x eval-buffer= to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
+4. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that file instead). Use =M-x eval-buffer= to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
 #+END_PRACTICE
 

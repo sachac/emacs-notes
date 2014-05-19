@@ -129,83 +129,10 @@ fiddling with something minor, it might be time to put that aside and
 focus on getting stuff done first.[fn:: Is it worth the time -
 http://xkcd.com/1205/]
 
-* "Where can I find useful Emacs Lisp code examples?"
-
-Do you already have some Emacs Lisp code that you want to understand?
-Jump ahead to the section on [[understanding-lisp]["How can I understand what Emacs Lisp code does?"]]. It's easier to learn how to read Emacs Lisp when you start
-with simple examples that will help you use Emacs more effectively.
-Here are some useful sources:
-
-** Emacs documentation
-
-Manuals and FAQs for Emacs-related tools often include code snippets. For example, the [[https://www.gnu.org/software/emacs/manual/efaq.html][Emacs FAQ]] has an entry like this:
-
-#+begin_example
-5.47 How can I tell Emacs to fill paragraphs with a single space after each period?
-===================================================================================
-
-Add the following line to your `.emacs' file:
-
-     (setq sentence-end-double-space nil)
-#+end_example
-
-You can read the Emacs manual by typing =F1 i= (=info=) and choosing
-the *Emacs* item. You can also find the Emacs Manual at
-http://www.gnu.org/software/emacs/manual/emacs.html .
-
-** Packages
-
-Emacs has lots of packages in different repositories, many of which
-require a little extra code in order to be used to full effect. You
-can use =M-x package-list-packages= to list the packages that Emacs
-knows about by default. You will need an Internet connection for
-that.
-
-If you're new to Emacs, try getting used to Emacs without packages
-first. There's plenty of functionality already built in. When you come
-across a gap, chances are that someone has written a package to make
-Emacs behave the way you want it to. Since there are lots of packages
-that do similar things, you might want to look for recommendations or
-ask people which ones you should start with.
-
-In addition to the default package repository, there are other
-community-supported repositories. See [[installing-packages][Installing packages]] if you would
-like to install a package from a different repository.
-
-If you install a package, check out the README, description,
-documentation, or source code comments for interesting packages to
-find suggested code to add to your Emacs configuration.
-
-Here are some packages that might be interesting:
-- company: adds text completion
-- yasnippet: snippets and templates
-- undo-tree: visualize your undo/redo history
-
-You will need to be connected to the Internet in order to view and
-install packages. You can use =M-x package-list-packages= to show the
-available packages and read the descriptions for the packages above. 
-
-** Webpages, blog posts, and the Emacs Wiki
-
-While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. The [[http://www.emacswiki.org/][EmacsWiki]] has lots of code, too. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see [[errors]["Oh no! I have an error!"]]
-
-Here are some sites you may want to check out:
-- [[http://www.emacswiki.org/emacs/CategoryDotEmacs][EmacsWiki: CategoryDotEmacs]]
-- [[http://emacsredux.com][Emacs Redux]]
-- [[http://whattheemacsd.com/][What the Emacs.d?!]]
-- [[https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org][Mastering Emacs in One Year]]
-- [[http://www.dotemacs.de/localfiles.html][The very unofficial .emacs home]]
-
-** Mailing lists, newsgroups, and Q&A sites
-
-There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a [[https://lists.gnu.org/mailman/listinfo/help-gnu-emacs][mailing list]] or as a newsgroup - check your favourite Usenet server or use [[http://dir.gmane.org/gmane.emacs.help][Gmane]]. [[http://stackoverflow.com/questions/tagged/emacs][StackOverflow]] and [[http://www.quora.com/Emacs][Quora]] are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
-
-Find a snippet of Emacs Lisp code you want to understand more deeply, or look at the examples in the sections below.
-
 * "How can I try Emacs Lisp code?"
 <<try>>
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "3-"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "13-"
 
 * "How can I understand what Emacs Lisp code does?"
 <<understanding-lisp>>

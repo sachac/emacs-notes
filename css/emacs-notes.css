@@ -40,5 +40,4 @@ pre.src { font-family: Courier, monospace; }
 .practice { border: 1px dotted green; background: rgba(200, 255, 200, 0.3); padding-left: 1rem; padding-right: 1rem }
 
 
-.conventions { display: none }
-.conventions:first-of-type { display: block }
+.conventions { display: block }
