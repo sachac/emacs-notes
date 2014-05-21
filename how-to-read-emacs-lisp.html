@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-21 Wed 12:53 -->
+<!-- 2014-05-21 Wed 12:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -861,9 +861,22 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 </p>
 
 <div class="practice">
-<p>
-Look for Emacs configuration code that has variables you would like to learn more about. Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
-</p>
+<ol class="org-ol">
+<li>Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
+</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default indicate-empty-lines t)
+(setq-default show-trailing-whitespace t)
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
+</li>
+</ol>
 
 </div>
 </div>

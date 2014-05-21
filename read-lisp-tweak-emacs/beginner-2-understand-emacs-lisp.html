@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I understand what Emacs Lisp code does?"</title>
-<!-- 2014-05-21 Wed 11:30 -->
+<!-- 2014-05-21 Wed 12:57 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -265,9 +265,22 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 </p>
 
 <div class="practice">
-<p>
-Look for Emacs configuration code that has variables you would like to learn more about. Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
-</p>
+<ol class="org-ol">
+<li>Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
+</li>
+</ol>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(setq-default indicate-empty-lines t)
+(setq-default show-trailing-whitespace t)
+</pre>
+</div>
+
+<ol class="org-ol">
+<li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
+</li>
+</ol>
 
 </div>
 </div>
@@ -277,7 +290,7 @@ Look for Emacs configuration code that has variables you would like to learn mor
 <h2 id="sec-3">Understand symbols</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-<a id="quoting"></a>
+<a id="quoting" name="quoting"></a>
 </p>
 
 <p>
@@ -365,7 +378,7 @@ The code above sets the value of the variable to a list, ignoring any previous v
 <h3 id="sec-4-1">Add to a list</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-<a id="load-path"></a>
+<a id="load-path" name="load-path"></a>
 </p>
 
 <p>
@@ -447,7 +460,7 @@ Hooks are lists of functions, so you can delete items using <code>delete</code>.
 <h3 id="sec-4-4">Dot notation</h3>
 <div class="outline-text-3" id="text-4-4">
 <p>
-<a id="package-archives"></a>
+<a id="package-archives" name="package-archives"></a>
 </p>
 
 <p>

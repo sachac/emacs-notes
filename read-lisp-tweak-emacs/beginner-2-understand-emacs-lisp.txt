@@ -146,7 +146,14 @@ This means you can't globally set it with =setq=, because any changes you make w
 To make it easier for you to customize Emacs without writing Emacs Lisp code, many variables give you an interface for setting the variable. If you use =describe-variable= to look up the definition, you'll often see a line like "You can *customize* this variable." Click on the *customize* link in the documentation or move your point to it and press RET. You can change the value there and try it temporarily, or you can save it to your configuration. The Customize interface is good for exploring, but because the code that it generates can difficult to read or share, many people skip it and use Emacs Lisp code instead.
 
 #+BEGIN_PRACTICE
-Look for Emacs configuration code that has variables you would like to learn more about. Use =<f1> v= (=describe-variable=) to look up their definition and the values they can be set to.
+1. Use =<f1> v= (=describe-variable=) to learn more about the variables in the following code snippet:
+
+#+begin_src emacs-lisp
+(setq-default indicate-empty-lines t)
+(setq-default show-trailing-whitespace t)
+#+end_src
+
+2. Look for Emacs configuration code that has variables you would like to learn more about. Use =<f1> v= (=describe-variable=) to look up their definition and the values they can be set to.
 #+END_PRACTICE
 
 * Understand symbols
