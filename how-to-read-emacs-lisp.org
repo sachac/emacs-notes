@@ -606,5 +606,5 @@ Patches and pull requests welcome!
   - edebug-defun
 
 - Thanks
-  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis
+  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej
 		

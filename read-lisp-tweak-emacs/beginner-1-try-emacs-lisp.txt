@@ -37,9 +37,7 @@ Add the following line to your `.emacs' file:
      (setq sentence-end-double-space nil)
 #+end_example
 
-You can read the Emacs manual by typing =F1 i= (=info=) and choosing
-the *Emacs* item. You can also find the Emacs Manual at
-http://www.gnu.org/software/emacs/manual/emacs.html .
+You can read the Emacs manual by typing =F1 i= (=info=) and choosing the *Emacs* item. If you're on a terminal that doesn't understand the =F1= key, use =C-h= whenever you see a reference to =F1=, or use =M-x= to call the command by name (ex: =C-h i=, or =M-x info=). To jump directly to the Emacs manual, you can use =F1 r= (=info-emacs-manual=). You can also find the Emacs Manual at http://www.gnu.org/software/emacs/manual/emacs.html .
 
 ** Packages
 
