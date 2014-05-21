@@ -68,9 +68,20 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:END:
 ***** DONE Break Emacs Lisp guide up into an e-mail course
 			 CLOSED: [2014-05-14 Wed 16:06] SCHEDULED: <2014-05-14 Wed>
-***** TODO Take notes on people who are interested in taking course, process course steps
-			 SCHEDULED: <2014-05-18 Sun .+2d>
+***** STARTED Add objectives to beginner2
+			:LOGBOOK:
+			CLOCK: [2014-05-21 Wed 10:30]
+			:END:
+			:PROPERTIES:
+			:Effort:   0:30
+			:END:
+***** TODO Send course e-mail: beginner1, beginner2
+			 SCHEDULED: <2014-05-21 Wed>
+***** STARTED Take notes on people who are interested in taking course, process course steps :routines:
+			 SCHEDULED: <2014-05-21 Wed .+2d>
 			 :LOGBOOK:
+			 CLOCK: [2014-05-21 Wed 10:26]--[2014-05-21 Wed 10:30] =>  0:04
+			 - State "DONE"       from "TODO"       [2014-05-19 Mon 22:33]
 			 - State "DONE"       from "STARTED"    [2014-05-16 Fri 15:01]
 			 CLOCK: [2014-05-16 Fri 14:19]--[2014-05-16 Fri 15:01] =>  0:42
 			 CLOCK: [2014-05-16 Fri 13:39]--[2014-05-16 Fri 14:06] =>  0:27
@@ -82,7 +93,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
       :CLOCK_MODELINE_TOTAL: today
-			:LAST_REPEAT: [2014-05-16 Fri 15:01]
+			:LAST_REPEAT: [2014-05-19 Mon 22:33]
 			:END:
 ***** DONE Package beginner1 as a lesson
 			 CLOSED: [2014-05-13 Tue 21:05]
@@ -554,10 +565,22 @@ http://www.philnewton.net/code/beeminder-el/
   - animated GIFs
   - publishing workflow? Octopress, Jekyll, git; https://github.com/bbatsov/bbatsov.github.com
 http://batsov.com/about/
+
+https://github.com/bbatsov/prelude
+- does your config differ in any way?
+- WikEmacs
+
 - Projectile
 - CIDER maintenance
 Technical lead, Tradeo: Rails, NoedJS
-
+**** DONE Have Emacs Chat with bbatsov
+		 CLOSED: [2014-05-19 Mon 13:03]
+		 :LOGBOOK:
+		 CLOCK: [2014-05-19 Mon 11:35]--[2014-05-19 Mon 13:03] =>  1:28
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   1:30
+		 :END:
 *** Xah Lee
 **** DONE Set up chat with Xah Lee
 	 	 CLOSED: [2014-05-01 Thu 22:08]
@@ -648,6 +671,9 @@ Starter kit? http://technomancy.us/153
 
 ***** DONE Get Gnus send mail working again
 			 CLOSED: [2014-05-14 Wed 18:49] SCHEDULED: <2014-05-16 Fri>
+**** Bodil
+***** DONE Invite Bodil for Emacs Chat?
+			 CLOSED: [2014-05-19 Mon 22:36]
 ** Connecting - Emacs
 *** International Lisp Conference 2014 (August)
 Contact: Dave Cooper

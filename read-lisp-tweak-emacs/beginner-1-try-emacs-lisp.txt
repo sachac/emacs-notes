@@ -1,5 +1,6 @@
 # -*- mode: org -*-
 #+TITLE: "How can I try Emacs Lisp code?"
+#+OPTIONS: toc:t
 #+STARTUP: showall
 
 #+BEGIN_CONVENTIONS
@@ -65,7 +66,6 @@ Here are some sites you may want to check out:
 - EmacsWiki: CategoryDotEmacs - http://www.emacswiki.org/emacs/CategoryDotEmacs
 - Emacs Redux - http://emacsredux.com
 - What the Emacs.d?! - http://whattheemacsd.com/
-- Mastering Emacs in One Year - https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-en.org
 - The very unofficial .emacs home - http://www.dotemacs.de/localfiles.html
 
 ** Mailing lists, newsgroups, and Q&A sites
@@ -177,3 +177,4 @@ Try this out:
 4. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that file instead). Use =M-x eval-buffer= to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
 #+END_PRACTICE
 
+Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html]["How can I understand what Emacs Lisp code does?"]]
