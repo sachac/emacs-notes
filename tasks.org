@@ -68,9 +68,10 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:END:
 ***** DONE Break Emacs Lisp guide up into an e-mail course
 			 CLOSED: [2014-05-14 Wed 16:06] SCHEDULED: <2014-05-14 Wed>
-***** STARTED Add objectives to beginner2
+***** DONE Add objectives to beginner2
+			 CLOSED: [2014-05-21 Wed 12:14]
 			:LOGBOOK:
-			CLOCK: [2014-05-21 Wed 10:30]
+			CLOCK: [2014-05-21 Wed 10:30]--[2014-05-21 Wed 12:14] =>  1:44
 			:END:
 			:PROPERTIES:
 			:Effort:   0:30
@@ -80,6 +81,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 ***** STARTED Take notes on people who are interested in taking course, process course steps :routines:
 			 SCHEDULED: <2014-05-21 Wed .+2d>
 			 :LOGBOOK:
+			 CLOCK: [2014-05-21 Wed 12:14]
 			 CLOCK: [2014-05-21 Wed 10:26]--[2014-05-21 Wed 10:30] =>  0:04
 			 - State "DONE"       from "TODO"       [2014-05-19 Mon 22:33]
 			 - State "DONE"       from "STARTED"    [2014-05-16 Fri 15:01]

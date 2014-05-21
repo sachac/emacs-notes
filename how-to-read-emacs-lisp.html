@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-21 Wed 11:29 -->
+<!-- 2014-05-21 Wed 12:30 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -149,7 +149,7 @@ Some conventions we'll use:
 <ul class="org-ul">
 <li>Inline code will be <code>boxed and monospace</code> in the HTML version and generally surrounded by <code>equal signs</code> in Org Mode 
 </li>
-<li>Code samples will be monospace and in boxes in the HTML version, and enclosed in #+begin<sub>src</sub> &#x2026; #+end<sub>src</sub> in plain text. Example:
+<li>Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
@@ -657,8 +657,7 @@ The symbol after <code>(</code> is usually a function name, unless it's part of 
 </p>
 
 <p>
-In math, operators like + and * go between the numbers they will work on.
-In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
+In math, operators like + and * go between the numbers they will work on. In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
 </p>
 
 <p>

@@ -32,7 +32,7 @@ You can find this guide on the Web at http://emacslife.com/how-to-read-emacs-lis
 #+BEGIN_CONVENTIONS
 Some conventions we'll use:
 - Inline code will be =boxed and monospace= in the HTML version and generally surrounded by =equal signs= in Org Mode 
-- Code samples will be monospace and in boxes in the HTML version, and enclosed in #+begin_src ... #+end_src in plain text. Example:
+- Code samples will be monospace and in boxes in the HTML version, and enclosed in =#+begin_src= ... =#+end_src= in plain text. Example:
   #+begin_src emacs-lisp
   (message "Hello world")
   #+end_src
