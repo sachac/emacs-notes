@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I try Emacs Lisp code?"</title>
-<!-- 2014-05-21 Wed 12:45 -->
+<!-- 2014-05-21 Wed 12:53 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -283,7 +283,7 @@ To run code ("evaluate" it, in Emacs terms), you can use the following commands 
 <ul class="org-ul">
 <li><code>M-x eval-buffer</code> runs all the code in the current file or buffer.
 </li>
-<li><code>M-x eval-region</code> runs the selected code. You can select code by using the mouse or by typing <code>C-SPC</code> to mark the start of the region and moving to the next.
+<li><code>M-x eval-region</code> runs the code in the selected region. You can select a region of text by using the mouse. Alternatively, you can type <code>C-SPC</code> to mark the start of the region, then move your cursor to the end of the region. If you want to learn more about selecting regions, check out the Emacs tutorial (<code>F1 t</code>, <code>C-h t</code>, or <code>M-x help-with-tutorial</code>).
 </li>
 <li><code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
 </li>

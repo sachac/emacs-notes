@@ -129,7 +129,7 @@ Note: =;= is the comment character. Anything after the comment character is cons
 
 To run code ("evaluate" it, in Emacs terms), you can use the following commands based on what you want to run:
 - =M-x eval-buffer= runs all the code in the current file or buffer.
-- =M-x eval-region= runs the selected code. You can select code by using the mouse or by typing =C-SPC= to mark the start of the region and moving to the next.
+- =M-x eval-region= runs the code in the selected region. You can select a region of text by using the mouse. Alternatively, you can type =C-SPC= to mark the start of the region, then move your cursor to the end of the region. If you want to learn more about selecting regions, check out the Emacs tutorial (=F1 t=, =C-h t=, or =M-x help-with-tutorial=).
 - =C-x C-e= (=eval-last-sexp=) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
 
 In the =*scratch*= buffer, you can also press =C-j= (=eval-print-last-sexp=) after an expression in order to evaluate it and display the results in the buffer.
