@@ -25,8 +25,7 @@ After this module, you should be able to
 
 The symbol after =(= is usually a function name, unless it's part of a list. You'll learn how to recognize lists later.
 
-In math, operators like + and * go between the numbers they will work on.
-In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
+In math, operators like + and * go between the numbers they will work on. In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
 
 Here's how to calculate (1 + 2) * 3 in Emacs Lisp. Note that the multiplication is surrounded by parentheses, even if we usually leave out the parentheses in math. That's because in Emacs Lisp, all function calls have their own set of parentheses.
 
