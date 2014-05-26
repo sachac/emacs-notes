@@ -86,9 +86,9 @@ To find out if something is a function, what it does, what arguments it takes, a
 
 The documentation for =show-paren-mode= starts with "show-paren-mode is an interactive autoloaded Lisp function". Interactive functions can be called with =M-x=. Read the description of the function to learn more about arguments that you can pass to change its behavior. If it mentions a prefix argument, that means that you can change its behaviour by typing =C-u= before you call the function.
 
-Emacs is extensively documented. Whenever you come across a strange function, check it out with =C-h f= (=describe-function=). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use =M-x find-function= to learn more.
+Emacs is extensively documented. Whenever you come across a strange function, check it out with =F1 f= (=describe-function=). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use =M-x find-function= to learn more.
 
-In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use =C-h k= (=describe-key=) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item.
+In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use =F1 k= (=describe-key=) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item.
 
 #+BEGIN_PRACTICE
 1. Use =<f1> f= (=describe-function=) to learn more about the following functions:
