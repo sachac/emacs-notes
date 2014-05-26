@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-26 Mon 18:53 -->
+<!-- 2014-05-26 Mon 18:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -806,6 +806,14 @@ To find out if something is a function, what it does, what arguments it takes, a
 
 <p>
 The documentation for <code>show-paren-mode</code> starts with "show-paren-mode is an interactive autoloaded Lisp function". Interactive functions can be called with <code>M-x</code>. Read the description of the function to learn more about arguments that you can pass to change its behavior. If it mentions a prefix argument, that means that you can change its behaviour by typing <code>C-u</code> before you call the function.
+</p>
+
+<p>
+Emacs is extensively documented. Whenever you come across a strange function, check it out with <code>C-h f</code> (<code>describe-function</code>). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use <code>M-x find-function</code> to learn more.
+</p>
+
+<p>
+In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use <code>C-h k</code> (<code>describe-key</code>) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item.
 </p>
 
 <div class="practice">
