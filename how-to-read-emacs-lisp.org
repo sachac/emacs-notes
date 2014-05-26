@@ -132,7 +132,7 @@ http://xkcd.com/1205/]
 * "How can I try Emacs Lisp code?"
 <<try>>
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "14-200"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "14-206"
 
 * "How can I understand what Emacs Lisp code does?"
 <<understanding-lisp>>

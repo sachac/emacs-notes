@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-26 Mon 18:45 -->
+<!-- 2014-05-26 Mon 18:53 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -579,6 +579,16 @@ This turns off the menu bar along the top of your Emacs window. If you like the 
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(menu-bar-mode 1)
+</pre>
+</div>
+
+<p>
+As with <code>M-:</code> (<code>eval-expression</code>), you can use the <code>C-u</code> prefix to insert the results instead of displaying them. For example, try using <code>C-u C-x C-e</code> (<code>eval-last-sexp</code>) to evaluate the following expression:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(* 6 7)
 </pre>
 </div>
 </div>

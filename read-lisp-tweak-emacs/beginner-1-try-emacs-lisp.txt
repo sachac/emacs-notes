@@ -156,6 +156,12 @@ This turns off the menu bar along the top of your Emacs window. If you like the 
 (menu-bar-mode 1)
 #+end_src
 
+As with =M-:= (=eval-expression=), you can use the =C-u= prefix to insert the results instead of displaying them. For example, try using =C-u C-x C-e= (=eval-last-sexp=) to evaluate the following expression:
+
+#+begin_src emacs-lisp
+(* 6 7)
+#+end_src
+
 ** If you want that code to run every time you start Emacs...
 
 ... *then* add it to your =~/.emacs.d/init.el= file. You can generally add new code at the end. If the code has something to do with =add-to-list= and =load-path=, it might be good to add it to the beginning instead.
