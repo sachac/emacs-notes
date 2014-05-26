@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I try Emacs Lisp code?"</title>
-<!-- 2014-05-26 Mon 16:31 -->
+<!-- 2014-05-26 Mon 18:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -314,6 +314,26 @@ If you want to quickly try a single expression, you can use <code>M-:</code> (<c
 <p>
 <code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it. <code>C-x C-e</code> (<code>eval-last-sexp</code>) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
 </p>
+
+<p>
+You can get the text file for this lesson from <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt">http://emacslife.com/read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt</a> . If you're reading this lesson in Emacs, try putting your cursor after the closing <code>)</code> and calling <code>C-x C-e</code> (<code>eval-last-sexp</code>) on the following line:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(menu-bar-mode -1)
+</pre>
+</div>
+
+<p>
+This turns off the menu bar along the top of your Emacs window. If you like the menu bar, you can turn it on again by evaluating:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(menu-bar-mode 1)
+</pre>
+</div>
 </div>
 </div>
 
@@ -369,7 +389,7 @@ This shows you the value of the <code>system-type</code> variable.
 </pre>
 </div>
 <p>
-<code>M-:</code> is handy for quick calculations. In fact, you can use it with
+<code>M-:</code> is handy for quick calculations. Remember, you can use it with
 <code>C-u</code> (that is, <code>C-u M-:</code>) to <b>insert</b> the result into the buffer.
 Try it now: <code>C-u M-: (* 21 2)</code>   
 </p>

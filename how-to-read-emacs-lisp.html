@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-26 Mon 16:32 -->
+<!-- 2014-05-26 Mon 18:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -561,6 +561,26 @@ If you want to quickly try a single expression, you can use <code>M-:</code> (<c
 <p>
 <code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it. <code>C-x C-e</code> (<code>eval-last-sexp</code>) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
 </p>
+
+<p>
+You can get the text file for this lesson from <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt">http://emacslife.com/read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt</a> . If you're reading this lesson in Emacs, try putting your cursor after the closing <code>)</code> and calling <code>C-x C-e</code> (<code>eval-last-sexp</code>) on the following line:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(menu-bar-mode -1)
+</pre>
+</div>
+
+<p>
+This turns off the menu bar along the top of your Emacs window. If you like the menu bar, you can turn it on again by evaluating:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(menu-bar-mode 1)
+</pre>
+</div>
 </div>
 </div>
 
@@ -592,7 +612,9 @@ Try this out:
 Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html">"How can I understand what Emacs Lisp code does?"</a>
 </p>
 
-<div class="practice">
+<p>
+#+BEGIN<sub>PRACTICE</sub>
+</p>
 <ol class="org-ol">
 <li>Browse through <a href="http://www.emacswiki.org/emacs/CategoryDotEmacs">http://www.emacswiki.org/emacs/CategoryDotEmacs</a> for some code that looks like it will make Emacs work more like the way you want it to. If you need help figuring it out, send me a copy of the code (sacha@sachachua.com). 
 </li>
@@ -608,28 +630,7 @@ Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-unde
 This shows you the value of the <code>system-type</code> variable.
 </p>
 </li>
-
-<li>Use <code>M-:</code> (<code>eval-expression</code>) buffer to evaluate the following expression:
-<div class="org-src-container">
-
-<pre class="src src-emacs-lisp">(* 21 2)
-</pre>
-</div>
-<p>
-<code>M-:</code> is handy for quick calculations. In fact, you can use it with
-<code>C-u</code> (that is, <code>C-u M-:</code>) to <b>insert</b> the result into the buffer.
-Try it now: <code>C-u M-: (* 21 2)</code>   
-</p>
-</li>
-
-<li>Add <code>(message "Hello, world!")</code> to the end of your <code>~/.emacs.d/init.el</code> (or <code>~/.emacs</code>, if you're using that file instead). Use <code>M-x eval-buffer</code> to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
-</li>
-
-<li>Call <code>M-x visual-line-mode</code> to tell Emacs to visually wrap lines without actually changing the text. If you like this, add <code>(visual-line-mode)</code> to your <code>~/.emacs.d/init.el</code>.
-</li>
 </ol>
-
-</div>
 </div>
 </div>
 </div>

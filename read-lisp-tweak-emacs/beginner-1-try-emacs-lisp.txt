@@ -144,6 +144,18 @@ If you want to quickly try a single expression, you can use =M-:= (=eval-express
 
 =C-x C-e= (=eval-last-sexp=) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it. =C-x C-e= (=eval-last-sexp=) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
 
+You can get the text file for this lesson from http://emacslife.com/read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt . If you're reading this lesson in Emacs, try putting your cursor after the closing =)= and calling =C-x C-e= (=eval-last-sexp=) on the following line:
+
+#+begin_src emacs-lisp
+(menu-bar-mode -1)
+#+end_src
+
+This turns off the menu bar along the top of your Emacs window. If you like the menu bar, you can turn it on again by evaluating:
+
+#+begin_src emacs-lisp
+(menu-bar-mode 1)
+#+end_src
+
 ** If you want that code to run every time you start Emacs...
 
 ... *then* add it to your =~/.emacs.d/init.el= file. You can generally add new code at the end. If the code has something to do with =add-to-list= and =load-path=, it might be good to add it to the beginning instead.
@@ -172,7 +184,7 @@ Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-
    #+begin_src emacs-lisp
    (* 21 2)
    #+end_src
-   =M-:= is handy for quick calculations. In fact, you can use it with
+   =M-:= is handy for quick calculations. Remember, you can use it with
    =C-u= (that is, =C-u M-:=) to *insert* the result into the buffer.
    Try it now: =C-u M-: (* 21 2)=   
 

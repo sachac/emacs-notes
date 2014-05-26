@@ -85,9 +85,10 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
 			:END:
-***** TODO Take notes on people who are interested in taking course, process  course steps :routine:
+***** STARTED Take notes on people who are interested in taking course, process  course steps :routine:
 			 SCHEDULED: <2014-05-26 Mon .+2d>
 			 :LOGBOOK:
+			 CLOCK: [2014-05-26 Mon 15:55]--[2014-05-26 Mon 16:50] =>  0:55
 			 - State "DONE"       from "STARTED"    [2014-05-21 Wed 14:50]
 			 CLOCK: [2014-05-21 Wed 12:14]--[2014-05-21 Wed 14:50] =>  2:36
 			 CLOCK: [2014-05-21 Wed 10:26]--[2014-05-21 Wed 10:30] =>  0:04
