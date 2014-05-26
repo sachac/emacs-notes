@@ -169,6 +169,20 @@ Let's take a closer look at this example.
 
 The single quote means take it literally - treat it as the name of something. If you remove the quote from =emacs-lisp-mode-hook=, Emacs will look up the value in that variable and use that as the name of the variable to actually set, and you'll probably get an error.
 
+Use =M-:= (=eval-expression=) or another way to evaluate expressions to tell the difference between:
+
+#+begin_src emacs-lisp
+emacs-lisp-mode-hook
+#+end_src
+
+and
+
+#+begin_src emacs-lisp
+'emacs-lisp-mode-hook
+#+end_src
+
+The first one does not have a quotation mark, and Emacs replaces it with the value that the variable =emacs-lisp-mode-hook= contains. The second one is quoted, so Emacs treats it as the name of a thing.
+
 Here's another example:
 
 #+begin_src emacs-lisp

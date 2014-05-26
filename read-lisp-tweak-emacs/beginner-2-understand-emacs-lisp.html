@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I understand what Emacs Lisp code does?"</title>
-<!-- 2014-05-26 Mon 19:01 -->
+<!-- 2014-05-26 Mon 19:04 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -309,6 +309,30 @@ Let's take a closer look at this example.
 
 <p>
 The single quote means take it literally - treat it as the name of something. If you remove the quote from <code>emacs-lisp-mode-hook</code>, Emacs will look up the value in that variable and use that as the name of the variable to actually set, and you'll probably get an error.
+</p>
+
+<p>
+Use <code>M-:</code> (<code>eval-expression</code>) or another way to evaluate expressions to tell the difference between:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">emacs-lisp-mode-hook
+</pre>
+</div>
+
+<p>
+and
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">'emacs-lisp-mode-hook
+</pre>
+</div>
+
+<p>
+The first one does not have a quotation mark, and Emacs replaces it with the value that the variable <code>emacs-lisp-mode-hook</code> contains. The second one is quoted, so Emacs treats it as the name of a thing.
 </p>
 
 <p>
