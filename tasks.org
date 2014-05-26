@@ -24,6 +24,7 @@ Delegated to Oli on 2014-05-05
 http://sachachua.com/blog/2014/05/emacs-chat-xah-lee-ergoemacs/
 *** DONE Pay invoice for Xah Lee's chat
 		 CLOSED: [2014-05-12 Mon 20:20]
+
 * Other delegation notes
 ** Ideas for tasks to delegate
 - Transcribe Emacs Chats, screencasts, other people’s videos
@@ -45,6 +46,11 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 	 :PROPERTIES:
 	 :QUANTIFIED: Emacs
 	 :END:
+*** TODO Tweak table of contents so that it's always visible / easy to get to
+- Rainer
+*** TODO Consider moving back-to-top, e-mail to the top right?
+- Rainer
+
 *** [#A] Emacs Life																									:project:
 **** TODO Sketch out personas
 **** CANCELLED Set up mailing list
