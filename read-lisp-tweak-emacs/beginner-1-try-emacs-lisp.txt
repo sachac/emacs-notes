@@ -19,7 +19,6 @@ After this section, you should be able to
 - add code to your configuration so that it runs whenever Emacs starts
 #+END_OBJECTIVES
 
-
 * Finding Emacs Lisp code
 
 It's easier to learn how to read Emacs Lisp when you start with simple examples that will help you use Emacs more effectively. Here are some useful sources:

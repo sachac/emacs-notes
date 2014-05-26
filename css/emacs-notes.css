@@ -41,3 +41,5 @@ pre.src { font-family: Courier, monospace; }
 
 
 .conventions { display: block }
+
+.notes { border: 2px solid darkgreen; padding-left: 1rem; padding-right: 1rem }
