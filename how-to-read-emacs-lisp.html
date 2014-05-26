@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-26 Mon 18:41 -->
+<!-- 2014-05-26 Mon 18:45 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -612,9 +612,7 @@ Try this out:
 Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html">"How can I understand what Emacs Lisp code does?"</a>
 </p>
 
-<p>
-#+BEGIN<sub>PRACTICE</sub>
-</p>
+<div class="practice">
 <ol class="org-ol">
 <li>Browse through <a href="http://www.emacswiki.org/emacs/CategoryDotEmacs">http://www.emacswiki.org/emacs/CategoryDotEmacs</a> for some code that looks like it will make Emacs work more like the way you want it to. If you need help figuring it out, send me a copy of the code (sacha@sachachua.com). 
 </li>
@@ -630,7 +628,36 @@ Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-unde
 This shows you the value of the <code>system-type</code> variable.
 </p>
 </li>
+
+<li>Use <code>M-:</code> (<code>eval-expression</code>) buffer to evaluate the following expression:
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(* 21 2)
+</pre>
+</div>
+<p>
+<code>M-:</code> is handy for quick calculations. Remember, you can use it with
+<code>C-u</code> (that is, <code>C-u M-:</code>) to <b>insert</b> the result into the buffer.
+Try it now: <code>C-u M-: (* 21 2)</code>   
+</p>
+</li>
+
+<li>Use <code>C-x C-e</code> (<code>eval-last-sexp</code>) to evaluate the expression below. If you are reading this in Emacs, you can evaluate it by putting your cursor after the last <code>)</code> and calling <code>C-x C-e</code> (<code>eval-last-sexp</code>). If you are reading this outside Emacs, you can copy that text into any buffer and then use <code>C-x C-e</code> (<code>eval-last-sexp</code>) to evaluate it.
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(* (+ 1 2) 3)
+</pre>
+</div>
+</li>
+
+<li>Add <code>(message "Hello, world!")</code> to the end of your <code>~/.emacs.d/init.el</code> (or <code>~/.emacs</code>, if you're using that file instead). Use <code>M-x eval-buffer</code> to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
+</li>
+
+<li>Call <code>M-x visual-line-mode</code> to tell Emacs to visually wrap lines without actually changing the text. If you like this, add <code>(visual-line-mode)</code> to your <code>~/.emacs.d/init.el</code>.
+</li>
 </ol>
+
+</div>
 </div>
 </div>
 </div>

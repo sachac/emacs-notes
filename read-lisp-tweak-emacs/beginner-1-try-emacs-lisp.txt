@@ -188,9 +188,14 @@ Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-
    =C-u= (that is, =C-u M-:=) to *insert* the result into the buffer.
    Try it now: =C-u M-: (* 21 2)=   
 
-4. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that file instead). Use =M-x eval-buffer= to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
+4. Use =C-x C-e= (=eval-last-sexp=) to evaluate the expression below. If you are reading this in Emacs, you can evaluate it by putting your cursor after the last =)= and calling =C-x C-e= (=eval-last-sexp=). If you are reading this outside Emacs, you can copy that text into any buffer and then use =C-x C-e= (=eval-last-sexp=) to evaluate it.
+   #+begin_src emacs-lisp
+   (* (+ 1 2) 3)
+   #+end_src
 
-5. Call =M-x visual-line-mode= to tell Emacs to visually wrap lines without actually changing the text. If you like this, add =(visual-line-mode)= to your =~/.emacs.d/init.el=.
+5. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that file instead). Use =M-x eval-buffer= to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
+
+6. Call =M-x visual-line-mode= to tell Emacs to visually wrap lines without actually changing the text. If you like this, add =(visual-line-mode)= to your =~/.emacs.d/init.el=.
 #+END_PRACTICE
 
 Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html]["How can I understand what Emacs Lisp code does?"]]
