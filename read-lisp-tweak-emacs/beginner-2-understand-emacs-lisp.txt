@@ -23,7 +23,7 @@ After this module, you should be able to
 
 * Learn more about functions
 
-The symbol after =(= is usually a function name, unless it's part of a list. You'll learn how to recognize lists later.
+The symbol after =(= is usually a function name, unless it's part of a list of literals (numbers, strings, etc.). You'll learn how to recognize literal lists later.
 
 In math, operators like + and * go between the numbers they will work on. In Emacs Lisp, the operator (or the "function") is at the start of the expression, followed by the things it's going to operate on ("arguments").
 
@@ -68,19 +68,19 @@ This calls the =blink-cursor-mode= function with =-1= as the argument, which tur
 (find-file "~/todo.org")
 #+end_src
 
-This calls the =find-file= function with =todo.org= file in your home directory. It opens the file, creating it if it doesn't exist yet.
+This calls the =find-file= function with the =todo.org= file in your home directory. It opens the file, creating it if it doesn't exist yet.
 
 #+begin_src emacs-lisp
 (turn-on-eldoc-mode)
 #+end_src
 
-This turns on =eldoc-mode=, which displays the argument list for the current function. You can move your point around to see documentation for other functions.
+This turns on =eldoc-mode=, which displays the argument list for the current function. You can move your cursor around to see argumest lists for other functions.
 
 #+begin_src emacs-lisp
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 #+end_src
 
-This turns on =eldoc-mode= when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section "Some things are taken literally" in this module.
+This turns on =eldoc-mode= when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have =​'​= and some don't in the section "Some things are taken literally" in this module.
 
 To find out if something is a function, what it does, what arguments it takes, and if it has any keyboard shortcuts, use the =<f1> f= (=describe-function=) command. Give it the function name. For example, =<f1> f add-hook= will show you the documentation for =add-hook=, and =<f1> f show-paren-mode= will show you the documentation for that.
 
@@ -93,17 +93,15 @@ The documentation for =show-paren-mode= starts with "show-paren-mode is an inter
 - =message=: This is an example of a function that has a variable number of arguments. The first argument says how the message will be displayed, and the rest of the arguments contain the values.
 - =just-one-space=: Handy way to clean up space. What keyboard shortcut is it bound to?
 
-2. Look for Emacs configuration code that you would like to understand further. Use =<f1> f= (=describe-function=) to learn more about the functions in the code.
-For example, here are some snippets from my configuration. What do the functions do?
-
-#+begin_src emacs-lisp
-(savehist-mode 1)
-(tooltip-mode -1)
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(prefer-coding-system 'utf-8)
-#+end_src
+2. Look for Emacs configuration code that you would like to understand further. Use =<f1> f= (=describe-function=) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
+	 #+begin_src emacs-lisp
+	 (savehist-mode 1)
+	 (tooltip-mode -1)
+	 (tool-bar-mode -1)
+	 (menu-bar-mode -1)
+	 (scroll-bar-mode -1)
+	 (prefer-coding-system 'utf-8)
+	 #+end_src
 #+END_PRACTICE
 
 * Learn more about variables
@@ -147,12 +145,10 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 
 #+BEGIN_PRACTICE
 1. Use =<f1> v= (=describe-variable=) to learn more about the variables in the following code snippet:
-
-#+begin_src emacs-lisp
-(setq-default indicate-empty-lines t)
-(setq-default show-trailing-whitespace t)
-#+end_src
-
+	 #+begin_src emacs-lisp
+	 (setq-default indicate-empty-lines t)
+	 (setq-default show-trailing-whitespace t)
+	 #+end_src
 2. Look for Emacs configuration code that has variables you would like to learn more about. Use =<f1> v= (=describe-variable=) to look up their definition and the values they can be set to.
 #+END_PRACTICE
 

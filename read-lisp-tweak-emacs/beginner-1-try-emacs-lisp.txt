@@ -138,7 +138,7 @@ The =*scratch*= buffer is not automatically saved. If you would like to save you
 
 ** M-: (eval-expression)
 
-If you want to quickly try an expression, you can use =M-:= (=eval-expression=). To see any results it displayed, you can switch to the =*Messages*= buffer.
+If you want to quickly try a single expression, you can use =M-:= (=eval-expression=). It will display the results in the echo area near the bottom of your screen. If you want to insert the results into your buffer, call it with =C-u M-:= instead. For example, you can use =C-u M-: (* 18 2)= to multiply 18 and 2 quickly. To review previous results, you can switch to the =*Messages*= buffer.
 
 ** C-x C-e (eval-last-sexp)
 
@@ -154,15 +154,19 @@ When you're starting out, it's a good idea to keep your configuration in one fil
 
 ** Practice
 
-#+BEGIN_PRACTICE
 Try this out:
 
-1. Browse through http://www.emacswiki.org/emacs/CategoryDotEmacs for some code that looks like it will make Emacs work more like the way you want it to. Send me a copy of the code (sacha@sachachua.com).
+Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html]["How can I understand what Emacs Lisp code does?"]]
+
+#+BEGIN_PRACTICE
+1. Browse through http://www.emacswiki.org/emacs/CategoryDotEmacs for some code that looks like it will make Emacs work more like the way you want it to. If you need help figuring it out, send me a copy of the code (sacha@sachachua.com). 
 
 2. Use =M-x ielm= to evaluate this expression interactively:
    #+begin_src emacs-lisp
    system-type
    #+end_src
+
+   This shows you the value of the =system-type= variable.
 
 3. Use =M-:= (=eval-expression=) buffer to evaluate the following expression:
    #+begin_src emacs-lisp
@@ -173,6 +177,8 @@ Try this out:
    Try it now: =C-u M-: (* 21 2)=   
 
 4. Add =(message "Hello, world!")= to the end of your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that file instead). Use =M-x eval-buffer= to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
+
+5. Call =M-x visual-line-mode= to tell Emacs to visually wrap lines without actually changing the text. If you like this, add =(visual-line-mode)= to your =~/.emacs.d/init.el=.
 #+END_PRACTICE
 
 Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html]["How can I understand what Emacs Lisp code does?"]]

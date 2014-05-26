@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-21 Wed 12:57 -->
+<!-- 2014-05-26 Mon 16:32 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -550,7 +550,7 @@ The <code>*scratch*</code> buffer is not automatically saved. If you would like 
 <h4 id="sec-3-2-3">M-: (eval-expression)</h4>
 <div class="outline-text-4" id="text-3-2-3">
 <p>
-If you want to quickly try an expression, you can use <code>M-:</code> (<code>eval-expression</code>). To see any results it displayed, you can switch to the <code>*Messages*</code> buffer.
+If you want to quickly try a single expression, you can use <code>M-:</code> (<code>eval-expression</code>). It will display the results in the echo area near the bottom of your screen. If you want to insert the results into your buffer, call it with <code>C-u M-:</code> instead. For example, you can use <code>C-u M-: (* 18 2)</code> to multiply 18 and 2 quickly. To review previous results, you can switch to the <code>*Messages*</code> buffer.
 </p>
 </div>
 </div>
@@ -584,13 +584,17 @@ When you're starting out, it's a good idea to keep your configuration in one fil
 <div id="outline-container-sec-3-2-6" class="outline-4">
 <h4 id="sec-3-2-6">Practice</h4>
 <div class="outline-text-4" id="text-3-2-6">
-<div class="practice">
 <p>
 Try this out:
 </p>
 
+<p>
+Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html">"How can I understand what Emacs Lisp code does?"</a>
+</p>
+
+<div class="practice">
 <ol class="org-ol">
-<li>Browse through <a href="http://www.emacswiki.org/emacs/CategoryDotEmacs">http://www.emacswiki.org/emacs/CategoryDotEmacs</a> for some code that looks like it will make Emacs work more like the way you want it to. Send me a copy of the code (sacha@sachachua.com).
+<li>Browse through <a href="http://www.emacswiki.org/emacs/CategoryDotEmacs">http://www.emacswiki.org/emacs/CategoryDotEmacs</a> for some code that looks like it will make Emacs work more like the way you want it to. If you need help figuring it out, send me a copy of the code (sacha@sachachua.com). 
 </li>
 
 <li>Use <code>M-x ielm</code> to evaluate this expression interactively:
@@ -599,6 +603,10 @@ Try this out:
 <pre class="src src-emacs-lisp">system-type
 </pre>
 </div>
+
+<p>
+This shows you the value of the <code>system-type</code> variable.
+</p>
 </li>
 
 <li>Use <code>M-:</code> (<code>eval-expression</code>) buffer to evaluate the following expression:
@@ -616,13 +624,12 @@ Try it now: <code>C-u M-: (* 21 2)</code>
 
 <li>Add <code>(message "Hello, world!")</code> to the end of your <code>~/.emacs.d/init.el</code> (or <code>~/.emacs</code>, if you're using that file instead). Use <code>M-x eval-buffer</code> to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
 </li>
+
+<li>Call <code>M-x visual-line-mode</code> to tell Emacs to visually wrap lines without actually changing the text. If you like this, add <code>(visual-line-mode)</code> to your <code>~/.emacs.d/init.el</code>.
+</li>
 </ol>
 
 </div>
-
-<p>
-Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html">"How can I understand what Emacs Lisp code does?"</a>
-</p>
 </div>
 </div>
 </div>
@@ -655,7 +662,7 @@ After this module, you should be able to
 <h3 id="sec-4-1">Learn more about functions</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
-The symbol after <code>(</code> is usually a function name, unless it's part of a list. You'll learn how to recognize lists later.
+The symbol after <code>(</code> is usually a function name, unless it's part of a list of literals (numbers, strings, etc.). You'll learn how to recognize literal lists later.
 </p>
 
 <p>
@@ -732,7 +739,7 @@ This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as t
 </div>
 
 <p>
-This calls the <code>find-file</code> function with <code>todo.org</code> file in your home directory. It opens the file, creating it if it doesn't exist yet.
+This calls the <code>find-file</code> function with the <code>todo.org</code> file in your home directory. It opens the file, creating it if it doesn't exist yet.
 </p>
 
 <div class="org-src-container">
@@ -742,7 +749,7 @@ This calls the <code>find-file</code> function with <code>todo.org</code> file i
 </div>
 
 <p>
-This turns on <code>eldoc-mode</code>, which displays the argument list for the current function. You can move your point around to see documentation for other functions.
+This turns on <code>eldoc-mode</code>, which displays the argument list for the current function. You can move your cursor around to see argumest lists for other functions.
 </p>
 
 <div class="org-src-container">
@@ -752,7 +759,7 @@ This turns on <code>eldoc-mode</code>, which displays the argument list for the 
 </div>
 
 <p>
-This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section "Some things are taken literally" in this module.
+This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have <code>​'​</code> and some don't in the section "Some things are taken literally" in this module.
 </p>
 
 <p>
@@ -776,13 +783,7 @@ The documentation for <code>show-paren-mode</code> starts with "show-paren-mode 
 <li><code>just-one-space</code>: Handy way to clean up space. What keyboard shortcut is it bound to?
 </li>
 
-<li>Look for Emacs configuration code that you would like to understand further. Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about the functions in the code.
-</li>
-</ol>
-<p>
-For example, here are some snippets from my configuration. What do the functions do?
-</p>
-
+<li>Look for Emacs configuration code that you would like to understand further. Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(savehist-mode 1)
@@ -793,6 +794,8 @@ For example, here are some snippets from my configuration. What do the functions
 (prefer-coding-system 'utf-8)
 </pre>
 </div>
+</li>
+</ol>
 
 </div>
 </div>
@@ -863,17 +866,13 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 <div class="practice">
 <ol class="org-ol">
 <li>Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
-</li>
-</ol>
-
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(setq-default indicate-empty-lines t)
 (setq-default show-trailing-whitespace t)
 </pre>
 </div>
-
-<ol class="org-ol">
+</li>
 <li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
 </li>
 </ol>
@@ -2019,7 +2018,7 @@ Patches and pull requests welcome!
 
 <li>Thanks
 <ul class="org-ul">
-<li>aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej
+<li>aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P.
 </li>
 </ul>
 </li>

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I understand what Emacs Lisp code does?"</title>
-<!-- 2014-05-21 Wed 12:57 -->
+<!-- 2014-05-26 Mon 16:20 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -59,7 +59,7 @@ After this module, you should be able to
 <h2 id="sec-1">Learn more about functions</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-The symbol after <code>(</code> is usually a function name, unless it's part of a list. You'll learn how to recognize lists later.
+The symbol after <code>(</code> is usually a function name, unless it's part of a list of literals (numbers, strings, etc.). You'll learn how to recognize literal lists later.
 </p>
 
 <p>
@@ -136,7 +136,7 @@ This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as t
 </div>
 
 <p>
-This calls the <code>find-file</code> function with <code>todo.org</code> file in your home directory. It opens the file, creating it if it doesn't exist yet.
+This calls the <code>find-file</code> function with the <code>todo.org</code> file in your home directory. It opens the file, creating it if it doesn't exist yet.
 </p>
 
 <div class="org-src-container">
@@ -146,7 +146,7 @@ This calls the <code>find-file</code> function with <code>todo.org</code> file i
 </div>
 
 <p>
-This turns on <code>eldoc-mode</code>, which displays the argument list for the current function. You can move your point around to see documentation for other functions.
+This turns on <code>eldoc-mode</code>, which displays the argument list for the current function. You can move your cursor around to see argumest lists for other functions.
 </p>
 
 <div class="org-src-container">
@@ -156,7 +156,7 @@ This turns on <code>eldoc-mode</code>, which displays the argument list for the 
 </div>
 
 <p>
-This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have ' and some don't in the section "Some things are taken literally" in this module.
+This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have <code>​'​</code> and some don't in the section "Some things are taken literally" in this module.
 </p>
 
 <p>
@@ -180,13 +180,7 @@ The documentation for <code>show-paren-mode</code> starts with "show-paren-mode 
 <li><code>just-one-space</code>: Handy way to clean up space. What keyboard shortcut is it bound to?
 </li>
 
-<li>Look for Emacs configuration code that you would like to understand further. Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about the functions in the code.
-</li>
-</ol>
-<p>
-For example, here are some snippets from my configuration. What do the functions do?
-</p>
-
+<li>Look for Emacs configuration code that you would like to understand further. Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(savehist-mode 1)
@@ -197,6 +191,8 @@ For example, here are some snippets from my configuration. What do the functions
 (prefer-coding-system 'utf-8)
 </pre>
 </div>
+</li>
+</ol>
 
 </div>
 </div>
@@ -267,17 +263,13 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 <div class="practice">
 <ol class="org-ol">
 <li>Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
-</li>
-</ol>
-
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(setq-default indicate-empty-lines t)
 (setq-default show-trailing-whitespace t)
 </pre>
 </div>
-
-<ol class="org-ol">
+</li>
 <li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
 </li>
 </ol>

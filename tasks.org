@@ -47,7 +47,8 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 	 :END:
 *** [#A] Emacs Life																									:project:
 **** TODO Sketch out personas
-**** TODO Set up mailing list
+**** CANCELLED Set up mailing list
+		 CLOSED: [2014-05-22 Thu 22:38]
 **** How to Read Emacs Lisp e-mail course 													:project:
 [[file:~/personal/elisp-course.org]]
 ***** DONE Get e-mail sending to work from virtual machine
@@ -76,12 +77,19 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   0:30
 			:END:
-***** TODO Send course e-mail: beginner1, beginner2
-			 SCHEDULED: <2014-05-21 Wed>
-***** STARTED Take notes on people who are interested in taking course, process course steps :routines:
-			 SCHEDULED: <2014-05-21 Wed .+2d>
+***** DONE Send course e-mail: beginner1, beginner2
+			 CLOSED: [2014-05-21 Wed 15:47] SCHEDULED: <2014-05-21 Wed>
 			 :LOGBOOK:
-			 CLOCK: [2014-05-21 Wed 12:14]
+			 CLOCK: [2014-05-21 Wed 14:50]--[2014-05-21 Wed 15:47] =>  0:57
+			 :END:
+			:PROPERTIES:
+			:Effort:   1:00
+			:END:
+***** TODO Take notes on people who are interested in taking course, process  course steps :routine:
+			 SCHEDULED: <2014-05-26 Mon .+2d>
+			 :LOGBOOK:
+			 - State "DONE"       from "STARTED"    [2014-05-21 Wed 14:50]
+			 CLOCK: [2014-05-21 Wed 12:14]--[2014-05-21 Wed 14:50] =>  2:36
 			 CLOCK: [2014-05-21 Wed 10:26]--[2014-05-21 Wed 10:30] =>  0:04
 			 - State "DONE"       from "TODO"       [2014-05-19 Mon 22:33]
 			 - State "DONE"       from "STARTED"    [2014-05-16 Fri 15:01]
@@ -95,7 +103,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
       :CLOCK_MODELINE_TOTAL: today
-			:LAST_REPEAT: [2014-05-19 Mon 22:33]
+			:LAST_REPEAT: [2014-05-21 Wed 14:50]
 			:END:
 ***** DONE Package beginner1 as a lesson
 			 CLOSED: [2014-05-13 Tue 21:05]
@@ -106,14 +114,17 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   0:30
 			:END:
-***** TODO Package beginner2 as a lesson
+***** DONE Package beginner2 as a lesson
+			 CLOSED: [2014-05-22 Thu 22:38]
 ***** DONE Make checklist of topics, figure out where people are
 			 CLOSED: [2014-05-12 Mon 22:04]
 **** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp.org][Link]]
 ***** TODO Write objectives for each section
-***** TODO Pick chunk size for sections
-***** TODO Break guide up into parts that can be focused on for 15-60 minutes
+***** DONE Pick chunk size for sections
+			 CLOSED: [2014-05-22 Thu 22:38]
+***** DONE Break guide up into parts that can be focused on for 15-60 minutes
+			 CLOSED: [2014-05-22 Thu 22:38]
 ***** TODO Add more exercises
 ***** TODO Add more examples
 		 	:PROPERTIES:
@@ -201,7 +212,12 @@ https://twitter.com/gozes/status/446397063194894337
 
 Difference compared to M-x customize-group org - highlights specific things you may want to tweak, and provides screenshots/examples.
 **** TODO Find a way to easily make a list of all the customization options by group
-*** TODO Share reading Emacs config video															 :blog:
+*** TODO Learn from other books
+> about a year going through Land of Lisp by Conrad Barski.  And lately I've
+> been working my way through Clojure Programming by Emerick, Grand, and
+Cliff Rodgers
+*** DONE Share reading Emacs config video															 :blog:
+		 CLOSED: [2014-05-22 Thu 22:39]
 https://www.youtube.com/watch?v=uP9qmhcI9IQ
 *** TODO Record another Emacs config video
 *** DONE Add support page to emacs-notes
@@ -212,9 +228,11 @@ https://www.youtube.com/watch?v=uP9qmhcI9IQ
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
-*** TODO Sketch out Org Mode coaching
+*** CANCELLED Sketch out Org Mode coaching
+		 CLOSED: [2014-05-22 Thu 22:38]
 
-*** TODO Write a tutorial from installing Emacs to getting Org 8 updated    
+*** CANCELLED Write a tutorial from installing Emacs to getting Org 8 updated    
+		 CLOSED: [2014-05-21 Wed 16:45]
 :PROPERTIES:
 :Effort: 2:00
 :END:
@@ -259,7 +277,11 @@ The Org Mode included in Emacs 24 is version 7. Version 8 has lots of new config
 
 Good luck!
 
-*** TODO Announce guide for learning Emacs Lisp
+*** DONE Announce guide for learning Emacs Lisp
+		 CLOSED: [2014-05-22 Thu 22:38] SCHEDULED: <2014-06-21 Sat>
+		:PROPERTIES:
+		:CREATED:  [2014-05-21 Wed 16:45]
+		:END:
 *** TODO Announce EmacsLife.com
 *** TODO Write about load path shadowing
 	 	:PROPERTIES:
@@ -269,6 +291,160 @@ Good luck!
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
+*** DONE Write about semi-auto-responder
+			 CLOSED: [2014-05-21 Wed 16:43]
+			:LOGBOOK:
+			CLOCK: [2014-05-21 Wed 16:06]--[2014-05-21 Wed 16:43] =>  0:37
+			:END:
+			:PROPERTIES:
+			:Effort:   1:00
+			:END:
+
+It turns out that lots of people are interested in an e-mail-based course for learning Emacs Lisp. Yay! =) Maybe it's the idea of bite-size chunks. Maybe it's the ease of asking questions. Maybe it's the regular reminders to work on something. Who knows? Whatever the reason, it's awesome to see so many people willing to join me on this experiment.
+
+Since this is my first time to venture into the world of teaching people online, I wanted to see how far I could push actually doing all the mails myself, instead of just signing up for an Aweber account and handing everyone off to an impersonal autoresponder. I dusted off Gnus, offlineimap, and org-contacts, and started figuring out my workflow. I'll share how that workflow's evolving so that you can get a sense of how someone might write little bits of Emacs Lisp to make something repetitive easier.
+
+For the first little while, I got by with using =C-x r s= (=copy-to-register=) and =C-x r i= (=insert-register=) to store the text that I needed. 
+Sometimes I needed to paste in the welcome message and checklist, and sometimes I needed to paste in the first lesson. By using registers, I could insert whatever I wanted instead of going through the kill ring. I also had another bit of templated code in yet another register so that I could easily create an org-contacts entry for the person whose mail I was replying to. In the beginning, I used tasks under each person's heading to indicate that I had sent them the checklist or that I had sent them the first lesson. Eventually, I changed my org-contacts notes so that the TODO state of each person showed which lesson I was going to send them next, or CHECKLIST if I was waiting for their reply to the checklist. I also set up Org so that it would automatically log when the TODO state was changed. 
+
+#+begin_src org
+#+TODO: TODO | DONE
+#+TODO: CHECKLIST(c!) BEGINNER1(1!) BEGINNER2(2!) BEGINNER3(3!) BEGINNER4(4!) FULL(f!) | FINISHED(x!)
+#+TODO: | CANCELLED
+
+,* Who
+,** CHECKLIST Jane Smith ...
+,** BEGINNER1 John Smith
+	 SCHEDULED: <2014-05-28 Wed>
+   :PROPERTIES:
+   :EMAIL: john@example.com
+   :END:
+(notes from the messages, etc.)
+#+end_src
+
+I wrote some code to make it easier to send someone a checklist and create a note for them in my org-contacts file. I bound it to =C-c e c= for convenience.
+(The =bind-key= function is defined by a package.)
+
+#+begin_src emacs-lisp
+      (setq sacha/elisp-course-checklist-body "... really long text here...")
+      (defun sacha/elisp-course-checklist ()
+        "Copy this message and put it at the end as a checklist item. 
+      Start a message with the checklist."
+        (interactive)
+        (gnus-summary-scroll-up 1)
+        (with-current-buffer gnus-article-buffer
+          (let ((message (buffer-substring-no-properties (point-min) (point-max)))
+                (email (cadr (org-contacts-gnus-get-name-email))))
+            (with-current-buffer "elisp-course.org"
+              (save-excursion
+                (goto-char (point-max))
+                (save-excursion
+                  (insert "\n** " message)
+                  (org-set-property "EMAIL" email)
+                  (org-todo "CHECKLIST"))))))
+        (gnus-summary-followup-with-original nil)
+        (goto-char (point-max))
+        (insert sacha/elisp-course-checklist-body))
+      (bind-key "C-c e c" 'sacha/elisp-course-checklist)
+#+end_src
+
+This made it easier for me to read the starred messages from my inbox and use =C-c e c= to get a head start on processing people's introductory messages.
+Yay! I used the register trick to help me reply to people who were ready for the first lesson. After the first few replies, I noticed that the attachment code was fine even if I put that in the register too, so I added it as well.
+
+Things got more complicated when I started processing lesson 2. I didn't want to have to set up and remember lots of different registers, and I didn't want to manually update the TODO states either. So I started defining functions that I could call with keyboard shortcuts:
+
+#+begin_src emacs-lisp
+    (defun sacha/elisp-course-1 ()
+      (interactive)
+      (let ((marker (org-contacts-gnus-article-from-get-marker)))
+        (if marker
+            (org-with-point-at marker
+              (org-todo "BEGINNER2"))))
+      ;; Find the person's contact record
+      (gnus-summary-scroll-up 1)
+      (gnus-summary-followup-with-original nil)
+      (message-goto-subject)
+      (message-delete-line)
+      (insert (concat "Subject: " sacha/elisp-course-1-subject "\n"))
+      (goto-char (point-max))
+      (insert sacha/elisp-course-1-body))
+    (bind-key "C-c e 1" 'sacha/elisp-course-1)
+    (defun sacha/elisp-course-2 ()
+      (interactive)
+      (let ((marker (org-contacts-gnus-article-from-get-marker)))
+        (if marker
+            (org-with-point-at marker
+              (org-todo "BEGINNER3"))))
+      ;; Find the person's contact record
+      (gnus-summary-scroll-up)
+      (gnus-summary-followup-with-original nil)
+      (goto-char (point-max))
+      (insert sacha/elisp-course-2-body))
+    (bind-key "C-c e 2" 'sacha/elisp-course-2)
+#+end_src
+
+Really, though, it doesn't make sense to have a lot of duplicated code. So I wrote some code that would use the person's TODO keyword to look up the message to send them, and then move them to the next keyword. Now I don't need =sacha/elisp-course-1= or =sacha/elisp-course-2= any more.
+
+#+begin_src emacs-lisp
+  (setq sacha/elisp-course-info
+        `(("CHECKLIST" nil ,sacha/elisp-course-checklist-body)
+          ("BEGINNER1" ,sacha/elisp-course-1-subject ,sacha/elisp-course-1-body)
+          ("BEGINNER2" ,sacha/elisp-course-2-subject ,sacha/elisp-course-2-body)))
+
+  (defun sacha/elisp-course-process (subject body &optional state)
+    "Process this course entry."
+    (if (derived-mode-p 'org-mode)
+        (progn
+          ;; Move this node to the next state and compose a message
+          (if state (org-todo state))
+          (org-todo 'right)
+          (message-mail (org-entry-get (point) "EMAIL") subject)
+          (goto-char (point-max))
+          (insert body))
+      ;; Doing this from Gnus; find the person's info
+      (let ((marker (org-contacts-gnus-article-from-get-marker)))
+        (if marker (org-with-point-at marker
+                     (if state (org-todo state))
+                     (org-todo 'right)))
+        ;; Compose a reply
+        (gnus-summary-scroll-up 1)
+        (gnus-summary-followup-with-original nil)
+        (message-goto-subject)
+        (message-delete-line)
+        (insert (concat "Subject: " subject "\n"))
+        (goto-char (point-max))
+        (insert body))))
+
+  (defun sacha/elisp-course-guess-and-process (&optional state)
+    (interactive (list (if current-prefix-arg (read-string "State: "))))
+    (let ((current-state
+           (or state (elt
+                      (if (derived-mode-p 'org-mode)
+                          (org-heading-components) 
+                        (let ((marker (org-contacts-gnus-article-from-get-marker)))
+                          (if marker (org-with-point-at marker (org-heading-components)))))
+                      2))))
+      (sacha/elisp-course-process
+       (elt (assoc current-state sacha/elisp-course-info) 1)
+       (elt (assoc current-state sacha/elisp-course-info) 2)
+       state)))
+  (bind-key "C-c e e" 'sacha/elisp-course-guess-and-process)
+#+end_src
+
+Come to think of it, I should totally have it schedule the next update for the next Wednesday, too. ;) That's just =(org-schedule "+wed")=. Neat, huh?
+And I'm sure there are all sorts of ways the code can be simpler, but it works for me at the moment, so hooray! 
+
+I really like this approach. It lets me pull in standard information while also letting me customize the messages and how it fits into my task tracking. I can't get that with Gmail (even with canned responses), and I'm not sure any CRM is going to be quite as awesome as this. I can't wait to see how else we'll tweak this as we go through more conversations. I'd like to get better at:
+- having a consistent place where I can process all the messages and make sure nothing falls through the cracks; I currently star messages to make sure I process them, since the Gmail label folder in IMAP seems to be missing some messages
+- seeing all Gnus conversations related to an org-contacts entry
+- reaching out to people proactively with the next lesson, even if they haven't e-mailed me (or maybe I should wait for them?)
+
+Anyway, that's an example of writing a little bit of Emacs Lisp in order to connect different packages. Gnus handles mail, Org handles notes, org-contacts links the two together, and with a little bit of custom code, I can make the combination fit what I want to do. I read the source code of org-contacts to find out how I could look up the appropriate note, and I looked at =org-shiftright= to find out how to move things to the next TODO state. If you know something that works roughly like what you want it to work, you can find out how it does things and then copy that.
+
+As for the course itself: I've been sending people links to the HTML output, attached .txt files (with =-*- mode: org -*-=) so they can open it in Emacs if they want, and inline text so that they can skim it briefly in their e-mail client if they want to. I'm not perfectly happy with the plain-text formats, but it seems to be a reasonable compromise, and so far people have been able to deal with it. I've been improving pieces of it based on feedback on clarity, suggestions for good examples, and so on. I didn't take all the feedback; after thinking about some of the suggestions, I still preferred it my way. It's shaping up quite nicely, though!
+
+If you're curious about the beginner's course on reading Emacs Lisp, e-mail me at [[mailto:sacha@sachachua.com][sacha@sachachua.com]] and we'll see how this works out. I'm certainly learning a lot. =)
+
 *** TODO Write about undo
 	 	:PROPERTIES:
 	 	:Effort:   0:30
@@ -575,6 +751,7 @@ https://github.com/bbatsov/prelude
 - Projectile
 - CIDER maintenance
 Technical lead, Tradeo: Rails, NoedJS
+**** TODO Transcribe this myself? Offer to Oli?
 **** DONE Have Emacs Chat with bbatsov
 		 CLOSED: [2014-05-19 Mon 13:03]
 		 :LOGBOOK:
@@ -660,10 +837,15 @@ Starter kit? http://technomancy.us/153
 		 :PROPERTIES:
 		 :Effort:   0:30
 		 :END:
-**** TODO Transcribe this myself
+**** DELEGATED Transcribe this
 *** Christopher Wellons
 **** DONE Set up chat with Christopher Wellons
 	 	 CLOSED: [2014-05-01 Thu 22:08]
+**** TODO Host chat with Christopher Wellons
+		 SCHEDULED: <2014-05-30 Fri>
+		 :PROPERTIES:
+		 :CREATED:  [2014-05-25 Sun 21:40]
+		 :END:
 *** Mickey Petersen
 **** DONE Set up chat with masteringemacs
 	 	 CLOSED: [2014-05-01 Thu 22:08]
@@ -679,7 +861,8 @@ Starter kit? http://technomancy.us/153
 ** Connecting - Emacs
 *** International Lisp Conference 2014 (August)
 Contact: Dave Cooper
-**** STARTED Draft title, abstract, bio
+**** DONE Draft title, abstract, bio
+		 CLOSED: [2014-05-22 Thu 22:42]
 		 :LOGBOOK:
 		 CLOCK: [2014-05-07 Wed 11:18]--[2014-05-07 Wed 11:40] =>  0:22
 		 :END:
@@ -806,7 +989,8 @@ Topics
 		 :Effort:   0:30
 		 :END:
 ** Other Emacs tasks
-*** STARTED Get mplayer working with emms on Windows
+*** DONE Get mplayer working with emms on Windows
+		 CLOSED: [2014-05-22 Thu 22:42]
 		:LOGBOOK:
 		CLOCK: [2014-05-09 Fri 14:19]--[2014-05-09 Fri 14:32] =>  0:13
 		:END:
