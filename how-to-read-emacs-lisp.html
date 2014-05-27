@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-05-26 Mon 20:05 -->
+<!-- 2014-05-26 Mon 20:12 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -348,7 +348,7 @@ Add the following line to your `.emacs' file:
 </pre>
 
 <p>
-You can read the Emacs manual by typing <code>F1 i</code> (<code>info</code>) and choosing the <b>Emacs</b> item. If you're on a terminal that doesn't understand the <code>F1</code> key, use <code>C-h</code> whenever you see a reference to <code>F1</code>, or use <code>M-x</code> to call the command by name (ex: <code>C-h i</code>, or <code>M-x info</code>). To jump directly to the Emacs manual, you can use <code>F1 r</code> (<code>info-emacs-manual</code>). You can also find the Emacs Manual at <a href="http://www.gnu.org/software/emacs/manual/emacs.html">http://www.gnu.org/software/emacs/manual/emacs.html</a> .
+You can read the Emacs manual by typing <code>C-h i</code> (<code>info</code>) and choosing the <b>Emacs</b> item. If you're on a terminal that doesn't understand the <code>C-h</code> key, use <code>F1</code> or <code>M-x help</code> whenever you see a reference to <code>C-h</code>, or use <code>M-x</code> to call the command by name (ex: <code>F1 i</code>, or <code>M-x info</code>). To jump directly to the Emacs manual, you can use <code>C-h r</code> (<code>info-emacs-manual</code>). You can also find the Emacs Manual at <a href="http://www.gnu.org/software/emacs/manual/emacs.html">http://www.gnu.org/software/emacs/manual/emacs.html</a> .
 </p>
 </div>
 </div>
@@ -485,7 +485,7 @@ You can use <code>M-p</code> (<code>comint-previous-input</code>) to go through 
 </p>
 
 <p>
-Tip: When you're trying out an unfamiliar mode, use <code>F1 m</code> (<code>describe-mode</code>) to learn more about the commands that are available in that mode.
+Tip: When you're trying out an unfamiliar mode, use <code>C-h m</code> (<code>describe-mode</code>) to learn more about the commands that are available in that mode.
 </p>
 </div>
 </div>
@@ -529,7 +529,7 @@ To run code ("evaluate" it, in Emacs terms), you can use the following commands 
 <ul class="org-ul">
 <li><code>M-x eval-buffer</code> runs all the code in the current file or buffer.
 </li>
-<li><code>M-x eval-region</code> runs the code in the selected region. You can select a region of text by using the mouse. Alternatively, you can type <code>C-SPC</code> to mark the start of the region, then move your cursor to the end of the region. If you want to learn more about selecting regions, check out the Emacs tutorial (<code>F1 t</code>, <code>C-h t</code>, or <code>M-x help-with-tutorial</code>).
+<li><code>M-x eval-region</code> runs the code in the selected region. You can select a region of text by using the mouse. Alternatively, you can type <code>C-SPC</code> to mark the start of the region, then move your cursor to the end of the region. If you want to learn more about selecting regions, check out the Emacs tutorial (<code>C-h t</code>, <code>C-h t</code>, or <code>M-x help-with-tutorial</code>).
 </li>
 <li><code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
 </li>
@@ -800,7 +800,7 @@ This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mo
 </p>
 
 <p>
-To find out if something is a function, what it does, what arguments it takes, and if it has any keyboard shortcuts, use the <code>&lt;f1&gt; f</code> (<code>describe-function</code>) command. Give it the function name. For example, <code>&lt;f1&gt; f add-hook</code> will show you the documentation for <code>add-hook</code>, and <code>&lt;f1&gt; f show-paren-mode</code> will show you the documentation for that.
+To find out if something is a function, what it does, what arguments it takes, and if it has any keyboard shortcuts, use the <code>C-h f</code> (<code>describe-function</code>) command. Give it the function name. For example, <code>C-h f add-hook</code> will show you the documentation for <code>add-hook</code>, and <code>C-h f show-paren-mode</code> will show you the documentation for that.
 </p>
 
 <p>
@@ -808,18 +808,18 @@ The documentation for <code>show-paren-mode</code> starts with "show-paren-mode 
 </p>
 
 <p>
-Emacs is extensively documented. Whenever you come across a strange function, check it out with <code>F1 f</code> (<code>describe-function</code>). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use <code>M-x find-function</code> to learn more.
+Emacs is extensively documented. Whenever you come across a strange function, check it out with <code>C-h f</code> (<code>describe-function</code>). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use <code>M-x find-function</code> to learn more.
 </p>
 
 <p>
-In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use <code>F1 k</code> (<code>describe-key</code>) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item. You can also look up functions by keyword if you use <code>M-x apropos</code>.
+In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use <code>C-h k</code> (<code>describe-key</code>) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item. You can also look up functions by keyword if you use <code>M-x apropos</code>.
 </p>
 
 <div class="practice">
 <ol class="org-ol">
-<li>Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about the following functions:
+<li>Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the following functions:
 </li>
-<li><code>describe-function</code>: Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as <code>C-h f</code>. 
+<li><code>describe-function</code>: Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as <code>F1 f</code>. 
 </li>
 <li><code>find-file</code>: You can use this to open specific files. See the function description to learn how to use this with remote files.  
 </li>
@@ -828,7 +828,7 @@ In fact, you can learn more about functions even if you don't know what they're 
 <li><code>just-one-space</code>: Handy way to clean up space. What keyboard shortcut is it bound to?
 </li>
 
-<li>Look for Emacs configuration code that you would like to understand further. Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
+<li>Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(savehist-mode 1)
@@ -854,7 +854,7 @@ Variables are containers that can hold different values. In Emacs Lisp, you can 
 </p>
 
 <p>
-Like the way you can use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about a function, you can use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about a variable by name. For example, use <code>&lt;f1&gt; v</code> to look up the documentation for <code>visible-bell</code>. It says:
+Like the way you can use <code>C-h f</code> (<code>describe-function</code>) to learn more about a function, you can use <code>C-h v</code> (<code>describe-variable</code>) to learn more about a variable by name. For example, use <code>C-h v</code> to look up the documentation for <code>visible-bell</code>. It says:
 </p>
 
 <pre class="example">
@@ -887,7 +887,7 @@ This turns on the display of the column number in the modeline.
 </p>
 
 <p>
-Many variables have the same value no matter what you're looking at. Some variables change depending on the buffer you're in, and are called "buffer-local" variables. Use <code>&lt;f1&gt; v</code> to find out if a variable is buffer-local. For example, the documentation for <code>tab-width</code> includes:
+Many variables have the same value no matter what you're looking at. Some variables change depending on the buffer you're in, and are called "buffer-local" variables. Use <code>C-h v</code> to find out if a variable is buffer-local. For example, the documentation for <code>tab-width</code> includes:
 </p>
 
 <pre class="example">
@@ -910,7 +910,7 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 
 <div class="practice">
 <ol class="org-ol">
-<li>Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
+<li>Use <code>C-h v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(setq-default indicate-empty-lines t)
@@ -918,7 +918,7 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 </pre>
 </div>
 </li>
-<li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
+<li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>C-h v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
 </li>
 </ol>
 
@@ -1227,7 +1227,7 @@ This stores backup files in the directory specified by <code>temporary-file-dire
 <div class="outline-text-3" id="text-4-5">
 <div class="practice">
 <p>
-Look for Emacs configuration code that you would like to understand further. Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about functions and <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
+Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about functions and <code>C-h v</code> (<code>describe-variable</code>) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
 </p>
 
 </div>
@@ -1292,7 +1292,7 @@ If you want to set a keyboard shortcut only in particular modes or types of file
 <h4 id="sec-5-1-2">What does <code>kbd</code> do? How can I figure out which key it sets?</h4>
 <div class="outline-text-4" id="text-5-1-2">
 <p>
-If you've gone through the Emacs Tutorial (<b>Help - Emacs Tutorial</b> or <code>F1 t</code>), you'll be familiar with many of the conventions used for writing keyboard shortcuts. <code>C-</code> stands for the <code>Ctrl</code> key, <code>M-</code> stands for the <code>Meta</code> key (which is probably <code>Alt</code> or <code>Option</code> on your keyboard). There are other prefixes as well. <code>S-</code> is for Shift, <code>H-</code> is for <code>Hyper</code>, and <code>s-</code> is for <code>Super</code>. Some people use operating system tools (such as <code>setxkbmap</code> for Linux) to change keys on their keyboard to <code>Super</code> or <code>Hyper</code> in order to enable even more keyboard shortcuts.
+If you've gone through the Emacs Tutorial (<b>Help - Emacs Tutorial</b> or <code>C-h t</code>), you'll be familiar with many of the conventions used for writing keyboard shortcuts. <code>C-</code> stands for the <code>Ctrl</code> key, <code>M-</code> stands for the <code>Meta</code> key (which is probably <code>Alt</code> or <code>Option</code> on your keyboard). There are other prefixes as well. <code>S-</code> is for Shift, <code>H-</code> is for <code>Hyper</code>, and <code>s-</code> is for <code>Super</code>. Some people use operating system tools (such as <code>setxkbmap</code> for Linux) to change keys on their keyboard to <code>Super</code> or <code>Hyper</code> in order to enable even more keyboard shortcuts.
 </p>
 
 <p>
@@ -1351,7 +1351,7 @@ but <code>C-</code> is probably easier to read.
 </p>
 
 <p>
-When using <code>kbd</code>, whitespace doesn't usually matter, but it's easier to read if you use space to separate the keys to type. For more information about the syntax used by <code>kbd</code>, see <code>F1 f</code> (<code>describe-function</code>) for <code>kbd</code>, then follow the link to the documentation for <code>edmacro-mode</code>.
+When using <code>kbd</code>, whitespace doesn't usually matter, but it's easier to read if you use space to separate the keys to type. For more information about the syntax used by <code>kbd</code>, see <code>C-h f</code> (<code>describe-function</code>) for <code>kbd</code>, then follow the link to the documentation for <code>edmacro-mode</code>.
 </p>
 </div>
 </div>
@@ -1458,7 +1458,7 @@ You'll need to install and use the <code>bind-key</code> package before you can 
 </p>
 
 <p>
-Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use <code>F1 f</code> (<code>describe-function</code>) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
+Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use <code>C-h f</code> (<code>describe-function</code>) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
 </p>
 </div>
 </div>
@@ -1653,7 +1653,7 @@ has not been installed.
 </div>
 
 <p>
-If you use <code>F1 f</code> (<code>describe-function</code>) on <code>require</code>, you'll see that
+If you use <code>C-h f</code> (<code>describe-function</code>) on <code>require</code>, you'll see that
 it has one required argument (feature) and two optional arguments
 (filename, noerror). <code>require</code> returns non-nil (or true) if the
 library was loaded, so if the library exists, then the rest of the

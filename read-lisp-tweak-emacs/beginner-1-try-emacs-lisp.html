@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I try Emacs Lisp code?"</title>
-<!-- 2014-05-26 Mon 20:05 -->
+<!-- 2014-05-26 Mon 20:11 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -101,7 +101,7 @@ Add the following line to your `.emacs' file:
 </pre>
 
 <p>
-You can read the Emacs manual by typing <code>F1 i</code> (<code>info</code>) and choosing the <b>Emacs</b> item. If you're on a terminal that doesn't understand the <code>F1</code> key, use <code>C-h</code> whenever you see a reference to <code>F1</code>, or use <code>M-x</code> to call the command by name (ex: <code>C-h i</code>, or <code>M-x info</code>). To jump directly to the Emacs manual, you can use <code>F1 r</code> (<code>info-emacs-manual</code>). You can also find the Emacs Manual at <a href="http://www.gnu.org/software/emacs/manual/emacs.html">http://www.gnu.org/software/emacs/manual/emacs.html</a> .
+You can read the Emacs manual by typing <code>C-h i</code> (<code>info</code>) and choosing the <b>Emacs</b> item. If you're on a terminal that doesn't understand the <code>C-h</code> key, use <code>F1</code> or <code>M-x help</code> whenever you see a reference to <code>C-h</code>, or use <code>M-x</code> to call the command by name (ex: <code>F1 i</code>, or <code>M-x info</code>). To jump directly to the Emacs manual, you can use <code>C-h r</code> (<code>info-emacs-manual</code>). You can also find the Emacs Manual at <a href="http://www.gnu.org/software/emacs/manual/emacs.html">http://www.gnu.org/software/emacs/manual/emacs.html</a> .
 </p>
 </div>
 </div>
@@ -238,7 +238,7 @@ You can use <code>M-p</code> (<code>comint-previous-input</code>) to go through 
 </p>
 
 <p>
-Tip: When you're trying out an unfamiliar mode, use <code>F1 m</code> (<code>describe-mode</code>) to learn more about the commands that are available in that mode.
+Tip: When you're trying out an unfamiliar mode, use <code>C-h m</code> (<code>describe-mode</code>) to learn more about the commands that are available in that mode.
 </p>
 </div>
 </div>
@@ -282,7 +282,7 @@ To run code ("evaluate" it, in Emacs terms), you can use the following commands 
 <ul class="org-ul">
 <li><code>M-x eval-buffer</code> runs all the code in the current file or buffer.
 </li>
-<li><code>M-x eval-region</code> runs the code in the selected region. You can select a region of text by using the mouse. Alternatively, you can type <code>C-SPC</code> to mark the start of the region, then move your cursor to the end of the region. If you want to learn more about selecting regions, check out the Emacs tutorial (<code>F1 t</code>, <code>C-h t</code>, or <code>M-x help-with-tutorial</code>).
+<li><code>M-x eval-region</code> runs the code in the selected region. You can select a region of text by using the mouse. Alternatively, you can type <code>C-SPC</code> to mark the start of the region, then move your cursor to the end of the region. If you want to learn more about selecting regions, check out the Emacs tutorial (<code>C-h t</code>, <code>C-h t</code>, or <code>M-x help-with-tutorial</code>).
 </li>
 <li><code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
 </li>

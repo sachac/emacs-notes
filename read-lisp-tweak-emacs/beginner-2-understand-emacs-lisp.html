@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I understand what Emacs Lisp code does?"</title>
-<!-- 2014-05-26 Mon 20:05 -->
+<!-- 2014-05-26 Mon 20:11 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -160,7 +160,7 @@ This turns on <code>eldoc-mode</code> when a buffer is switched to Emacs Lisp mo
 </p>
 
 <p>
-To find out if something is a function, what it does, what arguments it takes, and if it has any keyboard shortcuts, use the <code>&lt;f1&gt; f</code> (<code>describe-function</code>) command. Give it the function name. For example, <code>&lt;f1&gt; f add-hook</code> will show you the documentation for <code>add-hook</code>, and <code>&lt;f1&gt; f show-paren-mode</code> will show you the documentation for that.
+To find out if something is a function, what it does, what arguments it takes, and if it has any keyboard shortcuts, use the <code>C-h f</code> (<code>describe-function</code>) command. Give it the function name. For example, <code>C-h f add-hook</code> will show you the documentation for <code>add-hook</code>, and <code>C-h f show-paren-mode</code> will show you the documentation for that.
 </p>
 
 <p>
@@ -168,18 +168,18 @@ The documentation for <code>show-paren-mode</code> starts with "show-paren-mode 
 </p>
 
 <p>
-Emacs is extensively documented. Whenever you come across a strange function, check it out with <code>F1 f</code> (<code>describe-function</code>). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use <code>M-x find-function</code> to learn more.
+Emacs is extensively documented. Whenever you come across a strange function, check it out with <code>C-h f</code> (<code>describe-function</code>). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use <code>M-x find-function</code> to learn more.
 </p>
 
 <p>
-In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use <code>F1 k</code> (<code>describe-key</code>) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item. You can also look up functions by keyword if you use <code>M-x apropos</code>.
+In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use <code>C-h k</code> (<code>describe-key</code>) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item. You can also look up functions by keyword if you use <code>M-x apropos</code>.
 </p>
 
 <div class="practice">
 <ol class="org-ol">
-<li>Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about the following functions:
+<li>Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the following functions:
 </li>
-<li><code>describe-function</code>: Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as <code>C-h f</code>. 
+<li><code>describe-function</code>: Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as <code>F1 f</code>. 
 </li>
 <li><code>find-file</code>: You can use this to open specific files. See the function description to learn how to use this with remote files.  
 </li>
@@ -188,7 +188,7 @@ In fact, you can learn more about functions even if you don't know what they're 
 <li><code>just-one-space</code>: Handy way to clean up space. What keyboard shortcut is it bound to?
 </li>
 
-<li>Look for Emacs configuration code that you would like to understand further. Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
+<li>Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(savehist-mode 1)
@@ -214,7 +214,7 @@ Variables are containers that can hold different values. In Emacs Lisp, you can 
 </p>
 
 <p>
-Like the way you can use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about a function, you can use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about a variable by name. For example, use <code>&lt;f1&gt; v</code> to look up the documentation for <code>visible-bell</code>. It says:
+Like the way you can use <code>C-h f</code> (<code>describe-function</code>) to learn more about a function, you can use <code>C-h v</code> (<code>describe-variable</code>) to learn more about a variable by name. For example, use <code>C-h v</code> to look up the documentation for <code>visible-bell</code>. It says:
 </p>
 
 <pre class="example">
@@ -247,7 +247,7 @@ This turns on the display of the column number in the modeline.
 </p>
 
 <p>
-Many variables have the same value no matter what you're looking at. Some variables change depending on the buffer you're in, and are called "buffer-local" variables. Use <code>&lt;f1&gt; v</code> to find out if a variable is buffer-local. For example, the documentation for <code>tab-width</code> includes:
+Many variables have the same value no matter what you're looking at. Some variables change depending on the buffer you're in, and are called "buffer-local" variables. Use <code>C-h v</code> to find out if a variable is buffer-local. For example, the documentation for <code>tab-width</code> includes:
 </p>
 
 <pre class="example">
@@ -270,7 +270,7 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 
 <div class="practice">
 <ol class="org-ol">
-<li>Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
+<li>Use <code>C-h v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(setq-default indicate-empty-lines t)
@@ -278,7 +278,7 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 </pre>
 </div>
 </li>
-<li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
+<li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>C-h v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
 </li>
 </ol>
 
@@ -587,7 +587,7 @@ This stores backup files in the directory specified by <code>temporary-file-dire
 <div class="outline-text-2" id="text-5">
 <div class="practice">
 <p>
-Look for Emacs configuration code that you would like to understand further. Use <code>&lt;f1&gt; f</code> (<code>describe-function</code>) to learn more about functions and <code>&lt;f1&gt; v</code> (<code>describe-variable</code>) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
+Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about functions and <code>C-h v</code> (<code>describe-variable</code>) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
 </p>
 
 </div>

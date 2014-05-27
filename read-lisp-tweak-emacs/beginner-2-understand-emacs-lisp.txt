@@ -82,22 +82,22 @@ This turns on =eldoc-mode=, which displays the argument list for the current fun
 
 This turns on =eldoc-mode= when a buffer is switched to Emacs Lisp mode. You'll learn more about why some things have =​'​= and some don't in the section "Some things are taken literally" in this module.
 
-To find out if something is a function, what it does, what arguments it takes, and if it has any keyboard shortcuts, use the =<f1> f= (=describe-function=) command. Give it the function name. For example, =<f1> f add-hook= will show you the documentation for =add-hook=, and =<f1> f show-paren-mode= will show you the documentation for that.
+To find out if something is a function, what it does, what arguments it takes, and if it has any keyboard shortcuts, use the =C-h f= (=describe-function=) command. Give it the function name. For example, =C-h f add-hook= will show you the documentation for =add-hook=, and =C-h f show-paren-mode= will show you the documentation for that.
 
 The documentation for =show-paren-mode= starts with "show-paren-mode is an interactive autoloaded Lisp function". Interactive functions can be called with =M-x=. Read the description of the function to learn more about arguments that you can pass to change its behavior. If it mentions a prefix argument, that means that you can change its behaviour by typing =C-u= before you call the function.
 
-Emacs is extensively documented. Whenever you come across a strange function, check it out with =F1 f= (=describe-function=). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use =M-x find-function= to learn more.
+Emacs is extensively documented. Whenever you come across a strange function, check it out with =C-h f= (=describe-function=). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use =M-x find-function= to learn more.
 
-In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use =F1 k= (=describe-key=) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item. You can also look up functions by keyword if you use =M-x apropos=.
+In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use =C-h k= (=describe-key=) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item. You can also look up functions by keyword if you use =M-x apropos=.
 
 #+BEGIN_PRACTICE
-1. Use =<f1> f= (=describe-function=) to learn more about the following functions:
-- =describe-function=: Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as =C-h f=. 
+1. Use =C-h f= (=describe-function=) to learn more about the following functions:
+- =describe-function=: Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as =F1 f=. 
 - =find-file=: You can use this to open specific files. See the function description to learn how to use this with remote files.  
 - =message=: This is an example of a function that has a variable number of arguments. The first argument says how the message will be displayed, and the rest of the arguments contain the values.
 - =just-one-space=: Handy way to clean up space. What keyboard shortcut is it bound to?
 
-2. Look for Emacs configuration code that you would like to understand further. Use =<f1> f= (=describe-function=) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
+2. Look for Emacs configuration code that you would like to understand further. Use =C-h f= (=describe-function=) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
 	 #+begin_src emacs-lisp
 	 (savehist-mode 1)
 	 (tooltip-mode -1)
@@ -112,7 +112,7 @@ In fact, you can learn more about functions even if you don't know what they're 
 
 Variables are containers that can hold different values. In Emacs Lisp, you can change the value of a variable as many times as you want, and you can change it to different types of data as needed.
 
-Like the way you can use =<f1> f= (=describe-function=) to learn more about a function, you can use =<f1> v= (=describe-variable=) to learn more about a variable by name. For example, use =<f1> v= to look up the documentation for =visible-bell=. It says:
+Like the way you can use =C-h f= (=describe-function=) to learn more about a function, you can use =C-h v= (=describe-variable=) to learn more about a variable by name. For example, use =C-h v= to look up the documentation for =visible-bell=. It says:
 
 #+begin_example
 Non-nil means try to flash the frame to represent a bell.
@@ -133,7 +133,7 @@ Here's another useful snippet:
 
 This turns on the display of the column number in the modeline.
 
-Many variables have the same value no matter what you're looking at. Some variables change depending on the buffer you're in, and are called "buffer-local" variables. Use =<f1> v= to find out if a variable is buffer-local. For example, the documentation for =tab-width= includes:
+Many variables have the same value no matter what you're looking at. Some variables change depending on the buffer you're in, and are called "buffer-local" variables. Use =C-h v= to find out if a variable is buffer-local. For example, the documentation for =tab-width= includes:
 
 #+begin_example
   Automatically becomes buffer-local when set.
@@ -148,12 +148,12 @@ This means you can't globally set it with =setq=, because any changes you make w
 To make it easier for you to customize Emacs without writing Emacs Lisp code, many variables give you an interface for setting the variable. If you use =describe-variable= to look up the definition, you'll often see a line like "You can *customize* this variable." Click on the *customize* link in the documentation or move your point to it and press RET. You can change the value there and try it temporarily, or you can save it to your configuration. The Customize interface is good for exploring, but because the code that it generates can difficult to read or share, many people skip it and use Emacs Lisp code instead.
 
 #+BEGIN_PRACTICE
-1. Use =<f1> v= (=describe-variable=) to learn more about the variables in the following code snippet:
+1. Use =C-h v= (=describe-variable=) to learn more about the variables in the following code snippet:
 	 #+begin_src emacs-lisp
 	 (setq-default indicate-empty-lines t)
 	 (setq-default show-trailing-whitespace t)
 	 #+end_src
-2. Look for Emacs configuration code that has variables you would like to learn more about. Use =<f1> v= (=describe-variable=) to look up their definition and the values they can be set to.
+2. Look for Emacs configuration code that has variables you would like to learn more about. Use =C-h v= (=describe-variable=) to look up their definition and the values they can be set to.
 #+END_PRACTICE
 
 * Understand symbols
@@ -330,5 +330,5 @@ This stores backup files in the directory specified by =temporary-file-directory
 * Review
 
 #+BEGIN_PRACTICE
-Look for Emacs configuration code that you would like to understand further. Use =<f1> f= (=describe-function=) to learn more about functions and =<f1> v= (=describe-variable=) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
+Look for Emacs configuration code that you would like to understand further. Use =C-h f= (=describe-function=) to learn more about functions and =C-h v= (=describe-variable=) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
 #+END_PRACTICE

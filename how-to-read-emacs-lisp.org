@@ -171,7 +171,7 @@ If you want to set a keyboard shortcut only in particular modes or types of file
 
 *** What does =kbd= do? How can I figure out which key it sets?
 
-If you've gone through the Emacs Tutorial (*Help - Emacs Tutorial* or =F1 t=), you'll be familiar with many of the conventions used for writing keyboard shortcuts. =C-= stands for the =Ctrl= key, =M-= stands for the =Meta= key (which is probably =Alt= or =Option= on your keyboard). There are other prefixes as well. =S-= is for Shift, =H-= is for =Hyper=, and =s-= is for =Super=. Some people use operating system tools (such as =setxkbmap= for Linux) to change keys on their keyboard to =Super= or =Hyper= in order to enable even more keyboard shortcuts.
+If you've gone through the Emacs Tutorial (*Help - Emacs Tutorial* or =C-h t=), you'll be familiar with many of the conventions used for writing keyboard shortcuts. =C-= stands for the =Ctrl= key, =M-= stands for the =Meta= key (which is probably =Alt= or =Option= on your keyboard). There are other prefixes as well. =S-= is for Shift, =H-= is for =Hyper=, and =s-= is for =Super=. Some people use operating system tools (such as =setxkbmap= for Linux) to change keys on their keyboard to =Super= or =Hyper= in order to enable even more keyboard shortcuts.
 
 Uppercase or lowercase depends on the character in the shortcut. =C-x= means =Control= + =x=, while =C-X= is actually =Control= + =Shift= + =X=. You can also specify shift by adding =S-=, so =C-X= and =C-S-x= are the same.
 
@@ -202,7 +202,7 @@ is the same as
 #+end_src
 but =C-= is probably easier to read.
 
-When using =kbd=, whitespace doesn't usually matter, but it's easier to read if you use space to separate the keys to type. For more information about the syntax used by =kbd=, see =F1 f= (=describe-function=) for =kbd=, then follow the link to the documentation for =edmacro-mode=.
+When using =kbd=, whitespace doesn't usually matter, but it's easier to read if you use space to separate the keys to type. For more information about the syntax used by =kbd=, see =C-h f= (=describe-function=) for =kbd=, then follow the link to the documentation for =edmacro-mode=.
 
 *** Multi-key shortcuts
 
@@ -264,7 +264,7 @@ The =bind-key= package provides a function that makes it easier to see your pers
 
 You'll need to install and use the =bind-key= package before you can use that code.
 
-Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use =F1 f= (=describe-function=) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
+Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use =C-h f= (=describe-function=) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
 ** Defuns - function definitions
 
 In addition to the functions built into Emacs or available in
@@ -394,7 +394,7 @@ has not been installed.
    (helm-mode))
 #+end_src
 
-If you use =F1 f= (=describe-function=) on =require=, you'll see that
+If you use =C-h f= (=describe-function=) on =require=, you'll see that
 it has one required argument (feature) and two optional arguments
 (filename, noerror). =require= returns non-nil (or true) if the
 library was loaded, so if the library exists, then the rest of the

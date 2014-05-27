@@ -36,7 +36,7 @@ Add the following line to your `.emacs' file:
      (setq sentence-end-double-space nil)
 #+end_example
 
-You can read the Emacs manual by typing =F1 i= (=info=) and choosing the *Emacs* item. If you're on a terminal that doesn't understand the =F1= key, use =C-h= whenever you see a reference to =F1=, or use =M-x= to call the command by name (ex: =C-h i=, or =M-x info=). To jump directly to the Emacs manual, you can use =F1 r= (=info-emacs-manual=). You can also find the Emacs Manual at http://www.gnu.org/software/emacs/manual/emacs.html .
+You can read the Emacs manual by typing =C-h i= (=info=) and choosing the *Emacs* item. If you're on a terminal that doesn't understand the =C-h= key, use =F1= or =M-x help= whenever you see a reference to =C-h=, or use =M-x= to call the command by name (ex: =F1 i=, or =M-x info=). To jump directly to the Emacs manual, you can use =C-h r= (=info-emacs-manual=). You can also find the Emacs Manual at http://www.gnu.org/software/emacs/manual/emacs.html .
 
 ** Packages
 
@@ -101,7 +101,7 @@ but this will work:
 
 You can use =M-p= (=comint-previous-input=) to go through the previously-typed expressions. =M-n= (=comint-next-input=) goes forward.
 
-Tip: When you're trying out an unfamiliar mode, use =F1 m= (=describe-mode=) to learn more about the commands that are available in that mode.
+Tip: When you're trying out an unfamiliar mode, use =C-h m= (=describe-mode=) to learn more about the commands that are available in that mode.
 
 ** The =*scratch*= buffer and Emacs Lisp =.el= files
 
@@ -128,7 +128,7 @@ Note: =;= is the comment character. Anything after the comment character is cons
 
 To run code ("evaluate" it, in Emacs terms), you can use the following commands based on what you want to run:
 - =M-x eval-buffer= runs all the code in the current file or buffer.
-- =M-x eval-region= runs the code in the selected region. You can select a region of text by using the mouse. Alternatively, you can type =C-SPC= to mark the start of the region, then move your cursor to the end of the region. If you want to learn more about selecting regions, check out the Emacs tutorial (=F1 t=, =C-h t=, or =M-x help-with-tutorial=).
+- =M-x eval-region= runs the code in the selected region. You can select a region of text by using the mouse. Alternatively, you can type =C-SPC= to mark the start of the region, then move your cursor to the end of the region. If you want to learn more about selecting regions, check out the Emacs tutorial (=C-h t=, =C-h t=, or =M-x help-with-tutorial=).
 - =C-x C-e= (=eval-last-sexp=) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it.
 
 In the =*scratch*= buffer, you can also press =C-j= (=eval-print-last-sexp=) after an expression in order to evaluate it and display the results in the buffer.
