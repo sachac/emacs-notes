@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I understand what Emacs Lisp code does?"</title>
-<!-- 2014-05-26 Mon 20:11 -->
+<!-- 2014-05-26 Mon 20:19 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -498,33 +498,44 @@ Some lists use the dot notation. This depends on what's expected by the function
 </div>
 
 <p>
-This calls the <code>add-to-list</code> function with two arguments. The first argument ('<code>package-archives</code>) specifies the list to add an item to, and the second argument ('<code>("melpa" . "http://melpa.milkbox.net/packages/")</code>) is the data to add. The dot notation <code>(a . b)</code> shows that this is a <b>cons cell</b> with two parts: the <b>car</b> (<code>a</code>), and the <b>cdr</b> (<code>b</code>). To understand the difference between <code>(a . b)</code> and <code>(a b)</code>, you need to know how lists are constructed.
+This calls the <code>add-to-list</code> function with two arguments. The first argument ('<code>package-archives</code>) specifies the list to add an item to, and the second argument ('<code>("melpa" . "http://melpa.milkbox.net/packages/")</code>) is the data to add. 
 </p>
 
 <p>
-A cons cell like <code>("a" . "b")</code> looks like this:
+The dot notation <code>(x . y)</code> shows that this is a <b>cons cell</b>, which is something that has two parts. These parts are called the <b>car</b> and the <b>cdr</b>, and can contain symbols, values, lists, and so on. A cons cell like <code>("abc" . "def")</code> looks like this:
 </p>
 
 <pre class="example">
        car              cdr
 +----------------+----------------+
-|       "a"      |       "b"      |
+|     "abc"      |     "def"      |
 +----------------+----------------+
 </pre>
 
 <p>
-A list like '<code>("a" "b")</code> is made up of several cons cells.
+A list like '<code>("abc" "def")</code> is made up of several cons cells.
 </p>
 
 <pre class="example">
        car              cdr                         car             cdr
 +----------------+----------------+         +----------------+----------------+
-|      "a"       |       ------------------&gt;|       "b"      |                |
+|     "abc"      |       ------------------&gt;|      "def"     |      nil       |
 +----------------+----------------+         +----------------+----------------+
 </pre>
 
 <p>
-In Emacs Lisp, '<code>("a" "b")</code> is equivalent to <code>(cons "a" (cons "b" nil))</code>, and it's not the same as <code>(cons "a" "b")</code>. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
+In Emacs Lisp, '<code>("abc" "def")</code> is equivalent to <code>(cons "abc" (cons "def" nil))</code>, and it's not the same as <code>(cons "abc" "def")</code>. Here's something that shows the differences:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(cdr '(<span class="org-string">"abc"</span> . <span class="org-string">"def"</span>))  <span class="org-comment-delimiter">;; </span><span class="org-comment">Returns "def", which is a string</span>
+(cdr '(<span class="org-string">"abc"</span> <span class="org-string">"def"</span>))    <span class="org-comment-delimiter">;; </span><span class="org-comment">Returns ("def"), which is a list</span>
+</pre>
+</div>
+
+<p>
+If the function you're calling expects a string instead of a list, or the other way around, you'll run into errors. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
 </p>
 
 <p>

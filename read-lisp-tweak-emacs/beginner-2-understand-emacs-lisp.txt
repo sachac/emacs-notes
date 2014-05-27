@@ -273,27 +273,34 @@ Some lists use the dot notation. This depends on what's expected by the function
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 #+end_src
 
-This calls the =add-to-list= function with two arguments. The first argument ('=package-archives=) specifies the list to add an item to, and the second argument ('=("melpa" . "http://melpa.milkbox.net/packages/")=) is the data to add. The dot notation =(a . b)= shows that this is a *cons cell* with two parts: the *car* (=a=), and the *cdr* (=b=). To understand the difference between =(a . b)= and =(a b)=, you need to know how lists are constructed.
+This calls the =add-to-list= function with two arguments. The first argument ('=package-archives=) specifies the list to add an item to, and the second argument ('=("melpa" . "http://melpa.milkbox.net/packages/")=) is the data to add. 
 
-A cons cell like =("a" . "b")= looks like this:
+The dot notation =(x . y)= shows that this is a *cons cell*, which is something that has two parts. These parts are called the *car* and the *cdr*, and can contain symbols, values, lists, and so on. A cons cell like =("abc" . "def")= looks like this:
 
 #+begin_example
        car              cdr
 +----------------+----------------+
-|       "a"      |       "b"      |
+|     "abc"      |     "def"      |
 +----------------+----------------+
 #+end_example
 
-A list like '=("a" "b")= is made up of several cons cells.
+A list like '=("abc" "def")= is made up of several cons cells.
 
 #+begin_example
        car              cdr                         car             cdr
 +----------------+----------------+         +----------------+----------------+
-|      "a"       |       ------------------>|       "b"      |                |
+|     "abc"      |       ------------------>|      "def"     |      nil       |
 +----------------+----------------+         +----------------+----------------+
 #+end_example
 
-In Emacs Lisp, '=("a" "b")= is equivalent to =(cons "a" (cons "b" nil))=, and it's not the same as =(cons "a" "b")=. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
+In Emacs Lisp, '=("abc" "def")= is equivalent to =(cons "abc" (cons "def" nil))=, and it's not the same as =(cons "abc" "def")=. Here's something that shows the differences:
+
+#+begin_src emacs-lisp
+(cdr '("abc" . "def"))  ;; Returns "def", which is a string
+(cdr '("abc" "def"))    ;; Returns ("def"), which is a list
+#+end_src
+
+If the function you're calling expects a string instead of a list, or the other way around, you'll run into errors. That's why you have to be careful about whether something uses dots or not. A good way to find out is by reading other people's configuration and seeing how they use that variable.
 
 Because lists are made up of cons cells, you'll sometimes see people add to lists like this:
 
