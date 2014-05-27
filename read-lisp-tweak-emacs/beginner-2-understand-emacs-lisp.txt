@@ -7,7 +7,7 @@ Previous module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-1-try-ema
 
 #+BEGIN_CONVENTIONS
 Some conventions we'll use:
-- Inline code will be =boxed and monospace= in the HTML version and generally surrounded by =equal signs= in Org Mode 
+- Inline code will be =boxed and monospace= in the HTML version and generally surrounded by =equal signs= in plain text.
 - Code samples will be monospace and in boxes in the HTML version, and enclosed in =#+begin_src= ... =#+end_src= in plain text. Example:
   #+begin_src emacs-lisp
   (message "Hello world")
