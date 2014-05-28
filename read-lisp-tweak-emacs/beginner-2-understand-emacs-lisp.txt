@@ -1,6 +1,6 @@
 # -*- mode: org -*-
 #+TITLE: "How can I understand what Emacs Lisp code does?"
-#+TOC: t
+#+OPTIONS: toc:t
 #+STARTUP: showall
 
 Previous module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.html]["How can I try Emacs Lisp code?"]]

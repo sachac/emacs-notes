@@ -1,6 +1,6 @@
 # -*- mode: org -*-
 #+TITLE: "How can I customize Emacs to make things more convenient?"
-#+TOC: t
+#+OPTIONS: toc:t
 #+STARTUP: showall
 
 Previous module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html]["How can I understand Emacs Lisp code?"]]
