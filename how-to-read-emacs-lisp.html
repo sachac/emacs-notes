@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>how-to-read-emacs-lisp</title>
-<!-- 2014-05-28 Wed 14:30 -->
+<!-- 2014-05-28 Wed 14:33 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -1855,6 +1855,10 @@ To make it easier to find errors while Emacs is running, use <code>M-x toggle-de
 <pre class="src src-emacs-lisp">(setq debug-on-error t)
 </pre>
 </div>
+
+<p>
+If you have code that takes a while, you might find the <code>debug-on-quit</code> variable useful as well. You can quit a long-running operation by using <code>C-g</code> (<code>keyboard-quit</code>).
+</p>
 
 <p>
 You can narrow down the source of the problem by progressively

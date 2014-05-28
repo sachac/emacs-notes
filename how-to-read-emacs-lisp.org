@@ -273,6 +273,8 @@ To make it easier to find errors while Emacs is running, use =M-x toggle-debug-o
 (setq debug-on-error t)
 #+end_src
 
+If you have code that takes a while, you might find the =debug-on-quit= variable useful as well. You can quit a long-running operation by using =C-g= (=keyboard-quit=).
+
 You can narrow down the source of the problem by progressively
 commenting out more and more of the code. Make sure you comment out
 balanced sets of parentheses. To comment a region, select it and use
