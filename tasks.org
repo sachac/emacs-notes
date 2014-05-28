@@ -128,6 +128,15 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 **** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp.org][Link]]
 ***** TODO Write objectives for each section
+***** DONE Write objectives and practice for section 3, revise section 3
+			 CLOSED: [2014-05-28 Wed 13:51]
+			:LOGBOOK:
+			CLOCK: [2014-05-28 Wed 12:42]--[2014-05-28 Wed 13:51] =>  1:09
+			CLOCK: [2014-05-28 Wed 09:21]--[2014-05-28 Wed 09:45] =>  0:24
+			:END:
+			:PROPERTIES:
+			:Effort:   1:00
+			:END:
 ***** DONE Pick chunk size for sections
 			 CLOSED: [2014-05-22 Thu 22:38]
 ***** DONE Break guide up into parts that can be focused on for 15-60 minutes

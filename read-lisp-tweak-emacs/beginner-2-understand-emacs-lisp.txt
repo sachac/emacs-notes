@@ -339,3 +339,5 @@ This stores backup files in the directory specified by =temporary-file-directory
 #+BEGIN_PRACTICE
 Look for Emacs configuration code that you would like to understand further. Use =C-h f= (=describe-function=) to learn more about functions and =C-h v= (=describe-variable=) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
 #+END_PRACTICE
+
+Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-3-make-things-more-convenient.html]["How can I customize Emacs to make things more convenient?"]]

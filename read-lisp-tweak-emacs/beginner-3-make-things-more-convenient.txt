@@ -1,0 +1,238 @@
+# -*- mode: org -*-
+#+TITLE: "How can I customize Emacs to make things more convenient?"
+#+TOC: t
+#+STARTUP: showall
+
+Previous module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html]["How can I understand Emacs Lisp code?"]]
+
+#+BEGIN_CONVENTIONS
+Some conventions we'll use:
+- Inline code will be =boxed and monospace= in the HTML version and generally surrounded by =equal signs= in plain text.
+- Code samples will be monospace and in boxes in the HTML version, and enclosed in =#+begin_src= ... =#+end_src= in plain text. Example:
+  #+begin_src emacs-lisp
+  (message "Hello world")
+  #+end_src
+#+END_CONVENTIONS
+
+#+BEGIN_OBJECTIVES
+After this module, you'll be able to:
+- define your own keyboard shortcuts so that you can call functions more easily
+- work with custom functions that other people have defined in their configurations
+- copy and use anonymous functions
+#+END_OBJECTIVES
+
+** Keyboard shortcuts
+
+The default keyboard shortcuts (or "keybindings") can be difficult to remember, and many useful functions don't have any keyboard shortcuts at all. People often set up their own keyboard shortcuts to make other commands easier to use. There are different ways to assign keys depending on where you want the keybinding to be available.
+
+*** Setting keybindings in all buffers
+
+You can assign a key to a function globally, which means that it will be available in buffers of any type if there are no mode maps or local keybindings that override it. (Mode maps are set by major modes like =emacs-lisp-mode= or minor modes like =auto-fill-mode=.) Setting a global keybinding is usually done with =global-set-key=, although sometimes you'll see it done with =define-key= and =global-map=. 
+
+You can use =global-set-key= interactively by calling it with =M-x global-set-key=. Type the keyboard shortcut you would like to set, then specify the name of the function you would like Emacs to call. Note that the function must be interactive - that is, it must be something you can call with =M-x= and it should include =(interactive ...)= in its definition. For example, try =M-x global-set-key=, then press =<f10>=, and assign it to =save-buffer=. After you do that, you should be able to press =<f10>= to save the current buffer.
+
+If you like a keybinding that you've interactively set, use =C-x ESC ESC= (=repeat-complex-command=) to see the Emacs Lisp code for it. You can copy and paste that into your configuration. For example, setting the keybinding above will result in:
+
+#+begin_src emacs-lisp
+(global-set-key [f10] (quote save-buffer))
+#+end_src
+
+You can also write keybindings from scratch. For example, the code below redefines the Return key (or the Enter key) so that it calls the =newline-and-indent= function by default. 
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "RET") 'newline-and-indent)
+#+end_src
+
+Remember, =​'newline-and-indent= and =(quote newline-and-indent)= are the same thing - they both refer to the name of a thing (a function, in this case) instead of its value.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-+") 'text-scale-increase)
+(global-set-key (kbd "C--") 'text-scale-decrease)
+#+end_src
+
+These set =C-+= (=Ctrl= and =<plus>=) and =C--= (=Ctrl= and =<minus>=) to increase and decrease the font size when you're running Emacs in a graphical environment.
+
+If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to [[mode-keys][Setting keybindings in a particular mode]].
+
+*** What does =kbd= do? How can I figure out which key it sets?
+
+If you've gone through the Emacs Tutorial (*Help - Emacs Tutorial* or =C-h t=), you'll be familiar with many of the conventions used for writing keyboard shortcuts. =C-= stands for the =Ctrl= key, =M-= stands for the =Meta= key (which is probably =Alt= or =Option= on your keyboard). There are other prefixes as well. =S-= is for Shift, =H-= is for =Hyper=, and =s-= is for =Super=. Some people use operating system tools (such as =setxkbmap= for Linux) to change keys on their keyboard to =Super= or =Hyper= in order to enable even more keyboard shortcuts.
+
+Uppercase or lowercase depends on the character in the shortcut. =C-x= means =Control= + =x=, while =C-X= is actually =Control= + =Shift= + =X=. You can also specify shift by adding =S-=, so =C-X= and =C-S-x= are the same.
+
+In addition, there are some special characters: =RET=, =SPC=, =TAB=, and =ESC= must be written in uppercase to mean the special keys they refer to. (There's also =LFD= and =NUL=, but you're probably not going to encounter those as often.) You can use angle brackets to refer to some other keys, like =<return>=, =<up>=, =<down>=, =<left>=, =<right>=. Function keys are written like this: =<f1>=. 
+
+There are different ways to specify the key. Many people use =(kbd ...)= because it makes bindings easy to read.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-/") 'hippie-expand)
+#+end_src
+
+This is the same as 
+#+begin_src emacs-lisp
+(global-set-key "\M-/" 'hippie-expand)
+#+end_src
+or
+#+begin_src emacs-lisp
+(global-set-key [?\M-/] 'hippie-expand)
+#+end_src
+
+You can use =^= to mean =Control=, so
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+#+end_src
+is the same as either of these lines:
+#+begin_src emacs-lisp
+(global-set-key "\C-s" 'isearch-forward-regexp)
+(global-set-key (kbd "^s") 'isearch-forward-regexp)
+#+end_src
+but =C-= is probably easier to read.
+
+When you use =kbd=, whitespace doesn't usually matter, but it's easier to read if you use space to separate the keys to type. For more information about the syntax used by =kbd=, see =C-h f= (=describe-function=) for =kbd=, then follow the link to the documentation for =edmacro-mode=.
+
+In general, you can use =C-h k= (=describe-key=) followed by a keyboard shortcut to see if it's already bound, and if so, what function it calls. If you type =C-h k= and the key you're interested in, and Emacs is still waiting for another key, then you're probably looking at a prefix key. For example, =C-x= is a prefix key that's used in keyboard shortcuts like =C-x C-e= (=eval-last-sexp=).
+
+*** Multi-key shortcuts
+
+You can set up keybindings that use more than one key combination. This is a popular technique since you can only have so many short keybindings. For example, the following code changes =C-x C-b= to call =ibuffer=, which lists your buffers and makes it easy to jump to another buffer.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+#+end_src
+
+You don't have to start with =C-c= or =C-x=. Consider using one of your function keys like =<f9>= as the start of your keyboard shortcuts. Then you can create shortcuts that don't involve using =Ctrl=, =Alt=, or other modifier keys. For example:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "<f9> b") 'ibuffer)
+#+end_src
+
+Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like =C-c= followed by a lowercase letter (=a= to =z=) are reserved for your use. Some people like using a function key and a list of letters in order to minimize the need to press Control or Meta. For example, you might use:
+
+#+begin_src 
+(global-set-key (kbd "C-c r") 'query-replace)
+#+end_src
+
+or
+
+#+begin_src 
+(global-set-key (kbd "<f9> r") 'query-replace)
+#+end_src
+
+to make it easier to replace strings. You can even bind it to both shortcuts.
+
+*** Inserting strings
+
+In addition to setting keyboard shortcuts for functions, you can also define keys so that they insert strings. For example:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "<f7> e") "you@example.com")
+(global-set-key (kbd "<f7> w") "http://example.com")
+#+end_src
+
+These might be handy for quickly inserting your e-mail address or website.
+
+*** Dealing with errors: "Key sequence ____ starts with non-prefix key ___"
+
+If you want to create a multi-key shortcut, the preceding keys must not already be assigned to functions. For example, if you want =M-t l= to call =transpose-lines=, you'll need to get rid of =M-t='s default binding to =transpose-words= first. To unset a key, bind it to =nil= or use =global-unset-key=. Here's a group of shortcuts you can try.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "M-t") nil) ;; Remove the old keybinding
+(global-set-key (kbd "M-t c") 'transpose-chars)
+(global-set-key (kbd "M-t w") 'transpose-words)
+(global-set-key (kbd "M-t t") 'transpose-words)
+(global-set-key (kbd "M-t M-t") 'transpose-words)
+(global-set-key (kbd "M-t l") 'transpose-lines)
+(global-set-key (kbd "M-t e") 'transpose-sexps)
+(global-set-key (kbd "M-t s") 'transpose-sentences)
+(global-set-key (kbd "M-t p") 'transpose-paragraphs)
+#+end_src
+
+The example above has three bindings for =transpose-words=. =M-t w= uses the mnemonic of *t*-ranspose *w*-ords. =M-t t= is similar to the original binding for =transpose-words=, which was =M-t=. =M-t M-t= may seem like overkill, but sometimes you'll find it easier to hold the =Meta= key down and hit =t= twice quickly instead of typing =M-t=, releasing =Meta=, and then typing =t=. As you read other people's keybindings, you'll get a sense of how people have configured their keyboard shortcuts to speed up typing and minimize thinking.
+
+*** Setting keybindings in a particular mode
+<<mode-keys>>
+
+Sometimes you want keys to do different things in different types of files. Modes are how Emacs changes behaviour based on context. For example, Java files use =java-mode=, Org files use =org-mode=, and so forth. In addition to the major mode for a buffer, you may have several minor modes that modify the behaviour. Each mode has a keybinding map (or a "keymap"). You can assign a key in a mode map, which means it will override global keybindings in buffers with that mode. You can do this with =define-key= if you know the name of the keymap you want to change, which is generally the name of the mode + =-map=. For example:
+
+#+begin_src emacs-lisp
+  (define-key emacs-lisp-mode-map (kbd "C-c f") 'find-function)
+#+end_src
+
+changes the =C-c f= keyboard shortcut to =find-function= (which jumps to the definition of a function), but only in Emacs Lisp buffers.
+
+Note that if you use =define-key= with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a =require= (which loads the code) or inside an =eval-after-load= (which postpones the code until after the mode is loaded). See [[http://emacslife.com/how-to-read-emacs-lisp.html#load][Adding more features to Emacs]] for information on loading packages and adding new functions to Emacs.
+
+*** Other ways people bind keys
+
+The =bind-key= package provides a function that makes it easier to see your personal keybindings, but =bind-key= is not part of Emacs by default. I use =bind-key= a lot in [[http://sachachua.com/dotemacs][my configuration]]. The syntax is similar to =global-set-key=, except it automatically wraps the keyboard shortcut string in =kbd=. It also keeps track of which keyboard shortcuts you've overridden so that you can use =M-x describe-personal-keybindings= to review them.
+
+#+begin_src emacs-lisp
+(bind-key "C-+" 'text-scale-increase)
+(bind-key "C--" 'text-scale-decrease)
+#+end_src
+
+You'll need to install and use the =bind-key= package before you can use that code.
+
+Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use =C-h f= (=describe-function=) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
+
+For more about keybindings, see the [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html][Emacs manual]] and this [[http://www.masteringemacs.org/articles/2011/02/08/mastering-key-bindings-emacs/][Mastering Emacs post on keybindings]].
+
+** Defuns - function definitions
+
+In addition to the functions built into Emacs or available in packages, many people define their own with the =defun= function.
+
+People often distinguish custom functions by starting them with =my/= or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
+
+For example, here's a custom function from [[https://github.com/jorgenschaefer/Config/blob/master/emacs.el#L184][Jorgan Schaefer's config]]:
+
+#+begin_src emacs-lisp
+(defun fc/kill-to-beginning-of-line ()
+  "Kill from the beginning of the line to point."
+  (interactive)
+  (kill-region (point-at-bol) (point)))
+#+end_src
+
+This creates a function called =fc/kill-to-beginning-of-line=. =()= is the argument list. Since it doesn't contain anything, that means this function does not take arguments. =​"Kill from the beginning of the line to point."​= is a documentation string (or docstring) that describes what the function does. Docstrings are optional, but highly recommended. =(interactive)= means that this can be called with =M-x= (=execute-extended-command=) or bound to a keyboard shortcut.
+
+If a function does not have the =(interactive)= keyword, you won't be able to call it with =M-x= or assign it to a keyboard shortcut, but you will still be able to write Emacs Lisp code that calls the function. This means =M-x= (=execute-extended-command=) lists only the commands that people will probably find useful while working directly with Emacs, skipping internal functions used by code.
+
+Once you've defined a custom function, you can bind it to a keyboard shortcut if you want. The code below binds the =fc/kill-to-beginning-of-line= function to =C-c C-u=:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c C-u") 'fc/kill-to-beginning-of-line)
+#+end_src
+
+You will often see custom functions used as hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, =emacs-lisp-mode= has an associated =emacs-lisp-mode-hook= which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in function or custom functions to hooks. For example,
+
+People sometimes use hook functions to set up keybindings instead of using =define-key=. For example, this code:
+
+#+begin_src emacs-lisp
+(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(define-key emacs-lisp-mode-map (kbd "C-c f") 'find-function)
+#+end_src
+
+can also be written as:
+
+#+begin_src emacs-lisp
+(defun my/set-up-emacs-lisp-shortcuts ()
+  "Set up some conveniences for Emacs Lisp."
+  (turn-on-eldoc-mode)
+  (local-set-key (kbd "C-c f") 'find-function))
+(add-hook 'emacs-lisp-mode-hook 'my/set-up-emacs-lisp-shortcuts)
+#+end_src
+
+** Lambdas - anonymous functions
+
+Sometimes people just want to create a keyboard binding or process some data without defining a new function. =lambda= creates an anonymous function, which is a function that doesn't have a name. Here's an example:
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c e") (lambda () (interactive) (find-file "~/.emacs.d/init.el")))
+#+end_src
+
+This binds =C-c e= to an anonymous function. The =()= means it doesn't take any arguments. =(interactive)= means it can be called through a keyboard shortcut, although since it's anonymous, it can't be called with =M-x=. The function opens the =~/.emacs.d/init.el= file, which is a handy way to edit your configuration.
+
+#+BEGIN_PRACTICE
+1. Look for an Emacs configuration file that defines keybindings that you're curious about. Install any packages or copy any custom functions needed. Experiment with using those keybindings. Do you like them? Do you want to tweak them further?
+
+2. Think about how you use Emacs. What kinds of keyboard shortcuts would make your work easier? How can you adapt some of the functions you've read into things that would make them even more convenient for you?
+#+END_PRACTICE
