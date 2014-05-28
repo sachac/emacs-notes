@@ -1,4 +1,4 @@
-#+TITLE: Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs
+\#+TITLE: Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs
 #+OPTIONS: toc:t
 
 * Introduction
@@ -267,6 +267,12 @@ use =emacs -q= (or =emacs -Q=, which skips site-wide configuration as
 well) to see if it works as intended without your personal
 configuration.
 
+To make it easier to find errors while Emacs is running, use =M-x toggle-debug-on-error=, then do whatever you did to trigger the error. You can enable this in your =~/.emacs.d/init.el= by adding:
+
+#+begin_src emacs-lisp
+(setq debug-on-error t)
+#+end_src
+
 You can narrow down the source of the problem by progressively
 commenting out more and more of the code. Make sure you comment out
 balanced sets of parentheses. To comment a region, select it and use
@@ -424,5 +430,5 @@ Patches and pull requests welcome!
   - edebug-defun
 
 - Thanks
-  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P.
+  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba
 		
