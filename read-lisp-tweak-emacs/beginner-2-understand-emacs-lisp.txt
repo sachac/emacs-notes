@@ -267,7 +267,7 @@ Hooks are lists of functions, so you can delete items using =delete=. Alternativ
 
 <<package-archives>>
 
-Some lists use the dot notation. This depends on what's expected by the function that uses the list. For example:
+Some things look like lists, but there's a dot between the first element and the last element. Whether something should have a dot or not depends on what's expected by the function that uses the data. For example:
 
 #+begin_src emacs-lisp
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
@@ -275,7 +275,7 @@ Some lists use the dot notation. This depends on what's expected by the function
 
 This calls the =add-to-list= function with two arguments. The first argument ('=package-archives=) specifies the list to add an item to, and the second argument ('=("melpa" . "http://melpa.milkbox.net/packages/")=) is the data to add. 
 
-The dot notation =(x . y)= shows that this is a *cons cell*, which is something that has two parts. These parts are called the *car* and the *cdr*, and can contain symbols, values, lists, and so on. A cons cell like =("abc" . "def")= looks like this:
+The dot =(x . y)= shows that this is a *cons cell*, which is something that has two parts. These parts are called the *car* and the *cdr*, and can contain symbols, values, lists, and so on. A cons cell like =("abc" . "def")= looks like this:
 
 #+begin_example
        car              cdr

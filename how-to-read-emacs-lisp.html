@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>how-to-read-emacs-lisp</title>
-<!-- 2014-05-28 Wed 14:33 -->
+<!-- 2014-05-28 Wed 15:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -1132,7 +1132,7 @@ Hooks are lists of functions, so you can delete items using <code>delete</code>.
 </p>
 
 <p>
-Some lists use the dot notation. This depends on what's expected by the function that uses the list. For example:
+Some things look like lists, but there's a dot between the first element and the last element. Whether something should have a dot or not depends on what's expected by the function that uses the data. For example:
 </p>
 
 <div class="org-src-container">
@@ -1146,7 +1146,7 @@ This calls the <code>add-to-list</code> function with two arguments. The first a
 </p>
 
 <p>
-The dot notation <code>(x . y)</code> shows that this is a <b>cons cell</b>, which is something that has two parts. These parts are called the <b>car</b> and the <b>cdr</b>, and can contain symbols, values, lists, and so on. A cons cell like <code>("abc" . "def")</code> looks like this:
+The dot <code>(x . y)</code> shows that this is a <b>cons cell</b>, which is something that has two parts. These parts are called the <b>car</b> and the <b>cdr</b>, and can contain symbols, values, lists, and so on. A cons cell like <code>("abc" . "def")</code> looks like this:
 </p>
 
 <pre class="example">
