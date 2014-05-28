@@ -84,7 +84,7 @@ This turns on =eldoc-mode= when a buffer is switched to Emacs Lisp mode. You'll 
 
 To find out if something is a function, what it does, what arguments it takes, and if it has any keyboard shortcuts, use the =C-h f= (=describe-function=) command. Give it the function name. For example, =C-h f add-hook= will show you the documentation for =add-hook=, and =C-h f show-paren-mode= will show you the documentation for that.
 
-The documentation for =show-paren-mode= starts with "show-paren-mode is an interactive autoloaded Lisp function". Interactive functions can be called with =M-x=. Read the description of the function to learn more about arguments that you can pass to change its behavior. If it mentions a prefix argument, that means that you can change its behaviour by typing =C-u= before you call the function.
+The documentation for =show-paren-mode= starts with "show-paren-mode is an interactive autoloaded Lisp function". Interactive functions are functions that can be called with =M-x= or with keyboard shortcuts, and they're usually functions that you'll find useful while interacting with Emacs. Read the description of the function to learn more about arguments that you can pass to change its behavior. If it mentions a prefix argument, that means that you can change its behaviour by typing =C-u= before you call the function.
 
 Emacs is extensively documented. Whenever you come across a strange function, check it out with =C-h f= (=describe-function=). If you have the Emacs Lisp sources installed, you can  learn more about how the functions work. Just follow the link from the documentation, or use =M-x find-function= to learn more.
 
