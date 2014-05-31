@@ -12,7 +12,7 @@ You can find the video and other details at http://emacsnyc.org/videos.html
 
 This transcript is under the Creative Commons Attribution-ShareAlike 4.0 International License.
 
-2014-05-14
+2014-05-05
 
 https://www.youtube.com/watch?v=6BlTGPsjGJk
 
@@ -29,7 +29,7 @@ My hope is that some of the techniques I'm talking about, hopefully
 you would find some broader application or in other environment. We'll
 talk about that a little bit in the end.
 
-Anyhow, we're going to talk about python and some interesting things to
+Anyhow, we're going to talk about Python and some interesting things to
 show you. I hope you guys find it useful. Thanks for coming out.
 
 So just to give a general sense of what am going to talk about, I'm
@@ -39,7 +39,7 @@ what you can hope to have at the end, the stuff I talk about.
 Then I'm going to basically show you how to use it yourself, how to
 install the packages, how to customize it to your preferences. For
 those of you who are interested in trying it out yourself without the
-pain of changing your existing config, i've created a repository on
+pain of changing your existing config, I've created a repository on
 Github with a virtual machine.
 
 https://github.com/wernerandrew/jedi-starter
@@ -47,37 +47,45 @@ https://github.com/wernerandrew/jedi-starter
 If you guys use Vagrant or VirtualBox at all, you can use that to try
 it out locally yourselves.
 
+http://www.vagrantup.com/
+
+https://www.virtualbox.org/
+
 Feel free if you want to brave the wifi and try it out as we talk.
 Otherwise, I'm planning on keeping it up. Hopefully it will be there as
 a resource for you guys to check out after this talk.
 
-So basically in terms of what you can do, in terms of making Emacs like
-a traditional IDE-like environment... There's a few things we're going to talk
-about today that should be useful on that score. One of them is being able
-to find files and switch between projects easily. Another one is going to be navigating through function definitions and variable definitions in a way that's sensitive to context, and also documenting what you see in real-time. If you see a function or a variable, being able to see where it came from and what it means.
+So basically in terms of what you can do, in terms of making Emacs
+like a traditional IDE-like environment. There's a few things we're
+going to talk about today that should be useful on that score. One of
+them is being able to find files and switch between projects easily.
+Another one is going to be navigating through function definitions and
+variable definitions in a way that's sensitive to context, and also
+documenting what you see in real-time. If you see a function or a
+variable, being able to see where it came from and what it means.
 
-also, when you have complex function calls or other constructs, it's
+Also, when you have complex function calls or other constructs, it's
 nice to be able to have some help for that sort of thing. These are
 features that you expect to come along with IDE like Eclipse or
-IntelliJ or visual studio. In fact it's possible to get them in emacs.
+IntelliJ or Visual Studio. In fact it's possible to get them in emacs.
 
 To start, I'm going to a little demo. Am gonna use my own setup. Here
-I'm, in the scratch buffer. Let's say I want to go to a project. I've
+I am, in the scratch buffer. Let's say I want to go to a project. I've
 taken the liberty of opening some of these files for you but this is
 basically how it works.
 
-you can do things like bring up a list of project names. This is a
+You can do things like bring up a list of project names. This is a
 package called Projectile. It'll let you do that.
 
-Am going to a project called  =vbench= .
+Am going to a project called =vbench= .
 
 http://pydata.github.io/vbench/
 
-as you can see, it has the ability to search interactively. In fact,
+As you can see, it has the ability to search interactively. In fact,
 it's now highlighted. Am going to switch to that now.
 
 In terms of what file I want to go to, I want to go to a file
-called=runner.py=. In fact, typing a few letters gives me that file.
+called =runner.py=. In fact, typing a few letters gives me that file.
 and now here we are.
 
 03:49 so I'm in the file and let's say I want to make a few edits to
@@ -90,8 +98,8 @@ was going to type the letter be in right away you can see I have an
 auto-complete for this benchmark DB. And I can complete that. And I
 can ask what do I need to initialize that.
 
-And I can call something up that just tells me I need path. So
-I'm gonna go and do that.
+And I can call something up that just tells me I need path. So I'm
+gonna go and do that.
 
 And just for fun I'm gonna call a method on itself I do DB and what do
 I see? I see all of the getters defined here. I could use this get
@@ -100,29 +108,28 @@ benchmarks function and doesn't take any parameters.
 So that's something nice that you can set up. You have a little bit
 auto-completion intelligence in your Python.
 
-let's do a little more exploring. So I'm gonna look at the benchmark
+Let's do a little more exploring. So I'm gonna look at the benchmark
 in a class and in particular look at the init method.
 
-05:04 I am at the end I've got this thing called the bench repo it
+05:04 I am at the end I've got this thing called the =BenchRepo= it
 looks pretty complicated. I want to learn a little bit about it. Some
 things I can do, I can look at the doc string, with just a key stroke
 here, in other buffer. Am gonna zoom in a little bit so you can
 convince yourself that is in fact the doc string for it.
 
-05:26 And I can also navigate to its definition.
- So in one key stroke I can see where it is imported from.
-
-And another one I can go to the definition in different file.
+05:26 And I can also navigate to its definition. So in one key stroke
+I can see where it is imported from. And another one I can go to the
+definition in different file.
 
 This is a great way to navigate quickly. In a way that it respect what
 you are investigating, if you're looking at a bug or something like.
 
 So looking at the end of this init function here. Say I wanna check
-out the copy_repo command. This auto-completion features also is
+out the =copy_repo= command. This auto-completion features also is
 intelligent enough to know what class methods look like.
 
-so it jumps to this method that's defined of itself. Let's I want to
-look at this to self._prep() function see what's going on there I can
+So it jumps to this method that's defined of itself. Let's I want to
+look at this to =self._prep()= function see what's going on there I can
 jump is well with single keystroke and now I can look at this run
 command thing I can do things like get the function signature, go to
 its definition, which is someplace completely different.
@@ -136,7 +143,7 @@ actually is in fact what we are looking at.
 
 So now we've gone too far field, how do we get back to start?
 Fortunately you can actually just retraced the tree an end up right
-back at the original bench repo definition in a few key strokes.
+back at the original =BenchRepo= definition in a few key strokes.
 
 07:06 So hopefully this is done something to show you some of the nice
 things about having features like these. You get to, from the comfort
@@ -160,33 +167,37 @@ knowledge of how your system is configured and what your project
 environment is.
 
 And where the emacs lisp stuff comes in is really the glue code. These
-are a couple packages called epc, jedi.el. Jedi, we'll talk about a
+are a couple packages called EPC, Jedi.el. Jedi, we'll talk about a
 little bit. It is really the brains and how this all works.
 
-epc is a bit of a middleware that connects Python land to emacs land.
+https://github.com/kiwanami/emacs-epc
+
+https://github.com/tkf/emacs-jedi
+
+EPC is a bit of a middle-ware that connects Python land to emacs land.
 
 We're just gonna … ( that's a artifact from an old version the slide)
 hopefully some of you guys have seen before. If not, the syntax is
 pretty simple, and in general what I'm gonna talk about is the stuff
 that you can just copy and paste into your environment.
 
-we'll go into a bit details talking about how the init file is set up
+We'll go into a bit details talking about how the init file is set up
 in the VM.
 
 Speaking of the VM, this is sorta something that I've created to help
 you guys try some these features out in your sandbox environment.
 
 So basically you need to be able to run Vagrant and VirtualBox. and
-then cloned github repo. Cd into it, bring up the virtual machine.
+then cloned Github repo. Cd into it, bring up the virtual machine.
 
 09:21 The first time you run Vagrant, it'll do all the provisioning
 and install the dependencies, and then you can just ssh in.
 
 The initialization code for the virtual machine is =jedi-starter.el=.
-in that repository which is a soft linked
- as the .emacs file, from within the virtual machine.
+in that repository which is a soft linked as the .emacs file, from
+within the virtual machine.
 
-09:44 For those you haven't used vagrant, one the nice things about it
+09:44 For those you haven't used Vagrant, one the nice things about it
 is it allows you to share a directory between your local box and your
 virtual machine, so that edits on your local box can be reflected
 there. And the basic upshot is that edits to your =jedi-starter.el=
@@ -196,13 +207,13 @@ So if you want to do some tweaks or do some experimentation, you can
 do that locally in the environment that you're comfortable with, then
 try out the results on the VM.
 
-in terms of how this emacs….
+In terms of how this emacs….
 
 10:22 Basically much to the rest of our talk is gonna be talking about
 how this file is set up, and by extension how you can set up your own
 environment to use some of these features.
 
-so basically the first couple lines in the =jedi-starter.el=
+So basically the first couple lines in the =jedi-starter.el=
 incantation involves including the package function of emacs. We'll
 talk about a little more in a second.
 
@@ -230,7 +241,7 @@ So basically much of this presentation is going to be filling in those
 commented lines with actually elisp code that does what you would
 expect.
 
-So in terms of the particular I dependencies we're going to use,
+So in terms of the particular dependencies we're going to use,
 there's four that I have in the VM.
 
 12:01 The first is this thing called Projectile. It's quite simple but
@@ -243,7 +254,7 @@ Then there's the auto-complete, which we discussed briefly before,
 which provides essentially the interface elements that show
 completions and inline documentation.
 
-and epc and jedi, which are what makes everything tick, the parts that
+And EPC and Jedi, which are what makes everything tick, the parts that
 are aware of Python managed communications between emacs and the
 process that's parsing the buffers.
 
@@ -251,14 +262,14 @@ So for those who have worked with packages before and may be installed
 some custom elisp code, it is possible to just do this very basically,
 which is to clone these respective repositories and their
 dependencies, unzip the tar balls, and add those directories to your
-load path and then manually  =require= everything in your .emacs file.
+load path and then manually =require= everything in your .emacs file.
 
 That possible, but we're not going to talk about how to do that today
 because its annoying and hard to reproduce.
 
-the strategy i'll say instead involves =package.el=
+The strategy I'll say instead involves =package.el=
 
-just to let you know that it is still possible though to install these
+Just to let you know that it is still possible though to install these
 things manually…. I have installed manually before, but I saw the
 light and started using a package manager. You guys can asked me about
 that later you're curious.
@@ -267,30 +278,30 @@ Package management comes in standard emacs 24. You have to do a little
 bit of work to make it work for emacs 23, if any of you are using
 that.
 
-the github repo as sort of a teaching tool uses emacs 23 and you can
+The Github repo as sort of a teaching tool uses emacs 23 and you can
 look at the setup code particularly… there's basically a elisp file
 you have to download and place in the load path, and then everything
 else after that it is essentially identical between the version.
 
 14:09 So, the incantation to get it going with the package manager is
-pretty simple. You have to =require=  the package, and initialize it,
+pretty simple. You have to =require= the package, and initialize it,
 and then add at least one repository source to it. And the one that
 I've chosen here is MELPA, which is one of several options. There is
 Marmalade, and then the GNU project has one (ELPA). MELPA I find is
 up-to-date with all these packages.
 
+http://melpa.milkbox.net/
+
 Various anonymous sources on the Internet seem to suggest that it's
 pretty well maintained, so why mess with a good thing, I just stick
 with that.
 
-One annoying thing is that you do need to remember the trailing
- slash in the URL,
-
-I actually spent some time banging my head again the wall,
+One annoying thing is that you do need to remember the trailing slash
+in the URL. I actually spent some time banging my head again the wall,
 failing to include that.
 
 After you you've installed, the packages are stored locally. You can
-check them out in your =.emacs.d/elpa/=if you're curious as to
+check them out in your =.emacs.d/elpa/= if you're curious as to
 figure out what actually been installed.
 
 15:10 There's two ways to actually get the packages. The one-way which
@@ -302,9 +313,9 @@ that has a bunch of packages. So lets say I navigate, put point over
 want these things, I can press the question mark key and see some
 documentation for a particular package,
 
-and then I think you press return or maybe you mark or something like
+And then I think you press return or maybe you mark or something like
 that then it gets installed. You can look at the mode specific help
-with 【Ctrl+h m】 for more details on that. I am not gonna spend too
+with 【Ctrl+h m】 for more details on that. I am not going to spend too
 much time on it.
 
 I'll say one useful thing with these packages is it actually shows you
@@ -320,8 +331,6 @@ package installations.
 Simple auto-installation
 
 #+BEGIN_SRC emacs-lisp
-#+END_SRC
-
 (defvar local-packages '(projectile auto-complete epc jedi))
 (defun uninstalled-packages (packages)
   (delq nil
@@ -335,18 +344,18 @@ Simple auto-installation
       (package-refresh-contents)
       (dolist (p need-to-install)
         (package-install p)))))
+#+END_SRC
 
 16:21 The other one is to use the package.el API, which lets you put
  code in your .emacs file and more easily reproduce package installed
  across environments, just by using the .emacs.
 
 So what he needed to do that? Well I've defined a variable called
- =local-packages=  which just has the names of the packages.
+ =local-packages= which just has the names of the packages.
 
 #+BEGIN_SRC emacs-lisp
-#+END_SRC
-
 (defvar local-packages '(projectile auto-complete epc jedi))
+#+END_SRC
 
 If you're curious as to the exact name you can always go to (M-x
 list-packages) to to learn (the package names). I know at least MELPA
@@ -356,16 +365,16 @@ also works.
 Then I have a little function here that I just kinda happily put
 together that given a list to packages it tells you what uninstalled.
 
-I've adapted a little technique If you google “elisp filter Stack
+I've adapted a little technique If you Google “elisp filter Stack
 Overflow” will look familiar because emacs built-in doesn't have a
 filtering function but what this does is basically allows you to using
 the package installed key command, which basically tells you whether
 packages installed, just returns a list only the uninstall packages.
 
 And then given that list, I have some code that binds it to a
-temporary variable called  =need-to-install= , and when that variable is
+temporary variable called =need-to-install= , and when that variable is
 non-nil, I refresh the content of the local package manager, and then
-for each uninstall package I call the function  =package-install-p=
+for each uninstall package I call the function =package-install-p=
 with that's the name. So that the command that does the magic package
 install.
 
@@ -384,7 +393,7 @@ C-c p k Kill all buffers for project
 
 More info: https://github.com/bbatsov/projectile
 
-18:14 So I'm gona take the easy ones first, the first one is
+18:14 So I'm going to take the easy ones first, the first one is
 Projectile, which is a package that allows you to navigate between
 projects.
 
@@ -408,10 +417,10 @@ particularly helpful.
 You know when you get to a point where you have three different projects open,
 20 buffers each, its kinda nice to have that.
 
-and it's a very nice, very easy to use, documentation. You can look
-online for a very thorough Read Me file. This bbatsov gentlemen I
+And it's a very nice, very easy to use, documentation. You can look
+online for a very thorough Read Me file. This Bbatsov gentlemen I
 think he also does the emacs Prelude, if any guys are into that, and
-and he is a Prelude user, I think Projectile comes standard with that.
+he is a Prelude user, I think Projectile comes standard with that.
 
 If you really want to get up in going with that,
 
@@ -428,14 +437,14 @@ I have a couple customization because I like my results displayed
 vertically. those are not specific for Projectile but to something
 called ido-mode.
 
-but in interest of keeping things simple, that will get you started
+But in interest of keeping things simple, that will get you started
 and there's a lot resources online for additional customization
 you can do with it.
 
 One other note: for some reason the most recent version of Projectile
-relied on this  =remote-file-name-inhibit-cache= , which does not
+relied on this =remote-file-name-inhibit-cache= , which does not
 appear to be included in a vanilla emacs 23 install, at least it
-wasn't on my VM, which was just an  =apt-get install emacs=  from Ubuntu.
+wasn't on my VM, which was just an =apt-get install emacs= from Ubuntu.
 
 #+BEGIN_SRC emacs-lisp
 ;; Emacs 23 hack
@@ -483,16 +492,16 @@ What does the default configuration get you? It does get you something.
 (setq ac-show-menu-immediately-on-auto-complete t)
 #+END_SRC
 
-ok one other thing I showed you guys, showed the menu essentially right
+Ok one other thing I showed you guys, showed the menu essentially right
 away. If you like that, I sorta like that, there's a vividly named variable
 that you can set to true, and it does about what it sounds like which
 is to show the menu immediately on auto-complete.
 
-and what is it… in terms of being active… generally for most the
+In terms of being active, generally for most the
 common programming mode c-mode and the like, it will be active
 automatically but the only completions you'll have is kinda basic.
 
-the the dome? in less useful long are the language-specific keywords
+The less useful ones are the language-specific keywords
 in case like you really wanna have while auto-complete save those
 extra three key strokes after the WH that is an option for you but the
 other thing it does is like collect all the words in buffers with the
@@ -502,7 +511,7 @@ about the appropriateness or the meaning of those completions.
 
 Which is why the auto-complete really can be improved upon.
 
-the nice thing though is that auto-complete does have an interface for
+The nice thing though is that auto-complete does have an interface for
 third party packages to provide completions to it, and that's what
 jedi does in essence, among other things.
 
@@ -516,53 +525,53 @@ Several things have to play nicely for this all to work:
 • EPC
  • Simple Emacs/Python RPC library
 
-22:29 so we've talked enough about jedi and and that's really the
+22:29 so we've talked enough about Jedi and that's really the
 centerpiece of this whole operation, and its the most annoying and
 difficult thing to configure.
 
 This is because there are a few different components to Jedi. first of
 all, you have the Jedi Python library, which does the actual work of
-parsing, and it provides a nice and pretty pretty well abstracted
+parsing, and it provides a nice and pretty well abstracted
 interface, where you can give it a whole blob of text and position
 within that file and it'll tell you things about the context of
 whatever variable you're looking, or your point is.
 
-its actually not originally for emacs, I believe it was originally
+Its actually not originally for emacs, I believe it was originally
 developed for the vim community, but we are still been able to
 reappropriate for our own purposes. You can see more details online,
 if you're really interested in the internals. You don't actually have
 to know all that much about it to set it up.
 
-And then there's this piece of middleware, which is kind of an odd duck
+And then there's this piece of middle-ware, which is kind of an odd duck
 EPC.
 
 You know it's a dependency, it's not used all that much, but it
 basically works is the glue and it's worth remembering something needs
 to be installed.
 
-23:38 It has both a python package associated with it as well as a
+23:38 It has both a Python package associated with it as well as a
 small elisp package because it does have to talk between both
 environments.
 
-And then Jedi.el is the interface that's the elisp froentend as well
+And then Jedi.el is the interface that's the elisp frontend as well
 as a very small Python server that talks through EPC to Jedi. This is
-really what you customize and what you set up. and and and really
+really what you customize and what you set up. and really
 provides the interface for working with all this to emacs.
 
-so here's a diagram, kinda showing the flow just because there's a few
+So here's a diagram, kinda showing the flow just because there's a few
 component to work together, so your pipe stuff in or tell Jedi you
 want to do something or go somewhere, Jedi will turn that into a
 python function call that will be parsed and send through by the Jedi
 library and then the relevant information will be sent back to the
-jedi elisp library and presented appropriately in the form of
+Jedi elisp library and presented appropriately in the form of
 completions or like someplace for you to jump to during navigation.
 
-so there's some Python dependencies on this and you have two choices,
+So there's some Python dependencies on this and you have two choices,
 one good and one adequate, in terms of how to deal with this.
 
 The better option if it's available to you is to let Jedi handle it.
 
-you need two things for this to work. One is  =pip= , which most people I think if
+You need two things for this to work. One is =pip= , which most people I think if
 you working with Python it's become increasingly popular tool for managing
 packages.
 
@@ -584,12 +593,7 @@ if you use the continuum.io and conda distribution, It doesn't play
 too well virtualenv. So if you can't use that virtualenv, you're left to
 do it yourself.
 
-Which means that you have to do a pip install epc
-pip install epc Jedi globally,
-
-you have to be sure when you start emacs that those modules are in a
-place where they can be found, that may involve pointing jedi during
-startup to a particular installed python.
+Which means that you have to do a =pip= install EPC and Jedi globally, you have to be sure when you start emacs that those modules are in a place where they can be found, that may involve pointing Jedi during startup to a particular installed Python.
 
 I'm going to discuss a quick function for doing that as a sidebar
 later on but just F.Y.I that's why I mention it.
@@ -604,69 +608,69 @@ The bare minimum:
 (add-hook 'python-mode-hook 'jedi:setup)
 #+END_SRC
 
-26:42 The absolute minimum to hook up jedi is also pretty simple.
+26:42 The absolute minimum to hook up Jedi is also pretty simple.
 You import a library and then as I was talking about
 auto-complete is extensible with different sources and that's what the
- =(add-to-list ac-sources …)=  command does, it gives you,
- exposes a source called  =ac-source-jedi-direct=
+ =(add-to-list ac-sources …)= command does, it gives you,
+ exposes a source called =ac-source-jedi-direct=
 on you that.
 
 And then the next thing you should do should add to the
- =python-mode-hook=  the  ='jedi:setup=  function so many you may
+ =python-mode-hook= the ='jedi:setup= function so many you may
 already know about hook's of hook are basically emacs way I love
 letting you you know add functionality dynamically at certain times in
-emacs is life cycle and the  =python-mode-hook=  for example but is
-called when you're entering  =python-mode=  for a given but for and by
+emacs is life cycle and the =python-mode-hook= for example but is
+called when you're entering =python-mode= for a given but for and by
 adding a function in that hook you can ensure that that function is
 called as an initialization step.
 
-The other interesting thing about the  =add-hook= function is that it
+The other interesting thing about the =add-hook= function is that it
 actually adds element I believe to the beginning of the list.
 
-and so we actually want to add jedi set up first to the
- =python-mode-hook=  in our init file and this actually becomes
-important because we're gonna add some customization to Jedi variables
-that are specific to a given buffer that need to be made before jedi
+And so we actually want to add Jedi set up first to the
+ =python-mode-hook= in our init file and this actually becomes
+important because we're going to add some customization to Jedi variables
+that are specific to a given buffer that need to be made before Jedi
 setup is called.
 
-so this is done in the virtual machine but if you're experimenting in your local environment keep in mind that there has to be called first and therefore added first up the Jedi functions to the Python mode hood.
+So this is done in the virtual machine but if you're experimenting in your local environment keep in mind that there has to be called first and therefore added first up the Jedi functions to the Python mode hood.
 
 28:08 now the bare minimum gets you some of the auto-complete function
 but it'll only get you the standard library, which is is nice but some
-of the most valuable stuff in jedi comes from being able to navigate
+of the most valuable stuff in Jedi comes from being able to navigate
 between files in a given project, and you are only get a relatively
 trivial version of that, you'll actually only get files in the same
 directory, in certain cases.
 
-You can improve on that by configuring the jedi server before it
+You can improve on that by configuring the Jedi server before it
 starts up.
 
-this is actually done by setting in emacs variable that allows you to
+This is actually done by setting in emacs variable that allows you to
 set the Jedi server args.
 
-The two args that are worth thinking about are the  =system-path= ,
-for those of you who use Python.  =sys.path=  is where Python looks
+The two args that are worth thinking about are the =system-path= ,
+for those of you who use Python. =sys.path= is where Python looks
 for modules.
 
 And if you want to specify a virtual environment that is not the
 currently active virtual environment you can also do that via the
 virtual and switches well. ( =--virtual-env= )
 
-if you are in a given buffer and you wanna see what arguments are
+If you are in a given buffer and you wanna see what arguments are
 active, this can be useful when when you're setting something up and
 trying to debug it.
 
-29:23 you can do it by on emacs by  =describe-variable= facility. That
-can be done by either by  =describ-variable=  or 【control+h v】.
+29:23 you can do it by on emacs by =describe-variable= facility. That
+can be done by either by =describ-variable= or 【control+h v】.
 
-I'll type jedi server-args and I get a bunch information in the help buffer,
+I'll type Jedi server-args and I get a bunch information in the help buffer,
 I can see the current value is is equal to the project root. and
-the global value is  =nil= , more on that in a second.
+the global value is =nil= , more on that in a second.
 
-now that  =sys-path=  valued didn't just set itself, we had to do
+Now that =sys-path= valued didn't just set itself, we had to do
 something for that to be set correctly.
 
-and same with the virtualenv variable. I've set that to  =nil=  I
+And same with the virtualenv variable. I've set that to =nil= I
 think most you'll probably also you know not need to use that.
 
 Basically I to configure both for those. this is kinda the setup that
@@ -687,35 +691,35 @@ stuff is related to finding the project root.
 (defvar jedi-config:python-module-sentinel "__init__.py")
 #+END_SRC
 
-so I define two variables and again lots different approaches you can
+So I define two variables and again lots different approaches you can
  use.
 
-one is a particular sentinel to use in terms of finding a repository
- I just chosen  =".git"= .
+One is a particular sentinel to use in terms of finding a repository
+ I just chosen =".git"= .
 
 What I what I mean by “sentinel”? I mean that's a file that you'd
 expect to see in the base directory of a repository. Am sure your git
 repository will have a .git directory in its root directory. Emacs has
 facilities for being able to find that.
 
-31:08 Similarly there's this thing called the  =python-module-sentinal=
+31:08 Similarly there's this thing called the =python-module-sentinal=
 
 #+BEGIN_SRC emacs-lisp
 (defvar jedi-config:python-module-sentinel "__init__.py")
 #+END_SRC
 
-the simplified example I show you here that doesn't actually rely on it. The more complicated example in the VM does.
+The simplified example I show you here that doesn't actually rely on it. The more complicated example in the VM does.
 
-for those of you who don't use Python,  =__init__.py=  is a file that has to exist in certain directories for modules to be importable.
+For those of you who don't use Python, =__init__.py= is a file that has to exist in certain directories for modules to be importable.
 
-31:32 and the location of  =__init__.py=  file can also be helpful
+31:32 and the location of =__init__.py= file can also be helpful
 information and in terms a understanding what the base directory for a
 given buffer is, like, where is the base directory relative to a given
 project. It's not always the version control root base and so knowing
 how to find that in it that init.py file can be a helpful technique
 and that's that we do online.
 
-so a basic function that gets the project root file might look
+So a basic function that gets the project root file might look
 something like this:
 
 #+BEGIN_SRC emacs-lisp
@@ -724,44 +728,44 @@ something like this:
 (vc-find-root (expand-file-name (buffer-file-name buf)) repo-type))
 #+END_SRC
 
-32:05 again this is a simple elisp function. I've used  =defun= to
-define a function that I've called  =get-project-root= that takes
+32:05 again this is a simple elisp function. I've used =defun= to
+define a function that I've called =get-project-root= that takes
 three arguments: the buffer, the repository type, and the init file.
 The third argument is just so I can define multiple functions with
 compatible signatures.
 
-again the more complicated version of this function does use the init
+Again the more complicated version of this function does use the init
 file variable.
 
-so what does this do?
+So what does this do?
 
-well I'm actually gonna show you by working out from the scratch buffer.
+Well I'm actually going to show you by working out from the scratch buffer.
 
-so we go to scratch, and if we type (get-buffer "runner.py") I'm gonna do runner.py. I'm gonna switch to the messages real quick. so we go to (get-buffer "runner.py")
+So we go to scratch, and if we type (get-buffer "runner.py") I'm going to do runner.py. I'm going to switch to the messages real quick. so we go to (get-buffer "runner.py")
 
 33:05 we see a that it evaluates to a variable that stands for
 the buffer.
 
-now there's a function called  =buffer-file-name=
+Now there's a function called =buffer-file-name=
 which tells us the file corresponding to that buffer.
 
 In this case there is a file and it's non-nil.
 
 33:23 so now if we want to do, I do probably as a belt-and-suspenders
-thing, I use this  =expand-file-name=  function to turn into absolute
+thing, I use this =expand-file-name= function to turn into absolute
 path in this case that's not strictly necessary because it has the
 correct value by default.
 
-then lastly we have =vc-find-root=  which is actually a built-in emacs
+Then lastly we have =vc-find-root= which is actually a built-in emacs
 function that given a version control signifier it will tell you what
 the base directory is for that particular repository.
 
-so here we've used .git because this is a git repository
+So here we've used .git because this is a git repository
 and sure enough we have the
  =~/Documents/Work/vm/vbench/=
 which is what we're looking for.
 
-so this is basically what this function does.
+So this is basically what this function does.
 
 34:20 And then we define a variable
 
@@ -769,10 +773,10 @@ so this is basically what this function does.
 (defvar jedi-config:find-root-function 'get-project-root)
 #+END_SRC
 
-that that uses that function as a symbol to indicate what should be
+That that uses that function as a symbol to indicate what should be
 done to identify the project root buffer.
 
-and then after that configurable set, we have this function
+And then after that configurable set, we have this function
  =current-buffer-project-root=
 
 #+BEGIN_SRC emacs-lisp
@@ -787,12 +791,12 @@ and then after that configurable set, we have this function
 34:43 that calls the function in question. it uses the current buffer
 function to find the current buffer, unsurprisingly enough and then
 the configs variables, so that it looks for the correct repository
-type and the  =python-module-sentinel= .
+type and the =python-module-sentinel= .
 
-and I have a fancier version online if you want to take a look on that
+And I have a fancier version online if you want to take a look on that
 but the this will do the trick at least to get us started.
 
-and now it's left to set the server arguments.
+And now it's left to set the server arguments.
  so I have a little macro that
 just adds 2 elements to the end to the list.
 
@@ -800,7 +804,7 @@ If you gets really curious we would go to more detail later but it's
 just a simple little helper function to make the rest a little bit
 more readable.
 
-and then I use my current-buffer-project-root file to define a
+And then I use my current-buffer-project-root file to define a
 variable called Project root in the context of this Jedi've configs
 set up server-arg function
 
@@ -824,20 +828,20 @@ set up server-arg function
                          jedi-config:with-virtualenv))))
 #+END_SRC
 
-35:43 and the next command is called  =make-local-variable=  that's
-that's an interesting command that allows you to make a variable that
+35:43 and the next command is called =make-local-variable= that's
+an interesting command that allows you to make a variable that
 is local only to the buffer in which that that functions called.
 
-and that is helpful when you have a situation where you have multiple
+And that is helpful when you have a situation where you have multiple
 projects that might be using Jedi and you wants to be able to set the
-Jedi  =server-args=  variables to different values depending on what
+Jedi =server-args= variables to different values depending on what
 buffer you are in.
 
-So the  =make-local-variable=  call is actually quite important and
+So the =make-local-variable= call is actually quite important and
 add considerably to the flexibility you have in terms of creating
 multiple environments and using them the same emacs session.
 
-and then we set up variables.
+And then we set up variables.
 
 #+BEGIN_SRC emacs-lisp
          ;; And set our variables
@@ -848,10 +852,10 @@ and then we set up variables.
                          jedi-config:with-virtualenv))
 #+END_SRC
 
-36:23 both of these are just condition on a  =project-root=  being
+36:23 both of these are just condition on a =project-root= being
 defined and the config variables for virtualenv being defined.
 
-and hopefully that's self explanatory enough that adds the appropriate
+And hopefully that's self explanatory enough that adds the appropriate
 arguments to the Jedi server args variable and the idea being that the
 argument and then the value follow each other.
 
@@ -875,36 +879,36 @@ PATH may need to be set explicitly.
 
 36:49 from there, the sidebar that I mentioned before is one other command
 
-that you might find you need to use which is to find the correct
+That you might find you need to use which is to find the correct
 python when you can't use virtualenv and I won't spend too much
 time in this because this is a bit of a corner case but I have this
 switched on and off by this =jedi-config:use-system-python= config
 variable and it has a couple things.
 
-first of all it's the  =jedi-config:set-python-executable=  function
+First of all it's the =jedi-config:set-python-executable= function
 for Mac OS X you actually need to use this function that defined in
 the =__init__.py= file that basically takes the path of environment
 variable from the shell and makes it available to emacs. Again its a
 corner case, more details are online.
 
-and if you google that you'll get a helpful Stack Overflow answer that
+And if you google that you'll get a helpful Stack Overflow answer that
 will tell you much of what you need to know.
 
-and then you make your own local variable gain this time it's called
+And then you make your own local variable gain this time it's called
  =jedi:server-command=
 
 37:53 and then in this case you set the first value of
- =jedi:server-command=  . You could probably do this with a  =setcar=
+ =jedi:server-command= . You could probably do this with a =setcar=
 too.
 
-To a value given by  =(executable-find "python")= .
+To a value given by =(executable-find "python")= .
 
 Just to illustrate what that looks like, [demo in emacs *scratch
 buffer*] ( I get which is you can see the bottom line here is my
-particular python which as I mentioned before happens to be that which
+particular Python which as I mentioned before happens to be that which
 is installed by anaconda.)
 
-so again for those of you are having issues starting up jedi server
+So again for those of you are having issues starting up Jedi server
 you may use something like this in your environment.
 
 38:40 and now we had the hook functions we define before.
@@ -919,18 +923,18 @@ Putting everything together
                  'jedi-config:set-python-executable))
 #+END_SRC
 
-we set up a server args first and then we set the executable.
+We set up a server args first and then we set the executable.
 
-when its its the the  =use-system-python=  variable true (or non-nil).
+When its its the the =use-system-python= variable true (or non-nil).
 
-and then I have a couple suggested keybinding. the functions I showed you before when navigating are basically these four:
+And then I have a couple suggested keybinding. the functions I showed you before when navigating are basically these four:
 
 jedi:goto-definition
 Move to deﬁnition of symbol at point
 default: C-c .
 suggested: M-.
 
-39:00 to jump, you use the the the  =jedi:goto-definition=
+39:00 to jump, you use the the the =jedi:goto-definition=
 which is great for quickly navigating.
 
 jedi:goto-definition-pop-marker
@@ -938,7 +942,7 @@ Move to previous location of point
 default: C-c ,
 suggested: M-,
 
-the  =jedi:goto-definition-pop-marker=  command takes you back on to
+The =jedi:goto-definition-pop-marker= command takes you back on to
 where you were before that's how we got very quickly back to where we
 started when we did our little navigation to the project.
 
@@ -947,21 +951,21 @@ Show docstring for symbol at point in new window
 default: C-c ?
 suggested: M-?
 
-on and then the  =jedi:show-doc=   command about what you think.
+On and then the =jedi:show-doc=  command about what you think.
 it just show the doc string and in a special buffer.
 
-and then this  =jedi:get-in-function-call=  thing
+And then this =jedi:get-in-function-call= thing
 
 jedi:get-in-function-call
 Pop up signature for function at point
 default: None
 suggested: M-/
 
-that's what pops up the function signature when you're between
+That's what pops up the function signature when you're between
 parentheses for a function call and I find that handy sometimes It's
 actually not bound by the fault.
 
-this is my set up keys again,
+This is my set up keys again,
 
 Local Jedi keybindings
 
@@ -974,32 +978,32 @@ Local Jedi keybindings
 (add-hook 'python-mode-hook 'jedi-config:setup-keys)
 #+END_SRC
 
- =local-set-key=  just to mention that.
+ =local-set-key= just to mention that.
 that sets a key for a particular buffer if you don't want to clobber
 global settings for other modes.
 
-and there's a little hack
+And there's a little hack
 
 Jedi Miscellany
 • Small hack to never show in-function call automatically:
  • (setq jedi:get-in-function-call-delay 10000000)
  • Recommended if you bind this to a key
 
-because by default the get-in-function-call always pops up the getting
+Because by default the get-in-function-call always pops up the getting
 function call after certain delay I have set that delay a variable
 which is a in milliseconds to an absurdly large value and I would
 recommend that if you use the key binding I suggested you do something
 like this yourself. And in fact that's done in the VM.
 
-and one little tweak that I kind of like is is the complete on dot
+And one little tweak that I kind of like is is the complete on dot
 
 • Complete when you type a dot:
  • (setq jedi:complete-on-dot t)
- • Useful when typing method callsOther Packages
+ • Useful when typing method calls
 
- which is that for example, when you… I get the completions showing up
- automatically right on the dot. That can be useful sometimes if you
- want to see a completion right upon a method call.
+which is that for example, when you… I get the completions showing up
+automatically right on the dot. That can be useful sometimes if you
+want to see a completion right upon a method call.
 
 40:53 I okay so that's basically it for Jedi set up. Like I said this
 general paradigm does imply to other languages, and the basic idea
@@ -1011,11 +1015,11 @@ follow a pattern where they will provide some way of connecting to a
 back-end, or connecting to auto-complete or similar interface, and I think
 that's true for all of these.
 
-one thing i'll mention on top of auto-complete is there something
-called company-mode. I don't believe jedi has a a connection for that
+One thing I'll mention on top of auto-complete is there something
+called company-mode. I don't believe Jedi has a a connection for that
 as well, but that's something a lot of people use as an alternative.
 
-so that basically concludes the talk, so thank you guys for your
+So that basically concludes the talk, so thank you guys for your
 attention.
 
 AUDIENCE: [APPLAUSE]
@@ -1027,9 +1031,9 @@ AUDIENCE: I guess the answer's no but […]
 42:17 I haven't tried it, what I don't know … I don't know if … I
 think the problem is that when you start the Jedi server you have to …
 yeah yeah I think you have to give something that's like… address,
-like that that's a path in the sense that your system would
-understand because it's a separate Python process that has to access
-others libraries. I think the same goes also for like if you like in a
+like that that's a path in the sense that your system would understand
+because it's a separate Python process that has to access others
+libraries. I think the same goes also for like if you like in a
 virtual machine or something like that, so I think the answer is no, I
 think you're correct
 
@@ -1040,7 +1044,8 @@ the current directory would, so I believe… actual am sure
 
 AUDIENCE: [inaudible]
 
-I haven't tried that I suspect no, because is how much else is going on but certainly worth a try.
+I haven't tried that I suspect no, because is how much else is going
+on but certainly worth a try.
 
 AUDIENCE: [inaudible]
 
@@ -1048,16 +1053,17 @@ AUDIENCE: [inaudible]
 installed packages recently I need fewer hacks to make them work with
 emacs 24.
 
-there's some other stuff too but none are coming off the top my head,
+There's some other stuff too but none are coming off the top my head,
 I've been using 24 I'm quite happy.
 
-AUDIENCE: different virtualenv … how to determine which virtualenv to use … [inaudible]
+AUDIENCE: different virtualenv … how to determine which virtualenv to
+use … [inaudible]
 
 I've thought a little bit about that I mean the solution I have in the
 VM … I did not having time to come up with an intelligent way of doing
 that is because that's not part of my own workflow
 
-you have to figure out basically some way of given a buffer's location
+You have to figure out basically some way of given a buffer's location
 and its parent repository, what virtualenv is that mapped to … there
 could be a couple things… you can have a convention about having a
 particular file … that tells you what virtualenv that is, or you can
@@ -1065,7 +1071,8 @@ have a way to find and therefore set that variable. So you have to do
 something like that, it's certainly possible but probably would be
 more of a question of how you organize your project at this point.
 
-AUDIENCE: sentinel turned on … so start … if I see … some directory … [inaudible]
+AUDIENCE: sentinel turned on … so start … if I see … some directory …
+[inaudible]
 
 45:26 I believe it does a slightly more robust version of the vc-find
 and I think it keeps a list of like you know SVN CVS git so forth and
@@ -1079,22 +1086,22 @@ AUDIENCE: show us … vertical layout? … [inaudible]
 
 45:57 sure, if you guys want I can show you real quick, mine my own
 .emacs. Just a one second. And so this is actually, I took this from
-emacs wiki, which is a great resource, it is basically this part here
+EmacsWiki, which is a great resource, it is basically this part here
 [highlighted] where…
 
 AUDIENCE: [inaudible]
 
-if there is then I would recommend looking into, cuz…
+If there is then I would recommend looking into, cuz…
 
 AUDIENCE: list-packages … [inaudible]
 
-46:54 its  =ido-vertical-mode= . there you go
+46:54 its =ido-vertical-mode= . there you go
 
-so simple package simple simple documentation.
+So simple package simple simple documentation.
 
-okay so I take back what I said before I recommend that you use this thing that
-I've never used that sounds much better.
+Okay so I take back what I said before I recommend that you use this
+thing that I've never used that sounds much better.
 
-anybody else?
+Anybody else?
 
-okay I thank you all so much for your time, really appreciated.
+Okay I thank you all so much for your time, really appreciated.
