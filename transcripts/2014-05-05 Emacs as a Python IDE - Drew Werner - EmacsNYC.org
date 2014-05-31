@@ -21,47 +21,40 @@ https://github.com/wernerandrew
 
 
 
-My name is drew, and I'm going to about how to turn emacs into an
-intelligent and full-featured ide.
+My name is Drew, and I'm going to talk about how to turn Emacs into an
+intelligent and full-featured IDE. I'm going to be using Python as the
+example for the purpose of this discussion.
 
-I'm going to be using python as the example for the purpose of this
-discussion.
-
-my hope is that some of the techniques I'm talking about, hopefully
-you would find some broader application or in other environment. we'll
+My hope is that some of the techniques I'm talking about, hopefully
+you would find some broader application or in other environment. We'll
 talk about that a little bit in the end.
 
-anyhow, we going to talk about python and some interesting things to
-show you. and I hope you guys find it useful. Thanks for coming out.
+Anyhow, we're going to talk about python and some interesting things to
+show you. I hope you guys find it useful. Thanks for coming out.
 
-so just to give a general sense of what am going to talk about, I'm
+So just to give a general sense of what am going to talk about, I'm
 going to start out with a little demo, just to show you more or less
-what you can hope to have at end, the stuff I talk about.
+what you can hope to have at the end, the stuff I talk about.
 
-then I'm going to basically show you how to use it yourself, how to
-install the packages, how to customize it to your preferences, and for
+Then I'm going to basically show you how to use it yourself, how to
+install the packages, how to customize it to your preferences. For
 those of you who are interested in trying it out yourself without the
 pain of changing your existing config, i've created a repository on
-github, with a virtual machine.
+Github with a virtual machine.
 
 https://github.com/wernerandrew/jedi-starter
 
-If you guys use vagrant or virtualBox
-at all, you can use to try out locally yourselves.
+If you guys use Vagrant or VirtualBox at all, you can use that to try
+it out locally yourselves.
 
-feel free if you want to brave the wifi and try it out as we talk,
-otherwise am planning on keeping it up and hopefully will be there is
-a resource for you guys to check out, after this talk.
+Feel free if you want to brave the wifi and try it out as we talk.
+Otherwise, I'm planning on keeping it up. Hopefully it will be there as
+a resource for you guys to check out after this talk.
 
-so basically in terms of what you can do in terms of making emacs like
-a traditional ide-like environment. There's a few things we gonna talk
-today that should be useful on that score. One of them is: being able
-to find files and switch between projects easily.
-
-another one is going to be navigating through function definitions and
-variable definitions in a way that's sensitive to context, and also
-documenting what you see in real-time. If you see a function, or a
-variable, being able to see where it came from and what it means.
+So basically in terms of what you can do, in terms of making Emacs like
+a traditional IDE-like environment... There's a few things we're going to talk
+about today that should be useful on that score. One of them is being able
+to find files and switch between projects easily. Another one is going to be navigating through function definitions and variable definitions in a way that's sensitive to context, and also documenting what you see in real-time. If you see a function or a variable, being able to see where it came from and what it means.
 
 also, when you have complex function calls or other constructs, it's
 nice to be able to have some help for that sort of thing. These are
