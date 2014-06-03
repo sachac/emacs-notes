@@ -101,7 +101,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 
 - Make it easy to define new modules
 ***** STARTED Take notes on people who are interested in taking course, process  course steps :routine:
-			 SCHEDULED: <2014-05-26 Mon .+2d>
+			 SCHEDULED: <2014-05-31 Sat .+2d>
 			 :LOGBOOK:
 			 CLOCK: [2014-05-28 Wed 14:25]--[2014-05-28 Wed 16:05] =>  1:40
 			 CLOCK: [2014-05-28 Wed 13:56]--[2014-05-28 Wed 14:00] =>  0:04
@@ -318,6 +318,9 @@ Good luck!
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
+*** TODO Make animated GIF demonstrations for smartparens functionality
+https://github.com/chrisdone/structured-haskell-mode
+
 *** DONE Write about semi-auto-responder
 			 CLOSED: [2014-05-21 Wed 16:43]
 			:LOGBOOK:
@@ -869,7 +872,7 @@ Starter kit? http://technomancy.us/153
 **** DONE Set up chat with Christopher Wellons
 	 	 CLOSED: [2014-05-01 Thu 22:08]
 **** TODO Host chat with Christopher Wellons
-		 SCHEDULED: <2014-05-30 Fri>
+		 SCHEDULED: <2014-05-30 Fri 19:00>
 		 :PROPERTIES:
 		 :CREATED:  [2014-05-25 Sun 21:40]
 		 :END:

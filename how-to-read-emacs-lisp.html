@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>how-to-read-emacs-lisp</title>
-<!-- 2014-05-28 Wed 18:29 -->
+<!-- 2014-06-03 Tue 18:39 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -790,7 +790,7 @@ This calls the <code>find-file</code> function with the <code>todo.org</code> fi
 </div>
 
 <p>
-This turns on <code>eldoc-mode</code>, which displays the argument list for the current function. You can move your cursor around to see argumest lists for other functions.
+This turns on <code>eldoc-mode</code>, which displays the argument list for the current function. You can move your cursor around to see argument lists for other functions.
 </p>
 
 <div class="org-src-container">
@@ -808,7 +808,7 @@ To find out if something is a function, what it does, what arguments it takes, a
 </p>
 
 <p>
-The documentation for <code>show-paren-mode</code> starts with "show-paren-mode is an interactive autoloaded Lisp function". Interactive functions are functions that can be called with <code>M-x</code> or with keyboard shortcuts, and they're usually functions that you'll find useful while interacting with Emacs. Read the description of the function to learn more about arguments that you can pass to change its behavior. If it mentions a prefix argument, that means that you can change its behaviour by typing <code>C-u</code> before you call the function.
+The documentation for <code>show-paren-mode</code> starts with "show-paren-mode is an interactive autoloaded Lisp function". Interactive functions are functions that can be called with <code>M-x</code> or with keyboard shortcuts, and they're usually functions that you'll find useful while interacting with Emacs. Non-interactive functions tend to be for internal use, such as code that other Emacs Lisp code will call. Read the description of the function to learn more about arguments that you can pass to change its behavior. If it mentions a prefix argument, that means that you can change its behaviour by typing <code>C-u</code> before you call the function.
 </p>
 
 <p>
