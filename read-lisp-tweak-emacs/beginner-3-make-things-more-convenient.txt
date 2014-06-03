@@ -106,7 +106,7 @@ You don't have to start with =C-c= or =C-x=. Consider using one of your function
 (global-set-key (kbd "<f9> b") 'ibuffer)
 #+end_src
 
-Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like =C-c= followed by a lowercase letter (=a= to =z=) are reserved for your use. Some people like using a function key and a list of letters in order to minimize the need to press Control or Meta. For example, you might use:
+Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like =C-c= followed by a lowercase letter (=a= to =z=) are reserved for your use, as are the function keys =<f5>= to =<f9>=. Some people like using a function key followed by letters in order to minimize the need to press Control or Meta. For example, you might use:
 
 #+begin_src 
 (global-set-key (kbd "C-c r") 'query-replace)
