@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I customize Emacs to make things more convenient?"</title>
-<!-- 2014-06-03 Tue 18:45 -->
+<!-- 2014-06-03 Tue 22:04 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -232,7 +232,11 @@ You don't have to start with <code>C-c</code> or <code>C-x</code>. Consider usin
 </div>
 
 <p>
-Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like <code>C-c</code> followed by a lowercase letter (<code>a</code> to <code>z</code>) are reserved for your use, as are the function keys <code>&lt;f5&gt;</code> to <code>&lt;f9&gt;</code>. Some people like using a function key followed by letters in order to minimize the need to press Control or Meta. For example, you might use:
+Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like <code>C-c</code> followed by a lowercase letter (<code>a</code> to <code>z</code>) are reserved for your use, as are the function keys <code>&lt;f5&gt;</code> to <code>&lt;f9&gt;</code>. Other keyboard shortcuts are likely to already be defined by modes. You can override them if you want,
+</p>
+
+<p>
+Some people like using a function key followed by letters in order to minimize the need to press Control or Meta. For example, you might use:
 </p>
 
 <pre class="example">
@@ -399,7 +403,7 @@ Once you've defined a custom function, you can bind it to a keyboard shortcut if
 </div>
 
 <p>
-You will often see custom functions used as hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, <code>emacs-lisp-mode</code> has an associated <code>emacs-lisp-mode-hook</code> which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in function or custom functions to hooks. For example,
+You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, <code>emacs-lisp-mode</code> has an associated <code>emacs-lisp-mode-hook</code> which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in function or custom functions to hooks. For example,
 </p>
 
 <p>

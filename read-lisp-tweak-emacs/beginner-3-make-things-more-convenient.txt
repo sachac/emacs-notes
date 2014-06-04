@@ -106,7 +106,9 @@ You don't have to start with =C-c= or =C-x=. Consider using one of your function
 (global-set-key (kbd "<f9> b") 'ibuffer)
 #+end_src
 
-Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like =C-c= followed by a lowercase letter (=a= to =z=) are reserved for your use, as are the function keys =<f5>= to =<f9>=. Some people like using a function key followed by letters in order to minimize the need to press Control or Meta. For example, you might use:
+Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like =C-c= followed by a lowercase letter (=a= to =z=) are reserved for your use, as are the function keys =<f5>= to =<f9>=. Other keyboard shortcuts are likely to already be defined by modes. You can override them if you want,
+
+Some people like using a function key followed by letters in order to minimize the need to press Control or Meta. For example, you might use:
 
 #+begin_src 
 (global-set-key (kbd "C-c r") 'query-replace)
@@ -202,7 +204,7 @@ Once you've defined a custom function, you can bind it to a keyboard shortcut if
 (global-set-key (kbd "C-c C-u") 'fc/kill-to-beginning-of-line)
 #+end_src
 
-You will often see custom functions used as hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, =emacs-lisp-mode= has an associated =emacs-lisp-mode-hook= which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in function or custom functions to hooks. For example,
+You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, =emacs-lisp-mode= has an associated =emacs-lisp-mode-hook= which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in function or custom functions to hooks. For example,
 
 People sometimes use hook functions to set up keybindings instead of using =define-key=. For example, this code:
 
