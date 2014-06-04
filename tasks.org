@@ -220,10 +220,11 @@ https://twitter.com/philandstuff/status/461969774227247104
 		 	:LOGBOOK:
 		 	- State "DONE"       from "TODO"       [2014-04-23 Wed 15:23]
 		 	:END:
-**** STARTED [#A] Add objectives and practice to section 4
-		 SCHEDULED: <2014-06-04 Wed>
+**** DONE [#A] Add objectives and practice to section 4
+		 CLOSED: [2014-06-04 Wed 14:17] SCHEDULED: <2014-06-04 Wed>
 		 :LOGBOOK:
-		 CLOCK: [2014-06-04 Wed 11:30]
+		 CLOCK: [2014-06-04 Wed 14:13]--[2014-06-04 Wed 14:17] =>  0:04
+		 CLOCK: [2014-06-04 Wed 11:30]--[2014-06-04 Wed 12:10] =>  0:40
 		 :END:
 		 :PROPERTIES:
 		 :CREATED:  [2014-06-04 Wed 11:30]

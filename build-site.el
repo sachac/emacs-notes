@@ -12,6 +12,7 @@
 
 (defvar sacha/emacs-notes-html-head
 	"<link rel=\"stylesheet\" type=\"text/css\" href=\"./css/foundation.min.css\"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
 <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/org-export.css\"></link>
 <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/style.css\"></link>
 <link rel=\"stylesheet\" type=\"text/css\" href=\"./css/emacs-notes.css\"></link>
