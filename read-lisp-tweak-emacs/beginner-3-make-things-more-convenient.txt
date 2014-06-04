@@ -238,3 +238,5 @@ This binds =C-c e= to an anonymous function. The =()= means it doesn't take any 
 
 2. Think about how you use Emacs. What kinds of keyboard shortcuts would make your work easier? How can you adapt some of the functions you've read into things that would make them even more convenient for you?
 #+END_PRACTICE
+
+Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-4-add-more-and-deal-with-errors.html]["How can I add more features and deal with errors?"]]

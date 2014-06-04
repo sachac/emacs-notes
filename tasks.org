@@ -48,7 +48,8 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 	 :END:
 *** TODO Tweak table of contents so that it's always visible / easy to get to
 - Rainer
-*** TODO Consider moving back-to-top, e-mail to the top right?
+*** DONE Consider moving back-to-top, e-mail to the top right?
+		 CLOSED: [2014-06-04 Wed 11:30]
 - Rainer
 
 *** [#A] Emacs Life																									:project:
@@ -101,7 +102,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 
 - Make it easy to define new modules
 ***** STARTED Take notes on people who are interested in taking course, process  course steps :routine:
-			 SCHEDULED: <2014-05-31 Sat .+2d>
+			 SCHEDULED: <2014-06-02 Mon .+2d>
 			 :LOGBOOK:
 			 CLOCK: [2014-05-28 Wed 14:25]--[2014-05-28 Wed 16:05] =>  1:40
 			 CLOCK: [2014-05-28 Wed 13:56]--[2014-05-28 Wed 14:00] =>  0:04
@@ -219,6 +220,15 @@ https://twitter.com/philandstuff/status/461969774227247104
 		 	:LOGBOOK:
 		 	- State "DONE"       from "TODO"       [2014-04-23 Wed 15:23]
 		 	:END:
+**** STARTED [#A] Add objectives and practice to section 4
+		 SCHEDULED: <2014-06-04 Wed>
+		 :LOGBOOK:
+		 CLOCK: [2014-06-04 Wed 11:30]
+		 :END:
+		 :PROPERTIES:
+		 :CREATED:  [2014-06-04 Wed 11:30]
+		 :Effort:   1:00
+		 :END:
 **** TODO Make video on extending Emacs 
 		 :PROPERTIES:
 		 :Effort:   2:00
@@ -867,12 +877,19 @@ Starter kit? http://technomancy.us/153
 		 :PROPERTIES:
 		 :Effort:   0:30
 		 :END:
-**** DELEGATED Transcribe this
+**** DONE Transcribe this
+		 CLOSED: [2014-06-03 Tue 22:01]
+**** TODO Review technomancy transcript
+		 SCHEDULED: <2014-06-04 Wed>
+		 :PROPERTIES:
+		 :CREATED:  [2014-06-03 Tue 22:01]
+		 :END:
+https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
 *** Christopher Wellons
 **** DONE Set up chat with Christopher Wellons
 	 	 CLOSED: [2014-05-01 Thu 22:08]
-**** TODO Host chat with Christopher Wellons
-		 SCHEDULED: <2014-05-30 Fri 19:00>
+**** DONE Host chat with Christopher Wellons
+		 CLOSED: [2014-05-30 Fri 23:59] SCHEDULED: <2014-05-30 Fri 19:00>
 		 :PROPERTIES:
 		 :CREATED:  [2014-05-25 Sun 21:40]
 		 :END:

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>how-to-read-emacs-lisp</title>
-<!-- 2014-06-03 Tue 22:04 -->
+<!-- 2014-06-04 Wed 14:13 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -85,23 +85,27 @@
 <li><a href="#sec-5-3">Lambdas - anonymous functions</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">Adding more features to Emacs</a>
+<li><a href="#sec-6">"How can I add more features and deal with errors?"</a>
 <ul>
-<li><a href="#sec-6-1">Installing packages</a></li>
-<li><a href="#sec-6-2">Other Emacs Lisp files</a></li>
+<li><a href="#sec-6-1">Adding more features to Emacs</a>
+<ul>
+<li><a href="#sec-6-1-1">Installing packages</a></li>
+<li><a href="#sec-6-1-2">Other Emacs Lisp files</a></li>
 </ul>
 </li>
-<li><a href="#sec-7">"Oh no! I have an error!"</a>
+<li><a href="#sec-6-2">"Oh no! I have an error!"</a>
 <ul>
-<li><a href="#sec-7-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</a></li>
-<li><a href="#sec-7-2">Cannot open load file: &#x2026;</a></li>
-<li><a href="#sec-7-3">Lisp error: (void-function &#x2026;)</a></li>
-<li><a href="#sec-7-4">Symbol's value as variable is void: <span class="underline">_</span></a></li>
-<li><a href="#sec-7-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</a></li>
+<li><a href="#sec-6-2-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</a></li>
+<li><a href="#sec-6-2-2">Cannot open load file: &#x2026;</a></li>
+<li><a href="#sec-6-2-3">Lisp error: (void-function &#x2026;)</a></li>
+<li><a href="#sec-6-2-4">Symbol's value as variable is void: <span class="underline">_</span></a></li>
+<li><a href="#sec-6-2-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</a></li>
 </ul>
 </li>
-<li><a href="#sec-8">Want to learn more about Emacs Lisp?</a></li>
-<li><a href="#sec-9">Author's notes</a></li>
+<li><a href="#sec-6-3">Wrapping up the beginner course</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">Author's notes</a></li>
 </ul>
 </div>
 </div>
@@ -222,7 +226,7 @@ If you want to start playing around with Emacs Lisp code right away, jump ahead 
 Reasonable defaults make sense for specific people. Other people might
 have completely different ideas for how they want a tool to work.
 Many people use Emacs and have (occasionally quite strong)
-opinions about how they want it to work. It's difficult to change the defaults for everyone<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
+opinions about how they want it to work. It's difficult to change the defaults for everyone<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
 </p>
 
 <p>
@@ -298,7 +302,7 @@ you're trying to customize is really worth it. One of the occupational
 hazards of using Emacs is that tweaking your Emacs configuration can
 be fun, almost addictive. If you catch yourself spending four hours
 fiddling with something minor, it might be time to put that aside and
-focus on getting stuff done first.<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>
+focus on getting stuff done first.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
 </p>
 </div>
 </div>
@@ -308,7 +312,7 @@ focus on getting stuff done first.<sup><a id="fnr.2" name="fnr.2" class="footref
 <h2 id="sec-3">"How can I try Emacs Lisp code?"</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-<a id="try" name="try"></a>
+<a id="try"></a>
 </p>
 
 <div class="objectives">
@@ -680,7 +684,7 @@ Try it now: <code>C-u M-: (* 21 2)</code>
 <h2 id="sec-4">"How can I understand what Emacs Lisp code does?"</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-<a id="understanding-lisp" name="understanding-lisp"></a>
+<a id="understanding-lisp"></a>
 </p>
 
 <div class="objectives">
@@ -934,7 +938,7 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 <h3 id="sec-4-3">Understand symbols</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
-<a id="quoting" name="quoting"></a>
+<a id="quoting"></a>
 </p>
 
 <p>
@@ -1046,7 +1050,7 @@ The code above sets the value of the variable to a list, ignoring any previous v
 <h4 id="sec-4-4-1">Add to a list</h4>
 <div class="outline-text-4" id="text-4-4-1">
 <p>
-<a id="load-path" name="load-path"></a>
+<a id="load-path"></a>
 </p>
 
 <p>
@@ -1128,7 +1132,7 @@ Hooks are lists of functions, so you can delete items using <code>delete</code>.
 <h4 id="sec-4-4-4">Dot notation</h4>
 <div class="outline-text-4" id="text-4-4-4">
 <p>
-<a id="package-archives" name="package-archives"></a>
+<a id="package-archives"></a>
 </p>
 
 <p>
@@ -1502,7 +1506,7 @@ The example above has three bindings for <code>transpose-words</code>. <code>M-t
 <h4 id="sec-5-1-6">Setting keybindings in a particular mode</h4>
 <div class="outline-text-4" id="text-5-1-6">
 <p>
-<a id="mode-keys" name="mode-keys"></a>
+<a id="mode-keys"></a>
 </p>
 
 <p>
@@ -1659,61 +1663,74 @@ This binds <code>C-c e</code> to an anonymous function. The <code>()</code> mean
 </div>
 
 <div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6">Adding more features to Emacs</h2>
+<h2 id="sec-6">"How can I add more features and deal with errors?"</h2>
 <div class="outline-text-2" id="text-6">
+<div class="objectives">
 <p>
-<a id="load" name="load"></a>
+After this module, you'll be able to:
 </p>
+<ul class="org-ul">
+<li>load libraries so that you can add new features or set configuration variables
+</li>
+<li>install and configure packages in order to add more features to your Emacs
+</li>
+<li>understand and fix common errors
+</li>
+<li>learn more! =)
+</li>
+</ul>
 
+</div>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">Adding more features to Emacs</h3>
+<div class="outline-text-3" id="text-6-1">
 <p>
-Most Emacs libraries are not loaded automatically. This saves memory
-and keeps things simpler. You can load built-in code by using
-<code>require</code>, like this:
+Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. Some of the customizations you may want to make require that other parts of Emacs are loaded first. For example, if you want to define a key for the <code>c-mode-map</code> (used for editing C code) or add a function to <code>org-mode-hook</code> (called when a buffer is set up with Org Mode), those libraries need to be loaded first. You can load libraries by using <code>require</code>, like this:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">hl-line</span>)
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">org</span>)
 </pre>
 </div>
 
 <p>
-This loads the <code>hl-line</code> library. <code>require</code> looks for a file named
-after the name provided to it, loads it, and double-checks that the
-library includes <code>(provide 'feature-name-goes-here)</code>. It throws an
-error if the library is not found or if it doesn't provide that
-symbol.
+This loads the <code>org</code> library. <code>require</code> looks for a file named after the name provided to it, loads it, and double-checks that the library includes <code>(provide 'feature-name-goes-here)</code>. It throws a <code>Cannot open load file</code> error if the library is not found or if it doesn't provide that symbol.
+</p>
+
+<p>
+Note that the symbol you give to <code>require</code> might not be the same as the function you call. For example, <code>c-mode</code> is actually defined in the <code>cc-mode</code> library, while <code>org-mode</code> is defined in <code>org</code>. To find out what file a function is defined in, use <code>C-h f</code> (<code>describe-function</code>) followed by the name of the function. The first line will tell you what file the function is defined in, if any. For example, <code>c-mode</code>'s definition starts with:
+</p>
+
+<pre class="example">
+c-mode is an interactive autoloaded compiled Lisp function in
+`cc-mode.el'.
+</pre>
+
+<p>
+The first part of the filename (before the <code>.el</code> or <code>.elc</code>) is usually what you would use with <code>require</code>. If you have the source installed (the <code>.el</code> file), you can look for the <code>(provide ...)</code> expression to find the actual symbol to use.
 </p>
 </div>
 
-<div id="outline-container-sec-6-1" class="outline-3">
-<h3 id="sec-6-1">Installing packages</h3>
-<div class="outline-text-3" id="text-6-1">
+<div id="outline-container-sec-6-1-1" class="outline-4">
+<h4 id="sec-6-1-1">Installing packages</h4>
+<div class="outline-text-4" id="text-6-1-1">
 <p>
-<a id="installing-packages" name="installing-packages"></a>
+<a id="installing-packages"></a>
 </p>
 
 <p>
-Emacs comes with a lot of code, but there are even more packages out
-there. When you read other people's Emacs configurations, you might
-come across other interesting packages to try out.
+Emacs comes with a lot of code, but there are even more packages out there. When you read other people's Emacs configurations, you might come across other interesting packages to try out.
 </p>
 
 <p>
-Sometimes people don't indicate which packages they use, so you have
-to guess the package name based on the function. For example,
-<code>(global-auto-complete-mode)</code> turns on a completion mode called
-<code>auto-complete-mode</code> in all buffers. Before you can use this, you will
-need to install the <code>auto-complete</code> package. In general, you can find
-package names by looking at functions that include <code>mode</code> in their
-name, removing <code>global</code>, <code>turn-on</code>, and other prefixes as needed.
+Sometimes people don't indicate which packages they use, so you have to guess the package name based on the function. For example, <code>(global-auto-complete-mode)</code> turns on a completion mode called <code>auto-complete-mode</code> in all buffers. Before you can use this, you will need to install the <code>auto-complete</code> package. In general, you can find package names by looking at functions that include <code>mode</code> in their name, removing <code>global</code>, <code>turn-on</code>, and other prefixes as needed.
 </p>
 
 <p>
-The default package repository in Emacs 24 has a limited number of
-packages. For more choices, you may want to add another repository
-such as <a href="http://melpa.milkbox.net">MELPA</a> or <a href="http://marmalade-repo.org/">Marmalade</a> Here's the code that you would run in order
-to add these repositories to your Emacs:
+The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as <a href="http://melpa.milkbox.net">MELPA</a> or <a href="http://marmalade-repo.org/">Marmalade</a> Here's the code that you would run in order to add these repositories to your Emacs:
 </p>
 
 <div class="org-src-container">
@@ -1727,43 +1744,27 @@ to add these repositories to your Emacs:
 </div>
 
 <p>
-If you're connected to the Internet, use <code>M-x package-refresh-contents</code>
-to update the list of packages. Use <code>M-x package-list-packages</code> to list
-the available packages. <code>i</code> marks the current package for installation,
-and <code>x</code> actually performs the operations.
+If you're connected to the Internet, use <code>M-x package-refresh-contents</code> to update the list of packages. Use <code>M-x package-list-packages</code> to list the available packages. <code>RET</code> displays the package's description. <code>i</code> marks the current package for installation, and <code>x</code> actually performs the operations. If you know the name of the package you want to install, you can skip the list and use <code>M-x package-install</code> instead.
 </p>
 
 <p>
-Installed packages aren't automatically loaded, although a lightweight
-list of the functions they define is loaded after your <code>init.el</code> is
-run. You can start that initialization earlier by adding
-<code>(package-initialize)</code>. If this still doesn't get your code to work,
-use <code>(require 'feature-name)</code>, where the feature name is usually the
-name of the package. See <a href="#void-function">Lisp error: (void-function &#x2026;)</a> or <a href="#void-variable">Symbol's
-value as variable is void: <span class="underline">_</span></a> for some more details.
+A lightweight list of the key functions defined by packages is loaded after your <code>init.el</code> is run. You can start that initialization earlier by adding <code>(package-initialize)</code>, which is useful if you want to call functions that are defined in packages.
 </p>
 
 <p>
-Sometimes people want to install some packages on one computer but not
-on another. Here's example code that runs some configuration if the
-<code>helm</code> package can be loaded, but silently continues if the package
-has not been installed.
+Sometimes people want to install some packages on one computer but not on another. Here's some code that runs some configuration if the <code>miniedit</code> package can be loaded, but silently continues if the package has not been installed. 
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (<span class="org-keyword">require</span> '<span class="org-constant">helm-config</span> nil t)
-   (setq helm-quick-update t)
-   (helm-mode))
+<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (<span class="org-keyword">require</span> '<span class="org-constant">miniedit</span> nil t)
+   (miniedit-install)
+   (define-key minibuffer-local-map (kbd <span class="org-string">"C-c e"</span>) 'miniedit))
 </pre>
 </div>
 
 <p>
-If you use <code>C-h f</code> (<code>describe-function</code>) on <code>require</code>, you'll see that
-it has one required argument (feature) and two optional arguments
-(filename, noerror). <code>require</code> returns non-nil (or true) if the
-library was loaded, so if the library exists, then the rest of the
-code inside the <code>when</code> expression gets called.
+If you use <code>C-h f</code> (<code>describe-function</code>) on <code>require</code>, you'll see that it has one required argument (feature) and two optional arguments (filename, noerror). <code>require</code> returns non-nil (or true) if the library was loaded, so if the library exists, then the rest of the code inside the <code>when</code> expression gets called.
 </p>
 
 <p>
@@ -1772,41 +1773,54 @@ Along those lines, you may come across code that looks like this:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(eval-after-load <span class="org-string">"dash"</span> 
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> <span class="org-string">"dash"</span> 
   '(dash-enable-font-lock))
 </pre>
 </div>
 
 <p>
-This runs <code>(dash-enable-font-lock)</code> only after <code>dash</code> is loaded. It
-does not automatically load <code>dash</code>. You'll see this when people have
-configuration that they want to run only if something is loaded, which
-can make sense for performance reasons.
+This runs <code>(dash-enable-font-lock)</code> only after <code>dash</code> is loaded. It does not automatically load <code>dash</code>. You'll see this when people have configuration that they want to run only if something is loaded, which can make sense for performance reasons. When you're starting out, you may want to use <code>require</code> instead of <code>eval-after-load</code>, since the argument to <code>eval-after-load</code> has to be quoted.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-6-2" class="outline-3">
-<h3 id="sec-6-2">Other Emacs Lisp files</h3>
-<div class="outline-text-3" id="text-6-2">
+<div id="outline-container-sec-6-1-2" class="outline-4">
+<h4 id="sec-6-1-2">Other Emacs Lisp files</h4>
+<div class="outline-text-4" id="text-6-1-2">
 <p>
-<a id="unpackaged" name="unpackaged"></a>
+<a id="unpackaged"></a>
 </p>
 
 <p>
-Some files are not yet available as packages. If you search for the
-function, you'll probably find a webpage with an <code>.el</code> file. You can
-save those to your computer and load them with:
+Some files are not yet available as packages. If you search for the function, you'll probably find a webpage with an <code>.el</code> file. You can save those to your computer and load them with:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(load <span class="org-string">"/path/to/file.el"</span>)
+<pre class="src src-emacs-lisp">(load <span class="org-string">"/path/to/file"</span>)
 </pre>
 </div>
 
 <p>
-You can also use the <code>require</code> syntax, but first you'll need to add your downloaded Emacs Lisp file to the <code>load-path</code> with something like this.
+You can also use this technique to split up your Emacs configuration file into smaller files. For example, you might have an <code>org-config.el</code> file, a <code>programming-config.el</code> file, and so forth. If you would like to load a host-specific file only if it exists, you can take advantage of the optional <code>NOERROR</code> argument for <code>load</code> like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(load (concat <span class="org-string">"~/.emacs.d/"</span> (system-name) <span class="org-string">".el"</span>) t)
+</pre>
+</div>
+
+<p>
+Want to find out what that filename is? Position your cursor after the <code>​".el")</code> and use <code>C-x C-e</code> (<code>eval-last-sexp</code>) to see the value in the buffer.
+</p>
+
+<p>
+Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the <code>load</code> function, including other arguments you can pass to it.
+</p>
+
+<p>
+If you would like to use the <code>require</code> syntax to load files only if they haven't already been loaded, you can do that as long as they include the <code>(provide ...)</code> expression somewhere. First, you'll need to add your downloaded Emacs Lisp file to the <code>load-path</code> with something like this.
 </p>
 
 <div class="org-src-container">
@@ -1816,7 +1830,7 @@ You can also use the <code>require</code> syntax, but first you'll need to add y
 </div>
 
 <p>
-Then you can use <code>require</code> to load the Emacs Lisp code if it exists. See <a href="#load">Adding more features to Emacs</a> for details.
+Then you can use <code>require</code> to load the Emacs Lisp code if it exists.
 </p>
 
 <div class="org-src-container">
@@ -1828,30 +1842,23 @@ Then you can use <code>require</code> to load the Emacs Lisp code if it exists. 
 </div>
 </div>
 
-<div id="outline-container-sec-7" class="outline-2">
-<h2 id="sec-7">"Oh no! I have an error!"</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-sec-6-2" class="outline-3">
+<h3 id="sec-6-2">"Oh no! I have an error!"</h3>
+<div class="outline-text-3" id="text-6-2">
 <p>
-<a id="errors" name="errors"></a>
+<a id="errors"></a>
 </p>
 
 <p>
-Part of learning a new language is learning how to recognize and deal
-with different errors. 
+Part of learning Emacs is having the confidence to experiment, which you can develop by learning how to recognize and deal with different errors.
 </p>
 
 <p>
-If you've already added the code to your <code>~/.emacs.d/init.el</code>, you can
-start Emacs with <code>emacs --debug-init</code> to display debugging messages,
-or you can start Emacs with <code>emacs -q</code> to skip your personal
-configuration. Before reporting a bug with Emacs or with a package,
-use <code>emacs -q</code> (or <code>emacs -Q</code>, which skips site-wide configuration as
-well) to see if it works as intended without your personal
-configuration.
+If you've already added the code to your <code>~/.emacs.d/init.el</code>, you can start Emacs with <code>emacs --debug-init</code> to display debugging messages, or you can start Emacs with <code>emacs -q</code> to skip your personal configuration. Before reporting a bug with Emacs or with a package, use <code>emacs -q</code> (or <code>emacs -Q</code>, which skips site-wide configuration as well) to see if it works as intended without your personal configuration.
 </p>
 
 <p>
-To make it easier to find errors while Emacs is running, use <code>M-x toggle-debug-on-error</code>, then do whatever you did to trigger the error. You can enable this in your <code>~/.emacs.d/init.el</code> by adding:
+To make it easier to find errors while Emacs is running, use <code>M-x toggle-debug-on-error</code>, then do whatever you did to trigger the error. You will probably see a detailed list of functions called in the <code>*Messages*</code> buffer. If you find this useful, you can enable this by default in your <code>~/.emacs.d/init.el</code>. Add:
 </p>
 
 <div class="org-src-container">
@@ -1861,39 +1868,30 @@ To make it easier to find errors while Emacs is running, use <code>M-x toggle-de
 </div>
 
 <p>
-If you have code that takes a while, you might find the <code>debug-on-quit</code> variable useful as well. You can quit a long-running operation by using <code>C-g</code> (<code>keyboard-quit</code>).
+If you have code that takes a while, you might find the <code>debug-on-quit</code> variable or the <code>M-x toggle-debug-on-quit</code> function useful as well. You can quit a long-running operation by using <code>C-g</code> (<code>keyboard-quit</code>).
 </p>
 
 <p>
-You can narrow down the source of the problem by progressively
-commenting out more and more of the code. Make sure you comment out
-balanced sets of parentheses. To comment a region, select it and use
-<code>M-x comment-region</code>. You can use <code>M-x uncomment-region</code> to uncomment
-it. <code>M-x comment-dwim</code> (do what I mean) guesses whether you want to
-comment or uncomment something, and has the handy keyboard shortcut
-<code>M-;</code>.
+You can narrow down the source of the problem by progressively commenting out more and more of the code. Make sure you comment out balanced sets of parentheses. To comment a region, select it and use <code>M-x comment-region</code>. You can use <code>M-x uncomment-region</code> to uncomment it. <code>M-x comment-dwim</code> (do what I mean) guesses whether you want to comment or uncomment something, and has the handy keyboard shortcut <code>M-;</code>.
 </p>
 
 <p>
-Here are some common error messages and how you
-can try fixing them. If you don't see the error you're struggling with
-here, please e-mail me the code and the error you're running into:
-<a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a> . Happy to help!
+Here are some common error messages and how you can try fixing them. If you don't see the error you're struggling with here, ask the relevant mailing list, <a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">help-gnu-emacs</a>, the #emacs channel on <a href="http://freenode.net/">irc.freenode.net</a>, or <a href="http://stackoverflow.com">StackOverflow</a> for help. Good luck!
 </p>
 </div>
 
-<div id="outline-container-sec-7-1" class="outline-3">
-<h3 id="sec-7-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</h3>
-<div class="outline-text-3" id="text-7-1">
+<div id="outline-container-sec-6-2-1" class="outline-4">
+<h4 id="sec-6-2-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</h4>
+<div class="outline-text-4" id="text-6-2-1">
 <p>
 You may have pasted in something that has a "<code>(</code>" but no matching "<code>)</code>", which results in unbalanced parentheses. Alternatively, you may have pasted in something that has "<code>)</code>" but no "<code>(</code>", which results in a premature end. Try reading the code carefully in order to find the mismatched pair. You can also use <code>C-M-f</code> (<code>forward-sexp</code>) and <code>C-M-b</code> (<code>backward-sexp</code>) to navigate by complete expressions until you find the specific one that causes the error.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-7-2" class="outline-3">
-<h3 id="sec-7-2">Cannot open load file: &#x2026;</h3>
-<div class="outline-text-3" id="text-7-2">
+<div id="outline-container-sec-6-2-2" class="outline-4">
+<h4 id="sec-6-2-2">Cannot open load file: &#x2026;</h4>
+<div class="outline-text-4" id="text-6-2-2">
 <p>
 The code is trying to require or load a file that Emacs can't find.
 </p>
@@ -1901,7 +1899,7 @@ The code is trying to require or load a file that Emacs can't find.
 <ul class="org-ul">
 <li>Have you installed the appropriate package? Use <code>M-x list-packages</code> to see if it has been packaged into a form that's easy to install. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages.
 </li>
-<li>Have you downloaded it manually and added it to your <code>load-path</code>? See <a href="#load-path">Load path</a> for more details.
+<li>Have you downloaded it manually and added it to your <code>load-path</code>? See the notes on load-path for more details.
 </li>
 <li>If you're using <code>load</code>, does the file exist?
 </li>
@@ -1913,11 +1911,11 @@ See <i>Loading libraries</i> for more information.
 </div>
 </div>
 
-<div id="outline-container-sec-7-3" class="outline-3">
-<h3 id="sec-7-3">Lisp error: (void-function &#x2026;)</h3>
-<div class="outline-text-3" id="text-7-3">
+<div id="outline-container-sec-6-2-3" class="outline-4">
+<h4 id="sec-6-2-3">Lisp error: (void-function &#x2026;)</h4>
+<div class="outline-text-4" id="text-6-2-3">
 <p>
-<a id="void-function" name="void-function"></a>
+<a id="void-function"></a>
 </p>
 
 <p>
@@ -1925,9 +1923,9 @@ The code calls a function that has not been defined.
 </p>
 
 <ul class="org-ul">
-<li>Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use <code>M-x list-packages</code> to see the available packages. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages. See <a href="#load">Adding more features to Emacs</a>.
+<li>Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use <code>M-x list-packages</code> to see the available packages. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages. 
 </li>
-<li>If you downloaded the library manually, <code>load</code> or <code>require</code> it. See <a href="#unpackaged">Downloading Emacs Lisp files</a>.
+<li>If you downloaded the library manually, <code>load</code> or <code>require</code> it. 
 </li>
 <li>If you're copying some code that isn't packaged in a library, check if there are any <code>defun</code> (define function) expressions that you forgot to copy. Make sure to include and evaluate those.
 </li>
@@ -1935,29 +1933,26 @@ The code calls a function that has not been defined.
 </div>
 </div>
 
-<div id="outline-container-sec-7-4" class="outline-3">
-<h3 id="sec-7-4">Symbol's value as variable is void: <span class="underline">_</span></h3>
-<div class="outline-text-3" id="text-7-4">
+<div id="outline-container-sec-6-2-4" class="outline-4">
+<h4 id="sec-6-2-4">Symbol's value as variable is void: <span class="underline">_</span></h4>
+<div class="outline-text-4" id="text-6-2-4">
 <p>
-<a id="void-variable" name="void-variable"></a>
+<a id="void-variable"></a>
 </p>
 
 <p>
-The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves <code>add-to-list</code> or <code>add-hook</code>, you may need to use <code>require</code> to load the library that defines that list or hook first (see <a href="#load">Adding more features to Emacs</a>). 
+The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves <code>add-to-list</code> or <code>add-hook</code>, you may need to use <code>require</code> to load the library that defines that list or hook first (see <i>Adding more features to Emacs</i>). 
 </p>
 
 <p>
-You might also get this if you're using <code>C-x C-e</code> (<code>eval-last-sexp</code>)
-to evaluate an expression that's inside <code>let</code> or other things that
-create variables. When you're starting out, make sure you use <code>C-x
-C-e</code> (<code>eval-last-sexp</code>) after the outermost set of parentheses.
+You might also get this if you're using <code>C-x C-e</code> (<code>eval-last-sexp</code>) to evaluate an expression that's inside <code>let</code> or other things that create variables. When you're starting out, make sure you use <code>C-x C-e</code> (<code>eval-last-sexp</code>) after the outermost set of parentheses.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-7-5" class="outline-3">
-<h3 id="sec-7-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</h3>
-<div class="outline-text-3" id="text-7-5">
+<div id="outline-container-sec-6-2-5" class="outline-4">
+<h4 id="sec-6-2-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</h4>
+<div class="outline-text-4" id="text-6-2-5">
 <p>
 Make sure you call <code>C-x C-e</code> <b>after</b> the outermost <code>)</code> for the expression you want to evaluate.
 </p>
@@ -1970,22 +1965,29 @@ Make sure you call <code>C-x C-e</code> <b>after</b> the outermost <code>)</code
 </pre>
 
 <p>
-If the code you're looking at has multiple expressions, you'll need to call <code>C-x C-e</code> after each of them.
-It might be easier to select the region and use <code>M-x eval-region</code>, or load the entire buffer with <code>M-x eval-buffer</code>. Alternatively, use <code>M-x ielm</code> to evaluate the code instead.
+If the code you're looking at has multiple expressions, you'll need to call <code>C-x C-e</code> after each of them. It might be easier to select the region and use <code>M-x eval-region</code>, or load the entire buffer with <code>M-x eval-buffer</code>. Alternatively, use <code>M-x ielm</code> to evaluate the code instead.
+</p>
+
+<p>
+Again, if you don't see the error you're struggling with here, ask the relevant mailing list, <a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">help-gnu-emacs</a>, the #emacs channel on <a href="http://freenode.net/">irc.freenode.net</a>, or <a href="http://stackoverflow.com">StackOverflow</a> for help. Good luck!
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-8" class="outline-2">
-<h2 id="sec-8">Want to learn more about Emacs Lisp?</h2>
-<div class="outline-text-2" id="text-8">
+<div id="outline-container-sec-6-3" class="outline-3">
+<h3 id="sec-6-3">Wrapping up the beginner course</h3>
+<div class="outline-text-3" id="text-6-3">
 <p>
-Check out <a href="https://www.gnu.org/software/emacs/manual/eintr.html">An Introduction to Programming in Emacs Lisp</a>, and delve into the <a href="http://www.gnu.org/software/emacs/manual/elisp.html">Emacs Lisp Reference Manual</a> for more details.
+I hope that this course has helped you become more comfortable with reading and tweaking Emacs Lisp configuration code from blog posts, wiki pages, and other resources. There's much more to learn, of course. With <code>describe-function</code>, <code>describe-variable</code>, and the ability to quickly experiment with Emacs Lisp code without restarting Emacs all the time, I'm sure you'll get the hang of it! If you'd like to review or refer to this course, you can get it as one page at <a href="http://emacslife.com/how-to-read-emacs-lisp.html">http://emacslife.com/how-to-read-emacs-lisp.html</a> .
 </p>
 
 <p>
-If you liked this, please let me know at <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>! I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. I'm working on a guide to <a href="http://sachachua.com/baby-steps-elisp">customizing your Emacs with Emacs Lisp</a>, which goes into a little more detail than this. It also lists several other resources for learning Emacs Lisp. Good luck and have fun!
+Check out <a href="https://www.gnu.org/software/emacs/manual/eintr.html">An Introduction to Programming in Emacs Lisp</a>, and delve into the <a href="http://www.gnu.org/software/emacs/manual/elisp.html">Emacs Lisp Reference Manual</a> for more details. In particular, check out <code>edebug</code> as a great way to explore how Emacs Lisp code works.
+</p>
+
+<p>
+If you liked this or you have other questions, please get in touch - <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a>. I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. Good luck and have fun!
 </p>
 
 <p>
@@ -2011,10 +2013,11 @@ More links:
 </ul>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-9" class="outline-2">
-<h2 id="sec-9">Author's notes</h2>
-<div class="outline-text-2" id="text-9">
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">Author's notes</h2>
+<div class="outline-text-2" id="text-7">
 <p>
 I've posted the source for this document on Github
 (<a href="http://github.com/sachac/emacs-notes">http://github.com/sachac/emacs-notes</a>). This guide is dual-licensed
@@ -2032,7 +2035,7 @@ Patches and pull requests welcome!
 </ul>
 </li>
 
-<li><code>[X]</code> This document: beginner-level
+<li class="on">&#x2611; This document: beginner-level
 <ul class="org-ul">
 <li>For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
 <ul class="org-ul">
@@ -2048,7 +2051,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> Where can I find short Emacs Lisp code to learn from?
+<li class="on">&#x2611; Where can I find short Emacs Lisp code to learn from?
 <ul class="org-ul">
 <li>README for packages
 </li>
@@ -2062,7 +2065,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I understand what Emacs Lisp code does?
+<li class="on">&#x2611; How can I understand what Emacs Lisp code does?
 <ul class="org-ul">
 <li>Ex: (global-hl-line-mode)
 </li>
@@ -2072,13 +2075,13 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I copy Emacs Lisp code from other people's configuration?
+<li class="on">&#x2611; How can I copy Emacs Lisp code from other people's configuration?
 <ul class="org-ul">
 <li>Try a little before you add things
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I try things a little at a time?
+<li class="on">&#x2611; How can I try things a little at a time?
 <ul class="org-ul">
 <li>ielm
 </li>
@@ -2100,7 +2103,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> What are some of the common errors I might run into?
+<li class="on">&#x2611; What are some of the common errors I might run into?
 <ul class="org-ul">
 <li>Evaluating at the wrong point
 </li>
@@ -2118,7 +2121,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> Okay, I like this. How can I make it part of my Emacs?
+<li class="on">&#x2611; Okay, I like this. How can I make it part of my Emacs?
 <ul class="org-ul">
 <li>.emacs.d/init.el (also note about ~/.emacs)
 </li>
@@ -2218,9 +2221,9 @@ Patches and pull requests welcome!
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>Is it worth the time -
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>Is it worth the time -
 <a href="http://xkcd.com/1205/">http://xkcd.com/1205/</a></p></div>
 
 
