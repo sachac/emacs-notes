@@ -1,0 +1,196 @@
+# -*- mode: org -*-
+#+TITLE: "How can I add more features and deal with errors?"
+#+OPTIONS: toc:t
+#+STARTUP: showall
+
+Previous module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-3-make-things-more-convenient.html]["How can I make things more convenient?"]]
+
+#+BEGIN_CONVENTIONS
+Some conventions we'll use:
+- Inline code will be =boxed and monospace= in the HTML version and generally surrounded by =equal signs= in plain text.
+- Code samples will be monospace and in boxes in the HTML version, and enclosed in =#+begin_src= ... =#+end_src= in plain text. Example:
+  #+begin_src emacs-lisp
+  (message "Hello world")
+  #+end_src
+#+END_CONVENTIONS
+
+#+BEGIN_OBJECTIVES
+After this module, you'll be able to:
+- load libraries so that you can add new features or set configuration variables
+- install and configure packages in order to add more features to your Emacs
+- understand and fix common errors
+- learn more! =)
+#+END_OBJECTIVES
+
+* Adding more features to Emacs
+
+Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. Some of the customizations you may want to make require that other parts of Emacs are loaded first. For example, if you want to define a key for the =c-mode-map= (used for editing C code) or add a function to =org-mode-hook= (called when a buffer is set up with Org Mode), those libraries need to be loaded first. You can load libraries by using =require=, like this:
+
+#+begin_src emacs-lisp
+(require 'org)
+#+end_src
+
+This loads the =org= library. =require= looks for a file named after the name provided to it, loads it, and double-checks that the library includes =(provide 'feature-name-goes-here)=. It throws a =Cannot open load file= error if the library is not found or if it doesn't provide that symbol.
+
+Note that the symbol you give to =require= might not be the same as the function you call. For example, =c-mode= is actually defined in the =cc-mode= library, while =org-mode= is defined in =org=. To find out what file a function is defined in, use =C-h f= (=describe-function=) followed by the name of the function. The first line will tell you what file the function is defined in, if any. For example, =c-mode='s definition starts with:
+
+#+begin_example
+c-mode is an interactive autoloaded compiled Lisp function in
+`cc-mode.el'.
+#+end_example
+
+The first part of the filename (before the =.el= or =.elc=) is usually what you would use with =require=. If you have the source installed (the =.el= file), you can look for the =(provide ...)= expression to find the actual symbol to use.
+
+** Installing packages
+<<installing-packages>>
+
+Emacs comes with a lot of code, but there are even more packages out there. When you read other people's Emacs configurations, you might come across other interesting packages to try out.
+
+Sometimes people don't indicate which packages they use, so you have to guess the package name based on the function. For example, =(global-auto-complete-mode)= turns on a completion mode called =auto-complete-mode= in all buffers. Before you can use this, you will need to install the =auto-complete= package. In general, you can find package names by looking at functions that include =mode= in their name, removing =global=, =turn-on=, and other prefixes as needed.
+
+The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as [[http://melpa.milkbox.net][MELPA]] or [[http://marmalade-repo.org/][Marmalade]] Here's the code that you would run in order to add these repositories to your Emacs:
+
+#+begin_src emacs-lisp
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives 
+  '("marmalade" . "http://marmalade-repo.org/packages/"))
+#+end_src
+
+If you're connected to the Internet, use =M-x package-refresh-contents= to update the list of packages. Use =M-x package-list-packages= to list the available packages. =RET= displays the package's description. =i= marks the current package for installation, and =x= actually performs the operations. If you know the name of the package you want to install, you can skip the list and use =M-x package-install= instead.
+
+A lightweight list of the key functions defined by packages is loaded after your =init.el= is run. You can start that initialization earlier by adding =(package-initialize)=, which is useful if you want to call functions that are defined in packages.
+
+Sometimes people want to install some packages on one computer but not on another. Here's some code that runs some configuration if the =miniedit= package can be loaded, but silently continues if the package has not been installed. 
+
+#+begin_src emacs-lisp
+(when (require 'miniedit nil t)
+   (miniedit-install)
+   (define-key minibuffer-local-map (kbd "C-c e") 'miniedit))
+#+end_src
+
+If you use =C-h f= (=describe-function=) on =require=, you'll see that it has one required argument (feature) and two optional arguments (filename, noerror). =require= returns non-nil (or true) if the library was loaded, so if the library exists, then the rest of the code inside the =when= expression gets called.
+
+Along those lines, you may come across code that looks like this:
+
+#+begin_src emacs-lisp
+  (eval-after-load "dash" 
+    '(dash-enable-font-lock))
+#+end_src
+
+This runs =(dash-enable-font-lock)= only after =dash= is loaded. It does not automatically load =dash=. You'll see this when people have configuration that they want to run only if something is loaded, which can make sense for performance reasons. When you're starting out, you may want to use =require= instead of =eval-after-load=, since the argument to =eval-after-load= has to be quoted.
+
+** Other Emacs Lisp files
+<<unpackaged>>
+
+Some files are not yet available as packages. If you search for the function, you'll probably find a webpage with an =.el= file. You can save those to your computer and load them with:
+
+#+begin_src emacs-lisp
+(load "/path/to/file")
+#+end_src
+
+You can also use this technique to split up your Emacs configuration file into smaller files. For example, you might have an =org-config.el= file, a =programming-config.el= file, and so forth. If you would like to load a host-specific file only if it exists, you can take advantage of the optional =NOERROR= argument for =load= like this:
+
+#+begin_src emacs-lisp
+(load (concat "~/.emacs.d/" (system-name) ".el") t)
+#+end_src
+
+Want to find out what that filename is? Position your cursor after the =​".el")= and use =C-x C-e= (=eval-last-sexp=) to see the value in the buffer.
+
+Use =C-h f= (=describe-function=) to learn more about the =load= function, including other arguments you can pass to it.
+
+If you would like to use the =require= syntax to load files only if they haven't already been loaded, you can do that as long as they include the =(provide ...)= expression somewhere. First, you'll need to add your downloaded Emacs Lisp file to the =load-path= with something like this.
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path "/path/to/dir/with/el/files")
+#+end_src
+
+Then you can use =require= to load the Emacs Lisp code if it exists.
+
+#+begin_src emacs-lisp
+(require 'feature-name)
+#+end_src
+
+* "Oh no! I have an error!"
+<<errors>>
+
+Part of learning Emacs is having the confidence to experiment, which you can develop by learning how to recognize and deal with different errors.
+
+If you've already added the code to your =~/.emacs.d/init.el=, you can start Emacs with =emacs --debug-init= to display debugging messages, or you can start Emacs with =emacs -q= to skip your personal configuration. Before reporting a bug with Emacs or with a package, use =emacs -q= (or =emacs -Q=, which skips site-wide configuration as well) to see if it works as intended without your personal configuration.
+
+To make it easier to find errors while Emacs is running, use =M-x toggle-debug-on-error=, then do whatever you did to trigger the error. You will probably see a detailed list of functions called in the =*Messages*= buffer. If you find this useful, you can enable this by default in your =~/.emacs.d/init.el=. Add:
+
+#+begin_src emacs-lisp
+(setq debug-on-error t)
+#+end_src
+
+If you have code that takes a while, you might find the =debug-on-quit= variable or the =M-x toggle-debug-on-quit= function useful as well. You can quit a long-running operation by using =C-g= (=keyboard-quit=).
+
+You can narrow down the source of the problem by progressively commenting out more and more of the code. Make sure you comment out balanced sets of parentheses. To comment a region, select it and use =M-x comment-region=. You can use =M-x uncomment-region= to uncomment it. =M-x comment-dwim= (do what I mean) guesses whether you want to comment or uncomment something, and has the handy keyboard shortcut =M-;=.
+
+Here are some common error messages and how you can try fixing them. If you don't see the error you're struggling with here, ask the relevant mailing list, [[https://lists.gnu.org/mailman/listinfo/help-gnu-emacs][help-gnu-emacs]], the #emacs channel on [[http://freenode.net/][irc.freenode.net]], or [[http://stackoverflow.com][StackOverflow]] for help. Good luck!
+
+** Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"
+
+You may have pasted in something that has a "=(=" but no matching "=)=", which results in unbalanced parentheses. Alternatively, you may have pasted in something that has "=)=" but no "=(=", which results in a premature end. Try reading the code carefully in order to find the mismatched pair. You can also use =C-M-f= (=forward-sexp=) and =C-M-b= (=backward-sexp=) to navigate by complete expressions until you find the specific one that causes the error.
+
+** Cannot open load file: ...
+
+The code is trying to require or load a file that Emacs can't find.
+
+- Have you installed the appropriate package? Use =M-x list-packages= to see if it has been packaged into a form that's easy to install. You may need to add other sources to your =package-archives= to see a wider range of packages.
+- Have you downloaded it manually and added it to your =load-path=? See the notes on load-path for more details.
+- If you're using =load=, does the file exist?
+
+See [[Loading libraries]] for more information.
+
+** Lisp error: (void-function ...)
+<<void-function>>
+
+The code calls a function that has not been defined. 
+
+- Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use =M-x list-packages= to see the available packages. You may need to add other sources to your =package-archives= to see a wider range of packages. 
+- If you downloaded the library manually, =load= or =require= it. 
+- If you're copying some code that isn't packaged in a library, check if there are any =defun= (define function) expressions that you forgot to copy. Make sure to include and evaluate those.
+
+** Symbol's value as variable is void: ___
+<<void-variable>>
+
+The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves =add-to-list= or =add-hook=, you may need to use =require= to load the library that defines that list or hook first (see [[load][Adding more features to Emacs]]). 
+
+You might also get this if you're using =C-x C-e= (=eval-last-sexp=) to evaluate an expression that's inside =let= or other things that create variables. When you're starting out, make sure you use =C-x C-e= (=eval-last-sexp=) after the outermost set of parentheses.
+
+** I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected
+
+Make sure you call =C-x C-e= *after* the outermost =)= for the expression you want to evaluate.
+
+#+begin_example
+(ido-mode 1)
+            ^
+            |
+            +---- Your cursor should be here
+#+end_example
+
+If the code you're looking at has multiple expressions, you'll need to call =C-x C-e= after each of them. It might be easier to select the region and use =M-x eval-region=, or load the entire buffer with =M-x eval-buffer=. Alternatively, use =M-x ielm= to evaluate the code instead.
+
+Again, if you don't see the error you're struggling with here, ask the relevant mailing list, [[https://lists.gnu.org/mailman/listinfo/help-gnu-emacs][help-gnu-emacs]], the #emacs channel on [[http://freenode.net/][irc.freenode.net]], or [[http://stackoverflow.com][StackOverflow]] for help. Good luck!
+
+* Wrapping up the beginner course
+
+I hope that this course has helped you become more comfortable with reading and tweaking Emacs Lisp configuration code from blog posts, wiki pages, and other resources. There's much more to learn, of course. With =describe-function=, =describe-variable=, and the ability to quickly experiment with Emacs Lisp code without restarting Emacs all the time, I'm sure you'll get the hang of it! If you'd like to review or refer to this course, you can get it as one page at http://emacslife.com/how-to-read-emacs-lisp.html .
+
+Check out [[https://www.gnu.org/software/emacs/manual/eintr.html][An Introduction to Programming in Emacs Lisp]], and delve into the [[http://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp Reference Manual]] for more details. In particular, check out =edebug= as a great way to explore how Emacs Lisp code works.
+
+If you liked this or you have other questions, please get in touch - [[mailto:sacha@sachachua.com][sacha@sachachua.com]]. I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. Good luck and have fun!
+
+More links:
+- http://bzg.fr/learn-emacs-lisp-in-15-minutes.html
+- http://harryrschwartz.com/2014/04/08/an-introduction-to-emacs-lisp.html
+- http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html
+- [[https://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]: A bit abstract, but a good place to start. Read it even if you don't understand everything. Read it again. Refer to it frequently. Graduate to the [[http://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp reference manual]] when you're more comfortable (or if you need to look up details).
+- http://ergoemacs.org/emacs/elisp.html: Good collection of idioms and common uses.
+- http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/: Starts with ielm, focuses on data structures; other parts?
+- http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
+- http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html
+
