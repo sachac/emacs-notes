@@ -101,9 +101,11 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:END:
 
 - Make it easy to define new modules
-***** STARTED Take notes on people who are interested in taking course, process  course steps :routine:
-			 SCHEDULED: <2014-06-02 Mon .+2d>
+***** TODO Take notes on people who are interested in taking course, process course steps :routine:
+			 SCHEDULED: <2014-06-06 Fri .+2d>
 			 :LOGBOOK:
+			 - State "DONE"       from "STARTED"    [2014-06-04 Wed 15:49]
+			 CLOCK: [2014-06-04 Wed 14:17]--[2014-06-04 Wed 15:49] =>  1:32
 			 CLOCK: [2014-05-28 Wed 14:25]--[2014-05-28 Wed 16:05] =>  1:40
 			 CLOCK: [2014-05-28 Wed 13:56]--[2014-05-28 Wed 14:00] =>  0:04
 			 CLOCK: [2014-05-26 Mon 15:55]--[2014-05-26 Mon 16:50] =>  0:55
@@ -122,7 +124,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
       :CLOCK_MODELINE_TOTAL: today
-			:LAST_REPEAT: [2014-05-21 Wed 14:50]
+			:LAST_REPEAT: [2014-06-04 Wed 15:49]
 			:END:
 ***** DONE Package beginner1 as a lesson
 			 CLOSED: [2014-05-13 Tue 21:05]
