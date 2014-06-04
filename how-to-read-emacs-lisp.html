@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-06-04 Wed 14:47 -->
+<!-- 2014-06-04 Wed 14:55 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -640,8 +640,14 @@ Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-unde
 </div>
 
 <p>
-This shows you the value of the <code>system-type</code> variable.
+This shows you the value of the <code>system-type</code> variable. Note: Variables can be evaluated without the parentheses, but functions can't. Use You can use <code>ielm</code> to call functions like this, though:
 </p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(max 2 6 10 5)
+</pre>
+</div>
 </li>
 
 <li>Use <code>M-:</code> (<code>eval-expression</code>) buffer to evaluate the following expression:

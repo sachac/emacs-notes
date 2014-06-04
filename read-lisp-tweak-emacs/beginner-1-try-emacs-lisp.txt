@@ -183,7 +183,11 @@ Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-
    system-type
    #+end_src
 
-   This shows you the value of the =system-type= variable.
+   This shows you the value of the =system-type= variable. Note: Variables can be evaluated without the parentheses, but functions can't. Use You can use =ielm= to call functions like this, though:
+
+   #+begin_src emacs-lisp
+   (max 2 6 10 5)
+   #+end_src
 
 3. Use =M-:= (=eval-expression=) buffer to evaluate the following expression:
    #+begin_src emacs-lisp
