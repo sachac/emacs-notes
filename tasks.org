@@ -14,6 +14,10 @@ colon and your notes (or create a subtree).
 * Tasks ready for delegation
 ** DELEGATED Transcribe Avdi Grimm's chat												 :alex:transcript:
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
+** DELEGATED Transcribe Christopher Wellons' chat
+Xah
+** DELEGATED Make cheatsheet
+Xah
 ** DONE Transcribe Carsten Dominik's chat												 :transcript:
 	 CLOSED: [2014-05-18 Sun 23:59]
 Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
@@ -1039,6 +1043,9 @@ Topics
 		 :Effort:   0:30
 		 :END:
 ** Other Emacs tasks
+
+*** TODO Add last-contact tracking to org-contacts
+[[gnus:nnmaildir%2BGmail:INBOX#1E983FEF-D89E-4009-B8FC-5D3D0BB6E786@gmail.com][Email from Steffen Heilmann: Re: org-mode question]]
 *** DONE Get mplayer working with emms on Windows
 		 CLOSED: [2014-05-22 Thu 22:42]
 		:LOGBOOK:
