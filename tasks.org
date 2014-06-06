@@ -83,6 +83,15 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 **** TODO Sketch out personas
 **** CANCELLED Set up mailing list
 		 CLOSED: [2014-05-22 Thu 22:38]
+**** DONE Review transcript for Emacs NYC talk
+		 CLOSED: [2014-06-06 Fri 15:14] SCHEDULED: <2014-06-06 Fri>
+			 :LOGBOOK:
+			  CLOCK: [2014-06-06 Fri 13:40]--[2014-06-06 Fri 15:14] =>  1:34
+				 :END:
+			 :PROPERTIES:
+			  :CREATED:  [2014-06-06 Fri 13:40]
+			  :Effort:   1:00
+			  :END:
 **** How to Read Emacs Lisp e-mail course 													:project:
 [[file:~/personal/elisp-course.org]]
 ***** DONE Get e-mail sending to work from virtual machine
