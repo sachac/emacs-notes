@@ -1,534 +1,845 @@
-#+TITLE: Emacs as a Python IDE - Drew Werner
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Emacs as a Python IDE - Drew Werner</title>
+<!-- 2014-06-06 Fri 15:12 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sacha Chua" />
+<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
+<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
+<script src="../js/jquery.min.js"></script>
+<script src="../js/emacs-notes.js"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Emacs as a Python IDE - Drew Werner</h1>
+<p>
+You can find the video and other details at <a href="http://emacsnyc.org/videos.html">http://emacsnyc.org/videos.html</a>
+</p>
 
-You can find the video and other details at http://emacsnyc.org/videos.html
-
-#+begin_html
 <iframe width="560" height="315" src="//www.youtube.com/embed/6BlTGPsjGJk" frameborder="0" allowfullscreen></iframe>
-#+end_html
 
-[[https://s3-us-west-2.amazonaws.com/emacsnyc/videos/emacs-as-a-python-ide.mp4][Download MP4 (349.7 MB)]]
+<p>
+<a href="https://s3-us-west-2.amazonaws.com/emacsnyc/videos/emacs-as-a-python-ide.mp4">Download MP4 (349.7 MB)</a>
+</p>
 
-[[https://s3-us-west-2.amazonaws.com/emacsnyc/documents/using-emacs-as-a-python-ide.pdf][Slides]]
+<p>
+<a href="https://s3-us-west-2.amazonaws.com/emacsnyc/documents/using-emacs-as-a-python-ide.pdf">Slides</a>
+</p>
 
+<p>
 This transcript is under the Creative Commons Attribution-ShareAlike 4.0 International License.
+</p>
 
+<p>
 2014-05-05
+</p>
 
-https://www.youtube.com/watch?v=6BlTGPsjGJk
+<p>
+<a href="https://www.youtube.com/watch?v=6BlTGPsjGJk">https://www.youtube.com/watch?v=6BlTGPsjGJk</a>
+</p>
 
-https://twitter.com/wernerdrew
-https://github.com/wernerandrew
+<p>
+<a href="https://twitter.com/wernerdrew">https://twitter.com/wernerdrew</a>
+<a href="https://github.com/wernerandrew">https://github.com/wernerandrew</a>
 
+</p>
 
+<p>
 My name is Drew, and I'm going to talk about how to turn Emacs into an
 intelligent and full-featured IDE. I'm going to be using Python as the
 example for the purpose of this discussion.
+</p>
 
+<p>
 My hope is that some of the techniques I'm talking about, hopefully
 you would find some broader application or in other environment. We'll
 talk about that a little bit in the end.
+</p>
 
+<p>
 Anyhow, we're going to talk about Python and some interesting things to
 show you. I hope you guys find it useful. Thanks for coming out.
+</p>
 
+<p>
 So just to give a general sense of what am going to talk about, I'm
 going to start out with a little demo, just to show you more or less
 what you can hope to have at the end, the stuff I talk about.
+</p>
 
+<p>
 Then I'm going to basically show you how to use it yourself, how to
 install the packages, how to customize it to your preferences. For
 those of you who are interested in trying it out yourself without the
 pain of changing your existing config, I've created a repository on
 Github with a virtual machine.
+</p>
 
-https://github.com/wernerandrew/jedi-starter
+<p>
+<a href="https://github.com/wernerandrew/jedi-starter">https://github.com/wernerandrew/jedi-starter</a>
+</p>
 
+<p>
 If you guys use Vagrant or VirtualBox at all, you can use that to try
 it out locally yourselves.
+</p>
 
-http://www.vagrantup.com/
+<p>
+<a href="http://www.vagrantup.com/">http://www.vagrantup.com/</a>
+</p>
 
-https://www.virtualbox.org/
+<p>
+<a href="https://www.virtualbox.org/">https://www.virtualbox.org/</a>
+</p>
 
+<p>
 Feel free if you want to brave the wifi and try it out as we talk.
 Otherwise, I'm planning on keeping it up. Hopefully it will be there as
 a resource for you guys to check out after this talk.
+</p>
 
+<p>
 So basically in terms of what you can do, in terms of making Emacs
-like a traditional IDE-like environment... There's a few things we're
+like a traditional IDE-like environment&#x2026; There's a few things we're
 going to talk about today that should be useful on that score. One of
 them is being able to find files and switch between projects easily.
 Another one is going to be navigating through function definitions and
 variable definitions in a way that's sensitive to context, and also
 documenting what you see in real-time. If you see a function or a
 variable, being able to see where it came from and what it means.
+</p>
 
+<p>
 Also, when you have complex function calls or other constructs, it's
 nice to be able to have some help for that sort of thing. These are
 features that you expect to come along with IDE like Eclipse or
 IntelliJ or Visual Studio. In fact it's possible to get them in Emacs.
+</p>
 
+<p>
 To start, I'm going to do a little demo. I'm going to use my own setup. Here
 I am, in the scratch buffer. Let's say I want to go to a project. I've
 taken the liberty of opening some of these files for you, but this is
 basically how it works.
+</p>
 
+<p>
 You can do things like bring up a list of project names. This is a
 package called Projectile. It'll let you do that. I'm going to a
-project called =vbench= (http://pydata.github.io/vbench/). As you can
+project called <code>vbench</code> (<a href="http://pydata.github.io/vbench/">http://pydata.github.io/vbench/</a>). As you can
 see, it has the ability to search interactively. In fact, it's now
 highlighted. I'm going to switch to that now.
+</p>
 
+<p>
 In terms of what file I want to go to, I want to go to a file
-called =runner.py=. In fact, typing a few letters gives me that file.
+called <code>runner.py</code>. In fact, typing a few letters gives me that file.
 Now here we are.
+</p>
 
+<p>
 03:49 So I'm in the file. Let's say I want to make a few edits to
 something. Just for fun, I made a final variable for largely
 throwaway purposes.
+</p>
 
+<p>
 We have a this thing called the benchmark DB that we've imported here.
-Let's say I want to create A in an instance of that. So I do DB=... I
+Let's say I want to create A in an instance of that. So I do DB=&#x2026; I
 was going to type the letter B in. Right away, you can see I have an
 auto-complete for this benchmark DB. I can complete that. I can ask:
 what do I need to initialize that? I can call something up that just
 tells me I need path. So I'm going to go and do that.
+</p>
 
+<p>
 Just for fun, I'm going to call a method on itself. I do DB, and what
 do I see? I see all of the getters defined here. I could use this get
 benchmarks function. It doesn't take any parameters. That's something
 nice that you can set up. You have a little bit of auto-completion
 intelligence in your Python.
+</p>
 
+<p>
 Let's do a little more exploring. So I'm going to look at the benchmark
 in a class, and in particular, look at the init method.
+</p>
 
-05:04 I am at the end. I've got this thing called the =BenchRepo=. It
+<p>
+05:04 I am at the end. I've got this thing called the <code>BenchRepo</code>. It
 looks pretty complicated. I want to learn a little bit about it. Some
 things I can do: I can look at the doc string with just a keystroke
 here, in the other buffer. I'm going to zoom in a little bit so you can
 convince yourself that is in fact the doc string for it.
+</p>
 
+<p>
 05:26 I can also navigate to its definition. So in one key stroke,
 I can see where it is imported from. And another one, I can go to the
 definition in different file.
+</p>
 
+<p>
 This is a great way to navigate quickly, in a way that it respects what
 you are investigating, if you're looking at a bug or something like that.
+</p>
 
-So looking at the end of this init function here... Say I want to
-check out the =copy_repo= command. This auto-completion feature also
+<p>
+So looking at the end of this init function here&#x2026; Say I want to
+check out the <code>copy_repo</code> command. This auto-completion feature also
 is intelligent enough to know what class methods look like. It jumps
 to this method that's defined of itself. I want to look at this 
-=self._prep()= function to see what's going on there. I can jump as well
+<code>self._prep()</code> function to see what's going on there. I can jump as well
 with a single keystroke. Now I can look at this run command thing. I
 can do things like get the function signature, go to its definition,
 which is some place completely different.
+</p>
 
+<p>
 06:27 This IDE feature also works not just with the variables and class
 defined in your project, but also standard library things. For example,
 here's the subprocess module used here. As you can see, you can
 bring up a pop-up showing the arguments, or as we saw before, bring up
 the doc string for it. Hopefully, you got a good sense that it
 actually is in fact what we are looking at.
+</p>
 
+<p>
 So now we've gone too far afield. How do we get back to the start?
 Fortunately you can actually just retrace the tree and end up right
-back at the original =BenchRepo= definition in a few key strokes.
+back at the original <code>BenchRepo</code> definition in a few key strokes.
+</p>
 
+<p>
 07:06 Hopefully this has done something to show you some of the nice
 things about having features like these. You get to, from the comfort
 of your Emacs environment, not just know what possible completions
 are, get a sense of the documentation, but navigate much more
 quickly than you'd be able to do without this.
+</p>
 
+<p>
 07:28 So what do we need to make this all happen?
+</p>
 
+<p>
 The first part we looked at was the interface involving
 auto-completion. It's actually more general than just a Python thing.
 You need some sort of way of showing that pop up box and showing
 alternatives, and that's what auto-complete is.
+</p>
 
+<p>
 Next you also need a way of parsing the buffers, and that has to be
 something that's aware of the language you are using.
+</p>
 
+<p>
 In fact, the setup runs a small server in the background that wraps a
 library that parses the buffers that you're looking at, with some
 knowledge of how your system is configured and what your project
 environment is.
+</p>
 
+<p>
 Where the Emacs Lisp stuff comes in is really the glue code. These
 are a couple of packages called EPC, Jedi.el. Jedi, we'll talk about a
 little bit. It is really the brains and how this all works.
+</p>
 
-https://github.com/kiwanami/emacs-epc
+<p>
+<a href="https://github.com/kiwanami/emacs-epc">https://github.com/kiwanami/emacs-epc</a>
+</p>
 
-https://github.com/tkf/emacs-jedi
+<p>
+<a href="https://github.com/tkf/emacs-jedi">https://github.com/tkf/emacs-jedi</a>
+</p>
 
+<p>
 EPC is a bit of a middle-ware that connects Python land to Emacs land.
+</p>
 
-We're just going to... That's a artifact from an old version of the
+<p>
+We're just going to&#x2026; That's a artifact from an old version of the
 slides. Hopefully, some of you guys have seen this before. If not, the
 syntax is pretty simple. In general, what I'm going to talk about is
 the stuff that you can just copy and paste into your environment.
 We'll go into a bit of detail talking about how the init file is set
 up in the VM.
+</p>
 
+<p>
 Speaking of the VM, this is sort of something that I've created to help
 you guys try some these features out in your sandbox environment. Basically, you need to be able to run Vagrant and VirtualBox, and
-then clone a Github repo. =cd= into it. Bring up the virtual machine.
+then clone a Github repo. <code>cd</code> into it. Bring up the virtual machine.
+</p>
 
+<p>
 09:21 The first time you run Vagrant, it'll do all the provisioning
 and install the dependencies. Then you can just SSH in.
+</p>
 
-The initialization code for the virtual machine is =jedi-starter.el=
-in that repository, which is soft-linked as the =.emacs= file from
+<p>
+The initialization code for the virtual machine is <code>jedi-starter.el</code>
+in that repository, which is soft-linked as the <code>.emacs</code> file from
 within the virtual machine.
+</p>
 
+<p>
 09:44 For those you haven't used Vagrant, one of the nice things about it
 is it allows you to share a directory between your local box and your
 virtual machine, so that edits on your local box can be reflected
-there. The basic upshot is that edits to your =jedi-starter.el=
+there. The basic upshot is that edits to your <code>jedi-starter.el</code>
 will be reflected in your environment in your virtual machine.
+</p>
 
+<p>
 If you want to do some tweaks or do some experimentation, you can
 do that locally in the environment that you're comfortable with, then
-try out the results on the VM. In terms of how this Emacs...
+try out the results on the VM. In terms of how this Emacs&#x2026;
+</p>
 
+<p>
 10:22 Basically much of the rest of our talk is going to be talking about
 how this file is set up, and by extension, how you can set up your own
 environment to use some of these features.
+</p>
 
-The first couple lines in the =jedi-starter.el= incantation involves
+<p>
+The first couple lines in the <code>jedi-starter.el</code> incantation involves
 including the package function of Emacs. We'll talk about that a little
 more in a second.
+</p>
 
+<p>
 10:45 Next, there's some specific code for the package setup that has
 to be done to ensure that all the dependencies are installed.
+</p>
 
+<p>
 After that, there's some global config variables and helper functions
 that are defined for reasons that will become clear during the
 presentation.
+</p>
 
+<p>
 Once that's done, there's some mode-specific and package-specific
 initializations that I've decided to put in this thing called the
-=after-init-hook=.
+<code>after-init-hook</code>.
+</p>
 
+<p>
 I think there's varying schools of thought as to what's the best time
 to initialize packages. Your mileage may vary. You might have a
 different set up. I found this worked pretty well for my purposes.
+</p>
 
+<p>
 The idea being the package setup code ensures that everything is
 installed at the time emacs is started. Waiting until that's
 completed allows you to ensure that you are performing initialization
 on packages that are in fact installed.
+</p>
 
+<p>
 So basically much of this presentation is going to be filling in those
 commented lines with actual Elisp code that does what you would
 expect. In terms of the particular dependencies we're going to use,
 there's four that I have in the VM.
+</p>
 
-12:01 The first is this thing called *Projectile*. It's quite simple
+<p>
+12:01 The first is this thing called <b>Projectile</b>. It's quite simple
 but I think it's useful, and consistent with the idea of sorta turning
 Emacs to more of an IDE. It basically provides a way of navigating
 quickly to your different projects. It assumes that you use source
 control, and navigates quickly within those projects.
+</p>
 
-Then there's the *Auto-complete*, which we discussed briefly before,
+<p>
+Then there's the <b>Auto-complete</b>, which we discussed briefly before,
 which provides essentially the interface elements that show
 completions and inline documentation.
+</p>
 
+<p>
 And EPC and Jedi, which are what makes everything tick, the parts that
 are aware of Python-managed communications between Emacs and the
 process that's parsing the buffers.
+</p>
 
+<p>
 So for those who have worked with packages before and may be installed
 some custom Elisp code, it is possible to just do this very basically,
 which is to clone these respective repositories and their
 dependencies, unzip the tar balls, and add those directories to your
-=load-path= and then manually =require= everything in your =.emacs=
+<code>load-path</code> and then manually <code>require</code> everything in your <code>.emacs</code>
 file. That's possible, but we're not going to talk about how to do
 that today because it's annoying and hard to reproduce. The strategy
-I'll say instead involves =package.el=
+I'll say instead involves <code>package.el</code>
+</p>
 
+<p>
 Just to let you know that it is still possible though to install these
-things manually... I have installed manually before, but I saw the
+things manually&#x2026; I have installed manually before, but I saw the
 light and started using a package manager. You guys can ask me about
 that later if you're curious.
+</p>
 
+<p>
 Package management comes in standard Emacs 24. You have to do a little
 bit of work to make it work for Emacs 23, if any of you are using
 that.
+</p>
 
+<p>
 The Github repo, as sort of a teaching tool, uses Emacs 23. You can
 look at the setup code particularly. There's basically a Elisp file
 you have to download and place in the load path, and then everything
 else after that it is essentially identical between the versions.
+</p>
 
+<p>
 14:09 So, the incantation to get it going with the package manager is
-pretty simple. You have to =require= the package, and initialize it,
+pretty simple. You have to <code>require</code> the package, and initialize it,
 and then add at least one repository source to it. The one that
 I've chosen here is MELPA, which is one of several options. There is
 Marmalade, and then the GNU project has one (ELPA). MELPA I find is
 up-to-date with all these packages.
+</p>
 
-http://melpa.milkbox.net/
+<p>
+<a href="http://melpa.milkbox.net/">http://melpa.milkbox.net/</a>
+</p>
 
+<p>
 Various anonymous sources on the Internet seem to suggest that it's
 pretty well maintained, so why mess with a good thing? I just stick
 with that.
+</p>
 
+<p>
 One annoying thing is that you do need to remember the trailing slash
 in the URL. I actually spent some time banging my head again the wall,
 failing to include that.
+</p>
 
+<p>
 After you you've installed, the packages are stored locally. You can
-check them out in your =.emacs.d/elpa/= if you're curious, to
+check them out in your <code>.emacs.d/elpa/</code> if you're curious, to
 figure out what actually been installed.
+</p>
 
+<p>
 15:10 There's two ways to actually get the packages. The one-way which
-is not as good is to use =M-x list packages=, which I'll show you
+is not as good is to use <code>M-x list packages</code>, which I'll show you
 right now.
+</p>
 
-So I do that... Here we go. We get a buffer that has a bunch of
+<p>
+So I do that&#x2026; Here we go. We get a buffer that has a bunch of
 packages. So let's say I navigate. Put point over one of these things. I
 can press the question mark key and see some documentation for a
 particular package.
+</p>
 
+<p>
 And then I think you press return, or maybe you mark or something like
 that, then it gets installed. You can look at the mode-specific help
-with =C-h m= more details on that. I am not going to spend too
+with <code>C-h m</code> more details on that. I am not going to spend too
 much time on it.
+</p>
 
+<p>
 I'll say, one useful thing with these packages is it actually shows you
 what's built-in and installed already. Here you go, here's the
 installed stuff. That can be handy, just to get a sense of what
 you've already have, in case you're curious.
+</p>
 
+<p>
 16:13 So that's one strategy if you want to manually handle these
 package installations.
+</p>
 
-
 
-** Simple auto-installation
+<div class="figure">
+<p>
+</p>
+</div>
 
-#+BEGIN_SRC emacs-lisp
-(defvar local-packages '(projectile auto-complete epc jedi))
-(defun uninstalled-packages (packages)
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Simple auto-installation</h2>
+<div class="outline-text-2" id="text-1">
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">local-packages</span> '(projectile auto-complete epc jedi))
+(<span class="org-keyword">defun</span> <span class="org-function-name">uninstalled-packages</span> (packages)
   (delq nil
-        (mapcar (lambda (p)
-                  (if (package-installed-p p nil) nil p))
+        (mapcar (<span class="org-keyword">lambda</span> (p)
+                  (<span class="org-keyword">if</span> (package-installed-p p nil) nil p))
                 packages)))
-(let ((need-to-install
+(<span class="org-keyword">let</span> ((need-to-install
        (uninstalled-packages local-packages)))
-  (when need-to-install
-    (progn
+  (<span class="org-keyword">when</span> need-to-install
+    (<span class="org-keyword">progn</span>
       (package-refresh-contents)
-      (dolist (p need-to-install)
+      (<span class="org-keyword">dolist</span> (p need-to-install)
         (package-install p)))))
-#+END_SRC
+</pre>
+</div>
 
-16:21 The other one is to use the =package.el= API, which lets you put
- code in your =.emacs= file and more easily reproduce packages installed
- across environments, just by using the =.emacs=.
+<p>
+16:21 The other one is to use the <code>package.el</code> API, which lets you put
+ code in your <code>.emacs</code> file and more easily reproduce packages installed
+ across environments, just by using the <code>.emacs</code>.
+</p>
 
+<p>
 So what do we need to do that? Well, I've defined a variable called
-=local-packages= which just has the names of the packages.
+<code>local-packages</code> which just has the names of the packages.
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(defvar local-packages '(projectile auto-complete epc jedi))
-#+END_SRC
+<div class="org-src-container">
 
-If you're curious as to the exact name you can always go to =M-x
-list-packages= to learn (the package names). I know at least MELPA has
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">local-packages</span> '(projectile auto-complete epc jedi))
+</pre>
+</div>
+
+<p>
+If you're curious as to the exact name you can always go to <code>M-x
+list-packages</code> to learn (the package names). I know at least MELPA has
 a website that's searchable. Google and all that stuff also works.
+</p>
 
+<p>
 Then I have a little function here that I just kinda happily put
 together that, given a list of packages, tells you what's not installed.
+</p>
 
+<p>
 I've adapted a little technique. If you Google "elisp filter Stack
 Overflow", it'll look familiar. Emacs built-in doesn't have a
 filtering function. What this does is basically allows you to using
-the =package-installed-p= command, which basically tells you whether
+the <code>package-installed-p</code> command, which basically tells you whether
 a package is installed. It just returns a list of only the uninstall packages.
+</p>
 
+<p>
 Then, given that list, I have some code that binds it to a temporary
-variable called =need-to-install=. When that variable is non-nil, I
+variable called <code>need-to-install</code>. When that variable is non-nil, I
 refresh the content of the local package manager. Then for each
-uninstall package, I call the function =package-install= with the
+uninstall package, I call the function <code>package-install</code> with the
 name. So that's the command that does the magic package install. Now
 you have your packages installed and what remains is just to enable
 them.
+</p>
 
-
 
-** Working with Projectile
+<div class="figure">
+<p>
+</p>
+</div>
+</div>
+</div>
 
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Working with Projectile</h2>
+<div class="outline-text-2" id="text-2">
+<p>
 Some helpful commands:
+</p>
 
-| =C-c p s= | Switch to project |
-| =C-c p f= | List files in project |
-| =C-c p k| Kill all buffers for project |
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
-More info: https://github.com/bbatsov/projectile
 
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left"><code>C-c p s</code></td>
+<td class="left">Switch to project</td>
+</tr>
+
+<tr>
+<td class="left"><code>C-c p f</code></td>
+<td class="left">List files in project</td>
+</tr>
+
+<tr>
+<td class="left">=C-c p k</td>
+<td class="left">Kill all buffers for project</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+More info: <a href="https://github.com/bbatsov/projectile">https://github.com/bbatsov/projectile</a>
+</p>
+
+<p>
 18:14 So I'm going to take the easy ones first. The first one is
 Projectile, which is a package that allows you to navigate between
 projects.
+</p>
 
-So what it does... The three commands I have up there are about 99% of what I use with it.
+<p>
+So what it does&#x2026; The three commands I have up there are about 99% of what I use with it.
 There's other stuff online that the more sophisticated types among you
 might find interesting, but I find this is more than adequate for my
 purposes.
+</p>
 
+<p>
 What it does is it remembers different projects that you navigate
 to by basically what repository they are in. So you navigate to a
 file in particular git repository, and it'll remember that and make it
-searchable via the =projectile-switch-project= command. which I showed you
+searchable via the <code>projectile-switch-project</code> command. which I showed you
 earlier. Then you can interactively search within that project for
 different files.
+</p>
 
+<p>
 And then when you're all done, kill all buffers with a given project, which is
 particularly helpful.
+</p>
 
+<p>
 You know when you get to a point where you have three different projects open,
 twenty buffers each, it's kind of nice to have that.
+</p>
 
+<p>
 It's a very nice, very easy to use, documentation. You can look
 online for a very thorough README file. This bbatsov gentleman, I
 think he also does the Emacs Prelude, if any guys are into that.
 He is a Prelude user. I think Projectile comes standard with that.
 If you really want to get help in going with that, easy setup:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(require 'projectile)
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">projectile</span>)
 (projectile-global-mode)
-#+END_SRC
+</pre>
+</div>
 
+<p>
 19:39 Those are the only two commands you actually need to to use.
+</p>
 
+<p>
 I have a couple of customization because I like my results displayed
 vertically. Those are not specific for Projectile but to something
-called =ido-mode=. But in interest of keeping things simple, that will
+called <code>ido-mode</code>. But in interest of keeping things simple, that will
 get you started, and there's a lot of resources online for additional
 customization you can do with it.
+</p>
 
+<p>
 One other note: for some reason, the most recent version of Projectile
-relied on this =remote-file-name-inhibit-cache= , which does not
+relied on this <code>remote-file-name-inhibit-cache</code> , which does not
 appear to be included in a vanilla Emacs 23 install. At least it
-wasn't on my VM, which was just an =apt-get install Emacs= from Ubuntu.
+wasn't on my VM, which was just an <code>apt-get install Emacs</code> from Ubuntu.
+</p>
 
-#+BEGIN_SRC emacs-lisp
-;; Emacs 23 hack
-(when (not (boundp 'remote-file-name-inhibit-cache))
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Emacs 23 hack</span>
+(<span class="org-keyword">when</span> (not (boundp 'remote-file-name-inhibit-cache))
   (setq remote-file-name-inhibit-cache t))
-#+END_SRC
+</pre>
+</div>
 
+<p>
 So I have this little hack to bind the variable to a safe value, which
-in this case is true. For those of you--I forget if we talked about
-this last month--the =bound-p= function, when given a symbol, tells
+in this case is true. For those of you&#x2013;I forget if we talked about
+this last month&#x2013;the <code>bound-p</code> function, when given a symbol, tells
 you whether it exists, whether that variable exists. And so when it
 doesn't, it sets it to something safe. That lets you use with Emacs
-23.
+</p>
+<ol class="org-ol">
+<li></li>
+</ol>
 
-
 
-** Package Config
+<div class="figure">
+<p>
+</p>
+</div>
+</div>
+</div>
 
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Package Config</h2>
+<div class="outline-text-2" id="text-3">
+<p>
 Auto-complete is also easy:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(require 'auto-complete-config)
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">auto-complete-config</span>)
 (ac-config-default)
-;; If you really like the menu
+<span class="org-comment-delimiter">;; </span><span class="org-comment">If you really like the menu</span>
 (setq ac-show-menu-immediately-on-auto-complete t)
-#+END_SRC
+</pre>
+</div>
 
-- Automatically integrates with most common programming
+<ul class="org-ul">
+<li>Automatically integrates with most common programming
+</li>
+</ul>
+<p>
 modes
-- But only enables basic completions
-- Language-specific keywords
-- Works in buffers with same mode
-- Doesn't know anything about syntax
+</p>
+<ul class="org-ul">
+<li>But only enables basic completions
+</li>
+<li>Language-specific keywords
+</li>
+<li>Works in buffers with same mode
+</li>
+<li>Doesn't know anything about syntax
+</li>
+</ul>
 
+<p>
 20:52 Next up is auto-complete. It's also pretty easy if you just want
 to use the default values. That is it.
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(require 'auto-complete-config)
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">auto-complete-config</span>)
 (ac-config-default)
-#+END_SRC
+</pre>
+</div>
 
+<p>
 What does the default configuration get you? It does get you something.
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(setq ac-show-menu-immediately-on-auto-complete t)
-#+END_SRC
+<div class="org-src-container">
 
+<pre class="src src-emacs-lisp">(setq ac-show-menu-immediately-on-auto-complete t)
+</pre>
+</div>
+
+<p>
 Okay, one other thing I showed you guys, I showed the menu essentially
-right away. If you like that--I like that--there's a variable that you
+right away. If you like that&#x2013;I like that&#x2013;there's a variable that you
 can set to true. It does about what it sounds like, which is to show
 the menu immediately on auto-complete.
+</p>
 
+<p>
 In terms of being active, generally for most the
 common programming mode (c-mode and the like), it will be active
 automatically, but the only completions you'll have are kind of basic.
+</p>
 
+<p>
 The less useful ones are the language-specific keywords. In case you
-really want to have "while" auto-complete--save those extra three key
-strokes after the "WH"--that is an option for you. The other thing it
+really want to have "while" auto-complete&#x2013;save those extra three key
+strokes after the "WH"&#x2013;that is an option for you. The other thing it
 does is collect all the words in buffers with the same mode and
 automatically make this available to you. The thing is, though, it
 doesn't know anything about syntax. It can't tell you anything about
 the appropriateness or the meaning of those completions, which is why
 the auto-complete really can be improved upon.
+</p>
 
+<p>
 The nice thing though is that auto-complete does have an interface for
 third party packages to provide completions to it. That's what
 jedi does in essence, among other things.
+</p>
+</div>
+</div>
 
-** Jedi: The Brains
-
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Jedi: The Brains</h2>
+<div class="outline-text-2" id="text-4">
+<p>
 Several things have to play nicely for this all to work:
-- Jedi
-  - A Python library for contextual parsing of files
-  - Not specific to Emacs
-  -  https://github.com/davidhalter/jedi
-- EPC
-  - Simple Emacs/Python RPC library
+</p>
+<ul class="org-ul">
+<li>Jedi
+<ul class="org-ul">
+<li>A Python library for contextual parsing of files
+</li>
+<li>Not specific to Emacs
+</li>
+<li><a href="https://github.com/davidhalter/jedi">https://github.com/davidhalter/jedi</a>
+</li>
+</ul>
+</li>
+<li>EPC
+<ul class="org-ul">
+<li>Simple Emacs/Python RPC library
+</li>
+</ul>
+</li>
+</ul>
 
+<p>
 22:29 We've talked enough about Jedi. That's really the
 centerpiece of this whole operation, and it's the most annoying and
 difficult thing to configure. This is because there are a few different components to Jedi. 
+</p>
 
+<p>
 First of all, you have the Jedi Python library, which does the actual work of
 parsing. It provides a nice and pretty well abstracted
 interface, where you can give it a whole blob of text and position
 within that file and it'll tell you things about the context of
 whatever variable you're looking at, or where your point is.
+</p>
 
+<p>
 It's actually not originally for Emacs. I believe it was originally
 developed for the vim community, but we have still been able to
 reappropriate it for our own purposes. You can see more details online,
 if you're really interested in the internals. You don't actually have
 to know all that much about it to set it up.
+</p>
 
+<p>
 And then there's this piece of middle-ware, which is kind of an odd duck:
 EPC.
+</p>
 
+<p>
 You know, it's a dependency. It's not used all that much, but it
 basically works as the glue and it's worth remembering as something that needs
 to be installed.
+</p>
 
+<p>
 23:38 It has both a Python package associated with it as well as a
 small Elisp package, because it does have to talk between both
 environments.
+</p>
 
+<p>
 Jedi.el is the interface that's the Elisp frontend as well
 as a very small Python server that talks through EPC to Jedi. This is
 really what you customize and what you set up, and it
 provides the interface for working with all of this to Emacs.
+</p>
 
+<p>
 So here's a diagram showing the flow, because there are a few
 components to work together. You pipe stuff in or tell Jedi you
 want to do something or go somewhere. Jedi will turn that into a
@@ -536,78 +847,108 @@ Python function callOD that will be parsed and sent through by the Jedi
 library. Then the relevant information will be sent back to the
 Jedi Elisp library and presented appropriately in the form of
 completions or some place for you to jump to during navigation.
+</p>
 
+<p>
 So there's some Python dependencies on this. You have two choices,
 one good and one adequate, in terms of how to deal with this.
+</p>
 
+<p>
 The better option, if it's available to you, is to let Jedi handle it.
-You need two things for this to work. One is =pip= , which most
-people, I think... If you working with Python, it's become
+You need two things for this to work. One is <code>pip</code> , which most
+people, I think&#x2026; If you working with Python, it's become
 increasingly popular tool for managing packages. It's basically the
 simplest way to install a package and dependencies.
+</p>
 
+<p>
 25:08 The other one is virtualenv. It would be roughly analogous to
 like RVM for those of you from Ruby backgrounds. It lets you manage
 different Python versions on two different sets of packages and switch
 between them using some basic shell commands.
+</p>
 
+<p>
 25:38 What this allows you to do when you have those things installed is
 you can just issue a one-time command from Emacs, every time you
 deploy your setup on a new machine, and you'll get all your
 dependencies in a sandbox environment.
+</p>
 
-The downside is if you use other package managers... The one that's
+<p>
+The downside is if you use other package managers&#x2026; The one that's
 from my own experience on my personal boxes is conda, which if you use
 the continuum.io and conda distribution, it doesn't play too well
 with virtualenv. So if you can't use that virtualenv, you're left to do it
 yourself.
+</p>
 
-Which means that you have to do a =pip install epc= and =jedi=
+<p>
+Which means that you have to do a <code>pip install epc</code> and <code>jedi</code>
 globally. You have to be sure, when you start Emacs, that those
 modules are in a place where they can be found. That may involve
 pointing Jedi during startup to a particular installed Python.
+</p>
 
+<p>
 I'm going to discuss a quick function for doing that as a sidebar
 later on but just FYI, that's why I mention it.
+</p>
 
+<p>
 The bare minimum:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(require 'jedi)
-;; Hook up to autocomplete
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">jedi</span>)
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Hook up to autocomplete</span>
 (add-to-list 'ac-sources 'ac-source-jedi-direct)
-;; Enable for python-mode
+<span class="org-comment-delimiter">;; </span><span class="org-comment">Enable for python-mode</span>
 (add-hook 'python-mode-hook 'jedi:setup)
-#+END_SRC
+</pre>
+</div>
 
+<p>
 26:42 The absolute minimum to hook up Jedi is also pretty simple. You
 import a library. As I was talking about, auto-complete is extensible
-with different sources and that's what the =(add-to-list ac-sources
-...)= command does. It gives you, it exposes a source called
-=ac-source-jedi-direct=..
+with different sources and that's what the <code>(add-to-list ac-sources
+...)</code> command does. It gives you, it exposes a source called
+<code>ac-source-jedi-direct</code>..
+</p>
 
+<p>
 And then the next thing you should do is you should add to the
-=python-mode-hook= the =jedi:setup= function. Many of you may
+<code>python-mode-hook</code> the <code>jedi:setup</code> function. Many of you may
 already know about hooks. Hooks are basically the Emacs way of
 letting you add functionality dynamically at certain times in
-Emacs' life cycle. The =python-mode-hook=, for example, is
-called when you're entering =python-mode= for a given buffer. By
+Emacs' life cycle. The <code>python-mode-hook</code>, for example, is
+called when you're entering <code>python-mode</code> for a given buffer. By
 adding a function in that hook, you can ensure that that function is
 called as an initialization step.
+</p>
 
-The other interesting thing about the =add-hook= function is that it
+<p>
+The other interesting thing about the <code>add-hook</code> function is that it
 actually adds the element, I believe, to the beginning of the list.
+</p>
 
+<p>
 And so we actually want to add Jedi set up first to the
-=python-mode-hook= in our init file. This becomes important because
+<code>python-mode-hook</code> in our init file. This becomes important because
 we're going to add some customization to Jedi variables that are
 specific to a given buffer that need to be made before Jedi setup is
 called.
+</p>
 
+<p>
 So this is done in the virtual machine. If you're experimenting in
 your local environment, keep in mind that there has to be called first
-and therefore added first--the Jedi functions to the Python mode hook.
+and therefore added first&#x2013;the Jedi functions to the Python mode hook.
+</p>
 
+<p>
 28:08 Now the bare minimum gets you some of the auto-complete
 functions. But it'll only get you the standard library, which is is
 nice. Some of the most valuable stuff in Jedi comes from being able to
@@ -615,332 +956,511 @@ navigate between files in a given project, and you are only get a
 relatively trivial version of that. You'll actually only get files in
 the same directory, in certain cases. You can improve on that by
 configuring the Jedi server before it starts up.
+</p>
 
+<p>
 This is actually done by setting an Emacs variable that allows you to
 set the Jedi server args. The two args that are worth thinking about
-are the =system-path=, for those of you who use Python. =sys.path= is
+are the <code>system-path</code>, for those of you who use Python. <code>sys.path</code> is
 where Python looks for modules.
+</p>
 
+<p>
 If you want to specify a virtual environment that is not the
 currently active virtual environment, you can also do that via the
-=virtual-env= switch as well. ( =--virtual-env= )
+<code>virtual-env</code> switch as well. ( <code>--virtual-env</code> )
+</p>
 
+<p>
 If you are in a given buffer and you want to see what arguments are
 active, this can be useful when you're setting something up and
 trying to debug it.
+</p>
 
-29:23 You can do it in Emacs by =describe-variable= facility. That
-can be done by either by =describe-variable= or =C-h v=.
+<p>
+29:23 You can do it in Emacs by <code>describe-variable</code> facility. That
+can be done by either by <code>describe-variable</code> or <code>C-h v</code>.
+</p>
 
-I type =jedi server-args= and I get a bunch of information in the help buffer,
+<p>
+I type <code>jedi server-args</code> and I get a bunch of information in the help buffer,
 I can see the current value is is equal to the project root and
-the global value is =nil=. More on that in a second.
+the global value is <code>nil</code>. More on that in a second.
+</p>
 
-Now that =sys-path= value didn't just set itself. We had to do
+<p>
+Now that <code>sys-path</code> value didn't just set itself. We had to do
 something for that to be set correctly. Same with the virtualenv
-variable. I've set that to =nil=. I think most of you'll probably also
+variable. I've set that to <code>nil</code>. I think most of you'll probably also
 know if you don't need to use that.
+</p>
 
+<p>
 Basically I've configured both for those. This is kind of the setup that
 I have in the virtual machine:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(defvar jedi-config:with-virtualenv nil
-"Set to non-nil to point to a particular virtualenv.")
-#+END_SRC
+<div class="org-src-container">
 
-30:20 I have the =with-virtualenv= variable either =nil= or a string that
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:with-virtualenv</span> nil
+<span class="org-doc">"Set to non-nil to point to a particular virtualenv."</span>)
+</pre>
+</div>
+
+<p>
+30:20 I have the <code>with-virtualenv</code> variable either <code>nil</code> or a string that
 gives a path to particular virtualenv, and but the more complicated
 stuff is related to finding the project root.
+</p>
 
-#+BEGIN_SRC emacs-lisp
-;; Variables to help find the project root
-(defvar jedi-config:vcs-root-sentinel ".git")
-(defvar jedi-config:python-module-sentinel "__init__.py")
-#+END_SRC
+<div class="org-src-container">
 
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Variables to help find the project root</span>
+(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:vcs-root-sentinel</span> <span class="org-string">".git"</span>)
+(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:python-module-sentinel</span> <span class="org-string">"__init__.py"</span>)
+</pre>
+</div>
+
+<p>
 So I define two variables. Again, lots of different approaches you can use.
+</p>
 
+<p>
 One is a particular sentinel to use in terms of finding a repository
-I just chose =.git=.
+I just chose <code>.git</code>.
+</p>
 
+<p>
 What do I mean by "sentinel"? I mean that's a file that you'd
 expect to see in the base directory of a repository. I'm sure your git
 repository will have a .git directory in its root directory. Emacs has
 facilities for being able to find that.
+</p>
 
-31:08 Similarly, there's this thing called the =python-module-sentinal=
+<p>
+31:08 Similarly, there's this thing called the <code>python-module-sentinal</code>
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(defvar jedi-config:python-module-sentinel "__init__.py")
-#+END_SRC
+<div class="org-src-container">
 
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:python-module-sentinel</span> <span class="org-string">"__init__.py"</span>)
+</pre>
+</div>
+
+<p>
 The simplified example I show you here doesn't actually rely on it. The more complicated example in the VM does.
+</p>
 
-For those of you who don't use Python, =__init__.py= is a file that has to exist in certain directories for modules to be importable.
+<p>
+For those of you who don't use Python, <code>__init__.py</code> is a file that has to exist in certain directories for modules to be importable.
+</p>
 
-31:32 The location of =__init__.py= file can also be helpful
+<p>
+31:32 The location of <code>__init__.py</code> file can also be helpful
 information in terms a understanding what the base directory for a
 given buffer is. Where is the base directory relative to a given
 project? It's not always the version control root base. Knowing
-how to find that =__init__.py= file can be a helpful technique,
+how to find that <code>__init__.py</code> file can be a helpful technique,
 and that's that we do online.
+</p>
 
+<p>
 A basic function that gets the project root file might look
 something like this:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-;; Function to find project root given a buffer
-(defun get-project-root (buf repo-type init-file)
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Function to find project root given a buffer</span>
+(<span class="org-keyword">defun</span> <span class="org-function-name">get-project-root</span> (buf repo-type init-file)
 (vc-find-root (expand-file-name (buffer-file-name buf)) repo-type))
-#+END_SRC
+</pre>
+</div>
 
-32:05 Again, this is a simple Elisp function. I've used =defun= to
-define a function that I've called =get-project-root= that takes
+<p>
+32:05 Again, this is a simple Elisp function. I've used <code>defun</code> to
+define a function that I've called <code>get-project-root</code> that takes
 three arguments: the buffer, the repository type, and the init file.
 The third argument is just so I can define multiple functions with
 compatible signatures.
+</p>
 
+<p>
 Again the more complicated version of this function does use the init
 file variable.
+</p>
 
+<p>
 So what does this do?
+</p>
 
-Well, I'm actually going to show you by working it out from the scratch buffer. So we go to scratch. If we type =(get-buffer "runner.py")= I'm going to do runner.py. I'm going to switch to the messages real quick. So we go to =(get-buffer "runner.py")=
+<p>
+Well, I'm actually going to show you by working it out from the scratch buffer. So we go to scratch. If we type <code>(get-buffer "runner.py")</code> I'm going to do runner.py. I'm going to switch to the messages real quick. So we go to <code>(get-buffer "runner.py")</code>
+</p>
 
+<p>
 33:05 We see that it evaluates to a variable that stands for the
 buffer.
+</p>
 
-Now there's a function called =buffer-file-name= which tells us the
+<p>
+Now there's a function called <code>buffer-file-name</code> which tells us the
 file corresponding to that buffer.
+</p>
 
+<p>
 In this case, there is a file and it's non-nil.
+</p>
 
-33:23 So now if we want to do... I do this probably as a belt-and-suspenders
-thing. I use this =expand-file-name= function to turn into absolute
+<p>
+33:23 So now if we want to do&#x2026; I do this probably as a belt-and-suspenders
+thing. I use this <code>expand-file-name</code> function to turn into absolute
 path. In this case, that's not strictly necessary, because it has the
 correct value by default.
+</p>
 
-Then lastly, we have =vc-find-root=, which is actually a built-in Emacs
+<p>
+Then lastly, we have <code>vc-find-root</code>, which is actually a built-in Emacs
 function. Given a version control signifier, it will tell you what
 the base directory is for that particular repository.
+</p>
 
-So here we've used =.git= because this is a git repository. Sure
-enough, we have the =~/Documents/Work/vm/vbench/=, which is what we're
+<p>
+So here we've used <code>.git</code> because this is a git repository. Sure
+enough, we have the <code>~/Documents/Work/vm/vbench/</code>, which is what we're
 looking for. So this is basically what this function does.
+</p>
 
+<p>
 34:20 And then we define a variable:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(defvar jedi-config:find-root-function 'get-project-root)
-#+END_SRC
+<div class="org-src-container">
 
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:find-root-function</span> 'get-project-root)
+</pre>
+</div>
+
+<p>
 That uses that function as a symbol to indicate what should be
 done to identify the project root buffer.
+</p>
 
+<p>
 And then after that config is set, we have this function
-=current-buffer-project-root=:
+<code>current-buffer-project-root</code>:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-;; And call this on initialization
-(defun current-buffer-project-root ()
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">And call this on initialization</span>
+(<span class="org-keyword">defun</span> <span class="org-function-name">current-buffer-project-root</span> ()
   (funcall jedi-config:find-root-function
            (current-buffer)
            jedi-config:vcs-root-sentinel
            jedi-config:python-module-sentinel))
-#+END_SRC
+</pre>
+</div>
 
-34:43 That calls the function in question. It uses the =current-buffer=
+<p>
+34:43 That calls the function in question. It uses the <code>current-buffer</code>
 function (to find the current buffer, unsurprisingly enough) and then
 the config variables, so that it looks for the correct repository
-type and the =python-module-sentinel= .
+type and the <code>python-module-sentinel</code> .
+</p>
 
+<p>
 I have a fancier version online, if you want to take a look at that,
 but this will do the trick at least to get us started.
+</p>
 
+<p>
 And now it's left to set the server arguments. I have a little macro that
 just adds two elements to the end to the list.
+</p>
 
+<p>
 If you get really curious, we could go to more detail later, but it's
 just a simple little helper function to make the rest a little bit
 more readable.
+</p>
 
-And then I use my =current-buffer-project-root= file to define a
-variable called =project-root= in the context of this Jedi's config
-set up =server-args= function:
+<p>
+And then I use my <code>current-buffer-project-root</code> file to define a
+variable called <code>project-root</code> in the context of this Jedi's config
+set up <code>server-args</code> function:
+</p>
 
-- A list: (ARG1 VALUE1 ARG2 VALUE2 ...)
-- Store in buffer local variable jedi:server-args
+<ul class="org-ul">
+<li>A list: (ARG1 VALUE1 ARG2 VALUE2 &#x2026;)
+</li>
+<li>Store in buffer local variable jedi:server-args
+</li>
+</ul>
 
-#+BEGIN_SRC emacs-lisp
-(defun jedi-config:setup-server-args ()
-       ;; little helper macro
-       (defmacro add-args (arg-list arg-name arg-value)
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jedi-config:setup-server-args</span> ()
+       <span class="org-comment-delimiter">;; </span><span class="org-comment">little helper macro</span>
+       (<span class="org-keyword">defmacro</span> <span class="org-function-name">add-args</span> (arg-list arg-name arg-value)
          `(setq ,arg-list (append ,arg-list (list ,arg-name ,arg-value))))
-       (let ((project-root (current-buffer-project-root)))
-         ;; Variable for this buffer only
+       (<span class="org-keyword">let</span> ((project-root (current-buffer-project-root)))
+         <span class="org-comment-delimiter">;; </span><span class="org-comment">Variable for this buffer only</span>
          (make-local-variable 'jedi:server-args)
 
-         ;; And set our variables
-         (when project-root
-           (add-args jedi:server-args "--sys-path" project-root))
-         (when jedi-config:with-virtualenv
-               (add-args jedi:server-args "--virtual-env"
+         <span class="org-comment-delimiter">;; </span><span class="org-comment">And set our variables</span>
+         (<span class="org-keyword">when</span> project-root
+           (add-args jedi:server-args <span class="org-string">"--sys-path"</span> project-root))
+         (<span class="org-keyword">when</span> jedi-config:with-virtualenv
+               (add-args jedi:server-args <span class="org-string">"--virtual-env"</span>
                          jedi-config:with-virtualenv))))
-#+END_SRC
+</pre>
+</div>
 
-35:43 The next command is called =make-local-variable=. That's an
+<p>
+35:43 The next command is called <code>make-local-variable</code>. That's an
 interesting command that allows you to make a variable that is local
 only to the buffer in which that functions called. That is helpful
 when you have a situation where you have multiple projects that might
-be using Jedi and you want to be able to set the Jedi =server-args=
+be using Jedi and you want to be able to set the Jedi <code>server-args</code>
 variables to different values depending on what buffer you are in.
+</p>
 
-So the =make-local-variable= call is actually quite important. It 
+<p>
+So the <code>make-local-variable</code> call is actually quite important. It 
 adds considerably to the flexibility you have in terms of creating
 multiple environments and using them in the same Emacs session.
+</p>
 
+<p>
 And then we set up variables:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-         ;; And set our variables
-         (when project-root
-           (add-args jedi:server-args "--sys-path" project-root))
-         (when jedi-config:with-virtualenv
-               (add-args jedi:server-args "--virtual-env"
-                         jedi-config:with-virtualenv))
-#+END_SRC
+<div class="org-src-container">
 
-36:23 Both of these are just conditioned on a =project-root= being
-defined and the config variables for =virtualenv= being defined.
+<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">And set our variables</span>
+(<span class="org-keyword">when</span> project-root
+  (add-args jedi:server-args <span class="org-string">"--sys-path"</span> project-root))
+(<span class="org-keyword">when</span> jedi-config:with-virtualenv
+      (add-args jedi:server-args <span class="org-string">"--virtual-env"</span>
+                jedi-config:with-virtualenv))
+</pre>
+</div>
 
+<p>
+36:23 Both of these are just conditioned on a <code>project-root</code> being
+defined and the config variables for <code>virtualenv</code> being defined.
+</p>
+
+<p>
 And hopefully, that's self-explanatory enough. That adds the appropriate
-arguments to the Jedi =server-args= variable, the idea being that the
+arguments to the Jedi <code>server-args</code> variable, the idea being that the
 argument and then the value follow each other.
+</p>
+</div>
+</div>
 
-** Sidebar: Finding Python
-
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Sidebar: Finding Python</h2>
+<div class="outline-text-2" id="text-5">
+<p>
 If you can't use virtualenv, you might need to explicitly select a
 Python to run.
+</p>
 
+<p>
 Also, on Mac OS X (and perhaps other GUI environments), your
-=PATH= may need to be set explicitly.
+<code>PATH</code> may need to be set explicitly.
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(defvar jedi-config:use-system-python t)
-(defun jedi-config:set-python-executable ()
-       (set-exec-path-from-shell-PATH) ;; for OS X
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:use-system-python</span> t)
+(<span class="org-keyword">defun</span> <span class="org-function-name">jedi-config:set-python-executable</span> ()
+       (set-exec-path-from-shell-PATH) <span class="org-comment-delimiter">;; </span><span class="org-comment">for OS X</span>
        (make-local-variable 'jedi:server-command)
        (set 'jedi:server-command
-             (list (executable-find "python")
+             (list (executable-find <span class="org-string">"python"</span>)
                    (cadr default-jedi-server-command))))
-#+END_SRC
+</pre>
+</div>
 
+<p>
 36:49 From there, the sidebar that I mentioned before is one other
-command that you might find that you need to use. =which= is to find the
+command that you might find that you need to use. <code>which</code> is to find the
 correct python when you can't use virtualenv. I won't spend too
 much time on this because this is a bit of a corner case, but I have
-this switched on and off by this =jedi-config:use-system-python=
+this switched on and off by this <code>jedi-config:use-system-python</code>
 config variable. It has a couple things.
+</p>
 
-First of all, it's the =jedi-config:set-python-executable= function
+<p>
+First of all, it's the <code>jedi-config:set-python-executable</code> function
 for Mac OS X. You actually need to use this function that's defined in
-the =__init__.py= file, that basically takes the path of the
+the <code>__init__.py</code> file, that basically takes the path of the
 environment variable from the shell and makes it available to Emacs.
 Again, it's a corner case. More details are online.
+</p>
 
+<p>
 If you Google that, you'll get a helpful Stack Overflow answer that
 will tell you much of what you need to know.
+</p>
 
+<p>
 Then you make your own local variable again. This time, it's called
-=jedi:server-command=.
+<code>jedi:server-command</code>.
+</p>
 
-37:53 In this case you set the first value of =jedi:server-command= .
---you could probably do this with a =setcar= too--to a value given by =(executable-find "python")= .
+<p>
+37:53 In this case you set the first value of <code>jedi:server-command</code> .
+&#x2013;you could probably do this with a <code>setcar</code> too&#x2013;to a value given by <code>(executable-find "python")</code> .
+</p>
 
+<p>
 Just to illustrate what that looks like, [demo in Emacs *scratch
 buffer*] (which is, you can see the bottom line here is my particular
 Python, which as I mentioned before happens to be that which is
 installed by anaconda.)
+</p>
 
+<p>
 Again, for those of you are having issues starting up the Jedi server,
 you may use something like this in your environment.
+</p>
 
+<p>
 38:40 and now we had the hook functions we define before.
+</p>
 
+<p>
 Putting everything together:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(add-hook 'python-mode-hook
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-hook 'python-mode-hook
            'jedi-config:setup-server-args)
-(when jedi-config:use-system-python
+(<span class="org-keyword">when</span> jedi-config:use-system-python
       (add-hook 'python-mode-hook
                  'jedi-config:set-python-executable))
-#+END_SRC
+</pre>
+</div>
 
-We set up =server-args= first and then we set the executable when the =use-system-python= variable is set true (or non-nil).
+<p>
+We set up <code>server-args</code> first and then we set the executable when the <code>use-system-python</code> variable is set true (or non-nil).
+</p>
 
+<p>
 And then I have a couple of suggested keybindings. The functions I showed you before when navigating are basically these four:
+</p>
 
-=jedi:goto-definition=: Move to definition of symbol at point. default: =C-c .= suggested: =M-.=
+<p>
+<code>jedi:goto-definition</code>: Move to definition of symbol at point. default: <code>C-c .</code> suggested: <code>M-.</code>
+</p>
 
-39:00 To jump, you use the the the =jedi:goto-definition= which is great for quickly navigating.
+<p>
+39:00 To jump, you use the the the <code>jedi:goto-definition</code> which is great for quickly navigating.
+</p>
 
-=jedi:goto-definition-pop-marker=: Move to previous location of point. default: = C-c , =, suggested: =M-,=
+<p>
+<code>jedi:goto-definition-pop-marker</code>: Move to previous location of point. default: <code> C-c , </code>, suggested: =M-,=
+</p>
 
-The =jedi:goto-definition-pop-marker= command takes you back on to
+<p>
+The <code>jedi:goto-definition-pop-marker</code> command takes you back on to
 where you were before. That's how we got very quickly back to where we
 started when we did our little navigation to the project.
+</p>
 
-=jedi:show-doc=: Show docstring for symbol at point in new window. default: =C-c ?= suggested: =M-?=
-The =jedi:show-doc=  command does what you think. It just shows the doc string in a special buffer.
+<p>
+<code>jedi:show-doc</code>: Show docstring for symbol at point in new window. default: <code>C-c ?</code> suggested: <code>M-?</code>
+The <code>jedi:show-doc</code>  command does what you think. It just shows the doc string in a special buffer.
+</p>
 
-And then this =jedi:get-in-function-call= thing:
+<p>
+And then this <code>jedi:get-in-function-call</code> thing:
+</p>
 
-=jedi:get-in-function-call=: Pop up signature for function at point. default: None - suggested: =M-/=
+<p>
+<code>jedi:get-in-function-call</code>: Pop up signature for function at point. default: None - suggested: <code>M-/</code>
+</p>
 
+<p>
 That's what pops up the function signature when you're between
 parentheses for a function call. I find that handy sometimes. It's
 actually not bound by the fault.
+</p>
 
+<p>
 These are my set-up keys again. Local Jedi keybindings:
+</p>
 
-#+BEGIN_SRC emacs-lisp
-(defun jedi-config:setup-keys ()
-       (local-set-key (kbd "M-.") 'jedi:goto-definition)
-       (local-set-key (kbd "M-,") 'jedi:goto-definition-pop-marker)
-       (local-set-key (kbd "M-?") 'jedi:show-doc)
-       (local-set-key (kbd "M-/") 'jedi:get-in-function-call))
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jedi-config:setup-keys</span> ()
+       (local-set-key (kbd <span class="org-string">"M-."</span>) 'jedi:goto-definition)
+       (local-set-key (kbd <span class="org-string">"M-,"</span>) 'jedi:goto-definition-pop-marker)
+       (local-set-key (kbd <span class="org-string">"M-?"</span>) 'jedi:show-doc)
+       (local-set-key (kbd <span class="org-string">"M-/"</span>) 'jedi:get-in-function-call))
 (add-hook 'python-mode-hook 'jedi-config:setup-keys)
-#+END_SRC
+</pre>
+</div>
 
-=local-set-key=--just to mention that--that sets a key for a
+<p>
+<code>local-set-key</code>&#x2013;just to mention that&#x2013;that sets a key for a
 particular buffer if you don't want to clobber global settings for
 other modes.
+</p>
 
+<p>
 And there's a little hack:
+</p>
 
+<p>
 Jedi Miscellany
-- Small hack to never show in-function call automatically:
- - =(setq jedi:get-in-function-call-delay 10000000)=
- - Recommended if you bind this to a key
+</p>
+<ul class="org-ul">
+<li>Small hack to never show in-function call automatically:
+<ul class="org-ul">
+<li><code>(setq jedi:get-in-function-call-delay 10000000)</code>
+</li>
+<li>Recommended if you bind this to a key
+</li>
+</ul>
+</li>
+</ul>
 
-By default, the =get-in-function-call= always pops up the getting
+<p>
+By default, the <code>get-in-function-call</code> always pops up the getting
 function call after certain delay. I have set that delay (a variable
 which is in milliseconds) to an absurdly large value. I would
 recommend that, if you use the key binding, I suggest you do something
 like this yourself. And in fact, that's done in the VM.
+</p>
 
+<p>
 And one little tweak that I like is is the complete on dot:
+</p>
 
-- Complete when you type a dot:
- - =(setq jedi:complete-on-dot t)=
- - Useful when typing method calls
+<ul class="org-ul">
+<li>Complete when you type a dot:
+<ul class="org-ul">
+<li><code>(setq jedi:complete-on-dot t)</code>
+</li>
+<li>Useful when typing method calls
+</li>
+</ul>
+</li>
+</ul>
 
-Which is that for example, when you--I get the completions showing up
+<p>
+Which is that for example, when you&#x2013;I get the completions showing up
 automatically, right on the dot. That can be useful sometimes, if you
 want to see a completion right upon a method call.
+</p>
 
+<p>
 40:53 Okay, so that's basically it for Jedi setup. Like I said, this
 general paradigm does apply to other languages. The basic idea, the
 common problem that has to be solved for all of them is telling
@@ -950,94 +1470,165 @@ can be helpful for that. They also will generally follow a pattern
 where they will provide some way of connecting to a back-end, or
 connecting to auto-complete or similar interface. I think that's
 true for all of these.
+</p>
 
+<p>
 One thing I'll mention on top of auto-complete is there is something
 called company-mode. I don't believe Jedi has a a connection for that
 as well, but that's something a lot of people use as an alternative.
+</p>
 
+<p>
 So that basically concludes the talk, so thank you guys for your
 attention.
+</p>
 
+<p>
 AUDIENCE: [APPLAUSE]
+</p>
 
+<p>
 Do we have time for any questions? any questions from the audience?
+</p>
 
+<p>
 AUDIENCE: I guess the answer's no but [inaudible]
+</p>
 
+<p>
 42:17 I haven't tried it. I think the problem is that when you start
 the Jedi server you have to give something that's like an, like that.
 That's a path in the sense that your system would understand, because
 it's a separate Python process that has to access other libraries. I
 think the same goes also for a virtual machine or something like that.
 I think the answer is no. I think you're correct.
+</p>
 
+<p>
 AUDIENCE: relative to [inaudible]?
+</p>
 
-42:54 By default, it will have the same =sys.path= as starting Python in
-the current directory would, so I believe--actually, I'm sure.
+<p>
+42:54 By default, it will have the same <code>sys.path</code> as starting Python in
+the current directory would, so I believe&#x2013;actually, I'm sure.
+</p>
 
+<p>
 AUDIENCE: [inaudible]
+</p>
 
+<p>
 I haven't tried, that I suspect no, because of how much else is going
 on. But certainly worth a try.
+</p>
 
+<p>
 AUDIENCE: [inaudible]
+</p>
 
+<p>
 43:43 Emacs 23? Emacs 24? I haven't noticed except that when I've
 installed packages recently, I need fewer hacks to make them work with
 Emacs 24.
+</p>
 
+<p>
 There's some other stuff too, but none are coming off the top my head.
 I've been using 24. I'm quite happy.
+</p>
 
+<p>
 AUDIENCE: different virtualenv, how to determine which virtualenv to
 use [inaudible]
+</p>
 
+<p>
 I've thought a little bit about that. I mean the solution I have in the
-VM... I did not have time to come up with an intelligent way of doing
+VM&#x2026; I did not have time to come up with an intelligent way of doing
 that, because that's not part of my own workflow.
+</p>
 
-You have to figure out, basically, some way of--given a buffer's location
-and its parent repository--what virtualenv is that mapped to. There
+<p>
+You have to figure out, basically, some way of&#x2013;given a buffer's location
+and its parent repository&#x2013;what virtualenv is that mapped to. There
 could be a couple things. You can have a convention about having a
 particular file that tells you what virtualenv that is, or you can
 have a way to find and therefore set that variable. So you have to do
 something like that. It's certainly possible, but probably would be
 more of a question of how you organize your project at this point.
+</p>
 
+<p>
 AUDIENCE: sentinel [inaudible]
+</p>
 
-45:26 I believe it does a slightly more robust version of the =vc-find=
-and I think it keeps a list of SVN, CVS, git, so forth...
+<p>
+45:26 I believe it does a slightly more robust version of the <code>vc-find</code>
+and I think it keeps a list of SVN, CVS, git, so forth&#x2026;
 Then it will infer that it's a repository and navigate to the buffer.
+</p>
 
+<p>
 AUDIENCE: that directory [inaudible]
+</p>
 
+<p>
 45:46 that's correct, yes.
+</p>
 
+<p>
 AUDIENCE: show us the ido vertical layout? [inaudible]
+</p>
 
+<p>
 45:57 Sure, if you guys want, I can show you real quick my own
-=.emacs=. Just a one second. And so this is actually... I took this from
+<code>.emacs</code>. Just a one second. And so this is actually&#x2026; I took this from
 EmacsWiki, which is a great resource, it is basically this part here
 [highlighted] where [inaudible]
+</p>
 
+<p>
 AUDIENCE: [inaudible]
+</p>
 
+<p>
 If there is then I would recommend looking into, [inaudible]
+</p>
 
+<p>
 AUDIENCE: list-packages [inaudible]
+</p>
 
-46:54 it's =ido-vertical-mode= . there you go
+<p>
+46:54 it's <code>ido-vertical-mode</code> . there you go
+</p>
 
+<p>
 So, simple package, simple, simple documentation.
+</p>
 
-Okay--so I take back what I said before. I recommend that you use this
+<p>
+Okay&#x2013;so I take back what I said before. I recommend that you use this
 thing that I've never used. That sounds much better.
+</p>
 
+<p>
 Anybody else?
+</p>
 
+<p>
 Okay! I thank you all so much for your time. Really appreciate it.
+</p>
 
-https://twitter.com/wernerdrew
-https://github.com/wernerandrew
+<p>
+<a href="https://twitter.com/wernerdrew">https://twitter.com/wernerdrew</a>
+<a href="https://github.com/wernerandrew">https://github.com/wernerandrew</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+</div>
+</body>
+</html>

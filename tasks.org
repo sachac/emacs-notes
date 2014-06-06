@@ -41,6 +41,29 @@ http://sachachua.com/blog/2014/05/emacs-chat-xah-lee-ergoemacs/
 ** Processes
 *** Transcribe Emacs Chat
 Transcribe the Emacs Chat at the specified URL. Note that the output does not have to be verbatim, and we don’t need timecodes - please skip “ums”, “ahs”, filler words, etc. If we spell out links or commands, you can type in the actual link or command instead of transcribing how we spell it out. The end result will be an Org file in https://github.com/sachac/emacs-chats - see https://raw.githubusercontent.com/sachac/emacs-chats/gh-pages/chat-janis-mancevics.org for a sample. Send me a pull request or a file. Track your time so that you can get a sense of whether this is worth it for you or not within the budget. If you can tell early on that it’s likely to not be worth it for you (for example, if it takes ten hours to do the first 15 minutes (which it won’t, but who knows?)), tell me and I can assign the task to someone else.
+* Style guide
+
+- Avoid casual contractions (gonna -> going to, wanna -> want to, sorta -> sort of) unless necessary. You can use "don't", "can't", and other generally accepted contractions.
+- Fill in missing words.
+- Prefer shorter sentences, even replacing "and" in spoken speech with a period.
+- Remove unnecessary words, such as "And" at the beginning of sentences, filler words such as "like", verbal tics like repeated use of "Basically," "really," "you know," and so on.
+- Add commas after clauses. For example: 
+  - Right away, ...
+  - However, ...
+  - For example, ...
+  - As you can see, ...
+  - ..., or as we saw before, ...
+  - Hopefully, ...
+  - Fortunately, ...
+  - After that,
+  - If ..., then ...
+- Pay attention to subject-verb agreement. If the subject is plural, the verb should be plural. If the subject is singular, the verb should be singular. 
+- Pay attention to the tense of the verb (past? present? future? etc.).
+- Capitalize proper nouns (ex: Emacs)
+- Be careful about the distinction between "its" and "it's", "their" and "they're", etc.
+- Avoid Unicode, to make the text files easy to read even on plain text terminals
+- Spell out OK as "Okay"
+- Use Emacs conventions for keyboard shortcuts. (C-h instead of Ctrl+h, M-ESC instead of Meta+Escape, C-x C-c instead of Ctrl-x Ctrl-c). Surround them with equal signs to make them display in a special way. (ex: =C-h=) 
 * Projects
 ** Publishing Emacs
 	 :PROPERTIES:
