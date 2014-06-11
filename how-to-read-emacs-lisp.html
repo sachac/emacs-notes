@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-06-11 Wed 16:02 -->
+<!-- 2014-06-11 Wed 16:11 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -603,7 +603,7 @@ As with <code>M-:</code> (<code>eval-expression</code>), you can use the <code>C
 <h4 id="sec-3-2-5">If you want that code to run every time you start Emacs&#x2026;</h4>
 <div class="outline-text-4" id="text-3-2-5">
 <p>
-&#x2026; <b>then</b> add it to your <code>~/.emacs.d/init.el</code> file. You can generally add new code at the end. If the code has something to do with <code>add-to-list</code> and <code>load-path</code>, it might be good to add it to the beginning instead.
+&#x2026; <b>then</b> add it to your <code>~/.emacs.d/init.el</code> file. You can generally add new code at the end. If the code has something to do with <code>load-path</code>, it might be good to add it to the beginning instead. That way, your <code>load-path</code> changes can take effect before any libraries are loaded.
 </p>
 
 <p>
@@ -1201,8 +1201,9 @@ Because lists are made up of cons cells, you'll sometimes see people add to list
 </div>
 
 <p>
-This adds <code>~/elisp</code> to the beginning of the <code>load-path</code> list. It does this by using <code>cons</code> to create a new cons cell that has <code>~/elisp</code> at the beginning and a pointer to the rest of the values in <code>load-path</code>, and then storing that in <code>load-path</code>.
+This adds <code>~/elisp</code> to the beginning of the <code>load-path</code> list. It does this by using <code>cons</code> to create a new cons cell that has <code>~/elisp</code> at the beginning and a pointer to the rest of the values in <code>load-path</code>, and then storing that in <code>load-path</code>. It's the same as <code>(add-to-list 'load-path "~/elisp")</code>, assuming <code>load-path</code> does not already have that directory. If it does, <code>cons</code> adds it anyway, but <code>add-to-list</code> does not.
 </p>
+
 
 <p>
 Lists can also contain lists. For example, here's some code that saves backup files (the ones that end in <code>~</code>) to <code>~/.emacs.d/backups</code>.
@@ -1248,12 +1249,10 @@ This stores backup files in the directory specified by <code>temporary-file-dire
 <div id="outline-container-sec-4-5" class="outline-3">
 <h3 id="sec-4-5">Review</h3>
 <div class="outline-text-3" id="text-4-5">
-<div class="practice">
 <p>
+#+BEGIN<sub>PRACTICE</sub>
 Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about functions and <code>C-h v</code> (<code>describe-variable</code>) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
 </p>
-
-</div>
 </div>
 </div>
 </div>
@@ -1570,7 +1569,7 @@ In addition to the functions built into Emacs or available in packages, many peo
 </p>
 
 <p>
-People often distinguish custom functions by starting them with <code>my/</code> or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
+People often distinguish custom functions by starting them with <code>my/</code> or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. It also minimizes the risk of accidentally overriding a function defined elsewhere. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
 </p>
 
 <p>
@@ -1605,7 +1604,7 @@ Once you've defined a custom function, you can bind it to a keyboard shortcut if
 </div>
 
 <p>
-You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, <code>emacs-lisp-mode</code> has an associated <code>emacs-lisp-mode-hook</code> which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in function or custom functions to hooks. For example,
+You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, <code>emacs-lisp-mode</code> has an associated <code>emacs-lisp-mode-hook</code> which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in functions or custom functions to hooks, and they'll be run when that hook is called.
 </p>
 
 <p>
@@ -2214,7 +2213,7 @@ Patches and pull requests welcome!
 
 <li>Thanks
 <ul class="org-ul">
-<li>aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba
+<li>aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, Daniel Wu
 </li>
 </ul>
 </li>

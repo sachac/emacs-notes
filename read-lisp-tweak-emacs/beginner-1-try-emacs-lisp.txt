@@ -163,7 +163,7 @@ As with =M-:= (=eval-expression=), you can use the =C-u= prefix to insert the re
 
 ** If you want that code to run every time you start Emacs...
 
-... *then* add it to your =~/.emacs.d/init.el= file. You can generally add new code at the end. If the code has something to do with =add-to-list= and =load-path=, it might be good to add it to the beginning instead.
+... *then* add it to your =~/.emacs.d/init.el= file. You can generally add new code at the end. If the code has something to do with =load-path=, it might be good to add it to the beginning instead. That way, your =load-path= changes can take effect before any libraries are loaded.
 
 Note: The Emacs configuration file used to be =~/.emacs=, and most webpages refer to that. =~/.emacs= still works - in fact, if you have that, it may stop Emacs from loading =~/.emacs.d/init.el=. On the other hand, if you use =~/.emacs.d/init.el= (and move your =~/.emacs= code to that file instead), then you have one less hidden file in your home directory (=~=). If you're adding code to your config and it's not getting loaded, make sure you have either =~/.emacs= or =~/.emacs.d/init.el=, but not both.
 

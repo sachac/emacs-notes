@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I customize Emacs to make things more convenient?"</title>
-<!-- 2014-06-04 Wed 14:47 -->
+<!-- 2014-06-11 Wed 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -369,7 +369,7 @@ In addition to the functions built into Emacs or available in packages, many peo
 </p>
 
 <p>
-People often distinguish custom functions by starting them with <code>my/</code> or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
+People often distinguish custom functions by starting them with <code>my/</code> or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. It also minimizes the risk of accidentally overriding a function defined elsewhere. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
 </p>
 
 <p>
@@ -404,7 +404,7 @@ Once you've defined a custom function, you can bind it to a keyboard shortcut if
 </div>
 
 <p>
-You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, <code>emacs-lisp-mode</code> has an associated <code>emacs-lisp-mode-hook</code> which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in function or custom functions to hooks. For example,
+You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, <code>emacs-lisp-mode</code> has an associated <code>emacs-lisp-mode-hook</code> which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in functions or custom functions to hooks, and they'll be run when that hook is called.
 </p>
 
 <p>

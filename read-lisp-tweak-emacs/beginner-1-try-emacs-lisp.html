@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I try Emacs Lisp code?"</title>
-<!-- 2014-06-11 Wed 16:02 -->
+<!-- 2014-06-11 Wed 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -351,7 +351,7 @@ As with <code>M-:</code> (<code>eval-expression</code>), you can use the <code>C
 <h3 id="sec-2-5">If you want that code to run every time you start Emacs&#x2026;</h3>
 <div class="outline-text-3" id="text-2-5">
 <p>
-&#x2026; <b>then</b> add it to your <code>~/.emacs.d/init.el</code> file. You can generally add new code at the end. If the code has something to do with <code>add-to-list</code> and <code>load-path</code>, it might be good to add it to the beginning instead.
+&#x2026; <b>then</b> add it to your <code>~/.emacs.d/init.el</code> file. You can generally add new code at the end. If the code has something to do with <code>load-path</code>, it might be good to add it to the beginning instead. That way, your <code>load-path</code> changes can take effect before any libraries are loaded.
 </p>
 
 <p>

@@ -308,7 +308,8 @@ Because lists are made up of cons cells, you'll sometimes see people add to list
 (setq load-path (cons "~/elisp" load-path))
 #+end_src
 
-This adds =~/elisp= to the beginning of the =load-path= list. It does this by using =cons= to create a new cons cell that has =~/elisp= at the beginning and a pointer to the rest of the values in =load-path=, and then storing that in =load-path=.
+This adds =~/elisp= to the beginning of the =load-path= list. It does this by using =cons= to create a new cons cell that has =~/elisp= at the beginning and a pointer to the rest of the values in =load-path=, and then storing that in =load-path=. It's the same as =(add-to-list 'load-path "~/elisp")=, assuming =load-path= does not already have that directory. If it does, =cons= adds it anyway, but =add-to-list= does not.
+
 
 Lists can also contain lists. For example, here's some code that saves backup files (the ones that end in =~=) to =~/.emacs.d/backups=.
 

@@ -183,7 +183,7 @@ For more about keybindings, see the [[http://www.gnu.org/software/emacs/manual/h
 
 In addition to the functions built into Emacs or available in packages, many people define their own with the =defun= function.
 
-People often distinguish custom functions by starting them with =my/= or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
+People often distinguish custom functions by starting them with =my/= or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. It also minimizes the risk of accidentally overriding a function defined elsewhere. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
 
 For example, here's a custom function from [[https://github.com/jorgenschaefer/Config/blob/master/emacs.el#L184][Jorgan Schaefer's config]]:
 
@@ -204,7 +204,7 @@ Once you've defined a custom function, you can bind it to a keyboard shortcut if
 (global-set-key (kbd "C-c C-u") 'fc/kill-to-beginning-of-line)
 #+end_src
 
-You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, =emacs-lisp-mode= has an associated =emacs-lisp-mode-hook= which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in function or custom functions to hooks. For example,
+You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, =emacs-lisp-mode= has an associated =emacs-lisp-mode-hook= which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in functions or custom functions to hooks, and they'll be run when that hook is called.
 
 People sometimes use hook functions to set up keybindings instead of using =define-key=. For example, this code:
 

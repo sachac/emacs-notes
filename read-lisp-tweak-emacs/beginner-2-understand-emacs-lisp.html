@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I understand what Emacs Lisp code does?"</title>
-<!-- 2014-06-04 Wed 14:47 -->
+<!-- 2014-06-11 Wed 16:10 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -569,8 +569,9 @@ Because lists are made up of cons cells, you'll sometimes see people add to list
 </div>
 
 <p>
-This adds <code>~/elisp</code> to the beginning of the <code>load-path</code> list. It does this by using <code>cons</code> to create a new cons cell that has <code>~/elisp</code> at the beginning and a pointer to the rest of the values in <code>load-path</code>, and then storing that in <code>load-path</code>.
+This adds <code>~/elisp</code> to the beginning of the <code>load-path</code> list. It does this by using <code>cons</code> to create a new cons cell that has <code>~/elisp</code> at the beginning and a pointer to the rest of the values in <code>load-path</code>, and then storing that in <code>load-path</code>. It's the same as <code>(add-to-list 'load-path "~/elisp")</code>, assuming <code>load-path</code> does not already have that directory. If it does, <code>cons</code> adds it anyway, but <code>add-to-list</code> does not.
 </p>
+
 
 <p>
 Lists can also contain lists. For example, here's some code that saves backup files (the ones that end in <code>~</code>) to <code>~/.emacs.d/backups</code>.
