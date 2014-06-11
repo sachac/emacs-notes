@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-06-11 Wed 16:54 -->
+<!-- 2014-06-11 Wed 16:59 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -1739,10 +1739,18 @@ The default package repository in Emacs 24 has a limited number of packages. For
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">package</span>)
-(add-to-list 'package-archives
-  '(<span class="org-string">"melpa"</span> . <span class="org-string">"http://melpa.milkbox.net/packages/"</span>))
-(add-to-list 'package-archives 
-  '(<span class="org-string">"marmalade"</span> . <span class="org-string">"http://marmalade-repo.org/packages/"</span>))
+(add-to-list 'package-archives '(<span class="org-string">"melpa"</span> . <span class="org-string">"http://melpa.milkbox.net/packages/"</span>))
+(add-to-list 'package-archives '(<span class="org-string">"marmalade"</span> . <span class="org-string">"http://marmalade-repo.org/packages/"</span>))
+</pre>
+</div>
+
+<p>
+Note that MELPA includes many packages under active development. If you prefer to install only the packages marked as stable, replace the MELPA line with this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(add-to-list 'package-archives '(<span class="org-string">"melpa-stable"</span> . <span class="org-string">"http://hiddencameras.milkbox.net/packages/"</span>))
 </pre>
 </div>
 
@@ -1907,10 +1915,6 @@ The code is trying to require or load a file that Emacs can't find.
 <li>If you're using <code>load</code>, does the file exist?
 </li>
 </ul>
-
-<p>
-See <i>Loading libraries</i> for more information.
-</p>
 </div>
 </div>
 
@@ -1944,7 +1948,7 @@ The code calls a function that has not been defined.
 </p>
 
 <p>
-The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves <code>add-to-list</code> or <code>add-hook</code>, you may need to use <code>require</code> to load the library that defines that list or hook first (see <i>Adding more features to Emacs</i>). 
+The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves <code>add-to-list</code> or <code>add-hook</code>, you may need to use <code>require</code> to load the library that defines that list or hook first.
 </p>
 
 <p>

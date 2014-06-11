@@ -52,10 +52,14 @@ The default package repository in Emacs 24 has a limited number of packages. For
 
 #+begin_src emacs-lisp
 (require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/"))
-(add-to-list 'package-archives 
-  '("marmalade" . "http://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+#+end_src
+
+Note that MELPA includes many packages under active development. If you prefer to install only the packages marked as stable, replace the MELPA line with this:
+
+#+begin_src emacs-lisp
+(add-to-list 'package-archives '("melpa-stable" . "http://hiddencameras.milkbox.net/packages/"))
 #+end_src
 
 If you're connected to the Internet, use =M-x package-refresh-contents= to update the list of packages. Use =M-x package-list-packages= to list the available packages. =RET= displays the package's description. =i= marks the current package for installation, and =x= actually performs the operations. If you know the name of the package you want to install, you can skip the list and use =M-x package-install= instead.
@@ -143,8 +147,6 @@ The code is trying to require or load a file that Emacs can't find.
 - Have you downloaded it manually and added it to your =load-path=? See the notes on load-path for more details.
 - If you're using =load=, does the file exist?
 
-See [[Loading libraries]] for more information.
-
 ** Lisp error: (void-function ...)
 <<void-function>>
 
@@ -157,7 +159,7 @@ The code calls a function that has not been defined.
 ** Symbol's value as variable is void: ___
 <<void-variable>>
 
-The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves =add-to-list= or =add-hook=, you may need to use =require= to load the library that defines that list or hook first (see [[load][Adding more features to Emacs]]). 
+The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves =add-to-list= or =add-hook=, you may need to use =require= to load the library that defines that list or hook first.
 
 You might also get this if you're using =C-x C-e= (=eval-last-sexp=) to evaluate an expression that's inside =let= or other things that create variables. When you're starting out, make sure you use =C-x C-e= (=eval-last-sexp=) after the outermost set of parentheses.
 
