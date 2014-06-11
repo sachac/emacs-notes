@@ -138,8 +138,9 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 
 - Make it easy to define new modules
 ***** TODO Take notes on people who are interested in taking course, process course steps :routine:
-			 SCHEDULED: <2014-06-06 Fri .+2d>
+			 SCHEDULED: <2014-06-09 Mon .+3d>
 			 :LOGBOOK:
+			 - State "DONE"       from "TODO"       [2014-06-06 Fri 20:27]
 			 - State "DONE"       from "STARTED"    [2014-06-04 Wed 15:49]
 			 CLOCK: [2014-06-04 Wed 14:17]--[2014-06-04 Wed 15:49] =>  1:32
 			 CLOCK: [2014-05-28 Wed 14:25]--[2014-05-28 Wed 16:05] =>  1:40
@@ -160,7 +161,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
       :CLOCK_MODELINE_TOTAL: today
-			:LAST_REPEAT: [2014-06-04 Wed 15:49]
+			:LAST_REPEAT: [2014-06-06 Fri 20:27]
 			:END:
 ***** DONE Package beginner1 as a lesson
 			 CLOSED: [2014-05-13 Tue 21:05]
@@ -177,7 +178,8 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			 CLOSED: [2014-05-12 Mon 22:04]
 **** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp.org][Link]]
-***** TODO Write objectives for each section
+***** DONE Write objectives for each section
+			 CLOSED: [2014-06-06 Fri 20:33]
 ***** DONE Write objectives and practice for section 3, revise section 3
 			 CLOSED: [2014-05-28 Wed 13:51]
 			:LOGBOOK:
@@ -191,8 +193,10 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			 CLOSED: [2014-05-22 Thu 22:38]
 ***** DONE Break guide up into parts that can be focused on for 15-60 minutes
 			 CLOSED: [2014-05-22 Thu 22:38]
-***** TODO Add more exercises
-***** TODO Add more examples
+***** DONE Add more exercises
+			 CLOSED: [2014-06-06 Fri 20:33]
+***** DONE Add more examples
+			 CLOSED: [2014-06-06 Fri 20:33]
 		 	:PROPERTIES:
 		 	:Effort:   1:00
 		 	:END:
@@ -268,12 +272,14 @@ https://twitter.com/philandstuff/status/461969774227247104
 		 :CREATED:  [2014-06-04 Wed 11:30]
 		 :Effort:   1:00
 		 :END:
-**** TODO Make video on extending Emacs 
+**** CANCELLED Make video on extending Emacs 
+		 CLOSED: [2014-06-06 Fri 20:31]
 		 :PROPERTIES:
 		 :Effort:   2:00
 		 :END:
 https://twitter.com/gozes/status/446397063194894337
-**** TODO Build - Emacs: Record Emacs Basics video on themes and faces
+**** CANCELLED Build - Emacs: Record Emacs Basics video on themes and faces
+		 CLOSED: [2014-06-06 Fri 20:31]
 		 :PROPERTIES:
 		 :Effort:   2:00
 		 :END:
@@ -281,7 +287,8 @@ https://twitter.com/gozes/status/446397063194894337
 		 :PROPERTIES:
 		 :CREATED:  [2014-04-16 Wed 12:20]
 		 :END:
-**** TODO Write about how to scroll
+**** CANCELLED Write about how to scroll
+		 CLOSED: [2014-06-06 Fri 20:31]
 *** A map for customizing Org
 - Common options you may want to change
 - Advanced options and why, plus examples of what you can do with them
@@ -359,6 +366,8 @@ Good luck!
 		:CREATED:  [2014-05-21 Wed 16:45]
 		:END:
 *** TODO Announce EmacsLife.com
+*** CANCELLED Write about mode cookies
+		 CLOSED: [2014-06-06 Fri 20:33]
 *** TODO Write about load path shadowing
 	 	:PROPERTIES:
 	 	:Effort:   0:30
@@ -367,7 +376,11 @@ Good luck!
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
-*** TODO Make animated GIF demonstrations for smartparens functionality
+*** SOMEDAY Make animated GIF demonstrations for smartparens functionality
+		 SCHEDULED: <2014-06-27 Fri>
+		:PROPERTIES:
+		:CREATED:  [2014-06-06 Fri 20:31]
+		:END:
 https://github.com/chrisdone/structured-haskell-mode
 
 *** DONE Write about semi-auto-responder
@@ -830,7 +843,8 @@ https://github.com/bbatsov/prelude
 - Projectile
 - CIDER maintenance
 Technical lead, Tradeo: Rails, NoedJS
-**** TODO Transcribe this myself? Offer to Oli?
+**** DONE Transcribe this myself? Offer to Oli?
+		 CLOSED: [2014-06-06 Fri 20:32]
 **** DONE Have Emacs Chat with bbatsov
 		 CLOSED: [2014-05-19 Mon 13:03]
 		 :LOGBOOK:
@@ -918,8 +932,8 @@ Starter kit? http://technomancy.us/153
 		 :END:
 **** DONE Transcribe this
 		 CLOSED: [2014-06-03 Tue 22:01]
-**** TODO Review technomancy transcript
-		 SCHEDULED: <2014-06-04 Wed>
+**** DONE Review technomancy transcript
+		 CLOSED: [2014-06-06 Fri 15:36] SCHEDULED: <2014-06-04 Wed>
 		 :PROPERTIES:
 		 :CREATED:  [2014-06-03 Tue 22:01]
 		 :END:
@@ -935,6 +949,11 @@ https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
 *** Mickey Petersen
 **** DONE Set up chat with masteringemacs
 	 	 CLOSED: [2014-05-01 Thu 22:08]
+**** TODO Chat with masteringemacs
+		 SCHEDULED: <2014-06-14 Sat>
+		 :PROPERTIES:
+		 :CREATED:  [2014-06-08 Sun 22:44]
+		 :END:
 *** Possible guests
 - Tikhon Jelvis?
 - Follow up with Xah Lee's list
@@ -945,7 +964,12 @@ https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
 ***** DONE Invite Bodil for Emacs Chat?
 			 CLOSED: [2014-05-19 Mon 22:36]
 ** Connecting - Emacs
-*** International Lisp Conference 2014 (August)
+*** TODO Chat with Tom and Neil about Clojure
+		 SCHEDULED: <2014-06-09 Mon>
+		:PROPERTIES:
+		:CREATED:  [2014-06-08 Sun 22:43]
+		:END:
+*** CANCELLED International Lisp Conference 2014 (August)
 Contact: Dave Cooper
 **** DONE Draft title, abstract, bio
 		 CLOSED: [2014-05-22 Thu 22:42]

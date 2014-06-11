@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I try Emacs Lisp code?"</title>
-<!-- 2014-06-04 Wed 14:55 -->
+<!-- 2014-06-11 Wed 16:02 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -422,7 +422,7 @@ Try it now: <code>C-u M-: (* 21 2)</code>
 <li>Add <code>(message "Hello, world!")</code> to the end of your <code>~/.emacs.d/init.el</code> (or <code>~/.emacs</code>, if you're using that file instead). Use <code>M-x eval-buffer</code> to load your config. It should display the message near the bottom of your screen. If you restart Emacs, you should also see that message briefly.
 </li>
 
-<li>Call <code>M-x visual-line-mode</code> to tell Emacs to visually wrap lines without actually changing the text. If you like this, add <code>(visual-line-mode)</code> to your <code>~/.emacs.d/init.el</code>.
+<li>Call <code>M-x visual-line-mode</code> to tell Emacs to visually wrap lines without actually changing the text. If you like this, add <code>(add-hook 'text-mode-hook 'turn-on-visual-line-mode)</code> to your <code>~/.emacs.d/init.el</code>.
 </li>
 </ol>
 
