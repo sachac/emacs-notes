@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-06-11 Wed 16:49 -->
+<!-- 2014-06-11 Wed 16:54 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -1700,7 +1700,7 @@ Most Emacs libraries are not loaded automatically. This saves memory and keeps t
 </div>
 
 <p>
-This loads the <code>org</code> library. <code>require</code> looks for a file named after the name provided to it, loads it, and double-checks that the library includes <code>(provide 'feature-name-goes-here)</code>. It throws a <code>Cannot open load file</code> error if the library is not found or if it doesn't provide that symbol.
+This loads the <code>org</code> library. <code>require</code> looks for a file named after the name provided to it, loads it, and double-checks that the library includes <code>(provide 'feature-name-goes-here)</code>. It signals a <code>Cannot open load file</code> error if the library is not found. If the library exists but does not provide that symbol, you'll get a <code>Required feature FEATURE was not provided</code> error instead.
 </p>
 
 <p>

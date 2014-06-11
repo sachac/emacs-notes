@@ -30,7 +30,7 @@ Most Emacs libraries are not loaded automatically. This saves memory and keeps t
 (require 'org)
 #+end_src
 
-This loads the =org= library. =require= looks for a file named after the name provided to it, loads it, and double-checks that the library includes =(provide 'feature-name-goes-here)=. It throws a =Cannot open load file= error if the library is not found or if it doesn't provide that symbol.
+This loads the =org= library. =require= looks for a file named after the name provided to it, loads it, and double-checks that the library includes =(provide 'feature-name-goes-here)=. It signals a =Cannot open load file= error if the library is not found. If the library exists but does not provide that symbol, you'll get a =Required feature FEATURE was not provided= error instead.
 
 Note that the symbol you give to =require= might not be the same as the function you call. For example, =c-mode= is actually defined in the =cc-mode= library, while =org-mode= is defined in =org=. To find out what file a function is defined in, use =C-h f= (=describe-function=) followed by the name of the function. The first line will tell you what file the function is defined in, if any. For example, =c-mode='s definition starts with:
 
