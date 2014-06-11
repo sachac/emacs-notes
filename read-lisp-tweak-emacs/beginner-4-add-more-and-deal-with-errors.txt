@@ -174,7 +174,7 @@ Make sure you call =C-x C-e= *after* the outermost =)= for the expression you wa
             +---- Your cursor should be here
 #+end_example
 
-If the code you're looking at has multiple expressions, you'll need to call =C-x C-e= after each of them. It might be easier to select the region and use =M-x eval-region=, or load the entire buffer with =M-x eval-buffer=. Alternatively, use =M-x ielm= to evaluate the code instead.
+If the code you're looking at has multiple expressions, you'll need to call =C-x C-e= after each of them. It might be easier to select the region and use =M-x eval-region=, or evaluate the entire buffer with =M-x eval-buffer=. Alternatively, use =M-x ielm= to evaluate the code instead.
 
 Again, if you don't see the error you're struggling with here, ask the relevant mailing list, [[https://lists.gnu.org/mailman/listinfo/help-gnu-emacs][help-gnu-emacs]], the #emacs channel on [[http://freenode.net/][irc.freenode.net]], or [[http://stackoverflow.com][StackOverflow]] for help. Good luck!
 
