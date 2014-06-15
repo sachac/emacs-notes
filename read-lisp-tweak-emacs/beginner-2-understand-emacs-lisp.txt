@@ -165,7 +165,7 @@ Let's take a closer look at this example.
 (add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 #+end_src
 
-=add-hook= is a function. '=emacs-lisp-mode-hook= and '=turn-on-eldoc-mode= have single quotes, which tells Emacs to skip evaluating them. They refer to the name of the thing instead of its value. =emacs-lisp-mode-hook= is a variable that contains a list of functions to run, and =turn-on-eldoc-mode= is a function that we're adding to that list.
+=add-hook= is a function. =​'emacs-lisp-mode-hook​= and =​'turn-on-eldoc-mode​= have single quotes, which tells Emacs to skip evaluating them. They refer to the name of the thing instead of its value. =emacs-lisp-mode-hook= is a variable that contains a list of functions to run, and =turn-on-eldoc-mode= is a function that we're adding to that list.
 
 The single quote means take it literally - treat it as the name of something. If you remove the quote from =emacs-lisp-mode-hook=, Emacs will look up the value in that variable and use that as the name of the variable to actually set, and you'll probably get an error.
 
@@ -273,7 +273,7 @@ Some things look like lists, but there's a dot between the first element and the
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 #+end_src
 
-This calls the =add-to-list= function with two arguments. The first argument ('=package-archives=) specifies the list to add an item to, and the second argument ('=("melpa" . "http://melpa.milkbox.net/packages/")=) is the data to add. 
+This calls the =add-to-list= function with two arguments. The first argument (=​'package-archives​=) specifies the list to add an item to, and the second argument (=​'("melpa" . "http://melpa.milkbox.net/packages/")​=) is the data to add. 
 
 The dot =(x . y)= shows that this is a *cons cell*, which is something that has two parts. These parts are called the *car* and the *cdr*, and can contain symbols, values, lists, and so on. A cons cell like =("abc" . "def")= looks like this:
 
@@ -293,7 +293,7 @@ A list like '=("abc" "def")= is made up of several cons cells.
 +----------------+----------------+         +----------------+----------------+
 #+end_example
 
-In Emacs Lisp, '=("abc" "def")= is equivalent to =(cons "abc" (cons "def" nil))=, and it's not the same as =(cons "abc" "def")=. Here's something that shows the differences:
+In Emacs Lisp, =​'("abc" "def")= is equivalent to =(cons "abc" (cons "def" nil))=, and it's not the same as =(cons "abc" "def")=. Here's something that shows the differences:
 
 #+begin_src emacs-lisp
 (cdr '("abc" . "def"))  ;; Returns "def", which is a string

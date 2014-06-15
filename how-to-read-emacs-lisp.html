@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-06-11 Wed 17:00 -->
+<!-- 2014-06-15 Sun 13:12 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -956,7 +956,7 @@ Let's take a closer look at this example.
 </div>
 
 <p>
-<code>add-hook</code> is a function. '<code>emacs-lisp-mode-hook</code> and '<code>turn-on-eldoc-mode</code> have single quotes, which tells Emacs to skip evaluating them. They refer to the name of the thing instead of its value. <code>emacs-lisp-mode-hook</code> is a variable that contains a list of functions to run, and <code>turn-on-eldoc-mode</code> is a function that we're adding to that list.
+<code>add-hook</code> is a function. <code>​'emacs-lisp-mode-hook​</code> and <code>​'turn-on-eldoc-mode​</code> have single quotes, which tells Emacs to skip evaluating them. They refer to the name of the thing instead of its value. <code>emacs-lisp-mode-hook</code> is a variable that contains a list of functions to run, and <code>turn-on-eldoc-mode</code> is a function that we're adding to that list.
 </p>
 
 <p>
@@ -1150,7 +1150,7 @@ Some things look like lists, but there's a dot between the first element and the
 </div>
 
 <p>
-This calls the <code>add-to-list</code> function with two arguments. The first argument ('<code>package-archives</code>) specifies the list to add an item to, and the second argument ('<code>("melpa" . "http://melpa.milkbox.net/packages/")</code>) is the data to add. 
+This calls the <code>add-to-list</code> function with two arguments. The first argument (<code>​'package-archives​</code>) specifies the list to add an item to, and the second argument (<code>​'("melpa" . "http://melpa.milkbox.net/packages/")​</code>) is the data to add. 
 </p>
 
 <p>
@@ -1176,7 +1176,7 @@ A list like '<code>("abc" "def")</code> is made up of several cons cells.
 </pre>
 
 <p>
-In Emacs Lisp, '<code>("abc" "def")</code> is equivalent to <code>(cons "abc" (cons "def" nil))</code>, and it's not the same as <code>(cons "abc" "def")</code>. Here's something that shows the differences:
+In Emacs Lisp, <code>​'("abc" "def")</code> is equivalent to <code>(cons "abc" (cons "def" nil))</code>, and it's not the same as <code>(cons "abc" "def")</code>. Here's something that shows the differences:
 </p>
 
 <div class="org-src-container">

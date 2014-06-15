@@ -138,8 +138,11 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 
 - Make it easy to define new modules
 ***** TODO Take notes on people who are interested in taking course, process course steps :routine:
-			 SCHEDULED: <2014-06-09 Mon .+3d>
+			 SCHEDULED: <2014-06-15 Sun .+3d>
 			 :LOGBOOK:
+			 - State "DONE"       from "STARTED"    [2014-06-12 Thu 20:50]
+			 CLOCK: [2014-06-12 Thu 20:47]--[2014-06-12 Thu 20:50] =>  0:03
+			 CLOCK: [2014-06-11 Wed 16:04]--[2014-06-11 Wed 17:38] =>  1:34
 			 - State "DONE"       from "TODO"       [2014-06-06 Fri 20:27]
 			 - State "DONE"       from "STARTED"    [2014-06-04 Wed 15:49]
 			 CLOCK: [2014-06-04 Wed 14:17]--[2014-06-04 Wed 15:49] =>  1:32
@@ -161,7 +164,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
       :CLOCK_MODELINE_TOTAL: today
-			:LAST_REPEAT: [2014-06-06 Fri 20:27]
+			:LAST_REPEAT: [2014-06-12 Thu 20:50]
 			:END:
 ***** DONE Package beginner1 as a lesson
 			 CLOSED: [2014-05-13 Tue 21:05]
@@ -853,6 +856,15 @@ Technical lead, Tradeo: Rails, NoedJS
 		 :PROPERTIES:
 		 :Effort:   1:30
 		 :END:
+**** DONE Review transcript for Bozhidar Batsov
+		 CLOSED: [2014-06-13 Fri 15:19] SCHEDULED: <2014-06-13 Fri>
+		 :LOGBOOK:
+		 CLOCK: [2014-06-13 Fri 14:42]--[2014-06-13 Fri 15:19] =>  0:37
+		 CLOCK: [2014-06-13 Fri 14:05]--[2014-06-13 Fri 14:31] =>  0:26
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   1:30
+		 :END:
 *** Xah Lee
 **** DONE Set up chat with Xah Lee
 	 	 CLOSED: [2014-05-01 Thu 22:08]
@@ -946,14 +958,46 @@ https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
 		 :PROPERTIES:
 		 :CREATED:  [2014-05-25 Sun 21:40]
 		 :END:
+**** DONE Review transcript for Christopher Wellons
+		 CLOSED: [2014-06-13 Fri 16:08] SCHEDULED: <2014-06-13 Fri>
+		 :LOGBOOK:
+		 CLOCK: [2014-06-13 Fri 15:24]--[2014-06-13 Fri 16:08] =>  0:44
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   1:00
+		 :END:
+*** Carsten Dominik
+**** DELEGATED Transcribe Carsten Dominik's talk
 *** Mickey Petersen
 **** DONE Set up chat with masteringemacs
 	 	 CLOSED: [2014-05-01 Thu 22:08]
 **** TODO Chat with masteringemacs
-		 SCHEDULED: <2014-06-14 Sat>
+		 SCHEDULED: <2014-06-21 Sat>
 		 :PROPERTIES:
 		 :CREATED:  [2014-06-08 Sun 22:44]
 		 :END:
+**** DONE Prep for call with Mickey Petersen
+		 CLOSED: [2014-06-14 Sat 12:45]
+		 :LOGBOOK:
+		 CLOCK: [2014-06-14 Sat 12:03]--[2014-06-14 Sat 12:45] =>  0:42
+		 :END:
+		 :PROPERTIES:
+		 :Effort:   1:00
+		 :END:
+
+- selftaught
+- @mickeynp, github.com/mickeynp
+- smartscan
+- discover
+- love the long blog posts showcasing useful packages
+- using Emacs for eight years
+- VimGolf
+- sort-regexp-fields
+- narrow-to-defun
+- started masteringemacs Oct 2010
+- Lisp required for Emacs enlightenment
+- Python
+
 *** Possible guests
 - Tikhon Jelvis?
 - Follow up with Xah Lee's list
@@ -964,8 +1008,8 @@ https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
 ***** DONE Invite Bodil for Emacs Chat?
 			 CLOSED: [2014-05-19 Mon 22:36]
 ** Connecting - Emacs
-*** TODO Chat with Tom and Neil about Clojure
-		 SCHEDULED: <2014-06-09 Mon>
+*** DONE Chat with Tom and Neil about Clojure
+		 CLOSED: [2014-06-11 Wed 15:59] SCHEDULED: <2014-06-09 Mon>
 		:PROPERTIES:
 		:CREATED:  [2014-06-08 Sun 22:43]
 		:END:
