@@ -182,7 +182,7 @@ Again, if you don't see the error you're struggling with here, ask the relevant 
 
 I hope that this course has helped you become more comfortable with reading and tweaking Emacs Lisp configuration code from blog posts, wiki pages, and other resources. There's much more to learn, of course. With =describe-function=, =describe-variable=, and the ability to quickly experiment with Emacs Lisp code without restarting Emacs all the time, I'm sure you'll get the hang of it! If you'd like to review or refer to this course, you can get it as one page at http://emacslife.com/how-to-read-emacs-lisp.html .
 
-Check out [[https://www.gnu.org/software/emacs/manual/eintr.html][An Introduction to Programming in Emacs Lisp]], and delve into the [[http://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp Reference Manual]] for more details. In particular, check out =edebug= as a great way to explore how Emacs Lisp code works.
+Check out [[https://www.gnu.org/software/emacs/manual/eintr.html][An Introduction to Programming in Emacs Lisp]], and delve into the [[http://www.gnu.org/software/emacs/manual/elisp.html][Emacs Lisp Reference Manual]] for more details. Both are available within Emacs as Info manuals, which you can read with =C-h i= (=info=). Look for the =Emacs Lisp Intro= and =Elisp= entries, and browse through those manuals for more details. To search the current info manuals, type =s= (=Info-search=). To search all info manuals, use =M-x info-apropos=.
 
 If you liked this or you have other questions, please get in touch - [[mailto:sacha@sachachua.com][sacha@sachachua.com]]. I'd love to hear from you, and I'm happy to help with other Emacs questions you may have. Good luck and have fun!
 

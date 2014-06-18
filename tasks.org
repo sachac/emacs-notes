@@ -138,7 +138,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 
 - Make it easy to define new modules
 ***** TODO Take notes on people who are interested in taking course, process course steps :routine:
-			 SCHEDULED: <2014-06-15 Sun .+3d>
+			 SCHEDULED: <2014-06-18 Wed .+3d>
 			 :LOGBOOK:
 			 - State "DONE"       from "STARTED"    [2014-06-12 Thu 20:50]
 			 CLOCK: [2014-06-12 Thu 20:47]--[2014-06-12 Thu 20:50] =>  0:03
