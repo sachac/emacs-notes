@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-06-18 Wed 14:15 -->
+<!-- 2014-06-22 Sun 20:20 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -76,7 +76,7 @@
 <li><a href="#sec-5-1-1">Setting keybindings in all buffers</a></li>
 <li><a href="#sec-5-1-2">What does <code>kbd</code> do? How can I figure out which key it sets?</a></li>
 <li><a href="#sec-5-1-3">Multi-key shortcuts</a></li>
-<li><a href="#sec-5-1-4">Inserting strings</a></li>
+<li><a href="#sec-5-1-4">Binding keys to other keys</a></li>
 <li><a href="#sec-5-1-5">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</a></li>
 <li><a href="#sec-5-1-6">Setting keybindings in a particular mode</a></li>
 <li><a href="#sec-5-1-7">Other ways people bind keys</a></li>
@@ -224,7 +224,7 @@ If you want to start playing around with Emacs Lisp code right away, jump ahead 
 Reasonable defaults make sense for specific people. Other people might
 have completely different ideas for how they want a tool to work.
 Many people use Emacs and have (occasionally quite strong)
-opinions about how they want it to work. It's difficult to change the defaults for everyone<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
+opinions about how they want it to work. It's difficult to change the defaults for everyone<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
 </p>
 
 <p>
@@ -300,7 +300,7 @@ you're trying to customize is really worth it. One of the occupational
 hazards of using Emacs is that tweaking your Emacs configuration can
 be fun, almost addictive. If you catch yourself spending four hours
 fiddling with something minor, it might be time to put that aside and
-focus on getting stuff done first.<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>
+focus on getting stuff done first.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
 </p>
 </div>
 </div>
@@ -310,7 +310,7 @@ focus on getting stuff done first.<sup><a id="fnr.2" name="fnr.2" class="footref
 <h2 id="sec-3">"How can I try Emacs Lisp code?"</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-<a id="try" name="try"></a>
+<a id="try"></a>
 </p>
 
 <div class="objectives">
@@ -688,7 +688,7 @@ Try it now: <code>C-u M-: (* 21 2)</code>
 <h2 id="sec-4">"How can I understand what Emacs Lisp code does?"</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-<a id="understanding-lisp" name="understanding-lisp"></a>
+<a id="understanding-lisp"></a>
 </p>
 
 <div class="objectives">
@@ -942,6 +942,10 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 <h3 id="sec-4-3">Understand symbols</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
+<a id="quoting"></a>
+</p>
+
+<p>
 Let's take a closer look at this example.
 </p>
 
@@ -1050,7 +1054,7 @@ The code above sets the value of the variable to a list, ignoring any previous v
 <h4 id="sec-4-4-1">Add to a list</h4>
 <div class="outline-text-4" id="text-4-4-1">
 <p>
-<a id="load-path" name="load-path"></a>
+<a id="load-path"></a>
 </p>
 
 <p>
@@ -1132,7 +1136,7 @@ Hooks are lists of functions, so you can delete items using <code>delete</code>.
 <h4 id="sec-4-4-4">Dot notation</h4>
 <div class="outline-text-4" id="text-4-4-4">
 <p>
-<a id="package-archives" name="package-archives"></a>
+<a id="package-archives"></a>
 </p>
 
 <p>
@@ -1245,12 +1249,10 @@ This stores backup files in the directory specified by <code>temporary-file-dire
 <div id="outline-container-sec-4-5" class="outline-3">
 <h3 id="sec-4-5">Review</h3>
 <div class="outline-text-3" id="text-4-5">
-<div class="practice">
 <p>
+#+BEGIN<sub>PRACTICE</sub>
 Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about functions and <code>C-h v</code> (<code>describe-variable</code>) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
 </p>
-
-</div>
 </div>
 </div>
 </div>
@@ -1457,16 +1459,17 @@ to make it easier to replace strings. You can even bind it to both shortcuts.
 </div>
 
 <div id="outline-container-sec-5-1-4" class="outline-4">
-<h4 id="sec-5-1-4">Inserting strings</h4>
+<h4 id="sec-5-1-4">Binding keys to other keys</h4>
 <div class="outline-text-4" id="text-5-1-4">
 <p>
-In addition to setting keyboard shortcuts for functions, you can also define keys so that they insert strings. For example:
+In addition to setting keyboard shortcuts for functions, you can also define keys to expand to a longer sequence of keystrokes. You can use this for inserting strings or calling keyboard macros. For example:
 </p>
 
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f7&gt; e"</span>) <span class="org-string">"you@example.com"</span>)
 (global-set-key (kbd <span class="org-string">"&lt;f7&gt; w"</span>) <span class="org-string">"http://example.com"</span>)
+(global-set-key (kbd <span class="org-string">"&lt;f7&gt; u"</span>) (kbd <span class="org-string">"C-x C-s"</span>))
 </pre>
 </div>
 
@@ -1507,7 +1510,7 @@ The example above has three bindings for <code>transpose-words</code>. <code>M-t
 <h4 id="sec-5-1-6">Setting keybindings in a particular mode</h4>
 <div class="outline-text-4" id="text-5-1-6">
 <p>
-<a id="mode-keys" name="mode-keys"></a>
+<a id="mode-keys"></a>
 </p>
 
 <p>
@@ -1649,16 +1652,13 @@ Sometimes people just want to create a keyboard binding or process some data wit
 This binds <code>C-c e</code> to an anonymous function. The <code>()</code> means it doesn't take any arguments. <code>(interactive)</code> means it can be called through a keyboard shortcut, although since it's anonymous, it can't be called with <code>M-x</code>. The function opens the <code>~/.emacs.d/init.el</code> file, which is a handy way to edit your configuration.
 </p>
 
-<div class="practice">
+<p>
+#+BEGIN<sub>PRACTICE</sub>
+</p>
 <ol class="org-ol">
 <li>Look for an Emacs configuration file that defines keybindings that you're curious about. Install any packages or copy any custom functions needed. Experiment with using those keybindings. Do you like them? Do you want to tweak them further?
 </li>
-
-<li>Think about how you use Emacs. What kinds of keyboard shortcuts would make your work easier? How can you adapt some of the functions you've read into things that would make them even more convenient for you?
-</li>
 </ol>
-
-</div>
 </div>
 </div>
 </div>
@@ -1719,7 +1719,7 @@ The first part of the filename (before the <code>.el</code> or <code>.elc</code>
 <h4 id="sec-6-1-1">Installing packages</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
-<a id="installing-packages" name="installing-packages"></a>
+<a id="installing-packages"></a>
 </p>
 
 <p>
@@ -1782,7 +1782,7 @@ Along those lines, you may come across code that looks like this:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(eval-after-load <span class="org-string">"dash"</span> 
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> <span class="org-string">"dash"</span> 
   '(dash-enable-font-lock))
 </pre>
 </div>
@@ -1797,7 +1797,7 @@ This runs <code>(dash-enable-font-lock)</code> only after <code>dash</code> is l
 <h4 id="sec-6-1-2">Other Emacs Lisp files</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <p>
-<a id="unpackaged" name="unpackaged"></a>
+<a id="unpackaged"></a>
 </p>
 
 <p>
@@ -1855,7 +1855,7 @@ Then you can use <code>require</code> to load the Emacs Lisp code if it exists.
 <h3 id="sec-6-2">"Oh no! I have an error!"</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
-<a id="errors" name="errors"></a>
+<a id="errors"></a>
 </p>
 
 <p>
@@ -1920,7 +1920,7 @@ The code is trying to require or load a file that Emacs can't find.
 <h4 id="sec-6-2-3">Lisp error: (void-function &#x2026;)</h4>
 <div class="outline-text-4" id="text-6-2-3">
 <p>
-<a id="void-function" name="void-function"></a>
+<a id="void-function"></a>
 </p>
 
 <p>
@@ -1942,7 +1942,7 @@ The code calls a function that has not been defined.
 <h4 id="sec-6-2-4">Symbol's value as variable is void: <span class="underline">_</span></h4>
 <div class="outline-text-4" id="text-6-2-4">
 <p>
-<a id="void-variable" name="void-variable"></a>
+<a id="void-variable"></a>
 </p>
 
 <p>
@@ -2040,7 +2040,7 @@ Patches and pull requests welcome!
 </ul>
 </li>
 
-<li><code>[X]</code> This document: beginner-level
+<li class="on"><span class="task-done">&#x2611;</span> This document: beginner-level
 <ul class="org-ul">
 <li>For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
 <ul class="org-ul">
@@ -2056,7 +2056,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> Where can I find short Emacs Lisp code to learn from?
+<li class="on"><span class="task-done">&#x2611;</span> Where can I find short Emacs Lisp code to learn from?
 <ul class="org-ul">
 <li>README for packages
 </li>
@@ -2070,7 +2070,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I understand what Emacs Lisp code does?
+<li class="on"><span class="task-done">&#x2611;</span> How can I understand what Emacs Lisp code does?
 <ul class="org-ul">
 <li>Ex: (global-hl-line-mode)
 </li>
@@ -2080,13 +2080,13 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I copy Emacs Lisp code from other people's configuration?
+<li class="on"><span class="task-done">&#x2611;</span> How can I copy Emacs Lisp code from other people's configuration?
 <ul class="org-ul">
 <li>Try a little before you add things
 </li>
 </ul>
 </li>
-<li><code>[X]</code> How can I try things a little at a time?
+<li class="on"><span class="task-done">&#x2611;</span> How can I try things a little at a time?
 <ul class="org-ul">
 <li>ielm
 </li>
@@ -2108,7 +2108,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> What are some of the common errors I might run into?
+<li class="on"><span class="task-done">&#x2611;</span> What are some of the common errors I might run into?
 <ul class="org-ul">
 <li>Evaluating at the wrong point
 </li>
@@ -2126,7 +2126,7 @@ Patches and pull requests welcome!
 </li>
 </ul>
 </li>
-<li><code>[X]</code> Okay, I like this. How can I make it part of my Emacs?
+<li class="on"><span class="task-done">&#x2611;</span> Okay, I like this. How can I make it part of my Emacs?
 <ul class="org-ul">
 <li>.emacs.d/init.el (also note about ~/.emacs)
 </li>
@@ -2226,9 +2226,9 @@ Patches and pull requests welcome!
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>Is it worth the time -
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>Is it worth the time -
 <a href="http://xkcd.com/1205/">http://xkcd.com/1205/</a></p></div>
 
 

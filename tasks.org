@@ -138,8 +138,10 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 
 - Make it easy to define new modules
 ***** TODO Take notes on people who are interested in taking course, process course steps :routine:
-			 SCHEDULED: <2014-06-18 Wed .+3d>
+			 SCHEDULED: <2014-06-23 Mon .+3d>
 			 :LOGBOOK:
+			 - State "DONE"       from "STARTED"    [2014-06-18 Wed 15:09]
+			 CLOCK: [2014-06-18 Wed 13:46]--[2014-06-18 Wed 15:09] =>  1:23
 			 - State "DONE"       from "STARTED"    [2014-06-12 Thu 20:50]
 			 CLOCK: [2014-06-12 Thu 20:47]--[2014-06-12 Thu 20:50] =>  0:03
 			 CLOCK: [2014-06-11 Wed 16:04]--[2014-06-11 Wed 17:38] =>  1:34
@@ -164,7 +166,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
       :CLOCK_MODELINE_TOTAL: today
-			:LAST_REPEAT: [2014-06-12 Thu 20:50]
+			:LAST_REPEAT: [2014-06-18 Wed 15:09]
 			:END:
 ***** DONE Package beginner1 as a lesson
 			 CLOSED: [2014-05-13 Tue 21:05]
@@ -380,7 +382,7 @@ Good luck!
 	 	:Effort:   0:30
 	 	:END:
 *** SOMEDAY Make animated GIF demonstrations for smartparens functionality
-		 SCHEDULED: <2014-06-27 Fri>
+		 SCHEDULED: <2014-07-22 Tue>
 		:PROPERTIES:
 		:CREATED:  [2014-06-06 Fri 20:31]
 		:END:
@@ -972,7 +974,7 @@ https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
 **** DONE Set up chat with masteringemacs
 	 	 CLOSED: [2014-05-01 Thu 22:08]
 **** TODO Chat with masteringemacs
-		 SCHEDULED: <2014-06-21 Sat>
+		 SCHEDULED: <2014-06-29 Sun>
 		 :PROPERTIES:
 		 :CREATED:  [2014-06-08 Sun 22:44]
 		 :END:

@@ -122,13 +122,15 @@ or
 
 to make it easier to replace strings. You can even bind it to both shortcuts.
 
-*** Inserting strings
+*** Binding keys to other keys
 
-In addition to setting keyboard shortcuts for functions, you can also define keys so that they insert strings. For example:
+In addition to setting keyboard shortcuts for functions, you can also define keys to expand to a longer sequence of keystrokes. You can use this for inserting strings or calling keyboard macros. For example:
 
 #+begin_src emacs-lisp
 (global-set-key (kbd "<f7> e") "you@example.com")
 (global-set-key (kbd "<f7> w") "http://example.com")
+(global-set-key (kbd "<f7> u") (kbd "C-x C-s"))
+
 #+end_src
 
 These might be handy for quickly inserting your e-mail address or website.

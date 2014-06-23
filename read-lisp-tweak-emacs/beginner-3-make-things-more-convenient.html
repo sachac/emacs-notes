@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I customize Emacs to make things more convenient?"</title>
-<!-- 2014-06-11 Wed 16:48 -->
+<!-- 2014-06-22 Sun 20:16 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -28,7 +28,7 @@
 <li><a href="#sec-1-1">Setting keybindings in all buffers</a></li>
 <li><a href="#sec-1-2">What does <code>kbd</code> do? How can I figure out which key it sets?</a></li>
 <li><a href="#sec-1-3">Multi-key shortcuts</a></li>
-<li><a href="#sec-1-4">Inserting strings</a></li>
+<li><a href="#sec-1-4">Binding keys to other keys</a></li>
 <li><a href="#sec-1-5">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</a></li>
 <li><a href="#sec-1-6">Setting keybindings in a particular mode</a></li>
 <li><a href="#sec-1-7">Other ways people bind keys</a></li>
@@ -259,16 +259,17 @@ to make it easier to replace strings. You can even bind it to both shortcuts.
 </div>
 
 <div id="outline-container-sec-1-4" class="outline-3">
-<h3 id="sec-1-4">Inserting strings</h3>
+<h3 id="sec-1-4">Binding keys to other keys</h3>
 <div class="outline-text-3" id="text-1-4">
 <p>
-In addition to setting keyboard shortcuts for functions, you can also define keys so that they insert strings. For example:
+In addition to setting keyboard shortcuts for functions, you can also define keys to expand to a longer sequence of keystrokes. You can use this for inserting strings or calling keyboard macros. For example:
 </p>
 
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f7&gt; e"</span>) <span class="org-string">"you@example.com"</span>)
 (global-set-key (kbd <span class="org-string">"&lt;f7&gt; w"</span>) <span class="org-string">"http://example.com"</span>)
+(global-set-key (kbd <span class="org-string">"&lt;f7&gt; u"</span>) (kbd <span class="org-string">"C-x C-s"</span>))
 </pre>
 </div>
 
@@ -309,7 +310,7 @@ The example above has three bindings for <code>transpose-words</code>. <code>M-t
 <h3 id="sec-1-6">Setting keybindings in a particular mode</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
-<a id="mode-keys" name="mode-keys"></a>
+<a id="mode-keys"></a>
 </p>
 
 <p>
