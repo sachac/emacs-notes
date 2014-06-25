@@ -21,11 +21,11 @@ After this module, you'll be able to:
 - copy and use anonymous functions
 #+END_OBJECTIVES
 
-** Keyboard shortcuts
+* Keyboard shortcuts
 
 The default keyboard shortcuts (or "keybindings") can be difficult to remember, and many useful functions don't have any keyboard shortcuts at all. People often set up their own keyboard shortcuts to make other commands easier to use. There are different ways to assign keys depending on where you want the keybinding to be available.
 
-*** Setting keybindings in all buffers
+** Setting keybindings in all buffers
 
 You can assign a key to a function globally, which means that it will be available in buffers of any type if there are no mode maps or local keybindings that override it. (Mode maps are set by major modes like =emacs-lisp-mode= or minor modes like =auto-fill-mode=.) Setting a global keybinding is usually done with =global-set-key=, although sometimes you'll see it done with =define-key= and =global-map=. 
 
@@ -54,7 +54,7 @@ These set =C-+= (=Ctrl= and =<plus>=) and =C--= (=Ctrl= and =<minus>=) to increa
 
 If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to [[mode-keys][Setting keybindings in a particular mode]].
 
-*** What does =kbd= do? How can I figure out which key it sets?
+** What does =kbd= do? How can I figure out which key it sets?
 
 If you've gone through the Emacs Tutorial (*Help - Emacs Tutorial* or =C-h t=), you'll be familiar with many of the conventions used for writing keyboard shortcuts. =C-= stands for the =Ctrl= key, =M-= stands for the =Meta= key (which is probably =Alt= or =Option= on your keyboard). There are other prefixes as well. =S-= is for Shift, =H-= is for =Hyper=, and =s-= is for =Super=. Some people use operating system tools (such as =setxkbmap= for Linux) to change keys on their keyboard to =Super= or =Hyper= in order to enable even more keyboard shortcuts.
 
@@ -92,7 +92,7 @@ When you use =kbd=, whitespace doesn't usually matter, but it's easier to read i
 
 In general, you can use =C-h k= (=describe-key=) followed by a keyboard shortcut to see if it's already bound, and if so, what function it calls. If you type =C-h k= and the key you're interested in, and Emacs is still waiting for another key, then you're probably looking at a prefix key. For example, =C-x= is a prefix key that's used in keyboard shortcuts like =C-x C-e= (=eval-last-sexp=).
 
-*** Multi-key shortcuts
+** Multi-key shortcuts
 
 You can set up keybindings that use more than one key combination. This is a popular technique since you can only have so many short keybindings. For example, the following code changes =C-x C-b= to call =ibuffer=, which lists your buffers and makes it easy to jump to another buffer.
 
@@ -122,7 +122,7 @@ or
 
 to make it easier to replace strings. You can even bind it to both shortcuts.
 
-*** Binding keys to other keys
+** Binding keys to other keys
 
 In addition to setting keyboard shortcuts for functions, you can also define keys to expand to a longer sequence of keystrokes. You can use this for inserting strings or calling keyboard macros. For example:
 
@@ -135,7 +135,7 @@ In addition to setting keyboard shortcuts for functions, you can also define key
 
 These might be handy for quickly inserting your e-mail address or website.
 
-*** Dealing with errors: "Key sequence ____ starts with non-prefix key ___"
+** Dealing with errors: "Key sequence ____ starts with non-prefix key ___"
 
 If you want to create a multi-key shortcut, the preceding keys must not already be assigned to functions. For example, if you want =M-t l= to call =transpose-lines=, you'll need to get rid of =M-t='s default binding to =transpose-words= first. To unset a key, bind it to =nil= or use =global-unset-key=. Here's a group of shortcuts you can try.
 
@@ -153,7 +153,7 @@ If you want to create a multi-key shortcut, the preceding keys must not already 
 
 The example above has three bindings for =transpose-words=. =M-t w= uses the mnemonic of *t*-ranspose *w*-ords. =M-t t= is similar to the original binding for =transpose-words=, which was =M-t=. =M-t M-t= may seem like overkill, but sometimes you'll find it easier to hold the =Meta= key down and hit =t= twice quickly instead of typing =M-t=, releasing =Meta=, and then typing =t=. As you read other people's keybindings, you'll get a sense of how people have configured their keyboard shortcuts to speed up typing and minimize thinking.
 
-*** Setting keybindings in a particular mode
+** Setting keybindings in a particular mode
 <<mode-keys>>
 
 Sometimes you want keys to do different things in different types of files. Modes are how Emacs changes behaviour based on context. For example, Java files use =java-mode=, Org files use =org-mode=, and so forth. In addition to the major mode for a buffer, you may have several minor modes that modify the behaviour. Each mode has a keybinding map (or a "keymap"). You can assign a key in a mode map, which means it will override global keybindings in buffers with that mode. You can do this with =define-key= if you know the name of the keymap you want to change, which is generally the name of the mode + =-map=. For example:
@@ -166,7 +166,7 @@ changes the =C-c f= keyboard shortcut to =find-function= (which jumps to the def
 
 Note that if you use =define-key= with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a =require= (which loads the code) or inside an =eval-after-load= (which postpones the code until after the mode is loaded). See [[http://emacslife.com/how-to-read-emacs-lisp.html#load][Adding more features to Emacs]] for information on loading packages and adding new functions to Emacs.
 
-*** Other ways people bind keys
+** Other ways people bind keys
 
 The =bind-key= package provides a function that makes it easier to see your personal keybindings, but =bind-key= is not part of Emacs by default. I use =bind-key= a lot in [[http://sachachua.com/dotemacs][my configuration]]. The syntax is similar to =global-set-key=, except it automatically wraps the keyboard shortcut string in =kbd=. It also keeps track of which keyboard shortcuts you've overridden so that you can use =M-x describe-personal-keybindings= to review them.
 
@@ -181,7 +181,7 @@ Because keybinding is something that lots of people do to customize their Emacs,
 
 For more about keybindings, see the [[http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html][Emacs manual]] and this [[http://www.masteringemacs.org/articles/2011/02/08/mastering-key-bindings-emacs/][Mastering Emacs post on keybindings]].
 
-** Defuns - function definitions
+* Defuns - function definitions
 
 In addition to the functions built into Emacs or available in packages, many people define their own with the =defun= function.
 
@@ -225,7 +225,7 @@ can also be written as:
 (add-hook 'emacs-lisp-mode-hook 'my/set-up-emacs-lisp-shortcuts)
 #+end_src
 
-** Lambdas - anonymous functions
+* Lambdas - anonymous functions
 
 Sometimes people just want to create a keyboard binding or process some data without defining a new function. =lambda= creates an anonymous function, which is a function that doesn't have a name. Here's an example:
 
