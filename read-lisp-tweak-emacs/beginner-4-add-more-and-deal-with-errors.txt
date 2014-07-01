@@ -137,7 +137,7 @@ Here are some common error messages and how you can try fixing them. If you don'
 
 ** Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"
 
-You may have pasted in something that has a "=(=" but no matching "=)=", which results in unbalanced parentheses. Alternatively, you may have pasted in something that has "=)=" but no "=(=", which results in a premature end. Try reading the code carefully in order to find the mismatched pair. You can also use =C-M-f= (=forward-sexp=) and =C-M-b= (=backward-sexp=) to navigate by complete expressions until you find the specific one that causes the error.
+You may have pasted in something that has a "=(=" but no matching "=)=", which results in unbalanced parentheses. Alternatively, you may have pasted in something that has "=)=" but no "=(=", which results in a premature end. You can use =M-x check-parens= to quickly check for mismatched parentheses, or try reading the code carefully in order to find the mismatched pair. You can also use =C-M-f= (=forward-sexp=) and =C-M-b= (=backward-sexp=) to navigate by complete expressions until you find the specific one that causes the error.
 
 ** Cannot open load file: ...
 

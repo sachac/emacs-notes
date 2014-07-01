@@ -92,7 +92,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			  :CREATED:  [2014-06-06 Fri 13:40]
 			  :Effort:   1:00
 			  :END:
-**** How to Read Emacs Lisp e-mail course 													:project:
+**** DONE How to Read Emacs Lisp e-mail course 											:project:
 [[file:~/personal/elisp-course.org]]
 ***** DONE Get e-mail sending to work from virtual machine
 			 CLOSED: [2014-05-14 Wed 16:17]
@@ -128,7 +128,8 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
 			:END:
-***** STARTED Work on support code for e-mail course
+***** DONE Work on support code for e-mail course
+			 CLOSED: [2014-06-29 Sun 21:47]
 			:LOGBOOK:
 			CLOCK: [2014-05-28 Wed 14:00]--[2014-05-28 Wed 14:25] =>  0:25
 			:END:
@@ -138,8 +139,9 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 
 - Make it easy to define new modules
 ***** TODO Take notes on people who are interested in taking course, process course steps :routine:
-			 SCHEDULED: <2014-06-23 Mon .+3d>
+			 SCHEDULED: <2014-07-02 Wed .+3d>
 			 :LOGBOOK:
+			 - State "DONE"       from "TODO"       [2014-06-25 Wed 19:43]
 			 - State "DONE"       from "STARTED"    [2014-06-18 Wed 15:09]
 			 CLOCK: [2014-06-18 Wed 13:46]--[2014-06-18 Wed 15:09] =>  1:23
 			 - State "DONE"       from "STARTED"    [2014-06-12 Thu 20:50]
@@ -166,7 +168,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:PROPERTIES:
 			:Effort:   1:00
       :CLOCK_MODELINE_TOTAL: today
-			:LAST_REPEAT: [2014-06-18 Wed 15:09]
+			:LAST_REPEAT: [2014-06-25 Wed 19:43]
 			:END:
 ***** DONE Package beginner1 as a lesson
 			 CLOSED: [2014-05-13 Tue 21:05]
@@ -974,7 +976,7 @@ https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
 **** DONE Set up chat with masteringemacs
 	 	 CLOSED: [2014-05-01 Thu 22:08]
 **** TODO Chat with masteringemacs
-		 SCHEDULED: <2014-06-29 Sun>
+		 SCHEDULED: <2014-07-05 Sat>
 		 :PROPERTIES:
 		 :CREATED:  [2014-06-08 Sun 22:44]
 		 :END:

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>"How can I add more features and deal with errors?"</title>
-<!-- 2014-06-18 Wed 14:14 -->
+<!-- 2014-07-01 Tue 12:11 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
@@ -116,7 +116,7 @@ The first part of the filename (before the <code>.el</code> or <code>.elc</code>
 <h3 id="sec-1-1">Installing packages</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-<a id="installing-packages" name="installing-packages"></a>
+<a id="installing-packages"></a>
 </p>
 
 <p>
@@ -179,7 +179,7 @@ Along those lines, you may come across code that looks like this:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(eval-after-load <span class="org-string">"dash"</span> 
+<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> <span class="org-string">"dash"</span> 
   '(dash-enable-font-lock))
 </pre>
 </div>
@@ -194,7 +194,7 @@ This runs <code>(dash-enable-font-lock)</code> only after <code>dash</code> is l
 <h3 id="sec-1-2">Other Emacs Lisp files</h3>
 <div class="outline-text-3" id="text-1-2">
 <p>
-<a id="unpackaged" name="unpackaged"></a>
+<a id="unpackaged"></a>
 </p>
 
 <p>
@@ -252,7 +252,7 @@ Then you can use <code>require</code> to load the Emacs Lisp code if it exists.
 <h2 id="sec-2">"Oh no! I have an error!"</h2>
 <div class="outline-text-2" id="text-2">
 <p>
-<a id="errors" name="errors"></a>
+<a id="errors"></a>
 </p>
 
 <p>
@@ -290,7 +290,7 @@ Here are some common error messages and how you can try fixing them. If you don'
 <h3 id="sec-2-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</h3>
 <div class="outline-text-3" id="text-2-1">
 <p>
-You may have pasted in something that has a "<code>(</code>" but no matching "<code>)</code>", which results in unbalanced parentheses. Alternatively, you may have pasted in something that has "<code>)</code>" but no "<code>(</code>", which results in a premature end. Try reading the code carefully in order to find the mismatched pair. You can also use <code>C-M-f</code> (<code>forward-sexp</code>) and <code>C-M-b</code> (<code>backward-sexp</code>) to navigate by complete expressions until you find the specific one that causes the error.
+You may have pasted in something that has a "<code>(</code>" but no matching "<code>)</code>", which results in unbalanced parentheses. Alternatively, you may have pasted in something that has "<code>)</code>" but no "<code>(</code>", which results in a premature end. You can use <code>M-x check-parens</code> to quickly check for mismatched parentheses, or try reading the code carefully in order to find the mismatched pair. You can also use <code>C-M-f</code> (<code>forward-sexp</code>) and <code>C-M-b</code> (<code>backward-sexp</code>) to navigate by complete expressions until you find the specific one that causes the error.
 </p>
 </div>
 </div>
@@ -317,7 +317,7 @@ The code is trying to require or load a file that Emacs can't find.
 <h3 id="sec-2-3">Lisp error: (void-function &#x2026;)</h3>
 <div class="outline-text-3" id="text-2-3">
 <p>
-<a id="void-function" name="void-function"></a>
+<a id="void-function"></a>
 </p>
 
 <p>
@@ -339,7 +339,7 @@ The code calls a function that has not been defined.
 <h3 id="sec-2-4">Symbol's value as variable is void: <span class="underline">_</span></h3>
 <div class="outline-text-3" id="text-2-4">
 <p>
-<a id="void-variable" name="void-variable"></a>
+<a id="void-variable"></a>
 </p>
 
 <p>
