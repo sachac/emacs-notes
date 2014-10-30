@@ -1,6 +1,29 @@
 #+TODO: TODO(t) STARTED(s) DELEGATED(d) SOMEDAY(.) WAITING(w) | DONE(x) CANCELLED(c) 
 #+PROPERTY: QUANTIFIED Emacs
 
+* Possible Emacs hangout-type tasks to work on; ways I want to tweak my Emacs
+Calendar: [[https://www.google.com/calendar/embed?src=sachachua.com_f1qe6ov70s1qd0h6nsrt93fp4o%40group.calendar.google.com&ctz=America/Toronto][Google Calendar]], [[https://www.google.com/calendar/ical/sachachua.com_f1qe6ov70s1qd0h6nsrt93fp4o%40group.calendar.google.com/public/basic.ics][ICAL]], [[https://www.google.com/calendar/feeds/sachachua.com_f1qe6ov70s1qd0h6nsrt93fp4o%40group.calendar.google.com/public/basic][XML]]
+
+** Web development
+*** TODO Set up and get the hang of Skewer
+*** TODO Set up and get the hang of autocompletion
+*** TODO Find some kind of Javascript unit testing framework that works well for me
+*** TODO Get the hang of smartparens
+*** TODO See if there's anything better than web mode
+*** TODO Learn how to fix commits in magit
+*** TODO Learn other magit features
+*** TODO Get the hang of phi-search and mc
+*** TODO Practice ace-jump-mode (keychord jj) and ace-jump-window (keychord jw)
+** Development
+*** TODO Set up a build environment inside my VM
+*** TODO Git clone the latest repository
+*** TODO Look through debbugs.gnu.org/cgi/pkgreport.cgi?package=emacs for something small and manageable
+*** TODO Set up Gnus again so that I can access the developer lists/groups
+*** TODO Confirm posting through Gnus
+** Writing
+*** TODO Smooth out image workflow for writing
+*** TODO Look for other packages
+
 * How to use this
 
 Before you start working on a task, do a git pull to see if anyone
@@ -73,14 +96,16 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 	 :PROPERTIES:
 	 :QUANTIFIED: Emacs
 	 :END:
-*** TODO Tweak table of contents so that it's always visible / easy to get to
+*** CANCELLED Tweak table of contents so that it's always visible / easy to get to
+		 CLOSED: [2014-09-01 Mon 16:04]
 - Rainer
 *** DONE Consider moving back-to-top, e-mail to the top right?
 		 CLOSED: [2014-06-04 Wed 11:30]
 - Rainer
 
 *** [#A] Emacs Life																									:project:
-**** TODO Sketch out personas
+**** CANCELLED Sketch out personas
+		 CLOSED: [2014-08-09 Sat 22:05]
 **** CANCELLED Set up mailing list
 		 CLOSED: [2014-05-22 Thu 22:38]
 **** DONE Review transcript for Emacs NYC talk
@@ -138,7 +163,7 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 			:END:
 
 - Make it easy to define new modules
-***** TODO Take notes on people who are interested in taking course, process course steps :routine:
+***** DONE Take notes on people who are interested in taking course, process course steps :routine:
 			 SCHEDULED: <2014-07-02 Wed .+3d>
 			 :LOGBOOK:
 			 - State "DONE"       from "TODO"       [2014-06-25 Wed 19:43]
@@ -207,7 +232,8 @@ Transcribe the Emacs Chat at the specified URL. Note that the output does not ha
 		 	:PROPERTIES:
 		 	:Effort:   1:00
 		 	:END:
-***** TODO Convert to nicely-formatted EPUB
+***** SOMEDAY Convert to nicely-formatted EPUB
+			 SCHEDULED: <2014-11-08 Sat>
 		 	:PROPERTIES:
 		 	:Effort:   2:00
 		 	:END:
@@ -290,7 +316,8 @@ https://twitter.com/gozes/status/446397063194894337
 		 :PROPERTIES:
 		 :Effort:   2:00
 		 :END:
-**** TODO [#A] Record session on learning keyboard shortcuts
+**** SOMEDAY [#A] Record session on learning keyboard shortcuts
+		 SCHEDULED: <2014-11-08 Sat>
 		 :PROPERTIES:
 		 :CREATED:  [2014-04-16 Wed 12:20]
 		 :END:
@@ -301,15 +328,18 @@ https://twitter.com/gozes/status/446397063194894337
 - Advanced options and why, plus examples of what you can do with them
 
 Difference compared to M-x customize-group org - highlights specific things you may want to tweak, and provides screenshots/examples.
-**** TODO Find a way to easily make a list of all the customization options by group
-*** TODO Learn from other books
+**** CANCELLED Find a way to easily make a list of all the customization options by group
+		 CLOSED: [2014-09-01 Mon 16:04]
+*** CANCELLED Learn from other books
+		 CLOSED: [2014-08-09 Sat 22:05]
 > about a year going through Land of Lisp by Conrad Barski.  And lately I've
 > been working my way through Clojure Programming by Emerick, Grand, and
 Cliff Rodgers
 *** DONE Share reading Emacs config video															 :blog:
 		 CLOSED: [2014-05-22 Thu 22:39]
 https://www.youtube.com/watch?v=uP9qmhcI9IQ
-*** TODO Record another Emacs config video
+*** CANCELLED Record another Emacs config video
+		 CLOSED: [2014-08-09 Sat 22:03]
 *** DONE Add support page to emacs-notes
 	 	CLOSED: [2014-05-02 Fri 16:12]
 	 	:LOGBOOK:
@@ -373,18 +403,21 @@ Good luck!
 		:CREATED:  [2014-05-21 Wed 16:45]
 		:END:
 *** TODO Announce EmacsLife.com
+		 SCHEDULED: <2014-11-01 Sat>
 *** CANCELLED Write about mode cookies
 		 CLOSED: [2014-06-06 Fri 20:33]
 *** TODO Write about load path shadowing
+		 SCHEDULED: <2014-12-05 Fri>
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
 *** TODO Write about windows
+		 SCHEDULED: <2014-11-30 Sun>
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
-*** SOMEDAY Make animated GIF demonstrations for smartparens functionality
-		 SCHEDULED: <2014-07-22 Tue>
+*** CANCELLED Make animated GIF demonstrations for smartparens functionality
+		 CLOSED: [2014-09-14 Sun 20:22] SCHEDULED: <2014-10-03 Fri>
 		:PROPERTIES:
 		:CREATED:  [2014-06-06 Fri 20:31]
 		:END:
@@ -545,13 +578,15 @@ As for the course itself: I've been sending people links to the HTML output, att
 If you're curious about the beginner's course on reading Emacs Lisp, e-mail me at [[mailto:sacha@sachachua.com][sacha@sachachua.com]] and we'll see how this works out. I'm certainly learning a lot. =)
 
 *** TODO Write about undo
+		 SCHEDULED: <2014-11-20 Thu>
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
 
 http://emacs-fu.blogspot.ca/2010/11/undo.html
 
-*** TODO Prepare a financial report of how much I'm investing in the Emacs community
+*** CANCELLED Prepare a financial report of how much I'm investing in the Emacs community
+		 CLOSED: [2014-09-01 Mon 16:04]
 - Emacs chat transcripts
 - Hosting, domain names
 - Other delegation experiments
@@ -837,6 +872,9 @@ http://www.philnewton.net/code/beeminder-el/
 		 :Effort:   2:00
 		 :END:
 ** [#A] Emacs chats																									:project:
+*** Harry R. Schwartz
+**** DONE Record chat with Harry Schwartz
+		 CLOSED: [2014-07-27 Sun 15:14] SCHEDULED: <2014-07-23 Wed>
 *** Bozhidar Batsov
 - Emacs Redux
   - animated GIFs
@@ -900,6 +938,7 @@ https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
 		 :Effort:   2:00
 		 :END:
 **** TODO Follow up on Xah Lee's suggestions
+		 SCHEDULED: <2014-11-08 Sat>
 - [[http://ergoemacs.org/emacs/blog.html][Who Do You Like to See in Sacha Chua&apos;s Emacs Chat?]]: 
 
 *** Iannis Zannos
@@ -975,8 +1014,8 @@ https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
 *** Mickey Petersen
 **** DONE Set up chat with masteringemacs
 	 	 CLOSED: [2014-05-01 Thu 22:08]
-**** TODO Chat with masteringemacs
-		 SCHEDULED: <2014-07-05 Sat>
+**** DONE Chat with masteringemacs
+		 CLOSED: [2014-08-14 Thu 23:59] SCHEDULED: <2014-08-10 Sun>
 		 :PROPERTIES:
 		 :CREATED:  [2014-06-08 Sun 22:44]
 		 :END:
@@ -1148,7 +1187,8 @@ Topics
 		 :END:
 ** Other Emacs tasks
 
-*** TODO Add last-contact tracking to org-contacts
+*** CANCELLED Add last-contact tracking to org-contacts
+		 CLOSED: [2014-08-09 Sat 22:03]
 [[gnus:nnmaildir%2BGmail:INBOX#1E983FEF-D89E-4009-B8FC-5D3D0BB6E786@gmail.com][Email from Steffen Heilmann: Re: org-mode question]]
 *** DONE Get mplayer working with emms on Windows
 		 CLOSED: [2014-05-22 Thu 22:42]
