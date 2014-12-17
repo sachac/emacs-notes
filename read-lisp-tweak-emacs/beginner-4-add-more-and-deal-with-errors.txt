@@ -23,6 +23,7 @@ After this module, you'll be able to:
 #+END_OBJECTIVES
 
 * Adding more features to Emacs
+<<load>>
 
 Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. Some of the customizations you may want to make require that other parts of Emacs are loaded first. For example, if you want to define a key for the =c-mode-map= (used for editing C code) or add a function to =org-mode-hook= (called when a buffer is set up with Org Mode), those libraries need to be loaded first. You can load libraries by using =require=, like this:
 

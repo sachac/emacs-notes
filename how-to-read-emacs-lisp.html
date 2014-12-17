@@ -4,10 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-07-01 Tue 12:11 -->
+<!-- 2014-12-17 Wed 19:41 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sacha Chua" />
 <link rel="stylesheet" type="text/css" href="./css/foundation.min.css"></link>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
 <link rel="stylesheet" type="text/css" href="./css/org-export.css"></link>
@@ -110,6 +109,9 @@
 </ul>
 </div>
 </div>
+<p>
+<a id="top" name="top"></a>
+</p>
 
 <div id="outline-container-sec-1" class="outline-2">
 <h2 id="sec-1">Introduction</h2>
@@ -145,7 +147,10 @@ Documentation License, so feel free to read, share, and build on it.
 </p>
 
 <p>
-You can find this guide on the Web at <a href="http://emacslife.com/how-to-read-emacs-lisp.html">http://emacslife.com/how-to-read-emacs-lisp.html</a> .
+You can find this guide on the Web at
+<a href="http://emacslife.com/how-to-read-emacs-lisp.html">http://emacslife.com/how-to-read-emacs-lisp.html</a> . If you want an EPUB
+version or a downloadable HTML version, you can get it from <a href="https://gumroad.com/l/xkzAI">Gumroad</a>
+(free/pay-what-you-want).
 </p>
 
 <div class="conventions">
@@ -158,7 +163,7 @@ Some conventions we'll use:
 <li>Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
+<pre class="src src-emacs-lisp">(message <span style="font-style: italic;">"Hello world"</span>)
 </pre>
 </div>
 </li>
@@ -198,7 +203,7 @@ This is what Emacs Lisp code looks like:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world!"</span>)
+<pre class="src src-emacs-lisp">(message <span style="font-style: italic;">"Hello world!"</span>)
 </pre>
 </div>
 
@@ -224,7 +229,7 @@ If you want to start playing around with Emacs Lisp code right away, jump ahead 
 Reasonable defaults make sense for specific people. Other people might
 have completely different ideas for how they want a tool to work.
 Many people use Emacs and have (occasionally quite strong)
-opinions about how they want it to work. It's difficult to change the defaults for everyone<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
+opinions about how they want it to work. It's difficult to change the defaults for everyone<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>, and since Emacs is so customizable, people tend to just fix things for themselves. If you learn how to read and write Emacs Lisp, you can pick up tips from other people's configurations and ask people for help.
 </p>
 
 <p>
@@ -300,7 +305,7 @@ you're trying to customize is really worth it. One of the occupational
 hazards of using Emacs is that tweaking your Emacs configuration can
 be fun, almost addictive. If you catch yourself spending four hours
 fiddling with something minor, it might be time to put that aside and
-focus on getting stuff done first.<sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
+focus on getting stuff done first.<sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup>
 </p>
 </div>
 </div>
@@ -310,7 +315,7 @@ focus on getting stuff done first.<sup><a id="fnr.2" class="footref" href="#fn.2
 <h2 id="sec-3">"How can I try Emacs Lisp code?"</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-<a id="try"></a>
+<a id="try" name="try"></a>
 </p>
 
 <div class="objectives">
@@ -371,7 +376,7 @@ If you're new to Emacs, try getting used to Emacs without packages first. There'
 </p>
 
 <p>
-In addition to the default package repository, there are other community-supported repositories. See <a href="http://emacslife.com/how-to-read-emacs-lisp.html#installing-packages">Installing packages</a> if you would like to install a package from a different repository.
+In addition to the default package repository, there are other community-supported repositories. See <a href="#installing-packages">Installing packages</a> if you would like to install a package from a different repository.
 </p>
 
 <p>
@@ -400,7 +405,7 @@ You will need to be connected to the Internet in order to view and install packa
 <h4 id="sec-3-1-3">Webpages, blog posts, and the Emacs Wiki</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <p>
-While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. The <a href="http://www.emacswiki.org/">EmacsWiki</a> has lots of code, too. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see <a href="http://emacslife.com/how-to-read-emacs-lisp.html#errors">"Oh no! I have an error!"</a>
+While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. The <a href="http://www.emacswiki.org/">EmacsWiki</a> has lots of code, too. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see <a href="#errors">"Oh no! I have an error!"</a>
 </p>
 
 <p>
@@ -441,7 +446,7 @@ It's easier to understand code if you can experiment with it. Emacs Lisp code is
 </p>
 
 <p>
-Note: As you experiment with Emacs Lisp, you might run into errors. Check out <a href="http://emacslife.com/how-to-read-emacs-lisp.html#errors">"Oh no! I have an error!"</a> for some common errors and what to do about them.
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out <a href="#errors">"Oh no! I have an error!"</a> for some common errors and what to do about them.
 </p>
 
 <p>
@@ -472,7 +477,7 @@ If you're copying or typing code, make sure your parentheses are all matched - e
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello</span>
+<pre class="src src-emacs-lisp">(message <span style="font-style: italic;">"Hello</span>
 </pre>
 </div>
 
@@ -482,7 +487,7 @@ but this will work:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
+<pre class="src src-emacs-lisp">(message <span style="font-style: italic;">"Hello world"</span>)
 </pre>
 </div>
 
@@ -505,9 +510,9 @@ When Emacs starts, it creates a buffer called <code>*scratch*</code> with the fo
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This buffer is for notes you don't want to save, and for Lisp evaluation.</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">If you want to create a file, visit that file with C-x C-f,</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">then enter the text in that file's own buffer.</span>
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">This buffer is for notes you don't want to save, and for Lisp evaluation.</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">If you want to create a file, visit that file with C-x C-f,</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">then enter the text in that file's own buffer.</span>
 </pre>
 </div>
 
@@ -517,11 +522,11 @@ You can add code to the end.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">This buffer is for notes you don't want to save, and for Lisp evaluation.</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">If you want to create a file, visit that file with C-x C-f,</span>
-<span class="org-comment-delimiter">;; </span><span class="org-comment">then enter the text in that file's own buffer.</span>
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">This buffer is for notes you don't want to save, and for Lisp evaluation.</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">If you want to create a file, visit that file with C-x C-f,</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">then enter the text in that file's own buffer.</span>
 
-(message <span class="org-string">"Hello world"</span>)
+(message <span style="font-style: italic;">"Hello world"</span>)
 </pre>
 </div>
 
@@ -688,7 +693,7 @@ Try it now: <code>C-u M-: (* 21 2)</code>
 <h2 id="sec-4">"How can I understand what Emacs Lisp code does?"</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-<a id="understanding-lisp"></a>
+<a id="understanding-lisp" name="understanding-lisp"></a>
 </p>
 
 <div class="objectives">
@@ -783,7 +788,7 @@ This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as t
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(find-file <span class="org-string">"~/todo.org"</span>)
+<pre class="src src-emacs-lisp">(find-file <span style="font-style: italic;">"~/todo.org"</span>)
 </pre>
 </div>
 
@@ -942,7 +947,7 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 <h3 id="sec-4-3">Understand symbols</h3>
 <div class="outline-text-3" id="text-4-3">
 <p>
-<a id="quoting"></a>
+<a id="quoting" name="quoting"></a>
 </p>
 
 <p>
@@ -1031,7 +1036,7 @@ You can set the value of a variable to multiple things. In Emacs configuration f
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(setq diff-switches '(<span class="org-string">"-b"</span> <span class="org-string">"-u"</span>))
+<pre class="src src-emacs-lisp">(setq diff-switches '(<span style="font-style: italic;">"-b"</span> <span style="font-style: italic;">"-u"</span>))
 </pre>
 </div>
 
@@ -1041,7 +1046,7 @@ sets the options for the <code>diff</code> command to a list containing two item
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(setq diff-switches (list <span class="org-string">"-b"</span> <span class="org-string">"-u"</span>))
+<pre class="src src-emacs-lisp">(setq diff-switches (list <span style="font-style: italic;">"-b"</span> <span style="font-style: italic;">"-u"</span>))
 </pre>
 </div>
 
@@ -1054,7 +1059,7 @@ The code above sets the value of the variable to a list, ignoring any previous v
 <h4 id="sec-4-4-1">Add to a list</h4>
 <div class="outline-text-4" id="text-4-4-1">
 <p>
-<a id="load-path"></a>
+<a id="load-path" name="load-path"></a>
 </p>
 
 <p>
@@ -1063,7 +1068,7 @@ Most of the time, though, you want to add to a list instead of completely replac
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"~/elisp"</span>)
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span style="font-style: italic;">"~/elisp"</span>)
 </pre>
 </div>
 
@@ -1112,7 +1117,7 @@ If you need to delete something from a list, you can use the <code>delete</code>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(setq load-path (delete <span class="org-string">"~/elisp"</span> load-path))
+<pre class="src src-emacs-lisp">(setq load-path (delete <span style="font-style: italic;">"~/elisp"</span> load-path))
 </pre>
 </div>
 
@@ -1136,7 +1141,7 @@ Hooks are lists of functions, so you can delete items using <code>delete</code>.
 <h4 id="sec-4-4-4">Dot notation</h4>
 <div class="outline-text-4" id="text-4-4-4">
 <p>
-<a id="package-archives"></a>
+<a id="package-archives" name="package-archives"></a>
 </p>
 
 <p>
@@ -1145,7 +1150,7 @@ Some things look like lists, but there's a dot between the first element and the
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(add-to-list 'package-archives '(<span class="org-string">"melpa"</span> . <span class="org-string">"http://melpa.milkbox.net/packages/"</span>))
+<pre class="src src-emacs-lisp">(add-to-list 'package-archives '(<span style="font-style: italic;">"melpa"</span> . <span style="font-style: italic;">"http://melpa.milkbox.net/packages/"</span>))
 </pre>
 </div>
 
@@ -1181,8 +1186,8 @@ In Emacs Lisp, <code>​'("abc" "def")</code> is equivalent to <code>(cons "abc"
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(cdr '(<span class="org-string">"abc"</span> . <span class="org-string">"def"</span>))  <span class="org-comment-delimiter">;; </span><span class="org-comment">Returns "def", which is a string</span>
-(cdr '(<span class="org-string">"abc"</span> <span class="org-string">"def"</span>))    <span class="org-comment-delimiter">;; </span><span class="org-comment">Returns ("def"), which is a list</span>
+<pre class="src src-emacs-lisp">(cdr '(<span style="font-style: italic;">"abc"</span> . <span style="font-style: italic;">"def"</span>))  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Returns "def", which is a string</span>
+(cdr '(<span style="font-style: italic;">"abc"</span> <span style="font-style: italic;">"def"</span>))    <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Returns ("def"), which is a list</span>
 </pre>
 </div>
 
@@ -1196,7 +1201,7 @@ Because lists are made up of cons cells, you'll sometimes see people add to list
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(setq load-path (cons <span class="org-string">"~/elisp"</span> load-path))
+<pre class="src src-emacs-lisp">(setq load-path (cons <span style="font-style: italic;">"~/elisp"</span> load-path))
 </pre>
 </div>
 
@@ -1211,7 +1216,7 @@ Lists can also contain lists. For example, here's some code that saves backup fi
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(setq backup-directory-alist '((<span class="org-string">"."</span> . <span class="org-string">"~/.emacs.d/backups"</span>)))
+<pre class="src src-emacs-lisp">(setq backup-directory-alist '((<span style="font-style: italic;">"."</span> . <span style="font-style: italic;">"~/.emacs.d/backups"</span>)))
 </pre>
 </div>
 
@@ -1235,7 +1240,7 @@ Advanced: Backquotes or backticks (<code>`</code>) are special. They quote the e
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(setq backup-directory-alist `((<span class="org-string">".*"</span> . ,temporary-file-directory)))
+<pre class="src src-emacs-lisp">(setq backup-directory-alist `((<span style="font-style: italic;">".*"</span> . ,temporary-file-directory)))
 </pre>
 </div>
 
@@ -1311,7 +1316,7 @@ You can also write keybindings from scratch. For example, the code below redefin
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"RET"</span>) 'newline-and-indent)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"RET"</span>) 'newline-and-indent)
 </pre>
 </div>
 
@@ -1321,8 +1326,8 @@ Remember, <code>​'newline-and-indent</code> and <code>(quote newline-and-inden
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-+"</span>) 'text-scale-increase)
-(global-set-key (kbd <span class="org-string">"C--"</span>) 'text-scale-decrease)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"C-+"</span>) 'text-scale-increase)
+(global-set-key (kbd <span style="font-style: italic;">"C--"</span>) 'text-scale-decrease)
 </pre>
 </div>
 
@@ -1357,7 +1362,7 @@ There are different ways to specify the key. Many people use <code>(kbd ...)</co
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-/"</span>) 'hippie-expand)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"M-/"</span>) 'hippie-expand)
 </pre>
 </div>
 
@@ -1366,7 +1371,7 @@ This is the same as
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key <span class="org-string">"\M-/"</span> 'hippie-expand)
+<pre class="src src-emacs-lisp">(global-set-key <span style="font-style: italic;">"\M-/"</span> 'hippie-expand)
 </pre>
 </div>
 <p>
@@ -1383,7 +1388,7 @@ You can use <code>^</code> to mean <code>Control</code>, so
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-s"</span>) 'isearch-forward-regexp)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"C-s"</span>) 'isearch-forward-regexp)
 </pre>
 </div>
 <p>
@@ -1391,8 +1396,8 @@ is the same as either of these lines:
 </p>
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key <span class="org-string">"\C-s"</span> 'isearch-forward-regexp)
-(global-set-key (kbd <span class="org-string">"^s"</span>) 'isearch-forward-regexp)
+<pre class="src src-emacs-lisp">(global-set-key <span style="font-style: italic;">"\C-s"</span> 'isearch-forward-regexp)
+(global-set-key (kbd <span style="font-style: italic;">"^s"</span>) 'isearch-forward-regexp)
 </pre>
 </div>
 <p>
@@ -1418,7 +1423,7 @@ You can set up keybindings that use more than one key combination. This is a pop
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x C-b"</span>) 'ibuffer)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"C-x C-b"</span>) 'ibuffer)
 </pre>
 </div>
 
@@ -1428,7 +1433,7 @@ You don't have to start with <code>C-c</code> or <code>C-x</code>. Consider usin
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f9&gt; b"</span>) 'ibuffer)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"&lt;f9&gt; b"</span>) 'ibuffer)
 </pre>
 </div>
 
@@ -1467,9 +1472,9 @@ In addition to setting keyboard shortcuts for functions, you can also define key
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f7&gt; e"</span>) <span class="org-string">"you@example.com"</span>)
-(global-set-key (kbd <span class="org-string">"&lt;f7&gt; w"</span>) <span class="org-string">"http://example.com"</span>)
-(global-set-key (kbd <span class="org-string">"&lt;f7&gt; u"</span>) (kbd <span class="org-string">"C-x C-s"</span>))
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"&lt;f7&gt; e"</span>) <span style="font-style: italic;">"you@example.com"</span>)
+(global-set-key (kbd <span style="font-style: italic;">"&lt;f7&gt; w"</span>) <span style="font-style: italic;">"http://example.com"</span>)
+(global-set-key (kbd <span style="font-style: italic;">"&lt;f7&gt; u"</span>) (kbd <span style="font-style: italic;">"C-x C-s"</span>))
 </pre>
 </div>
 
@@ -1488,15 +1493,15 @@ If you want to create a multi-key shortcut, the preceding keys must not already 
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-t"</span>) nil) <span class="org-comment-delimiter">;; </span><span class="org-comment">Remove the old keybinding</span>
-(global-set-key (kbd <span class="org-string">"M-t c"</span>) 'transpose-chars)
-(global-set-key (kbd <span class="org-string">"M-t w"</span>) 'transpose-words)
-(global-set-key (kbd <span class="org-string">"M-t t"</span>) 'transpose-words)
-(global-set-key (kbd <span class="org-string">"M-t M-t"</span>) 'transpose-words)
-(global-set-key (kbd <span class="org-string">"M-t l"</span>) 'transpose-lines)
-(global-set-key (kbd <span class="org-string">"M-t e"</span>) 'transpose-sexps)
-(global-set-key (kbd <span class="org-string">"M-t s"</span>) 'transpose-sentences)
-(global-set-key (kbd <span class="org-string">"M-t p"</span>) 'transpose-paragraphs)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"M-t"</span>) nil) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Remove the old keybinding</span>
+(global-set-key (kbd <span style="font-style: italic;">"M-t c"</span>) 'transpose-chars)
+(global-set-key (kbd <span style="font-style: italic;">"M-t w"</span>) 'transpose-words)
+(global-set-key (kbd <span style="font-style: italic;">"M-t t"</span>) 'transpose-words)
+(global-set-key (kbd <span style="font-style: italic;">"M-t M-t"</span>) 'transpose-words)
+(global-set-key (kbd <span style="font-style: italic;">"M-t l"</span>) 'transpose-lines)
+(global-set-key (kbd <span style="font-style: italic;">"M-t e"</span>) 'transpose-sexps)
+(global-set-key (kbd <span style="font-style: italic;">"M-t s"</span>) 'transpose-sentences)
+(global-set-key (kbd <span style="font-style: italic;">"M-t p"</span>) 'transpose-paragraphs)
 </pre>
 </div>
 
@@ -1510,7 +1515,7 @@ The example above has three bindings for <code>transpose-words</code>. <code>M-t
 <h4 id="sec-5-1-6">Setting keybindings in a particular mode</h4>
 <div class="outline-text-4" id="text-5-1-6">
 <p>
-<a id="mode-keys"></a>
+<a id="mode-keys" name="mode-keys"></a>
 </p>
 
 <p>
@@ -1519,7 +1524,7 @@ Sometimes you want keys to do different things in different types of files. Mode
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(define-key emacs-lisp-mode-map (kbd <span class="org-string">"C-c f"</span>) 'find-function)
+<pre class="src src-emacs-lisp">(define-key emacs-lisp-mode-map (kbd <span style="font-style: italic;">"C-c f"</span>) 'find-function)
 </pre>
 </div>
 
@@ -1528,7 +1533,7 @@ changes the <code>C-c f</code> keyboard shortcut to <code>find-function</code> (
 </p>
 
 <p>
-Note that if you use <code>define-key</code> with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a <code>require</code> (which loads the code) or inside an <code>eval-after-load</code> (which postpones the code until after the mode is loaded). See <a href="http://emacslife.com/how-to-read-emacs-lisp.html#load">Adding more features to Emacs</a> for information on loading packages and adding new functions to Emacs.
+Note that if you use <code>define-key</code> with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a <code>require</code> (which loads the code) or inside an <code>eval-after-load</code> (which postpones the code until after the mode is loaded). See <a href="#load">Adding more features to Emacs</a> for information on loading packages and adding new functions to Emacs.
 </p>
 </div>
 </div>
@@ -1542,8 +1547,8 @@ The <code>bind-key</code> package provides a function that makes it easier to se
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(bind-key <span class="org-string">"C-+"</span> 'text-scale-increase)
-(bind-key <span class="org-string">"C--"</span> 'text-scale-decrease)
+<pre class="src src-emacs-lisp">(bind-key <span style="font-style: italic;">"C-+"</span> 'text-scale-increase)
+(bind-key <span style="font-style: italic;">"C--"</span> 'text-scale-decrease)
 </pre>
 </div>
 
@@ -1579,8 +1584,8 @@ For example, here's a custom function from <a href="https://github.com/jorgensch
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">fc/kill-to-beginning-of-line</span> ()
-  <span class="org-doc">"Kill from the beginning of the line to point."</span>
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">fc/kill-to-beginning-of-line</span> ()
+  <span style="font-style: italic;">"Kill from the beginning of the line to point."</span>
   (interactive)
   (kill-region (point-at-bol) (point)))
 </pre>
@@ -1600,7 +1605,7 @@ Once you've defined a custom function, you can bind it to a keyboard shortcut if
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c C-u"</span>) 'fc/kill-to-beginning-of-line)
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"C-c C-u"</span>) 'fc/kill-to-beginning-of-line)
 </pre>
 </div>
 
@@ -1615,7 +1620,7 @@ People sometimes use hook functions to set up keybindings instead of using <code
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
-(define-key emacs-lisp-mode-map (kbd <span class="org-string">"C-c f"</span>) 'find-function)
+(define-key emacs-lisp-mode-map (kbd <span style="font-style: italic;">"C-c f"</span>) 'find-function)
 </pre>
 </div>
 
@@ -1625,10 +1630,10 @@ can also be written as:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">my/set-up-emacs-lisp-shortcuts</span> ()
-  <span class="org-doc">"Set up some conveniences for Emacs Lisp."</span>
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">my/set-up-emacs-lisp-shortcuts</span> ()
+  <span style="font-style: italic;">"Set up some conveniences for Emacs Lisp."</span>
   (turn-on-eldoc-mode)
-  (local-set-key (kbd <span class="org-string">"C-c f"</span>) 'find-function))
+  (local-set-key (kbd <span style="font-style: italic;">"C-c f"</span>) 'find-function))
 (add-hook 'emacs-lisp-mode-hook 'my/set-up-emacs-lisp-shortcuts)
 </pre>
 </div>
@@ -1644,7 +1649,7 @@ Sometimes people just want to create a keyboard binding or process some data wit
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c e"</span>) (<span class="org-keyword">lambda</span> () (interactive) (find-file <span class="org-string">"~/.emacs.d/init.el"</span>)))
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span style="font-style: italic;">"C-c e"</span>) (<span style="font-weight: bold;">lambda</span> () (interactive) (find-file <span style="font-style: italic;">"~/.emacs.d/init.el"</span>)))
 </pre>
 </div>
 
@@ -1688,12 +1693,16 @@ After this module, you'll be able to:
 <h3 id="sec-6-1">Adding more features to Emacs</h3>
 <div class="outline-text-3" id="text-6-1">
 <p>
+<a id="load" name="load"></a>
+</p>
+
+<p>
 Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. Some of the customizations you may want to make require that other parts of Emacs are loaded first. For example, if you want to define a key for the <code>c-mode-map</code> (used for editing C code) or add a function to <code>org-mode-hook</code> (called when a buffer is set up with Org Mode), those libraries need to be loaded first. You can load libraries by using <code>require</code>, like this:
 </p>
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">org</span>)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">org</span>)
 </pre>
 </div>
 
@@ -1719,7 +1728,7 @@ The first part of the filename (before the <code>.el</code> or <code>.elc</code>
 <h4 id="sec-6-1-1">Installing packages</h4>
 <div class="outline-text-4" id="text-6-1-1">
 <p>
-<a id="installing-packages"></a>
+<a id="installing-packages" name="installing-packages"></a>
 </p>
 
 <p>
@@ -1736,9 +1745,9 @@ The default package repository in Emacs 24 has a limited number of packages. For
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">package</span>)
-(add-to-list 'package-archives '(<span class="org-string">"melpa"</span> . <span class="org-string">"http://melpa.milkbox.net/packages/"</span>))
-(add-to-list 'package-archives '(<span class="org-string">"marmalade"</span> . <span class="org-string">"http://marmalade-repo.org/packages/"</span>))
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">package</span>)
+(add-to-list 'package-archives '(<span style="font-style: italic;">"melpa"</span> . <span style="font-style: italic;">"http://melpa.milkbox.net/packages/"</span>))
+(add-to-list 'package-archives '(<span style="font-style: italic;">"marmalade"</span> . <span style="font-style: italic;">"http://marmalade-repo.org/packages/"</span>))
 </pre>
 </div>
 
@@ -1748,7 +1757,7 @@ Note that MELPA includes many packages under active development. If you prefer t
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(add-to-list 'package-archives '(<span class="org-string">"melpa-stable"</span> . <span class="org-string">"http://hiddencameras.milkbox.net/packages/"</span>))
+<pre class="src src-emacs-lisp">(add-to-list 'package-archives '(<span style="font-style: italic;">"melpa-stable"</span> . <span style="font-style: italic;">"http://hiddencameras.milkbox.net/packages/"</span>))
 </pre>
 </div>
 
@@ -1766,9 +1775,9 @@ Sometimes people want to install some packages on one computer but not on anothe
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">when</span> (<span class="org-keyword">require</span> '<span class="org-constant">miniedit</span> nil t)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">when</span> (<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">miniedit</span> nil t)
    (miniedit-install)
-   (define-key minibuffer-local-map (kbd <span class="org-string">"C-c e"</span>) 'miniedit))
+   (define-key minibuffer-local-map (kbd <span style="font-style: italic;">"C-c e"</span>) 'miniedit))
 </pre>
 </div>
 
@@ -1782,7 +1791,7 @@ Along those lines, you may come across code that looks like this:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> <span class="org-string">"dash"</span> 
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">eval-after-load</span> <span style="font-style: italic;">"dash"</span> 
   '(dash-enable-font-lock))
 </pre>
 </div>
@@ -1797,7 +1806,7 @@ This runs <code>(dash-enable-font-lock)</code> only after <code>dash</code> is l
 <h4 id="sec-6-1-2">Other Emacs Lisp files</h4>
 <div class="outline-text-4" id="text-6-1-2">
 <p>
-<a id="unpackaged"></a>
+<a id="unpackaged" name="unpackaged"></a>
 </p>
 
 <p>
@@ -1806,7 +1815,7 @@ Some files are not yet available as packages. If you search for the function, yo
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(load <span class="org-string">"/path/to/file"</span>)
+<pre class="src src-emacs-lisp">(load <span style="font-style: italic;">"/path/to/file"</span>)
 </pre>
 </div>
 
@@ -1816,7 +1825,7 @@ You can also use this technique to split up your Emacs configuration file into s
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(load (concat <span class="org-string">"~/.emacs.d/"</span> (system-name) <span class="org-string">".el"</span>) t)
+<pre class="src src-emacs-lisp">(load (concat <span style="font-style: italic;">"~/.emacs.d/"</span> (system-name) <span style="font-style: italic;">".el"</span>) t)
 </pre>
 </div>
 
@@ -1834,7 +1843,7 @@ If you would like to use the <code>require</code> syntax to load files only if t
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(add-to-list 'load-path <span class="org-string">"/path/to/dir/with/el/files"</span>)
+<pre class="src src-emacs-lisp">(add-to-list 'load-path <span style="font-style: italic;">"/path/to/dir/with/el/files"</span>)
 </pre>
 </div>
 
@@ -1844,7 +1853,7 @@ Then you can use <code>require</code> to load the Emacs Lisp code if it exists.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">feature-name</span>)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">feature-name</span>)
 </pre>
 </div>
 </div>
@@ -1855,7 +1864,7 @@ Then you can use <code>require</code> to load the Emacs Lisp code if it exists.
 <h3 id="sec-6-2">"Oh no! I have an error!"</h3>
 <div class="outline-text-3" id="text-6-2">
 <p>
-<a id="errors"></a>
+<a id="errors" name="errors"></a>
 </p>
 
 <p>
@@ -1920,7 +1929,7 @@ The code is trying to require or load a file that Emacs can't find.
 <h4 id="sec-6-2-3">Lisp error: (void-function &#x2026;)</h4>
 <div class="outline-text-4" id="text-6-2-3">
 <p>
-<a id="void-function"></a>
+<a id="void-function" name="void-function"></a>
 </p>
 
 <p>
@@ -1942,7 +1951,7 @@ The code calls a function that has not been defined.
 <h4 id="sec-6-2-4">Symbol's value as variable is void: <span class="underline">_</span></h4>
 <div class="outline-text-4" id="text-6-2-4">
 <p>
-<a id="void-variable"></a>
+<a id="void-variable" name="void-variable"></a>
 </p>
 
 <p>
@@ -2031,193 +2040,12 @@ Documentation License, so feel free to read, share, and build on it.
 Patches and pull requests welcome!
 </p>
 
+<p>
+Thanks to aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, and Daniel Wu for feedback!
+</p>
 
 <ul class="org-ul">
-<li>Resources
-<ul class="org-ul">
-<li><a href="https://www.gnu.org/software/emacs/manual/eintr.html">https://www.gnu.org/software/emacs/manual/eintr.html</a>
-</li>
-</ul>
-</li>
-
-<li class="on"><span class="task-done">&#x2611;</span> This document: beginner-level
-<ul class="org-ul">
-<li>For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
-<ul class="org-ul">
-<li>Want to customize Emacs, but not entirely sure about what they're adding
-</li>
-<li>Sample confusion: (add-to-list 'load-path &#x2026;) vs (add-to-list 'load-path &#x2026; t) - easily solved with C-h f add-to-list if you know how to read it
-</li>
-</ul>
-</li>
-<li>Assumption: you've installed Emacs 24 and have gone through the tutorial (C-h t)
-</li>
-<li>Scope: learning how to read short snippets of code (ex: config), not learning how to read complex code (ex: comint)
-</li>
-</ul>
-</li>
-<li class="on"><span class="task-done">&#x2611;</span> Where can I find short Emacs Lisp code to learn from?
-<ul class="org-ul">
-<li>README for packages
-</li>
-<li>EmacsWiki
-</li>
-<li>mailing lists
-</li>
-<li>Planet Emacsen
-</li>
-<li>Look for someone who uses Emacs like you
-</li>
-</ul>
-</li>
-<li class="on"><span class="task-done">&#x2611;</span> How can I understand what Emacs Lisp code does?
-<ul class="org-ul">
-<li>Ex: (global-hl-line-mode)
-</li>
-<li>How can I read a statement?
-<ul class="org-ul">
-<li>Prefix - the "verb" goes at the beginning. This is actually like many programming languages, although Lisp does it consistently throughout. For ex
-</li>
-</ul>
-</li>
-<li class="on"><span class="task-done">&#x2611;</span> How can I copy Emacs Lisp code from other people's configuration?
-<ul class="org-ul">
-<li>Try a little before you add things
-</li>
-</ul>
-</li>
-<li class="on"><span class="task-done">&#x2611;</span> How can I try things a little at a time?
-<ul class="org-ul">
-<li>ielm
-</li>
-<li>C-x C-e (eval-last-sexp) - works everywhere
-</li>
-<li><code>*scratch*</code> buffer or .el file
-<ul class="org-ul">
-<li>eval-buffer
-</li>
-<li>eval-region
-</li>
-</ul>
-</li>
-<li>M-: (eval-expression)
-</li>
-<li>Sometimes you need to reopen a file in order to apply the changes
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="on"><span class="task-done">&#x2611;</span> What are some of the common errors I might run into?
-<ul class="org-ul">
-<li>Evaluating at the wrong point
-</li>
-<li>Missing )
-</li>
-<li>Undefined function
-</li>
-<li>Undefined variable or hook
-</li>
-<li>Unexpected symbol
-</li>
-<li>Obsolete code
-</li>
-<li>Not a prefix key
-</li>
-</ul>
-</li>
-<li class="on"><span class="task-done">&#x2611;</span> Okay, I like this. How can I make it part of my Emacs?
-<ul class="org-ul">
-<li>.emacs.d/init.el (also note about ~/.emacs)
-</li>
-<li>Add comments
-</li>
-</ul>
-</li>
-<li>Wait! I changed my mind!
-<ul class="org-ul">
-<li>delete or comment out the lines
-<ul class="org-ul">
-<li>;
-</li>
-</ul>
-</li>
-<li>if you can't use Emacs with your current config, emacs -q
-</li>
-</ul>
-</li>
-<li>Oh no, my init.el broke
-<ul class="org-ul">
-<li>emacs &#x2013;debug-init
-</li>
-<li>emacs -q
-</li>
-</ul>
-</li>
-<li>Common types of customizations
-<ul class="org-ul">
-<li>function calls
-</li>
-<li>setq
-</li>
-<li>require
-</li>
-<li>add-to-list
-</li>
-<li>add-hook
-</li>
-<li>cons
-</li>
-<li>keybindings
-<ul class="org-ul">
-<li>global-set-key
-</li>
-<li>define-key
-</li>
-</ul>
-</li>
-<li>defun
-</li>
-<li>let
-</li>
-<li>regular expressions
-</li>
-<li>eval-after-load
-</li>
-</ul>
-</li>
-<li>Other notes on reading
-<ul class="org-ul">
-<li>Whitespace
-</li>
-</ul>
-</li>
-<li>How can I try changing things a little?
-</li>
-<li>How can I quickly navigate through code?
-<ul class="org-ul">
-<li>forward-sexp and backward-sexp
-</li>
-</ul>
-</li>
-<li>Emacs Lisp is great! I want to learn more
-<ul class="org-ul">
-<li>Learn How to Customize Emacs with Emacs Lisp
-</li>
-</ul>
-</li>
-<li>How can I go through code step by step?
-<ul class="org-ul">
-<li>edebug-defun
-</li>
-</ul>
-</li>
-
-<li>Thanks
-<ul class="org-ul">
-<li>aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, Daniel Wu
-</li>
-</ul>
+<li>Sacha Chua
 </li>
 </ul>
 </div>
@@ -2226,9 +2054,9 @@ Patches and pull requests welcome!
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p><a href="https://xkcd.com/1172/">https://xkcd.com/1172/</a></p></div>
 
-<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>Is it worth the time -
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p>Is it worth the time -
 <a href="http://xkcd.com/1205/">http://xkcd.com/1205/</a></p></div>
 
 
