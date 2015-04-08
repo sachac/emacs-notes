@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs</title>
-<!-- 2014-12-17 Wed 19:41 -->
+<!-- 2015-04-08 Wed 10:13 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <link rel="stylesheet" type="text/css" href="./css/foundation.min.css"></link>
@@ -131,8 +131,9 @@ interpretation, you probably already know your way around.
 <p>
 We'll assume that you already have Emacs installed and that you've
 gone through the built-in tutorial (<b>Help - Emacs Tutorial</b>, <code>&lt;f1&gt; t</code>,
-<code>C-h t</code>, or <code>M-x help-with-tutorial</code>). I'll also assume you have a
-little programming background or can deal with the concepts of
+<code>C-h t</code>, or <code>M-x help-with-tutorial</code>). If you haven't upgraded to at
+least Emacs 24.x, please do - it's worth it! I'll also assume you have
+a little programming background or can deal with the concepts of
 variables and functions. Feel free to ask questions if you get stuck
 on something or if you want to clarify your understanding.
 </p>
@@ -376,7 +377,7 @@ If you're new to Emacs, try getting used to Emacs without packages first. There'
 </p>
 
 <p>
-In addition to the default package repository, there are other community-supported repositories. See <a href="#installing-packages">Installing packages</a> if you would like to install a package from a different repository.
+In addition to the default package repository, there are other community-supported repositories. See <a href="http://emacslife.com/how-to-read-emacs-lisp.html#installing-packages">Installing packages</a> if you would like to install a package from a different repository.
 </p>
 
 <p>
@@ -405,7 +406,7 @@ You will need to be connected to the Internet in order to view and install packa
 <h4 id="sec-3-1-3">Webpages, blog posts, and the Emacs Wiki</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <p>
-While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. The <a href="http://www.emacswiki.org/">EmacsWiki</a> has lots of code, too. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see <a href="#errors">"Oh no! I have an error!"</a>
+While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. The <a href="http://www.emacswiki.org/">EmacsWiki</a> has lots of code, too. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see <a href="http://emacslife.com/how-to-read-emacs-lisp.html#errors">"Oh no! I have an error!"</a>
 </p>
 
 <p>
@@ -446,7 +447,7 @@ It's easier to understand code if you can experiment with it. Emacs Lisp code is
 </p>
 
 <p>
-Note: As you experiment with Emacs Lisp, you might run into errors. Check out <a href="#errors">"Oh no! I have an error!"</a> for some common errors and what to do about them.
+Note: As you experiment with Emacs Lisp, you might run into errors. Check out <a href="http://emacslife.com/how-to-read-emacs-lisp.html#errors">"Oh no! I have an error!"</a> for some common errors and what to do about them.
 </p>
 
 <p>
@@ -793,7 +794,7 @@ This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as t
 </div>
 
 <p>
-This calls the <code>find-file</code> function with the <code>todo.org</code> file in your home directory. It opens the file, creating it if it doesn't exist yet.
+This calls the <code>find-file</code> function with the <code>todo.org</code> file in your home directory. The code above switches to a buffer visiting the file "todo.org" in your home directory (<code>~</code>). If the buffer doesn't exist, it will be created. If the file doesn't exist, it will be created automatically when the buffer is saved - for example, when you press <code>C-x C-s</code> (<code>save-buffer</code>) in that buffer.
 </p>
 
 <div class="org-src-container">
@@ -1533,7 +1534,7 @@ changes the <code>C-c f</code> keyboard shortcut to <code>find-function</code> (
 </p>
 
 <p>
-Note that if you use <code>define-key</code> with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a <code>require</code> (which loads the code) or inside an <code>eval-after-load</code> (which postpones the code until after the mode is loaded). See <a href="#load">Adding more features to Emacs</a> for information on loading packages and adding new functions to Emacs.
+Note that if you use <code>define-key</code> with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a <code>require</code> (which loads the code) or inside an <code>eval-after-load</code> (which postpones the code until after the mode is loaded). See <a href="http://emacslife.com/how-to-read-emacs-lisp.html#load">Adding more features to Emacs</a> for information on loading packages and adding new functions to Emacs.
 </p>
 </div>
 </div>
@@ -1791,7 +1792,7 @@ Along those lines, you may come across code that looks like this:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">eval-after-load</span> <span style="font-style: italic;">"dash"</span> 
+<pre class="src src-emacs-lisp">(eval-after-load <span style="font-style: italic;">"dash"</span> 
   '(dash-enable-font-lock))
 </pre>
 </div>
@@ -2041,7 +2042,7 @@ Patches and pull requests welcome!
 </p>
 
 <p>
-Thanks to aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, and Daniel Wu for feedback!
+Thanks to aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, Daniel Wu, and Iaroslav Tymchenko for feedback!
 </p>
 
 <ul class="org-ul">

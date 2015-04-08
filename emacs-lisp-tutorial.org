@@ -17,8 +17,10 @@ While I'm drafting this, you may want to check out the following resources:
 - http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
 - http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html
 
-This work is available under either the Creative Commons Attribution License or the GNU Free Documentation License. Enjoy!
+UPDATE: Go check out http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html instead.
  
+Previous draft follows below.
+
 ** Why learn Emacs Lisp?
 
 Emacs is amazingly customizable. If you want to tweak Emacs to support the way that you'd like to work, learning Emacs Lisp will definitely pay off. People have used Emacs Lisp to turn Emacs into a musical instrument, a TODO manager, a webserver, and all sorts of other things.

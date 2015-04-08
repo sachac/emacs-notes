@@ -40,6 +40,16 @@
 				org-html-validation-link)
     (org-publish-project project force async)))
 
+(defun sacha/emacs-notes-org-publish-current-file (&optional force async)
+  "Override some variables."
+  (interactive)
+  (let ((buffer-file-coding-system 'utf-8)
+				(select-safe-coding-system-accept-default-p t)
+				org-confirm-babel-evaluate
+				make-backup-files
+				org-html-validation-link)
+    (org-publish-current-file force async)))
+
 (defun sacha/emacs-notes-org-html-publish-to-html (plist filename pub-dir)
 	"Publish without saving backup files."
 	(let ((buffer-file-coding-system 'utf-8)

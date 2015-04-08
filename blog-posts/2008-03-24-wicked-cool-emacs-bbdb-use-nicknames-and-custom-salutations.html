@@ -4,10 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Wicked Cool Emacs: BBDB: Use nicknames and custom salutations</title>
-<!-- 2014-04-30 Wed 17:30 -->
+<!-- 2015-01-07 Wed 14:45 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
 <link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
@@ -22,44 +23,42 @@ March 24th, 2008 -
 <a href="http://sachachua.com/blog/p/4808"><a href="http://sachachua.com/blog/p/4808">http://sachachua.com/blog/p/4808</a></a>
 </p>
 
+<div class="update">
 <p>
-I like starting my e-mail with a short salutation such as “Hello,
-Mike!”, “Hello, Michael”, or “Hello, Mikong!”, but it can be hard to
-remember which nicknames people prefer to use, and calling someone by
-the wrong name is a bit of a faux pas. Sometimes people sign e-mail with
-their preferred name, but what if you haven't sent e-mail to or received
-e-mail from someone in a while? In this project, you'll learn how to set
-up my BBDB to remember people's nicknames for you using a custom “nick”
-field, and to use those nicknames when replying to messages in Gnus or
-composing messages from my BBDB.
+Update 2014-05-13: The original code is for BBDB version 2. Thomas Morgan sent this update which makes it work with BBDB version 3 - see below.
+</p>
+
+</div>
+
+<p>
+I like starting my e-mail with a short salutation such as “Hello, Mike!”, “Hello, Michael”, or “Hello, Mikong!”, but it can be hard to remember which nicknames people prefer to use, and calling someone by the wrong name is a bit of a faux pas. Sometimes people sign e-mail with their preferred name, but what if you haven't sent e-mail to or received e-mail from someone in a while? In this project, you'll learn how to set up my BBDB to remember people's nicknames for you using a custom “nick” field, and to use those nicknames when replying to messages in Gnus or composing messages from my BBDB.
 </p>
 
 <p>
-The nickname code worked so well that I started thinking of what else I
-could customize. It was easy to go from nicknames to personalized
-salutations. This hack started because one of my friends is from
-Romania, so I thought I'd greet her in Romanian with “Salut, Letitia!”
-instead of just “Hello, Letitia!”. The code in this project uses a
-“hello” field to store these salutations in your BBDB.
+The nickname code worked so well that I started thinking of what else I could customize. It was easy to go from nicknames to personalized salutations. This hack started because one of my friends is from Romania, so I thought I'd greet her in Romanian with “Salut, Letitia!” instead of just “Hello, Letitia!”. The code in this project uses a “hello” field to store these salutations in your BBDB.
 </p>
 
 <p>
-To set up personalized nicknames and salutations, add the following code
-to your ~/.emacs:
+To set up personalized nicknames and salutations, add the following code to your <code>~/.emacs</code>:
 </p>
 
-<pre class="example">
-(defvar wicked/gnus-nick-threshold 5 "*Number of people to stop greeting individually. Nil means always greet individually.")  ;; (1)
-(defvar wicked/bbdb-hello-string "Hello, %s!" "Format string for hello. Example: \"Hello, %s!\"")
-(defvar wicked/bbdb-hello-all-string "Hello, all!" "String for hello when there are many people. Example: \"Hello, all!\"")
-(defvar wicked/bbdb-nick-field 'nick "Symbol name for nickname field in BBDB.")
-(defvar wicked/bbdb-salutation-field 'hello "Symbol name for salutation field in BBDB.")
+<p>
+For BBDB v2
+</p>
 
-(defun wicked/gnus-add-nick-to-message ()
-  "Inserts \"Hello, NICK!\" in messages based on the recipient's nick field."
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/gnus-nick-threshold</span> 5 <span style="font-style: italic;">"*Number of people to stop greeting individually. Nil means always greet individually."</span>)  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(1)</span>
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/bbdb-hello-string</span> <span style="font-style: italic;">"Hello, %s!"</span> <span style="font-style: italic;">"Format string for hello. Example: \"Hello, %s!\""</span>)
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/bbdb-hello-all-string</span> <span style="font-style: italic;">"Hello, all!"</span> <span style="font-style: italic;">"String for hello when there are many people. Example: \"Hello, all!\""</span>)
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/bbdb-nick-field</span> 'nick <span style="font-style: italic;">"Symbol name for nickname field in BBDB."</span>)
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/bbdb-salutation-field</span> 'hello <span style="font-style: italic;">"Symbol name for salutation field in BBDB."</span>)
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">wicked/gnus-add-nick-to-message</span> ()
+  <span style="font-style: italic;">"Inserts \"Hello, NICK!\" in messages based on the recipient's nick field."</span>
   (interactive)
-  (save-excursion
-    (let* ((bbdb-get-addresses-headers ;; (2)
+  (<span style="font-weight: bold;">save-excursion</span>
+    (<span style="font-weight: bold;">let*</span> ((bbdb-get-addresses-headers <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(2)</span>
             (list (assoc 'recipients bbdb-get-addresses-headers)))
            (recipients (bbdb-get-addresses
                         nil
@@ -67,92 +66,125 @@ to your ~/.emacs:
                         'gnus-fetch-field))
            recipient nicks rec net salutations)
       (goto-char (point-min))
-      (when (re-search-forward "--text follows this line--" nil t)
+      (<span style="font-weight: bold;">when</span> (re-search-forward <span style="font-style: italic;">"--text follows this line--"</span> nil t)
         (forward-line 1)
-        (if (and wicked/gnus-nick-threshold 
+        (<span style="font-weight: bold;">if</span> (and wicked/gnus-nick-threshold 
                  (&gt;= (length recipients) wicked/gnus-nick-threshold))
-            (insert wicked/bbdb-hello-all-string "\n\n") ;; (3)
-          (while recipients
+            (insert wicked/bbdb-hello-all-string <span style="font-style: italic;">"\n\n"</span>) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(3)</span>
+          (<span style="font-weight: bold;">while</span> recipients
             (setq recipient (car (cddr (car recipients))))
             (setq net (nth 1 recipient))
             (setq rec (car (bbdb-search (bbdb-records) nil nil net)))
-            (cond
-             ((null rec) ;; (4)
+            (<span style="font-weight: bold;">cond</span>
+             ((null rec) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(4)</span>
               (add-to-list 'nicks (car recipient))) 
-             ((bbdb-record-getprop rec wicked/bbdb-salutation-field) ;; (5)
+             ((bbdb-record-getprop rec wicked/bbdb-salutation-field) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(5)</span>
               (add-to-list 'salutations 
                            (bbdb-record-getprop rec wicked/bbdb-salutation-field))) 
-             ((bbdb-record-getprop rec wicked/bbdb-nick-field) ;; (6)
+             ((bbdb-record-getprop rec wicked/bbdb-nick-field) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(6)</span>
               (add-to-list 'nicks 
                            (bbdb-record-getprop rec wicked/bbdb-nick-field)))
-             (t (bbdb-record-name rec))) ;; (7) 
+             (t (bbdb-record-name rec))) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(7) </span>
             (setq recipients (cdr recipients))))
-        (when nicks ;; (8)
+        (<span style="font-weight: bold;">when</span> nicks <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(8)</span>
           (insert (format wicked/bbdb-hello-string 
-                          (mapconcat 'identity (nreverse nicks) ", "))
-                  " "))
-        (when salutations ;; (9)
-          (insert (mapconcat 'identity salutations " ")))
-        (when (or nicks salutations)
-          (insert "\n\n")))))
+                          (mapconcat 'identity (nreverse nicks) <span style="font-style: italic;">", "</span>))
+                  <span style="font-style: italic;">" "</span>))
+        (<span style="font-weight: bold;">when</span> salutations <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(9)</span>
+          (insert (mapconcat 'identity salutations <span style="font-style: italic;">" "</span>)))
+        (<span style="font-weight: bold;">when</span> (or nicks salutations)
+          (insert <span style="font-style: italic;">"\n\n"</span>)))))
   (goto-char (point-min)))
 
-(defadvice gnus-post-news (after wicked/bbdb activate)
-  "Insert nicknames or custom salutations."
+(<span style="font-weight: bold;">defadvice</span> <span style="font-weight: bold;">gnus-post-news</span> (after wicked/bbdb activate)
+  <span style="font-style: italic;">"Insert nicknames or custom salutations."</span>
   (wicked/gnus-add-nick-to-message))
 
-(defadvice gnus-msg-mail (after wicked/bbdb activate)
-  "Insert nicknames or custom salutations."
+(<span style="font-weight: bold;">defadvice</span> <span style="font-weight: bold;">gnus-msg-mail</span> (after wicked/bbdb activate)
+  <span style="font-style: italic;">"Insert nicknames or custom salutations."</span>
   (wicked/gnus-add-nick-to-message))
 
-(defadvice gnus-summary-reply (after wicked/bbdb activate)
-  "Insert nicknames or custom salutations."
+(<span style="font-weight: bold;">defadvice</span> <span style="font-weight: bold;">gnus-summary-reply</span> (after wicked/bbdb activate)
+  <span style="font-style: italic;">"Insert nicknames or custom salutations."</span>
   (wicked/gnus-add-nick-to-message))
 </pre>
+</div>
 
 <p>
-After you add this code, you can store personalized nicknames and
-salutations in your BBDB. Nicknames and salutations will be looked up
-using people's e-mail addresses. While in the <b>BBDB</b> buffer, you can
-type C-o (bbdb-insert-new-field) to add a field to the current record.
-Add a “nick” field with the person's nickname, or a “hello” field with a
-custom salutation. When you compose a message to or reply to a message
-from that person, the salutation or nickname will be included. If no
-nickname can be found, the recipient's name will be used instead.
+For BBDB v3
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">This version is for BBDBv3 - thanks, Thomas!</span>
+
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/gnus-nick-threshold</span> 5 <span style="font-style: italic;">"*Number of people to stop greeting individually. Nil means always greet individually."</span>)  <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(1)</span>
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/bbdb-hello-string</span> <span style="font-style: italic;">"Hello, %s!"</span> <span style="font-style: italic;">"Format string for hello. Example: \"Hello, %s!\""</span>)
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/bbdb-hello-all-string</span> <span style="font-style: italic;">"Hello, all!"</span> <span style="font-style: italic;">"String for hello when there are many people. Example: \"Hello, all!\""</span>)
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/bbdb-nick-field</span> 'nick <span style="font-style: italic;">"Symbol name for nickname field in BBDB."</span>)
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">wicked/bbdb-salutation-field</span> 'hello <span style="font-style: italic;">"Symbol name for salutation field in BBDB."</span>)
+
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">wicked/gnus-add-nick-to-message</span> ()
+        <span style="font-style: italic;">"Inserts \"Hello, NICK!\" in messages based on the recipient's nick field."</span>
+        (interactive)
+  (<span style="font-weight: bold;">let</span> ((recipients (bbdb-get-address-components))
+        recipient nicks rec net salutations)
+    (goto-char (point-min))
+    (<span style="font-weight: bold;">when</span> (re-search-forward <span style="font-style: italic;">"--text follows this line--"</span> nil t)
+      (forward-line 1)
+      (<span style="font-weight: bold;">if</span> (and wicked/gnus-nick-threshold 
+               (&gt;= (length recipients) wicked/gnus-nick-threshold))
+          (insert wicked/bbdb-hello-all-string <span style="font-style: italic;">"\n\n"</span>) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(3)</span>
+        (<span style="font-weight: bold;">while</span> recipients
+          (setq recipient (car recipients))
+          (setq net (nth 1 recipient))
+          (setq rec (car (bbdb-search (bbdb-records) nil nil net)))
+          (<span style="font-weight: bold;">cond</span>
+           ((null rec) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(4)</span>
+            (add-to-list 'nicks (car recipient))) 
+           ((bbdb-record-xfield rec wicked/bbdb-salutation-field) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(5)</span>
+            (add-to-list 'salutations 
+                         (bbdb-record-xfield rec wicked/bbdb-salutation-field))) 
+           ((bbdb-record-xfield rec wicked/bbdb-nick-field) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(6)</span>
+            (add-to-list 'nicks 
+                         (bbdb-record-xfield rec wicked/bbdb-nick-field)))
+           (t
+            (add-to-list 'nicks
+                         (car (split-string (bbdb-record-name rec)))))) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(7) </span>
+          (setq recipients (cdr recipients))))
+      (<span style="font-weight: bold;">when</span> nicks <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(8)</span>
+        (insert (format wicked/bbdb-hello-string 
+                        (mapconcat 'identity (nreverse nicks) <span style="font-style: italic;">", "</span>))
+                <span style="font-style: italic;">" "</span>))
+      (<span style="font-weight: bold;">when</span> salutations <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(9)</span>
+        (insert (mapconcat 'identity salutations <span style="font-style: italic;">" "</span>)))
+      (<span style="font-weight: bold;">when</span> (or nicks salutations)
+        (insert <span style="font-style: italic;">"\n\n"</span>)))))
+
+(<span style="font-weight: bold;">defadvice</span> <span style="font-weight: bold;">gnus-post-news</span> (after wicked/bbdb activate)
+        <span style="font-style: italic;">"Insert nicknames or custom salutations."</span>
+        (wicked/gnus-add-nick-to-message))
+
+(<span style="font-weight: bold;">defadvice</span> <span style="font-weight: bold;">gnus-msg-mail</span> (after wicked/bbdb activate)
+        <span style="font-style: italic;">"Insert nicknames or custom salutations."</span>
+        (wicked/gnus-add-nick-to-message))
+
+(<span style="font-weight: bold;">defadvice</span> <span style="font-weight: bold;">gnus-summary-reply</span> (after wicked/bbdb activate)
+        <span style="font-style: italic;">"Insert nicknames or custom salutations."</span>
+        (wicked/gnus-add-nick-to-message))
+</pre>
+</div>
+
+<p>
+After you add this code, you can store personalized nicknames and salutations in your BBDB. Nicknames and salutations will be looked up using people's e-mail addresses. While in the <code>*BBDB*</code> buffer, you can type <code>C-o (bbdb-insert-new-field)</code> to add a field to the current record. Add a <code>nick</code> field with the person's nickname, or a <code>hello</code> field with a custom salutation. When you compose a message to or reply to a message from that person, the salutation or nickname will be included. If no nickname can be found, the recipient's name will be used instead.
 </p>
 
 <p>
-A number of variables can be used to modify the behavior of this
-code(1). For example, you may or may not want to greet 20 people
-individually. The default value of wicked/gnus-nick-threshold is to
-greet up to four people individually, and greet more people
-collectively. If you always want to greet people individually, add (setq
-wicked/gnus-nick-threshold nil) to your ~/.emacs. If you want to change
-the strings used to greet people individually or collectively, change
-wicked/bbdb-hello-string and wicked/bbdb-hello-all-string. If you want
-to store the data into different fields, change wicked/bbdb-nick-field
-and wicked/bbdb-salutation-field, but note that old data will not be
-automatically copied to the new fields.
+A number of variables can be used to modify the behavior of this code(1). For example, you may or may not want to greet 20 people individually. The default value of <code>wicked/gnus-nick-threshold</code> is to greet up to four people individually, and greet more people collectively. If you always want to greet people individually, add <code>(setq wicked/gnus-nick-threshold nil)</code> to your <code>~/.emacs</code>. If you want to change the strings used to greet people individually or collectively, change <code>wicked/bbdb-hello-string</code> and <code>wicked/bbdb-hello-all-string</code>. If you want to store the data into different fields, change <code>wicked/bbdb-nick-field</code> and <code>wicked/bbdb-salutation-field</code>, but note that old data will not be automatically copied to the new fields.
 </p>
 
 <p>
-Here's how the code works. First, it retrieves the list of addresses
-from the header(2). If there are more addresses than
-wicked/gnus-nick-threshold, then wicked/bbdb-hello-all-string is used to
-greet everyone. If not, each recipient address is looked up. If the
-recipient cannot be found in your BBDB, then the recipient's name or
-e-mail address is used(4). If there is a personalized salutation, it is
-used(5). If there is a nickname, it is used(6). If the person has a
-record but neither salutation or nickname, then the name of the record
-is used(7). After all recipients have been processed, the names are
-added to the message(8), followed by the salutations(9). This function
-is added to the different Gnus message-posting functions, so it should
-be called whenever you compose or reply to messages.
-</p>
-
-<p>
-You can use BBDB to personalize even more. Check out “Project XXX:
-Personalize signatures” for more ideas.
+Here's how the code works. First, it retrieves the list of addresses from the header(2). If there are more addresses than <code>wicked/gnus-nick-threshold</code>, then <code>wicked/bbdb-hello-all-string</code> is used to greet everyone. If not, each recipient address is looked up. If the recipient cannot be found in your BBDB, then the recipient's name or e-mail address is used(4). If there is a personalized salutation, it is used(5). If there is a nickname, it is used(6). If the person has a record but neither salutation or nickname, then the name of the record is used(7). After all recipients have been processed, the names are added to the message(8), followed by the salutations(9). This function is added to the different Gnus message-posting functions, so it should be called whenever you compose or reply to messages.
 </p>
 </div>
 <div id="postamble" class="status">

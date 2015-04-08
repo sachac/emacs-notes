@@ -16,8 +16,9 @@ interpretation, you probably already know your way around.
 
 We'll assume that you already have Emacs installed and that you've
 gone through the built-in tutorial (*Help - Emacs Tutorial*, =<f1> t=,
-=C-h t=, or =M-x help-with-tutorial=). I'll also assume you have a
-little programming background or can deal with the concepts of
+=C-h t=, or =M-x help-with-tutorial=). If you haven't upgraded to at
+least Emacs 24.x, please do - it's worth it! I'll also assume you have
+a little programming background or can deal with the concepts of
 variables and functions. Feel free to ask questions if you get stuck
 on something or if you want to clarify your understanding.
 
@@ -159,7 +160,7 @@ under the Creative Commons Attribution License and the GNU Free
 Documentation License, so feel free to read, share, and build on it.
 Patches and pull requests welcome!
 
-Thanks to aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, and Daniel Wu for feedback!
+Thanks to aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, Daniel Wu, and Iaroslav Tymchenko for feedback!
 
 - Sacha Chua
 		

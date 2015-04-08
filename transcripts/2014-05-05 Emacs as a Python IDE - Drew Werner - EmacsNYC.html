@@ -4,10 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Emacs as a Python IDE - Drew Werner</title>
-<!-- 2014-06-06 Fri 15:12 -->
+<!-- 2015-01-07 Wed 14:58 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sacha Chua" />
 <link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
 <link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
@@ -19,6 +18,18 @@
 <body>
 <div id="content">
 <h1 class="title">Emacs as a Python IDE - Drew Werner</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Simple auto-installation</a></li>
+<li><a href="#sec-2">Working with Projectile</a></li>
+<li><a href="#sec-3">Package Config</a></li>
+<li><a href="#sec-4">Jedi: The Brains</a></li>
+<li><a href="#sec-5">Sidebar: Finding Python</a></li>
+</ul>
+</div>
+</div>
 <p>
 You can find the video and other details at <a href="http://emacsnyc.org/videos.html">http://emacsnyc.org/videos.html</a>
 </p>
@@ -480,18 +491,18 @@ package installations.
 <div class="outline-text-2" id="text-1">
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">local-packages</span> '(projectile auto-complete epc jedi))
-(<span class="org-keyword">defun</span> <span class="org-function-name">uninstalled-packages</span> (packages)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">local-packages</span> '(projectile auto-complete epc jedi))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">uninstalled-packages</span> (packages)
   (delq nil
-        (mapcar (<span class="org-keyword">lambda</span> (p)
-                  (<span class="org-keyword">if</span> (package-installed-p p nil) nil p))
+        (mapcar (<span style="font-weight: bold;">lambda</span> (p)
+                  (<span style="font-weight: bold;">if</span> (package-installed-p p nil) nil p))
                 packages)))
-(<span class="org-keyword">let</span> ((need-to-install
+(<span style="font-weight: bold;">let</span> ((need-to-install
        (uninstalled-packages local-packages)))
-  (<span class="org-keyword">when</span> need-to-install
-    (<span class="org-keyword">progn</span>
+  (<span style="font-weight: bold;">when</span> need-to-install
+    (<span style="font-weight: bold;">progn</span>
       (package-refresh-contents)
-      (<span class="org-keyword">dolist</span> (p need-to-install)
+      (<span style="font-weight: bold;">dolist</span> (p need-to-install)
         (package-install p)))))
 </pre>
 </div>
@@ -509,7 +520,7 @@ So what do we need to do that? Well, I've defined a variable called
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">local-packages</span> '(projectile auto-complete epc jedi))
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">local-packages</span> '(projectile auto-complete epc jedi))
 </pre>
 </div>
 
@@ -549,7 +560,6 @@ them.
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">Working with Projectile</h2>
 <div class="outline-text-2" id="text-2">
@@ -629,7 +639,7 @@ If you really want to get help in going with that, easy setup:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">projectile</span>)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">projectile</span>)
 (projectile-global-mode)
 </pre>
 </div>
@@ -655,8 +665,8 @@ wasn't on my VM, which was just an <code>apt-get install Emacs</code> from Ubunt
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Emacs 23 hack</span>
-(<span class="org-keyword">when</span> (not (boundp 'remote-file-name-inhibit-cache))
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Emacs 23 hack</span>
+(<span style="font-weight: bold;">when</span> (not (boundp 'remote-file-name-inhibit-cache))
   (setq remote-file-name-inhibit-cache t))
 </pre>
 </div>
@@ -679,7 +689,6 @@ doesn't, it sets it to something safe. That lets you use with Emacs
 </div>
 </div>
 </div>
-
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">Package Config</h2>
 <div class="outline-text-2" id="text-3">
@@ -689,9 +698,9 @@ Auto-complete is also easy:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">auto-complete-config</span>)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">auto-complete-config</span>)
 (ac-config-default)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">If you really like the menu</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">If you really like the menu</span>
 (setq ac-show-menu-immediately-on-auto-complete t)
 </pre>
 </div>
@@ -721,7 +730,7 @@ to use the default values. That is it.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">auto-complete-config</span>)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">auto-complete-config</span>)
 (ac-config-default)
 </pre>
 </div>
@@ -767,7 +776,6 @@ jedi does in essence, among other things.
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">Jedi: The Brains</h2>
 <div class="outline-text-2" id="text-4">
@@ -902,10 +910,10 @@ The bare minimum:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">require</span> '<span class="org-constant">jedi</span>)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Hook up to autocomplete</span>
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">jedi</span>)
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Hook up to autocomplete</span>
 (add-to-list 'ac-sources 'ac-source-jedi-direct)
-<span class="org-comment-delimiter">;; </span><span class="org-comment">Enable for python-mode</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Enable for python-mode</span>
 (add-hook 'python-mode-hook 'jedi:setup)
 </pre>
 </div>
@@ -1002,8 +1010,8 @@ I have in the virtual machine:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:with-virtualenv</span> nil
-<span class="org-doc">"Set to non-nil to point to a particular virtualenv."</span>)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">jedi-config:with-virtualenv</span> nil
+<span style="font-style: italic;">"Set to non-nil to point to a particular virtualenv."</span>)
 </pre>
 </div>
 
@@ -1015,9 +1023,9 @@ stuff is related to finding the project root.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Variables to help find the project root</span>
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:vcs-root-sentinel</span> <span class="org-string">".git"</span>)
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:python-module-sentinel</span> <span class="org-string">"__init__.py"</span>)
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Variables to help find the project root</span>
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">jedi-config:vcs-root-sentinel</span> <span style="font-style: italic;">".git"</span>)
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">jedi-config:python-module-sentinel</span> <span style="font-style: italic;">"__init__.py"</span>)
 </pre>
 </div>
 
@@ -1043,7 +1051,7 @@ facilities for being able to find that.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:python-module-sentinel</span> <span class="org-string">"__init__.py"</span>)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">jedi-config:python-module-sentinel</span> <span style="font-style: italic;">"__init__.py"</span>)
 </pre>
 </div>
 
@@ -1071,8 +1079,8 @@ something like this:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">Function to find project root given a buffer</span>
-(<span class="org-keyword">defun</span> <span class="org-function-name">get-project-root</span> (buf repo-type init-file)
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Function to find project root given a buffer</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">get-project-root</span> (buf repo-type init-file)
 (vc-find-root (expand-file-name (buffer-file-name buf)) repo-type))
 </pre>
 </div>
@@ -1137,7 +1145,7 @@ looking for. So this is basically what this function does.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:find-root-function</span> 'get-project-root)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">jedi-config:find-root-function</span> 'get-project-root)
 </pre>
 </div>
 
@@ -1153,8 +1161,8 @@ And then after that config is set, we have this function
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">And call this on initialization</span>
-(<span class="org-keyword">defun</span> <span class="org-function-name">current-buffer-project-root</span> ()
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">And call this on initialization</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">current-buffer-project-root</span> ()
   (funcall jedi-config:find-root-function
            (current-buffer)
            jedi-config:vcs-root-sentinel
@@ -1200,19 +1208,19 @@ set up <code>server-args</code> function:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jedi-config:setup-server-args</span> ()
-       <span class="org-comment-delimiter">;; </span><span class="org-comment">little helper macro</span>
-       (<span class="org-keyword">defmacro</span> <span class="org-function-name">add-args</span> (arg-list arg-name arg-value)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">jedi-config:setup-server-args</span> ()
+       <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">little helper macro</span>
+       (<span style="font-weight: bold;">defmacro</span> <span style="font-weight: bold;">add-args</span> (arg-list arg-name arg-value)
          `(setq ,arg-list (append ,arg-list (list ,arg-name ,arg-value))))
-       (<span class="org-keyword">let</span> ((project-root (current-buffer-project-root)))
-         <span class="org-comment-delimiter">;; </span><span class="org-comment">Variable for this buffer only</span>
+       (<span style="font-weight: bold;">let</span> ((project-root (current-buffer-project-root)))
+         <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Variable for this buffer only</span>
          (make-local-variable 'jedi:server-args)
 
-         <span class="org-comment-delimiter">;; </span><span class="org-comment">And set our variables</span>
-         (<span class="org-keyword">when</span> project-root
-           (add-args jedi:server-args <span class="org-string">"--sys-path"</span> project-root))
-         (<span class="org-keyword">when</span> jedi-config:with-virtualenv
-               (add-args jedi:server-args <span class="org-string">"--virtual-env"</span>
+         <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">And set our variables</span>
+         (<span style="font-weight: bold;">when</span> project-root
+           (add-args jedi:server-args <span style="font-style: italic;">"--sys-path"</span> project-root))
+         (<span style="font-weight: bold;">when</span> jedi-config:with-virtualenv
+               (add-args jedi:server-args <span style="font-style: italic;">"--virtual-env"</span>
                          jedi-config:with-virtualenv))))
 </pre>
 </div>
@@ -1238,11 +1246,11 @@ And then we set up variables:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">And set our variables</span>
-(<span class="org-keyword">when</span> project-root
-  (add-args jedi:server-args <span class="org-string">"--sys-path"</span> project-root))
-(<span class="org-keyword">when</span> jedi-config:with-virtualenv
-      (add-args jedi:server-args <span class="org-string">"--virtual-env"</span>
+<pre class="src src-emacs-lisp"><span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">And set our variables</span>
+(<span style="font-weight: bold;">when</span> project-root
+  (add-args jedi:server-args <span style="font-style: italic;">"--sys-path"</span> project-root))
+(<span style="font-weight: bold;">when</span> jedi-config:with-virtualenv
+      (add-args jedi:server-args <span style="font-style: italic;">"--virtual-env"</span>
                 jedi-config:with-virtualenv))
 </pre>
 </div>
@@ -1259,7 +1267,6 @@ argument and then the value follow each other.
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">Sidebar: Finding Python</h2>
 <div class="outline-text-2" id="text-5">
@@ -1275,12 +1282,12 @@ Also, on Mac OS X (and perhaps other GUI environments), your
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defvar</span> <span class="org-variable-name">jedi-config:use-system-python</span> t)
-(<span class="org-keyword">defun</span> <span class="org-function-name">jedi-config:set-python-executable</span> ()
-       (set-exec-path-from-shell-PATH) <span class="org-comment-delimiter">;; </span><span class="org-comment">for OS X</span>
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">jedi-config:use-system-python</span> t)
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">jedi-config:set-python-executable</span> ()
+       (set-exec-path-from-shell-PATH) <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">for OS X</span>
        (make-local-variable 'jedi:server-command)
        (set 'jedi:server-command
-             (list (executable-find <span class="org-string">"python"</span>)
+             (list (executable-find <span style="font-style: italic;">"python"</span>)
                    (cadr default-jedi-server-command))))
 </pre>
 </div>
@@ -1341,7 +1348,7 @@ Putting everything together:
 
 <pre class="src src-emacs-lisp">(add-hook 'python-mode-hook
            'jedi-config:setup-server-args)
-(<span class="org-keyword">when</span> jedi-config:use-system-python
+(<span style="font-weight: bold;">when</span> jedi-config:use-system-python
       (add-hook 'python-mode-hook
                  'jedi-config:set-python-executable))
 </pre>
@@ -1398,11 +1405,11 @@ These are my set-up keys again. Local Jedi keybindings:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">jedi-config:setup-keys</span> ()
-       (local-set-key (kbd <span class="org-string">"M-."</span>) 'jedi:goto-definition)
-       (local-set-key (kbd <span class="org-string">"M-,"</span>) 'jedi:goto-definition-pop-marker)
-       (local-set-key (kbd <span class="org-string">"M-?"</span>) 'jedi:show-doc)
-       (local-set-key (kbd <span class="org-string">"M-/"</span>) 'jedi:get-in-function-call))
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">jedi-config:setup-keys</span> ()
+       (local-set-key (kbd <span style="font-style: italic;">"M-."</span>) 'jedi:goto-definition)
+       (local-set-key (kbd <span style="font-style: italic;">"M-,"</span>) 'jedi:goto-definition-pop-marker)
+       (local-set-key (kbd <span style="font-style: italic;">"M-?"</span>) 'jedi:show-doc)
+       (local-set-key (kbd <span style="font-style: italic;">"M-/"</span>) 'jedi:get-in-function-call))
 (add-hook 'python-mode-hook 'jedi-config:setup-keys)
 </pre>
 </div>
