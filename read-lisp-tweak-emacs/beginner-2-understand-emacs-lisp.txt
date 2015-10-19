@@ -149,10 +149,10 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 
 #+BEGIN_PRACTICE
 1. Use =C-h v= (=describe-variable=) to learn more about the variables in the following code snippet:
-	 #+begin_src emacs-lisp
+   #+begin_src emacs-lisp
 	 (setq-default indicate-empty-lines t)
 	 (setq-default show-trailing-whitespace t)
-	 #+end_src
+   #+end_src
 2. Look for Emacs configuration code that has variables you would like to learn more about. Use =C-h v= (=describe-variable=) to look up their definition and the values they can be set to.
 #+END_PRACTICE
 

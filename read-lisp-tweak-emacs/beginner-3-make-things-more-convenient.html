@@ -2,293 +2,422 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
-  <head>
-    <title>"How can I customize Emacs to make things more convenient?"</title>
-    <!-- 2014-06-25 Wed 17:33 -->
-    <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-    <meta  name="generator" content="Org-mode" />
-    <meta  name="author" content="Sacha Chua" />
-    <link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
-    <link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
-    <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-    <link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
-    <script src="../js/jquery.min.js"></script>
-    <script src="../js/emacs-notes.js"></script>
-  </head>
-  <body>
-    <div id="content">
-      <h1 class="title">"How can I customize Emacs to make things more convenient?"</h1>
-      <div id="table-of-contents">
-        <h2>Table of Contents</h2>
-        <div id="text-table-of-contents">
-          <ul>
-            <li><a href="#sec-1">Keyboard shortcuts</a>
-              <ul>
-                <li><a href="#sec-1-1">Setting keybindings in all buffers</a></li>
-                <li><a href="#sec-1-2">What does <code>kbd</code> do? How can I figure out which key it sets?</a></li>
-                <li><a href="#sec-1-3">Multi-key shortcuts</a></li>
-                <li><a href="#sec-1-4">Binding keys to other keys</a></li>
-                <li><a href="#sec-1-5">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</a></li>
-                <li><a href="#sec-1-6">Setting keybindings in a particular mode</a></li>
-                <li><a href="#sec-1-7">Other ways people bind keys</a></li>
-              </ul>
-            </li>
-            <li><a href="#sec-2">Defuns - function definitions</a></li>
-            <li><a href="#sec-3">Lambdas - anonymous functions</a></li>
-          </ul>
-        </div>
-      </div>
-      <p>
-        Previous module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html">"How can I understand Emacs Lisp code?"</a>
-      </p>
+<head>
+<title>"How can I customize Emacs to make things more convenient?"</title>
+<!-- 2015-10-19 Mon 13:27 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Sacha Chua" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
-      <div class="conventions">
-        <p>
-          Some conventions we'll use:
-        </p>
-        <ul class="org-ul">
-          <li>Inline code will be <code>boxed and monospace</code> in the HTML version and generally surrounded by <code>equal signs</code> in plain text.
-          </li>
-          <li>Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
-            <div class="org-src-container">
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
 
-              <pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
-              </pre>
-            </div>
-          </li>
-        </ul>
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
-      </div>
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
 
-      <div class="objectives">
-        <p>
-          After this module, you'll be able to:
-        </p>
-        <ul class="org-ul">
-          <li>define your own keyboard shortcuts so that you can call functions more easily
-          </li>
-          <li>work with custom functions that other people have defined in their configurations
-          </li>
-          <li>copy and use anonymous functions
-          </li>
-        </ul>
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
 
-      </div>
 
-      <div id="outline-container-sec-1" class="outline-2">
-        <h2 id="sec-1">Keyboard shortcuts</h2>
-        <div class="outline-text-2" id="text-1">
-          <p>
-            The default keyboard shortcuts (or "keybindings") can be difficult to remember, and many useful functions don't have any keyboard shortcuts at all. People often set up their own keyboard shortcuts to make other commands easier to use. There are different ways to assign keys depending on where you want the keybinding to be available.
-          </p>
-        </div>
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="preamble" class="status">
+<a name="top" id="top"></a>
+</div>
+<div id="content">
+<h1 class="title">"How can I customize Emacs to make things more convenient?"</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#unnumbered-1">Keyboard shortcuts</a>
+<ul>
+<li><a href="#unnumbered-2">Setting keybindings in all buffers</a></li>
+<li><a href="#unnumbered-3">What does <code>kbd</code> do? How can I figure out which key it sets?</a></li>
+<li><a href="#unnumbered-4">Multi-key shortcuts</a></li>
+<li><a href="#unnumbered-5">Binding keys to other keys</a></li>
+<li><a href="#unnumbered-6">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</a></li>
+<li><a href="#unnumbered-7">Setting keybindings in a particular mode</a></li>
+<li><a href="#unnumbered-8">Other ways people bind keys</a></li>
+</ul>
+</li>
+<li><a href="#unnumbered-9">Defuns - function definitions</a></li>
+<li><a href="#unnumbered-10">Lambdas - anonymous functions</a></li>
+</ul>
+</div>
+</div>
+<p>
+Previous module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html">"How can I understand Emacs Lisp code?"</a>
+</p>
 
-        <div id="outline-container-sec-1-1" class="outline-3">
-          <h3 id="sec-1-1">Setting keybindings in all buffers</h3>
-          <div class="outline-text-3" id="text-1-1">
-            <p>
-              You can assign a key to a function globally, which means that it will be available in buffers of any type if there are no mode maps or local keybindings that override it. (Mode maps are set by major modes like <code>emacs-lisp-mode</code> or minor modes like <code>auto-fill-mode</code>.) Setting a global keybinding is usually done with <code>global-set-key</code>, although sometimes you'll see it done with <code>define-key</code> and <code>global-map</code>. 
-            </p>
+<div class="CONVENTIONS">
+<p>
+Some conventions we'll use:
+</p>
+<ul class="org-ul">
+<li>Inline code will be <code>boxed and monospace</code> in the HTML version and generally surrounded by <code>equal signs</code> in plain text.</li>
+<li><p>
+Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
+</p>
+<div class="org-src-container">
 
-            <p>
-              You can use <code>global-set-key</code> interactively by calling it with <code>M-x global-set-key</code>. Type the keyboard shortcut you would like to set, then specify the name of the function you would like Emacs to call. Note that the function must be interactive - that is, it must be something you can call with <code>M-x</code> and it should include <code>(interactive ...)</code> in its definition. For example, try <code>M-x global-set-key</code>, then press <code>&lt;f10&gt;</code>, and assign it to <code>save-buffer</code>. After you do that, you should be able to press <code>&lt;f10&gt;</code> to save the current buffer.
-            </p>
+<pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
+</pre>
+</div></li>
+</ul>
 
-            <p>
-              If you like a keybinding that you've interactively set, use <code>C-x ESC ESC</code> (<code>repeat-complex-command</code>) to see the Emacs Lisp code for it. You can copy and paste that into your configuration. For example, setting the keybinding above will result in:
-            </p>
+</div>
 
-            <div class="org-src-container">
+<div class="OBJECTIVES">
+<p>
+After this module, you'll be able to:
+</p>
+<ul class="org-ul">
+<li>define your own keyboard shortcuts so that you can call functions more easily</li>
+<li>work with custom functions that other people have defined in their configurations</li>
+<li>copy and use anonymous functions</li>
+</ul>
 
-              <pre class="src src-emacs-lisp">(global-set-key [f10] (quote save-buffer))
-              </pre>
-            </div>
+</div>
 
-            <p>
-              You can also write keybindings from scratch. For example, the code below redefines the Return key (or the Enter key) so that it calls the <code>newline-and-indent</code> function by default. 
-            </p>
+<div id="outline-container-unnumbered-1" class="outline-2">
+<h2 id="unnumbered-1">Keyboard shortcuts</h2>
+<div class="outline-text-2" id="text-unnumbered-1">
+<p>
+The default keyboard shortcuts (or "keybindings") can be difficult to remember, and many useful functions don't have any keyboard shortcuts at all. People often set up their own keyboard shortcuts to make other commands easier to use. There are different ways to assign keys depending on where you want the keybinding to be available.
+</p>
+</div>
 
-            <div class="org-src-container">
+<div id="outline-container-unnumbered-2" class="outline-3">
+<h3 id="unnumbered-2">Setting keybindings in all buffers</h3>
+<div class="outline-text-3" id="text-unnumbered-2">
+<p>
+You can assign a key to a function globally, which means that it will be available in buffers of any type if there are no mode maps or local keybindings that override it. (Mode maps are set by major modes like <code>emacs-lisp-mode</code> or minor modes like <code>auto-fill-mode</code>.) Setting a global keybinding is usually done with <code>global-set-key</code>, although sometimes you'll see it done with <code>define-key</code> and <code>global-map</code>. 
+</p>
 
-              <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"RET"</span>) 'newline-and-indent)
-              </pre>
-            </div>
+<p>
+You can use <code>global-set-key</code> interactively by calling it with <code>M-x global-set-key</code>. Type the keyboard shortcut you would like to set, then specify the name of the function you would like Emacs to call. Note that the function must be interactive - that is, it must be something you can call with <code>M-x</code> and it should include <code>(interactive ...)</code> in its definition. For example, try <code>M-x global-set-key</code>, then press <code>&lt;f10&gt;</code>, and assign it to <code>save-buffer</code>. After you do that, you should be able to press <code>&lt;f10&gt;</code> to save the current buffer.
+</p>
 
-            <p>
-              Remember, <code>​'newline-and-indent</code> and <code>(quote newline-and-indent)</code> are the same thing - they both refer to the name of a thing (a function, in this case) instead of its value.
-            </p>
+<p>
+If you like a keybinding that you've interactively set, use <code>C-x ESC ESC</code> (<code>repeat-complex-command</code>) to see the Emacs Lisp code for it. You can copy and paste that into your configuration. For example, setting the keybinding above will result in:
+</p>
 
-            <div class="org-src-container">
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-+"</span>) 'text-scale-increase)
+<pre class="src src-emacs-lisp">(global-set-key [f10] (quote save-buffer))
+</pre>
+</div>
+
+<p>
+You can also write keybindings from scratch. For example, the code below redefines the Return key (or the Enter key) so that it calls the <code>newline-and-indent</code> function by default. 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"RET"</span>) 'newline-and-indent)
+</pre>
+</div>
+
+<p>
+Remember, <code>​'newline-and-indent</code> and <code>(quote newline-and-indent)</code> are the same thing - they both refer to the name of a thing (a function, in this case) instead of its value.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-+"</span>) 'text-scale-increase)
 (global-set-key (kbd <span class="org-string">"C--"</span>) 'text-scale-decrease)
-              </pre>
-            </div>
+</pre>
+</div>
 
-            <p>
-              These set <code>C-+</code> (<code>Ctrl</code> and <code>&lt;plus&gt;</code>) and <code>C--</code> (<code>Ctrl</code> and <code>&lt;minus&gt;</code>) to increase and decrease the font size when you're running Emacs in a graphical environment.
-            </p>
+<p>
+These set <code>C-+</code> (<code>Ctrl</code> and <code>&lt;plus&gt;</code>) and <code>C--</code> (<code>Ctrl</code> and <code>&lt;minus&gt;</code>) to increase and decrease the font size when you're running Emacs in a graphical environment.
+</p>
 
-            <p>
-              If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to <a href="#mode-keys">Setting keybindings in a particular mode</a>.
-            </p>
-          </div>
-        </div>
+<p>
+If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to <a href="#mode-keys">Setting keybindings in a particular mode</a>.
+</p>
+</div>
+</div>
 
-        <div id="outline-container-sec-1-2" class="outline-3">
-          <h3 id="sec-1-2">What does <code>kbd</code> do? How can I figure out which key it sets?</h3>
-          <div class="outline-text-3" id="text-1-2">
-            <p>
-              If you've gone through the Emacs Tutorial (<b>Help - Emacs Tutorial</b> or <code>C-h t</code>), you'll be familiar with many of the conventions used for writing keyboard shortcuts. <code>C-</code> stands for the <code>Ctrl</code> key, <code>M-</code> stands for the <code>Meta</code> key (which is probably <code>Alt</code> or <code>Option</code> on your keyboard). There are other prefixes as well. <code>S-</code> is for Shift, <code>H-</code> is for <code>Hyper</code>, and <code>s-</code> is for <code>Super</code>. Some people use operating system tools (such as <code>setxkbmap</code> for Linux) to change keys on their keyboard to <code>Super</code> or <code>Hyper</code> in order to enable even more keyboard shortcuts.
-            </p>
+<div id="outline-container-unnumbered-3" class="outline-3">
+<h3 id="unnumbered-3">What does <code>kbd</code> do? How can I figure out which key it sets?</h3>
+<div class="outline-text-3" id="text-unnumbered-3">
+<p>
+If you've gone through the Emacs Tutorial (<b>Help - Emacs Tutorial</b> or <code>C-h t</code>), you'll be familiar with many of the conventions used for writing keyboard shortcuts. <code>C-</code> stands for the <code>Ctrl</code> key, <code>M-</code> stands for the <code>Meta</code> key (which is probably <code>Alt</code> or <code>Option</code> on your keyboard). There are other prefixes as well. <code>S-</code> is for Shift, <code>H-</code> is for <code>Hyper</code>, and <code>s-</code> is for <code>Super</code>. Some people use operating system tools (such as <code>setxkbmap</code> for Linux) to change keys on their keyboard to <code>Super</code> or <code>Hyper</code> in order to enable even more keyboard shortcuts.
+</p>
 
-            <p>
-              Uppercase or lowercase depends on the character in the shortcut. <code>C-x</code> means <code>Control</code> + <code>x</code>, while <code>C-X</code> is actually <code>Control</code> + <code>Shift</code> + <code>X</code>. You can also specify shift by adding <code>S-</code>, so <code>C-X</code> and <code>C-S-x</code> are the same.
-            </p>
+<p>
+Uppercase or lowercase depends on the character in the shortcut. <code>C-x</code> means <code>Control</code> + <code>x</code>, while <code>C-X</code> is actually <code>Control</code> + <code>Shift</code> + <code>X</code>. You can also specify shift by adding <code>S-</code>, so <code>C-X</code> and <code>C-S-x</code> are the same.
+</p>
 
-            <p>
-              In addition, there are some special characters: <code>RET</code>, <code>SPC</code>, <code>TAB</code>, and <code>ESC</code> must be written in uppercase to mean the special keys they refer to. (There's also <code>LFD</code> and <code>NUL</code>, but you're probably not going to encounter those as often.) You can use angle brackets to refer to some other keys, like <code>&lt;return&gt;</code>, <code>&lt;up&gt;</code>, <code>&lt;down&gt;</code>, <code>&lt;left&gt;</code>, <code>&lt;right&gt;</code>. Function keys are written like this: <code>&lt;f1&gt;</code>. 
-            </p>
+<p>
+In addition, there are some special characters: <code>RET</code>, <code>SPC</code>, <code>TAB</code>, and <code>ESC</code> must be written in uppercase to mean the special keys they refer to. (There's also <code>LFD</code> and <code>NUL</code>, but you're probably not going to encounter those as often.) You can use angle brackets to refer to some other keys, like <code>&lt;return&gt;</code>, <code>&lt;up&gt;</code>, <code>&lt;down&gt;</code>, <code>&lt;left&gt;</code>, <code>&lt;right&gt;</code>. Function keys are written like this: <code>&lt;f1&gt;</code>. 
+</p>
 
-            <p>
-              There are different ways to specify the key. Many people use <code>(kbd ...)</code> because it makes bindings easy to read.
-            </p>
+<p>
+There are different ways to specify the key. Many people use <code>(kbd ...)</code> because it makes bindings easy to read.
+</p>
 
-            <div class="org-src-container">
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-/"</span>) 'hippie-expand)
-              </pre>
-            </div>
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-/"</span>) 'hippie-expand)
+</pre>
+</div>
 
-            <p>
-              This is the same as 
-            </p>
-            <div class="org-src-container">
+<p>
+This is the same as 
+</p>
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key <span class="org-string">"\M-/"</span> 'hippie-expand)
-              </pre>
-            </div>
-            <p>
-              or
-            </p>
-            <div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-set-key <span class="org-string">"\M-/"</span> 'hippie-expand)
+</pre>
+</div>
+<p>
+or
+</p>
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key [?\M-/] 'hippie-expand)
-              </pre>
-            </div>
+<pre class="src src-emacs-lisp">(global-set-key [?\M-/] 'hippie-expand)
+</pre>
+</div>
 
-            <p>
-              You can use <code>^</code> to mean <code>Control</code>, so
-            </p>
-            <div class="org-src-container">
+<p>
+You can use <code>^</code> to mean <code>Control</code>, so
+</p>
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-s"</span>) 'isearch-forward-regexp)
-              </pre>
-            </div>
-            <p>
-              is the same as either of these lines:
-            </p>
-            <div class="org-src-container">
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-s"</span>) 'isearch-forward-regexp)
+</pre>
+</div>
+<p>
+is the same as either of these lines:
+</p>
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key <span class="org-string">"\C-s"</span> 'isearch-forward-regexp)
+<pre class="src src-emacs-lisp">(global-set-key <span class="org-string">"\C-s"</span> 'isearch-forward-regexp)
 (global-set-key (kbd <span class="org-string">"^s"</span>) 'isearch-forward-regexp)
-              </pre>
-            </div>
-            <p>
-              but <code>C-</code> is probably easier to read.
-            </p>
+</pre>
+</div>
+<p>
+but <code>C-</code> is probably easier to read.
+</p>
 
-            <p>
-              When you use <code>kbd</code>, whitespace doesn't usually matter, but it's easier to read if you use space to separate the keys to type. For more information about the syntax used by <code>kbd</code>, see <code>C-h f</code> (<code>describe-function</code>) for <code>kbd</code>, then follow the link to the documentation for <code>edmacro-mode</code>.
-            </p>
+<p>
+When you use <code>kbd</code>, whitespace doesn't usually matter, but it's easier to read if you use space to separate the keys to type. For more information about the syntax used by <code>kbd</code>, see <code>C-h f</code> (<code>describe-function</code>) for <code>kbd</code>, then follow the link to the documentation for <code>edmacro-mode</code>.
+</p>
 
-            <p>
-              In general, you can use <code>C-h k</code> (<code>describe-key</code>) followed by a keyboard shortcut to see if it's already bound, and if so, what function it calls. If you type <code>C-h k</code> and the key you're interested in, and Emacs is still waiting for another key, then you're probably looking at a prefix key. For example, <code>C-x</code> is a prefix key that's used in keyboard shortcuts like <code>C-x C-e</code> (<code>eval-last-sexp</code>).
-            </p>
-          </div>
-        </div>
+<p>
+In general, you can use <code>C-h k</code> (<code>describe-key</code>) followed by a keyboard shortcut to see if it's already bound, and if so, what function it calls. If you type <code>C-h k</code> and the key you're interested in, and Emacs is still waiting for another key, then you're probably looking at a prefix key. For example, <code>C-x</code> is a prefix key that's used in keyboard shortcuts like <code>C-x C-e</code> (<code>eval-last-sexp</code>).
+</p>
+</div>
+</div>
 
-        <div id="outline-container-sec-1-3" class="outline-3">
-          <h3 id="sec-1-3">Multi-key shortcuts</h3>
-          <div class="outline-text-3" id="text-1-3">
-            <p>
-              You can set up keybindings that use more than one key combination. This is a popular technique since you can only have so many short keybindings. For example, the following code changes <code>C-x C-b</code> to call <code>ibuffer</code>, which lists your buffers and makes it easy to jump to another buffer.
-            </p>
+<div id="outline-container-unnumbered-4" class="outline-3">
+<h3 id="unnumbered-4">Multi-key shortcuts</h3>
+<div class="outline-text-3" id="text-unnumbered-4">
+<p>
+You can set up keybindings that use more than one key combination. This is a popular technique since you can only have so many short keybindings. For example, the following code changes <code>C-x C-b</code> to call <code>ibuffer</code>, which lists your buffers and makes it easy to jump to another buffer.
+</p>
 
-            <div class="org-src-container">
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x C-b"</span>) 'ibuffer)
-              </pre>
-            </div>
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-x C-b"</span>) 'ibuffer)
+</pre>
+</div>
 
-            <p>
-              You don't have to start with <code>C-c</code> or <code>C-x</code>. Consider using one of your function keys like <code>&lt;f9&gt;</code> as the start of your keyboard shortcuts. Then you can create shortcuts that don't involve using <code>Ctrl</code>, <code>Alt</code>, or other modifier keys. For example:
-            </p>
+<p>
+You don't have to start with <code>C-c</code> or <code>C-x</code>. Consider using one of your function keys like <code>&lt;f9&gt;</code> as the start of your keyboard shortcuts. Then you can create shortcuts that don't involve using <code>Ctrl</code>, <code>Alt</code>, or other modifier keys. For example:
+</p>
 
-            <div class="org-src-container">
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f9&gt; b"</span>) 'ibuffer)
-              </pre>
-            </div>
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f9&gt; b"</span>) 'ibuffer)
+</pre>
+</div>
 
-            <p>
-              Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like <code>C-c</code> followed by a lowercase or uppercase letter are reserved for your use, as are the function keys <code>&lt;f5&gt;</code> to <code>&lt;f9&gt;</code>. Other keyboard shortcuts are likely to already be defined by modes. You can override them if you want.
-            </p>
+<p>
+Read other people's configurations to get a sense of useful commands and handy keyboard shortcuts. By convention, shortcuts like <code>C-c</code> followed by a lowercase or uppercase letter are reserved for your use, as are the function keys <code>&lt;f5&gt;</code> to <code>&lt;f9&gt;</code>. Other keyboard shortcuts are likely to already be defined by modes. You can override them if you want.
+</p>
 
-            <p>
-              Some people like using a function key followed by letters in order to minimize the need to press Control or Meta. For example, you might use:
-            </p>
+<p>
+Some people like using a function key followed by letters in order to minimize the need to press Control or Meta. For example, you might use:
+</p>
 
-            <pre class="example">
-(global-set-key (kbd "C-c r") 'query-replace)
-            </pre>
+<div class="org-src-container">
 
-            <p>
-              or
-            </p>
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c r"</span>) 'query-replace)
+</pre>
+</div>
 
-            <pre class="example">
-(global-set-key (kbd "&lt;f9&gt; r") 'query-replace)
-            </pre>
+<p>
+or
+</p>
 
-            <p>
-              to make it easier to replace strings. You can even bind it to both shortcuts.
-            </p>
-          </div>
-        </div>
+<div class="org-src-container">
 
-        <div id="outline-container-sec-1-4" class="outline-3">
-          <h3 id="sec-1-4">Binding keys to other keys</h3>
-          <div class="outline-text-3" id="text-1-4">
-            <p>
-              In addition to setting keyboard shortcuts for functions, you can also define keys to expand to a longer sequence of keystrokes. You can use this for inserting strings or calling keyboard macros. For example:
-            </p>
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f9&gt; r"</span>) 'query-replace)
+</pre>
+</div>
 
-            <div class="org-src-container">
+<p>
+to make it easier to replace strings. You can even bind it to both shortcuts.
+</p>
+</div>
+</div>
 
-              <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f7&gt; e"</span>) <span class="org-string">"you@example.com"</span>)
+<div id="outline-container-unnumbered-5" class="outline-3">
+<h3 id="unnumbered-5">Binding keys to other keys</h3>
+<div class="outline-text-3" id="text-unnumbered-5">
+<p>
+In addition to setting keyboard shortcuts for functions, you can also define keys to expand to a longer sequence of keystrokes. You can use this for inserting strings or calling keyboard macros. For example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"&lt;f7&gt; e"</span>) <span class="org-string">"you@example.com"</span>)
 (global-set-key (kbd <span class="org-string">"&lt;f7&gt; w"</span>) <span class="org-string">"http://example.com"</span>)
 (global-set-key (kbd <span class="org-string">"&lt;f7&gt; u"</span>) (kbd <span class="org-string">"C-x C-s"</span>))
-              </pre>
-            </div>
+</pre>
+</div>
 
-            <p>
-              These might be handy for quickly inserting your e-mail address or website.
-            </p>
-          </div>
-        </div>
+<p>
+These might be handy for quickly inserting your e-mail address or website.
+</p>
+</div>
+</div>
 
-        <div id="outline-container-sec-1-5" class="outline-3">
-          <h3 id="sec-1-5">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</h3>
-          <div class="outline-text-3" id="text-1-5">
-            <p>
-              If you want to create a multi-key shortcut, the preceding keys must not already be assigned to functions. For example, if you want <code>M-t l</code> to call <code>transpose-lines</code>, you'll need to get rid of <code>M-t</code>'s default binding to <code>transpose-words</code> first. To unset a key, bind it to <code>nil</code> or use <code>global-unset-key</code>. Here's a group of shortcuts you can try.
-            </p>
+<div id="outline-container-unnumbered-6" class="outline-3">
+<h3 id="unnumbered-6">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</h3>
+<div class="outline-text-3" id="text-unnumbered-6">
+<p>
+If you want to create a multi-key shortcut, the preceding keys must not already be assigned to functions. For example, if you want <code>M-t l</code> to call <code>transpose-lines</code>, you'll need to get rid of <code>M-t</code>'s default binding to <code>transpose-words</code> first. To unset a key, bind it to <code>nil</code> or use <code>global-unset-key</code>. Here's a group of shortcuts you can try.
+</p>
 
-            <div class="org-src-container">
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-t"</span>) nil) <span class="org-comment-delimiter">;; </span><span class="org-comment">Remove the old keybinding</span>
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"M-t"</span>) nil) <span class="org-comment-delimiter">;; </span><span class="org-comment">Remove the old keybinding</span>
 (global-set-key (kbd <span class="org-string">"M-t c"</span>) 'transpose-chars)
 (global-set-key (kbd <span class="org-string">"M-t w"</span>) 'transpose-words)
 (global-set-key (kbd <span class="org-string">"M-t t"</span>) 'transpose-words)
@@ -297,180 +426,211 @@
 (global-set-key (kbd <span class="org-string">"M-t e"</span>) 'transpose-sexps)
 (global-set-key (kbd <span class="org-string">"M-t s"</span>) 'transpose-sentences)
 (global-set-key (kbd <span class="org-string">"M-t p"</span>) 'transpose-paragraphs)
-              </pre>
-            </div>
+</pre>
+</div>
 
-            <p>
-              The example above has three bindings for <code>transpose-words</code>. <code>M-t w</code> uses the mnemonic of <b>t</b>-ranspose <b>w</b>-ords. <code>M-t t</code> is similar to the original binding for <code>transpose-words</code>, which was <code>M-t</code>. <code>M-t M-t</code> may seem like overkill, but sometimes you'll find it easier to hold the <code>Meta</code> key down and hit <code>t</code> twice quickly instead of typing <code>M-t</code>, releasing <code>Meta</code>, and then typing <code>t</code>. As you read other people's keybindings, you'll get a sense of how people have configured their keyboard shortcuts to speed up typing and minimize thinking.
-            </p>
-          </div>
-        </div>
+<p>
+The example above has three bindings for <code>transpose-words</code>. <code>M-t w</code> uses the mnemonic of <b>t</b>-ranspose <b>w</b>-ords. <code>M-t t</code> is similar to the original binding for <code>transpose-words</code>, which was <code>M-t</code>. <code>M-t M-t</code> may seem like overkill, but sometimes you'll find it easier to hold the <code>Meta</code> key down and hit <code>t</code> twice quickly instead of typing <code>M-t</code>, releasing <code>Meta</code>, and then typing <code>t</code>. As you read other people's keybindings, you'll get a sense of how people have configured their keyboard shortcuts to speed up typing and minimize thinking.
+</p>
+</div>
+</div>
 
-        <div id="outline-container-sec-1-6" class="outline-3">
-          <h3 id="sec-1-6">Setting keybindings in a particular mode</h3>
-          <div class="outline-text-3" id="text-1-6">
-            <p>
-              <a id="mode-keys" name="mode-keys"></a>
-            </p>
+<div id="outline-container-unnumbered-7" class="outline-3">
+<h3 id="unnumbered-7">Setting keybindings in a particular mode</h3>
+<div class="outline-text-3" id="text-unnumbered-7">
+<p>
+<a id="mode-keys"></a>
+</p>
 
-            <p>
-              Sometimes you want keys to do different things in different types of files. Modes are how Emacs changes behaviour based on context. For example, Java files use <code>java-mode</code>, Org files use <code>org-mode</code>, and so forth. In addition to the major mode for a buffer, you may have several minor modes that modify the behaviour. Each mode has a keybinding map (or a "keymap"). You can assign a key in a mode map, which means it will override global keybindings in buffers with that mode. You can do this with <code>define-key</code> if you know the name of the keymap you want to change, which is generally the name of the mode + <code>-map</code>. For example:
-            </p>
+<p>
+Sometimes you want keys to do different things in different types of files. Modes are how Emacs changes behaviour based on context. For example, Java files use <code>java-mode</code>, Org files use <code>org-mode</code>, and so forth. In addition to the major mode for a buffer, you may have several minor modes that modify the behaviour. Each mode has a keybinding map (or a "keymap"). You can assign a key in a mode map, which means it will override global keybindings in buffers with that mode. You can do this with <code>define-key</code> if you know the name of the keymap you want to change, which is generally the name of the mode + <code>-map</code>. For example:
+</p>
 
-            <div class="org-src-container">
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(define-key emacs-lisp-mode-map (kbd <span class="org-string">"C-c f"</span>) 'find-function)
-              </pre>
-            </div>
+<pre class="src src-emacs-lisp">(define-key emacs-lisp-mode-map (kbd <span class="org-string">"C-c f"</span>) 'find-function)
+</pre>
+</div>
 
-            <p>
-              changes the <code>C-c f</code> keyboard shortcut to <code>find-function</code> (which jumps to the definition of a function), but only in Emacs Lisp buffers.
-            </p>
+<p>
+changes the <code>C-c f</code> keyboard shortcut to <code>find-function</code> (which jumps to the definition of a function), but only in Emacs Lisp buffers.
+</p>
 
-            <p>
-              Note that if you use <code>define-key</code> with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a <code>require</code> (which loads the code) or inside an <code>eval-after-load</code> (which postpones the code until after the mode is loaded). See <a href="http://emacslife.com/how-to-read-emacs-lisp.html#load">Adding more features to Emacs</a> for information on loading packages and adding new functions to Emacs.
-            </p>
-          </div>
-        </div>
+<p>
+Note that if you use <code>define-key</code> with a mode map, the mode must already be loaded by the time this code is run. That's why you'll often see this after a <code>require</code> (which loads the code) or inside an <code>eval-after-load</code> (which postpones the code until after the mode is loaded). See <a href="http://emacslife.com/how-to-read-emacs-lisp.html#load">Adding more features to Emacs</a> for information on loading packages and adding new functions to Emacs.
+</p>
+</div>
+</div>
 
-        <div id="outline-container-sec-1-7" class="outline-3">
-          <h3 id="sec-1-7">Other ways people bind keys</h3>
-          <div class="outline-text-3" id="text-1-7">
-            <p>
-              The <code>bind-key</code> package provides a function that makes it easier to see your personal keybindings, but <code>bind-key</code> is not part of Emacs by default. I use <code>bind-key</code> a lot in <a href="http://sachachua.com/dotemacs">my configuration</a>. The syntax is similar to <code>global-set-key</code>, except it automatically wraps the keyboard shortcut string in <code>kbd</code>. It also keeps track of which keyboard shortcuts you've overridden so that you can use <code>M-x describe-personal-keybindings</code> to review them.
-            </p>
+<div id="outline-container-unnumbered-8" class="outline-3">
+<h3 id="unnumbered-8">Other ways people bind keys</h3>
+<div class="outline-text-3" id="text-unnumbered-8">
+<p>
+The <code>bind-key</code> package provides a function that makes it easier to see your personal keybindings, but <code>bind-key</code> is not part of Emacs by default. I use <code>bind-key</code> a lot in <a href="http://sachachua.com/dotemacs">my configuration</a>. The syntax is similar to <code>global-set-key</code>, except it automatically wraps the keyboard shortcut string in <code>kbd</code>. It also keeps track of which keyboard shortcuts you've overridden so that you can use <code>M-x describe-personal-keybindings</code> to review them.
+</p>
 
-            <div class="org-src-container">
+<div class="org-src-container">
 
-              <pre class="src src-emacs-lisp">(bind-key <span class="org-string">"C-+"</span> 'text-scale-increase)
+<pre class="src src-emacs-lisp">(bind-key <span class="org-string">"C-+"</span> 'text-scale-increase)
 (bind-key <span class="org-string">"C--"</span> 'text-scale-decrease)
-              </pre>
-            </div>
+</pre>
+</div>
 
-            <p>
-              You'll need to install and use the <code>bind-key</code> package before you can use that code.
-            </p>
+<p>
+You'll need to install and use the <code>bind-key</code> package before you can use that code.
+</p>
 
-            <p>
-              Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use <code>C-h f</code> (<code>describe-function</code>) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
-            </p>
+<p>
+Because keybinding is something that lots of people do to customize their Emacs, you may find other ways that people have simplified writing keybindings for themselves. When in doubt, use <code>C-h f</code> (<code>describe-function</code>) to explore how something works. If the function can't be found, see if it's in a package somewhere, or search the Web for more information.
+</p>
 
-            <p>
-              For more about keybindings, see the <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html">Emacs manual</a> and this <a href="http://www.masteringemacs.org/articles/2011/02/08/mastering-key-bindings-emacs/">Mastering Emacs post on keybindings</a>.
-            </p>
-          </div>
-        </div>
-      </div>
+<p>
+For more about keybindings, see the <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html">Emacs manual</a> and this <a href="http://www.masteringemacs.org/articles/2011/02/08/mastering-key-bindings-emacs/">Mastering Emacs post on keybindings</a>.
+</p>
+</div>
+</div>
+</div>
 
-      <div id="outline-container-sec-2" class="outline-2">
-        <h2 id="sec-2">Defuns - function definitions</h2>
-        <div class="outline-text-2" id="text-2">
-          <p>
-            In addition to the functions built into Emacs or available in packages, many people define their own with the <code>defun</code> function.
-          </p>
+<div id="outline-container-unnumbered-9" class="outline-2">
+<h2 id="unnumbered-9">Defuns - function definitions</h2>
+<div class="outline-text-2" id="text-unnumbered-9">
+<p>
+In addition to the functions built into Emacs or available in packages, many people define their own with the <code>defun</code> function.
+</p>
 
-          <p>
-            People often distinguish custom functions by starting them with <code>my/</code> or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. It also minimizes the risk of accidentally overriding a function defined elsewhere. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
-          </p>
+<p>
+People often distinguish custom functions by starting them with <code>my/</code> or their initials. This makes it easier to tell which functions they've customized and which ones are part of a package. It also minimizes the risk of accidentally overriding a function defined elsewhere. You can change the name of a function as long as you make sure you change the name wherever it's called, such as in keyboard shortcuts, hooks, or other functions.
+</p>
 
-          <p>
-            For example, here's a custom function from <a href="https://github.com/jorgenschaefer/Config/blob/master/emacs.el#L184">Jorgan Schaefer's config</a>:
-          </p>
+<p>
+For example, here's a custom function from <a href="https://github.com/jorgenschaefer/Config/blob/master/emacs.el#L184">Jorgan Schaefer's config</a>:
+</p>
 
-          <div class="org-src-container">
+<div class="org-src-container">
 
-            <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">fc/kill-to-beginning-of-line</span> ()
-              <span class="org-doc">"Kill from the beginning of the line to point."</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">fc/kill-to-beginning-of-line</span> ()
+  <span class="org-doc">"Kill from the beginning of the line to point."</span>
   (interactive)
   (kill-region (point-at-bol) (point)))
-            </pre>
-          </div>
+</pre>
+</div>
 
-          <p>
-            This creates a function called <code>fc/kill-to-beginning-of-line</code>. <code>()</code> is the argument list. Since it doesn't contain anything, that means this function does not take arguments. <code>​"Kill from the beginning of the line to point."​</code> is a documentation string (or docstring) that describes what the function does. Docstrings are optional, but highly recommended. <code>(interactive)</code> means that this can be called with <code>M-x</code> (<code>execute-extended-command</code>) or bound to a keyboard shortcut.
-          </p>
+<p>
+This creates a function called <code>fc/kill-to-beginning-of-line</code>. <code>()</code> is the argument list. Since it doesn't contain anything, that means this function does not take arguments. <code>​"Kill from the beginning of the line to point."​</code> is a documentation string (or docstring) that describes what the function does. Docstrings are optional, but highly recommended. <code>(interactive)</code> means that this can be called with <code>M-x</code> (<code>execute-extended-command</code>) or bound to a keyboard shortcut.
+</p>
 
-          <p>
-            If a function does not have the <code>(interactive)</code> keyword, you won't be able to call it with <code>M-x</code> or assign it to a keyboard shortcut, but you will still be able to write Emacs Lisp code that calls the function. This means <code>M-x</code> (<code>execute-extended-command</code>) lists only the commands that people will probably find useful while working directly with Emacs, skipping internal functions used by code.
-          </p>
+<p>
+If a function does not have the <code>(interactive)</code> keyword, you won't be able to call it with <code>M-x</code> or assign it to a keyboard shortcut, but you will still be able to write Emacs Lisp code that calls the function. This means <code>M-x</code> (<code>execute-extended-command</code>) lists only the commands that people will probably find useful while working directly with Emacs, skipping internal functions used by code.
+</p>
 
-          <p>
-            Once you've defined a custom function, you can bind it to a keyboard shortcut if you want. The code below binds the <code>fc/kill-to-beginning-of-line</code> function to <code>C-c C-u</code>:
-          </p>
+<p>
+Once you've defined a custom function, you can bind it to a keyboard shortcut if you want. The code below binds the <code>fc/kill-to-beginning-of-line</code> function to <code>C-c C-u</code>:
+</p>
 
-          <div class="org-src-container">
+<div class="org-src-container">
 
-            <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c C-u"</span>) 'fc/kill-to-beginning-of-line)
-            </pre>
-          </div>
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c C-u"</span>) 'fc/kill-to-beginning-of-line)
+</pre>
+</div>
 
-          <p>
-            You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, <code>emacs-lisp-mode</code> has an associated <code>emacs-lisp-mode-hook</code> which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in functions or custom functions to hooks, and they'll be run when that hook is called.
-          </p>
+<p>
+You will often see custom functions added to hooks. A hook is a list of functions that's called by some other code. Modes usually define a hook that's called after the mode is initialized so that you can further customize its behaviours. For example, <code>emacs-lisp-mode</code> has an associated <code>emacs-lisp-mode-hook</code> which is run when a buffer is set up in Emacs Lisp Mode. You can add built-in functions or custom functions to hooks, and they'll be run when that hook is called.
+</p>
 
-          <p>
-            People sometimes use hook functions to set up keybindings instead of using <code>define-key</code>. For example, this code:
-          </p>
+<p>
+People sometimes use hook functions to set up keybindings instead of using <code>define-key</code>. For example, this code:
+</p>
 
-          <div class="org-src-container">
+<div class="org-src-container">
 
-            <pre class="src src-emacs-lisp">(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+<pre class="src src-emacs-lisp">(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
 (define-key emacs-lisp-mode-map (kbd <span class="org-string">"C-c f"</span>) 'find-function)
-            </pre>
-          </div>
+</pre>
+</div>
 
-          <p>
-            can also be written as:
-          </p>
+<p>
+can also be written as:
+</p>
 
-          <div class="org-src-container">
+<div class="org-src-container">
 
-            <pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">my/set-up-emacs-lisp-shortcuts</span> ()
-              <span class="org-doc">"Set up some conveniences for Emacs Lisp."</span>
+<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">my/set-up-emacs-lisp-shortcuts</span> ()
+  <span class="org-doc">"Set up some conveniences for Emacs Lisp."</span>
   (turn-on-eldoc-mode)
   (local-set-key (kbd <span class="org-string">"C-c f"</span>) 'find-function))
 (add-hook 'emacs-lisp-mode-hook 'my/set-up-emacs-lisp-shortcuts)
-            </pre>
-          </div>
-        </div>
-      </div>
+</pre>
+</div>
+</div>
+</div>
 
-      <div id="outline-container-sec-3" class="outline-2">
-        <h2 id="sec-3">Lambdas - anonymous functions</h2>
-        <div class="outline-text-2" id="text-3">
-          <p>
-            Sometimes people just want to create a keyboard binding or process some data without defining a new function. <code>lambda</code> creates an anonymous function, which is a function that doesn't have a name. Here's an example:
-          </p>
+<div id="outline-container-unnumbered-10" class="outline-2">
+<h2 id="unnumbered-10">Lambdas - anonymous functions</h2>
+<div class="outline-text-2" id="text-unnumbered-10">
+<p>
+Sometimes people just want to create a keyboard binding or process some data without defining a new function. <code>lambda</code> creates an anonymous function, which is a function that doesn't have a name. Here's an example:
+</p>
 
-          <div class="org-src-container">
+<div class="org-src-container">
 
-            <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c e"</span>) (<span class="org-keyword">lambda</span> () (interactive) (find-file <span class="org-string">"~/.emacs.d/init.el"</span>)))
-            </pre>
-          </div>
+<pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c e"</span>) (<span class="org-keyword">lambda</span> () (interactive) (find-file <span class="org-string">"~/.emacs.d/init.el"</span>)))
+</pre>
+</div>
 
-          <p>
-            This binds <code>C-c e</code> to an anonymous function. The <code>()</code> means it doesn't take any arguments. <code>(interactive)</code> means it can be called through a keyboard shortcut, although since it's anonymous, it can't be called with <code>M-x</code>. The function opens the <code>~/.emacs.d/init.el</code> file, which is a handy way to edit your configuration.
-          </p>
+<p>
+This binds <code>C-c e</code> to an anonymous function. The <code>()</code> means it doesn't take any arguments. <code>(interactive)</code> means it can be called through a keyboard shortcut, although since it's anonymous, it can't be called with <code>M-x</code>. The function opens the <code>~/.emacs.d/init.el</code> file, which is a handy way to edit your configuration.
+</p>
 
-          <div class="practice">
-            <ol class="org-ol">
-              <li>Look for an Emacs configuration file that defines keybindings that you're curious about. Install any packages or copy any custom functions needed. Experiment with using those keybindings. Do you like them? Do you want to tweak them further?
-              </li>
+<div class="PRACTICE">
+<ol class="org-ol">
+<li>Look for an Emacs configuration file that defines keybindings that you're curious about. Install any packages or copy any custom functions needed. Experiment with using those keybindings. Do you like them? Do you want to tweak them further?</li>
 
-              <li>Think about how you use Emacs. What kinds of keyboard shortcuts would make your work easier? How can you adapt some of the functions you've read into things that would make them even more convenient for you?
-              </li>
-            </ol>
+<li>Think about how you use Emacs. What kinds of keyboard shortcuts would make your work easier? How can you adapt some of the functions you've read into things that would make them even more convenient for you?</li>
+</ol>
 
-          </div>
+</div>
 
-          <p>
-            Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-4-add-more-and-deal-with-errors.html">"How can I add more features and deal with errors?"</a>
-          </p>
-        </div>
-      </div>
-    </div>
-    <div id="postamble" class="status">
-      <div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
-    </div>
-  </body>
+<p>
+Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-4-add-more-and-deal-with-errors.html">"How can I add more features and deal with errors?"</a>
+</p>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.back-to-top:hover {
+    background-color: rgba(135, 135, 135, 0.50);
+}
+</style>
+
+<div class="back-to-top">
+<a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a>
+</div>
+
+<script type="text/javascript">
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+</script>
+</div>
+</body>
 </html>

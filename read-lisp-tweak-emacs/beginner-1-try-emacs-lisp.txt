@@ -173,8 +173,6 @@ When you're starting out, it's a good idea to keep your configuration in one fil
 
 Try this out:
 
-Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html]["How can I understand what Emacs Lisp code does?"]]
-
 #+BEGIN_PRACTICE
 1. Browse through http://www.emacswiki.org/emacs/CategoryDotEmacs for some code that looks like it will make Emacs work more like the way you want it to. If you need help figuring it out, send me a copy of the code (sacha@sachachua.com). 
 
@@ -208,3 +206,5 @@ Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-
 #+END_PRACTICE
 
 Next module: [[http://emacslife.com/read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.html]["How can I understand what Emacs Lisp code does?"]]
+
+

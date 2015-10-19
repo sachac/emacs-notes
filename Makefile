@@ -21,7 +21,7 @@ how-to-read-emacs-lisp.html: how-to-read-emacs-lisp.org
 
 how-to-read-emacs-lisp.epub: how-to-read-emacs-lisp.html
 	perl -p -n -e 's|http://emacslife.com/how-to-read-emacs-lisp.html#|#|g' how-to-read-emacs-lisp.html > tmp.html
-	ebook-convert tmp.html how-to-read-emacs-lisp.epub --authors "Sacha Chua" --language "English"
+	ebook-convert tmp.html how-to-read-emacs-lisp.epub --authors "Sacha Chua" --language "English" --no-default-epub-cover
 	rm tmp.html
 
 how-to-read-emacs-lisp.mobi: how-to-read-emacs-lisp.html

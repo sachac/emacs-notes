@@ -110,13 +110,13 @@ Read other people's configurations to get a sense of useful commands and handy k
 
 Some people like using a function key followed by letters in order to minimize the need to press Control or Meta. For example, you might use:
 
-#+begin_src 
+#+begin_src emacs-lisp
 (global-set-key (kbd "C-c r") 'query-replace)
 #+end_src
 
 or
 
-#+begin_src 
+#+begin_src emacs-lisp
 (global-set-key (kbd "<f9> r") 'query-replace)
 #+end_src
 
