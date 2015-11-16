@@ -3,14 +3,20 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>"How can I customize Emacs to make things more convenient?"</title>
-<!-- 2015-10-19 Mon 13:27 -->
+<!-- 2015-11-16 Mon 15:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>"How can I customize Emacs to make things more convenient?"</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
   .done   { font-family: monospace; color: green; }
   .priority { font-family: monospace; color: orange; }
@@ -18,9 +24,9 @@
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -59,15 +65,14 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -151,19 +156,19 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#unnumbered-1">Keyboard shortcuts</a>
+<li><a href="#orgheadline1">Keyboard shortcuts</a>
 <ul>
-<li><a href="#unnumbered-2">Setting keybindings in all buffers</a></li>
-<li><a href="#unnumbered-3">What does <code>kbd</code> do? How can I figure out which key it sets?</a></li>
-<li><a href="#unnumbered-4">Multi-key shortcuts</a></li>
-<li><a href="#unnumbered-5">Binding keys to other keys</a></li>
-<li><a href="#unnumbered-6">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</a></li>
-<li><a href="#unnumbered-7">Setting keybindings in a particular mode</a></li>
-<li><a href="#unnumbered-8">Other ways people bind keys</a></li>
+<li><a href="#orgheadline2">Setting keybindings in all buffers</a></li>
+<li><a href="#orgheadline3">What does <code>kbd</code> do? How can I figure out which key it sets?</a></li>
+<li><a href="#orgheadline4">Multi-key shortcuts</a></li>
+<li><a href="#orgheadline5">Binding keys to other keys</a></li>
+<li><a href="#orgheadline6">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</a></li>
+<li><a href="#modekeys">Setting keybindings in a particular mode</a></li>
+<li><a href="#orgheadline8">Other ways people bind keys</a></li>
 </ul>
 </li>
-<li><a href="#unnumbered-9">Defuns - function definitions</a></li>
-<li><a href="#unnumbered-10">Lambdas - anonymous functions</a></li>
+<li><a href="#orgheadline9">Defuns - function definitions</a></li>
+<li><a href="#orgheadline10">Lambdas - anonymous functions</a></li>
 </ul>
 </div>
 </div>
@@ -201,17 +206,17 @@ After this module, you'll be able to:
 
 </div>
 
-<div id="outline-container-unnumbered-1" class="outline-2">
-<h2 id="unnumbered-1">Keyboard shortcuts</h2>
-<div class="outline-text-2" id="text-unnumbered-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Keyboard shortcuts</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 The default keyboard shortcuts (or "keybindings") can be difficult to remember, and many useful functions don't have any keyboard shortcuts at all. People often set up their own keyboard shortcuts to make other commands easier to use. There are different ways to assign keys depending on where you want the keybinding to be available.
 </p>
 </div>
 
-<div id="outline-container-unnumbered-2" class="outline-3">
-<h3 id="unnumbered-2">Setting keybindings in all buffers</h3>
-<div class="outline-text-3" id="text-unnumbered-2">
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Setting keybindings in all buffers</h3>
+<div class="outline-text-3" id="text-orgheadline2">
 <p>
 You can assign a key to a function globally, which means that it will be available in buffers of any type if there are no mode maps or local keybindings that override it. (Mode maps are set by major modes like <code>emacs-lisp-mode</code> or minor modes like <code>auto-fill-mode</code>.) Setting a global keybinding is usually done with <code>global-set-key</code>, although sometimes you'll see it done with <code>define-key</code> and <code>global-map</code>. 
 </p>
@@ -256,14 +261,14 @@ These set <code>C-+</code> (<code>Ctrl</code> and <code>&lt;plus&gt;</code>) and
 </p>
 
 <p>
-If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to <a href="#mode-keys">Setting keybindings in a particular mode</a>.
+If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to <a href="#modekeys">Setting keybindings in a particular mode</a>.
 </p>
 </div>
 </div>
 
-<div id="outline-container-unnumbered-3" class="outline-3">
-<h3 id="unnumbered-3">What does <code>kbd</code> do? How can I figure out which key it sets?</h3>
-<div class="outline-text-3" id="text-unnumbered-3">
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">What does <code>kbd</code> do? How can I figure out which key it sets?</h3>
+<div class="outline-text-3" id="text-orgheadline3">
 <p>
 If you've gone through the Emacs Tutorial (<b>Help - Emacs Tutorial</b> or <code>C-h t</code>), you'll be familiar with many of the conventions used for writing keyboard shortcuts. <code>C-</code> stands for the <code>Ctrl</code> key, <code>M-</code> stands for the <code>Meta</code> key (which is probably <code>Alt</code> or <code>Option</code> on your keyboard). There are other prefixes as well. <code>S-</code> is for Shift, <code>H-</code> is for <code>Hyper</code>, and <code>s-</code> is for <code>Super</code>. Some people use operating system tools (such as <code>setxkbmap</code> for Linux) to change keys on their keyboard to <code>Super</code> or <code>Hyper</code> in order to enable even more keyboard shortcuts.
 </p>
@@ -334,9 +339,9 @@ In general, you can use <code>C-h k</code> (<code>describe-key</code>) followed 
 </div>
 </div>
 
-<div id="outline-container-unnumbered-4" class="outline-3">
-<h3 id="unnumbered-4">Multi-key shortcuts</h3>
-<div class="outline-text-3" id="text-unnumbered-4">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">Multi-key shortcuts</h3>
+<div class="outline-text-3" id="text-orgheadline4">
 <p>
 You can set up keybindings that use more than one key combination. This is a popular technique since you can only have so many short keybindings. For example, the following code changes <code>C-x C-b</code> to call <code>ibuffer</code>, which lists your buffers and makes it easy to jump to another buffer.
 </p>
@@ -387,9 +392,9 @@ to make it easier to replace strings. You can even bind it to both shortcuts.
 </div>
 </div>
 
-<div id="outline-container-unnumbered-5" class="outline-3">
-<h3 id="unnumbered-5">Binding keys to other keys</h3>
-<div class="outline-text-3" id="text-unnumbered-5">
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Binding keys to other keys</h3>
+<div class="outline-text-3" id="text-orgheadline5">
 <p>
 In addition to setting keyboard shortcuts for functions, you can also define keys to expand to a longer sequence of keystrokes. You can use this for inserting strings or calling keyboard macros. For example:
 </p>
@@ -408,9 +413,9 @@ These might be handy for quickly inserting your e-mail address or website.
 </div>
 </div>
 
-<div id="outline-container-unnumbered-6" class="outline-3">
-<h3 id="unnumbered-6">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</h3>
-<div class="outline-text-3" id="text-unnumbered-6">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Dealing with errors: "Key sequence <span class="underline">__</span> starts with non-prefix key <span class="underline">_</span>"</h3>
+<div class="outline-text-3" id="text-orgheadline6">
 <p>
 If you want to create a multi-key shortcut, the preceding keys must not already be assigned to functions. For example, if you want <code>M-t l</code> to call <code>transpose-lines</code>, you'll need to get rid of <code>M-t</code>'s default binding to <code>transpose-words</code> first. To unset a key, bind it to <code>nil</code> or use <code>global-unset-key</code>. Here's a group of shortcuts you can try.
 </p>
@@ -435,13 +440,9 @@ The example above has three bindings for <code>transpose-words</code>. <code>M-t
 </div>
 </div>
 
-<div id="outline-container-unnumbered-7" class="outline-3">
-<h3 id="unnumbered-7">Setting keybindings in a particular mode</h3>
-<div class="outline-text-3" id="text-unnumbered-7">
-<p>
-<a id="mode-keys"></a>
-</p>
-
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="modekeys"><a id="orgheadline7"></a>Setting keybindings in a particular mode</h3>
+<div class="outline-text-3" id="text-modekeys">
 <p>
 Sometimes you want keys to do different things in different types of files. Modes are how Emacs changes behaviour based on context. For example, Java files use <code>java-mode</code>, Org files use <code>org-mode</code>, and so forth. In addition to the major mode for a buffer, you may have several minor modes that modify the behaviour. Each mode has a keybinding map (or a "keymap"). You can assign a key in a mode map, which means it will override global keybindings in buffers with that mode. You can do this with <code>define-key</code> if you know the name of the keymap you want to change, which is generally the name of the mode + <code>-map</code>. For example:
 </p>
@@ -462,9 +463,9 @@ Note that if you use <code>define-key</code> with a mode map, the mode must alre
 </div>
 </div>
 
-<div id="outline-container-unnumbered-8" class="outline-3">
-<h3 id="unnumbered-8">Other ways people bind keys</h3>
-<div class="outline-text-3" id="text-unnumbered-8">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">Other ways people bind keys</h3>
+<div class="outline-text-3" id="text-orgheadline8">
 <p>
 The <code>bind-key</code> package provides a function that makes it easier to see your personal keybindings, but <code>bind-key</code> is not part of Emacs by default. I use <code>bind-key</code> a lot in <a href="http://sachachua.com/dotemacs">my configuration</a>. The syntax is similar to <code>global-set-key</code>, except it automatically wraps the keyboard shortcut string in <code>kbd</code>. It also keeps track of which keyboard shortcuts you've overridden so that you can use <code>M-x describe-personal-keybindings</code> to review them.
 </p>
@@ -491,9 +492,9 @@ For more about keybindings, see the <a href="http://www.gnu.org/software/emacs/m
 </div>
 </div>
 
-<div id="outline-container-unnumbered-9" class="outline-2">
-<h2 id="unnumbered-9">Defuns - function definitions</h2>
-<div class="outline-text-2" id="text-unnumbered-9">
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">Defuns - function definitions</h2>
+<div class="outline-text-2" id="text-orgheadline9">
 <p>
 In addition to the functions built into Emacs or available in packages, many people define their own with the <code>defun</code> function.
 </p>
@@ -564,9 +565,9 @@ can also be written as:
 </div>
 </div>
 
-<div id="outline-container-unnumbered-10" class="outline-2">
-<h2 id="unnumbered-10">Lambdas - anonymous functions</h2>
-<div class="outline-text-2" id="text-unnumbered-10">
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">Lambdas - anonymous functions</h2>
+<div class="outline-text-2" id="text-orgheadline10">
 <p>
 Sometimes people just want to create a keyboard binding or process some data without defining a new function. <code>lambda</code> creates an anonymous function, which is a function that doesn't have a name. Here's an example:
 </p>

@@ -23,7 +23,9 @@ After this module, you'll be able to:
 #+END_OBJECTIVES
 
 * Adding more features to Emacs
-<<load>>
+  :PROPERTIES:
+  :CUSTOM_ID: load
+  :END:
 
 Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. Some of the customizations you may want to make require that other parts of Emacs are loaded first. For example, if you want to define a key for the =c-mode-map= (used for editing C code) or add a function to =org-mode-hook= (called when a buffer is set up with Org Mode), those libraries need to be loaded first. You can load libraries by using =require=, like this:
 
@@ -43,7 +45,9 @@ c-mode is an interactive autoloaded compiled Lisp function in
 The first part of the filename (before the =.el= or =.elc=) is usually what you would use with =require=. If you have the source installed (the =.el= file), you can look for the =(provide ...)= expression to find the actual symbol to use.
 
 ** Installing packages
-<<installing-packages>>
+   :PROPERTIES:
+   :CUSTOM_ID: installing-packages
+   :END:
 
 Emacs comes with a lot of code, but there are even more packages out there. When you read other people's Emacs configurations, you might come across other interesting packages to try out.
 
@@ -87,7 +91,9 @@ Along those lines, you may come across code that looks like this:
 This runs =(dash-enable-font-lock)= only after =dash= is loaded. It does not automatically load =dash=. You'll see this when people have configuration that they want to run only if something is loaded, which can make sense for performance reasons. When you're starting out, you may want to use =require= instead of =eval-after-load=, since the argument to =eval-after-load= has to be quoted.
 
 ** Other Emacs Lisp files
-<<unpackaged>>
+   :PROPERTIES:
+   :CUSTOM_ID: unpackaged
+   :END:
 
 Some files are not yet available as packages. If you search for the function, you'll probably find a webpage with an =.el= file. You can save those to your computer and load them with:
 
@@ -118,7 +124,9 @@ Then you can use =require= to load the Emacs Lisp code if it exists.
 #+end_src
 
 * "Oh no! I have an error!"
-<<errors>>
+  :PROPERTIES:
+  :CUSTOM_ID: errors
+  :END:
 
 Part of learning Emacs is having the confidence to experiment, which you can develop by learning how to recognize and deal with different errors.
 
@@ -149,7 +157,9 @@ The code is trying to require or load a file that Emacs can't find.
 - If you're using =load=, does the file exist?
 
 ** Lisp error: (void-function ...)
-<<void-function>>
+   :PROPERTIES:
+   :CUSTOM_ID: void-function
+   :END:
 
 The code calls a function that has not been defined. 
 
@@ -158,7 +168,9 @@ The code calls a function that has not been defined.
 - If you're copying some code that isn't packaged in a library, check if there are any =defun= (define function) expressions that you forgot to copy. Make sure to include and evaluate those.
 
 ** Symbol's value as variable is void: ___
-<<void-variable>>
+   :PROPERTIES:
+   :CUSTOM_ID: void-variable
+   :END:
 
 The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves =add-to-list= or =add-hook=, you may need to use =require= to load the library that defines that list or hook first.
 

@@ -3,14 +3,20 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>"How can I understand what Emacs Lisp code does?"</title>
-<!-- 2015-10-19 Mon 13:35 -->
+<!-- 2015-11-16 Mon 15:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>"How can I understand what Emacs Lisp code does?"</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
   .done   { font-family: monospace; color: green; }
   .priority { font-family: monospace; color: orange; }
@@ -18,9 +24,9 @@
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -59,15 +65,14 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -151,18 +156,18 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#unnumbered-1">Learn more about functions</a></li>
-<li><a href="#unnumbered-2">Learn more about variables</a></li>
-<li><a href="#unnumbered-3">Understand symbols</a></li>
-<li><a href="#unnumbered-4">Work with lists</a>
+<li><a href="#orgheadline1">Learn more about functions</a></li>
+<li><a href="#orgheadline2">Learn more about variables</a></li>
+<li><a href="#quoting">Understand symbols</a></li>
+<li><a href="#orgheadline4">Work with lists</a>
 <ul>
-<li><a href="#unnumbered-5">Add to a list</a></li>
-<li><a href="#unnumbered-6">Hooks</a></li>
-<li><a href="#unnumbered-7">Deleting from a list</a></li>
-<li><a href="#unnumbered-8">Dot notation</a></li>
+<li><a href="#load-path">Add to a list</a></li>
+<li><a href="#orgheadline6">Hooks</a></li>
+<li><a href="#orgheadline7">Deleting from a list</a></li>
+<li><a href="#package-archives">Dot notation</a></li>
 </ul>
 </li>
-<li><a href="#unnumbered-9">Review</a></li>
+<li><a href="#orgheadline9">Review</a></li>
 </ul>
 </div>
 </div>
@@ -200,9 +205,9 @@ After this module, you should be able to
 
 </div>
 
-<div id="outline-container-unnumbered-1" class="outline-2">
-<h2 id="unnumbered-1">Learn more about functions</h2>
-<div class="outline-text-2" id="text-unnumbered-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Learn more about functions</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 The symbol after <code>(</code> is usually a function name, unless it's part of a list of literals (numbers, strings, etc.). You'll learn how to recognize literal lists later.
 </p>
@@ -347,9 +352,9 @@ Look for Emacs configuration code that you would like to understand further. Use
 </div>
 </div>
 
-<div id="outline-container-unnumbered-2" class="outline-2">
-<h2 id="unnumbered-2">Learn more about variables</h2>
-<div class="outline-text-2" id="text-unnumbered-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Learn more about variables</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 Variables are containers that can hold different values. In Emacs Lisp, you can change the value of a variable as many times as you want, and you can change it to different types of data as needed.
 </p>
@@ -427,13 +432,9 @@ Use <code>C-h v</code> (<code>describe-variable</code>) to learn more about the 
 </div>
 </div>
 
-<div id="outline-container-unnumbered-3" class="outline-2">
-<h2 id="unnumbered-3">Understand symbols</h2>
-<div class="outline-text-2" id="text-unnumbered-3">
-<p>
-<a id="quoting"></a>
-</p>
-
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="quoting"><a id="orgheadline3"></a>Understand symbols</h2>
+<div class="outline-text-2" id="text-quoting">
 <p>
 Let's take a closer look at this example.
 </p>
@@ -511,9 +512,9 @@ This can be confusing. When you're starting out, copy code carefully. If there's
 </div>
 </div>
 
-<div id="outline-container-unnumbered-4" class="outline-2">
-<h2 id="unnumbered-4">Work with lists</h2>
-<div class="outline-text-2" id="text-unnumbered-4">
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Work with lists</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 You can set the value of a variable to multiple things. In Emacs configuration files, you'll often see ' used for lists. For example,
 </p>
@@ -539,13 +540,9 @@ The code above sets the value of the variable to a list, ignoring any previous v
 </p>
 </div>
 
-<div id="outline-container-unnumbered-5" class="outline-3">
-<h3 id="unnumbered-5">Add to a list</h3>
-<div class="outline-text-3" id="text-unnumbered-5">
-<p>
-<a id="load-path"></a>
-</p>
-
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="load-path"><a id="orgheadline5"></a>Add to a list</h3>
+<div class="outline-text-3" id="text-load-path">
 <p>
 Most of the time, though, you want to add to a list instead of completely replacing it. You'll often see something like this in people's configuration files:
 </p>
@@ -562,9 +559,9 @@ This adds the <code>~/elisp</code> directory to the beginning of the list of dir
 </div>
 </div>
 
-<div id="outline-container-unnumbered-6" class="outline-3">
-<h3 id="unnumbered-6">Hooks</h3>
-<div class="outline-text-3" id="text-unnumbered-6">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Hooks</h3>
+<div class="outline-text-3" id="text-orgheadline6">
 <p>
 Hooks are lists of functions that are called from Emacs Lisp in order to modify the behaviour of something. For example, different modes have their own hooks so that you can add functions that will run when that mode is initialized. You saw this example earlier in the module:
 </p>
@@ -592,9 +589,9 @@ when a buffer is initialized with <code>emacs-lisp-mode</code>.
 </div>
 </div>
 
-<div id="outline-container-unnumbered-7" class="outline-3">
-<h3 id="unnumbered-7">Deleting from a list</h3>
-<div class="outline-text-3" id="text-unnumbered-7">
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Deleting from a list</h3>
+<div class="outline-text-3" id="text-orgheadline7">
 <p>
 If you need to delete something from a list, you can use the <code>delete</code> function like this:
 </p>
@@ -621,13 +618,9 @@ Hooks are lists of functions, so you can delete items using <code>delete</code>.
 </div>
 </div>
 
-<div id="outline-container-unnumbered-8" class="outline-3">
-<h3 id="unnumbered-8">Dot notation</h3>
-<div class="outline-text-3" id="text-unnumbered-8">
-<p>
-<a id="package-archives"></a>
-</p>
-
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="package-archives"><a id="orgheadline8"></a>Dot notation</h3>
+<div class="outline-text-3" id="text-package-archives">
 <p>
 Some things look like lists, but there's a dot between the first element and the last element. Whether something should have a dot or not depends on what's expected by the function that uses the data. For example:
 </p>
@@ -735,9 +728,9 @@ This stores backup files in the directory specified by <code>temporary-file-dire
 </div>
 </div>
 
-<div id="outline-container-unnumbered-9" class="outline-2">
-<h2 id="unnumbered-9">Review</h2>
-<div class="outline-text-2" id="text-unnumbered-9">
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">Review</h2>
+<div class="outline-text-2" id="text-orgheadline9">
 <div class="PRACTICE">
 <p>
 Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about functions and <code>C-h v</code> (<code>describe-variable</code>) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?

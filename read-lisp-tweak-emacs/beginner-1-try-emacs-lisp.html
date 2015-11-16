@@ -3,14 +3,20 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>"How can I try Emacs Lisp code?"</title>
-<!-- 2015-10-19 Mon 13:25 -->
+<!-- 2015-11-16 Mon 15:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>"How can I try Emacs Lisp code?"</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
   .done   { font-family: monospace; color: green; }
   .priority { font-family: monospace; color: orange; }
@@ -18,9 +24,9 @@
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -59,15 +65,14 @@
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -151,22 +156,22 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#unnumbered-1">Finding Emacs Lisp code</a>
+<li><a href="#orgheadline1">Finding Emacs Lisp code</a>
 <ul>
-<li><a href="#unnumbered-2">Emacs documentation</a></li>
-<li><a href="#unnumbered-3">Packages</a></li>
-<li><a href="#unnumbered-4">Webpages, blog posts, and the Emacs Wiki</a></li>
-<li><a href="#unnumbered-5">Mailing lists, newsgroups, and Q&amp;A sites</a></li>
+<li><a href="#orgheadline2">Emacs documentation</a></li>
+<li><a href="#orgheadline3">Packages</a></li>
+<li><a href="#orgheadline4">Webpages, blog posts, and the Emacs Wiki</a></li>
+<li><a href="#orgheadline5">Mailing lists, newsgroups, and Q&amp;A sites</a></li>
 </ul>
 </li>
-<li><a href="#unnumbered-6">Trying out code</a>
+<li><a href="#orgheadline6">Trying out code</a>
 <ul>
-<li><a href="#unnumbered-7">M-x ielm (Inferior Emacs Lisp Mode)</a></li>
-<li><a href="#unnumbered-8">The <code>*scratch*</code> buffer and Emacs Lisp <code>.el</code> files</a></li>
-<li><a href="#unnumbered-9">M-: (eval-expression)</a></li>
-<li><a href="#unnumbered-10">C-x C-e (eval-last-sexp)</a></li>
-<li><a href="#unnumbered-11">If you want that code to run every time you start Emacs&#x2026;</a></li>
-<li><a href="#unnumbered-12">Practice</a></li>
+<li><a href="#orgheadline7">M-x ielm (Inferior Emacs Lisp Mode)</a></li>
+<li><a href="#orgheadline8">The <code>*scratch*</code> buffer and Emacs Lisp <code>.el</code> files</a></li>
+<li><a href="#orgheadline9">M-: (eval-expression)</a></li>
+<li><a href="#orgheadline10">C-x C-e (eval-last-sexp)</a></li>
+<li><a href="#orgheadline11">If you want that code to run every time you start Emacs&#x2026;</a></li>
+<li><a href="#orgheadline12">Practice</a></li>
 </ul>
 </li>
 </ul>
@@ -202,17 +207,17 @@ After this section, you should be able to
 
 </div>
 
-<div id="outline-container-unnumbered-1" class="outline-2">
-<h2 id="unnumbered-1">Finding Emacs Lisp code</h2>
-<div class="outline-text-2" id="text-unnumbered-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Finding Emacs Lisp code</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 It's easier to learn how to read Emacs Lisp when you start with simple examples that will help you use Emacs more effectively. Here are some useful sources:
 </p>
 </div>
 
-<div id="outline-container-unnumbered-2" class="outline-3">
-<h3 id="unnumbered-2">Emacs documentation</h3>
-<div class="outline-text-3" id="text-unnumbered-2">
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="orgheadline2">Emacs documentation</h3>
+<div class="outline-text-3" id="text-orgheadline2">
 <p>
 Manuals and FAQs for Emacs-related tools often include code snippets. For example, the <a href="https://www.gnu.org/software/emacs/manual/efaq.html">Emacs FAQ</a> has an entry like this:
 </p>
@@ -232,9 +237,9 @@ You can read the Emacs manual by typing <code>C-h i</code> (<code>info</code>) a
 </div>
 </div>
 
-<div id="outline-container-unnumbered-3" class="outline-3">
-<h3 id="unnumbered-3">Packages</h3>
-<div class="outline-text-3" id="text-unnumbered-3">
+<div id="outline-container-orgheadline3" class="outline-3">
+<h3 id="orgheadline3">Packages</h3>
+<div class="outline-text-3" id="text-orgheadline3">
 <p>
 Emacs has lots of packages in different repositories, many of which require a little extra code in order to be used to full effect. You can use <code>M-x package-list-packages</code> to list the packages that Emacs knows about by default. You will need an Internet connection for that.
 </p>
@@ -266,9 +271,9 @@ You will need to be connected to the Internet in order to view and install packa
 </div>
 </div>
 
-<div id="outline-container-unnumbered-4" class="outline-3">
-<h3 id="unnumbered-4">Webpages, blog posts, and the Emacs Wiki</h3>
-<div class="outline-text-3" id="text-unnumbered-4">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">Webpages, blog posts, and the Emacs Wiki</h3>
+<div class="outline-text-3" id="text-orgheadline4">
 <p>
 While searching for information related to Emacs, you'll probably come across lots of Emacs Lisp snippets. The <a href="http://www.emacswiki.org/">EmacsWiki</a> has lots of code, too. Since this is a community-maintained wiki, you may come across code that is out of date or that refers to packages that you don't have. I've included common errors in this guide to help you figure things out - see <a href="http://emacslife.com/how-to-read-emacs-lisp.html#errors">"Oh no! I have an error!"</a>
 </p>
@@ -285,9 +290,9 @@ Here are some sites you may want to check out:
 </div>
 </div>
 
-<div id="outline-container-unnumbered-5" class="outline-3">
-<h3 id="unnumbered-5">Mailing lists, newsgroups, and Q&amp;A sites</h3>
-<div class="outline-text-3" id="text-unnumbered-5">
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Mailing lists, newsgroups, and Q&amp;A sites</h3>
+<div class="outline-text-3" id="text-orgheadline5">
 <p>
 There are many places where you can ask for help with Emacs. gnu.emacs.help is available as a <a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">mailing list</a> or as a newsgroup - check your favourite Usenet server or use <a href="http://dir.gmane.org/gmane.emacs.help">Gmane</a>. <a href="http://stackoverflow.com/questions/tagged/emacs">StackOverflow</a> and <a href="http://www.quora.com/Emacs">Quora</a> are popular as well. If you ask questions there, you might get answers in the form of Emacs Lisp code. You'll also come across Emacs Lisp code while searching for answers.
 </p>
@@ -299,9 +304,9 @@ Find a snippet of Emacs Lisp code you want to understand more deeply, or look at
 </div>
 </div>
 
-<div id="outline-container-unnumbered-6" class="outline-2">
-<h2 id="unnumbered-6">Trying out code</h2>
-<div class="outline-text-2" id="text-unnumbered-6">
+<div id="outline-container-orgheadline6" class="outline-2">
+<h2 id="orgheadline6">Trying out code</h2>
+<div class="outline-text-2" id="text-orgheadline6">
 <p>
 It's easier to understand code if you can experiment with it. Emacs Lisp code is made up of <b>symbolic expressions</b> (known as S-expressions, expressions, or sexp for short). Expressions are usually enclosed in pairs of parentheses. There are several ways you can try Emacs Lisp expressions before saving them in your configuration.
 </p>
@@ -321,9 +326,9 @@ Here are some ways you can run Emacs Lisp code. I'll explain them in more detail
 </ul>
 </div>
 
-<div id="outline-container-unnumbered-7" class="outline-3">
-<h3 id="unnumbered-7">M-x ielm (Inferior Emacs Lisp Mode)</h3>
-<div class="outline-text-3" id="text-unnumbered-7">
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">M-x ielm (Inferior Emacs Lisp Mode)</h3>
+<div class="outline-text-3" id="text-orgheadline7">
 <p>
 The Inferior Emacs Lisp Mode gives you a prompt where you can type or paste in Emacs Lisp code. Start it with <code>M-x ielm</code>. Press <code>RET</code> after you enter code, and the results will be displayed. "Inferior" is a technical term referring to how it's run, not a comment on the simplicity of the tool or the code you want to try. You can go to previously-executed code, change things, and press <code>RET</code> to run (or "evaluate") it again.
 </p>
@@ -358,9 +363,9 @@ Tip: When you're trying out an unfamiliar mode, use <code>C-h m</code> (<code>de
 </div>
 </div>
 
-<div id="outline-container-unnumbered-8" class="outline-3">
-<h3 id="unnumbered-8">The <code>*scratch*</code> buffer and Emacs Lisp <code>.el</code> files</h3>
-<div class="outline-text-3" id="text-unnumbered-8">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">The <code>*scratch*</code> buffer and Emacs Lisp <code>.el</code> files</h3>
+<div class="outline-text-3" id="text-orgheadline8">
 <p>
 When Emacs starts, it creates a buffer called <code>*scratch*</code> with the following contents:
 </p>
@@ -410,18 +415,18 @@ The <code>*scratch*</code> buffer is not automatically saved. If you would like 
 </div>
 </div>
 
-<div id="outline-container-unnumbered-9" class="outline-3">
-<h3 id="unnumbered-9">M-: (eval-expression)</h3>
-<div class="outline-text-3" id="text-unnumbered-9">
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">M-: (eval-expression)</h3>
+<div class="outline-text-3" id="text-orgheadline9">
 <p>
 If you want to quickly try a single expression, you can use <code>M-:</code> (<code>eval-expression</code>). It will display the results in the echo area near the bottom of your screen. If you want to insert the results into your buffer, call it with <code>C-u M-:</code> instead. For example, you can use <code>C-u M-: (* 18 2)</code> to multiply 18 and 2 quickly. To review previous results, you can switch to the <code>*Messages*</code> buffer.
 </p>
 </div>
 </div>
 
-<div id="outline-container-unnumbered-10" class="outline-3">
-<h3 id="unnumbered-10">C-x C-e (eval-last-sexp)</h3>
-<div class="outline-text-3" id="text-unnumbered-10">
+<div id="outline-container-orgheadline10" class="outline-3">
+<h3 id="orgheadline10">C-x C-e (eval-last-sexp)</h3>
+<div class="outline-text-3" id="text-orgheadline10">
 <p>
 <code>C-x C-e</code> (<code>eval-last-sexp</code>) runs the expression (S-expression, or sexp) before the cursor. NOTE: Your cursor should be after the closing parenthesis, not on it. <code>C-x C-e</code> (<code>eval-last-sexp</code>) works in lots of buffers, not just in Emacs Lisp ones. You can use it to quickly try expressions while reading manual pages or other documentation.
 </p>
@@ -458,9 +463,9 @@ As with <code>M-:</code> (<code>eval-expression</code>), you can use the <code>C
 </div>
 </div>
 
-<div id="outline-container-unnumbered-11" class="outline-3">
-<h3 id="unnumbered-11">If you want that code to run every time you start Emacs&#x2026;</h3>
-<div class="outline-text-3" id="text-unnumbered-11">
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11">If you want that code to run every time you start Emacs&#x2026;</h3>
+<div class="outline-text-3" id="text-orgheadline11">
 <p>
 &#x2026; <b>then</b> add it to your <code>~/.emacs.d/init.el</code> file. You can generally add new code at the end. If the code has something to do with <code>load-path</code>, it might be good to add it to the beginning instead. That way, your <code>load-path</code> changes can take effect before any libraries are loaded.
 </p>
@@ -475,9 +480,9 @@ When you're starting out, it's a good idea to keep your configuration in one fil
 </div>
 </div>
 
-<div id="outline-container-unnumbered-12" class="outline-3">
-<h3 id="unnumbered-12">Practice</h3>
-<div class="outline-text-3" id="text-unnumbered-12">
+<div id="outline-container-orgheadline12" class="outline-3">
+<h3 id="orgheadline12">Practice</h3>
+<div class="outline-text-3" id="text-orgheadline12">
 <p>
 Try this out:
 </p>

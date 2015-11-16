@@ -137,16 +137,16 @@ http://xkcd.com/1205/]
 * "How can I try Emacs Lisp code?"
 <<try>>
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "14-209"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "14-207"
 
 * "How can I understand what Emacs Lisp code does?"
 <<understanding-lisp>>
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.txt" :lines "16-343"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.txt" :lines "16-347"
 
 * "How can I customize Emacs to make things more convenient?"
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-3-make-things-more-convenient.txt" :lines "16-241"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-3-make-things-more-convenient.txt" :lines "16-245"
 
 * "How can I add more features and deal with errors?"
 

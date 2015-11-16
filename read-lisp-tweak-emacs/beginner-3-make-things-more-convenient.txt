@@ -52,7 +52,7 @@ Remember, =​'newline-and-indent= and =(quote newline-and-indent)= are the same
 
 These set =C-+= (=Ctrl= and =<plus>=) and =C--= (=Ctrl= and =<minus>=) to increase and decrease the font size when you're running Emacs in a graphical environment.
 
-If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to [[mode-keys][Setting keybindings in a particular mode]].
+If you want to set a keyboard shortcut only in particular modes or types of files, jump ahead to [[#modekeys][Setting keybindings in a particular mode]].
 
 ** What does =kbd= do? How can I figure out which key it sets?
 
@@ -154,7 +154,9 @@ If you want to create a multi-key shortcut, the preceding keys must not already 
 The example above has three bindings for =transpose-words=. =M-t w= uses the mnemonic of *t*-ranspose *w*-ords. =M-t t= is similar to the original binding for =transpose-words=, which was =M-t=. =M-t M-t= may seem like overkill, but sometimes you'll find it easier to hold the =Meta= key down and hit =t= twice quickly instead of typing =M-t=, releasing =Meta=, and then typing =t=. As you read other people's keybindings, you'll get a sense of how people have configured their keyboard shortcuts to speed up typing and minimize thinking.
 
 ** Setting keybindings in a particular mode
-<<mode-keys>>
+   :PROPERTIES:
+   :CUSTOM_ID: modekeys
+   :END:
 
 Sometimes you want keys to do different things in different types of files. Modes are how Emacs changes behaviour based on context. For example, Java files use =java-mode=, Org files use =org-mode=, and so forth. In addition to the major mode for a buffer, you may have several minor modes that modify the behaviour. Each mode has a keybinding map (or a "keymap"). You can assign a key in a mode map, which means it will override global keybindings in buffers with that mode. You can do this with =define-key= if you know the name of the keymap you want to change, which is generally the name of the mode + =-map=. For example:
 
