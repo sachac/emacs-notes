@@ -1,28 +1,7 @@
-#+TODO: TODO(t) STARTED(s) DELEGATED(d) SOMEDAY(.) WAITING(w) | DONE(x) CANCELLED(c) 
+#+TODO: TODO(t) STARTED(s) DELEGATED(d) SOMEDAY(.) WAITING(w) | DONE(x) CANCELLED(c)
+#+TODO: NEW(n) BEGINNER(b) INTERMEDIATE(i) | COMFORTABLE(x)
 #+PROPERTY: QUANTIFIED Emacs
-
-* Possible Emacs hangout-type tasks to work on; ways I want to tweak my Emacs
-Calendar: [[https://www.google.com/calendar/embed?src=sachachua.com_f1qe6ov70s1qd0h6nsrt93fp4o%40group.calendar.google.com&ctz=America/Toronto][Google Calendar]], [[https://www.google.com/calendar/ical/sachachua.com_f1qe6ov70s1qd0h6nsrt93fp4o%40group.calendar.google.com/public/basic.ics][ICAL]], [[https://www.google.com/calendar/feeds/sachachua.com_f1qe6ov70s1qd0h6nsrt93fp4o%40group.calendar.google.com/public/basic][XML]]
-
-** Web development
-*** TODO Set up and get the hang of Skewer
-*** TODO Set up and get the hang of autocompletion
-*** TODO Find some kind of Javascript unit testing framework that works well for me
-*** TODO Get the hang of smartparens
-*** TODO See if there's anything better than web mode
-*** TODO Learn how to fix commits in magit
-*** TODO Learn other magit features
-*** TODO Get the hang of phi-search and mc
-*** TODO Practice ace-jump-mode (keychord jj) and ace-jump-window (keychord jw)
-** Development
-*** TODO Set up a build environment inside my VM
-*** TODO Git clone the latest repository
-*** TODO Look through debbugs.gnu.org/cgi/pkgreport.cgi?package=emacs for something small and manageable
-*** TODO Set up Gnus again so that I can access the developer lists/groups
-*** TODO Confirm posting through Gnus
-** Writing
-*** TODO Smooth out image workflow for writing
-*** TODO Look for other packages
+#+FILETAGS: emacs
 
 * How to use this
 
@@ -34,278 +13,1265 @@ feel free to take a look at the other tasks in the file and
 suggest/volunteer. =) When discussing, add your initials followed by a
 colon and your notes (or create a subtree).
 
-* Tasks ready for delegation
-** DELEGATED Transcribe Avdi Grimm's chat												 :alex:transcript:
-Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
-** DELEGATED Transcribe Christopher Wellons' chat
-Xah
-** DELEGATED Make cheatsheet
-Xah
-** DONE Transcribe Carsten Dominik's chat												 :transcript:
-	 CLOSED: [2014-05-18 Sun 23:59]
-Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
+* Community
+** Emacs Hangouts
+[[https://docs.google.com/document/d/1u6Vc8KE3dumfSalgTfQhV6I84bjYYb0z3jhcayVN60U/edit?usp=sharing][Process document on Google Docs]]
 
-** DONE Transcribe Xah Lee's chat 													 :oli:transcript:
-Delegated to Oli on 2014-05-05
+*** Processes
+**** Creating the hangout
 
-http://sachachua.com/blog/2014/05/emacs-chat-xah-lee-ergoemacs/
-*** DONE Pay invoice for Xah Lee's chat
-		 CLOSED: [2014-05-12 Mon 20:20]
+- [X] Go to plus.google.com; optionally, log in as Emacs Conferences and Hangouts.
+- [X] Create an Event with the proper timezone information. Be sure to invite Public when creating the event, as you can’t add this afterwards. I usually set the location to “Google Hangouts URL will be posted here close to the event start.” or something like that.
+- [X] Set up redirection  http://sachachua.com/blog/wp-admin/tools.php?page=redirection.php
+- [X] Announce on Twitter and other places.
+- [X] Add to calendar
 
-* Other delegation notes
-** Ideas for tasks to delegate
-- Transcribe Emacs Chats, screencasts, other people’s videos
-- Research, reach out to, and coordinate with guests for Emacs Chats episodes
-  - Prepare a brief introduction/biography
-  - Suggest questions to ask them
-- Brainstorm and organize questions for resources, blog posts, and other guides
-- Create blog posts with screenshots/video/sample code
-- Review, organize, and edit existing resources (ex: past blog posts)
-- Help me work on productivity guides for Org Mode (ex: http://sach.ac/baby-steps-org-todo) 
-- Research specific Emacs packages and write blog posts / tutorials about them (ex: eww)
-- Help me with the information design and visual design for emacslife.com and/or my blog
-- Revise old transcripts; add structure, recommended actions, links, etc.
-** Processes
-*** Transcribe Emacs Chat
-Transcribe the Emacs Chat at the specified URL. Note that the output does not have to be verbatim, and we don’t need timecodes - please skip “ums”, “ahs”, filler words, etc. If we spell out links or commands, you can type in the actual link or command instead of transcribing how we spell it out. The end result will be an Org file in https://github.com/sachac/emacs-chats - see https://raw.githubusercontent.com/sachac/emacs-chats/gh-pages/chat-janis-mancevics.org for a sample. Send me a pull request or a file. Track your time so that you can get a sense of whether this is worth it for you or not within the budget. If you can tell early on that it’s likely to not be worth it for you (for example, if it takes ten hours to do the first 15 minutes (which it won’t, but who knows?)), tell me and I can assign the task to someone else.
-* Style guide
+Check the event's description close to the event to see the join URL. 
 
-- Avoid casual contractions (gonna -> going to, wanna -> want to, sorta -> sort of) unless necessary. You can use "don't", "can't", and other generally accepted contractions.
-- Fill in missing words.
-- Prefer shorter sentences, even replacing "and" in spoken speech with a period.
-- Remove unnecessary words, such as "And" at the beginning of sentences, filler words such as "like", verbal tics like repeated use of "Basically," "really," "you know," and so on.
-- Add commas after clauses. For example: 
-  - Right away, ...
-  - However, ...
-  - For example, ...
-  - As you can see, ...
-  - ..., or as we saw before, ...
-  - Hopefully, ...
-  - Fortunately, ...
-  - After that,
-  - If ..., then ...
-- Pay attention to subject-verb agreement. If the subject is plural, the verb should be plural. If the subject is singular, the verb should be singular. 
-- Pay attention to the tense of the verb (past? present? future? etc.).
-- Capitalize proper nouns (ex: Emacs)
-- Be careful about the distinction between "its" and "it's", "their" and "they're", etc.
-- Avoid Unicode, to make the text files easy to read even on plain text terminals
-- Spell out OK as "Okay"
-- Use Emacs conventions for keyboard shortcuts. (C-h instead of Ctrl+h, M-ESC instead of Meta+Escape, C-x C-c instead of Ctrl-x Ctrl-c). Surround them with equal signs to make them display in a special way. (ex: =C-h=) 
+*What's this Emacs Hangout thing about?* This is an informal way for Emacs geeks to get together and swap tips/notes/questions. Beginners welcome! (We're all learners here anyway... =) )
+
+You can find out about upcoming Hangouts at https://plus.google.com/b/108840863190686221561/108840863190686221561/posts . Check out http://sachachua.com/blog/tag/emacs-hangout for the notes for past hangouts or sign up for the mailing list there to get notifications. The recording will be available from this event page as well. Enjoy, and thanks for coming!
+
+Google Events translates event times to your local timezone. For reference, this event is on Dec 21 at 9 PM Toronto time (GMT -5).
+
+Sample tweet: New Emacs Hangout Dec 21 9 PM EST (GMT-5): http://sachachua.com/emacs-hangout . Check close to the event to find out how to join. See you there!
+
+**** Running the hangout
+
+*** 2015-12-21 Emacs Hangout
+    SCHEDULED: <2015-12-21 Mon>
+
+**** TODO Announce Hangout
+     SCHEDULED: <2015-12-04 Fri>
+https://us5.admin.mailchimp.com/campaigns/wizard/setup?id=771973
+
+Hi, folks!
+
+Come join us at another Emacs Hangout in a couple of weeks: Monday,
+Dec 21, starting at 9 PM EST (GMT-5).
+
+http://sachachua.com/watch-emacs-hangout has details, and Google+
+should automatically translate the time there to your timezone. 
+
+If this time is inconvenient for you, get in touch with me and suggest
+a few dates/times when you might want to have an Emacs Hangout. I'd be
+happy to see if we can work out a good time, or to share my processes
+for hosting these so that you can hold an hangout of your own. (It's
+totally informal. =) )
+
+You can find notes for past Emacs Hangouts at
+http://sachachua.com/blog/tag/emacs-hangout
+
+Hope to see you there!
+Sacha
+
+**** TODO Announce Hangout a few days before
+     SCHEDULED: <2015-12-18 Fri>
+
+Hi, folks!
+
+Time for another Emacs Hangout on Monday, Dec 21, starting at 9 PM EST
+(GMT-5). http://sachachua.com/watch-emacs-hangout has details, and
+Google+ should automatically translate the time there to your
+timezone. I'll post instructions for joining a few minutes before the
+start time, or you can try http://sachachua.com/join-emacs-hangout
+when the event starts. If it's full or you prefer to lurk, you can go
+to http://sachachua.com/watch-emacs-hangout to watch the stream.
+
+If this time is inconvenient for you, get in touch with me and suggest
+a few dates/times when you might want to have an Emacs Hangout. I'd be
+happy to see if we can work out a good time, or to share my processes
+for hosting these so that you can hold an hangout of your own. (It's
+totally informal. =) )
+
+You can find notes for past Emacs Hangouts at http://sachachua.com/blog/tag/emacs-hangout
+
+Hope to see you there!
+Sacha
+
+**** TODO Host Emacs Hangout
+     SCHEDULED: <2015-12-21 Mon>
+     :PROPERTIES:
+     :Effort:   3:00
+     :END:
+      :LOGBOOK:
+      CLOCK: [2015-11-18 Wed 20:39]--[2015-11-18 Wed 23:07] =>  2:28
+      :END:
+
+ - [ ] Close other windows
+ - [ ] Grab some water
+ - [ ] Set up Google Hangout On Air http://hangouts.google.com/onair
+ - [ ] Enable Q&A
+ - [ ] Copy Youtube and join links http://youtu.be/A4uunJOltj8
+ - [ ] Set up redirection http://sachachua.com/blog/wp-admin/tools.php?page=redirection.php
+ - [ ] Update event description (see template)
+ - [ ] Post as comment as well
+
+#+begin_example
+You can join the Hangout at http://sachachua.com/join-emacs-hangout (max 10 people).
+- If you'd like to display your name underneath your video, hover over the left side, choose the red icon with a wrench (Hangout Toolbox), click on the circular person icon on the right side, and fill in the Lower Third details.
+- To share your screen, hover over the left side, then click on the green icon of a monitor with an arrow.
+- There's also a text chat which you can use for asynchronous communication. Note: The text chat is not visible in the streaming video.
+- Using headphones or earphones can help avoid audio feedback. Please mute your microphone if you you have a lot of background noise and you're not currently talking.
+
+*If the 10-person limit is reached*, you can watch the livestream on this event page. Use the Q&A feature to ask questions or say if you've got something for show&tell. We can ask someone in the chat to step out so that you can join in. You can also use comments on this event page to share your thoughts.
+
+*What's this Emacs Hangout thing about?* This is an informal way for Emacs geeks to get together and swap tips/notes/questions. You can find out about upcoming Hangouts at https://plus.google.com/b/108840863190686221561/108840863190686221561/posts . Find notes for previous hangouts or sign up for the mailing list at http://sachachua.com/blog/tag/emacs-hangout . The recording will be available from this event page as well. Enjoy, and thanks for coming!
+#+end_example
+
+ - [ ] Schedule Twitter http://grabinbox.com - something like:
+
+Emacs Hangout starting now (9 PM EST / GMT-5). Join at http://sach.ac/join-emacs-hangout or watch the stream at http://sach.ac/watch-emacs-hangout .
+
+ - [ ] Announce on IRC (irc.freenode.net #emacs)
+
+Emacs Hangout starting in a bit (9 PM EST / GMT-5). Join at http://sach.ac/join-emacs-hangout (Google account required) or watch the stream at http://sach.ac/watch-emacs-hangout .
+
+ - [ ] Set up Emacs buffer or paper for noting timestamps
+   M-x org-timer-start, M-x org-timer-item (M-RET)
+
+After the Hangout:
+
+ - [ ] Copy and clean up the text chat
+ - [ ] Post the notes
+ - [ ] Update the event page with the link
+ - [ ] Add to Emacs Hangouts playlist
+ - [ ] Add the notes to the description of the video
+ - [ ] Convert to mp3: youtube-dl http://... --extract-audio --audio-format mp3 --prefer-ffmpeg
+ - [ ] Change ID3 tags
+ - [ ] Upload MP3
+ - [ ] Revert redirection to http://sachachua.com/blog/tag/emacs-hangout
+
+
+*** 2015-11-18
+Possible topics:
+- Emacs News
+- emacswiki.org updates
+  - Proposals
+
+- email
+- testing
+- emacs-devel: new, kinder emacs-devel! Make johnw happy and subscribe, or read it through gmane.org
+- emacsthemes.com
+
+irc://irc.freenode.net/#emacs
+**** DONE Organize Emacs Hangout 2015-11-18
+     CLOSED: [2015-11-13 Fri 16:36]
+     :PROPERTIES:
+     :Effort:   0:30
+     :QUANTIFIED: Emacs
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2015-11-13 Fri 16:36]
+     CLOCK: [2015-11-13 Fri 16:02]--[2015-11-13 Fri 16:36] =>  0:34
+     :END:
+  November 18, 9 PM EST
+**** DONE Announce Emacs Hangout
+     CLOSED: [2015-11-17 Tue 13:48] SCHEDULED: <2015-11-16 Mon>
+     :PROPERTIES:
+     :Effort:   0:15
+     :END:
+      :LOGBOOK:
+      - State "DONE"       from "STARTED"    [2015-11-17 Tue 13:48]
+      CLOCK: [2015-11-16 Mon 14:49]--[2015-11-17 Tue 13:48] => 22:59
+      :END:
+
+   November 18, 9-10:30 PM EST (GMT -5)
+   https://plus.google.com/events/cpef1jv0oq673aneiigh7q5n7lk
+
+ Hi folks!
+
+ Time for another Emacs Hangout this Wednesday (Nov 18), starting at 9 PM EDT (GMT-5). https://sachachua.com/emacs-hangout has details, and Google+ should automatically translate the time there to your timezone. I'll post instructions for joining a few minutes before the event starts. If it's full or you prefer to lurk, you can go to that URL to watch the stream.
+
+ If this time is inconvenient for you, get in touch with me and suggest a few dates/times when you might want to have an Emacs Hangout. I'd be happy to see if we can work out a good time, or to share my processes for hosting these so that you can hold an hangout of your own. (It's totally informal. =) )
+
+ Hope to see you there!
+ Sacha
+
+**** DONE Host Emacs Hangout
+     CLOSED: [2015-11-18 Wed 23:07] SCHEDULED: <2015-11-18 Wed 21:00>
+     :PROPERTIES:
+     :Effort:   3:00
+     :END:
+      :LOGBOOK:
+      CLOCK: [2015-11-18 Wed 20:39]--[2015-11-18 Wed 23:07] =>  2:28
+      :END:
+
+ - [X] Close other windows
+ - [X] Grab some water
+ - [X] Set up Google Hangout On Air http://hangouts.google.com/onair
+ - [X] Enable Q&A
+ - [X] Copy Youtube and join links http://youtu.be/A4uunJOltj8
+ - [X] Set up redirection http://sachachua.com/blog/wp-admin/tools.php?page=redirection.php
+ - [X] Update event description (see template)
+ - [X] Post as comment as well
+
+#+begin_example
+You can join the Hangout at http://sachachua.com/join-emacs-hangout (max 10 people).
+- If you'd like to display your name underneath your video, hover over the left side, choose the red icon with a wrench (Hangout Toolbox), click on the circular person icon on the right side, and fill in the Lower Third details.
+- To share your screen, hover over the left side, then click on the green icon of a monitor with an arrow.
+- There's also a text chat which you can use for asynchronous communication. Note: The text chat is not visible in the streaming video.
+- Using headphones or earphones can help avoid audio feedback. Please mute your microphone if you you have a lot of background noise and you're not currently talking.
+
+*If the 10-person limit is reached*, you can watch the livestream on this event page. Use the Q&A feature to ask questions or say if you've got something for show&tell. We can ask someone in the chat to step out so that you can join in. You can also use comments on this event page to share your thoughts.
+
+*What's this Emacs Hangout thing about?* This is an informal way for Emacs geeks to get together and swap tips/notes/questions. You can find out about upcoming Hangouts at https://plus.google.com/b/108840863190686221561/108840863190686221561/posts . Find notes for previous hangouts or sign up for the mailing list at http://sachachua.com/blog/tag/emacs-hangout . The recording will be available from this event page as well. Enjoy, and thanks for coming!
+#+end_example
+
+ - [X] Schedule Twitter http://grabinbox.com - something like:
+
+Emacs Hangout starting now (9 PM EST / GMT-5). Join at http://sach.ac/join-emacs-hangout or watch the stream at http://sach.ac/watch-emacs-hangout .
+
+ - [X] Announce on IRC (irc.freenode.net #emacs)
+
+Emacs Hangout starting in a bit (9 PM EST / GMT-5). Join at http://sach.ac/join-emacs-hangout (Google account required) or watch the stream at http://sach.ac/watch-emacs-hangout .
+
+ - [ ] Set up Emacs buffer or paper for noting timestamps
+   M-x org-timer-start, M-x org-timer-item (M-RET)
+
+After the Hangout:
+
+ - [X] Copy and clean up the text chat
+ - [X] Post the notes
+ - [X] Update the event page with the link
+ - [X] Add to Emacs Hangouts playlist
+ - [X] Add the notes to the description of the video
+ - [X] Convert to mp3: youtube-dl http://... --extract-audio --audio-format mp3 --prefer-ffmpeg
+ - [ ] Change ID3 tags
+ - [X] Upload MP3
+ - [X] Revert redirection to http://sachachua.com/blog/tag/emacs-hangout
+
+**** 2015-11-18 Emacs Hangout
+     :PROPERTIES:
+     :ID:       o2b:d19c68f0-a4bc-4e7b-9e97-a7781344b874
+     :POST_DATE: [2015-11-18 Wed 22:40]
+     :POSTID:   28483
+     :BLOG:     sacha
+     :END:
+
+Coding, e-mail, LaTeX, and more. Enjoy!
+
+#+HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/A4uunJOltj8" frameborder="0" allowfullscreen></iframe>
+#+HTML: <style type="text/css">table td { word-wrap: break-word }</style>
+
+Event page: https://plus.google.com/events/cpef1jv0oq673aneiigh7q5n7lk
+
+Timestamps:
+
+- [[http://youtu.be/A4uunJOltj8?t=0h02m0s][0:02]]  Podcasts
+- [[http://youtu.be/A4uunJOltj8?t=0h03m0s][0:03]]  sweetgreen - ordering salad
+- [[http://youtu.be/A4uunJOltj8?t=0h14m0s][0:14]]  Windows
+- [[http://youtu.be/A4uunJOltj8?t=0h16m0s][0:16]]  exwm - emacs window manager
+- [[http://youtu.be/A4uunJOltj8?t=0h18m0s][0:18]]  Android development
+- [[http://youtu.be/A4uunJOltj8?t=0h21m0s][0:21]]  Org Mode
+- [[http://youtu.be/A4uunJOltj8?t=0h25m0s][0:25]]  mail, search, notmuch, mairix, filtering, Gmail tabs
+- [[http://youtu.be/A4uunJOltj8?t=0h37m0s][0:37]]  TRAMP, rsync, firestarter, mosh
+- [[http://youtu.be/A4uunJOltj8?t=0h43m0s][0:43]]  stumpwm, conkeror
+- [[http://youtu.be/A4uunJOltj8?t=0h47m0s][0:47]]  concurrency, guile
+- [[http://youtu.be/A4uunJOltj8?t=0h51m0s][0:51]]  dash
+- [[http://youtu.be/A4uunJOltj8?t=0h52m0s][0:52]]  packages
+- [[http://youtu.be/A4uunJOltj8?t=0h53m0s][0:53]]  edit with Emacs (Chrome extension), Cocoa text system on Mac OS X
+- [[http://youtu.be/A4uunJOltj8?t=0h57m0s][0:57]]  railwaycat, spaceline (modeline from spacemacs)
+- [[http://youtu.be/A4uunJOltj8?t=1h04m0s][1:04]]  preview latex, knitr, sweave, Org tables in LaTeX
+- [[http://youtu.be/A4uunJOltj8?t=1h09m0s][1:09]]  spacemacs, vim
+- [[http://youtu.be/A4uunJOltj8?t=1h16m0s][1:16]]  multiple cursors, keyboard macros
+- [[http://youtu.be/A4uunJOltj8?t=1h18m0s][1:18]]  eshell, shells
+- [[http://youtu.be/A4uunJOltj8?t=1h19m0s][1:19]]  volatile-highlights, undo tree
+- [[http://youtu.be/A4uunJOltj8?t=1h21m0s][1:21]]  beacon-mode
+- [[http://youtu.be/A4uunJOltj8?t=1h24m0s][1:24]]  helm-show-kill-ring
+- [[http://youtu.be/A4uunJOltj8?t=1h25m0s][1:25]]  experimenting with versions of code, git-timemachine, undo-tree timestamps and diffs
+
+Text chat:
+
+| me | 9:30 PM | notmuch, mairix |
+| Will Monroe | 9:31 PM | thanks! |
+| Puneeth Chaganti | 9:33 PM | Hi everyone.  |
+| me | 9:34 PM | nnmail-split-methods |
+| Puneeth Chaganti | 9:36 PM | I use imapfilter for my non-gmail account.  |
+| Diego Berrocal | 9:36 PM | what about the gmail one?  |
+| Will Monroe | 9:36 PM | these are excellent suggestions for a new gnus user Puneeth, thank you for org2blog! |
+| Puneeth Chaganti | 9:37 PM | I don't yet use gmail with mu4e. Just not sure how long downloading all my mail would take.  |
+| Diego Berrocal | 9:38 PM | [[https://mosh.mit.edu/#techinfo][https://mosh.mit.edu/#techinfo]] ^ better ssh |
+| Will Monroe | 9:39 PM | Puneeth, I've used mu4e with offlineimap to download lots of gmail.  It did take a lot of time for ~4GB to download. |
+| Puneeth Chaganti | 9:40 PM | Yeah, I'm also subscribed to a lot of lists that are filterd out using email filters, but I'm afraid getting new mail also would be really slow. I have a better internet connection these days. May be I should try.  |
+| Diego Berrocal | 9:41 PM | doesn't gnus freeze your emacs sometimes? |
+| me | 9:41 PM | I've been using gmane.org for many mailing lists. The web interface has been a bit wonky, but the NNTP through Gnus seems okay. |
+| Diego Berrocal | 9:41 PM |  it did on me last time I used it (years ago) Link to Window Manager: [[https://github.com/ch11ng/exwm][https://github.com/ch11ng/exwm]] |
+| Puneeth Chaganti | 9:44 PM | [[http://conkeror.org/][http://conkeror.org/]] |
+| Will Monroe | 9:46 PM | Bye everyone!  It was nice talking with you. |
+| Daniel Gopar | 9:48 PM | Diego do you have an example of using firestarter with rsync? Do you have your init.el uploaded in Github or somwhere? |
+| Diego Berrocal | 9:49 PM | unfortunately it's not in my config anymore  I'll try to make a blog post  |
+| Daniel Gopar | 9:50 PM | sweet \o/ Let me know if you end up creating a post |
+| Diego Berrocal | 9:50 PM | yeah  \o/ |
+| Puneeth Chaganti | 9:52 PM | Yes, I found it useful too. Thanks for doing those posts, Sacha |
+| me | 9:53 PM |  |
+| Diego Berrocal | 9:53 PM | not more scrolling through MELPA twitter now  [[https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en][https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en]] edit-with-emacs ^ |
+| Bryan Maass | 9:54 PM | [[https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en][https://chrome.google.com/webstore/detail/edit-with-emacs/ljobjlafonikaiipfkggjbhkghgicgoh?hl=en]] |
+| Howard Melman | 9:56 PM | [[https://github.com/jrus/cocoa-text-system][https://github.com/jrus/cocoa-text-system]] |
+| Bryan Maass | 9:56 PM | [[https://www.hcs.harvard.edu/~jrus/site/cocoa-text.html][https://www.hcs.harvard.edu/~jrus/site/cocoa-text.html]] |
+| me | 9:58 PM | Reddit discussion of spaceline [[https://www.reddit.com/r/emacs/comments/3mq61l/spaceline_spacemacs_modeline_extracted_as_a/][https://www.reddit.com/r/emacs/comments/3mq61l/spaceline_spacemacs_modeline_extracted_as_a/]] |
+| me | 9:59 PM | [[http://emacsthemes.com/][http://emacsthemes.com/]] |
+| Bryan Garza | 10:03 PM | [[https://github.com/kuanyui/moe-theme.el][https://github.com/kuanyui/moe-theme.el]] |
+| me | 10:07 PM | (org) Tables in arbitrary syntax From Joseph: yihui.name/knitr |
+| Bryan Garza | 10:19 PM | [[https://www.masteringemacs.org/article/complete-guide-mastering-eshell][https://www.masteringemacs.org/article/complete-guide-mastering-eshell]] [[https://github.com/k-talo/volatile-highlights.el][https://github.com/k-talo/volatile-highlights.el]] [[https://github.com/Malabarba/beacon][https://github.com/Malabarba/beacon]] |
+| Diego Berrocal | 10:25 PM | git-timemachine |
+| me | 10:27 PM | (setq undo-tree-visualizer-timestamps t)<br>    (setq undo-tree-visualizer-diff t) |
+| Daniel Gopar | 10:28 PM | Diego can you put a link to your site? |
+| Diego Berrocal | 10:30 PM | cestdiego.github.io ^ |
+
+*** 2015-06-17
+**** DONE Host Emacs Hangout
+     CLOSED: [2015-06-22 Mon 17:34] SCHEDULED: <2015-06-17 Wed>
+     :LOGBOOK:
+     - State "DONE"       from "TODO"       [2015-06-22 Mon 17:34]
+     :END:
+  See if we can get anyone to organize the agenda
+*** 2015-10-14
+**** DONE Announce Emacs Hangout
+     CLOSED: [2015-09-25 Fri 17:58] SCHEDULED: <2015-10-12 Mon>
+     :LOGBOOK:
+     - State "DONE"       from "TODO"       [2015-09-25 Fri 17:58]
+     :END:
+  https://plus.google.com/b/108840863190686221561/108840863190686221561
+
+  [[file:id:o2b:a67b2c23-f3e3-4ca7-a00b-68e1a3ba6807][Update on Emacs Conf 2015 videos]]
+
+**** DONE Emacs Hangout 2015-10-14
+
+  Youtube: http://youtu.be/FPciM0PHPAw
+  Join: https://plus.google.com/hangouts/_/wvuhrdngbad5ht2rpeolwl7hqia
+
+  - [X] Close other windows
+  - [X] Grab some water
+  - [X] Set up Google Hangout On Air http://hangouts.google.com/onair
+  - [X] Enable Q&A, set up lower third
+  - [X] Copy Youtube and join links
+  - [ ] Update event description (see template)
+
+  You can join the Hangout at https://plus.google.com/hangouts/_/wvuhrdngbad5ht2rpeolwl7hqia (max 10 people).
+  - If you'd like to display your name underneath your video, hover over the left side, choose the red icon with a wrench (Hangout Toolbox), click on the circular person icon on the right side, and fill in the Lower Third details.
+  - To share your screen, hover over the left side, then click on the green icon of a monitor with an arrow.
+  - There's also a text chat which you can use for asynchronous communication. Note: The text chat is not visible in the streaming video.
+  - Using headphones or earphones can help avoid audio feedback. Please mute your microphone if you you have a lot of background noise and you're not currently talking.
+
+  *If the 10-person limit is reached*, you can watch the livestream on this event page. Use the Q&A feature to ask questions or say if you've got something for show&tell. We can ask someone in the chat to step out so that you can join in. You can also use comments on this event page to share your thoughts.
+
+  *What's this Emacs Hangout thing about?* This is an informal way for Emacs geeks to get together and swap tips/notes/questions. You can find out about upcoming Hangouts, previous Hangouts, or the mailing list at https://plus.google.com/b/108840863190686221561/108840863190686221561/posts . The recording will be available from this event page as well. Enjoy, and thanks for coming!
+
+  - [X] Schedule Twitter http://grabinbox.com - something like:
+
+  Emacs Hangout now (9 PM EDT / 1 AM GMT)! Join at https://plus.google.com/hangouts/_/wvuhrdngbad5ht2rpeolwl7hqia or watch the stream at https://plus.google.com/b/108840863190686221561/events/cav8n9cv887nfjdtog483flar2c .
+
+  - [X] Announce on IRC (irc.freenode.net #emacs)
+
+  Emacs Hangout in ~5min (9 PM EDT / 1 AM GMT) - Join at https://plus.google.com/hangouts/_/wvuhrdngbad5ht2rpeolwl7hqia or watch the stream at https://plus.google.com/b/108840863190686221561/events/cav8n9cv887nfjdtog483flar2c .
+
+  - [X] Set up Emacs buffer or paper for noting timestamps
+    M-x org-timer-start, M-x org-timer-item (M-RET)
+  - [X] Come up with a short list of things to fill in the gaps
+    - https://rawfoo.wordpress.com/2015/10/11/56-write-up-some-possible-stuff-to-talk-about-during-emacs-chat-2015-10-14/comment-page-1/#comment-6
+    - Emacs conference videos, yay!
+    - Org table time calculations
+    - Unwrapping spans
+
+  After the Hangout:
+
+  - [X] Copy and clean up the text chat
+  - [ ] Post the notes
+  - [ ] Update the event page with the link
+  - [ ] Download the video and reupload it to the Emacs Hangouts channel, adding it to the playlist
+  - [ ] Add the notes to the description of the video
+
+  Emacs Hangout in ~5min (9 PM EDT / 1 AM GMT) - Join at https://plus.google.com/hangouts/_/wvuhrdngbad5ht2rpeolwl7hqia or watch the stream at https://plus.google.com/b/108840863190686221561/events/cav8n9cv887nfjdtog483flar2c .
+
+***** 2015-10-14 Emacs Hangout                                :emacs:hangout:
+      :PROPERTIES:
+      :ID:       o2b:84774726-9165-4d9b-a737-6eccbd8ef717
+      :POST_DATE: [2015-10-14 Wed 22:39]
+      :POSTID:   28427
+      :BLOG:     sacha
+      :END:
+
+   Another Emacs Hangout, hooray! Thanks to everyone who participated. Enjoy watching, and I hope to see you at the next one!
+
+   #+HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/FPciM0PHPAw" frameborder="0" allowfullscreen></iframe>
+
+   [[https://plus.google.com/b/108840863190686221561/events/cav8n9cv887nfjdtog483flar2c][Event page]] - [[http://eepurl.com/bbi-Ir][Mailing list for notifications]]
+
+   Partial list of fuzzy timestamps:
+
+   - [[http://youtu.be/FPciM0PHPAw?t=0h04m0s][0:04]]  using org babel for a git dashboard [[https://rawfoo.wordpress.com/2015/10/11/56-write-up-some-possible-stuff-to-talk-about-during-emacs-chat-2015-10-14/][link]]
+   - [[http://youtu.be/FPciM0PHPAw?t=0h14m0s][0:14]]  org tables and timestamps - whoops, focused on the wrong video, but here's the blog post: [[http://sachachua.com/blog/2015/09/update-on-emacs-conf-2015-videos-org-mode-tables-and-time-calculations/][link]]
+   - [[http://youtu.be/FPciM0PHPAw?t=0h22m0s][0:22]]  projectile and tags
+   - [[http://youtu.be/FPciM0PHPAw?t=0h32m0s][0:32]]  jabber and org contacts
+   - [[http://youtu.be/FPciM0PHPAw?t=0h37m0s][0:37]]  org-download
+   - [[http://youtu.be/FPciM0PHPAw?t=0h41m0s][0:41]]  Kindle highlights
+   - [[http://youtu.be/FPciM0PHPAw?t=0h42m0s][0:42]]  archiving
+   - [[http://youtu.be/FPciM0PHPAw?t=0h45m0s][0:45]]  visible-mode
+   - [[http://youtu.be/FPciM0PHPAw?t=0h48m0s][0:48]]  company-mode
+   - [[http://youtu.be/FPciM0PHPAw?t=0h50m0s][0:50]]  elfeed, pinboard
+   - [[http://youtu.be/FPciM0PHPAw?t=0h58m0s][0:58]]  building from source
+
+   Text chat:
+
+   | Eric Hanchrow | 8:56 PM | I'm so much more comfortable with text than video ... if other people join, will I see their icons? |
+   | me | 8:56 PM | Yup. Text chat is totally cool, it gets saved and posted too. and I can read things into the audio for people just listening to the stream (Livestream viewers won't see the text chat during the hangout - only people in the actual Hangout will see it, so that's why I repeat cool stuff.  ) |
+   | Eric Hanchrow | 8:57 PM | uh ... so "livestream" is something different from Hangout? :-\ livestream must be "read only" |
+   | me | 8:58 PM | Yup, livestream (Youtube, etc.) is read only |
+   | Eric Hanchrow | 8:58 PM | ah dinnertime already! |
+   | Puneeth Chaganti | 9:09 PM | Hi everyone.  |
+   | me | 9:10 PM | Hi Puneeth!  |
+   | Kiran Gangadharan | 9:37 PM | [[https://github.com/abo-abo/org-download][https://github.com/abo-abo/org-download]] |
+   | Puneeth Chaganti | 9:41 PM | [[https://github.com/punchagan/clip2org][https://github.com/punchagan/clip2org]] I have to head off folks! I'll catch up with video later. Have a good day/night! |
+   | me | 9:57 PM | See you! |
+   | Dave Marquardt | 10:13 PM | Sacha, what was the name of that mode that scatters tasks? I think I saw something like that in orgbox.... Now I see it in the Org info. Thanks! Thanks for setting it up!   |
+
+*** August 2015 Emacs Hangout
+    :PROPERTIES:
+    :ID:       o2b:9027d79e-80c0-4f24-be09-911658f9f154
+    :POST_DATE: [2015-08-14 Fri 12:41]
+    :POSTID:   28380
+    :BLOG:     sacha
+    :END:
+
+Thanks to Philip Stark for hosting this one!
+
+#+HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/kN3Kgel3w6M" frameborder="0" allowfullscreen></iframe>
+#+HTML: <style type="text/css">table td { word-wrap: break-word }</style>
+
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h07m0s][00:07]]  reproducible research
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h13m0s][00:13]]  windows
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h18m0s][00:18]]  mail
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h30m0s][00:30]]  config
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h34m0s][00:34]]  spacemacs
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h40m0s][00:40]]  keys
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h50m0s][00:50]]  Emacs -nw
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h55m0s][00:55]]  sessions, projectile
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=00h57m0s][00:57]]  hydra
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=01h02m0s][01:02]]  source navigation, gnu global
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=01h13m0s][01:13]]  private variables?
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=01h14m0s][01:14]]  exercism.io
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=01h18m0s][01:18]]  request tracker
+- [[https://www.youtube.com/watch?v=kN3Kgel3w6M&t=01h23m0s][01:23]]  completion
+
+Text chat:
+
+| Paul Harper | 2:08 PM | Evan's Links: [[http://www.misshula.org/category/tutorials.html][http://www.misshula.org/category/tutorials.html]] Dart Throwing Chimp: [[https://dartthrowingchimp.wordpress.com/][https://dartthrowingchimp.wordpress.com/]] |
+| Philip Stark | 2:15 PM | [[https://www.vagrantup.com/][https://www.vagrantup.com/]] [[http://stevelosh.com/blog/2012/10/the-homely-mutt/][http://stevelosh.com/blog/2012/10/the-homely-mutt/]] |
+| Paul Harper | 2:19 PM | mu4e: [[http://www.macs.hw.ac.uk/~rs46/posts/2014-01-13-mu4e-email-client.html][http://www.macs.hw.ac.uk/~rs46/posts/2014-01-13-mu4e-email-client.html]] Zawinski’s Law “Every program attempts to expand until it can read mail. Those programs which cannot so expand are replaced by ones which can.” Law of Software Envelopment, Jamie Zawinski. Mutt with Org-Mode: [[https://upsilon.cc/~zack/blog/posts/2010/02/integrating_Mutt_with_Org-mode/][https://upsilon.cc/~zack/blog/posts/2010/02/integrating_Mutt_with_Org-mode/]] |
+| me | 2:23 PM | Maybe [[http://emacswiki.org/emacs/MultipleSMTPAccounts][http://emacswiki.org/emacs/MultipleSMTPAccounts]] ? |
+| Magnus Henoch | 2:24 PM | I mashed some of those together into this monster: [[https://github.com/legoscia/dotemacs/blob/master/dotemacs.org#set-smtp-server-depending-on-from-address][https://github.com/legoscia/dotemacs/blob/master/dotemacs.org#set-smtp-server-depending-on-from-address]] |
+| Mond Beton | 2:25 PM | org mode is new  |
+| Rogelio Zarate | 2:26 PM | Just started with emacs |
+| Paul Harper | 2:27 PM | Emacs and Vim started in 1976 [[http://www.slate.com/articles/technology/bitwise/2014/05/oldest_software_rivalry_emacs_and_vi_two_text_editors_used_by_programmers.html][http://www.slate.com/articles/technology/bitwise/2014/05/oldest_software_rivalry_emacs_and_vi_two_text_editors_used_by_programmers.html]] |
+| me | 2:28 PM | Was it thishttp://sachachua.com/blog/2015/04/john-wiegley-on-organizing-your-emacs-configuration-with-use-package/ Err, [[http://sachachua.com/blog/2015/04/john-wiegley-on-organizing-your-emacs-configuration-with-use-package/][http://sachachua.com/blog/2015/04/john-wiegley-on-organizing-your-emacs-configuration-with-use-package/]] [[http://endlessparentheses.com/][http://endlessparentheses.com/]] ? |
+| Paul Harper | 2:41 PM | Not sure if this might help. Setting up Emacs key mappings on Windows Outlook [[http://blogs.adobe.com/silverman/2012/04/15/setting-up-emacs-key-mappings-on-windows-outlook/][http://blogs.adobe.com/silverman/2012/04/15/setting-up-emacs-key-mappings-on-windows-outlook/]]  |
+| me | 2:42 PM | [[http://emacsblog.org/2007/05/10/emacs-key-bindings-in-windows/][http://emacsblog.org/2007/05/10/emacs-key-bindings-in-windows/]]  suggests XKeymacs, but I don't know if it will work with recent versions of Windows. [[http://www.cam.hi-ho.ne.jp/oishi/indexen.html][http://www.cam.hi-ho.ne.jp/oishi/indexen.html]] |
+| Mond Beton | 2:44 PM | thank you  |
+| Rogelio Zarate | 2:48 PM | Too many opinions on how to do things, example keybing on emacs/os x |
+| me | 2:50 PM | [[http://emacs.stackexchange.com/questions/8078/how-to-set-environment-variables-editor-visual-to-prefer-running-emacs][http://emacs.stackexchange.com/questions/8078/how-to-set-environment-variables-editor-visual-to-prefer-running-emacs]] may be helpful if you want it to reuse an existing Emacs if possible |
+| Daniel Gopar | 2:58 PM | [[https://github.com/gopar/.emacs.d/blob/master/init.el#L442][https://github.com/gopar/.emacs.d/blob/master/init.el#L442]] |
+| Paul Harper | 2:59 PM | Something for beginners like me.  A course in research tools which includes some clear videos on using Emacs. Kurt Schwehr put the course on YouTube (linked in note) and the course is in org mode. The Course itself is GIS focused.  You can download the whole thing with Mercurial. Instructions on the page. I found it very helpful when I started. [[http://vislab-ccom.unh.edu/~schwehr/rt/][http://vislab-ccom.unh.edu/~schwehr/rt/]] |
+| Philip Stark | 3:02 PM | What's GIS? |
+| me | 3:03 PM | Phil: Hmm, something like [[http://emacs.stackexchange.com/questions/608/evil-map-keybindings-the-vim-way][http://emacs.stackexchange.com/questions/608/evil-map-keybindings-the-vim-way]] using tags? |
+| Philip Stark | 3:05 PM | [[https://www.gnu.org/software/global/][https://www.gnu.org/software/global/]] |
+| Philip Stark | 3:07 PM | [[http://elpa.gnu.org/packages/ggtags.html][http://elpa.gnu.org/packages/ggtags.html]] |
+| Daniel Gopar | 3:09 PM | so im learning elisp. Does elisp have any ways of creating private/public variables? or is everything exposed once you run the require command on the file? |
+| Philip Stark | 3:09 PM | [[https://github.com/skeeto/skewer-mode][https://github.com/skeeto/skewer-mode]] |
+| Rogelio Zarate | 3:14 PM | How do you handle projects, like in Sublime, do you use Projectile or Perspective? |
+| Philip Stark | 3:14 PM | [[http://exercism.io/][http://exercism.io/]] |
+| me | 3:16 PM | [[https://github.com/losingkeys/4clojure.el][https://github.com/losingkeys/4clojure.el]]  and [[http://endlessparentheses.com/be-a-4clojure-hero-with-emacs.html][http://endlessparentheses.com/be-a-4clojure-hero-with-emacs.html]] |
+| Philip Stark | 3:18 PM | [[https://www.bestpractical.com/rt/][https://www.bestpractical.com/rt/]] |
+| Rogelio Zarate | 3:19 PM | Keeping just one list sounds like the correct approach. Great tip. |
+| me | 3:19 PM | [[https://saintaardvarkthecarpeted.com/blog/archive/2013/06/Check_in_to_an_RT_ticket_with_Mutt__Emacs_and_Orgmode.html][https://saintaardvarkthecarpeted.com/blog/archive/2013/06/Check_in_to_an_RT_ticket_with_Mutt__Emacs_and_Orgmode.html]] |
+| Paul Harper | 3:21 PM | Notmuch [[https://www.youtube.com/watch?v=PK5rOT6k8rw][https://www.youtube.com/watch?v=PK5rOT6k8rw]] |
+| me | 3:29 PM | Want to get notified about upcoming hangouts? You can sign up for notifications at [[http://eepurl.com/bbi-Ir][http://eepurl.com/bbi-Ir]]  |
+
+**** DONE June 2015 Emacs Hangout
+     CLOSED: [2015-06-29 Mon 15:48]
+     :LOGBOOK:
+     - State "DONE"       from ""           [2015-06-29 Mon 15:48]
+     :END:
+
+M-RET to create a new item - do it after the end of a previous topic
+
+     - 0:04:13 :: Vagrant
+     - 0:04:25 :: Org Mode, LaTeX, R
+     - 0:08:00 :: howdy - org-contacts, e-mail, chat, phone - [[https://github.com/punchagan/howdy][link]]
+     - 0:14:38 :: big data
+     - 0:21:38 :: tramp, projectile
+     - 0:32:00 :: Emacs and Eclipse
+     - 0:36:30 :: Emacs podcast?
+     - 0:41:25 :: Emacs and Eclipse, eclim [[https://github.com/senny/emacs-eclim][link]]
+     - 0:48:17 :: Experience with getting started with Emacs - from scratch, starter kit
+     - 0:54:03 :: Packages - projectile, restclient, helm-swoop, ack / silversearcher
+     - 1:00:20 :: Mastering Emacs
+     - 1:01:44 :: How we got started in Emacs
+     - 1:06:04 :: silversearcher-ag
+     - 1:09:58 :: demoit, org-tree-slide
+     - 1:12:04 :: eshell filters - Howard Abrams - [[http://www.howardism.org/Technical/Emacs/eshell-fun.html][link]]
+     - 1:18:26 :: E-mailing HTML from Org using org-mime-org-buffer-htmlize
+     - 1:22:59 :: Completion
+     - 1:26:30 :: avy, ace-jump, anzu, avy-isearch
+     - 1:37:00 :: hydra, org-timer, etc.
+     - 1:39:00 :: Keyboards
+     - 1:42:00 :: Rectangles
+     - 1:44:30 :: Javascript, tern-mode
+     - 1:53:14 :: Wrapping up
+
+Boo, I accidentally browsed in the Hangouts window before copying the text chat, so no copy of the text chat this time... =|
+
+(find-file
+**** July 2015 Emacs Hangout                                          :emacs:
+     :PROPERTIES:
+     :ID:       o2b:51267db3-9e54-4330-b9f9-f9f66ea5dc68
+     :POST_DATE: [2015-07-15 Wed 23:16]
+     :POSTID:   28351
+     :BLOG:     sacha
+     :END:
+
+We talked about Python, Org Mode, system administration, keybindings,
+Hydra, and other neat things. =)
+
+I'll probably set up another hangout mid-August, or we'll just do the one on the [[https://plus.google.com/b/108840863190686221561/events/cgd1kva6f473osvgvq6biuinhn4][29th]]. We'll see! You can follow the [[https://plus.google.com/b/108840863190686221561/108840863190686221561/posts][Emacs Conferences and Hangouts]] page for more information, or [[http://eepurl.com/bbi-Ir][sign up]] to get e-mails for upcoming hangouts.
+
+#+HTML: <iframe width="640" height="360" src="https://www.youtube.com/embed/jDnC309jZZk" frameborder="0" allowfullscreen></iframe>
+
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h05m0s][0:05]]  Packages
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h09m0s][0:09]]  Web mode
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h13m0s][0:13]]  Building new habits
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h16m0s][0:16]]  Org mode
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h18m0s][0:18]]  System administration
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h20m0s][0:20]]  Reading mail and news
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h26m0s][0:26]]  Python, elpy, jedi
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h35m0s][0:35]]  Haskell
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h38m0s][0:38]]  Clojure
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h39m0s][0:39]]  Keybindings
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h46m0s][0:46]]  Macs
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h48m0s][0:48]]  Podcast
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h50m0s][0:50]]  Org Mode
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=0h56m0s][0:56]]  Mac - cocoa-text-system
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h00m0s][1:00]]  Org Mode
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h05m0s][1:05]]  Guide key
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h06m0s][1:06]]  Magit
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h08m0s][1:08]]  which-key
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h10m0s][1:10]]  Hydra, Eww
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h16m0s][1:16]]  Debugging config
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h22m0s][1:22]]  Versions
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h30m0s][1:30]]  Debugging, org publishing
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h37m0s][1:37]]  debug-on-message
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h37m0s][1:37]]  org-map-entries
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h45m0s][1:45]]  org-babel, graphviz
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h54m0s][1:54]]  imagex
+- [[https://www.youtube.com/watch?v=jDnC309jZZk&t=1h56m0s][1:56]]  PlantUML
+
+Text chat (links edited to avoid weird wrapping things):
+
+| me | 9:18 PM | [[http://www.howardism.org/Technical/Emacs/literate-devops.html][literate devops link]] |
+| Daniel Gopar | 9:34 PM | [[https://github.com/gopar/.emacs.d/blob/master/init.el#L723][config link]] |
+| me | 9:37 PM | [[https://github.com/jwiegley/dot-emacs][jwiegley/dot-emacs]] [[https://github.com/jwiegley/dot-emacs/tree/master/lisp/haskell-config][jwiegley - haskell]]       |
+| Howard Melman | 9:48 PM | [[https://github.com/jrus/cocoa-text-system][cocoa-text-system]] |
+| Mr Swathepocalypse | 9:55 PM | I have to go attend to some work stuff, I look forward to watching the rest of the hangout later on.  |
+| me | 9:55 PM | [[http://orgmode.org/manual/Orgstruct-mode.html][Orgstruct]] |
+| Mr Swathepocalypse | 9:55 PM | Thanks guys! |
+| me | 9:55 PM | Bye Dylan! [[http://pages.sachachua.com/.emacs.d/Sacha.html][my config]] erc erc-pass |
+| Howard Abrams | 9:59 PM | Did I mention how I've been using emacs mail to mime encode an org-mode buffer into HTML for the most awesome mail messages. |
+| Daniel Gopar | 10:05 PM | Have you guys used "helm-M-x"? It's part of the helm package I believe |
+| Kaushal Modi | 10:07 PM | ready to share which-key package |
+| Daniel Gopar | 10:10 PM | Got to go. Nice talking to everyone. |
+| Kaushal Modi | 10:14 PM | [[https://github.com/kaushalmodi/.emacs.d][config link]] |
+| Kaushal Modi | 10:37 PM | (setq debug-on-message "Making tags") |
+| me | 10:39 PM | org-map-entries |
+| Correl Roush | 10:47 PM | [[http://correl.phoenixinquis.net/2015/07/12/git-graphs.html][git graphs]] |
+| me | 10:54 PM | imagex-global-sticky-mode imagex-auto-adjust-mode |
+| Kaushal Modi | 10:54 PM | [[https://github.com/mhayashi1120/Emacs-imagex][Emacs-imagex]]  [[https://github.com/kaushalmodi/.emacs.d/blob/9f8e1aff22b75429ddd2ae284cc7cc5e47c9f5a0/setup-files/setup-org.el#L119-L124][config link]] example of setting ditaa and plantuml |
+| Correl Roush | 10:58 PM | [[http://katherine.cox-buday.com/blog/2015/03/14/writing-specs-with-org-mode/][writing specs link]] that has some setup steps listed out as well |
+
+
+**** DONE 2015-05-13 Emacs Hangout                                    :emacs:
+     :PROPERTIES:
+     :Effort:   3:00
+     :ID:       o2b:a6432935-8231-426c-a8e4-b2a83f8570d9
+     :POST_DATE: [2015-05-13 Wed 23:03]
+     :POSTID:   28207
+     :BLOG:     sacha
+     :END:
+     :LOGBOOK:
+     CLOCK: [2015-05-13 Wed 20:28]--[2015-05-14 Thu 18:47] => 22:19
+     :END:
+
+Console Emacs vs GUI Emacs, keybindings, Org Mode, cooking, nyan, window management, calendars, SuperCollider
+
+Usual disclaimer: times are approximate, and the note-taker often gets distracted. =)
+
+#+begin_html
+<iframe width="640" height="360" src="https://www.youtube.com/embed/hOYd1GePFV0" frameborder="0" allowfullscreen></iframe>
+#+end_html
+
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h00m00s][0:00:00]]  Emacs configuration
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h11m22s][0:11:22]]  Console Emacs vs GUI Emacs? iTerm integration, mouse support, 256 colours, drop-down menus (although you can get a text one), ...
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h14m59s][0:14:59]]  multihop TRAMP
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h16m01s][0:16:01]]  keybinding philosophies, Hyper and Super
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h22m15s][0:22:15]]  Remapping keys on Mac OS X (dealing with separate Alt and Meta)
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h28m04s][0:28:04]]  Org and mobile
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h30m25s][0:30:25]]  emulating hyper and super keys
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h32m15s][0:32:15]]  orgzly
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h33m33s][0:33:33]]  Org Mode and cooking, org-map-entries
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h39m31s][0:39:31]]  nyan
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h43m04s][0:43:04]]  One window, workgroups
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h46m56s][0:46:56]]  winner-mode
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h53m30s][0:53:30]]  rinari, zeus, ruby
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h54m53s][0:54:53]]  neotree
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=0h58m22s][0:58:22]]  keyboards
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=1h03m24s][1:03:24]]  conference
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=1h09m22s][1:09:22]]  calw; also, something about rainbow-mode, and palette, and then later Org Mode
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=1h23m13s][1:23:13]]  SuperCollider, Overtone, yasnippet
+  - [[https://www.youtube.com/watch?v=hOYd1GePFV0&t=1h45m13s][1:45:13]]  blackink?
+
+Text chat:
+
+| Sahil Sinha | 9:23 PM | [[http://emacswiki.org/emacs/MetaKeyProblems][http://emacswiki.org/emacs/MetaKeyProblems]] |
+| Jack G. | 9:24 PM | (setq mac-right-command-modifier 'hyper)<br>(setq mac-right-option-modifier 'super) [[http://ergoemacs.org/emacs/emacs_hyper_super_keys.html][http://ergoemacs.org/emacs/emacs_hyper_super_keys.html]] (global-set-key (kbd "H-h") 'er/expand-region |
+| George Jones | 9:32 PM | [[https://github.com/heikkil/org-dropbox][https://github.com/heikkil/org-dropbox]] |
+| Jack G. | 9:36 PM | nyan Cranky_walk.gif |
+Jack G. | 9:42 PM | Here's the gif I have as my nyan [[http://vignette3.wikia.nocookie.net/donkeykong/images/9/91/Cranky_walk.gif/revision/latest?cb=20100930155227][http://vignette3.wikia.nocookie.net/donkeykong/images/9/91/Cranky_walk.gif/revision/latest?cb=20100930155227]] |
+| me | 9:42 PM | [[http://www.emacswiki.org/emacs/OneWindow][http://www.emacswiki.org/emacs/OneWindow]] ? |
+| Daniel H | 9:46 PM | [[https://github.com/tlh/workgroups.el][https://github.com/tlh/workgroups.el]] |
+| me | 9:48 PM | [[http://askubuntu.com/questions/4820/keeping-emacs-from-splitting-the-window-when-openning-multiple-files][http://askubuntu.com/questions/4820/keeping-emacs-from-splitting-the-window-when-openning-multiple-files]] winner-mode |
+| George Jones | 9:59 PM | [[http://ergoemacs.org/emacs/emacs_best_keyboard.html][http://ergoemacs.org/emacs/emacs_best_keyboard.html]] |
+| George Jones | 9:59 PM | Xah Lee writes a LOT about keyboards |
+| Jack G. | 10:02 PM | [[http://www.razerzone.com/ca-en/store/razer-anansi][http://www.razerzone.com/ca-en/store/razer-anansi]] |
+| Bogdan Popa | 10:10 PM | [[https://github.com/kiwanami/emacs-calfw#for-ical-google-calendar-users][https://github.com/kiwanami/emacs-calfw#for-ical-google-calendar-users]] |
+| me | 10:11 PM | org-gcal |
+| Daniel H | 10:12 PM | [[https://github.com/kiwanami/emacs-calfw][https://github.com/kiwanami/emacs-calfw]] |
+| George Jones | 10:12 PM | having real trouble hearing... |
+| George Jones | 10:20 PM | when you open a  PDF in docview you can get the text with ^C^T (default bindings) |
+| Jack G. | 10:21 PM | Thanks George! |
+| George Jones | 10:21 PM | C-c C-t runs the command doc-view-open-text |
+| me | 10:27 PM | [[http://doc.norang.ca/org-mode.html][http://doc.norang.ca/org-mode.html]] |
+| sai tejaa Cluri | 10:27 PM | hi |
+| Jack G. | 10:37 PM | [[https://www.google.ca/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0CB4QtwIwAA&amp;url=https%3A%2F%2Fvimeo.com%2F22798433&amp;ei=QQpUVYvkDY7boATNoYBg&amp;usg=AFQjCNFWP2p0lzfnV9O8Ln8Xj700X64xpg&amp;sig2=imdZEfZtqo06MSjnb2i71Q][https://www.google.ca/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0CB4QtwIwAA&amp;url=https%3A%2F%2Fvimeo.com%2F22798433&amp;ei=QQpUVYvkDY7boATNoYBg&amp;usg=AFQjCNFWP2p0lzfnV9O8Ln8Xj700X64xpg&amp;sig2=imdZEfZtqo06MSjnb2i71Q]] |
+| me | 10:37 PM | This was a fun demo of Org Mode and SuperCollider [[http://pages.sachachua.com/emacs-chats/chat-iannis-zannos.html][http://pages.sachachua.com/emacs-chats/chat-iannis-zannos.html]] |
+| Levi Strope | 10:40 PM | Jack your audio is crystal clear now... whatever that change was |
+| Jack G. | 10:45 PM | [[http://blackink.bleank.com][http://blackink.bleank.com]] |
+| me | 10:48 PM | [[http://emacslife.com/baby-steps-org.html][http://emacslife.com/baby-steps-org.html]] |
+
+
+
+*** 2015-07-15 Emacs Hangout
+ Youtube: http://youtu.be/jDnC309jZZk
+ Join: https://plus.google.com/hangouts/_/g2qe3sdewaxmd2ijn76lz6rct4a
+
+ M-RET to create a new item
+
+ - 0:10:00 :: Start
+ - 0:09:47 ::
+
+
+**** DONE Announce Emacs Hangout 2015-07-15
+     CLOSED: [2015-07-19 Sun 12:07] SCHEDULED: <2015-07-14 Tue>
+
+  Time for another Emacs Hangout on Wednesday! =) Come and share what you've been learning or what you're curious about.
+
+  Emacs Hangout July 15 (Wed) starting 9 PM Toronto time (1 AM July 16 GMT)
+  https://plus.google.com/b/108840863190686221561/events/c74r0vnikd4g29c2ustptdr15t4
+
+*** DONE Announce Emacs Hangout 2015-06-17
+    CLOSED: [2015-06-16 Tue 10:30] SCHEDULED: <2015-06-16 Tue>
+
+ Time for another Emacs Hangout tomorrow! =) Come and share what you've been learning or what you're curious about.
+
+ Emacs Hangout June 17 (Wed) starting 9 PM Toronto time (1 AM June 18 GMT)
+ Details: https://plus.google.com/b/108840863190686221561/events/ced8omhb7oum7pinb5661g7kuj0
+
+*** DONE Announce Emacs Hangout 2015-05-13
+    CLOSED: [2015-05-11 Mon 21:09] SCHEDULED: <2015-05-12 Tue>
+  https://plus.google.com/b/108840863190686221561/events/cd2t514r76je6jtgab9csenukd4
+
+*** DONE Take a look at intro and outro for Emacs Hangout
+    CLOSED: [2015-05-19 Tue 12:51]
+    :PROPERTIES:
+    :Effort:   0:15
+    :QUANTIFIED: Emacs
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2015-05-19 Tue 12:51]
+    CLOCK: [2015-05-19 Tue 12:49]--[2015-05-19 Tue 12:51] =>  0:02
+    :END:
+** Emacs News
+*** TODO Do another Emacs News review
+    SCHEDULED: <2015-11-30 Mon +1w>
+    :PROPERTIES:
+    :Effort:   1:30
+    :QUANTIFIED: Emacs
+    :CLOCK_MODELINE_TOTAL: today
+    :POSTID:   28441
+    :POST_DATE: 20151026T17:18:00+0000
+    :Published: No
+    :LAST_REPEAT: [2015-11-23 Mon 11:33]
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2015-11-23 Mon 11:33]
+    CLOCK: [2015-11-23 Mon 10:18]--[2015-11-23 Mon 11:33] =>  1:15
+    - State "DONE"       from "STARTED"    [2015-11-16 Mon 14:49]
+    CLOCK: [2015-11-16 Mon 12:21]--[2015-11-16 Mon 13:46] =>  1:25
+    - State "DONE"       from "STARTED"    [2015-11-09 Mon 10:06]
+    CLOCK: [2015-11-09 Mon 09:01]--[2015-11-09 Mon 10:27] =>  1:26
+    - State "DONE"       from "STARTED"    [2015-11-02 Mon 12:31]
+    CLOCK: [2015-11-02 Mon 11:40]--[2015-11-02 Mon 12:33] =>  0:53
+    - State "DONE"       from "STARTED"    [2015-10-26 Mon 13:26]
+    CLOCK: [2015-10-26 Mon 11:34]--[2015-10-26 Mon 13:26] =>  1:52
+    :END:
+
+**** Get Planet Emacsen links
+
+#+begin_src emacs-lisp :results raw
+(defun my/org-list-from-rss (url)
+  "Convert URL to an Org list"
+  (with-current-buffer (url-retrieve-synchronously url)
+    (re-search-forward "<\\?xml")
+    (goto-char (match-beginning 0))
+    (let ((feed (xml-parse-region (point) (point-max))))
+      (mapconcat (lambda (entry)
+        (format "- [[%s][%s]]" 
+         (xml-get-attribute (car (xml-get-children entry 'link)) 'href)
+         (elt (car (xml-get-children entry 'title)) 2)))
+        (xml-get-children (car feed) 'entry) "\n"))))
+(my/org-list-from-rss "http://planet.emacsen.org/atom.xml")
+#+end_src
+
+#+RESULTS:
+- [[http://whatthefuck.computer/blog/2015/11/22/body-computing-system-continuations][Ryan Rix: Body Computing System continuations]]
+- [[http://endlessparentheses.com/update-on-tdd-mode-with-cider.html?source=rss][Endless Parentheses: Update on tdd-mode with CIDER]]
+- [[http://mbork.pl/2015-11-21_The_Emacs_widget_library_and_automatic_modification_of_editing_fields][Marcin Borkowski: The Emacs widget library and automatic modification of editing fields]]
+- [[http://irreal.org/blog/?p=4737][Irreal: Gnus on Windows]]
+- [[http://puntoblogspot.blogspot.com/2015/11/mu4e-and-gmail-multiple-accounts.html][Raimon Grau: Mu4e and gmail (multiple accounts)]]
+- [[http://nullprogram.com/blog/2015/11/21/][Chris Wellons: Quickly Access x86 Documentation in Emacs]]
+- [[http://irreal.org/blog/?p=4735][Irreal: Asynchronous Python in Org Mode]]
+- [[http://emacspeak.blogspot.com/2015/11/emacspeak-430-sounddog-unleashed.html][emacspeak: Emacspeak 43.0 (SoundDog) Unleashed!]]
+- [[http://sachachua.com/blog/2015/11/mail-with-gnus/][sachachua: Mail with Gnus on Windows]]
+- [[http://pragmaticemacs.com/emacs/delete-non-matching-lines/][Pragmatic Emacs: Delete (non) matching lines]]
+- [[http://sachachua.com/blog/2015/11/2015-11-18-emacs-hangout/][sachachua: 2015-11-18 Emacs Hangout]]
+- [[http://pragmaticemacs.com/emacs/org-mode-basics-vi-a-simple-todo-list/][Pragmatic Emacs: Org-mode basics VI: A simple TODO list]]
+- [[https://julien.danjou.info/blog/2015/guide-to-python-profiling-cprofile-concrete-case-carbonara][Julien Danjou: Profiling Python using cProfile: a concrete case]]
+- [[http://endlessparentheses.com/test-driven-development-in-cider-and-emacs.html?source=rss][Endless Parentheses: Test-Driven-Development in CIDER and Emacs]]
+- [[http://ivan.kanis.fr/setting-up-rkhunter.html][Ivan Kanis: setting up rkhunter]]
+- [[http://mbork.pl/2015-11-14_A_simple_unfilling_function][Marcin Borkowski: A simple unfilling function]]
+- [[http://www.flickr.com/photos/sachac/22984439902/][Flickr tag 'emacs': 2015-11-11b A few Emacs community resources -- index card #emacs]]
+- [[http://matt.hackinghistory.ca/2015/11/11/note-taking-with-pdf-tools/][Matt Price: Note Taking with PDF Tools]]
+- [[http://puntoblogspot.blogspot.com/2015/11/til-comint-send-string.html][Raimon Grau: TIL: comint-send-string]]
+- [[http://matt.hackinghistory.ca/2015/07/11/temporary-exporting/][Matt Price: Exporting org-files to a temporary location]]
+- [[http://emacspeak.blogspot.com/2015/11/using-multiple-tts-streams-on-emacspeak.html][emacspeak: Using Multiple TTS Streams On The emacspeak Audio Desktop]]
+- [[http://ericjmritz.name/2015/11/06/gnu-emacs-packages-for-python-programming/][Eric James Michael Ritz: GNU Emacs Packages for Python Programming]]
+- [[http://ivan.kanis.fr/fix-intel-video-acceleration-on-xubuntu-144.html][Ivan Kanis: Fix Intel video acceleration on Xubuntu 14.4]]
+- [[https://julien.danjou.info/blog/2015/gnocchi-1.3.0-released][Julien Danjou: Gnocchi 1.3.0 release]]
+- [[http://oremacs.com/2015/11/04/ivy-occur/][(or emacs: New feature in Ivy - ivy-occur]]
+- [[http://www.flickr.com/photos/sachac/22744552241/][Flickr tag 'emacs': 2015-11-02c Emacs News notes -- index card #emacs #kaizen]]
+- [[http://whatthefuck.computer/blog/2015/11/01/on-the-balkinization-of-my-chat-communities][Ryan Rix: On the Balkanization of my chat communities]]
+- [[http://nullprogram.com/blog/2015/10/30/][Chris Wellons: RSA Signatures in Emacs Lisp]]
+
+**** Shuffle lines
+
+#+begin_src emacs-lisp
+(defun my/shuffle-lines-in-region (beg end)
+  (interactive "r")
+  (let ((list (split-string (buffer-substring beg end) "[\r\n]+")))
+    (delete-region beg end)
+    (insert (mapconcat 'identity (shuffle-list list) "\n"))))
+#+end_src
+
+**** Compare package symbols:
+ #+begin_src emacs-lisp :results list
+   (package-refresh-contents)
+   (with-temp-buffer
+     (insert-file "~/.emacs.d/.package-list")
+     (goto-char (point-min))
+     (let ((old-list (read (current-buffer))))
+       (mapcar (lambda (symbol)
+                 (let ((package-desc (assoc symbol package-archive-contents)))
+                   (format "[[package:%s][%s]]: %s"
+                           (symbol-name symbol)
+                           (symbol-name symbol)
+                           (package-desc-summary (cadr package-desc)))))
+               (-difference (mapcar 'car package-archive-contents) old-list))))
+ #+end_src
+
+ #+RESULTS:
+ - [[package:badwolf-theme][badwolf-theme]]: Bad Wolf color theme
+ - [[package:diredful][diredful]]: colorful file names in dired buffers
+ - [[package:elogcat][elogcat]]: logcat interface
+ - [[package:extempore-mode][extempore-mode]]: Emacs major mode for Extempore source files
+ - [[package:flycheck-css-colorguard][flycheck-css-colorguard]]: Detect similar colors in CSS
+ - [[package:hoa-mode][hoa-mode]]: Major mode for the Hanoi Omega Automata format
+ - [[package:multi-line][multi-line]]: multi-line statements
+ - [[package:yaml-tomato][yaml-tomato]]: copy or show the yaml path currently under cursor.
+ - [[package:z3-mode][z3-mode]]: A z3/SMTLIBv2 interactive development environment
+
+
+ Save package symbols:
+ #+begin_src emacs-lisp
+ (with-temp-file "~/.emacs.d/.package-list"
+   (prin1 (mapcar 'car package-archive-contents) (current-buffer))
+   nil)
+ #+end_src
+
+ #+RESULTS:
+
+*** 2015-11-30 Emacs news
+
+http://codingquark.com/getting-started-with-emacs
+*** 2015-11-23 Emacs News
+    :PROPERTIES:
+    :ID:       o2b:1488f6ad-42e3-4263-998b-9e9999f0bebf
+    :POST_DATE: [2015-11-23 Mon 11:21]
+    :POSTID:   28486
+    :BLOG:     sacha
+    :END:
+
+- Org Mode
+  - [[https://www.reddit.com/r/emacs/comments/3tugdo/what_people_miss_when_they_are_new_to_orgmode_is/][Start simple]]
+  - [[http://pragmaticemacs.com/emacs/org-mode-basics-vi-a-simple-todo-list/][Pragmatic Emacs: Org-mode basics VI: A simple TODO list]] 
+  - [[https://www.reddit.com/r/emacs/comments/3tc4sv/what_ways_do_you_use_orgmode/][Many ways to use org-mode]]
+  - [[https://www.reddit.com/r/emacs/comments/3teqv3/is_orgmode_good_for_collaboration_in_mixed/][Org in a mixed Vim/Emacs environment]] - vim-todoo
+  - [[https://www.reddit.com/r/emacs/comments/3tpd5z/a_different_way_to_use_org_xpost_rorgmode/][Inline tasks]]
+  - [[http://irreal.org/blog/?p=4735][Irreal: Asynchronous Python in Org Mode]]
+  - [[https://www.reddit.com/r/emacs/comments/3tn1ba/orgmode_homerowbindings_for_changing_level_etc/][Alternative keybindings for navigating through headings]]
+  - [[https://www.youtube.com/watch?v=VLUMW0sR4Vk][Tooltips on Emacs commands and variables in org-mode]] (7:04)
+  - [[https://www.reddit.com/r/emacs/comments/3t5vil/how_to_make_an_estimate_outline_with_orgmode/][Discussion of how to make estimates for tasks]]
+- Configuration
+  - [[https://www.reddit.com/r/emacs/comments/3tlwzl/tips_on_restarting_my_config/][Tips for restructuring/cleaning up your ~/.emacs]]
+  - [[https://www.reddit.com/r/emacs/comments/3tp30g/can_we_talk_some_more_about_spacemacs/][Spacemacs pros and cons]]
+- Email
+  - [[http://puntoblogspot.blogspot.com/2015/11/mu4e-and-gmail-multiple-accounts.html][Raimon Grau: Mu4e and gmail (multiple accounts)]]
+  - [[http://sachachua.com/blog/2015/11/mail-with-gnus/][sachachua: Mail with Gnus on Windows]]
+  - [[https://www.reddit.com/r/emacs/comments/3t8zqh/emacs_and_email_pt_2/][Creating a separate window configuration for e-mail etc.]]
+- Coding
+  - [[https://www.reddit.com/r/emacs/comments/3tdheu/programming_quickly_lookup_x86_assembly/][Quickly look up x86 assembly documentation]]
+  - [[http://endlessparentheses.com/test-driven-development-in-cider-and-emacs.html?source=rss][Endless Parentheses: Test-Driven-Development in CIDER and Emacs]]
+  - [[http://endlessparentheses.com/update-on-tdd-mode-with-cider.html?source=rss][Endless Parentheses: Update on tdd-mode with CIDER]]
+  - [[http://mbork.pl/2015-11-21_The_Emacs_widget_library_and_automatic_modification_of_editing_fields][Marcin Borkowski: The Emacs widget library and automatic modification of editing fields]]
+  - [[https://www.youtube.com/watch?v=AoT_EA4rGIw][Not Wizardry! - Set Emacs for Javascript]] (14:53)
+  - [[https://www.youtube.com/watch?v=n3QeVD_Z_00][Rust-Mode - Working with Rust in Emacs]] (7:31)
+- Others
+  - [[https://www.reddit.com/r/emacs/comments/3tisu3/the_reliable_way_to_access_system_clipboard_from/][systemclip - use the system clipboard from console Emacs]]
+  - [[https://www.reddit.com/r/emacs/comments/3to9a6/resizemode/][Resizing windows]]
+  - [[https://www.reddit.com/r/emacs/comments/3tv7pj/emacs_work/][Emacs at work]] - things aside from software development
+  - [[http://emacspeak.blogspot.com/2015/11/emacspeak-430-sounddog-unleashed.html][emacspeak: Emacspeak 43.0 (SoundDog) Unleashed!]]
+  - [[http://pragmaticemacs.com/emacs/delete-non-matching-lines/][Pragmatic Emacs: Delete (non) matching lines]]
+  - [[http://sachachua.com/blog/2015/11/2015-11-18-emacs-hangout/][sachachua: 2015-11-18 Emacs Hangout]]
+  - [[https://www.reddit.com/r/emacs/comments/3tj71x/even_office_secretaries_learn_lisp_why_do_the/][Maybe we should try not calling Emacs Lisp "programming"...]]
+  - [[https://blog.fugue.co/2015-11-11-guide-to-emacs.html][A CEO's guide to Emacs]]
+- Dev news
+  - Emacs development changelog
+    - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=b92307f6708f9abff0b2ac242fe4b668232a9153][linum-mode plays more nicely with other margin-setting extensions]] such as darkroom-mode and olivetti-mode
+    - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=58e6235007e6761fb9734b942ecff94bf4e9ba68][image-mode supports encrypted files]]
+    - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=5bc966dfdae62cbcb5698f77adffada4fbf445d7][New seek functions for mpc.el]]
+    - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=ebad964b3afbe5ef77085be94cf566836450c74c][EasyPG assistant - new option epa-replace-original-text]]
+  - emacs-devel
+    - [[http://lists.gnu.org/archive/html/emacs-devel/2015-11/msg01949.html][Should setqs with missing final assignments give warnings?]]
+    - [[http://lists.gnu.org/archive/html/emacs-devel/2015-11/msg01888.html][Can BBDB3 be included in Emacs core?]]
+    - [[http://lists.gnu.org/archive/html/emacs-devel/2015-11/msg00525.html][Continued discussion about project.el]]
+    - [[http://lists.gnu.org/archive/html/emacs-devel/2015-11/msg02031.html][Working with rectangular regions]]
+    - [[http://lists.gnu.org/archive/html/emacs-devel/2015-11/msg01819.html][Possible changes to release schedule?]]
+    - [[http://lists.gnu.org/archive/html/emacs-devel/2015-11/msg00436.html][Continued discussion about dynamic loading]]
+- New packages on MELPA
+  - [[package:badwolf-theme][badwolf-theme]]: Bad Wolf color theme
+  - [[package:diredful][diredful]]: colorful file names in dired buffers
+  - [[package:elogcat][elogcat]]: logcat interface
+  - [[package:extempore-mode][extempore-mode]]: Emacs major mode for Extempore source files
+  - [[package:flycheck-css-colorguard][flycheck-css-colorguard]]: Detect similar colors in CSS
+  - [[package:hoa-mode][hoa-mode]]: Major mode for the Hanoi Omega Automata format
+  - [[package:multi-line][multi-line]]: multi-line statements
+  - [[package:yaml-tomato][yaml-tomato]]: copy or show the yaml path currently under cursor.
+  - [[package:z3-mode][z3-mode]]: A z3/SMTLIBv2 interactive development environment
+
+Links from [[http://reddit.com/r/emacs/new][reddit.com/r/emacs]], [[https://hn.algolia.com/?query=emacs&sort=byDate&prefix&page=0&dateRange=all&type=story][Hacker News]], [[http://planet.emacsen.org][planet.emacsen.org]], [[https://www.youtube.com/results?search_query=emacs&search_sort=video_date_uploaded][Youtube]], the [[http://git.savannah.gnu.org/cgit/emacs.git/log/?showmsg=1][Emacs commit log]], the changes to the [[http://git.savannah.gnu.org/cgit/emacs.git/log/etc/NEWS][Emacs NEWS file]], and [[http://lists.gnu.org/archive/html/emacs-devel/2015-11][emacs-devel]]
+
+[[http://sachachua.com/blog/category/emacs-news][Past Emacs News round-ups]]
+
+
+*** 2015-11-16 Emacs News
+    :PROPERTIES:
+    :ID:       o2b:6bc7b524-da93-4013-a26f-2a2f3fce0d35
+    :POST_DATE: [2015-11-16 Mon 13:33]
+    :POSTID:   28477
+    :BLOG:     sacha
+    :END:
+
+- For beginners
+  - [[https://news.ycombinator.com/item?id=10571274][Things I wish they told you about Emacs]]
+  - [[https://news.ycombinator.com/item?id=10551327][Learn Emacs Lisp in 15 minutes]]
+  - [[https://www.youtube.com/watch?v=y_u48xZPSbU][CleanNeedles--Download Emacs Part 1 (7:13)]]
+- Navigation
+  - [[https://www.reddit.com/r/emacs/comments/3srwz6/idelike_go_back/][pop-global-mark and pop-tag-mark]] are handy ways of going back to positions in files. See the discussion on Reddit for more navigation tips.
+  - [[http://pragmaticemacs.com/emacs/move-through-edit-points/][Move through edit points with goto-chg]]
+- Org Mode
+  - [[http://irreal.org/blog/?p=4724][Capture webpages and insert into Emacs as Org]]
+  - [[https://www.reddit.com/r/emacs/comments/3sjx9k/work_logging_in_emacs/][Track your time in Org mode]]
+  - [[http://matt.hackinghistory.ca/2015/11/11/note-taking-with-pdf-tools/][Take notes on PDFs]]
+  - [[http://matt.hackinghistory.ca/2015/07/11/temporary-exporting/][Export to a temporary location]]
+- Writing
+  - [[https://www.reddit.com/r/emacs/comments/3snc7z/orgtracktable_track_your_writing_progress_in_an/][org-tracktable]]: track writing progress
+  - [[http://mbork.pl/2015-11-14_A_simple_unfilling_function][Unfilling/unwrapping paragraphs]]
+- Coding
+  - Whitespace
+    - It can be useful to add [[https://www.reddit.com/r/emacs/comments/3sqvoy/good_key_combo_for_whitespacecleanup/][delete-trailing-whitespace]] to your =before-save-hook=.
+    - [[https://www.reddit.com/r/emacs/comments/3sqgvr/problem_with_indenting_preprocessor_statements_in/][Electric indentation]] is handy for keeping things indented as you type.
+    - [[https://www.reddit.com/r/emacs/comments/3s5jjf/editorconfig_helps_developers_define_and_maintain/][Translate indentation settings for different editors]]
+    - [[https://www.reddit.com/r/emacs/comments/3sfmkz/could_this_be_a_pareditsmartparens_killer/][Discussion of options for paren-ifying or indenting Emacs Lisp]]
+  - Testing
+    - [[http://endlessparentheses.com/test-driven-development-in-cider-and-emacs.html?source=rss][Test-Driven-Development in CIDER and Emacs]] - add it to your =after-save-hook=
+    - [[http://joe-on-software.blogspot.ca/2015/11/continuous-integration-tests-for-your.html][Travis + Cask + ERT for continuous integration testing of Emacs Lisp]]
+    - [[https://www.reddit.com/r/emacs/comments/3s9sti/how_to_compile_and_run_c_or_cpp_file_with_one_key/][emacs-quickrun or cc-chainsaw]] can make compiling and running C/C++ files a little faster. emacs-quickrun can be used for other languages, too.
+  - [[https://www.reddit.com/r/emacs/comments/3sd3ue/ask_remacs_sending_text_to_an_ansiterm_buffer/][comint-send-string lets you send commands from Emacs Lisp to shell buffers and other interactive processes]]
+  - [[https://www.reddit.com/r/emacs/comments/3s63b7/still_in_progress_but_already_interesting_a_new/][Github issue tracker interface]], might become more generic later on
+  - [[https://github.com/gongo/emacs-heroku-docker][Heroku Emacs Docker image]]
+  - [[https://www.youtube.com/watch?v=Szu0wNttfek][How to use Clojure macros to refactor Clojure code in Emacs (17:07)]]
+  - Web dev seminar: [[https://www.youtube.com/watch?v=VaKdQ-EOJGA][Emacs (3:28)]], [[https://www.youtube.com/watch?v=ij1Ifm4wYik][More HTML and Emacs (6:29)]]
+- Security
+  - [[https://www.reddit.com/r/emacs/comments/3skh5v/how_to_pass_the_useragent_ssh_key_passphrase/][keychain-environment]] is handy for passing your SSH authentication agent to Emacs
+  - [[https://www.reddit.com/r/emacs/comments/3sjdyi/your_text_editor_is_malware/][Consider verifying SSL to improve your security when it comes to installing Emacs packages]].
+- Other links
+  - [[https://plus.google.com/108840863190686221561][Emacs Hangout (Google+)]]: Nov 18 (Wed) 9 PM EST (GMT-5)
+  - Some options for [[https://www.reddit.com/r/emacs/comments/3sqtig/important_block_of_text_disappeared_from_my_notes/][keeping your data safe from accidental edits]], [[https://www.reddit.com/r/emacs/comments/3soqx3/disallowing_editing_in_emacs/][C-x C-q (read-only-mode)]], [[https://www.reddit.com/r/emacs/comments/3s7d38/im_constantly_saving_my_changes_with_cx_cs_do_you/][autosaving]]
+  - [[http://emacsthemes.com/][emacsthemes.com is a handy way of checking out lots of themes]]
+  - [[https://www.reddit.com/r/emacs/comments/3s6wnl/emacsel_interview_with_john_wiegley_need_questions/][Possible questions for podcast with John Wiegley]] - maybe he should do an AMA on Reddit...
+  - [[http://emacspeak.blogspot.ca/2015/11/using-multiple-tts-streams-on-emacspeak.html][Synthesize speech using multiple streams in Emacspeak]]
+  - [[http://mbork.pl/2015-11-07_Converting_numbers_to_strings_in_a_human-friendly_way][Convert numbers to strings with padding and varying decimal places]]
+  - [[https://www.reddit.com/r/emacs/comments/3s5fas/which_email_client_mu4e_mutt_notmuch_gnus_do_you/][E-mail client discussion]]: notmuch, mu4e, gnus, etc.
+  - [[https://www.reddit.com/r/emacs/comments/3sab3c/to_get_some_perspective_the_downsides_of_emacs/][Discussion about core vs package]]
+  - [[https://www.reddit.com/r/emacs/comments/3sheq9/keyboard_mapping_on_macbook_pro/][Keymapping discussion for a Macbook Pro]]
+  - [[https://www.youtube.com/watch?v=KAuZD9Sj41I][GNU Emacs por Patricio Páez (2:03:47)]]
+- New packages
+  - [[package:bind-map][bind-map]]: Bind personal keymaps in multiple locations
+  - [[package:buffer-flip][buffer-flip]]: Use key-chord to cycle through buffers like Alt-Tab in Windows
+  - [[package:color-theme-modern][color-theme-modern]]: Reimplement colortheme with Emacs 24 theme framework.
+  - [[package:elog][elog]]: logging library extended from logito
+  - [[package:emojify][emojify]]: Display emojis in Emacs - [[https://www.reddit.com/r/emacs/comments/3srete/display_emojis_in_emacs/][Reddit discussion]]
+  - [[package:evil-indent-plus][evil-indent-plus]]: Evil textobjects based on indentation
+  - [[package:flymake-less][flymake-less]]: Flymake handler for LESS stylesheets (lesscss.org)
+  - [[package:fortune-cookie][fortune-cookie]]: Print a fortune in your scratch buffer.
+  - [[package:highlight-indent-guides][highlight-indent-guides]]: Minor mode to highlight indentation
+  - [[package:ido-skk][ido-skk]]: ido interface for skk henkan
+  - [[package:jumplist][jumplist]]: Jump like vim jumplist
+  - [[package:org-time-budgets][org-time-budgets]]: Define time budgets and display clocked time.
+  - [[package:phabricator][phabricator]]: Phabricator/Arcanist helpers for Emacs.
+  - [[package:region-state][region-state]]: Show the number of chars/lines or rows/columns in the region
+  - [[package:sift][sift]]: Front-end for sift, a fast and powerful grep alternative
+  - [[package:sweetgreen][sweetgreen]]: Order Salads from sweetgreen.com
+  - [[package:therapy][therapy]]: Hooks for managing multiple Python major versions
+  - [[package:wilt][wilt]]: An extensions for calculating WILT in a buffer.
+- Emacs dev news:
+  - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=1e363a8ea5ac09455f3a44fbb646b5af32bca51c][json-pretty-print-ordered]] and related functions will sort object keys when encoding
+  - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=31f6e939334180add7bc11240343615a2e6350f6][Support rectangular regions for more commands]] - query-replace, query-replace-regexp
+  - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=9a4aa0f5945a03611ae29c516025dbd353bd26ab][Release process documentation improved]]
+  - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=d149ca81c33ab95900306c3c71f6eff62a3ec1a1][dir-locals wildcards]]
+  - gitmerge changes: [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=dcd5877a76557f4ce08bebee0d8919ad951a9f13][git log command]], [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=2ac79ae901422384e8d093e079862e57c72ef2dc][cherry-pick detection]]
+  - Updates to [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=9e00a029c4d7a8fa510fca878102623c74b50f85][verilog-mode]], [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=055ca3a57e7326cd24bbb958531f6938466f5fd9][soap-client]]
+
+Links from [[http://reddit.com/r/emacs/new][reddit.com/r/emacs]], [[https://hn.algolia.com/?query=emacs&sort=byDate&prefix&page=0&dateRange=all&type=story][Hacker News]], [[http://planet.emacsen.org][planet.emacsen.org]], [[https://www.youtube.com/results?search_query=emacs&search_sort=video_date_uploaded][Youtube]], the [[http://git.savannah.gnu.org/cgit/emacs.git/log/?showmsg=1][Emacs commit log]], and the changes to the [[http://git.savannah.gnu.org/cgit/emacs.git/log/etc/NEWS][Emacs NEWS file]].
+
+[[http://sachachua.com/blog/category/emacs-news][Past Emacs News round-ups]]
+
+*** 2015-11-09 Emacs News                                      :emacs:review:
+    :PROPERTIES:
+    :ID:       o2b:3ef0ad9a-69b3-4386-92df-ae584aa0a477
+    :POST_DATE: [2015-11-09 Mon 10:00]
+    :POSTID:   28466
+    :BLOG:     sacha
+    :END:
+
+- New Emacs maintainer: John Wiegley - discussion on [[https://www.reddit.com/r/emacs/comments/3reozs/today_the_emacs_development_have_a_new_maintainer/][Reddit]], [[https://news.ycombinator.com/item?id=10506280][Hacker News]]
+- Emacs Lisp:
+  - [[https://www.reddit.com/r/emacs/comments/3rom3t/tutorial_for_how_to_make_ido_or_helm_menu/][how to define your own Helm menu]]
+  - [[https://www.reddit.com/r/emacs/comments/3ry8m7/i_want_to_build_my_first_elisp_package_for/][How to use org-element-map and org-element-parse-buffer]]
+  - [[https://www.reddit.com/r/emacs/comments/3ryby6/elisp_equivalente_of_refindall/][How to search for all matches using Emacs regular expressions]]
+  - [[https://www.reddit.com/r/emacs/comments/3r98w0/where_are_the_orglookup_functions/][How to use org-table-get-remote-range to look up data from Org tables]]
+- Other coding:
+  - [[http://endlessparentheses.com/clj-refactor-unleash-your-clojure-wizard-.html?source=rss][clj-refactor]]
+  - [[http://ericjmritz.name/2015/11/06/gnu-emacs-packages-for-python-programming/][Python package recommendations]]
+  - [[https://www.reddit.com/r/emacs/comments/3rqvwn/autocompletion_for_c_with_external_library/][C++ IDE tips including autocompletion, function arguments, and docstrings]]
+  - [[https://www.reddit.com/r/emacs/comments/3rjt3p/webmodeel_v13_is_released/][new release of web-mode.el]]
+  - [[https://www.reddit.com/r/emacs/comments/3r9fic/best_practicestip_for_companymode_andor_yasnippet/][You can add yasnippet to company-mode]]
+  - Reminder: [[https://www.reddit.com/r/emacs/comments/3s3hdf/change_companymode_selectaccept_action_keybinding/][you can change the keybindings for company-mode autocompletion]] (and in general, pretty much everything else)
+- Emacs configuration:
+  - [[http://pragmaticemacs.com/emacs/join-line-to-following-line/][Join line to following line]] - see Kaushal's comment for an alternate binding that treats comments differently
+  - [[https://www.reddit.com/r/emacs/comments/3rk4cg/emacs_and_email/][Emacs and email]], also [[https://www.reddit.com/r/emacs/comments/3r8dr3/mu4e_send_mail_with_custom_smtp_and_archive_in/][saving mu4e sent mail in Gmail]]
+  - [[https://www.reddit.com/r/emacs/comments/3ricev/tip_for_when_you_are_running_out_of_easytopress/][more keybinding tips]]
+  - [[https://www.reddit.com/r/emacs/comments/3rd0x8/tips_for_going_full_emacs_after_spacemacs/][Moving beyond starter kits like spacemacs]]
+  - [[https://www.reddit.com/r/emacs/comments/3s4k03/how_many_packages_do_you_use/][It's okay to use hundreds of packages]]. By the way, the =use-package= package can help you streamline your Emacs startup.
+  - [[https://www.reddit.com/r/emacs/comments/3rzy03/access_the_last_environment_i_have_left/][You can use desktop-save-mode, saveplace, and savehist-mode to pick up where you quit Emacs]]
+  - [[https://www.reddit.com/r/emacs/comments/3r8fql/is_there_spacemacs_key_binding_sheetchart/][helm-descbinds is handy for searching through your current keybindings]]
+- Text manipulation:
+  - [[https://www.youtube.com/watch?v=BDHUuONicRk][Yasnippet video]] (7:57)
+  - [[http://irreal.org/blog/?p=4705][Easily convert web pages to text using Lynx]]
+  - [[http://oremacs.com/2015/11/04/ivy-occur/][ivy-occur - multiple sessions, even]]
+  - [[https://www.reddit.com/r/emacs/comments/3rxfr5/xclip_copypaste_killyank_and_emacs_in_a_terminal/][If you use console Emacs instead of GUI, you can still interact with the X clipboard]]
+  - [[https://www.reddit.com/r/emacs/comments/3s0hjo/how_to_get_an_arglist_like_editing_using_emacs/][Wgrep (writeable grep) is handy for replacing text in various files]]
+- Selected Emacs changelog news:
+  - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=29d740aac9773334d8189a1cc989634a48a70061][Added support for retrieving paths to JSON elements]]
+  - [[http://git.savannah.gnu.org/cgit/emacs.git/commit/?id=5193ad1bcbb4ec80f25cfbfae8e168360fc00534][New function bookmark-set-no-overwrite (C-x r M)]]
+- Others:
+  - [[http://sachachua.com/blog/2015/11/capturing-links-quickly-with-emacsclient-org-protocol-and-chrome-shortcut-manager-on-microsoft-windows-8/][Capturing links quickly with org-protocol]]
+  - [[http://www.mostlymaths.net/2015/11/synctex-and-pdf-view-mode-for-emacs.html][SyncTeX and pdf-view-mode for emacs]]
+  - [[https://www.reddit.com/r/emacs/comments/3rtko6/working_on_the_emacs_logo/][discussion about a possible new Emacs logo]]
+  - [[https://www.reddit.com/r/emacs/comments/3rh6xl/emacs_x_window_manager/][a few people like this Emacs X window manager]]
+  - [[https://www.reddit.com/r/emacs/comments/3r8dr3/mu4e_send_mail_with_custom_smtp_and_archive_in/][mu4e config for saving sent mail]]
+  - [[https://github.com/ilya-babanov/emacs-bpr][background process runner]]
+- New packages:
+  - [[package:commify][commify]]: Toggle grouping commas in numbers
+  - [[package:emoji-fontset][emoji-fontset]]: Set font face for Emoji.
+  - [[package:evil-magit][evil-magit]]: evil-based key bindings for magit
+  - [[package:github-notifier][github-notifier]]: Displays your GitHub notifications unread count in mode-line
+  - [[package:gmpl-mode][gmpl-mode]]: Major mode for editing GMPL(MathProg) files
+  - [[package:graphene-meta-theme][graphene-meta-theme]]: Integrated theming for common packages
+  - [[package:live-py-mode][live-py-mode]]: Live Coding in Python
+  - [[package:noxml-fold][noxml-fold]]: Fold away XML things.
+  - [[package:typing-game][typing-game]]: a simple typing game
+  - [[package:x86-lookup][x86-lookup]]: jump to x86 instruction documentation
+  - [[package:exwm][exwm]]: Emacs X Window Manager
+
+Links from [[http://reddit.com/r/emacs/new][reddit.com/r/emacs]], [[https://hn.algolia.com/?query=emacs&sort=byDate&prefix&page=0&dateRange=all&type=story][Hacker News]], [[http://planet.emacsen.org][planet.emacsen.org]], [[https://www.youtube.com/results?search_query=emacs&search_sort=video_date_uploaded][Youtube]], and the [[http://git.savannah.gnu.org/cgit/emacs.git/log/?showmsg=1][Emacs commit log]].
+
+[[http://sachachua.com/blog/category/emacs-news][Past Emacs News round-ups]]
+
+**** DONE Set up Emacs News mailing list
+     CLOSED: [2015-11-10 Tue 20:09]
+     :PROPERTIES:
+     :Effort:   0:15
+     :QUANTIFIED: Emacs
+     :END:
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2015-11-10 Tue 20:09]
+     CLOCK: [2015-11-10 Tue 19:59]--[2015-11-10 Tue 20:09] =>  0:10
+     :END:
+*** 2015-11-02 Emacs News                              :emacs:roundup:review:
+    :PROPERTIES:
+    :ID:       o2b:abf6824a-b068-4c67-8c57-83ef52660118
+    :POST_DATE: [2015-11-02 Mon 12:25]
+    :POSTID:   28458
+    :BLOG:     sacha
+    :END:
+
+- Beginner tips:
+  - You can [[http://pragmaticemacs.com/emacs/change-text-size/][change the text size]] with =C-x C--= and =C-x C-+=.
+  - Check out these [[http://irreal.org/blog/?p=4693][recommended basic Emacs resources]].
+  - [[https://www.reddit.com/r/emacs/comments/3r1z7p/in_your_experience_what_was_the_best_way_to_teach/][Emacs teaching/evangelization tips]]
+- Coding:
+  - [[http://youtu.be/vQO7F2Q9DwA][Magit demo (including rebasing)]]
+  - New releases of [[http://blog.jorgenschaefer.de/2015/11/elpy-1100-released.html][elpy]] and [[https://raw.githubusercontent.com/magit/magit/master/Documentation/RelNotes/2.3.0.txt][magit]]
+  - Tip for [[http://blog.binchen.org/posts/use-js2-mode-to-print-json-path.html][getting the JSON path]] to the current item
+  - [[http://codewinds.com/blog/2015-04-02-emacs-flycheck-eslint-jsx.html][eslink + babel + flycheck = better Javascript and ReactJS dev]] (from April)
+  - Consider adding animated GIFs/video to your bug reports - [[https://www.reddit.com/r/emacs/comments/3qyf51/any_other_elisp_devs_ever_get_a_bug_report_via/][some tools for recording small screencasts]]
+  - [[https://www.reddit.com/r/emacs/comments/3ql4dx/how_can_i_change_the_default_arguments_for_mx_grep/][Changing your default grep-command]]
+  - [[https://www.reddit.com/r/emacs/comments/3qi2tl/script_input/][Keyboard macro counters]] can help you insert text with a series of numbers.
+- Org Mode:
+  - Want to make your Org Mode folded outline view slightly more compact? You can [[http://endlessparentheses.com/changing-the-org-mode-ellipsis.html][change the way ellipses are displayed]].
+  - [[https://www.reddit.com/r/emacs/comments/3ql5ga/online_orgmode_editor/][A few approaches for online Org Mode editing]]
+- Other:
+  - Things to look forward to in Emacs 25: [[http://www.reddit.com/r/emacs/comments/3r6195/upcoming_feature_in_emacs_25_viewlossage_now/][Command names in the recent keystrokes log]] (=M-x view-lossage=)
+  - Managing files and directories in Emacs can be easier if you use [[http://pragmaticemacs.com/emacs/double-dired-with-sunrise-commander/][sunrise commander]] to give you two panes.
+  - Emacs on Android tablets with [[http://www.blogbyben.com/2015/10/its-so-beautiful-emacs-and-chrome-side.html][multi-window support out of the box]]
+  - [[http://endlessparentheses.com/beacon-never-lose-your-cursor-again.html?source=rss][Beacon]] lets you keep track of where your cursor is
+  - You can [[http://pragmaticemacs.com/emacs/resize-your-emacs-frame-with-keyboard-shortcuts/][resize Emacs frames using your keyboard]]
+  - Check out jcs' summary of the [[http://irreal.org/blog/?p=4678][Emacs for Scholars talk]]
+  - Keymapping discussions: [[https://www.reddit.com/r/emacs/comments/3qs6dx/anyone_here_that_jumps_between_an_apple_keyboard/][Apple keyboards]], [[https://www.reddit.com/r/emacs/comments/3r31xw/emacs_and_dvorak_layout/][Dvorak]], [[https://www.reddit.com/r/emacs/comments/3qffbu/spacemacs_using_two_leader_keys/][two-key leaders]], [[https://www.reddit.com/r/emacs/comments/3qzj6z/how_to_touch_type_code_in_emacs/][coding-related discussions]]
+  - [[https://www.reddit.com/r/emacs/comments/3qtnwo/emacs_whats_the_best_way_to_1_save_a_list_of_the/][Save a list of installed packages]] to make starting up on a new machine easier
+  - [[https://www.reddit.com/r/emacs/comments/3qlyvm/redditmode/][Want to read Reddit inside Emacs?]] Of course you can.
+- New packages:
+  - [[package:bpr][bpr]]: Background Process Runner
+  - [[package:caroline-theme][caroline-theme]]: A trip down to New Orleans...
+  - [[package:company-nand2tetris][company-nand2tetris]]: Company backend for nand2tetris major mode
+  - [[package:dracula-theme][dracula-theme]]: Dracula Theme
+  - [[package:helm-fuzzier][helm-fuzzier]]: Better fuzzy matching for Helm
+  - [[package:helm-grepint][helm-grepint]]: Generic helm interface to grep
+  - [[package:init-open-recentf][init-open-recentf]]: Open recentf immediately after Emacs is started
+  - [[package:matrix-client][matrix-client]]: A minimal chat client for the Matrix.org RPC
+  - [[package:nand2tetris-assembler][nand2tetris-assembler]]: Assembler For the Nand2tetris Course
+  - [[package:ox-trac][ox-trac]]: Org Export Backend to Trac WikiFormat
+  - [[package:pastelmac-theme][pastelmac-theme]]: a soothing theme with a pastel color palette
+  - [[package:rbt][rbt]]: Integrate reviewboard with emacs.
+  - [[package:replace-symbol][replace-symbol]]: Rename symbols in expressions or buffers
+  - [[package:termbright-theme][termbright-theme]]: a more usable theme for white-on-black terminals
+  - [[package:test-kitchen][test-kitchen]]: Run test-kitchen inside of emacs
+  - [[package:zone-nyan][zone-nyan]]: Zone out with nyan cat. [[https://www.reddit.com/r/emacs/comments/3qp0fi/zone_out_with_zonenyan/][Reddit discussion]]; see also [[https://github.com/joeheyming/ascii_nyan/][ascii_nyan]]
+
+[[http://sachachua.com/blog/2015/10/2015-10-26-emacs-news/][Previous roundup]] - Links from [[http://reddit.com/r/emacs/new][reddit.com/r/emacs]], [[http://planet.emacsen.org][planet.emacsen.org]], and [[https://www.youtube.com/results?search_query=emacs&search_sort=video_date_uploaded][Youtube]]
+
+*** 2015-10-26 Emacs News   :emacs:round-up:review:
+    :PROPERTIES:
+    :ID:       o2b:eb84e6d6-6945-445e-93f4-5b46013a3b58
+    :POST_DATE: [2015-10-26 Mon 13:18]
+    :POSTID:   28441
+    :BLOG:     sacha
+    :END:
+
+- *Beginner tips:*
+  - [[https://www.reddit.com/r/emacs/comments/3q23nv/is_there_an_emacs_bootstrap_kinda_script_that/][How can you get started configuring Emacs?]] Reddit recommends the built-in tutorial (C-h t), M-x customize, other people's configs, spacemacs, and technomancy's starter kit.
+  - [[http://pragmaticemacs.com/emacs/editing-and-managing-files-remotely/][You can use TRAMP to edit or manage remote files]].
+
+- *Navigation*:
+  - [[https://www.reddit.com/r/emacs/comments/3pzizb/trying_to_make_full_switch_from_vim/][Some conversion tips for people switching from Vim]] (not necessarily using evil-mode)
+  - [[http://szymzet.tumblr.com/post/131414004620/emacs-key-chord-binding-tip][Key-chord binding tip]]: try using an easily reached number + a mnemonic letter, such as =3k= for =kill-buffer=.
+  - If you [[http://pragmaticemacs.com/emacs/toggle-between-most-recent-buffers/][toggle between recent buffers]] all the time, you might as well have a keybinding for it.
+
+- *Coding:*
+  - Package recommendations for [[https://www.reddit.com/r/emacs/comments/3q11tm/coming_from_vim_help_me_set_a_nice_c_ide/][C++]] (+ [[https://www.youtube.com/watch?v=5FQwQ0QWBTU][16min video]] and [[https://github.com/cppcon/cppcon2015][presentation resources]], and [[http://irreal.org/blog/?p=4670][write-up by Irreal]]), [[https://www.youtube.com/watch?v=CNbvt-veozU][C (video in Chinese)]], [[https://www.youtube.com/watch?v=3-4QVMmzTbE][Drupal]] (video: ~1h) and [[https://www.reddit.com/r/emacs/comments/3prp67/as_a_ruby_developper_can_you_help_me_configuring/][Ruby]]. Incidentally, [[https://emacs.zeef.com/ehartc][emacs.zeef.com]] has handy collections of recommended packages/links.
+  - [[http://ssbb.me/emacs-pyenv-auto-activation-en.html][Set pyenv based on a file with settings in the project root]] - you can use this general technique to load project-specific settings for other languages
+  - If you're having problems with your [[https://www.reddit.com/r/emacs/comments/3pvwns/emacs_latex_editing_with_os_x_el_capitan/][PATH environment variable]] in Emacs, try [[https://github.com/purcell/exec-path-from-shell][exec-path-from-shell]].
+  - If you haven't yet experimented with [[https://www.reddit.com/r/emacs/comments/3py4bv/python_shell_with_definitions_from_file/][interactive coding]] - sending snippets of code to a REPL (read-evaluate-print loops) that evaluates the code and displays the result - you might find it a handy addition to your programming toolbox. This Reddit example uses Python, but many other languages support REPLs too.
+  - [[http://acidwords.com/posts/2015-10-21-evil-mode-and-xml-folding.html][XML folding using hideshow]] can make reading XML a little easier.
+  - Tag files can be a handy way to navigate to function definitions. [[https://www.reddit.com/r/emacs/comments/3pni17/ctags_etags_or_gtags/][ctags, etags, or gtags?]] (Or rtags, if you're using C?) Turns out the differences don't seem to matter that much.
+  - [[https://www.reddit.com/r/emacs/comments/3plmrc/jenkinsmode_for_emacs/][Jenkins mode]] reports your continuous integration testing results.
+  - Snippet packages such as yasnippet are great, but once you've finished
+    a snippet, you lose the magic ability to type text into one place and
+    have it updated elsewhere. [[https://github.com/naiquevin/sphinx-doc.el][sphinx-doc]] can update Python function
+    docstrings with new arguments, and similar modes might be good to
+    write for other languages.
+  - [[https://www.reddit.com/r/emacs/comments/3q50do/best_way_organization_config_files_in_the_emacs/][What's a good way to organize your Emacs configuration?]] [[http://emacs.stackexchange.com/questions/2520/organize-the-content-of-emacs-d-init-el-and-emacs-d][StackExchange has a similar discussion]].
+  - [[http://endlessparentheses.com/improving-latex-equations-with-font-lock.html][Font-locking LaTeX]] can make equations prettier.
+  - Messing around with Emacs font-locking? [[https://github.com/Lindydancer/font-lock-studio][font-lock-studio]] lets you interactively debug your font locking rules.
+  - [[http://whatthefuck.computer/blog/2015/10/26/mclient][mclient - matrix.org client]] - API library and chat client used to build a "personal assistant" bot that talks to a remote Emacs from Android, among other things. (matrix.org: "open standard for decentralised persistent communication")
+  - [[http://hexmode.com/2015/10/emacs-for-mediawiki/][Configuring flycheck for MediaWiki]]
+
+- *Community*:
+  - [[http://emacsel.podbean.com/][New Emacs podcast, emacs.el]] (Daniel Gopar and Samer Masterson).
+  - [[https://www.reddit.com/r/emacs/comments/3pp9hz/new_emacs_channel_for_beginners/][Reddit announcement]] of new IRC channel for newbies, #emacs-beginners
+    on irc.freenode.net. If you don't already have a preferred IRC
+    client, you can use the web chat at [[http://webchat.freenode.net][webchat.freenode.net]]. For more Emacs fun,
+    you could try one of the many, many [[http://www.emacswiki.org/emacs/InternetRelayChat][IRC clients in Emacs]]. =) (Maybe
+    #emacs-beginners will be less intimidating than #emacs, since newbies
+    might feel weird about interrupting off-topic conversations.)
+
+- *Miscellaneous:*
+  - Upcoming Emacs 25 feature: [[http://oremacs.com/2015/10/23/dired-compress/][Compress multiple files in Dired]] into a =.tar.gz=, =.zip=, =.tar.bz2=, or =.tar.xz=
+  - [[https://www.reddit.com/r/emacs/comments/3pycod/how_to_do_realtime_collaborative_editing_of/][Collaborative editing of Org Mode files]]: shared tmux or [[http://www.youtube.com/watch?v=0MUr7zw-qMM][tmate]], [[http://emacswiki.org/emacs/Rudel][Rudel]], [[https://github.com/zk-phi/togetherly/][togetherly]], or [[https://github.com/Floobits/floobits-emacs][floobits]] (paid).
+  - Do you export Org Mode to HTML? You might like this collection of [[https://github.com/fniessen/org-html-themes][CSS themes]]. See the [[https://www.reddit.com/r/emacs/comments/3pvbag/is_there_a_collection_of_css_styles_for_org/][Reddit thread]] for more links.
+
+- *Videos:*
+  - [[https://www.youtube.com/watch?v=CNbvt-veozU][Emacs as C IDE]] (in Chinese; 11:14)
+  - [[https://www.youtube.com/watch?v=5-EHDZDZVAE][Aaron Bello: "Drupal Website Development Using Emacs" at Drupal Nights by BioRAFT]] (1:06:39)
+  - [[https://www.youtube.com/watch?v=5FQwQ0QWBTU][CppCon 2015: Atila Neves "Emacs as a C++ IDE]] (16:18), materials at https://github.com/cppcon/cppcon2015
+
+- *New packages on MELPA:*
+  - [[package:company-qml][company-qml]]: Company backend for QML files
+  - [[package:describe-number][describe-number]]: Describe number at point.
+  - [[package:flycheck-dialyzer][flycheck-dialyzer]]: Support dialyzer in flycheck
+  - [[package:forecast][forecast]]: Display a forecast.io weather report in a buffer
+  - [[package:go-rename][go-rename]]: Integration of the 'gorename' tool into Emacs.
+  - [[package:gorepl-mode][gorepl-mode]]: Go REPL Interactive Development in top of Gore
+  - [[package:gregorio-mode][gregorio-mode]]: Gregorio Mode for .gabc files
+  - [[package:ido-grid-mode][ido-grid-mode]]: Display ido-prospects in the minibuffer in a grid.
+  - [[package:iodine-theme][iodine-theme]]: A light emacs color theme
+  - [[package:jenkins][jenkins]]: Minimalistic Jenkins client for Emacs
+  - [[package:magit-rockstar][magit-rockstar]]: commit like a rockstar
+  - [[package:meacupla-theme][meacupla-theme]]: meacupla theme for emacs
+  - [[package:paper-theme][paper-theme]]: A minimal Emacs colour theme.
+  - [[package:psc-ide][psc-ide]]: Minor mode for PureScript's psc-ide tool.
+  - [[package:unicode-troll-stopper][unicode-troll-stopper]]: Minor mode for Highlighting Unicode homoglyphs
+
+Links were from [[http://reddit.com/r/emacs/new][reddit.com/r/emacs]], [[http://planet.emacsen.org][planet.emacsen.org]], and [[https://www.youtube.com/results?search_query=emacs&search_sort=video_date_uploaded][Youtube]]. Here's [[http://sachachua.com/blog/2015/10/2015-10-18-emacs-link-round-up/][last week's round-up]], too. Enjoy!
+*** DONE Queue Emacs News updates
+    CLOSED: [2015-11-17 Tue 13:56]
+    :PROPERTIES:
+    :Effort:   0:30
+    :END:
+    :LOGBOOK:
+    CLOCK: [2015-11-17 Tue 12:44]--[2015-11-17 Tue 13:58] =>  1:14
+    :END:
+
+*** DONE Set up Emacs News mailing list
+    CLOSED: [2015-11-10 Tue 20:09]
+    :PROPERTIES:
+    :Effort:   0:15
+    :QUANTIFIED: Emacs
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2015-11-10 Tue 20:09]
+    CLOCK: [2015-11-10 Tue 19:59]--[2015-11-10 Tue 20:09] =>  0:10
+    :END:
+** Emacs chats																									:project:
+*** TODO Revise transcript for Magnar Sveen                      :transcript:
+
+*** TODO Transcribe Avdi Grimm's chat                            :transcript:
+ Shouldn't be verbatim - remove ums, ahs, filler words, etc. =)
+*** TODO Transcribe Christopher Wellons' chat                    :transcript:
+*** TODO Transcribe Carsten Dominik's talk   :transcript:
+*** DONE Update missing podcast episode
+    CLOSED: [2015-11-07 Sat 11:31] SCHEDULED: <2015-11-07 Sat>
+    :PROPERTIES:
+    :Effort:   0:15
+    :QUANTIFIED: Emacs
+    :END:
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2015-11-07 Sat 11:31]
+    CLOCK: [2015-11-07 Sat 11:03]--[2015-11-07 Sat 11:31] =>  0:28
+    :END:
+  2015-11-07 11:02
+
+ http://askubuntu.com/questions/178481/how-to-download-an-mp3-track-from-a-youtube-video
+ youtube-dl https://www.youtube.com/watch?v=QRBcm6jFJ3Q --extract-audio --audio-format mp3  --prefer-ffmpeg
+
+ How do I edit mp3 tags again? Ah, I just have to be in the directory view.
+*** CANCELLED Follow up on Xah Lee's suggestions regarding Emacs Chats
+		CLOSED: [2015-03-07 Sat 09:44] SCHEDULED: <2015-02-25 Wed>
+- [[http://ergoemacs.org/emacs/blog.html][Who Do You Like to See in Sacha Chua&apos;s Emacs Chat?]]:
+
+
+- Tikhon Jelvis?
+- Follow up with Xah Lee's list
+- Bodil again?
+
+
+** Other community tasks
+*** DONE Process Emacsconf videos
+    CLOSED: [2015-09-25 Fri 17:59] SCHEDULED: <2015-09-21 Mon>
+    :LOGBOOK:
+    - State "DONE"       from "TODO"       [2015-09-25 Fri 17:59]
+    :END:
+*** DONE Download Emacsconf videos
+    CLOSED: [2015-09-01 Tue 19:05]
+    :LOGBOOK:
+    - State "DONE"       from "WAITING"    [2015-09-01 Tue 19:05]
+    - State "WAITING"    from "TODO"       [2015-09-01 Tue 17:56]
+    :END:
+ https://www.reddit.com/r/Twitch/comments/36qtwg/is_there_any_way_of_currently_download_a_past_vod/
+*** DONE Cut the rest of the Emacs videos
+    :PROPERTIES:
+    :Effort:   4:00
+    :END:
+    :LOGBOOK:
+    CLOCK: [2015-09-23 Wed 11:01]--[2015-09-23 Wed 11:10] =>  0:09
+    :END:
+
+*** CANCELLED International Lisp Conference 2014 (August)
+Contact: Dave Cooper
+
 * Projects
+** Set up .emacs.d reading club
+*** TODO Make a list of .emacs.d to recommend to various audiences  :emacswiki:
+** DONE Set up talk- or mastermind-type hangouts
+   CLOSED: [2015-11-18 Wed 20:08]
 ** Publishing Emacs
 	 :PROPERTIES:
 	 :QUANTIFIED: Emacs
 	 :END:
+*** TODO Clean up uDemy formatting for Emacs Basics
 *** CANCELLED Tweak table of contents so that it's always visible / easy to get to
 		 CLOSED: [2014-09-01 Mon 16:04]
 - Rainer
-*** DONE Consider moving back-to-top, e-mail to the top right?
-		 CLOSED: [2014-06-04 Wed 11:30]
-- Rainer
-
-*** [#A] Emacs Life																									:project:
+*** SOMEDAY [#A] Emacs Life                                         :project:
 **** CANCELLED Sketch out personas
 		 CLOSED: [2014-08-09 Sat 22:05]
 **** CANCELLED Set up mailing list
 		 CLOSED: [2014-05-22 Thu 22:38]
-**** DONE Review transcript for Emacs NYC talk
-		 CLOSED: [2014-06-06 Fri 15:14] SCHEDULED: <2014-06-06 Fri>
-			 :LOGBOOK:
-			  CLOCK: [2014-06-06 Fri 13:40]--[2014-06-06 Fri 15:14] =>  1:34
-				 :END:
-			 :PROPERTIES:
-			  :CREATED:  [2014-06-06 Fri 13:40]
-			  :Effort:   1:00
-			  :END:
-**** DONE How to Read Emacs Lisp e-mail course 											:project:
-[[file:~/personal/elisp-course.org]]
-***** DONE Get e-mail sending to work from virtual machine
-			 CLOSED: [2014-05-14 Wed 16:17]
-			:LOGBOOK:
-			CLOCK: [2014-05-14 Wed 16:07]--[2014-05-14 Wed 16:17] =>  0:10
-			:END:
-			:PROPERTIES:
-			:Effort:   0:30
-			:END:
-***** DONE Send first section to myself and others
-			 CLOSED: [2014-05-14 Wed 16:50]
-			:LOGBOOK:
-			CLOCK: [2014-05-14 Wed 16:17]--[2014-05-14 Wed 16:50] =>  0:33
-			:END:
-			:PROPERTIES:
-			:Effort:   0:30
-			:END:
-***** DONE Break Emacs Lisp guide up into an e-mail course
-			 CLOSED: [2014-05-14 Wed 16:06] SCHEDULED: <2014-05-14 Wed>
-***** DONE Add objectives to beginner2
-			 CLOSED: [2014-05-21 Wed 12:14]
-			:LOGBOOK:
-			CLOCK: [2014-05-21 Wed 10:30]--[2014-05-21 Wed 12:14] =>  1:44
-			:END:
-			:PROPERTIES:
-			:Effort:   0:30
-			:END:
-***** DONE Send course e-mail: beginner1, beginner2
-			 CLOSED: [2014-05-21 Wed 15:47] SCHEDULED: <2014-05-21 Wed>
-			 :LOGBOOK:
-			 CLOCK: [2014-05-21 Wed 14:50]--[2014-05-21 Wed 15:47] =>  0:57
-			 :END:
-			:PROPERTIES:
-			:Effort:   1:00
-			:END:
-***** DONE Work on support code for e-mail course
-			 CLOSED: [2014-06-29 Sun 21:47]
-			:LOGBOOK:
-			CLOCK: [2014-05-28 Wed 14:00]--[2014-05-28 Wed 14:25] =>  0:25
-			:END:
-			:PROPERTIES:
-			:Effort:   1:00
-			:END:
-
-- Make it easy to define new modules
-***** DONE Take notes on people who are interested in taking course, process course steps :routine:
-			 SCHEDULED: <2014-07-02 Wed .+3d>
-			 :LOGBOOK:
-			 - State "DONE"       from "TODO"       [2014-06-25 Wed 19:43]
-			 - State "DONE"       from "STARTED"    [2014-06-18 Wed 15:09]
-			 CLOCK: [2014-06-18 Wed 13:46]--[2014-06-18 Wed 15:09] =>  1:23
-			 - State "DONE"       from "STARTED"    [2014-06-12 Thu 20:50]
-			 CLOCK: [2014-06-12 Thu 20:47]--[2014-06-12 Thu 20:50] =>  0:03
-			 CLOCK: [2014-06-11 Wed 16:04]--[2014-06-11 Wed 17:38] =>  1:34
-			 - State "DONE"       from "TODO"       [2014-06-06 Fri 20:27]
-			 - State "DONE"       from "STARTED"    [2014-06-04 Wed 15:49]
-			 CLOCK: [2014-06-04 Wed 14:17]--[2014-06-04 Wed 15:49] =>  1:32
-			 CLOCK: [2014-05-28 Wed 14:25]--[2014-05-28 Wed 16:05] =>  1:40
-			 CLOCK: [2014-05-28 Wed 13:56]--[2014-05-28 Wed 14:00] =>  0:04
-			 CLOCK: [2014-05-26 Mon 15:55]--[2014-05-26 Mon 16:50] =>  0:55
-			 - State "DONE"       from "STARTED"    [2014-05-21 Wed 14:50]
-			 CLOCK: [2014-05-21 Wed 12:14]--[2014-05-21 Wed 14:50] =>  2:36
-			 CLOCK: [2014-05-21 Wed 10:26]--[2014-05-21 Wed 10:30] =>  0:04
-			 - State "DONE"       from "TODO"       [2014-05-19 Mon 22:33]
-			 - State "DONE"       from "STARTED"    [2014-05-16 Fri 15:01]
-			 CLOCK: [2014-05-16 Fri 14:19]--[2014-05-16 Fri 15:01] =>  0:42
-			 CLOCK: [2014-05-16 Fri 13:39]--[2014-05-16 Fri 14:06] =>  0:27
-			 CLOCK: [2014-05-14 Wed 16:50]--[2014-05-14 Wed 17:25] =>  0:35
-			 CLOCK: [2014-05-13 Tue 17:50]--[2014-05-13 Tue 18:20] =>  0:30
-			 CLOCK: [2014-05-12 Mon 21:00]--[2014-05-12 Mon 22:04] =>  1:04
-			 CLOCK: [2014-05-12 Mon 20:28]--[2014-05-12 Mon 20:47] =>  0:19
-			 :END:
-			:PROPERTIES:
-			:Effort:   1:00
-      :CLOCK_MODELINE_TOTAL: today
-			:LAST_REPEAT: [2014-06-25 Wed 19:43]
-			:END:
-***** DONE Package beginner1 as a lesson
-			 CLOSED: [2014-05-13 Tue 21:05]
-			 SCHEDULED: <2014-05-13 Tue>
-			 :LOGBOOK:
-			 CLOCK: [2014-05-13 Tue 19:53]--[2014-05-13 Tue 21:05] =>  1:12
-			 :END:
-			:PROPERTIES:
-			:Effort:   0:30
-			:END:
-***** DONE Package beginner2 as a lesson
-			 CLOSED: [2014-05-22 Thu 22:38]
-***** DONE Make checklist of topics, figure out where people are
-			 CLOSED: [2014-05-12 Mon 22:04]
 **** How to Read Emacs Lisp
 [[file:how-to-read-emacs-lisp.org][Link]]
-***** DONE Write objectives for each section
-			 CLOSED: [2014-06-06 Fri 20:33]
-***** DONE Write objectives and practice for section 3, revise section 3
-			 CLOSED: [2014-05-28 Wed 13:51]
-			:LOGBOOK:
-			CLOCK: [2014-05-28 Wed 12:42]--[2014-05-28 Wed 13:51] =>  1:09
-			CLOCK: [2014-05-28 Wed 09:21]--[2014-05-28 Wed 09:45] =>  0:24
-			:END:
-			:PROPERTIES:
-			:Effort:   1:00
-			:END:
-***** DONE Pick chunk size for sections
-			 CLOSED: [2014-05-22 Thu 22:38]
-***** DONE Break guide up into parts that can be focused on for 15-60 minutes
-			 CLOSED: [2014-05-22 Thu 22:38]
-***** DONE Add more exercises
-			 CLOSED: [2014-06-06 Fri 20:33]
-***** DONE Add more examples
-			 CLOSED: [2014-06-06 Fri 20:33]
-		 	:PROPERTIES:
-		 	:Effort:   1:00
-		 	:END:
-***** SOMEDAY Convert to nicely-formatted EPUB
-			 SCHEDULED: <2014-11-08 Sat>
-		 	:PROPERTIES:
-		 	:Effort:   2:00
-		 	:END:
-
-***** DONE Incorporate DanP's second round of feedback
-			 CLOSED: [2014-05-07 Wed 19:58]
-			:PROPERTIES:
-			:Effort:   2:00
-			:END:
-***** DONE Write about keybinding																			:sacha:
-		 	 CLOSED: [2014-05-01 Thu 19:36]
-		 	:LOGBOOK:
-		 	CLOCK: [2014-05-01 Thu 18:41]--[2014-05-01 Thu 19:36] =>  0:55
-		 	CLOCK: [2014-05-01 Thu 18:29]--[2014-05-01 Thu 18:29] =>  0:00
-		 	:END:
-		 	:PROPERTIES:
-		 	:Effort:   1:00
-		 	:END:
-***** DONE Write about defuns
-		 	 CLOSED: [2014-05-05 Mon 11:16]
-		 	:LOGBOOK:
-		 	CLOCK: [2014-05-05 Mon 11:09]--[2014-05-05 Mon 11:16] =>  0:07
-		 	CLOCK: [2014-05-05 Mon 09:02]--[2014-05-05 Mon 09:37] =>  0:35
-		 	:END:
-		 	:PROPERTIES:
-		 	:Effort:   1:00
-		 	:END:
-***** DONE Write about lambda
-		 	 CLOSED: [2014-05-05 Mon 11:16]
-		 	:PROPERTIES:
-		 	:Effort:   1:00
-		 	:END:
-***** DONE Incorporate @philandstuff's feedback
-	 CLOSED: [2014-05-01 Thu 18:17]
-	 :LOGBOOK:
-	 CLOCK: [2014-05-01 Thu 18:08]--[2014-05-01 Thu 18:17] =>  0:09
-	 :END:
-	 :PROPERTIES:
-	 :Effort:   0:30
-	 :END:
-https://twitter.com/philandstuff/status/461969774227247104
-- typo
-- remove scroll
-***** DONE Add more details to reading Emacs Lisp tutorial
-		 	 CLOSED: [2014-04-28 Mon 11:54]
-	 	 	:LOGBOOK:
-	 	 	- State "DONE"       from "STARTED"    [2014-04-28 Mon 11:54]
-	 	 	CLOCK: [2014-04-28 Mon 10:58]--[2014-04-28 Mon 11:54] =>  0:56
-	 	 	:END:
-	 	 	:PROPERTIES:
-	 	 	:Effort:   2:00
-	 	 	:END:
 *** [#C] Emacs Basics 																				:project:someday:
 	 	:PROPERTIES:
 	 	:LINK:     [[file:~/sachac.github.io/evil-plans/index.org::*create%20a%2010-week%20Emacs%20Basics%20course][create a 10-week Emacs Basics course]]
 	 	:END:
-**** DONE Add more sections to Emacs Lisp tutorial
-		 	CLOSED: [2014-04-23 Wed 15:23] SCHEDULED: <2014-04-23 Wed>
-		 	:LOGBOOK:
-		 	- State "DONE"       from "TODO"       [2014-04-23 Wed 15:23]
-		 	:END:
-**** DONE [#A] Add objectives and practice to section 4
-		 CLOSED: [2014-06-04 Wed 14:17] SCHEDULED: <2014-06-04 Wed>
-		 :LOGBOOK:
-		 CLOCK: [2014-06-04 Wed 14:13]--[2014-06-04 Wed 14:17] =>  0:04
-		 CLOCK: [2014-06-04 Wed 11:30]--[2014-06-04 Wed 12:10] =>  0:40
-		 :END:
-		 :PROPERTIES:
-		 :CREATED:  [2014-06-04 Wed 11:30]
-		 :Effort:   1:00
-		 :END:
-**** CANCELLED Make video on extending Emacs 
+**** CANCELLED Make video on extending Emacs
 		 CLOSED: [2014-06-06 Fri 20:31]
 		 :PROPERTIES:
 		 :Effort:   2:00
@@ -317,7 +1283,6 @@ https://twitter.com/gozes/status/446397063194894337
 		 :Effort:   2:00
 		 :END:
 **** SOMEDAY [#A] Record session on learning keyboard shortcuts
-		 SCHEDULED: <2014-11-08 Sat>
 		 :PROPERTIES:
 		 :CREATED:  [2014-04-16 Wed 12:20]
 		 :END:
@@ -335,84 +1300,21 @@ Difference compared to M-x customize-group org - highlights specific things you 
 > about a year going through Land of Lisp by Conrad Barski.  And lately I've
 > been working my way through Clojure Programming by Emerick, Grand, and
 Cliff Rodgers
-*** DONE Share reading Emacs config video															 :blog:
-		 CLOSED: [2014-05-22 Thu 22:39]
-https://www.youtube.com/watch?v=uP9qmhcI9IQ
 *** CANCELLED Record another Emacs config video
 		 CLOSED: [2014-08-09 Sat 22:03]
-*** DONE Add support page to emacs-notes
-	 	CLOSED: [2014-05-02 Fri 16:12]
-	 	:LOGBOOK:
-	 	CLOCK: [2014-05-02 Fri 16:03]--[2014-05-02 Fri 16:12] =>  0:09
-	 	:END:
-	 	:PROPERTIES:
-	 	:Effort:   0:30
-	 	:END:
 *** CANCELLED Sketch out Org Mode coaching
 		 CLOSED: [2014-05-22 Thu 22:38]
 
-*** CANCELLED Write a tutorial from installing Emacs to getting Org 8 updated    
+*** CANCELLED Write a tutorial from installing Emacs to getting Org 8 updated
 		 CLOSED: [2014-05-21 Wed 16:45]
 :PROPERTIES:
 :Effort: 2:00
 :END:
-*** DONE How to update the Org 7 that comes with Emacs to Org 8 (more configuration! better exports!)
-		 CLOSED: [2014-05-09 Fri 11:28]
-		:LOGBOOK:
-		CLOCK: [2014-05-09 Fri 11:03]--[2014-05-09 Fri 11:28] =>  0:25
-		:END:
-:PROPERTIES:
-:Effort: 2:00
-:ID:       o2b:1d2bbf88-93b3-449e-8129-45dfb568f8a7
-:POST_DATE: [2014-05-09 Fri 11:16]
-:POSTID:   27231
-:BLOG:     sacha
-:END:
-
-#+begin_html
-<div class="update">Update 2014-05-12: Simplified thanks to Sebastian's note that Org 8 is available in the built-in package repository, yay!</div>
-#+end_html
-
-The Org Mode included in Emacs 24 is version 7. Version 8 has lots of new configuration variables and the exporting mechanism has been rewritten. However, it needs to be installed in an Emacs that has not yet loaded any Org code or files. Here's how you can upgrade your Org:
-
-1. Start Emacs with =emacs -q=. This skips your personal configuration.
-
-2. You will need an Internet connection for this step. Type =M-x package-install=, and type in =org=. This will install the latest version of Org from the built-in package repository.
-
-3. Edit your =~/.emacs.d/init.el= (or =~/.emacs=, if you're using that instead). Add the following code to the beginning of the file:
-	 #+begin_src emacs-lisp
-	 (package-initialize)
-   (setq package-enable-at-startup nil)
-	 #+end_src
-
-   This will load the installed packages when you start Emacs, overriding the buit-in Org 7 with the Org 8 version that you installed.
-
-   Advanced note: If you've downloaded Emacs Lisp code that should override code already installed through packages, you need to change this to =(package-initialize nil)= instead, and add =(package-initialize t)= after your =load-path= settings.
-
-4. Check your configuration for references to the older version of Org. In particular, look for any configuration related to exporting (ex: =(require 'org-html)=). You can change those lines to their Org 8 equivalents (ex: =(require 'ox-html)=), but it's probably easier to just comment them out for now. You can comment out lines by adding =;= to the beginning.
- 
-5. Save your =init.el= and restart Emacs (this time, without the =-q= option). =M-x org-version= should now start with =Org-mode version 8=.
-
-6. Review your Emacs configuration for any changes that you will need to make. You can ask the [[http://orgmode.org/community.html][Org Mode mailing list]] for help if you get stuck. 
-
-Good luck!
-
-*** DONE Announce guide for learning Emacs Lisp
-		 CLOSED: [2014-05-22 Thu 22:38] SCHEDULED: <2014-06-21 Sat>
-		:PROPERTIES:
-		:CREATED:  [2014-05-21 Wed 16:45]
-		:END:
 *** TODO Announce EmacsLife.com
-		 SCHEDULED: <2014-11-01 Sat>
+
 *** CANCELLED Write about mode cookies
 		 CLOSED: [2014-06-06 Fri 20:33]
 *** TODO Write about load path shadowing
-		 SCHEDULED: <2014-12-05 Fri>
-	 	:PROPERTIES:
-	 	:Effort:   0:30
-	 	:END:
-*** TODO Write about windows
-		 SCHEDULED: <2014-11-30 Sun>
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
@@ -423,162 +1325,8 @@ Good luck!
 		:END:
 https://github.com/chrisdone/structured-haskell-mode
 
-*** DONE Write about semi-auto-responder
-			 CLOSED: [2014-05-21 Wed 16:43]
-			:LOGBOOK:
-			CLOCK: [2014-05-21 Wed 16:06]--[2014-05-21 Wed 16:43] =>  0:37
-			:END:
-			:PROPERTIES:
-			:Effort:   1:00
-			:END:
-
-It turns out that lots of people are interested in an e-mail-based course for learning Emacs Lisp. Yay! =) Maybe it's the idea of bite-size chunks. Maybe it's the ease of asking questions. Maybe it's the regular reminders to work on something. Who knows? Whatever the reason, it's awesome to see so many people willing to join me on this experiment.
-
-Since this is my first time to venture into the world of teaching people online, I wanted to see how far I could push actually doing all the mails myself, instead of just signing up for an Aweber account and handing everyone off to an impersonal autoresponder. I dusted off Gnus, offlineimap, and org-contacts, and started figuring out my workflow. I'll share how that workflow's evolving so that you can get a sense of how someone might write little bits of Emacs Lisp to make something repetitive easier.
-
-For the first little while, I got by with using =C-x r s= (=copy-to-register=) and =C-x r i= (=insert-register=) to store the text that I needed. 
-Sometimes I needed to paste in the welcome message and checklist, and sometimes I needed to paste in the first lesson. By using registers, I could insert whatever I wanted instead of going through the kill ring. I also had another bit of templated code in yet another register so that I could easily create an org-contacts entry for the person whose mail I was replying to. In the beginning, I used tasks under each person's heading to indicate that I had sent them the checklist or that I had sent them the first lesson. Eventually, I changed my org-contacts notes so that the TODO state of each person showed which lesson I was going to send them next, or CHECKLIST if I was waiting for their reply to the checklist. I also set up Org so that it would automatically log when the TODO state was changed. 
-
-#+begin_src org
-#+TODO: TODO | DONE
-#+TODO: CHECKLIST(c!) BEGINNER1(1!) BEGINNER2(2!) BEGINNER3(3!) BEGINNER4(4!) FULL(f!) | FINISHED(x!)
-#+TODO: | CANCELLED
-
-,* Who
-,** CHECKLIST Jane Smith ...
-,** BEGINNER1 John Smith
-	 SCHEDULED: <2014-05-28 Wed>
-   :PROPERTIES:
-   :EMAIL: john@example.com
-   :END:
-(notes from the messages, etc.)
-#+end_src
-
-I wrote some code to make it easier to send someone a checklist and create a note for them in my org-contacts file. I bound it to =C-c e c= for convenience.
-(The =bind-key= function is defined by a package.)
-
-#+begin_src emacs-lisp
-      (setq sacha/elisp-course-checklist-body "... really long text here...")
-      (defun sacha/elisp-course-checklist ()
-        "Copy this message and put it at the end as a checklist item. 
-      Start a message with the checklist."
-        (interactive)
-        (gnus-summary-scroll-up 1)
-        (with-current-buffer gnus-article-buffer
-          (let ((message (buffer-substring-no-properties (point-min) (point-max)))
-                (email (cadr (org-contacts-gnus-get-name-email))))
-            (with-current-buffer "elisp-course.org"
-              (save-excursion
-                (goto-char (point-max))
-                (save-excursion
-                  (insert "\n** " message)
-                  (org-set-property "EMAIL" email)
-                  (org-todo "CHECKLIST"))))))
-        (gnus-summary-followup-with-original nil)
-        (goto-char (point-max))
-        (insert sacha/elisp-course-checklist-body))
-      (bind-key "C-c e c" 'sacha/elisp-course-checklist)
-#+end_src
-
-This made it easier for me to read the starred messages from my inbox and use =C-c e c= to get a head start on processing people's introductory messages.
-Yay! I used the register trick to help me reply to people who were ready for the first lesson. After the first few replies, I noticed that the attachment code was fine even if I put that in the register too, so I added it as well.
-
-Things got more complicated when I started processing lesson 2. I didn't want to have to set up and remember lots of different registers, and I didn't want to manually update the TODO states either. So I started defining functions that I could call with keyboard shortcuts:
-
-#+begin_src emacs-lisp
-    (defun sacha/elisp-course-1 ()
-      (interactive)
-      (let ((marker (org-contacts-gnus-article-from-get-marker)))
-        (if marker
-            (org-with-point-at marker
-              (org-todo "BEGINNER2"))))
-      ;; Find the person's contact record
-      (gnus-summary-scroll-up 1)
-      (gnus-summary-followup-with-original nil)
-      (message-goto-subject)
-      (message-delete-line)
-      (insert (concat "Subject: " sacha/elisp-course-1-subject "\n"))
-      (goto-char (point-max))
-      (insert sacha/elisp-course-1-body))
-    (bind-key "C-c e 1" 'sacha/elisp-course-1)
-    (defun sacha/elisp-course-2 ()
-      (interactive)
-      (let ((marker (org-contacts-gnus-article-from-get-marker)))
-        (if marker
-            (org-with-point-at marker
-              (org-todo "BEGINNER3"))))
-      ;; Find the person's contact record
-      (gnus-summary-scroll-up)
-      (gnus-summary-followup-with-original nil)
-      (goto-char (point-max))
-      (insert sacha/elisp-course-2-body))
-    (bind-key "C-c e 2" 'sacha/elisp-course-2)
-#+end_src
-
-Really, though, it doesn't make sense to have a lot of duplicated code. So I wrote some code that would use the person's TODO keyword to look up the message to send them, and then move them to the next keyword. Now I don't need =sacha/elisp-course-1= or =sacha/elisp-course-2= any more.
-
-#+begin_src emacs-lisp
-  (setq sacha/elisp-course-info
-        `(("CHECKLIST" nil ,sacha/elisp-course-checklist-body)
-          ("BEGINNER1" ,sacha/elisp-course-1-subject ,sacha/elisp-course-1-body)
-          ("BEGINNER2" ,sacha/elisp-course-2-subject ,sacha/elisp-course-2-body)))
-
-  (defun sacha/elisp-course-process (subject body &optional state)
-    "Process this course entry."
-    (if (derived-mode-p 'org-mode)
-        (progn
-          ;; Move this node to the next state and compose a message
-          (if state (org-todo state))
-          (org-todo 'right)
-          (message-mail (org-entry-get (point) "EMAIL") subject)
-          (goto-char (point-max))
-          (insert body))
-      ;; Doing this from Gnus; find the person's info
-      (let ((marker (org-contacts-gnus-article-from-get-marker)))
-        (if marker (org-with-point-at marker
-                     (if state (org-todo state))
-                     (org-todo 'right)))
-        ;; Compose a reply
-        (gnus-summary-scroll-up 1)
-        (gnus-summary-followup-with-original nil)
-        (message-goto-subject)
-        (message-delete-line)
-        (insert (concat "Subject: " subject "\n"))
-        (goto-char (point-max))
-        (insert body))))
-
-  (defun sacha/elisp-course-guess-and-process (&optional state)
-    (interactive (list (if current-prefix-arg (read-string "State: "))))
-    (let ((current-state
-           (or state (elt
-                      (if (derived-mode-p 'org-mode)
-                          (org-heading-components) 
-                        (let ((marker (org-contacts-gnus-article-from-get-marker)))
-                          (if marker (org-with-point-at marker (org-heading-components)))))
-                      2))))
-      (sacha/elisp-course-process
-       (elt (assoc current-state sacha/elisp-course-info) 1)
-       (elt (assoc current-state sacha/elisp-course-info) 2)
-       state)))
-  (bind-key "C-c e e" 'sacha/elisp-course-guess-and-process)
-#+end_src
-
-Come to think of it, I should totally have it schedule the next update for the next Wednesday, too. ;) That's just =(org-schedule "+wed")=. Neat, huh?
-And I'm sure there are all sorts of ways the code can be simpler, but it works for me at the moment, so hooray! 
-
-I really like this approach. It lets me pull in standard information while also letting me customize the messages and how it fits into my task tracking. I can't get that with Gmail (even with canned responses), and I'm not sure any CRM is going to be quite as awesome as this. I can't wait to see how else we'll tweak this as we go through more conversations. I'd like to get better at:
-- having a consistent place where I can process all the messages and make sure nothing falls through the cracks; I currently star messages to make sure I process them, since the Gmail label folder in IMAP seems to be missing some messages
-- seeing all Gnus conversations related to an org-contacts entry
-- reaching out to people proactively with the next lesson, even if they haven't e-mailed me (or maybe I should wait for them?)
-
-Anyway, that's an example of writing a little bit of Emacs Lisp in order to connect different packages. Gnus handles mail, Org handles notes, org-contacts links the two together, and with a little bit of custom code, I can make the combination fit what I want to do. I read the source code of org-contacts to find out how I could look up the appropriate note, and I looked at =org-shiftright= to find out how to move things to the next TODO state. If you know something that works roughly like what you want it to work, you can find out how it does things and then copy that.
-
-As for the course itself: I've been sending people links to the HTML output, attached .txt files (with =-*- mode: org -*-=) so they can open it in Emacs if they want, and inline text so that they can skim it briefly in their e-mail client if they want to. I'm not perfectly happy with the plain-text formats, but it seems to be a reasonable compromise, and so far people have been able to deal with it. I've been improving pieces of it based on feedback on clarity, suggestions for good examples, and so on. I didn't take all the feedback; after thinking about some of the suggestions, I still preferred it my way. It's shaping up quite nicely, though!
-
-If you're curious about the beginner's course on reading Emacs Lisp, e-mail me at [[mailto:sacha@sachachua.com][sacha@sachachua.com]] and we'll see how this works out. I'm certainly learning a lot. =)
-
-*** TODO Write about undo
-		 SCHEDULED: <2014-11-20 Thu>
+*** CANCELLED Write about undo
+		 CLOSED: [2015-03-07 Sat 09:43] SCHEDULED: <2015-02-25 Wed>
 	 	:PROPERTIES:
 	 	:Effort:   0:30
 	 	:END:
@@ -592,687 +1340,410 @@ http://emacs-fu.blogspot.ca/2010/11/undo.html
 - Other delegation experiments
 *** CANCELLED Make it easier to bookmark sections of guide
 	 	CLOSED: [2014-05-01 Thu 18:05]
+    :PROPERTIES:
+    :END:
 	 	:LOGBOOK:
 	 	CLOCK: [2014-04-30 Wed 18:55]--[2014-04-30 Wed 19:15] =>  0:20
 	 	:END:
 	 	:PROPERTIES:
 	 	:Effort:   1:00
 	 	:END:
-*** DONE Organize Emacs resources into starting/improving/enjoying
-	 CLOSED: [2014-04-30 Wed 17:14]
-	 :LOGBOOK:
-	 CLOCK: [2014-04-30 Wed 16:24]--[2014-04-30 Wed 17:14] =>  0:50
-	 :END:
-	 :PROPERTIES:
-	 :Effort:   2:00
-	 :END:
-- https://github.com/sachac/sharing/blob/gh-pages/blog.org
-
-*** DONE Create graphviz map for learning Org Mode for Emacs		:graph:sacha:
-	 	CLOSED: [2014-04-28 Mon 18:33]
-	 	:LOGBOOK:
-	 	CLOCK: [2014-04-28 Mon 17:56]--[2014-04-28 Mon 18:33] =>  0:37
-	 	:END:
-	 	:PROPERTIES:
-	 	:Effort:   1:00
-	 	:END:
-
-*** DONE Make blog posts available offline
-	 	CLOSED: [2014-04-30 Wed 18:51]
-	 	:LOGBOOK:
-	 	- State "DONE"       from "TODO"       [2014-04-30 Wed 18:51]
-	 	:END:
-*** DONE Build a directory of Emacs-related videos - maybe everything with at least 1000 views.
-	 	CLOSED: [2014-04-30 Wed 18:52]
-	 	:LOGBOOK:
-	 	- State "DONE"       from "TODO"       [2014-04-30 Wed 18:52]
-	 	:END:
-	 	:PROPERTIES:
-	 	:Effort:   3:00
-	 	:END:
-*** DONE Contemplate git or blog posts
-		 CLOSED: [2014-04-26 Sat 14:41]
-		 :LOGBOOK:
-		 - State "DONE"       from "STARTED"    [2014-04-26 Sat 14:41]
-		 CLOCK: [2014-04-25 Fri 14:18]--[2014-04-25 Fri 14:47] =>  0:29
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   0:30
-		 :END:
-
-Blog posts 
-+ comments and discussions
-+ subscriptions
-+ search
-
-Separate static pages
-+ easier to add TODOs to agenda
-+ other people can add/update
-+ can see updates through Github notifications
-+ excuse to learn Jekyll?
-Yes, patch requests!
-
-*** DONE Move Emacs Chat transcripts to Github?
-	 	CLOSED: [2014-04-26 Sat 14:41]
-	 	:LOGBOOK:
-	 	- State "DONE"       from "TODO"       [2014-04-26 Sat 14:41]
-	 	:END:
-*** DONE Annotate my Emacs configuration    
-     CLOSED: [2014-04-09 Wed 13:32] SCHEDULED: <2014-04-09 Wed>
-:LOGBOOK:
-- State "DONE"       from "STARTED"    [2014-04-09 Wed 13:32]
-CLOCK: [2014-04-09 Wed 12:44]--[2014-04-09 Wed 13:32] =>  0:48
-CLOCK: [2014-04-09 Wed 11:50]--[2014-04-09 Wed 12:19] =>  0:29
-:END:
-
-:PROPERTIES:
-:Effort: 1:00
-:END:
-*** DONE Draft guide to getting started with Emacs Lisp
-     CLOSED: [2014-04-09 Wed 15:51] SCHEDULED: <2014-04-09 Wed>
-     :LOGBOOK:
-     - State "DONE"       from "STARTED"    [2014-04-09 Wed 15:51]
-     CLOCK: [2014-04-09 Wed 13:33]--[2014-04-09 Wed 15:51] =>  2:18
-     CLOCK: [2014-04-09 Wed 11:28]--[2014-04-09 Wed 11:50] =>  0:22
-     :END:
-     :PROPERTIES:
-     :Effort:   2:00
-     :END:
-
-
-- Existing resources
-  - http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
-  - [[https://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]: A bit abstract
-  - http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/: Starts with ielm, focuses on data structures; other parts?
-  - http://ergoemacs.org/emacs/elisp.html: Good collection of idioms and common uses.
-- Differences
-  - I want to write a friendly guide to Emacs Lisp programming, focusing on it as a way to customize Emacs. We'd start off with =(setq ...)=, maybe move on to simple hooks, and then define interactive commands, then interactive prompts.
-
-*** DONE Get Emacs to show me a month of completed tasks, organized by project    
-     CLOSED: [2014-04-11 Fri 14:56] SCHEDULED: <2014-04-11 Fri>
-:LOGBOOK:
-- State "DONE"       from "STARTED"    [2014-04-11 Fri 14:56]
-CLOCK: [2014-04-11 Fri 13:50]--[2014-04-11 Fri 14:56] =>  1:06
-:END:
-
-My goal is to be able to see what I've done in a month.
-An easy way to do that is to look at log mode for a month of tasks.
-Ooh. I had no idea there's a C-c a L org timeline... That's kinda nifty, combined with log mode. Maybe agenda?
-
-Okay. That's a start. That shows me by date. But do I really want it by project instead? 
-
-Oooh, maybe R would be helpful. It adds the clock table...
-
-TADA!
-
-#+begin_src emacs-lisp
-  (defun sacha/org-review-month (start-date)
-    "Review the month's clocked tasks and time."
-    (interactive (list (org-read-date)))
-    ;; Set to the beginning of the month
-    (setq start-date (concat (substring start-date 0 8) "01"))
-    (let ((org-agenda-show-log t)
-          (org-agenda-start-with-log-mode t)
-          (org-agenda-start-with-clockreport-mode t)
-          (org-agenda-clockreport-parameter-plist '(:link t :maxlevel 3)))
-      (org-agenda-list nil start-date 'month)))
-#+end_src
-
-
-
-:PROPERTIES:
-:Effort: 2:00
-:END:
-*** DONE Make it easier to cross-link Org    
-     CLOSED: [2014-04-06 Sun 16:06] SCHEDULED: <2014-04-06 Sun>
-:LOGBOOK:
-- State "DONE"       from "STARTED"    [2014-04-06 Sun 16:06]
-CLOCK: [2014-04-06 Sun 15:29]--[2014-04-06 Sun 16:06] =>  0:37
-:END:
-
-:PROPERTIES:
-:Effort: 0:30
-:END:
-
-*** DONE Build - Emacs: Prettify baby steps guide to Org Mode
-	 	CLOSED: [2014-03-05 Wed 16:56] SCHEDULED: <2014-03-05 Wed>
-	 	:LOGBOOK:
-	 	- State "DONE"       from "TODO"       [2014-03-05 Wed 16:56]
-	 	:END:
-*** DONE Build - Emacs: Make a guide to Dired
-	 	CLOSED: [2014-03-05 Wed 16:34] SCHEDULED: <2014-03-05 Wed>
-	 	:LOGBOOK:
-	 	- State "DONE"       from "TODO"       [2014-03-05 Wed 16:34]
-	 	:END:
-*** DONE Build - Emacs: Record Emacs Basics video for calling commands by name
-   CLOSED: [2014-03-17 Mon 19:52] SCHEDULED: <2014-03-17 Mon>
-   :LOGBOOK:
-   - State "DONE"       from "TODO"       [2014-03-17 Mon 19:52]
-   :END:
-
-:PROPERTIES:
-:Effort: 1:00
-:END:
-*** DONE Build - Emacs: Record Emacs Basics video on Emacs
-     CLOSED: [2014-03-24 Mon 13:40] SCHEDULED: <2014-03-24 Mon>
-     :LOGBOOK:
-     - State "DONE"       from "STARTED"    [2014-03-24 Mon 13:40]
-     CLOCK: [2014-03-24 Mon 13:40]--[2014-03-24 Mon 13:40] =>  0:00
-     :END:
-     :PROPERTIES:
-     :Effort:   2:00
-     :END:
-
-Hello, I'm Sacha Chua, and this is an Emacs Basics video on customizing Emacs. Emacs is incredibly flexible. You can tweak it to do much more than you might expect from a text editor. Here's how you can get started.
-
-You can change tons of options through the built-in customization interface. Explore the options by typing =M-x customize=. Remember, that's =Alt-x= if you're using a PC keyboard and =Option-x= if you're on a Mac. So for me, that's =Alt-x= =customize= =<Enter>=. In the future, I'll just refer to this as the =Meta= key, so remember which key is equivalent to =Meta= on your keyboard.
-
-After you run =M-x customize=, you'll see different groups of options. Click on the links to explore a group. 
-
-For example, people often want to change the backup directory setting.
-This is the setting that controls where the backup files (the files
-ending in ~) are created. You've probably noticed that they clutter
-your current directory by default.
-
-To change this setting, select the *Files > Backup* group. Look for the entry that says *Backup Directory Alist.* Click on the arrow, or move your point to the arrow and press =<Enter>=. You'll see that the value is =nil=. Click on *INS* or move your point to *INS* and press =<Enter>=. Fill it in as follows:
-- Regexp matching filename: =.=
-- Backup directory name: =~/.emacs.d/backups=
-
-Click on *State* and choose *Save for future sessions*. This will save your changes to =~/.emacs.d/init.el=. When you're done, type =q= to close the screen.
-
-You can also jump straight to customizing a specific variable. For example, if you want to change the way Emacs handles case-sensitive search, you can use =M-x customize-variable= to set the =case-fold-search= variable. By default, case fold search is on, which means that searching for a lower-case "hello" will match an upper-case "HELLO" as well. If you would like to change this so that lowercase only matches lowercase and uppercase matches only uppercase, you can toggle this variable. I like leaving case fold search on because it's more convenient for me. If you make lots of changes, you can use the *Apply and Save* button to save all the changes on your current screen.
-
-The Customize interface lets you change lots of options, but not everything can be changed through Customize. That's where your Emacs configuration file comes in. This used to be a file called =~/.emacs= in your home directory, and you'll still come across lots of pages that refer to a =.emacs= file (or "dot emacs"). The new standard is to put configuration code in your =~/.emacs.d/init.el= file, which you can create if it does not yet exist.
-
-What goes into your =~/.emacs.d/init.el= file? If you open it now, you'll probably find the settings you saved using =M-x customize=. You can also call functions, set variables, and even override the way Emacs works. As you learn more about Emacs, you'll probably find Emacs Lisp snippets on web pages and in manuals. For example, the Org manual includes the following lines:
-
-#+begin_src emacs-lisp
-     (global-set-key "\C-cl" 'org-store-link)
-     (global-set-key "\C-cc" 'org-capture)
-     (global-set-key "\C-ca" 'org-agenda)
-     (global-set-key "\C-cb" 'org-iswitchb)
-#+end_src
-
-This code sets =C-c l= (that's =Control-c l=) to run =org-store-link=, =C-c c= to run =org-capture=, =C-c a= to run =org-agenda=, and =C-c b= to run =org-iswitchb=. You can add those to the end of your =~/.emacs.d/init.el= file. They'll be loaded the next time you start Emacs. If you want to reload your =~/.emacs.d/init.el= without restarting, use =M-x eval-buffer=.
-
-As you experiment with configuring Emacs, you may run into mistakes or errors. You can find out whether it's a problem with Emacs or with your configuration by loading Emacs with =emacs -Q=, which skips your configuration. If Emacs works fine with your configuration, check your =~/.emacs.d/init.el= to see which code messed things up. You can comment out regions by selecting them and using =M-x comment-region=. That way, they won't be evaluated when you start Emacs. You can uncomment them with =M-x uncomment-region=. 
-
-Emacs gets even awesomer when you tailor it to the way you want to work. Enjoy customizing it!
-
-*** DONE Reach out regarding Emacs Google Hangout?
-	 	CLOSED: [2014-03-30 Sun 14:20] SCHEDULED: <2014-03-31 Mon>
-	 	:LOGBOOK:
-	 	- State "DONE"       from "TODO"       [2014-03-30 Sun 14:20]
-	 	:END:
-*** DONE Get a list of Emacs videos
-	 CLOSED: [2014-05-01 Thu 18:06]
-			:PROPERTIES:
-			:Effort:   1:00
-			:END:
-Considered YouTube Data API, but will try with humans first
 *** Beeminder.el
 [[~/code/beeminder.el/beeminder.el]]
-**** DONE Fix keymap in beeminder.el
-			 CLOSED: [2014-04-16 Wed 16:41]
-			:LOGBOOK:
-			- State "DONE"       from "STARTED"    [2014-04-16 Wed 16:41]
-			CLOCK: [2014-04-16 Wed 16:38]--[2014-04-16 Wed 16:41] =>  0:03
-			:END:
-			:PROPERTIES:
-			:Effort:   0:10
-			:END:
-Oh! Already fixed, yay.
-**** DONE Hook Beeminder into Gnus to track sent messages
-			 CLOSED: [2014-04-16 Wed 17:13]
-			:LOGBOOK:
-			- State "DONE"       from "STARTED"    [2014-04-16 Wed 17:13]
-			CLOCK: [2014-04-16 Wed 16:42]--[2014-04-16 Wed 17:13] =>  0:31
-			:END:
-			:PROPERTIES:
-			:Effort:   0:30
-			:END:
-
-(defun sacha/beeminder-track-message ()
-	(save-excursion
-		(goto-char (point-min))
-		(when (re-search-forward "Newsgroups: .*emacs")
-			(goto-char (point-min))
-			(when (re-search-forward "Subject: \\(.*\\)" nil t)
-				(beeminder-add-data "orgml" "1" (match-string 1))))))
-(add-hook 'message-send-news-hook 'sacha/beeminder-track-message)
-
-
-**** DONE Improve Emacs Beeminder    
-     CLOSED: [2014-04-08 Tue 18:08] SCHEDULED: <2014-04-08 Tue>
-:LOGBOOK:
-- State "DONE"       from "STARTED"    [2014-04-08 Tue 18:08]
-CLOCK: [2014-04-08 Tue 17:00]--[2014-04-08 Tue 18:08] =>  1:08
-:END:
-http://www.philnewton.net/code/beeminder-el/    
-
-- fix README mispelling
-- Remove user bindings
-- Fiddle with how it stores data
-- Cache things properly 
-
-:PROPERTIES:
-:Effort: 1:00
-:END:
 *** Emacs ABCs
 	 	:PROPERTIES:
 	 	:LINK:     [[file:~/Dropbox/Public/evil-plans.org::*make%20ABCs%20of%20Emacs][make ABCs of Emacs]]
 	 	:END:
-**** DONE Draw "A" page for Emacs ABCs														 :@drawing:
-		 CLOSED: [2014-04-11 Fri 15:38] SCHEDULED: <2014-04-11 Fri>
-		 :LOGBOOK:
-		 - State "DONE"       from "STARTED"    [2014-04-11 Fri 15:38]
-		 CLOCK: [2014-04-11 Fri 14:57]--[2014-04-11 Fri 15:38] =>  0:41
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   2:00
-		 :END:
-** [#A] Emacs chats																									:project:
-*** Harry R. Schwartz
-**** DONE Record chat with Harry Schwartz
-		 CLOSED: [2014-07-27 Sun 15:14] SCHEDULED: <2014-07-23 Wed>
-*** Bozhidar Batsov
-- Emacs Redux
-  - animated GIFs
-  - publishing workflow? Octopress, Jekyll, git; https://github.com/bbatsov/bbatsov.github.com
-http://batsov.com/about/
-
-https://github.com/bbatsov/prelude
-- does your config differ in any way?
-- WikEmacs
-
-- Projectile
-- CIDER maintenance
-Technical lead, Tradeo: Rails, NoedJS
-**** DONE Transcribe this myself? Offer to Oli?
-		 CLOSED: [2014-06-06 Fri 20:32]
-**** DONE Have Emacs Chat with bbatsov
-		 CLOSED: [2014-05-19 Mon 13:03]
-		 :LOGBOOK:
-		 CLOCK: [2014-05-19 Mon 11:35]--[2014-05-19 Mon 13:03] =>  1:28
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   1:30
-		 :END:
-**** DONE Review transcript for Bozhidar Batsov
-		 CLOSED: [2014-06-13 Fri 15:19] SCHEDULED: <2014-06-13 Fri>
-		 :LOGBOOK:
-		 CLOCK: [2014-06-13 Fri 14:42]--[2014-06-13 Fri 15:19] =>  0:37
-		 CLOCK: [2014-06-13 Fri 14:05]--[2014-06-13 Fri 14:31] =>  0:26
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   1:30
-		 :END:
-*** Xah Lee
-**** DONE Set up chat with Xah Lee
-	 	 CLOSED: [2014-05-01 Thu 22:08]
-**** DONE Record session with Xah Lee
-		 	CLOSED: [2014-05-02 Fri 21:15] SCHEDULED: <2014-05-02 Fri>
-**** DONE Review new video and post it
-		 	CLOSED: [2014-05-03 Sat 15:59] SCHEDULED: <2014-05-03 Sat>
-		 :PROPERTIES:
-		 :Effort:   0:30
-		 :END:
-**** DONE Give feedback on show notes for Xah Lee
-		 CLOSED: [2014-05-07 Wed 19:07]
-		 :LOGBOOK:
-		 CLOCK: [2014-05-07 Wed 18:35]--[2014-05-07 Wed 19:07] =>  0:32
-		 CLOCK: [2014-05-07 Wed 17:02]--[2014-05-07 Wed 17:08] =>  0:06
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   0:30
-		 :END:
-**** DONE Post show notes
-		 CLOSED: [2014-05-11 Sun 21:44]
-https://trello.com/c/YL1hYhP4/208-post-show-notes-for-emacs-chat-xah-lee
-**** DONE Incorporate and revise transcript
-		 CLOSED: [2014-05-12 Mon 13:18] SCHEDULED: <2014-05-12 Mon>
-		 :LOGBOOK:
-		 CLOCK: [2014-05-12 Mon 12:40]--[2014-05-12 Mon 13:00] =>  0:20
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   2:00
-		 :END:
-**** TODO Follow up on Xah Lee's suggestions
-		 SCHEDULED: <2014-11-08 Sat>
-- [[http://ergoemacs.org/emacs/blog.html][Who Do You Like to See in Sacha Chua&apos;s Emacs Chat?]]: 
-
-*** Iannis Zannos
-**** DONE Post transcript of Iannis Zannos' chat
-		 	CLOSED: [2014-05-04 Sun 14:19] SCHEDULED: <2014-05-04 Sun>
-		 	:LOGBOOK:
-		 	CLOCK: [2014-05-04 Sun 14:13]--[2014-05-04 Sun 14:19] =>  0:06
-		 	:END:
-		 :PROPERTIES:
-		 :Effort:   0:15
-		 :END:
-*** Phil Hagelberg
-**** DONE Prepare for session with technomancy
-		 CLOSED: [2014-05-11 Sun 21:45]
-		 :LOGBOOK:
-		 CLOCK: [2014-05-09 Fri 11:35]--[2014-05-09 Fri 11:37] =>  0:02
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   0:30
-		 :END:
-**** DONE Record session with technomancy
-		 CLOSED: [2014-05-09 Fri 23:07] SCHEDULED: <2014-05-09 Fri 22:00>
-		 :LOGBOOK:
-		 CLOCK: [2014-05-09 Fri 22:00]--[2014-05-09 Fri 23:07] =>  0:27
-		 :END:
-
-Clojure 
-
-http://technomancy.us/167
-This really resonated with me because it emphasizes that people are more important than programs. For me sharing is the thing that makes programming even worth doing in the first place. So it got me thinking about different technologies and what kind of people they're good for helping.
-
-5-year-old kid, sons
-
-Swarm coding? http://technomancy.us/162, http://technomancy.us/146
-
-sile-limit
-
-Starter kit? http://technomancy.us/153
-**** DONE Prep for call with technomancy
-		 CLOSED: [2014-05-09 Fri 23:07]
-		 :LOGBOOK:
-		 CLOCK: [2014-05-09 Fri 21:33]--[2014-05-09 Fri 22:00] =>  0:27
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   0:30
-		 :END:
-**** DONE Transcribe this
-		 CLOSED: [2014-06-03 Tue 22:01]
-**** DONE Review technomancy transcript
-		 CLOSED: [2014-06-06 Fri 15:36] SCHEDULED: <2014-06-04 Wed>
-		 :PROPERTIES:
-		 :CREATED:  [2014-06-03 Tue 22:01]
-		 :END:
-https://github.com/Libervurto/emacs-chats/blob/gh-pages/chat-technomancy.org
-*** Christopher Wellons
-**** DONE Set up chat with Christopher Wellons
-	 	 CLOSED: [2014-05-01 Thu 22:08]
-**** DONE Host chat with Christopher Wellons
-		 CLOSED: [2014-05-30 Fri 23:59] SCHEDULED: <2014-05-30 Fri 19:00>
-		 :PROPERTIES:
-		 :CREATED:  [2014-05-25 Sun 21:40]
-		 :END:
-**** DONE Review transcript for Christopher Wellons
-		 CLOSED: [2014-06-13 Fri 16:08] SCHEDULED: <2014-06-13 Fri>
-		 :LOGBOOK:
-		 CLOCK: [2014-06-13 Fri 15:24]--[2014-06-13 Fri 16:08] =>  0:44
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   1:00
-		 :END:
-*** Carsten Dominik
-**** DELEGATED Transcribe Carsten Dominik's talk
-*** Mickey Petersen
-**** DONE Set up chat with masteringemacs
-	 	 CLOSED: [2014-05-01 Thu 22:08]
-**** DONE Chat with masteringemacs
-		 CLOSED: [2014-08-14 Thu 23:59] SCHEDULED: <2014-08-10 Sun>
-		 :PROPERTIES:
-		 :CREATED:  [2014-06-08 Sun 22:44]
-		 :END:
-**** DONE Prep for call with Mickey Petersen
-		 CLOSED: [2014-06-14 Sat 12:45]
-		 :LOGBOOK:
-		 CLOCK: [2014-06-14 Sat 12:03]--[2014-06-14 Sat 12:45] =>  0:42
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   1:00
-		 :END:
-
-- selftaught
-- @mickeynp, github.com/mickeynp
-- smartscan
-- discover
-- love the long blog posts showcasing useful packages
-- using Emacs for eight years
-- VimGolf
-- sort-regexp-fields
-- narrow-to-defun
-- started masteringemacs Oct 2010
-- Lisp required for Emacs enlightenment
-- Python
-
-*** Possible guests
-- Tikhon Jelvis?
-- Follow up with Xah Lee's list
-
-***** DONE Get Gnus send mail working again
-			 CLOSED: [2014-05-14 Wed 18:49] SCHEDULED: <2014-05-16 Fri>
-**** Bodil
-***** DONE Invite Bodil for Emacs Chat?
-			 CLOSED: [2014-05-19 Mon 22:36]
-** Connecting - Emacs
-*** DONE Chat with Tom and Neil about Clojure
-		 CLOSED: [2014-06-11 Wed 15:59] SCHEDULED: <2014-06-09 Mon>
-		:PROPERTIES:
-		:CREATED:  [2014-06-08 Sun 22:43]
-		:END:
-*** CANCELLED International Lisp Conference 2014 (August)
-Contact: Dave Cooper
-**** DONE Draft title, abstract, bio
-		 CLOSED: [2014-05-22 Thu 22:42]
-		 :LOGBOOK:
-		 CLOCK: [2014-05-07 Wed 11:18]--[2014-05-07 Wed 11:40] =>  0:22
-		 :END:
-		 :PROPERTIES:
-		 :Effort:   1:00
-		 :END:
-		 https://mail.google.com/mail/u/0/?pli=1#inbox/145be629a212ac1d
-
-Draft outline: https://gist.github.com/sachac/0eb152c9ffe74cd2fe23
-
-
-Title: Evil Plans for Taking Over the World
-
-"A man's reach should exceed his grasp, or what's a paren for?" Come
-to this session for practical tips on applied selfishness and
-community-building, and join in the conspiracy to take over the world
-(or a reasonable portion thereof).
-
-Bio: Sacha Chua loves getting Emacs to do all sorts of things that
-boggle casual passers-by. She's working on more resources for Emacs
-beginners and enthusiasts, including doodled cheat sheets and
-interviews with people who are even more into Emacs Lisp than she is
-(emacslife.com). You can check out her blog at LivingAnAwesomeLife.com
-or follow her on Twitter (@sachac).
-
-Possible titles:		 
-- For Great Community
-- Build You a Community for Great Lisp
-  (Heh, can I get away with calling it this? Maybe I can ask the Haskell guide author =) )
-- Paren by Paren: Build Lisp Communities
-- Evil Plans for Taking Over the World
-
-Goals:
-- Inspire people to work on building up their communities by showing them concrete things they can do and the effects of this on the community
-- Get more people hooked on Org Mode for literate programming and publishing ;)
-
-Topics
-- Selfish reasons for taking over the world
-	- The more people learn and share, the more you can take advantage of
-	- Other people writing code
-  - Other people doing work
-  - Other people connecting
-  - Encouragement, inspiration, fun
-- Niche
-  - Parentheses are scary?
-  - Terms
-  - Old, obscure
-    - Clojure  
-  - But hey, things seem to be looking up
-- Keeping yourself enthused
-	- Working on obscure things; can feel isolated
-	- Virtual
-- Growing community
-	- Might not be easy to get numbers
-		- Frame of reference
-	- Anecdotally, feels like things are growing
-	- Virtual community is important too, so that you don't feel isolated
-- Preaching to the choir
-	- We tend to get settled in our ways
-	- New things that you can do 
-		- Google Hangout, podcasting, etc.
-	- Ways you can encourage _other_ people to share
-- Fill in the gaps
-- Key ideas
-	- Share the code
-	  - Snippets? Anonymized?
-	- Share the process
-	- Share the attitude
-		- Code as conversation
-	- Share the spotlight
-	  - Help other people gain confidence and become part of the community
-- Tactics
-	1. Blog posts, articles, mini-guides, e-books
-		 1. Literate programming
-		 2. Emacs configuration
-		 3. Workflow demo?
-		 4. Blog planets
-				- If you have a blog, make sure you're listed
-				- You don't have to blog exclusively about the topic; see about category-specific feeds
-				- Framing
-					- Inspiration
-					- Discovery
-	2. Newsgroups, mailing lists
-		 - Gmane, Gwene
-	3. IRC: don't forget to bring in the newbies =)
-		 - Also: gist, lisppaste
-	4. Quora, StackOverflow, other Q&A sites	
-     - Check on these once in a while
-	5. Screencasts
-		 - Code walkthroughs
-		 - Live coding
-	6. Pairing (screen-sharing, tmux or screen)
-     - Swarms
-		 - Ask for notes/posts from the people you help
-	7. Video chats: Google Hangout on Air, Skype, etc.
-	8. Meetups, conferences, virtual communities?
-	9. Sharing source, packages, etc.
-	10. Way of life - Talk about practical applications and goofy curiosities
-			- Break out of the toy box
-			- Stretch the concept
-- Call to action
-	- Outreach
-	  - Preaching to the choir (conference!) - but also, the rest of the year
-	- Share what you're learning (don't wait to be an expert) _and_ your enthusiasm
-  - Write about the _process_, too
-	- Shine the spotlight on other people; build connections
-
-
-
-- Growing popularity of Emacs (meetups, etc.)
-	- Why?
-	- What can we learn?
-
-- Why me? (Bio notes)
-	- Blogging
-	- Emacs chats
-	 
-**** DONE Start planning talk for International Lisp Conference
-		 CLOSED: [2014-05-09 Fri 20:25] SCHEDULED: <2014-05-10 Sat>
-			:LOGBOOK:
-			CLOCK: [2014-05-09 Fri 20:01]--[2014-05-09 Fri 20:25] =>  0:24
-			:END:
-		 :PROPERTIES:
-		 :Effort:   0:30
-		 :END:
 ** Other Emacs tasks
+*** DONE Re-cut wasamasa's lightning talk on Emacs graphics
+    CLOSED: [2015-10-16 Fri 14:19]
+    :LOGBOOK:
+    - State "DONE"       from "TODO"       [2015-10-16 Fri 14:19]
+    :END:
+* Coding tasks  :@coding:
+** STARTED Make a fill-in drill based on an Org table
+   :PROPERTIES:
+   :Effort:   2:00
+   :END:
+   :LOGBOOK:
+   CLOCK: [2015-11-26 Thu 19:47]--[2015-11-26 Thu 20:18] =>  0:31
+   :END:
 
-*** CANCELLED Add last-contact tracking to org-contacts
-		 CLOSED: [2014-08-09 Sat 22:03]
-[[gnus:nnmaildir%2BGmail:INBOX#1E983FEF-D89E-4009-B8FC-5D3D0BB6E786@gmail.com][Email from Steffen Heilmann: Re: org-mode question]]
-*** DONE Get mplayer working with emms on Windows
-		 CLOSED: [2014-05-22 Thu 22:42]
-		:LOGBOOK:
-		CLOCK: [2014-05-09 Fri 14:19]--[2014-05-09 Fri 14:32] =>  0:13
-		:END:
-		:PROPERTIES:
-		:Effort:   0:30
-		:END:
 
-(require 'emms)
-(require 'emms-setup)
-(require 'emms-player-mplayer)
-(require 'emms-source-file)
-(require 'emms-source-playlist)
-(emms-default-players)
-(emms-play-file "~/Downloads/IRC with ERC.mp3")
+** DONE Clock into existing or new task
+   CLOSED: [2015-11-18 Wed 20:21]
 
-Okay, this is starting to shape up. I need a quick command to pause/play, and another one to skip back a little bit. 
+** TODO Get my/org-refile-to-previous to work again                     :org:
+** TODO Don't clobber agenda when displaying today's tasks              :org:
+** TODO Write some Emacs Lisp to make it easier to insert keybinding and function into Org Mode :@coding:
+** TODO Write a function for quickly previewing images when writing
+** TODO Add describe-function and find-function to helm-M-x           :helm:
+** WAITING Modify art-bollocks to include more weaselly words
+   :PROPERTIES:
+   :Effort:   1:00
+   :END:
+   :LOGBOOK:
+   CLOCK: [2015-01-06 Tue 13:39]--[2015-01-06 Tue 13:47] =>  0:08
+   :END:
+** CANCELLED Add last-contact tracking to org-contacts
+	 CLOSED: [2014-08-09 Sat 22:03]
+ [[gnus:nnmaildir%2BGmail:INBOX#1E983FEF-D89E-4009-B8FC-5D3D0BB6E786@gmail.com][Email from Steffen Heilmann: Re: org-mode question]]
+** TODO Get web link from Gwene
+** TODO Get web link from Gmane
+** DONE Investigate org toc local section
+   CLOSED: [2015-11-28 Sat 00:02]
+   :PROPERTIES:
+   :Effort:   1:00
+   :END:
+   :LOGBOOK:
+   CLOCK: [2015-11-27 Fri 23:42]--[2015-11-28 Sat 00:02] =>  0:20
+   CLOCK: [2015-11-27 Fri 22:41]--[2015-11-27 Fri 23:13] =>  0:32
+   :END:
+** TODO Get org toc id to work for other export modes
+[[gnus:nntp+news.gmane.org:gmane.emacs.orgmode#86si3qra8m.fsf@sachachua.com][Email from Sacha Chua: Re: TOC local for specified he]]
+* Behaviour
+** TODO Practise using org-agenda with bulk actions
+** TODO Learn how to work with multiple selections in Helm
 
-#+begin_src emacs-lisp
-(require 'emms)
-(require 'emms-setup)
-(require 'emms-player-mplayer)
-(require 'emms-source-file)
-(require 'emms-source-playlist)
-(emms-default-players)
+** TODO Check out gnus-read-ephemeral-emacs-bug-group
+from johnw
+** Improve Org Mode organization
+http://sachachua.com/blog/2014/12/can-improve-organize-notes-org-mode/
+*** TODO Focus on organizing by tags - cooking
+*** TODO Focus on organizing by outline - writing
+*** TODO Focus on organizing by files - books
+*** TODO Focus on organizing by properties - energy
 
-(bind-key "<apps> p" 'emms-pause)
-(bind-key "<apps> <apps>" 'emms-pause)
-(bind-key "<apps> b" 'emms-seek-backward)
+** TODO helm-swoop
+** TODO multiple-cursors
+** TODO scratch
+** NEW smartparens
+** BEGINNER web-mode
+   :PROPERTIES:
+   :END:
+   :LOGBOOK:
+   CLOCK: [2014-11-06 Thu 20:44]--[2014-11-06 Thu 20:57] =>  0:13
+   :END:
+   :PROPERTIES:
+   :Effort:   0:30
+   :END:
+C-c C-f for code folding
+C-c C-n between tags
+C-c C-s snippets?
+C-c C-m selection and expansion
+C-c C-i indent entire buffer
+C-c C-d d show tag mismatch
+C-c C-e b element beginning, c clone, d down, e end, i inner, k kill, n next, p previous, r rename, s select, v vanish (like splicing)
+
+** TODO Study Helm
+
+* Documentation
+** DONE Write about setup for e-mail
+   CLOSED: [2015-11-20 Fri 12:40] SCHEDULED: <2015-11-20 Fri>
+   :PROPERTIES:
+   :Effort:   0:30
+   :END:
+   :LOGBOOK:
+   CLOCK: [2015-11-20 Fri 12:25]--[2015-11-20 Fri 12:40] =>  0:15
+   :END:
+http://sachachua.com/blog/2015/11/2015-11-18-emacs-hangout/
+
+** TODO Make cheatsheet                                                 :doc:
+
+** TODO Write about testing
+
+** TODO Look at Yasnippet doc TODOs                          :@writing:emacs:
+ http://capitaomorte.github.io/yasnippet/snippet-organization.html
+
+** TODO Write blog post about cooking with Emacs
+
+** DONE Improve EmacsWiki
+   CLOSED: [2015-11-24 Tue 20:51]
+   :PROPERTIES:
+   :Effort:   0:30
+   :END:
+   :LOGBOOK:
+   CLOCK: [2015-11-24 Tue 20:18]--[2015-11-24 Tue 20:51] =>  0:33
+   :END:
+
+http://www.emacswiki.org/emacs/RecentChanges
+
+*** DONE Update information on customizing initfile
+    CLOSED: [2015-11-24 Tue 20:18]
+    :PROPERTIES:
+    :Effort:   1:00
+    :END:
+    :LOGBOOK:
+    CLOCK: [2015-11-19 Thu 19:06]--[2015-11-19 Thu 20:22] =>  1:16
+    :END:
+* Other Emacs-related tasks
+** TODO Explore and update org-effectiveness                  :@coding:emacs:
+** TODO Compare org-drill and org-learn                       :@coding:emacs:
+** TODO Explore org-secretary                                 :@coding:emacs:
+** TODO Explore smiller's .emacs.d
+ https://github.com/smiller/.new.emacs.d
+
+** TODO Figure out Memacs style syncing of text messages
+** TODO Use Memacs to pull in blog posts
+** TODO Use Memacs to pull in sent email
+
+** TODO Update package description and documentation for artbollocks-mode
+** TODO Set up experimental config and notes - Cameron
+** TODO Persistent scratch
+** TODO Try ido, vertical, smex, flx-ido
+** TODO manage-minor-mode
+https://github.com/ShingoFukuyama/manage-minor-mode
+https://www.youtube.com/watch?v=XjKtkEMUYGc
+** TODO Get into automated testing with ecukes
+** TODO Experiment with key-chord and a keymap - does that work?
+** TODO Learn how to profile Emacs code
+** TODO Show org timeline for today
+** Writing
+*** Define more abbreviations
+- Hmm, can I get a menu of abbreviations that I can select with letters or numbers, like the way Dragon Naturally Speaking does it?
+
+
+*** TODO Look for other packages
+
+
+** Web development
+*** TODO Investigate evil-surround
+*** TODO Find some kind of Javascript unit testing framework that works well for me
+*** TODO See if there's anything better than web mode
+*** TODO Learn how to fix commits in magit
+*** TODO Learn other magit features
+*** TODO Get the hang of phi-search and mc
+*** TODO Practice ace-jump-mode (keychord jj) and ace-jump-window (keychord jw)
+** Development
+... hah, maybe I should start by helping fix up Emacs Lisp packages, since C is deep wizardry for me at the moment
+*** TODO Set up a build environment inside my VM
+*** TODO Git clone the latest repository
+*** TODO Look through debbugs.gnu.org/cgi/pkgreport.cgi?package=emacs for something small and manageable
+Ooh, the debbugs package might be handy
+*** TODO Set up Gnus again so that I can access the developer lists/groups
+*** TODO Confirm posting through Gnus
+*** TODO Read patches to get the hang of things
+*** Bugs/gaps to investigate?
+**** 3137	minor								 [Drew Adams						 ] 23.0.92; doc of compilation-get-file-structure
+ 3393	minor								 [Drew Adams						 ] 23.0.94; Document lisp-indent-function in Elisp manual
+3568	minor								 [Drew Adams						 ] 23.0.94; no doc for character composition
+3566	minor								 [Drew Adams						 ] 23.0.94; explain why not to use group defined by define-minor-mode
+5183	minor								 [Drew Adams						 ] 23.1; doc for `font-lock-extra-managed-props'
+6755	minor								 [Drew Adams						 ] 24.0.50; Customize buffer is too wide. Put doc string on separate line.
+7751	minor								 [Drew Adams						 ] 24.0.50; `fill-paragraph' on doc string with colons
+ 7755	minor								 [Drew Adams						 ] 24.0.50; Document that you can apply a keyword to a menu submenu
+ 8057	minor								 [Reiner Steib					 ] documentation of Summary: etc in log-edit buffers
+8285	minor								 [Drew Adams						 ] 24.0.50; doc of `imenu-generic-expression' and `imenu--generic-function'
+8422	minor								 [Drew Adams						 ] 24.0.50; doc of `apropos-internal'
+8549	minor								 [Uday S Reddy					 ] 23.3; Undocumented setting of eval-expression-debug-on-error
+ 8693	minor								 [Drew Adams						 ] 24.0.50; doc strings in syntax.el
+8716	minor								 [Dave Abrahams					 ] 23.3; :match-inline widget property undocumented
+9117	minor								 [Drew Adams						 ] 24.0.50; Document menu keyword `:selected'
+9287	minor								 [těpán Němec						 ] Mention `displayed-month' and `displayed-year' in `diary-mark-entries-hook' documentation
+9898	minor								 [Drew Adams						 ] 24.0.90; doc of :key-sequence
+10323	minor								 [Roland Winkler				 ] 24.0.92; docstring diary-date-forms
+10346	minor								 [Drew Adams						 ] 24.0.92; doc string of `save-buffer'
+10872	10875,minor					 [Drew Adams						 ] 24.0.93; doc of `where-is-internal'
+11563	minor								 [Drew Adams						 ] 24.0.97; doc string of command `dired-insert-subdir'
+11571	minor								 [Drew Adams						 ] 24.0.97; doc string of `dired-get-subdir-min'
+12075	minor								 [Drew Adams						 ] 24.1; doc out of date, unclear wrt *-selected-* and save-window-excursion
+13339	minor								 [Drew Adams						 ] 24.3.50; doc of `next-frame'
+13451	minor								 [Drew Adams						 ] 24.3.50; doc of `window-persistent-parameters' and window parameters generally
+13455	minor								 [michael_heerdegen@web.d] 24.2.91; profiler.el: missing documentation, menu stuff etc
+13473	minor								 [Stephen Berman				 ] 24.3.50; Display Tables doc bug
+13571	14577,minor					 [Drew Adams						 ] 24.3.50; doc of `interactive'
+13791	minor								 [Dmitry Gutov					 ] 24.3.50; scroll-margin docstring says "recenter"
+13810	minor								 [Xue Fuqiao						 ] 24.3.50; Docstring of `newline' is confusing
+13841	minor								 [Drew Adams						 ] 24.3.50; Regression - unreadable `C-h k' help
+13926	minor								 [Drew Adams						 ] 24.3.50; doc string of `visual-line-mode'
+13945	minor								 [Xue Fuqiao						 ] `abreviated-home-dir' isn't documented
+13993	minor								 [Drew Adams						 ] 24.3.50; doc of `complete-with-action'
+14006	minor								 [Drew Adams						 ] 24.3.50; doc of `completion-in-region-mode', `completion-in-region'
+14206	minor								 [Drew Adams						 ] 24.3.50; doc string of `execute-kbd-macro'
+14278	minor								 [Drew Adams						 ] 24.3.50; doc of `defstruct'
+14321	minor								 [José Luis González		 ] Documentation doesn't refer to set-scroll-bar-mode
+14484	minor								 [Drew Adams						 ] 24.3.50; doc of `after-find-file'
+388:14523	minor,notabug,morein [Max Rottenkolber			 ] Inconsistency in font-lock/lisp mode for docstrings
+    401:14647	minor								 [Drew Adams						 ] 24.3.50; doc of `set-face-font'
+    413:14797	minor								 [Drew Adams						 ] 24.3.50; new, undocumented menu structure using VECTORS?
+    419:14875	minor								 [Drew Adams						 ] 24.3.50; doc of :variable in `define-minor-mode' - lamentable
+    424:14964	minor								 [Drew Adams						 ] 24.3.50; doc of `compare-window-configurations'
+    438:15047	minor								 [Drew Adams						 ] 24.3.50; doc string of `find-listp-find-files' etc.
+    454:15304	minor								 [Stephen Gilles				 ] 24.3, CEDET EDE documentation outdated (esp. ede-java-root)
+    463:15598	minor,org-mode			 [Joe Corneli						 ] 24.3.50; documentation: org-mode calendar interaction
+    466:15714	minor								 [Xue Fuqiao						 ] 24.3.50; Confusing documentation of face attributes
+    487:15947	minor								 [Glenn Morris					 ] DocView interferes with etc/enriched.doc
+    498:16019	minor								 [Teika Kazura					 ] Undocumented interaction with descendants of process created by Emacs (very annoying)
+    511:16227	minor,done					 [Jarek Czekalski				 ] 24.3.50; info documentation: Command Index not clickable (no links)
+    514:16312	minor								 [Phil Sainty						 ] 24.3.50; Docstring fix for `set-transient-map' (and tangents...)
+    525:16513	minor								 [Drew Adams						 ] 24.3.50; doc string of `use-empty-active-region'
+    530:16554	minor								 [Drew Adams						 ] 24.3.50; doc string of `dired-up-directory': say what prefix arg does [eom]
+    531:16562	minor								 [jidanni@jidanni.org		 ] dired-do-shell-command's docstring should mention where the suggestions come from
+    533:16590	minor,moreinfo			 [jidanni@jidanni.org		 ] flyspell-auto-correct-word dabbling deep into document
+    537:16654	minor								 [Reuben Thomas					 ] Inverted logic in docstring for kill-line?
+    538:16687	minor								 [Leo Liu								 ] 24.3.50; completion doc errors
+    565:17039	minor								 [Drew Adams						 ] 24.3.50; doc of `kbd`: arg format
+    570:17111	minor								 [Michael Heerdegen			 ] 24.3.50; server: C-x # inconsistent and barely documented
+    579:17263	minor								 [Drew Adams						 ] 24.4.50; doc string of `backward-delete-char-untabify': active-region behavior
+    580:17274	minor								 [Drew Adams						 ] 24.4.50; eww doc
+    586:17390	minor								 [Johan Bockgård				 ] 24.4.50; Doc bug: Batch Mode
+    588:17403	minor								 [emacs18@gmail.com			 ] 24.4.50; package-alist doc-string error
+    596:17532	minor								 [Drew Adams						 ] 24.4.50; Options > `set-frame-font' does not work as documented
+    599:17566	minor								 [Drew Adams						 ] 24.4.50; describe parameters in doc string: `dired-move-to-filename' etc.
+    600:17567	minor								 [Drew Adams						 ] 24.4.50; doc string of `define-derived-mode'
+    601:17571	minor								 [Drew Adams						 ] 24.4.50; doc string of `advice-function-mapc' etc.
+    602:17582	minor								 [Drew Adams						 ] 24.4.50; once `eldoc-mode' has been enabled, its timer remains on `timer-idle-list'
+    609:17685	minor								 [Stefan Guath					 ] 24.3.91.1; help-C-file-name failes to create temp buffer " *DOC*"
+    611:17707	minor								 [Drew Adams						 ] 24.4.50; doc string of `align-newline-and-indent'
+    612:17709	minor								 [Samuel Bronson				 ] 24.3; `tool-bar-map' seems inadaquately documented
+    613:17716	minor								 [Drew Adams						 ] 24.4.50; doc string of `winner-mode'
+    615:17718	minor								 [Drew Adams						 ] 24.4.50; doc string of `display-buffer-alist'
+    625:17862	minor								 [immerrr again					 ] 24.3; regexp-opt docstring is incorrect
+    631:17916	minor								 [Drew Adams						 ] 24.4.50; `write-region' doc for numeric APPEND arg
+    634:17980	minor								 [Dan Jacobson					 ] perl-mode here document colors
+    636:17989	minor								 [Drew Adams						 ] 24.4.50; doc string of `hi-lock-find-patterns'
+    637:17993	minor								 [Drew Adams						 ] 24.4.50; doc string of `hi-lock-file-patterns-prefix'
+    640:17999	minor								 [Drew Adams						 ] 24.4.50; `define-minor-mode' creates doc-string lines that are far too long
+    645:18020	minor								 [Richard Tollerton			 ] 24.3; sh-script comment indent failure involving apostrophes in comments/heredocs on previous lines
+    647:18024	minor								 [Drew Adams						 ] 24.4.50; doc of `y-or-n-p' misses the main functionality: what it returns
+    648:18027	minor								 [Drew Adams						 ] 24.4.50; doc of `rectangle-mark-mode'
+    649:18028	minor								 [Drew Adams						 ] 24.4.50; doc of `clipboard-kill-region' `clipboard-kill-region-save'
+    650:18029	minor								 [Ian Kelling						 ] 24.4.50; bad shell-script-mode indentation due to ^[{([] in a here document
+    654:18069	minor								 [Drew Adams						 ] 24.4.50; doc of rectangle highlighting & redisplay code
+    659:18087	minor								 [Drew Adams						 ] 24.4.50; doc string of `kill-region'
+    661:18089	minor								 [Drew Adams						 ] 24.4.50; doc string of `delete-selection-helper'
+    663:18092	minor								 [Drew Adams						 ] 24.4.50; doc string of `define-prefix-command'
+    664:18106	minor								 [Carlos Pita						 ] term, ansi-term: clarify documentation
+    675:18190	minor								 [Drew Adams						 ] 24.4.50; doc string of `auth-source-backend-child-p'
+    676:18192	minor								 [Reuben Thomas					 ] Incorrect implication in delete-{backward,forward}-char docstrings
+    678:18201	minor								 [Drew Adams						 ] 24.4.50; doc string of `file-accessible-directory-p'
+    679:18202	minor								 [Drew Adams						 ] 24.4.50; doc string of `next-error-buffer-p'
+    680:18207	minor								 [Ivan Shmakov					 ] erc-truncate-buffer-on-save: misleading variable name and docstring
+    681:18210	minor								 [Drew Adams						 ] 24.4.50; doc string of `gnutls-error-fatalp'
+    682:18211	minor								 [Drew Adams						 ] 24.4.50; doc string of `posnp'
+    692:18281	minor								 [Drew Adams						 ] 24.4.50; doc of `customize-apropos*'
+    693:18296	minor								 [Drew Adams						 ] 24.4.50; doc string of `whitespace-mode'
+    694:18317	minor								 [Drew Adams						 ] 24.4.50; doc string of `find-file-literally'
+    700:18349	minor,done					 [michael_heerdegen@web.d] 24.3.92; define-minor-mode: generated doc of hook: mode vs. modefun
+    709:18442	minor								 [Kevin Ryde						 ] 24.3; easy-menu-define docstring of menu :label and :help
+    710:18478	minor								 [Drew Adams						 ] 24.4.50; doc string of `clone-indirect-buffer'
+    715:18494	minor								 [Tom Tromey						 ] 24.4.50; defclass creates undocumented *-list-p function
+    717:18515	minor								 [Eli Barzilay					 ] 24.3; Documentation of `call-process'
+    727:18634	minor								 [Drew Adams						 ] 24.4.50; doc string of `font-lock-remove-keywords'
+    728:18636	minor,done					 [Drew Adams						 ] 24.4.50; doc of `display-monitor-attributes-list' - DISPLAY? FRAME?
+    729:18637	minor								 [Drew Adams						 ] 24.4.50; doc of frame parameter DISPLAY vs actual value on MS Windows
+    735:18686	minor								 [Drew Adams						 ] 25.0.50; incorrect signature in doc string of `create-fontset-from-fontset-spec'
+    745:18794	minor								 [Carlos Pita						 ] 24.4; python mode eldoc unnecessarily resizes echo area
+    747:18809	minor								 [Drew Adams						 ] 25.0.50; doc string of `insert-pair-alist'
+    761:18881	minor,gnus					 [Demetrios Obenour			 ] 24.3; Escaping of MML tags is not documented
+
+**** 18691	wishlist						 [Drew Adams						 ] 25.0.50; Ido manual: index stuff (commands, keys, concepts)
+Documentation: Indexing
+**** 18855	normal							 [Drew Adams						 ] 25.0.50; 123-char line in Org manual top menu
+**** 18843	normal							 [Paul Pogonyshev				 ] Invalid block indentation in Python mode
+**** 18708	normal							 [Andreas Politz				 ] 24.4.50; kmacro-step-edit-macro: Error in post-command-hook
+R. [ 294: Tim Nielens            ] bug#18611: 24.3; macre step edit and use of registers
+**** 17214	normal							 [Eli Zaretskii					 ] 24.3.50; C-q F1 does not display help, inserts null
+**** 17211	normal							 [Richard Smith					 ] Empty items show up in kill-ring if mouse-drag-copy-region is used
+**** 17207	normal							 [Jon Dufresne					 ] 24.3; html-mode incorrect indentation inside template syntax
+**** Automated tests
+
+** TODO Figure out if there's a way to interact after an ob-R block   :org:
+** TODO Check out orgaggregate                                :org:
+https://github.com/tbanel/orgaggregate
+** TODO Smooth out autorecovery after a crash
+** TODO Figure out why I'm making Emacs crash so much
+** TODO Learn more about company and autocomplete
+** CANCELLED Compare MELPA and MELPA-Stable                         :@coding:
+   CLOSED: [2015-11-18 Wed 20:10]
+** TODO Fix org-learn style                                   :@coding:emacs:
+** DONE Try adding a helm source
+   CLOSED: [2015-11-18 Wed 20:11]
+http://kitchingroup.cheme.cmu.edu/blog/2015/01/24/Anatomy-of-a-helm-source/
+** CANCELLED Investigate org2blog issues to see if I'm comfortable maintaining this
+   CLOSED: [2014-12-10 Wed 12:26]
+   :PROPERTIES:
+   :END:
+   :LOGBOOK:
+   CLOCK: [2014-11-05 Wed 17:45]--[2014-11-05 Wed 18:01] =>  0:16
+   :END:
+   :PROPERTIES:
+   :Effort:   1:00
+   :END:
+** DONE Fix refiling from agenda
+   CLOSED: [2015-11-17 Tue 13:56]
+** DONE Edit Emacs Hangout video to blur avy-jump demo
+   CLOSED: [2015-07-02 Thu 20:51] SCHEDULED: <2015-06-24 Wed>
+   :LOGBOOK:
+   - State "DONE"       from "TODO"       [2015-07-02 Thu 20:51]
+   :END:
+** DONE Play with melpa stats
+   CLOSED: [2015-11-04 Wed 19:19]
+   :PROPERTIES:
+   :Effort:   1:00
+   :END:
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2015-11-04 Wed 19:19]
+   CLOCK: [2015-11-04 Wed 19:07]--[2015-11-04 Wed 19:19] =>  0:12
+   :END:
+http://melpa.org/download_counts.json
+http://melpa.org/archive.json
+
+#+begin_src emacs-lisp  :results table
+  (let* ((download-counts (json-read-file "g:/code/melpastats/download_counts.json"))
+         (archive (json-read-file "g:/code/melpastats/archive.json")))
+    (mapcar (lambda (x)
+              (let ((package (assoc-default (car x) archive)))
+                (list (car x) (assoc-default 'desc package) (cdr x))
+                )
+              )
+            (-slice (sort download-counts (lambda (a b) (> (cdr a) (cdr b))))
+                    0 30)))
+
 #+end_src
 
-* Notes
+#+RESULTS:
+| dash               | A modern list library for Emacs                                                    | 221234 |
+| magit              | A Git porcelain inside Emacs                                                       | 186716 |
+| helm               | Helm is an Emacs incremental and narrowing framework                               | 164885 |
+| popup              | Visual Popup User Interface                                                        | 156513 |
+| auto-complete      | Auto Completion for GNU Emacs                                                      | 153849 |
+| s                  | The long lost Emacs string manipulation library.                                   | 151095 |
+| flycheck           | On-the-fly syntax checking                                                         | 149235 |
+| epl                | Emacs Package Library                                                              | 145994 |
+| yasnippet          | Yet another snippet extension for Emacs.                                           | 140048 |
+| pkg-info           | Information about packages                                                         | 131203 |
+| projectile         | Manage and navigate projects in Emacs easily                                       | 129481 |
+| git-commit-mode    | nil                                                                                | 106105 |
+| company            | Modular text completion framework                                                  | 104377 |
+| undo-tree          | Treat undo history as a tree                                                       | 103989 |
+| smartparens        | Automatic insertion, wrapping and paredit-like navigation with user defined pairs. | 103918 |
+| markdown-mode      | Emacs Major mode for Markdown-formatted text files                                 | 102899 |
+| expand-region      | Increase selected region by semantic units.                                        |  99535 |
+| git-rebase-mode    | nil                                                                                |  97035 |
+| async              | Asynchronous processing in Emacs                                                   |  94612 |
+| f                  | Modern API for working with files and directories                                  |  94252 |
+| haskell-mode       | A Haskell editing mode                                                             |  87231 |
+| rainbow-delimiters | Highlight brackets according to their depth                                        |  87059 |
+| web-mode           | major mode for editing web templates                                               |  85755 |
+| zenburn-theme      | A low contrast color theme for Emacs.                                              |  83771 |
+| clojure-mode       | Major mode for Clojure code                                                        |  82619 |
+| js2-mode           | Improved JavaScript editing mode                                                   |  82370 |
+| cider              | Clojure Interactive Development Environment that Rocks                             |  80965 |
+| diminish           | Diminished modes are minor modes with no modeline display                          |  76830 |
+| smex               | M-x interface with Ido-style fuzzy matching.                                       |  74590 |
+| evil               | Extensible Vi layer for Emacs.                                                     |  74546 |
 
-- What am I looking for?
-  - Things that I can do but that other people can gain more value from if they do it
-    - Okay value (ex: transcripts)
-  - Things that benefit from other perspectives (like writing, research, reading, etc.)
-    - Medium value
-  - Things that I don't even think of doing (like snippets and indices and stuff; ideas for making this better)
-    - High value
-  - Vision
-    - My blog + more structure / resources
-    - Github for additional resources, easy to view, TODOs they can add to their agenda
-      - Plain text for the win!
-      - Also, pull request
-      - RSS?
-    - Identifying gaps to be written about
-    - Starting, improving, enjoying Emacs; visual guides / doodles
-    - One-on-one help, etc.
-    - Domain name, topic-focused view?
-      - Yes, especially if this is more structured =)
-      - Will continue to cross-post to my main blog
-			- Website? Let's push Org as far as possible
-- What kind of work do you enjoy?
-  - Emacs-related things, yay! Not as good at Lisp yet, but that's perfect, because Alex can learn
-  - build-site.el ex: blockquote
-  - Anything Emacsy, yay!
-  - ASCIIcasts?
-- What don't you like?
-  - No Windows stuff =) (So I'm not going to ask you to help me figure out why Gnuplot and Windows is like ARGH!)
-- What kind of hourly rate is fair for you?
-  - Affects what I ask you to work on =) 
-- Paypal details, invoice for time so far?
-- Coordinate through Org mode?
-	- maybe a tasks.org in emacs-notes or separate? 
-- Possible tasks
-  - Transcribe Avdi Grimm's chat - yup!
-  - Help make my site even easier to use and more fun to explore
-	- Organize resources into starting/improving/enjoying
-    - https://github.com/sachac/sharing/blob/gh-pages/blog.org
-    - emacs-notes
-      - Maybe have everything in one git repository? submodules?
-  - Brainstorm and draft posts
-		- Keeping your .emacs.d/init.el organized    
-  - Help come up with questions and guests for Emacs Chats?
-    - technomancy?
-  - Work on newbie guides?
-  - Emacs Chat - find someone with a great HTML/JS/CSS setup?
-  - Making Emacs Chats better?
-    - Structure
-      - How did you get started with Emacs?
-      - How do you learn more?
-      - Config (where? make sure to add links)
-    - Actions? With notes and resources?
-      - Ex: literate programming
+** DONE Fix How to Read Emacs Lisp
+   CLOSED: [2015-10-19 Mon 15:09]
+   :PROPERTIES:
+   :Effort:   0:30
+   :QUANTIFIED: Emacs
+   :END:
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2015-10-19 Mon 15:09]
+   CLOCK: [2015-10-19 Mon 15:03]--[2015-10-19 Mon 15:09] =>  0:06
+   :END:
+
+** DONE Reschedule Emacs Lisp Development Tips episode with jwiegley
+   CLOSED: [2015-06-12 Fri 14:38] SCHEDULED: <2015-06-12 Fri>
