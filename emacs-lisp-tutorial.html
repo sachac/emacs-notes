@@ -4,10 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Learn Emacs Lisp while customizing Emacs</title>
-<!-- 2014-04-30 Wed 17:12 -->
+<!-- 2015-10-19 Mon 13:38 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <link rel="stylesheet" type="text/css" href="./css/foundation.min.css"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
 <link rel="stylesheet" type="text/css" href="./css/org-export.css"></link>
 <link rel="stylesheet" type="text/css" href="./css/style.css"></link>
 <link rel="stylesheet" type="text/css" href="./css/emacs-notes.css"></link>
@@ -72,7 +73,11 @@ While I'm drafting this, you may want to check out the following resources:
 </ul>
 
 <p>
-This work is available under either the Creative Commons Attribution License or the GNU Free Documentation License. Enjoy!
+UPDATE: Go check out <a href="http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html">http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html</a> instead.
+</p>
+
+<p>
+Previous draft follows below.
 </p>
 
 <div id="outline-container-sec-1" class="outline-2">
@@ -95,6 +100,7 @@ I'm going to assume that you've already installed Emacs 24 or later and that you
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-2" class="outline-2">
 <h2 id="sec-2">How to run Emacs Lisp code</h2>
 <div class="outline-text-2" id="text-2">
@@ -133,6 +139,7 @@ Since the <code>*scratch*</code> buffer is not automatically saved to a file, yo
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-3" class="outline-2">
 <h2 id="sec-3">How to save your configuration</h2>
 <div class="outline-text-2" id="text-3">
@@ -153,6 +160,7 @@ Okay, let's start writing Emacs Lisp!
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-4" class="outline-2">
 <h2 id="sec-4">How to load modes to change the way that Emacs behaves</h2>
 <div class="outline-text-2" id="text-4">
@@ -191,6 +199,7 @@ Try using <code>C-x C-e</code> (<code>eval-last-sexp</code>) to evaluate these l
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-5" class="outline-2">
 <h2 id="sec-5">How to specify options when you're calling functions</h2>
 <div class="outline-text-2" id="text-5">
@@ -205,7 +214,7 @@ Some functions need more information. For example, <code>prefer-coding-system</c
 </div>
 
 <p>
-Here's another example. Let's say that you want to open a file whenever you start Emacs. The function to open a file is called <code>find-file</code>, and you can give it the name of the file to open. The code below looks for a file called "todo.org" in your home directory, and creating it if it does not yet exist.
+Here's another example. Let's say that you want to open a file whenever you start Emacs. The function to open a file is called <code>find-file</code>, and you can give it the name of the file to open. The code below switches to a buffer visiting file "todo.org" in your home directory. If the buffer doesn't exist, it will be created. If the file doesn't exist, it will be created automatically when the buffer is saved - for example, when you press <code>C-x C-s</code> (<code>save-buffer</code>) in that buffer.
 </p>
 
 <div class="org-src-container">
@@ -233,6 +242,7 @@ Here's a third example, for when you get tired of typing "yes" or "no" to confir
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-6" class="outline-2">
 <h2 id="sec-6">How to set simple variables</h2>
 <div class="outline-text-2" id="text-6">
@@ -274,6 +284,7 @@ Like the way there are tons of functions, there are also tons of variables, and 
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-7" class="outline-2">
 <h2 id="sec-7">How to set buffer-local variables</h2>
 <div class="outline-text-2" id="text-7">
@@ -293,6 +304,7 @@ You can set the default value of a buffer-local variable with <code>setq-default
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-8" class="outline-2">
 <h2 id="sec-8">How to set more complex variables</h2>
 <div class="outline-text-2" id="text-8">
@@ -319,7 +331,6 @@ If you're curious, the <a href="http://www.gnu.org/software/emacs/manual/html_no
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-9" class="outline-2">
 <h2 id="sec-9">How to load libraries</h2>
 <div class="outline-text-2" id="text-9">
@@ -384,6 +395,7 @@ If you've downloaded the Emacs Lisp file or package on your own, though, you'll 
 </p>
 </div>
 </div>
+
 <div id="outline-container-sec-10" class="outline-2">
 <h2 id="sec-10">How to add to lists</h2>
 <div class="outline-text-2" id="text-10">
@@ -434,6 +446,7 @@ If you don't mind duplicates (or you want them), you can use <code>cons</code> i
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-11" class="outline-2">
 <h2 id="sec-11">How to add package archives - to be written</h2>
 </div>
@@ -556,6 +569,7 @@ Here are some examples for <code>bind-key</code>:
 </div>
 </div>
 </div>
+
 <div id="outline-container-sec-14" class="outline-2">
 <h2 id="sec-14">How to define your own functions - to be written</h2>
 </div>
@@ -570,7 +584,6 @@ Here are some examples for <code>bind-key</code>:
 </p>
 </div>
 </div>
-
 <div id="outline-container-sec-17" class="outline-2">
 <h2 id="sec-17">Acknowledgements</h2>
 <div class="outline-text-2" id="text-17">

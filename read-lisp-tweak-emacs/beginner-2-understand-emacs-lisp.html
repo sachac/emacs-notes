@@ -3,38 +3,171 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>"How can I understand what Emacs Lisp code does?"</title>
-<!-- 2014-06-15 Sun 13:12 -->
+<!-- 2015-11-16 Mon 15:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>"How can I understand what Emacs Lisp code does?"</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
-<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
-<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
-<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/emacs-notes.js"></script>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
 <body>
+<div id="preamble" class="status">
+<a name="top" id="top"></a>
+</div>
 <div id="content">
 <h1 class="title">"How can I understand what Emacs Lisp code does?"</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">Learn more about functions</a></li>
-<li><a href="#sec-2">Learn more about variables</a></li>
-<li><a href="#sec-3">Understand symbols</a></li>
-<li><a href="#sec-4">Work with lists</a>
+<li><a href="#orgheadline1">Learn more about functions</a></li>
+<li><a href="#orgheadline2">Learn more about variables</a></li>
+<li><a href="#quoting">Understand symbols</a></li>
+<li><a href="#orgheadline4">Work with lists</a>
 <ul>
-<li><a href="#sec-4-1">Add to a list</a></li>
-<li><a href="#sec-4-2">Hooks</a></li>
-<li><a href="#sec-4-3">Deleting from a list</a></li>
-<li><a href="#sec-4-4">Dot notation</a></li>
+<li><a href="#load-path">Add to a list</a></li>
+<li><a href="#orgheadline6">Hooks</a></li>
+<li><a href="#orgheadline7">Deleting from a list</a></li>
+<li><a href="#package-archives">Dot notation</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">Review</a></li>
+<li><a href="#orgheadline9">Review</a></li>
 </ul>
 </div>
 </div>
@@ -42,42 +175,39 @@
 Previous module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.html">"How can I try Emacs Lisp code?"</a>
 </p>
 
-<div class="conventions">
+<div class="CONVENTIONS">
 <p>
 Some conventions we'll use:
 </p>
 <ul class="org-ul">
-<li>Inline code will be <code>boxed and monospace</code> in the HTML version and generally surrounded by <code>equal signs</code> in plain text.
-</li>
-<li>Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
+<li>Inline code will be <code>boxed and monospace</code> in the HTML version and generally surrounded by <code>equal signs</code> in plain text.</li>
+<li><p>
+Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
+</p>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
 </pre>
-</div>
-</li>
+</div></li>
 </ul>
 
 </div>
 
-<div class="objectives">
+<div class="OBJECTIVES">
 <p>
 After this module, you should be able to
 </p>
 <ul class="org-ul">
-<li>learn more about the functions and variables that you find in Emacs Lisp code
-</li>
-<li>pay attention to important details when copying code, such as ' (quote) and . (dot notation)
-</li>
-<li>add to and remove items from lists
-</li>
+<li>learn more about the functions and variables that you find in Emacs Lisp code</li>
+<li>pay attention to important details when copying code, such as ' (quote) and . (dot notation)</li>
+<li>add to and remove items from lists</li>
 </ul>
 
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Learn more about functions</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Learn more about functions</h2>
+<div class="outline-text-2" id="text-orgheadline1">
 <p>
 The symbol after <code>(</code> is usually a function name, unless it's part of a list of literals (numbers, strings, etc.). You'll learn how to recognize literal lists later.
 </p>
@@ -156,7 +286,7 @@ This calls the <code>blink-cursor-mode</code> function with <code>-1</code> as t
 </div>
 
 <p>
-This calls the <code>find-file</code> function with the <code>todo.org</code> file in your home directory. It opens the file, creating it if it doesn't exist yet.
+This calls the <code>find-file</code> function with the <code>todo.org</code> file in your home directory. The code above switches to a buffer visiting the file "todo.org" in your home directory (<code>~</code>). If the buffer doesn't exist, it will be created. If the file doesn't exist, it will be created automatically when the buffer is saved - for example, when you press <code>C-x C-s</code> (<code>save-buffer</code>) in that buffer.
 </p>
 
 <div class="org-src-container">
@@ -195,20 +325,17 @@ Emacs is extensively documented. Whenever you come across a strange function, ch
 In fact, you can learn more about functions even if you don't know what they're called. For example, if you know the keyboard shortcut or you can see the item on one of the menus, use <code>C-h k</code> (<code>describe-key</code>) to learn more about that command. Emacs will show you the function that's associated with that keyboard shortcut or menu item. You can also look up functions by keyword if you use <code>M-x apropos</code>.
 </p>
 
-<div class="practice">
+<div class="PRACTICE">
 <ol class="org-ol">
-<li>Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the following functions:
-</li>
-<li><code>describe-function</code>: Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as <code>F1 f</code>. 
-</li>
-<li><code>find-file</code>: You can use this to open specific files. See the function description to learn how to use this with remote files.  
-</li>
-<li><code>message</code>: This is an example of a function that has a variable number of arguments. The first argument says how the message will be displayed, and the rest of the arguments contain the values.
-</li>
-<li><code>just-one-space</code>: Handy way to clean up space. What keyboard shortcut is it bound to?
-</li>
+<li>Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the following functions:</li>
+<li><code>describe-function</code>: Yes, this is also a function! The documentation will give you alternative keyboard shortcuts such as <code>F1 f</code>.</li>
+<li><code>find-file</code>: You can use this to open specific files. See the function description to learn how to use this with remote files.</li>
+<li><code>message</code>: This is an example of a function that has a variable number of arguments. The first argument says how the message will be displayed, and the rest of the arguments contain the values.</li>
+<li><code>just-one-space</code>: Handy way to clean up space. What keyboard shortcut is it bound to?</li>
 
-<li>Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
+<li><p>
+Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about the functions in the code. For example, here are some snippets from my configuration. What do the functions do?
+</p>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(savehist-mode 1)
@@ -218,17 +345,16 @@ In fact, you can learn more about functions even if you don't know what they're 
 (scroll-bar-mode -1)
 (prefer-coding-system 'utf-8)
 </pre>
-</div>
-</li>
+</div></li>
 </ol>
 
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">Learn more about variables</h2>
-<div class="outline-text-2" id="text-2">
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Learn more about variables</h2>
+<div class="outline-text-2" id="text-orgheadline2">
 <p>
 Variables are containers that can hold different values. In Emacs Lisp, you can change the value of a variable as many times as you want, and you can change it to different types of data as needed.
 </p>
@@ -288,31 +414,27 @@ This means you can't globally set it with <code>setq</code>, because any changes
 To make it easier for you to customize Emacs without writing Emacs Lisp code, many variables give you an interface for setting the variable. If you use <code>describe-variable</code> to look up the definition, you'll often see a line like "You can <b>customize</b> this variable." Click on the <b>customize</b> link in the documentation or move your point to it and press RET. You can change the value there and try it temporarily, or you can save it to your configuration. The Customize interface is good for exploring, but because the code that it generates can difficult to read or share, many people skip it and use Emacs Lisp code instead.
 </p>
 
-<div class="practice">
+<div class="PRACTICE">
 <ol class="org-ol">
-<li>Use <code>C-h v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
+<li><p>
+Use <code>C-h v</code> (<code>describe-variable</code>) to learn more about the variables in the following code snippet:
+</p>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(setq-default indicate-empty-lines t)
 (setq-default show-trailing-whitespace t)
 </pre>
-</div>
-</li>
-<li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>C-h v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.
-</li>
+</div></li>
+<li>Look for Emacs configuration code that has variables you would like to learn more about. Use <code>C-h v</code> (<code>describe-variable</code>) to look up their definition and the values they can be set to.</li>
 </ol>
 
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Understand symbols</h2>
-<div class="outline-text-2" id="text-3">
-<p>
-<a id="quoting" name="quoting"></a>
-</p>
-
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="quoting"><a id="orgheadline3"></a>Understand symbols</h2>
+<div class="outline-text-2" id="text-quoting">
 <p>
 Let's take a closer look at this example.
 </p>
@@ -390,9 +512,9 @@ This can be confusing. When you're starting out, copy code carefully. If there's
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4">Work with lists</h2>
-<div class="outline-text-2" id="text-4">
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Work with lists</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <p>
 You can set the value of a variable to multiple things. In Emacs configuration files, you'll often see ' used for lists. For example,
 </p>
@@ -418,13 +540,9 @@ The code above sets the value of the variable to a list, ignoring any previous v
 </p>
 </div>
 
-<div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1">Add to a list</h3>
-<div class="outline-text-3" id="text-4-1">
-<p>
-<a id="load-path" name="load-path"></a>
-</p>
-
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="load-path"><a id="orgheadline5"></a>Add to a list</h3>
+<div class="outline-text-3" id="text-load-path">
 <p>
 Most of the time, though, you want to add to a list instead of completely replacing it. You'll often see something like this in people's configuration files:
 </p>
@@ -441,9 +559,9 @@ This adds the <code>~/elisp</code> directory to the beginning of the list of dir
 </div>
 </div>
 
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2">Hooks</h3>
-<div class="outline-text-3" id="text-4-2">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Hooks</h3>
+<div class="outline-text-3" id="text-orgheadline6">
 <p>
 Hooks are lists of functions that are called from Emacs Lisp in order to modify the behaviour of something. For example, different modes have their own hooks so that you can add functions that will run when that mode is initialized. You saw this example earlier in the module:
 </p>
@@ -471,9 +589,9 @@ when a buffer is initialized with <code>emacs-lisp-mode</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3">Deleting from a list</h3>
-<div class="outline-text-3" id="text-4-3">
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Deleting from a list</h3>
+<div class="outline-text-3" id="text-orgheadline7">
 <p>
 If you need to delete something from a list, you can use the <code>delete</code> function like this:
 </p>
@@ -500,13 +618,9 @@ Hooks are lists of functions, so you can delete items using <code>delete</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-4-4" class="outline-3">
-<h3 id="sec-4-4">Dot notation</h3>
-<div class="outline-text-3" id="text-4-4">
-<p>
-<a id="package-archives" name="package-archives"></a>
-</p>
-
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="package-archives"><a id="orgheadline8"></a>Dot notation</h3>
+<div class="outline-text-3" id="text-package-archives">
 <p>
 Some things look like lists, but there's a dot between the first element and the last element. Whether something should have a dot or not depends on what's expected by the function that uses the data. For example:
 </p>
@@ -614,10 +728,10 @@ This stores backup files in the directory specified by <code>temporary-file-dire
 </div>
 </div>
 
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5">Review</h2>
-<div class="outline-text-2" id="text-5">
-<div class="practice">
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="orgheadline9">Review</h2>
+<div class="outline-text-2" id="text-orgheadline9">
+<div class="PRACTICE">
 <p>
 Look for Emacs configuration code that you would like to understand further. Use <code>C-h f</code> (<code>describe-function</code>) to learn more about functions and <code>C-h v</code> (<code>describe-variable</code>) to learn more about variables in the code. Can you figure out what the code does and how you might modify it slightly to fit your needs even better?
 </p>
@@ -631,7 +745,40 @@ Next module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-3-make
 </div>
 </div>
 <div id="postamble" class="status">
-<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.back-to-top:hover {
+    background-color: rgba(135, 135, 135, 0.50);
+}
+</style>
+
+<div class="back-to-top">
+<a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a>
+</div>
+
+<script type="text/javascript">
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+</script>
 </div>
 </body>
 </html>

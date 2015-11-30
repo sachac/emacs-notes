@@ -3,42 +3,175 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>"How can I add more features and deal with errors?"</title>
-<!-- 2014-07-01 Tue 12:11 -->
+<!-- 2015-11-16 Mon 15:50 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>"How can I add more features and deal with errors?"</title>
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Sacha Chua" />
-<link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
-<link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
-<link rel="stylesheet" type="text/css" href="../css/style.css"></link>
-<link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/emacs-notes.js"></script>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css"
+href="http://sachachua.com/blog/wp-content/themes/sacha-v3/foundation/css/foundation.min.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css"></link>
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css"></link>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
 </head>
 <body>
+<div id="preamble" class="status">
+<a name="top" id="top"></a>
+</div>
 <div id="content">
 <h1 class="title">"How can I add more features and deal with errors?"</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">Adding more features to Emacs</a>
+<li><a href="#load">Adding more features to Emacs</a>
 <ul>
-<li><a href="#sec-1-1">Installing packages</a></li>
-<li><a href="#sec-1-2">Other Emacs Lisp files</a></li>
+<li><a href="#installing-packages">Installing packages</a></li>
+<li><a href="#unpackaged">Other Emacs Lisp files</a></li>
 </ul>
 </li>
-<li><a href="#sec-2">"Oh no! I have an error!"</a>
+<li><a href="#errors">"Oh no! I have an error!"</a>
 <ul>
-<li><a href="#sec-2-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</a></li>
-<li><a href="#sec-2-2">Cannot open load file: &#x2026;</a></li>
-<li><a href="#sec-2-3">Lisp error: (void-function &#x2026;)</a></li>
-<li><a href="#sec-2-4">Symbol's value as variable is void: <span class="underline">_</span></a></li>
-<li><a href="#sec-2-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</a></li>
+<li><a href="#orgheadline4">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</a></li>
+<li><a href="#orgheadline5">Cannot open load file: &#x2026;</a></li>
+<li><a href="#void-function">Lisp error: (void-function &#x2026;)</a></li>
+<li><a href="#void-variable">Symbol's value as variable is void: <span class="underline">_</span></a></li>
+<li><a href="#orgheadline8">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</a></li>
 </ul>
 </li>
-<li><a href="#sec-3">Wrapping up the beginner course</a></li>
+<li><a href="#orgheadline10">Wrapping up the beginner course</a></li>
 </ul>
 </div>
 </div>
@@ -46,44 +179,40 @@
 Previous module: <a href="http://emacslife.com/read-lisp-tweak-emacs/beginner-3-make-things-more-convenient.html">"How can I make things more convenient?"</a>
 </p>
 
-<div class="conventions">
+<div class="CONVENTIONS">
 <p>
 Some conventions we'll use:
 </p>
 <ul class="org-ul">
-<li>Inline code will be <code>boxed and monospace</code> in the HTML version and generally surrounded by <code>equal signs</code> in plain text.
-</li>
-<li>Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
+<li>Inline code will be <code>boxed and monospace</code> in the HTML version and generally surrounded by <code>equal signs</code> in plain text.</li>
+<li><p>
+Code samples will be monospace and in boxes in the HTML version, and enclosed in <code>#+begin_src</code> &#x2026; <code>#+end_src</code> in plain text. Example:
+</p>
 <div class="org-src-container">
 
 <pre class="src src-emacs-lisp">(message <span class="org-string">"Hello world"</span>)
 </pre>
-</div>
-</li>
+</div></li>
 </ul>
 
 </div>
 
-<div class="objectives">
+<div class="OBJECTIVES">
 <p>
 After this module, you'll be able to:
 </p>
 <ul class="org-ul">
-<li>load libraries so that you can add new features or set configuration variables
-</li>
-<li>install and configure packages in order to add more features to your Emacs
-</li>
-<li>understand and fix common errors
-</li>
-<li>learn more! =)
-</li>
+<li>load libraries so that you can add new features or set configuration variables</li>
+<li>install and configure packages in order to add more features to your Emacs</li>
+<li>understand and fix common errors</li>
+<li>learn more! =)</li>
 </ul>
 
 </div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1">Adding more features to Emacs</h2>
-<div class="outline-text-2" id="text-1">
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="load"><a id="orgheadline3"></a>Adding more features to Emacs</h2>
+<div class="outline-text-2" id="text-load">
 <p>
 Most Emacs libraries are not loaded automatically. This saves memory and keeps things simpler. Some of the customizations you may want to make require that other parts of Emacs are loaded first. For example, if you want to define a key for the <code>c-mode-map</code> (used for editing C code) or add a function to <code>org-mode-hook</code> (called when a buffer is set up with Org Mode), those libraries need to be loaded first. You can load libraries by using <code>require</code>, like this:
 </p>
@@ -112,13 +241,9 @@ The first part of the filename (before the <code>.el</code> or <code>.elc</code>
 </p>
 </div>
 
-<div id="outline-container-sec-1-1" class="outline-3">
-<h3 id="sec-1-1">Installing packages</h3>
-<div class="outline-text-3" id="text-1-1">
-<p>
-<a id="installing-packages"></a>
-</p>
-
+<div id="outline-container-orgheadline1" class="outline-3">
+<h3 id="installing-packages"><a id="orgheadline1"></a>Installing packages</h3>
+<div class="outline-text-3" id="text-installing-packages">
 <p>
 Emacs comes with a lot of code, but there are even more packages out there. When you read other people's Emacs configurations, you might come across other interesting packages to try out.
 </p>
@@ -128,7 +253,7 @@ Sometimes people don't indicate which packages they use, so you have to guess th
 </p>
 
 <p>
-The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as <a href="http://melpa.milkbox.net">MELPA</a> or <a href="http://marmalade-repo.org/">Marmalade</a> Here's the code that you would run in order to add these repositories to your Emacs:
+The default package repository in Emacs 24 has a limited number of packages. For more choices, you may want to add another repository such as <a href="http://melpa.milkbox.net/">MELPA</a> or <a href="http://marmalade-repo.org/">Marmalade</a> Here's the code that you would run in order to add these repositories to your Emacs:
 </p>
 
 <div class="org-src-container">
@@ -179,7 +304,7 @@ Along those lines, you may come across code that looks like this:
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">eval-after-load</span> <span class="org-string">"dash"</span> 
+<pre class="src src-emacs-lisp">(eval-after-load <span class="org-string">"dash"</span> 
   '(dash-enable-font-lock))
 </pre>
 </div>
@@ -190,13 +315,9 @@ This runs <code>(dash-enable-font-lock)</code> only after <code>dash</code> is l
 </div>
 </div>
 
-<div id="outline-container-sec-1-2" class="outline-3">
-<h3 id="sec-1-2">Other Emacs Lisp files</h3>
-<div class="outline-text-3" id="text-1-2">
-<p>
-<a id="unpackaged"></a>
-</p>
-
+<div id="outline-container-orgheadline2" class="outline-3">
+<h3 id="unpackaged"><a id="orgheadline2"></a>Other Emacs Lisp files</h3>
+<div class="outline-text-3" id="text-unpackaged">
 <p>
 Some files are not yet available as packages. If you search for the function, you'll probably find a webpage with an <code>.el</code> file. You can save those to your computer and load them with:
 </p>
@@ -248,13 +369,9 @@ Then you can use <code>require</code> to load the Emacs Lisp code if it exists.
 </div>
 </div>
 
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2">"Oh no! I have an error!"</h2>
-<div class="outline-text-2" id="text-2">
-<p>
-<a id="errors"></a>
-</p>
-
+<div id="outline-container-orgheadline9" class="outline-2">
+<h2 id="errors"><a id="orgheadline9"></a>"Oh no! I have an error!"</h2>
+<div class="outline-text-2" id="text-errors">
 <p>
 Part of learning Emacs is having the confidence to experiment, which you can develop by learning how to recognize and deal with different errors.
 </p>
@@ -282,66 +399,52 @@ You can narrow down the source of the problem by progressively commenting out mo
 </p>
 
 <p>
-Here are some common error messages and how you can try fixing them. If you don't see the error you're struggling with here, ask the relevant mailing list, <a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">help-gnu-emacs</a>, the #emacs channel on <a href="http://freenode.net/">irc.freenode.net</a>, or <a href="http://stackoverflow.com">StackOverflow</a> for help. Good luck!
+Here are some common error messages and how you can try fixing them. If you don't see the error you're struggling with here, ask the relevant mailing list, <a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">help-gnu-emacs</a>, the #emacs channel on <a href="http://freenode.net/">irc.freenode.net</a>, or <a href="http://stackoverflow.com/">StackOverflow</a> for help. Good luck!
 </p>
 </div>
 
-<div id="outline-container-sec-2-1" class="outline-3">
-<h3 id="sec-2-1">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</h3>
-<div class="outline-text-3" id="text-2-1">
+<div id="outline-container-orgheadline4" class="outline-3">
+<h3 id="orgheadline4">Scan error: "Unbalanced parentheses" or "Containing expression ends prematurely"</h3>
+<div class="outline-text-3" id="text-orgheadline4">
 <p>
 You may have pasted in something that has a "<code>(</code>" but no matching "<code>)</code>", which results in unbalanced parentheses. Alternatively, you may have pasted in something that has "<code>)</code>" but no "<code>(</code>", which results in a premature end. You can use <code>M-x check-parens</code> to quickly check for mismatched parentheses, or try reading the code carefully in order to find the mismatched pair. You can also use <code>C-M-f</code> (<code>forward-sexp</code>) and <code>C-M-b</code> (<code>backward-sexp</code>) to navigate by complete expressions until you find the specific one that causes the error.
 </p>
 </div>
 </div>
 
-<div id="outline-container-sec-2-2" class="outline-3">
-<h3 id="sec-2-2">Cannot open load file: &#x2026;</h3>
-<div class="outline-text-3" id="text-2-2">
+<div id="outline-container-orgheadline5" class="outline-3">
+<h3 id="orgheadline5">Cannot open load file: &#x2026;</h3>
+<div class="outline-text-3" id="text-orgheadline5">
 <p>
 The code is trying to require or load a file that Emacs can't find.
 </p>
 
 <ul class="org-ul">
-<li>Have you installed the appropriate package? Use <code>M-x list-packages</code> to see if it has been packaged into a form that's easy to install. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages.
-</li>
-<li>Have you downloaded it manually and added it to your <code>load-path</code>? See the notes on load-path for more details.
-</li>
-<li>If you're using <code>load</code>, does the file exist?
-</li>
+<li>Have you installed the appropriate package? Use <code>M-x list-packages</code> to see if it has been packaged into a form that's easy to install. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages.</li>
+<li>Have you downloaded it manually and added it to your <code>load-path</code>? See the notes on load-path for more details.</li>
+<li>If you're using <code>load</code>, does the file exist?</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3">Lisp error: (void-function &#x2026;)</h3>
-<div class="outline-text-3" id="text-2-3">
-<p>
-<a id="void-function"></a>
-</p>
-
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="void-function"><a id="orgheadline6"></a>Lisp error: (void-function &#x2026;)</h3>
+<div class="outline-text-3" id="text-void-function">
 <p>
 The code calls a function that has not been defined. 
 </p>
 
 <ul class="org-ul">
-<li>Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use <code>M-x list-packages</code> to see the available packages. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages. 
-</li>
-<li>If you downloaded the library manually, <code>load</code> or <code>require</code> it. 
-</li>
-<li>If you're copying some code that isn't packaged in a library, check if there are any <code>defun</code> (define function) expressions that you forgot to copy. Make sure to include and evaluate those.
-</li>
+<li>Have you installed the appropriate package? Look at the function name and try to guess the name of the package. People usually start the function name with the package name in order to make the function names unique. Use <code>M-x list-packages</code> to see the available packages. You may need to add other sources to your <code>package-archives</code> to see a wider range of packages.</li>
+<li>If you downloaded the library manually, <code>load</code> or <code>require</code> it.</li>
+<li>If you're copying some code that isn't packaged in a library, check if there are any <code>defun</code> (define function) expressions that you forgot to copy. Make sure to include and evaluate those.</li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4">Symbol's value as variable is void: <span class="underline">_</span></h3>
-<div class="outline-text-3" id="text-2-4">
-<p>
-<a id="void-variable"></a>
-</p>
-
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="void-variable"><a id="orgheadline7"></a>Symbol's value as variable is void: <span class="underline">_</span></h3>
+<div class="outline-text-3" id="text-void-variable">
 <p>
 The code is trying to get the value of a variable that has not yet been set. See if there's other code that you need to evaluate first in order to set up those variables. If the expression involves <code>add-to-list</code> or <code>add-hook</code>, you may need to use <code>require</code> to load the library that defines that list or hook first.
 </p>
@@ -352,9 +455,9 @@ You might also get this if you're using <code>C-x C-e</code> (<code>eval-last-se
 </div>
 </div>
 
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</h3>
-<div class="outline-text-3" id="text-2-5">
+<div id="outline-container-orgheadline8" class="outline-3">
+<h3 id="orgheadline8">I'm using C-x C-e (eval-last-sexp) and I don't get the results I expected</h3>
+<div class="outline-text-3" id="text-orgheadline8">
 <p>
 Make sure you call <code>C-x C-e</code> <b>after</b> the outermost <code>)</code> for the expression you want to evaluate.
 </p>
@@ -371,15 +474,15 @@ If the code you're looking at has multiple expressions, you'll need to call <cod
 </p>
 
 <p>
-Again, if you don't see the error you're struggling with here, ask the relevant mailing list, <a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">help-gnu-emacs</a>, the #emacs channel on <a href="http://freenode.net/">irc.freenode.net</a>, or <a href="http://stackoverflow.com">StackOverflow</a> for help. Good luck!
+Again, if you don't see the error you're struggling with here, ask the relevant mailing list, <a href="https://lists.gnu.org/mailman/listinfo/help-gnu-emacs">help-gnu-emacs</a>, the #emacs channel on <a href="http://freenode.net/">irc.freenode.net</a>, or <a href="http://stackoverflow.com/">StackOverflow</a> for help. Good luck!
 </p>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3">Wrapping up the beginner course</h2>
-<div class="outline-text-2" id="text-3">
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">Wrapping up the beginner course</h2>
+<div class="outline-text-2" id="text-orgheadline10">
 <p>
 I hope that this course has helped you become more comfortable with reading and tweaking Emacs Lisp configuration code from blog posts, wiki pages, and other resources. There's much more to learn, of course. With <code>describe-function</code>, <code>describe-variable</code>, and the ability to quickly experiment with Emacs Lisp code without restarting Emacs all the time, I'm sure you'll get the hang of it! If you'd like to review or refer to this course, you can get it as one page at <a href="http://emacslife.com/how-to-read-emacs-lisp.html">http://emacslife.com/how-to-read-emacs-lisp.html</a> .
 </p>
@@ -396,28 +499,53 @@ If you liked this or you have other questions, please get in touch - <a href="ma
 More links:
 </p>
 <ul class="org-ul">
-<li><a href="http://bzg.fr/learn-emacs-lisp-in-15-minutes.html">http://bzg.fr/learn-emacs-lisp-in-15-minutes.html</a>
-</li>
-<li><a href="http://harryrschwartz.com/2014/04/08/an-introduction-to-emacs-lisp.html">http://harryrschwartz.com/2014/04/08/an-introduction-to-emacs-lisp.html</a>
-</li>
-<li><a href="http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html">http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html</a>
-</li>
-<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html">An Introduction to Programming in Emacs Lisp</a>: A bit abstract, but a good place to start. Read it even if you don't understand everything. Read it again. Refer to it frequently. Graduate to the <a href="http://www.gnu.org/software/emacs/manual/elisp.html">Emacs Lisp reference manual</a> when you're more comfortable (or if you need to look up details).
-</li>
-<li><a href="http://ergoemacs.org/emacs/elisp.html">http://ergoemacs.org/emacs/elisp.html</a>: Good collection of idioms and common uses.
-</li>
-<li><a href="http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/">http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/</a>: Starts with ielm, focuses on data structures; other parts?
-</li>
-<li><a href="http://cjohansen.no/an-introduction-to-elisp">http://cjohansen.no/an-introduction-to-elisp</a>: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
-</li>
-<li><a href="http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html">http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html</a>
-</li>
+<li><a href="http://bzg.fr/learn-emacs-lisp-in-15-minutes.html">http://bzg.fr/learn-emacs-lisp-in-15-minutes.html</a></li>
+<li><a href="http://harryrschwartz.com/2014/04/08/an-introduction-to-emacs-lisp.html">http://harryrschwartz.com/2014/04/08/an-introduction-to-emacs-lisp.html</a></li>
+<li><a href="http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html">http://toumorokoshi.github.io/emacs-from-scratch-part-3-extending-emacs-with-elisp.html</a></li>
+<li><a href="https://www.gnu.org/software/emacs/manual/html_mono/eintr.html">An Introduction to Programming in Emacs Lisp</a>: A bit abstract, but a good place to start. Read it even if you don't understand everything. Read it again. Refer to it frequently. Graduate to the <a href="http://www.gnu.org/software/emacs/manual/elisp.html">Emacs Lisp reference manual</a> when you're more comfortable (or if you need to look up details).</li>
+<li><a href="http://ergoemacs.org/emacs/elisp.html">http://ergoemacs.org/emacs/elisp.html</a>: Good collection of idioms and common uses.</li>
+<li><a href="http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/">http://joelmccracken.github.io/entries/emacs-lisp-for-hackers-part-1-lisp-essentials/</a>: Starts with ielm, focuses on data structures; other parts?</li>
+<li><a href="http://cjohansen.no/an-introduction-to-elisp">http://cjohansen.no/an-introduction-to-elisp</a>: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)</li>
+<li><a href="http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html">http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html</a></li>
 </ul>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
-<div class="back-to-top"><a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a></div>
+
+<style type="text/css">
+.back-to-top {
+    position: fixed;
+    bottom: 2em;
+    right: 0px;
+    text-decoration: none;
+    color: #000000;
+    background-color: rgba(235, 235, 235, 0.80);
+    font-size: 12px;
+    padding: 1em;
+    display: none;
+}
+
+.back-to-top:hover {
+    background-color: rgba(135, 135, 135, 0.50);
+}
+</style>
+
+<div class="back-to-top">
+<a href="#top">Back to top</a> | <a href="mailto:sacha@sachachua.com">E-mail me</a>
+</div>
+
+<script type="text/javascript">
+    var offset = 220;
+    var duration = 500;
+    jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > offset) {
+            jQuery('.back-to-top').fadeIn(duration);
+        } else {
+            jQuery('.back-to-top').fadeOut(duration);
+        }
+    });
+</script>
 </div>
 </body>
 </html>

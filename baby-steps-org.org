@@ -27,7 +27,7 @@ mobile devices, or whether this will be ultimately worth it. =) You
 can start off by using Org to manage a small part of your life - maybe
 one of your projects.
 
-* Start with an outline 
+* Start with an outline
 
 Start with a single file (probably =~/todo.org=). I recommend using this kind of Org structure:
 
@@ -53,8 +53,7 @@ When you're starting out, you can get rid of finished tasks by using =C-k= (=org
 * Finish tasks
 
 If you're done with a task, change =TODO= to =DONE=. If you get tired
-of doing this manually, jump ahead to the section [[#define-shortcuts][Define shortcuts
-for managing TODO states]]. 
+of doing this manually, jump ahead to the section [[#define-shortcuts][Define shortcuts for managing TODO states]].
 
 You can look through your tasks to see what you still need to
 do. If you want to see your unfinished tasks in the context of your
@@ -88,8 +87,9 @@ You can test it with =M-x eval-buffer= while looking at your =~/.emacs.d/init.el
 You have just written a little Emacs Lisp. Totally not scary.
 
 * Define shortcuts for managing TODO states
-
-# <<define-shortcuts>>
+  :PROPERTIES:
+  :CUSTOM_ID: define-shortcuts
+  :END:
 
 So far, you've just been using Org Mode as a simple outliner with some
 colors. The next step is to tell it a little more about how you want
@@ -103,7 +103,7 @@ memory as soon as you can.
 2. Change =TODO= to =TODO(t)= and =DONE= to =DONE(d)=. The letters in
    the parentheses are the shortcuts you can type to select that
    state. You can change the letters if you prefer a different
-   shortcut, like setting it to =DONE(x)=. 
+   shortcut, like setting it to =DONE(x)=.
 3. Add other TODO states if you want. Some useful states include
    =WAITING(w)= and =SOMEDAY(s)=. Make sure that the last state you
    have is =DONE(d)= (or whatever keyboard shortcut you set it to),
@@ -118,7 +118,7 @@ shortcuts you've defined.
 Now you can use =C-c C-t= (=org-todo=) to quickly set the =TODO= state
 of any heading by typing its shortcut.
 
-* Organize your tasks into projects 
+* Organize your tasks into projects
 
 Okay. Now you have lots of tasks, and you know how to mark them as
 DONE. You might even have a few additional states. At some point,
@@ -143,14 +143,14 @@ Time to organize things better. This is how you want your Org file to look:
     ,** TODO go here
 #+end_src
 
-As before, one star (=*=) means it's a first-level heading, and two stars (=**=) means it's a second-level heading underneath whatever first-level heading was before it. 
+As before, one star (=*=) means it's a first-level heading, and two stars (=**=) means it's a second-level heading underneath whatever first-level heading was before it.
 
 Unless your Tasks list is short or you're feeling particularly diligent, I recommend not worrying too much about your previous tasks and instead focusing on keeping things organized going forward. Think about the projects you're currently working and create headings for them. Create tasks underneath them, remembering to use =**=.
 
 Here's where it gets interesting. Try pressing =S-tab= (=org-shifttab=) a few times to see how you can change the visibility of the outline for the entire buffer.
 This is why we got you started with putting your tasks under the =* Tasks= heading, so all of your tasks don't clutter up the neat "everything is collapsed so I can focus on my projects" view.
 
-Now go to one of your project headings and press =tab= (=org-cycle=). Do that a few times as well. 
+Now go to one of your project headings and press =tab= (=org-cycle=). Do that a few times as well.
 
 So now, when you're working on a project, you can press TAB to view the tasks underneath it. When you're not working on the project, you can use TAB to hide the details.
 
@@ -176,7 +176,7 @@ That's in the next section, on scheduling tasks.
 
 Okay. So now you have projects and tasks, and you're jumping all over
 the place to find tasks to work on or keep track of deadlines.
-This is where scheduling and the Org agenda come in. 
+This is where scheduling and the Org agenda come in.
 
 First, we need to add your =~/todo.org= to the list of files Org looks at when coming up with the agenda. Open your =~/todo.org= and type =C-c [= (=org-agenda-file-to-front=). This adds the current file to the list.
 
@@ -188,15 +188,15 @@ Schedule some tasks for tomorrow, too. This time, when you schedule
 it, type =+1= for the date. You can specify =+2= for the day after
 tomorrow, etc. The 28th? =28=. If you want to schedule something for
 next Saturday, you can type =sat=. Two Tuesdays from now? =2thu=. A
-month from now? =1m=. It's really flexible. 
+month from now? =1m=. It's really flexible.
 
 Anyway, scheduling should give you a task that looks something like this
 #+begin_src org
     ,** TODO Fix the widget
-    ,SCHEDULED: <2014-02-28 Fri>
+    SCHEDULED: <2014-02-28 Fri>
 #+end_src
 
-To see your scheduled tasks in your agenda, type =M-x org-agenda= and choose =a= (Agenda for the current week or day). You can use =f= (=org-agenda-later=) and =b= (=org-agenda-earlier=) to go forward or backward. You can use =t= (=org-agenda-todo=) to change the TODO state of a task. You can reschedule it by using =S-right= (=org-agenda-do-date-later=) and =M-left= (=org-agenda-do-date-earlier=) with =C-c C-s= (=org-agenda-schedule=). Press =RET= to jump to a task. 
+To see your scheduled tasks in your agenda, type =M-x org-agenda= and choose =a= (Agenda for the current week or day). You can use =f= (=org-agenda-later=) and =b= (=org-agenda-earlier=) to go forward or backward. You can use =t= (=org-agenda-todo=) to change the TODO state of a task. You can reschedule it by using =S-right= (=org-agenda-do-date-later=) and =M-left= (=org-agenda-do-date-earlier=) with =C-c C-s= (=org-agenda-schedule=). Press =RET= to jump to a task.
 
 You will probably want to refer to your agenda often. If you haven't done so yet, add the following to your =~/.emacs.d/init.el=:
 
@@ -220,7 +220,7 @@ You can get Emacs to automatically open your agenda whenever you start it. Add t
 
 coming eventually. =)
 
-** View your completed tasks 
+** View your completed tasks
 
 coming eventually. =)
 
@@ -260,4 +260,4 @@ coming eventually. =)
 E-mail me at [[mailto:sacha@sachachua.com][sacha@sachachua.com]] with questions or suggestions!
 See [[http://sachachua.com/blog/emacs][my Emacs page]] for more resources.
 
-Acknowledgements: DaveP 
+Acknowledgements: DaveP

@@ -17,8 +17,10 @@ While I'm drafting this, you may want to check out the following resources:
 - http://cjohansen.no/an-introduction-to-elisp: Focuses on Emacs Lisp as a way of extending Emacs, uses programming examples (test cases)
 - http://steve-yegge.blogspot.com/2008/01/emergency-elisp.html
 
-This work is available under either the Creative Commons Attribution License or the GNU Free Documentation License. Enjoy!
+UPDATE: Go check out http://pages.sachachua.com/emacs-notes/how-to-read-emacs-lisp.html instead.
  
+Previous draft follows below.
+
 ** Why learn Emacs Lisp?
 
 Emacs is amazingly customizable. If you want to tweak Emacs to support the way that you'd like to work, learning Emacs Lisp will definitely pay off. People have used Emacs Lisp to turn Emacs into a musical instrument, a TODO manager, a webserver, and all sorts of other things.
@@ -89,7 +91,7 @@ Some functions need more information. For example, =prefer-coding-system= is a u
 (prefer-coding-system 'utf-8)
 #+end_src
 
-Here's another example. Let's say that you want to open a file whenever you start Emacs. The function to open a file is called =find-file=, and you can give it the name of the file to open. The code below looks for a file called "todo.org" in your home directory, and creating it if it does not yet exist.
+Here's another example. Let's say that you want to open a file whenever you start Emacs. The function to open a file is called =find-file=, and you can give it the name of the file to open. The code below switches to a buffer visiting file "todo.org" in your home directory. If the buffer doesn't exist, it will be created. If the file doesn't exist, it will be created automatically when the buffer is saved - for example, when you press =C-x C-s= (=save-buffer=) in that buffer.
 
 #+begin_src emacs-lisp
 (find-file "~/todo.org")

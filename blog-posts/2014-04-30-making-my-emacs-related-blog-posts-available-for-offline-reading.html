@@ -4,11 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Making my Emacs-related blog posts available for offline reading :emacs:packaging:</title>
-<!-- 2014-04-30 Wed 21:39 -->
+<!-- 2015-10-19 Mon 14:11 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sacha Chua" />
 <link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
 <link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
@@ -49,10 +49,10 @@ match groups much easier. Eventually I ended up with a list that looked like thi
 
 <div class="org-src-container">
 
-<pre class="src src-sh">wget -p http://sachachua.com/blog/2014/04/thinking-todo-keywords/?<span class="org-variable-name">dump</span>=1
-wget -p http://sachachua.com/blog/2014/04/reflecting-10-episodes-emacs-chats/?<span class="org-variable-name">dump</span>=1
-wget -p http://sachachua.com/blog/2014/04/org-mode-helps-deal-ever-growing-backlog/?<span class="org-variable-name">dump</span>=1
-wget -p http://sachachua.com/blog/2014/04/reinvesting-time-and-money-into-emacs/?<span class="org-variable-name">dump</span>=1
+<pre class="src src-sh">wget -p http://sachachua.com/blog/2014/04/thinking-todo-keywords/?<span style="font-weight: bold; font-style: italic;">dump</span>=1
+wget -p http://sachachua.com/blog/2014/04/reflecting-10-episodes-emacs-chats/?<span style="font-weight: bold; font-style: italic;">dump</span>=1
+wget -p http://sachachua.com/blog/2014/04/org-mode-helps-deal-ever-growing-backlog/?<span style="font-weight: bold; font-style: italic;">dump</span>=1
+wget -p http://sachachua.com/blog/2014/04/reinvesting-time-and-money-into-emacs/?<span style="font-weight: bold; font-style: italic;">dump</span>=1
 ...
 </pre>
 </div>
@@ -63,10 +63,10 @@ This downloaded the posts and included images. Next, I wanted to process the dow
 
 <div class="org-src-container">
 
-<pre class="src src-sh">dos2unix ./sachachua.com/blog/2003/07/emacspeak-creator/index.html?<span class="org-variable-name">dump</span>=1; (<span class="org-builtin">echo</span> <span class="org-string">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/emacspeak-creator/index.html?<span class="org-variable-name">dump</span>=1; <span class="org-builtin">echo</span> <span class="org-string">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-emacspeak-creator.org
-dos2unix ./sachachua.com/blog/2003/07/instructionalsoftwaredesign/index.html?<span class="org-variable-name">dump</span>=1; (<span class="org-builtin">echo</span> <span class="org-string">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/instructionalsoftwaredesign/index.html?<span class="org-variable-name">dump</span>=1; <span class="org-builtin">echo</span> <span class="org-string">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-instructionalsoftwaredesign.org
-dos2unix ./sachachua.com/blog/2003/07/interesting-mail-stats/index.html?<span class="org-variable-name">dump</span>=1; (<span class="org-builtin">echo</span> <span class="org-string">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/interesting-mail-stats/index.html?<span class="org-variable-name">dump</span>=1; <span class="org-builtin">echo</span> <span class="org-string">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-interesting-mail-stats.org
-dos2unix ./sachachua.com/blog/2003/08/emacs-macros/index.html?<span class="org-variable-name">dump</span>=1; (<span class="org-builtin">echo</span> <span class="org-string">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/08/emacs-macros/index.html?<span class="org-variable-name">dump</span>=1; <span class="org-builtin">echo</span> <span class="org-string">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-08-emacs-macros.org
+<pre class="src src-sh">dos2unix ./sachachua.com/blog/2003/07/emacspeak-creator/index.html?<span style="font-weight: bold; font-style: italic;">dump</span>=1; (<span style="font-weight: bold;">echo</span> <span style="font-style: italic;">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/emacspeak-creator/index.html?<span style="font-weight: bold; font-style: italic;">dump</span>=1; <span style="font-weight: bold;">echo</span> <span style="font-style: italic;">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-emacspeak-creator.org
+dos2unix ./sachachua.com/blog/2003/07/instructionalsoftwaredesign/index.html?<span style="font-weight: bold; font-style: italic;">dump</span>=1; (<span style="font-weight: bold;">echo</span> <span style="font-style: italic;">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/instructionalsoftwaredesign/index.html?<span style="font-weight: bold; font-style: italic;">dump</span>=1; <span style="font-weight: bold;">echo</span> <span style="font-style: italic;">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-instructionalsoftwaredesign.org
+dos2unix ./sachachua.com/blog/2003/07/interesting-mail-stats/index.html?<span style="font-weight: bold; font-style: italic;">dump</span>=1; (<span style="font-weight: bold;">echo</span> <span style="font-style: italic;">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/07/interesting-mail-stats/index.html?<span style="font-weight: bold; font-style: italic;">dump</span>=1; <span style="font-weight: bold;">echo</span> <span style="font-style: italic;">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-07-interesting-mail-stats.org
+dos2unix ./sachachua.com/blog/2003/08/emacs-macros/index.html?<span style="font-weight: bold; font-style: italic;">dump</span>=1; (<span style="font-weight: bold;">echo</span> <span style="font-style: italic;">"&lt;html&gt;&lt;body&gt;"</span>; cat ./sachachua.com/blog/2003/08/emacs-macros/index.html?<span style="font-weight: bold; font-style: italic;">dump</span>=1; <span style="font-weight: bold;">echo</span> <span style="font-style: italic;">"&lt;/body&gt;&lt;/html&gt;"</span>) &gt; test.html; pandoc test.html -o 2003-08-emacs-macros.org
 </pre>
 </div>
 
@@ -80,26 +80,26 @@ Anyway, now I had a lot of Org files. I wanted to rename them and clean up the t
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">sacha/process-blog-posts</span> ()
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">sacha/process-blog-posts</span> ()
   (interactive)
-  (mapcar (<span class="org-keyword">lambda</span> (x)
-            (find-file x)
-            <span class="org-comment-delimiter">;; </span><span class="org-comment">Set the title</span>
-            (goto-char (point-min))
-            (<span class="org-keyword">when</span> (looking-at <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">\\*\\*</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>)
-              (replace-match <span class="org-string">"#+TITLE:"</span>))
-            (save-buffer)
-            <span class="org-comment-delimiter">;; </span><span class="org-comment">Rename the file</span>
-            (<span class="org-keyword">when</span> (re-search-forward <span class="org-string">"</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">th</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">nd</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">st</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">|</span></span><span class="org-string">rd</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">, </span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">"</span>)
-              (<span class="org-keyword">let</span> ((day (match-string 1)))
-                (rename-file
-                 (buffer-file-name)
-                 (replace-regexp-in-string
-                  <span class="org-string">"/</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">-</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">(</span></span><span class="org-string">[0-9]+</span><span class="org-string"><span class="org-regexp-grouping-backslash">\\</span></span><span class="org-string"><span class="org-regexp-grouping-construct">)</span></span><span class="org-string">-"</span>
-                  (concat <span class="org-string">"/processed\\&amp;"</span> day <span class="org-string">"-"</span>)
-                  (buffer-file-name)))))
-            (kill-buffer))
-          (directory-files <span class="org-string">"."</span> nil <span class="org-string">".org$"</span>)))
+        (mapcar (<span style="font-weight: bold;">lambda</span> (x)
+                                                (find-file x)
+                                                <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Set the title</span>
+                                                (goto-char (point-min))
+                                                (<span style="font-weight: bold;">when</span> (looking-at <span style="font-style: italic;">"</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">\\*\\*</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">"</span>)
+                                                        (replace-match <span style="font-style: italic;">"#+TITLE:"</span>))
+                                                (save-buffer)
+                                                <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Rename the file</span>
+                                                (<span style="font-weight: bold;">when</span> (re-search-forward <span style="font-style: italic;">"</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">[0-9]+</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">th</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">nd</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">st</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">|</span><span style="font-style: italic;">rd</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">, </span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">[0-9]+</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">"</span>)
+                                                        (<span style="font-weight: bold;">let</span> ((day (match-string 1)))
+                                                                (rename-file
+                                                                 (buffer-file-name)
+                                                                 (replace-regexp-in-string
+                                                                        <span style="font-style: italic;">"/</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">[0-9]+</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">-</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">(</span><span style="font-style: italic;">[0-9]+</span><span style="font-weight: bold; font-style: italic;">\\</span><span style="font-weight: bold; font-style: italic;">)</span><span style="font-style: italic;">-"</span>
+                                                                        (concat <span style="font-style: italic;">"/processed\\&amp;"</span> day <span style="font-style: italic;">"-"</span>)
+                                                                        (buffer-file-name)))))
+                                                (kill-buffer))
+                                        (directory-files <span style="font-style: italic;">"."</span> nil <span style="font-style: italic;">".org$"</span>)))
 </pre>
 </div>
 

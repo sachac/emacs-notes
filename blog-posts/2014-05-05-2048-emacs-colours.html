@@ -4,11 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>2048 in Emacs, and colours too</title>
-<!-- 2014-05-09 Fri 15:44 -->
+<!-- 2015-10-19 Mon 14:24 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sacha Chua" />
 <link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
 <link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
@@ -39,40 +39,40 @@ theme. =)
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-2-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"red"</span>))) <span class="org-doc">"Face used for 2"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-4-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"orange"</span>))) <span class="org-doc">"Face used for 4"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-8-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"yellow"</span>))) <span class="org-doc">"Face used for 8"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-16-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"green"</span>))) <span class="org-doc">"Face used for 16"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-32-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"lightblue"</span> <span class="org-builtin">:bold</span> t))) <span class="org-doc">"Face used for 32"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-64-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"lavender"</span> <span class="org-builtin">:bold</span> t))) <span class="org-doc">"Face used for 64"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-128-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"SlateBlue"</span> <span class="org-builtin">:bold</span> t))) <span class="org-doc">"Face used for 128"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-256-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"MediumVioletRed"</span> <span class="org-builtin">:bold</span> t))) <span class="org-doc">"Face used for 256"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-512-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"tomato"</span> <span class="org-builtin">:bold</span> t))) <span class="org-doc">"Face used for 512"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-1024-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"SkyBlue1"</span> <span class="org-builtin">:bold</span> t))) <span class="org-doc">"Face used for 1024"</span> <span class="org-builtin">:group</span> '2048-game)
-(<span class="org-keyword">defface</span> <span class="org-variable-name">2048-2048-face</span> '((t (<span class="org-builtin">:foreground</span> <span class="org-string">"lightgreen"</span> <span class="org-builtin">:bold</span> t))) <span class="org-doc">"Face used for 2048"</span> <span class="org-builtin">:group</span> '2048-game)
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-2-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"red"</span>))) <span style="font-style: italic;">"Face used for 2"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-4-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"orange"</span>))) <span style="font-style: italic;">"Face used for 4"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-8-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"yellow"</span>))) <span style="font-style: italic;">"Face used for 8"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-16-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"green"</span>))) <span style="font-style: italic;">"Face used for 16"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-32-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"lightblue"</span> <span style="font-weight: bold;">:bold</span> t))) <span style="font-style: italic;">"Face used for 32"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-64-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"lavender"</span> <span style="font-weight: bold;">:bold</span> t))) <span style="font-style: italic;">"Face used for 64"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-128-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"SlateBlue"</span> <span style="font-weight: bold;">:bold</span> t))) <span style="font-style: italic;">"Face used for 128"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-256-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"MediumVioletRed"</span> <span style="font-weight: bold;">:bold</span> t))) <span style="font-style: italic;">"Face used for 256"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-512-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"tomato"</span> <span style="font-weight: bold;">:bold</span> t))) <span style="font-style: italic;">"Face used for 512"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-1024-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"SkyBlue1"</span> <span style="font-weight: bold;">:bold</span> t))) <span style="font-style: italic;">"Face used for 1024"</span> <span style="font-weight: bold;">:group</span> '2048-game)
+(<span style="font-weight: bold;">defface</span> <span style="font-weight: bold; font-style: italic;">2048-2048-face</span> '((t (<span style="font-weight: bold;">:foreground</span> <span style="font-style: italic;">"lightgreen"</span> <span style="font-weight: bold;">:bold</span> t))) <span style="font-style: italic;">"Face used for 2048"</span> <span style="font-weight: bold;">:group</span> '2048-game)
 
-(<span class="org-keyword">defvar</span> <span class="org-variable-name">2048-font-lock-keywords</span>
-  '((<span class="org-string">"\\&lt;2\\&gt;"</span> 0 '2048-2-face)
-    (<span class="org-string">"\\&lt;4\\&gt;"</span> 0 '2048-4-face)
-    (<span class="org-string">"\\&lt;8\\&gt;"</span> 0 '2048-8-face)
-    (<span class="org-string">"\\&lt;16\\&gt;"</span> 0 '2048-16-face)
-    (<span class="org-string">"\\&lt;32\\&gt;"</span> 0 '2048-32-face)
-    (<span class="org-string">"\\&lt;64\\&gt;"</span> 0 '2048-64-face)
-    (<span class="org-string">"\\&lt;128\\&gt;"</span> 0 '2048-128-face)
-    (<span class="org-string">"\\&lt;256\\&gt;"</span> 0 '2048-256-face)
-    (<span class="org-string">"\\&lt;512\\&gt;"</span> 0 '2048-512-face)
-    (<span class="org-string">"\\&lt;1024\\&gt;"</span> 0 '2048-1024-face)
-    (<span class="org-string">"\\&lt;2048\\&gt;"</span> 0 '2048-2048-face)))
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">2048-font-lock-keywords</span>
+  '((<span style="font-style: italic;">"\\&lt;2\\&gt;"</span> 0 '2048-2-face)
+    (<span style="font-style: italic;">"\\&lt;4\\&gt;"</span> 0 '2048-4-face)
+    (<span style="font-style: italic;">"\\&lt;8\\&gt;"</span> 0 '2048-8-face)
+    (<span style="font-style: italic;">"\\&lt;16\\&gt;"</span> 0 '2048-16-face)
+    (<span style="font-style: italic;">"\\&lt;32\\&gt;"</span> 0 '2048-32-face)
+    (<span style="font-style: italic;">"\\&lt;64\\&gt;"</span> 0 '2048-64-face)
+    (<span style="font-style: italic;">"\\&lt;128\\&gt;"</span> 0 '2048-128-face)
+    (<span style="font-style: italic;">"\\&lt;256\\&gt;"</span> 0 '2048-256-face)
+    (<span style="font-style: italic;">"\\&lt;512\\&gt;"</span> 0 '2048-512-face)
+    (<span style="font-style: italic;">"\\&lt;1024\\&gt;"</span> 0 '2048-1024-face)
+    (<span style="font-style: italic;">"\\&lt;2048\\&gt;"</span> 0 '2048-2048-face)))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">sacha/2048-fontify</span> ()
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">sacha/2048-fontify</span> ()
   (font-lock-add-keywords nil 2048-font-lock-keywords))
 
-(<span class="org-keyword">defun</span> <span class="org-function-name">sacha/2048-set-font-size</span> ()
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">sacha/2048-set-font-size</span> ()
   (text-scale-set 5))
 
-(<span class="org-keyword">use-package</span> <span class="org-constant">2048-game</span>
-  <span class="org-builtin">:config</span>
-  (<span class="org-keyword">progn</span>
+(use-package 2048-game
+  <span style="font-weight: bold;">:config</span>
+  (<span style="font-weight: bold;">progn</span>
    (add-hook '2048-mode-hook 'sacha/2048-fontify)
    (add-hook '2048-mode-hook 'sacha/2048-set-font-size)))
 </pre>

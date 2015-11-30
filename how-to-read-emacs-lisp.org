@@ -1,5 +1,6 @@
 #+TITLE: Read Lisp, Tweak Emacs: How to read Emacs Lisp so that you can customize Emacs
 #+OPTIONS: toc:t
+<<top>>
 
 * Introduction
 
@@ -15,8 +16,9 @@ interpretation, you probably already know your way around.
 
 We'll assume that you already have Emacs installed and that you've
 gone through the built-in tutorial (*Help - Emacs Tutorial*, =<f1> t=,
-=C-h t=, or =M-x help-with-tutorial=). I'll also assume you have a
-little programming background or can deal with the concepts of
+=C-h t=, or =M-x help-with-tutorial=). If you haven't upgraded to at
+least Emacs 24.x, please do - it's worth it! I'll also assume you have
+a little programming background or can deal with the concepts of
 variables and functions. Feel free to ask questions if you get stuck
 on something or if you want to clarify your understanding.
 
@@ -27,7 +29,10 @@ find it on [[https://github.com/sachac/emacs-notes/blob/gh-pages/how-to-read-ema
 under the Creative Commons Attribution License and the GNU Free
 Documentation License, so feel free to read, share, and build on it.
 
-You can find this guide on the Web at http://emacslife.com/how-to-read-emacs-lisp.html .
+You can find this guide on the Web at
+http://emacslife.com/how-to-read-emacs-lisp.html . If you want an EPUB
+version or a downloadable HTML version, you can get it from [[https://gumroad.com/l/xkzAI][Gumroad]]
+(free/pay-what-you-want).
 
 #+BEGIN_CONVENTIONS
 Some conventions we'll use:
@@ -132,16 +137,16 @@ http://xkcd.com/1205/]
 * "How can I try Emacs Lisp code?"
 <<try>>
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "14-209"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-1-try-emacs-lisp.txt" :lines "14-207"
 
 * "How can I understand what Emacs Lisp code does?"
 <<understanding-lisp>>
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.txt" :lines "16-342"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-2-understand-emacs-lisp.txt" :lines "16-347"
 
 * "How can I customize Emacs to make things more convenient?"
 
-#+INCLUDE: "read-lisp-tweak-emacs/beginner-3-make-things-more-convenient.txt" :lines "16-241"
+#+INCLUDE: "read-lisp-tweak-emacs/beginner-3-make-things-more-convenient.txt" :lines "16-245"
 
 * "How can I add more features and deal with errors?"
 
@@ -155,78 +160,7 @@ under the Creative Commons Attribution License and the GNU Free
 Documentation License, so feel free to read, share, and build on it.
 Patches and pull requests welcome!
 
+Thanks to aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, Daniel Wu, Iaroslav Tymchenko, and Sebastian Hörberg for feedback!
 
-- Resources
-  - https://www.gnu.org/software/emacs/manual/eintr.html
-
-- [X] This document: beginner-level
-  - For people who already have a programming background but who are new to Emacs Lisp (guide for complete beginners later)
-    - Want to customize Emacs, but not entirely sure about what they're adding
-    - Sample confusion: (add-to-list 'load-path ...) vs (add-to-list 'load-path ... t) - easily solved with C-h f add-to-list if you know how to read it
-  - Assumption: you've installed Emacs 24 and have gone through the tutorial (C-h t)
-  - Scope: learning how to read short snippets of code (ex: config), not learning how to read complex code (ex: comint)
-- [X] Where can I find short Emacs Lisp code to learn from?
-  - README for packages
-  - EmacsWiki
-  - mailing lists
-  - Planet Emacsen
-  - Look for someone who uses Emacs like you
-- [X] How can I understand what Emacs Lisp code does?
-  - Ex: (global-hl-line-mode)
-  - How can I read a statement?
-    - Prefix - the "verb" goes at the beginning. This is actually like many programming languages, although Lisp does it consistently throughout. For ex
-	- [X] How can I copy Emacs Lisp code from other people's configuration?
-		- Try a little before you add things
-	- [X] How can I try things a little at a time?
-		- ielm
-		- C-x C-e (eval-last-sexp) - works everywhere
-		- =*scratch*= buffer or .el file
-			- eval-buffer
-			- eval-region
-		- M-: (eval-expression)
-		- Sometimes you need to reopen a file in order to apply the changes
-- [X] What are some of the common errors I might run into?
-  - Evaluating at the wrong point
-  - Missing )
-  - Undefined function
-  - Undefined variable or hook
-  - Unexpected symbol
-  - Obsolete code
-  - Not a prefix key
-- [X] Okay, I like this. How can I make it part of my Emacs?
-  - .emacs.d/init.el (also note about ~/.emacs)
-  - Add comments
-- Wait! I changed my mind!
-  - delete or comment out the lines
-    - ;
-  - if you can't use Emacs with your current config, emacs -q
-- Oh no, my init.el broke
-  - emacs --debug-init
-  - emacs -q
-- Common types of customizations
-  - function calls
-  - setq
-  - require
-  - add-to-list
-  - add-hook
-  - cons
-  - keybindings
-    - global-set-key
-    - define-key
-  - defun
-  - let
-  - regular expressions
-  - eval-after-load
-- Other notes on reading
-  - Whitespace
-- How can I try changing things a little?
-- How can I quickly navigate through code?
-	- forward-sexp and backward-sexp
-- Emacs Lisp is great! I want to learn more
-  - Learn How to Customize Emacs with Emacs Lisp
-- How can I go through code step by step?
-  - edebug-defun
-
-- Thanks
-  - aidalgol, rryoumaa, shergill, taus, tali713, Fuco, @philandstuff, forcer, DaveP (detailed feedback, thanks!), Adrian Lewis, Andrzej P., Artur Malabarba, Daniel Wu
+- Sacha Chua
 		

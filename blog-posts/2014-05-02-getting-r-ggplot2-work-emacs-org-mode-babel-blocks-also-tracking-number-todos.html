@@ -4,11 +4,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Getting R and ggplot2 to work in Emacs Org Mode Babel blocks; also, tracking the number of TODOs</title>
-<!-- 2014-05-03 Sat 17:15 -->
+<!-- 2015-10-19 Mon 14:14 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sacha Chua" />
 <link rel="stylesheet" type="text/css" href="../css/foundation.min.css"></link>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'></link>
 <link rel="stylesheet" type="text/css" href="../css/org-export.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/style.css"></link>
 <link rel="stylesheet" type="text/css" href="../css/emacs-notes.css"></link>
@@ -28,31 +28,31 @@ I started tracking the number of tasks I had in Org Mode so that I could find ou
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(<span class="org-keyword">defun</span> <span class="org-function-name">sacha/org-count-tasks-by-status</span> ()
+<pre class="src src-emacs-lisp">(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">sacha/org-count-tasks-by-status</span> ()
   (interactive)
-  (<span class="org-keyword">let</span> ((counts (make-hash-table <span class="org-builtin">:test</span> 'equal))
-        (today (format-time-string <span class="org-string">"%Y-%m-%d"</span> (current-time)))
+  (<span style="font-weight: bold;">let</span> ((counts (make-hash-table <span style="font-weight: bold;">:test</span> 'equal))
+        (today (format-time-string <span style="font-style: italic;">"%Y-%m-%d"</span> (current-time)))
         values output)
     (org-map-entries
-     (<span class="org-keyword">lambda</span> ()
-       (<span class="org-keyword">let*</span> ((status (elt (org-heading-components) 2)))
-         (<span class="org-keyword">when</span> status
+     (<span style="font-weight: bold;">lambda</span> ()
+       (<span style="font-weight: bold;">let*</span> ((status (elt (org-heading-components) 2)))
+         (<span style="font-weight: bold;">when</span> status
            (puthash status (1+ (or (gethash status counts) 0)) counts))))
      nil
      'agenda)
-    (setq values (mapcar (<span class="org-keyword">lambda</span> (x)
+    (setq values (mapcar (<span style="font-weight: bold;">lambda</span> (x)
                            (or (gethash x counts) 0))
-                         '(<span class="org-string">"DONE"</span> <span class="org-string">"STARTED"</span> <span class="org-string">"TODO"</span> <span class="org-string">"WAITING"</span> <span class="org-string">"DELEGATED"</span> <span class="org-string">"CANCELLED"</span> <span class="org-string">"SOMEDAY"</span>)))
+                         '(<span style="font-style: italic;">"DONE"</span> <span style="font-style: italic;">"STARTED"</span> <span style="font-style: italic;">"TODO"</span> <span style="font-style: italic;">"WAITING"</span> <span style="font-style: italic;">"DELEGATED"</span> <span style="font-style: italic;">"CANCELLED"</span> <span style="font-style: italic;">"SOMEDAY"</span>)))
     (setq output
-          (concat <span class="org-string">"| "</span> today <span class="org-string">" | "</span>
-                  (mapconcat 'number-to-string values <span class="org-string">" | "</span>)
-                  <span class="org-string">" | "</span>
+          (concat <span style="font-style: italic;">"| "</span> today <span style="font-style: italic;">" | "</span>
+                  (mapconcat 'number-to-string values <span style="font-style: italic;">" | "</span>)
+                  <span style="font-style: italic;">" | "</span>
                   (number-to-string (apply '+ values))
-                  <span class="org-string">" | "</span>
+                  <span style="font-style: italic;">" | "</span>
                   (number-to-string
                    (round (/ (* 100.0 (car values)) (apply '+ values))))
-                  <span class="org-string">"% |"</span>))
-    (<span class="org-keyword">if</span> (called-interactively-p 'any)
+                  <span style="font-style: italic;">"% |"</span>))
+    (<span style="font-weight: bold;">if</span> (called-interactively-p 'any)
         (insert output)
       output)))
 (sacha/org-count-tasks-by-status)
@@ -395,26 +395,26 @@ Here's the source for that table:
 
 <div class="org-src-container">
 
-<pre class="src src-org"><span class="org-org-meta-line">#+NAME: burndown</span>
-<span class="org-org-meta-line">#+RESULTS:</span>
-<span class="org-org-table">|       Date | DONE | START. | TODO | WAIT. | DELEG. | CANC. | SOMEDAY | Total | % done | + done | +canc. | + total | + t - d - c | Note                       |</span>
-<span class="org-org-table">|------------+------+--------+------+-------+--------+-------+---------+-------+--------+--------+--------+---------+-------------+----------------------------|</span>
-<span class="org-org-table">| 2014-04-16 | 1104 |      1 |  403 |     3 |      1 |   104 |      35 |  1651 |    67% |        |        |         |             |                            |</span>
-<span class="org-org-table">| 2014-04-17 | 1257 |      0 |  114 |     4 |      1 |   171 |     107 |  1654 |    76% |    153 |     67 |       3 |        -217 | Lots of trimming           |</span>
-<span class="org-org-table">| 2014-04-18 | 1292 |      0 |   74 |     4 |      5 |   183 |     100 |  1658 |    78% |     35 |     12 |       4 |         -43 | A little bit more trimming |</span>
-<span class="org-org-table">| 2014-04-20 | 1305 |      0 |   80 |     4 |      5 |   183 |     100 |  1677 |    78% |     13 |      0 |      19 |           6 |                            |</span>
-<span class="org-org-table">| 2014-04-21 | 1311 |      1 |   78 |     4 |      4 |   184 |      99 |  1681 |    78% |      6 |      1 |       4 |          -3 |                            |</span>
-<span class="org-org-table">| 2014-04-22 | 1313 |      2 |   75 |     4 |      4 |   184 |      99 |  1681 |    78% |      2 |      0 |       0 |          -2 |                            |</span>
-<span class="org-org-table">| 2014-04-23 | 1369 |      4 |   66 |     4 |      5 |   186 |     101 |  1735 |    79% |     56 |      2 |      54 |          -4 | Added sharing/index.org    |</span>
-<span class="org-org-table">| 2014-04-24 | 1371 |      3 |   69 |     4 |      5 |   186 |     101 |  1739 |    79% |      2 |      0 |       4 |           2 |                            |</span>
-<span class="org-org-table">| 2014-04-25 | 1379 |      3 |   60 |     3 |      5 |   189 |     103 |  1742 |    79% |      8 |      3 |       3 |          -8 |                            |</span>
-<span class="org-org-table">| 2014-04-26 | 1384 |      3 |   65 |     3 |      5 |   192 |     103 |  1755 |    79% |      5 |      3 |      13 |           5 |                            |</span>
-<span class="org-org-table">| 2014-04-27 | 1389 |      2 |   66 |     3 |      5 |   192 |     103 |  1760 |    79% |      5 |      0 |       5 |           0 |                            |</span>
-<span class="org-org-table">| 2014-04-28 | 1396 |      3 |   67 |     3 |      5 |   192 |     103 |  1769 |    79% |      7 |      0 |       9 |           2 |                            |</span>
-<span class="org-org-table">| 2014-04-29 | 1396 |      3 |   67 |     3 |      5 |   192 |     103 |  1769 |    79% |      0 |      0 |       0 |           0 |                            |</span>
-<span class="org-org-table">| 2014-04-30 | 1404 |      4 |   70 |     4 |      5 |   192 |     103 |  1782 |    79% |      8 |      0 |      13 |           5 |                            |</span>
-<span class="org-org-table">| 2014-05-01 | 1413 |      4 |   80 |     3 |      4 |   193 |     103 |  1800 |    79% |      9 |      1 |      18 |           8 |                            |</span>
-<span class="org-org-meta-line">#+TBLFM: @3$11..@&gt;$11=$2-@-1$2::@3$13..@&gt;$13=$9-@-1$9::@3$14..@&gt;$14=$13-$11-($7-@-1$7)::@3$12..@&gt;$12=$7-@-1$7</span>
+<pre class="src src-org"><span style="font-weight: bold; font-style: italic;">#+NAME: burndown</span>
+<span style="font-weight: bold; font-style: italic;">#+RESULTS:</span>
+|       Date | DONE | START. | TODO | WAIT. | DELEG. | CANC. | SOMEDAY | Total | % done | + done | +canc. | + total | + t - d - c | Note                       |
+|------------+------+--------+------+-------+--------+-------+---------+-------+--------+--------+--------+---------+-------------+----------------------------|
+| 2014-04-16 | 1104 |      1 |  403 |     3 |      1 |   104 |      35 |  1651 |    67% |        |        |         |             |                            |
+| 2014-04-17 | 1257 |      0 |  114 |     4 |      1 |   171 |     107 |  1654 |    76% |    153 |     67 |       3 |        -217 | Lots of trimming           |
+| 2014-04-18 | 1292 |      0 |   74 |     4 |      5 |   183 |     100 |  1658 |    78% |     35 |     12 |       4 |         -43 | A little bit more trimming |
+| 2014-04-20 | 1305 |      0 |   80 |     4 |      5 |   183 |     100 |  1677 |    78% |     13 |      0 |      19 |           6 |                            |
+| 2014-04-21 | 1311 |      1 |   78 |     4 |      4 |   184 |      99 |  1681 |    78% |      6 |      1 |       4 |          -3 |                            |
+| 2014-04-22 | 1313 |      2 |   75 |     4 |      4 |   184 |      99 |  1681 |    78% |      2 |      0 |       0 |          -2 |                            |
+| 2014-04-23 | 1369 |      4 |   66 |     4 |      5 |   186 |     101 |  1735 |    79% |     56 |      2 |      54 |          -4 | Added sharing/index.org    |
+| 2014-04-24 | 1371 |      3 |   69 |     4 |      5 |   186 |     101 |  1739 |    79% |      2 |      0 |       4 |           2 |                            |
+| 2014-04-25 | 1379 |      3 |   60 |     3 |      5 |   189 |     103 |  1742 |    79% |      8 |      3 |       3 |          -8 |                            |
+| 2014-04-26 | 1384 |      3 |   65 |     3 |      5 |   192 |     103 |  1755 |    79% |      5 |      3 |      13 |           5 |                            |
+| 2014-04-27 | 1389 |      2 |   66 |     3 |      5 |   192 |     103 |  1760 |    79% |      5 |      0 |       5 |           0 |                            |
+| 2014-04-28 | 1396 |      3 |   67 |     3 |      5 |   192 |     103 |  1769 |    79% |      7 |      0 |       9 |           2 |                            |
+| 2014-04-29 | 1396 |      3 |   67 |     3 |      5 |   192 |     103 |  1769 |    79% |      0 |      0 |       0 |           0 |                            |
+| 2014-04-30 | 1404 |      4 |   70 |     4 |      5 |   192 |     103 |  1782 |    79% |      8 |      0 |      13 |           5 |                            |
+| 2014-05-01 | 1413 |      4 |   80 |     3 |      4 |   193 |     103 |  1800 |    79% |      9 |      1 |      18 |           8 |                            |
+<span style="font-weight: bold; font-style: italic;">#+TBLFM: @3$11..@&gt;$11=$2-@-1$2::@3$13..@&gt;$13=$9-@-1$9::@3$14..@&gt;$14=$13-$11-($7-@-1$7)::@3$12..@&gt;$12=$7-@-1$7</span>
 </pre>
 </div>
 

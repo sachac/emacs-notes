@@ -68,7 +68,7 @@ This calls the =blink-cursor-mode= function with =-1= as the argument, which tur
 (find-file "~/todo.org")
 #+end_src
 
-This calls the =find-file= function with the =todo.org= file in your home directory. It opens the file, creating it if it doesn't exist yet.
+This calls the =find-file= function with the =todo.org= file in your home directory. The code above switches to a buffer visiting the file "todo.org" in your home directory (=~=). If the buffer doesn't exist, it will be created. If the file doesn't exist, it will be created automatically when the buffer is saved - for example, when you press =C-x C-s= (=save-buffer=) in that buffer.
 
 #+begin_src emacs-lisp
 (turn-on-eldoc-mode)
@@ -149,15 +149,17 @@ To make it easier for you to customize Emacs without writing Emacs Lisp code, ma
 
 #+BEGIN_PRACTICE
 1. Use =C-h v= (=describe-variable=) to learn more about the variables in the following code snippet:
-	 #+begin_src emacs-lisp
+   #+begin_src emacs-lisp
 	 (setq-default indicate-empty-lines t)
 	 (setq-default show-trailing-whitespace t)
-	 #+end_src
+   #+end_src
 2. Look for Emacs configuration code that has variables you would like to learn more about. Use =C-h v= (=describe-variable=) to look up their definition and the values they can be set to.
 #+END_PRACTICE
 
 * Understand symbols
-<<quoting>>
+  :PROPERTIES:
+  :CUSTOM_ID: quoting
+  :END:
 
 Let's take a closer look at this example.
 
@@ -219,8 +221,9 @@ sets the options for the =diff= command to a list containing two items, =-b= and
 The code above sets the value of the variable to a list, ignoring any previous values it had. 
 
 ** Add to a list
-
-<<load-path>>
+   :PROPERTIES:
+   :CUSTOM_ID: load-path
+   :END:
 
 Most of the time, though, you want to add to a list instead of completely replacing it. You'll often see something like this in people's configuration files:
 
@@ -264,8 +267,9 @@ Hooks are lists of functions, so you can delete items using =delete=. Alternativ
 #+end_src
 
 ** Dot notation
-
-<<package-archives>>
+   :PROPERTIES:
+   :CUSTOM_ID: package-archives
+   :END:
 
 Some things look like lists, but there's a dot between the first element and the last element. Whether something should have a dot or not depends on what's expected by the function that uses the data. For example:
 
