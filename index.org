@@ -1,6 +1,8 @@
 #+TITLE: Emacs Life
 #+OPTIONS: toc:nil
 
+See [[http://sachachua.com/blog/category/emacs-news/][Emacs News]] for a weekly digest of new resources.
+
 * Start with Emacs
 
 # - [[file:blog-posts/2014-04-14-emacs-beginner-resources.org][Emacs beginner resources]]
