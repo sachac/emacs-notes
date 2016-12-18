@@ -232,6 +232,10 @@ coming eventually. =)
 
 coming eventually. =)
 
+** Use different files or categories 
+
+See http://sachachua.com/blog/2016/12/using-categories-organize-org-agenda/ 
+
 ** Filter your view
 
 coming eventually. =)

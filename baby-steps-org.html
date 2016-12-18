@@ -3,12 +3,12 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2015-11-16 Mon 15:51 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<!-- 2016-12-18 Sun 16:09 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>A Baby Steps Guide to Managing Your Tasks with Org</title>
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Sacha Chua" />
+<meta name="generator" content="Org-mode" />
+<meta name="author" content="Sacha Chua" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
   .title  { text-align: center;
@@ -53,13 +53,97 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
@@ -92,6 +176,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css"
@@ -156,17 +241,17 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgheadline1">Some notes</a></li>
-<li><a href="#orgheadline2">Things you don't have to worry about</a></li>
-<li><a href="#orgheadline3">Start with an outline</a></li>
-<li><a href="#orgheadline4">Finish tasks</a></li>
-<li><a href="#orgheadline5">Automatically open your todo.org every time you start Emacs</a></li>
+<li><a href="#orgd7a373a">Some notes</a></li>
+<li><a href="#orgd638dac">Things you don't have to worry about</a></li>
+<li><a href="#org1bf5b0d">Start with an outline</a></li>
+<li><a href="#org64a7632">Finish tasks</a></li>
+<li><a href="#orgd96d9d2">Automatically open your todo.org every time you start Emacs</a></li>
 <li><a href="#define-shortcuts">Define shortcuts for managing TODO states</a></li>
-<li><a href="#orgheadline7">Organize your tasks into projects</a></li>
-<li><a href="#orgheadline8">Schedule your tasks and use the agenda</a></li>
-<li><a href="#orgheadline9">Automatically open your agenda whenever you start Emacs</a></li>
-<li><a href="#orgheadline20">Sections to be written</a></li>
-<li><a href="#orgheadline21">Notes</a></li>
+<li><a href="#orgdb8e566">Organize your tasks into projects</a></li>
+<li><a href="#org63c0a18">Schedule your tasks and use the agenda</a></li>
+<li><a href="#org060ee39">Automatically open your agenda whenever you start Emacs</a></li>
+<li><a href="#orge2346c8">Sections to be written</a></li>
+<li><a href="#org5d0ad37">Notes</a></li>
 </ul>
 </div>
 </div>
@@ -198,9 +283,9 @@ You can find this document at <a href="http://sach.ac/baby-steps-org-todo">http:
 <a href="http://sachachua.com/blog/2014/01/tips-learning-org-mode-emacs/">Getting started with Org</a>
 </p>
 
-<div id="outline-container-orgheadline1" class="outline-2">
-<h2 id="orgheadline1">Some notes</h2>
-<div class="outline-text-2" id="text-orgheadline1">
+<div id="outline-container-orgd7a373a" class="outline-2">
+<h2 id="orgd7a373a">Some notes</h2>
+<div class="outline-text-2" id="text-orgd7a373a">
 <p>
 I'll assume you're using Emacs 24 or later, and you've gone through
 the Emacs Tutorial with <code>C-h t</code> (<code>help-with-tutorial</code>). Assuming
@@ -211,9 +296,9 @@ things.
 </div>
 </div>
 
-<div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">Things you don't have to worry about</h2>
-<div class="outline-text-2" id="text-orgheadline2">
+<div id="outline-container-orgd638dac" class="outline-2">
+<h2 id="orgd638dac">Things you don't have to worry about</h2>
+<div class="outline-text-2" id="text-orgd638dac">
 <p>
 Don't worry about the fancy ways that other people use Org. Don't
 worry about synchronization, integration, duplication of information,
@@ -224,15 +309,14 @@ one of your projects.
 </div>
 </div>
 
-<div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">Start with an outline</h2>
-<div class="outline-text-2" id="text-orgheadline3">
+<div id="outline-container-org1bf5b0d" class="outline-2">
+<h2 id="org1bf5b0d">Start with an outline</h2>
+<div class="outline-text-2" id="text-org1bf5b0d">
 <p>
 Start with a single file (probably <code>~/todo.org</code>). I recommend using this kind of Org structure:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-org"><span class="org-org-level-1">* Tasks</span>
 <span class="org-org-level-2">** </span><span class="ATTRLIST">TODO</span><span class="org-org-level-2"> Most important thing that you have to do</span>
 <span class="org-org-level-2">** </span><span class="ATTRLIST">TODO</span><span class="org-org-level-2"> Second most important thing that you have to do</span>
@@ -262,9 +346,9 @@ When you're starting out, you can get rid of finished tasks by using <code>C-k</
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">Finish tasks</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+<div id="outline-container-org64a7632" class="outline-2">
+<h2 id="org64a7632">Finish tasks</h2>
+<div class="outline-text-2" id="text-org64a7632">
 <p>
 If you're done with a task, change <code>TODO</code> to <code>DONE</code>. If you get tired
 of doing this manually, jump ahead to the section <a href="#define-shortcuts">Define shortcuts for managing TODO states</a>.
@@ -296,9 +380,9 @@ to look for stuff.
 </div>
 </div>
 
-<div id="outline-container-orgheadline5" class="outline-2">
-<h2 id="orgheadline5">Automatically open your todo.org every time you start Emacs</h2>
-<div class="outline-text-2" id="text-orgheadline5">
+<div id="outline-container-orgd96d9d2" class="outline-2">
+<h2 id="orgd96d9d2">Automatically open your todo.org every time you start Emacs</h2>
+<div class="outline-text-2" id="text-orgd96d9d2">
 <p>
 Make your life a little bit easier by automatically opening <code>~/todo.org</code> every time you open Emacs. Add this to the end of your Emacs configuration. To do that,
 </p>
@@ -320,8 +404,8 @@ You have just written a little Emacs Lisp. Totally not scary.
 </div>
 </div>
 
-<div id="outline-container-orgheadline6" class="outline-2">
-<h2 id="define-shortcuts"><a id="orgheadline6"></a>Define shortcuts for managing TODO states</h2>
+<div id="outline-container-orgfd28fda" class="outline-2">
+<h2 id="define-shortcuts"><a id="orgfd28fda"></a>Define shortcuts for managing TODO states</h2>
 <div class="outline-text-2" id="text-define-shortcuts">
 <p>
 So far, you've just been using Org Mode as a simple outliner with some
@@ -360,9 +444,9 @@ of any heading by typing its shortcut.
 </div>
 </div>
 
-<div id="outline-container-orgheadline7" class="outline-2">
-<h2 id="orgheadline7">Organize your tasks into projects</h2>
-<div class="outline-text-2" id="text-orgheadline7">
+<div id="outline-container-orgdb8e566" class="outline-2">
+<h2 id="orgdb8e566">Organize your tasks into projects</h2>
+<div class="outline-text-2" id="text-orgdb8e566">
 <p>
 Okay. Now you have lots of tasks, and you know how to mark them as
 DONE. You might even have a few additional states. At some point,
@@ -376,7 +460,6 @@ Time to organize things better. This is how you want your Org file to look:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-org"><span class="org-org-level-1">* Project ABC</span>
 <span class="org-org-level-2">** </span><span class="ATTRLIST">TODO</span><span class="org-org-level-2"> A task related to Project ABC</span>
 <span class="org-org-level-2">** </span><span class="ATTRLIST">TODO</span><span class="org-org-level-2"> Another task related to ABC</span>
@@ -419,7 +502,6 @@ You can even go wild and have subtasks, like this. Org can deal with as many lev
 
 
 <div class="org-src-container">
-
 <pre class="src src-org"><span class="org-org-level-1">* Project ABC</span>
 <span class="org-org-level-2">** </span><span class="ATTRLIST">TODO</span><span class="org-org-level-2"> A task related to Project ABC</span>
 <span class="org-org-level-2">** </span><span class="ATTRLIST">TODO</span><span class="org-org-level-2"> Another task related to ABC</span>
@@ -441,9 +523,9 @@ That's in the next section, on scheduling tasks.
 </div>
 </div>
 
-<div id="outline-container-orgheadline8" class="outline-2">
-<h2 id="orgheadline8">Schedule your tasks and use the agenda</h2>
-<div class="outline-text-2" id="text-orgheadline8">
+<div id="outline-container-org63c0a18" class="outline-2">
+<h2 id="org63c0a18">Schedule your tasks and use the agenda</h2>
+<div class="outline-text-2" id="text-org63c0a18">
 <p>
 Okay. So now you have projects and tasks, and you're jumping all over
 the place to find tasks to work on or keep track of deadlines.
@@ -472,7 +554,6 @@ month from now? <code>1m</code>. It's really flexible.
 Anyway, scheduling should give you a task that looks something like this
 </p>
 <div class="org-src-container">
-
 <pre class="src src-org"><span class="org-org-level-2">** </span><span class="ATTRLIST">TODO</span><span class="org-org-level-2"> Fix the widget</span>
 <span class="org-org-special-keyword">SCHEDULED:</span> <span class="org-org-date">&lt;2014-02-28 Fri&gt;</span>
 </pre>
@@ -487,7 +568,6 @@ You will probably want to refer to your agenda often. If you haven't done so yet
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp">(global-set-key (kbd <span class="org-string">"C-c a"</span>) 'org-agenda)
 </pre>
 </div>
@@ -501,72 +581,80 @@ Org Agenda is really powerful. Check out the info manual for Org Mode with <code
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline9" class="outline-2">
-<h2 id="orgheadline9">Automatically open your agenda whenever you start Emacs</h2>
-<div class="outline-text-2" id="text-orgheadline9">
+<div id="outline-container-org060ee39" class="outline-2">
+<h2 id="org060ee39">Automatically open your agenda whenever you start Emacs</h2>
+<div class="outline-text-2" id="text-org060ee39">
 <p>
 You can get Emacs to automatically open your agenda whenever you start it. Add the following lines to your <code>~/.emacs.d/init.el</code> file:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-emacs-lisp">(org-agenda nil <span class="org-string">"a"</span>)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgheadline20" class="outline-2">
-<h2 id="orgheadline20">Sections to be written</h2>
-<div class="outline-text-2" id="text-orgheadline20">
-</div><div id="outline-container-orgheadline10" class="outline-3">
-<h3 id="orgheadline10">Work with deadlines</h3>
-<div class="outline-text-3" id="text-orgheadline10">
+<div id="outline-container-orge2346c8" class="outline-2">
+<h2 id="orge2346c8">Sections to be written</h2>
+<div class="outline-text-2" id="text-orge2346c8">
+</div><div id="outline-container-org73ddfcb" class="outline-3">
+<h3 id="org73ddfcb">Work with deadlines</h3>
+<div class="outline-text-3" id="text-org73ddfcb">
 <p>
 coming eventually. =)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline11" class="outline-3">
-<h3 id="orgheadline11">View your completed tasks</h3>
-<div class="outline-text-3" id="text-orgheadline11">
+<div id="outline-container-org5c8ae73" class="outline-3">
+<h3 id="org5c8ae73">View your completed tasks</h3>
+<div class="outline-text-3" id="text-org5c8ae73">
 <p>
 coming eventually. =)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline12" class="outline-3">
-<h3 id="orgheadline12">Work with multiple files</h3>
-<div class="outline-text-3" id="text-orgheadline12">
+<div id="outline-container-orgacf1df4" class="outline-3">
+<h3 id="orgacf1df4">Work with multiple files</h3>
+<div class="outline-text-3" id="text-orgacf1df4">
 <p>
 coming eventually. =)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13">Use tags for types of tasks</h3>
-<div class="outline-text-3" id="text-orgheadline13">
+<div id="outline-container-org94cc488" class="outline-3">
+<h3 id="org94cc488">Use tags for types of tasks</h3>
+<div class="outline-text-3" id="text-org94cc488">
 <p>
 coming eventually. =)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14">Filter your view</h3>
-<div class="outline-text-3" id="text-orgheadline14">
+<div id="outline-container-org32adab1" class="outline-3">
+<h3 id="org32adab1">Use different files or categories</h3>
+<div class="outline-text-3" id="text-org32adab1">
+<p>
+See <a href="http://sachachua.com/blog/2016/12/using-categories-organize-org-agenda/">http://sachachua.com/blog/2016/12/using-categories-organize-org-agenda/</a> 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org74f4031" class="outline-3">
+<h3 id="org74f4031">Filter your view</h3>
+<div class="outline-text-3" id="text-org74f4031">
 <p>
 coming eventually. =)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline15" class="outline-3">
-<h3 id="orgheadline15">Track your time</h3>
-<div class="outline-text-3" id="text-orgheadline15">
+<div id="outline-container-orgae5a4bf" class="outline-3">
+<h3 id="orgae5a4bf">Track your time</h3>
+<div class="outline-text-3" id="text-orgae5a4bf">
 <p>
 Coming eventually. =)
 </p>
@@ -579,18 +667,18 @@ Coming eventually. =)
 </div>
 </div>
 
-<div id="outline-container-orgheadline16" class="outline-3">
-<h3 id="orgheadline16">Track your time estimates</h3>
-<div class="outline-text-3" id="text-orgheadline16">
+<div id="outline-container-orgc452581" class="outline-3">
+<h3 id="orgc452581">Track your time estimates</h3>
+<div class="outline-text-3" id="text-orgc452581">
 <p>
 coming eventually. =)
 </p>
 </div>
 </div>
 
-<div id="outline-container-orgheadline17" class="outline-3">
-<h3 id="orgheadline17">Customize your agenda view</h3>
-<div class="outline-text-3" id="text-orgheadline17">
+<div id="outline-container-org2a4afb8" class="outline-3">
+<h3 id="org2a4afb8">Customize your agenda view</h3>
+<div class="outline-text-3" id="text-org2a4afb8">
 <p>
 coming eventually. =)
 </p>
@@ -598,12 +686,12 @@ coming eventually. =)
 </div>
 
 
-<div id="outline-container-orgheadline19" class="outline-3">
-<h3 id="orgheadline19">Extras</h3>
-<div class="outline-text-3" id="text-orgheadline19">
-</div><div id="outline-container-orgheadline18" class="outline-4">
-<h4 id="orgheadline18">Set up more than one TODO state for done tasks</h4>
-<div class="outline-text-4" id="text-orgheadline18">
+<div id="outline-container-orgc8ea1d8" class="outline-3">
+<h3 id="orgc8ea1d8">Extras</h3>
+<div class="outline-text-3" id="text-orgc8ea1d8">
+</div><div id="outline-container-orgb30f8b6" class="outline-4">
+<h4 id="orgb30f8b6">Set up more than one TODO state for done tasks</h4>
+<div class="outline-text-4" id="text-orgb30f8b6">
 <p>
 coming eventually. =)
 </p>
@@ -612,9 +700,9 @@ coming eventually. =)
 </div>
 </div>
 
-<div id="outline-container-orgheadline21" class="outline-2">
-<h2 id="orgheadline21">Notes</h2>
-<div class="outline-text-2" id="text-orgheadline21">
+<div id="outline-container-org5d0ad37" class="outline-2">
+<h2 id="org5d0ad37">Notes</h2>
+<div class="outline-text-2" id="text-org5d0ad37">
 <p>
 E-mail me at <a href="mailto:sacha@sachachua.com">sacha@sachachua.com</a> with questions or suggestions!
 See <a href="http://sachachua.com/blog/emacs">my Emacs page</a> for more resources.
